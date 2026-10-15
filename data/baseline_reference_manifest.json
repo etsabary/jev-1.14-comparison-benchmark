@@ -1,0 +1,8 @@
+{
+  "question_count": 1136,
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "jev_decisions_sha256": "3cb26b1f072aebaf973b071a95b2577ab24eb6e7a69c6b88399f74e741e38aa6",
+  "luna_decisions_sha256": "7d8d60d5e3091605516daf955de32159dc5b35934ea60b85fb7e40aa7af28229",
+  "key_sha256": "8376ddce67cd9bb5f62d685d0309b4de5706f091084fbe72aed7dc91d1bf4dec",
+  "purpose": "Frozen reference point for later model releases; exact original prompts, five options and their order"
+}

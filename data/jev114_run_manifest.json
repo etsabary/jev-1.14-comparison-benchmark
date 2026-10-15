@@ -1,0 +1,16 @@
+{
+  "model_requested": "typesafe/jev-1.14",
+  "endpoint": "https://openrouter.ai/api/alpha/decisions",
+  "run_id": "jev_114_1136_20261014",
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "baseline_sha256": "3cb26b1f072aebaf973b071a95b2577ab24eb6e7a69c6b88399f74e741e38aa6",
+  "total_questions": 1136,
+  "timeout_seconds": 20,
+  "max_attempts_per_item": 2,
+  "workers": 4,
+  "max_http_attempts": 2272,
+  "cost_cap_usd": 0.25,
+  "selection": "Exact recorded historical IDs; one first response per item",
+  "latency_definition": "latency_ms includes response body; end_to_end_latency_ms includes retries and backoff; headers_latency_ms matches the historical timer boundary",
+  "required_returned_model": "typesafe/jev-1.14-20261014"
+}

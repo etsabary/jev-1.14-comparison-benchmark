@@ -1,0 +1,1143 @@
+{
+  "protocol": "JEV-DD-1.0 diagnostic extension; frozen before new provider calls",
+  "selection_date": "2026-10-14",
+  "seed": 20261014,
+  "rule": "Complete all 16 candidate-check sets, then one cheapest rotation panel per family, then one cheapest contrast pair per family; ties use ascending IDs. Selection uses coverage and metadata only, never model answers or gold.",
+  "total_additional_questions": 136,
+  "stages": [
+    {
+      "purpose": "complete_candidate_checks",
+      "additional_questions": 68
+    },
+    {
+      "purpose": "complete_rotation_panel",
+      "additional_questions": 57
+    },
+    {
+      "purpose": "complete_changed_evidence_pair",
+      "additional_questions": 11
+    }
+  ],
+  "panels": {
+    "candidate_checks": [
+      {
+        "base_id": "J000745",
+        "check_ids": [
+          "J000757",
+          "J000758",
+          "J000759",
+          "J000760",
+          "J000761"
+        ]
+      },
+      {
+        "base_id": "J000781",
+        "check_ids": [
+          "J000793",
+          "J000794",
+          "J000795",
+          "J000796",
+          "J000797"
+        ]
+      },
+      {
+        "base_id": "J000817",
+        "check_ids": [
+          "J000829",
+          "J000830",
+          "J000831",
+          "J000832",
+          "J000833"
+        ]
+      },
+      {
+        "base_id": "J000853",
+        "check_ids": [
+          "J000865",
+          "J000866",
+          "J000867",
+          "J000868",
+          "J000869"
+        ]
+      },
+      {
+        "base_id": "J000889",
+        "check_ids": [
+          "J000901",
+          "J000902",
+          "J000903",
+          "J000904",
+          "J000905"
+        ]
+      },
+      {
+        "base_id": "J000925",
+        "check_ids": [
+          "J000937",
+          "J000938",
+          "J000939",
+          "J000940",
+          "J000941"
+        ]
+      },
+      {
+        "base_id": "J000961",
+        "check_ids": [
+          "J000973",
+          "J000974",
+          "J000975",
+          "J000976",
+          "J000977"
+        ]
+      },
+      {
+        "base_id": "J000997",
+        "check_ids": [
+          "J001009",
+          "J001010",
+          "J001011",
+          "J001012",
+          "J001013"
+        ]
+      },
+      {
+        "base_id": "J001033",
+        "check_ids": [
+          "J001045",
+          "J001046",
+          "J001047",
+          "J001048",
+          "J001049"
+        ]
+      },
+      {
+        "base_id": "J001069",
+        "check_ids": [
+          "J001081",
+          "J001082",
+          "J001083",
+          "J001084",
+          "J001085"
+        ]
+      },
+      {
+        "base_id": "J001105",
+        "check_ids": [
+          "J001117",
+          "J001118",
+          "J001119",
+          "J001120",
+          "J001121"
+        ]
+      },
+      {
+        "base_id": "J001141",
+        "check_ids": [
+          "J001153",
+          "J001154",
+          "J001155",
+          "J001156",
+          "J001157"
+        ]
+      },
+      {
+        "base_id": "J001177",
+        "check_ids": [
+          "J001189",
+          "J001190",
+          "J001191",
+          "J001192",
+          "J001193"
+        ]
+      },
+      {
+        "base_id": "J001213",
+        "check_ids": [
+          "J001225",
+          "J001226",
+          "J001227",
+          "J001228",
+          "J001229"
+        ]
+      },
+      {
+        "base_id": "J001249",
+        "check_ids": [
+          "J001261",
+          "J001262",
+          "J001263",
+          "J001264",
+          "J001265"
+        ]
+      },
+      {
+        "base_id": "J001285",
+        "check_ids": [
+          "J001297",
+          "J001298",
+          "J001299",
+          "J001300",
+          "J001301"
+        ]
+      }
+    ],
+    "rotations": [
+      {
+        "family_id": "F01",
+        "base_id": "J000063",
+        "item_ids": [
+          "J000063",
+          "J000064",
+          "J000065",
+          "J000066",
+          "J000067"
+        ]
+      },
+      {
+        "family_id": "F02",
+        "base_id": "J000218",
+        "item_ids": [
+          "J000218",
+          "J000219",
+          "J000220",
+          "J000221",
+          "J000222"
+        ]
+      },
+      {
+        "family_id": "F03",
+        "base_id": "J000311",
+        "item_ids": [
+          "J000311",
+          "J000312",
+          "J000313",
+          "J000314",
+          "J000315"
+        ]
+      },
+      {
+        "family_id": "F04",
+        "base_id": "J000373",
+        "item_ids": [
+          "J000373",
+          "J000374",
+          "J000375",
+          "J000376",
+          "J000377"
+        ]
+      },
+      {
+        "family_id": "F05",
+        "base_id": "J000590",
+        "item_ids": [
+          "J000590",
+          "J000591",
+          "J000592",
+          "J000593",
+          "J000594"
+        ]
+      },
+      {
+        "family_id": "F06",
+        "base_id": "J000621",
+        "item_ids": [
+          "J000621",
+          "J000622",
+          "J000623",
+          "J000624",
+          "J000625"
+        ]
+      },
+      {
+        "family_id": "F07",
+        "base_id": "J000853",
+        "item_ids": [
+          "J000853",
+          "J000854",
+          "J000855",
+          "J000856",
+          "J000857"
+        ]
+      },
+      {
+        "family_id": "F08",
+        "base_id": "J000889",
+        "item_ids": [
+          "J000889",
+          "J000890",
+          "J000891",
+          "J000892",
+          "J000893"
+        ]
+      },
+      {
+        "family_id": "F09",
+        "base_id": "J001105",
+        "item_ids": [
+          "J001105",
+          "J001106",
+          "J001107",
+          "J001108",
+          "J001109"
+        ]
+      },
+      {
+        "family_id": "F10",
+        "base_id": "J001177",
+        "item_ids": [
+          "J001177",
+          "J001178",
+          "J001179",
+          "J001180",
+          "J001181"
+        ]
+      },
+      {
+        "family_id": "F11",
+        "base_id": "J001352",
+        "item_ids": [
+          "J001352",
+          "J001353",
+          "J001354",
+          "J001355",
+          "J001356"
+        ]
+      },
+      {
+        "family_id": "F12",
+        "base_id": "J001445",
+        "item_ids": [
+          "J001445",
+          "J001446",
+          "J001447",
+          "J001448",
+          "J001449"
+        ]
+      },
+      {
+        "family_id": "F13",
+        "base_id": "J001600",
+        "item_ids": [
+          "J001600",
+          "J001601",
+          "J001602",
+          "J001603",
+          "J001604"
+        ]
+      },
+      {
+        "family_id": "F14",
+        "base_id": "J001724",
+        "item_ids": [
+          "J001724",
+          "J001725",
+          "J001726",
+          "J001727",
+          "J001728"
+        ]
+      },
+      {
+        "family_id": "F15",
+        "base_id": "J001817",
+        "item_ids": [
+          "J001817",
+          "J001818",
+          "J001819",
+          "J001820",
+          "J001821"
+        ]
+      },
+      {
+        "family_id": "F16",
+        "base_id": "J001941",
+        "item_ids": [
+          "J001941",
+          "J001942",
+          "J001943",
+          "J001944",
+          "J001945"
+        ]
+      },
+      {
+        "family_id": "F17",
+        "base_id": "J002127",
+        "item_ids": [
+          "J002127",
+          "J002128",
+          "J002129",
+          "J002130",
+          "J002131"
+        ]
+      },
+      {
+        "family_id": "F18",
+        "base_id": "J002189",
+        "item_ids": [
+          "J002189",
+          "J002190",
+          "J002191",
+          "J002192",
+          "J002193"
+        ]
+      },
+      {
+        "family_id": "F19",
+        "base_id": "J002313",
+        "item_ids": [
+          "J002313",
+          "J002314",
+          "J002315",
+          "J002316",
+          "J002317"
+        ]
+      },
+      {
+        "family_id": "F20",
+        "base_id": "J002468",
+        "item_ids": [
+          "J002468",
+          "J002469",
+          "J002470",
+          "J002471",
+          "J002472"
+        ]
+      },
+      {
+        "family_id": "F21",
+        "base_id": "J002592",
+        "item_ids": [
+          "J002592",
+          "J002593",
+          "J002594",
+          "J002595",
+          "J002596"
+        ]
+      },
+      {
+        "family_id": "F22",
+        "base_id": "J002685",
+        "item_ids": [
+          "J002685",
+          "J002686",
+          "J002687",
+          "J002688",
+          "J002689"
+        ]
+      },
+      {
+        "family_id": "F23",
+        "base_id": "J002809",
+        "item_ids": [
+          "J002809",
+          "J002810",
+          "J002811",
+          "J002812",
+          "J002813"
+        ]
+      },
+      {
+        "family_id": "F24",
+        "base_id": "J003026",
+        "item_ids": [
+          "J003026",
+          "J003027",
+          "J003028",
+          "J003029",
+          "J003030"
+        ]
+      },
+      {
+        "family_id": "F25",
+        "base_id": "J003150",
+        "item_ids": [
+          "J003150",
+          "J003151",
+          "J003152",
+          "J003153",
+          "J003154"
+        ]
+      }
+    ],
+    "contrasts": [
+      {
+        "family_id": "F01",
+        "base_id": "J000001",
+        "contrast_id": "J000012"
+      },
+      {
+        "family_id": "F02",
+        "base_id": "J000187",
+        "contrast_id": "J000198"
+      },
+      {
+        "family_id": "F03",
+        "base_id": "J000311",
+        "contrast_id": "J000322"
+      },
+      {
+        "family_id": "F04",
+        "base_id": "J000373",
+        "contrast_id": "J000384"
+      },
+      {
+        "family_id": "F05",
+        "base_id": "J000590",
+        "contrast_id": "J000601"
+      },
+      {
+        "family_id": "F06",
+        "base_id": "J000714",
+        "contrast_id": "J000725"
+      },
+      {
+        "family_id": "F07",
+        "base_id": "J000853",
+        "contrast_id": "J000864"
+      },
+      {
+        "family_id": "F08",
+        "base_id": "J000925",
+        "contrast_id": "J000936"
+      },
+      {
+        "family_id": "F09",
+        "base_id": "J001105",
+        "contrast_id": "J001116"
+      },
+      {
+        "family_id": "F10",
+        "base_id": "J001177",
+        "contrast_id": "J001188"
+      },
+      {
+        "family_id": "F11",
+        "base_id": "J001352",
+        "contrast_id": "J001363"
+      },
+      {
+        "family_id": "F12",
+        "base_id": "J001507",
+        "contrast_id": "J001518"
+      },
+      {
+        "family_id": "F13",
+        "base_id": "J001600",
+        "contrast_id": "J001611"
+      },
+      {
+        "family_id": "F14",
+        "base_id": "J001724",
+        "contrast_id": "J001735"
+      },
+      {
+        "family_id": "F15",
+        "base_id": "J001817",
+        "contrast_id": "J001828"
+      },
+      {
+        "family_id": "F16",
+        "base_id": "J001941",
+        "contrast_id": "J001952"
+      },
+      {
+        "family_id": "F17",
+        "base_id": "J002096",
+        "contrast_id": "J002107"
+      },
+      {
+        "family_id": "F18",
+        "base_id": "J002189",
+        "contrast_id": "J002200"
+      },
+      {
+        "family_id": "F19",
+        "base_id": "J002375",
+        "contrast_id": "J002386"
+      },
+      {
+        "family_id": "F20",
+        "base_id": "J002468",
+        "contrast_id": "J002479"
+      },
+      {
+        "family_id": "F21",
+        "base_id": "J002592",
+        "contrast_id": "J002603"
+      },
+      {
+        "family_id": "F22",
+        "base_id": "J002685",
+        "contrast_id": "J002696"
+      },
+      {
+        "family_id": "F23",
+        "base_id": "J002809",
+        "contrast_id": "J002820"
+      },
+      {
+        "family_id": "F24",
+        "base_id": "J002933",
+        "contrast_id": "J002944"
+      },
+      {
+        "family_id": "F25",
+        "base_id": "J003150",
+        "contrast_id": "J003161"
+      }
+    ]
+  },
+  "selected_items": [
+    {
+      "item_id": "J000067",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000817",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000220",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J002189",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000833",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001262",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000064",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001069",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000794",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000857",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000905",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001106",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001193",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001249",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001121",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001013",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002689",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000830",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J003151",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001446",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000761",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002595",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001603",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001945",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000758",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001602",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000187",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J002191",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000314",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001356",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001942",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000902",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001081",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001033",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002129",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J002810",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001083",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001728",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000938",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001604",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001225",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000793",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001301",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000759",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001264",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000997",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000322",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J001085",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002479",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J000377",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001141",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J003161",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J002317",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000889",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001229",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001179",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001049",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001821",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001118",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000781",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001819",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001285",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002096",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J001084",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001190",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002820",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J001213",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001119",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000001",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J001117",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000890",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001447",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000796",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001192",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000621",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001265",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002314",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000941",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002468",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000624",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000594",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000374",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J003030",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J002696",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J000590",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001011",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000867",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000975",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000222",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000063",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000375",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000977",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000384",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J000797",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000904",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002313",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000315",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000795",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001153",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001045",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001601",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000865",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001725",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J002130",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001012",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002592",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001189",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001226",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001726",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001105",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J003029",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000901",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002813",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001048",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001944",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001297",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000313",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000832",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J000866",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002686",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001047",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002200",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J000893",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001817",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001046",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001120",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002472",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J003152",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J001298",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001228",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001299",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J001261",
+      "reason": "complete_candidate_checks"
+    },
+    {
+      "item_id": "J002944",
+      "reason": "complete_changed_evidence_pair"
+    },
+    {
+      "item_id": "J002685",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000892",
+      "reason": "complete_rotation_panel"
+    },
+    {
+      "item_id": "J000925",
+      "reason": "complete_candidate_checks"
+    }
+  ],
+  "historical_jev_sha256": "44205d5110665123ab4a5535fa39511e48b68c2a3d4b2d95c16264d903d7a079",
+  "historical_luna_sha256": "ceddda96c842bd9c46bb1754a3dae3d93cbd27445b7f0b3627ee44cc5f1483bb",
+  "rotation_levels": {
+    "3": 4,
+    "4": 5,
+    "1": 11,
+    "2": 5
+  }
+}

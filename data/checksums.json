@@ -1,0 +1,20 @@
+{
+  "analysis/changed_choices.csv": "d17f2af1e3e5dd28d19fe6fdc4b86cfe11378b1a22803e91b5e1a62167a6e2e1",
+  "analysis/confidence_comparison.csv": "638d144868ba261cda7f3207f05135d66cd80b66fe54a60dbbbc505e78bbd4e1",
+  "analysis/family_comparison.csv": "0f2f647a340781c928e90e7c5dd3aca1667bbc70c4a9508121c53b1e836af2a0",
+  "analysis/summary.json": "c1048e2d35f00b4b12b4eba829372af4baf256b2a38b617eeb0ad09ecbffbc04",
+  "data/attempts_jev114.jsonl": "c7498c08b9e9ad96106e6f68e3add5ad2c0fe76e1df3531a540387175408c9b2",
+  "data/baseline_reference_manifest.json": "8cf7e85c48951ac0a8f6798c6cfad190204b941c5917ce34d2fb21023dc3847a",
+  "data/decisions_jev114.csv": "a3220e3026c0b0af6eaae1df396e9725f5ed0cbe4a5469e3055c97eb5c07cdfc",
+  "data/item_metadata.csv": "34a6d3d36dfb09c4575212e3bffcc260c14d434741110245a025aa9a6ae4c98a",
+  "data/jev114_run_manifest.json": "8ce7fad52e72f5a24685278141295e5d723051f81644d49adf5cecb75ba20847",
+  "data/questions_1136.csv": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "data/results_jev113.csv": "3cb26b1f072aebaf973b071a95b2577ab24eb6e7a69c6b88399f74e741e38aa6",
+  "data/results_jev114.csv": "5133ffcd736a4c5ad27325e4a8cdf3d9a3178fd9b9b1ba6d656804b264cf0e92",
+  "data/results_luna.csv": "7d8d60d5e3091605516daf955de32159dc5b35934ea60b85fb7e40aa7af28229",
+  "data/selection_manifest.json": "c25c21d014d3c21d49585ea399a355fdf3a475bf4eb0c6b9826ef6a2a0bbc43f",
+  "figures/ability_profile.png": "91f9813b2d9073d2e82480f6e535a121b73d6793fa23800d7b0b96250774698a",
+  "figures/ability_profile.svg": "add0f59a1407e5218f6ab8c9f4ec45893dc8ed147d9706686ea0a31cbe8c8280",
+  "figures/reliability_profile.png": "0e4ec859ea71bae31eaad57b1e488cd392db3614c74a250154955475e2024d2f",
+  "figures/reliability_profile.svg": "16aceb69b1c8b80e3f11d0d58c3a50af010f14725456a9812b5665e0447ec731"
+}

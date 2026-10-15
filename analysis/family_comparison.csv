@@ -1,0 +1,26 @@
+family_id,family,n,jev113_correct,jev114_correct,luna_correct,jev114_minus_jev113,jev113_unanswered,jev114_unanswered,luna_unanswered
+F01,Record lookup and filtering,37,37,37,37,0,0,0,0
+F02,Forward conditional reasoning,39,39,39,24,0,0,0,5
+F03,Necessary conditions and contraposition,46,45,46,13,1,0,0,0
+F04,Boolean scope and exclusivity,48,47,48,33,1,0,0,0
+F05,Quantifiers and set relations,43,42,42,38,0,0,0,0
+F06,Transitive comparisons,34,34,34,33,0,0,0,0
+F07,Scheduling constraints,69,43,46,25,3,0,0,3
+F08,One-to-one assignments,61,49,56,35,7,0,1,8
+F09,Exact truth counting,65,24,24,19,0,0,0,0
+F10,Truth-teller consistency,62,31,31,20,0,0,0,1
+F11,Sufficiency and inconsistency,35,28,29,19,1,0,0,0
+F12,Object tracking through swaps,46,29,29,16,0,0,0,1
+F13,Sequential procedure execution,42,5,6,9,1,0,0,0
+F14,Temporal interval relations,36,35,34,19,-1,0,0,0
+F15,Verbal spatial tracking,43,24,32,21,8,0,0,2
+F16,Nested role and reference binding,44,34,34,20,0,0,0,0
+F17,Perspective and belief tracking,44,39,40,32,1,0,0,1
+F18,Deterministic causal intervention,44,36,36,20,0,0,0,0
+F19,Exceptions and priority rules,52,48,45,45,-3,0,0,0
+F20,Planning with preconditions,37,35,36,28,1,0,0,0
+F21,Directed reachability,37,37,37,37,0,0,0,0
+F22,Deterministic preference ordering,45,44,45,44,1,0,0,0
+F23,Rule verification and counterexamples,46,45,45,36,0,0,1,1
+F24,Source authority and stale records,37,37,37,31,0,0,0,0
+F25,Deterministic fault diagnosis,44,43,44,33,1,0,0,1

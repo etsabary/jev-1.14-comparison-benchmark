@@ -1,0 +1,131 @@
+item_id,family,role,level,jev113_choice,jev114_choice,jev113_confidence,jev114_confidence
+J000356,Necessary conditions and contraposition,core,4,2,5,0.3,0.32
+J000443,Boolean scope and exclusivity,robustness,3,1,2,0.38,0.87
+J000601,Quantifiers and set relations,contrast,4,2,4,0.31,0.29
+J000758,Scheduling constraints,probe,1,1,2,0.4,0.71
+J000781,Scheduling constraints,core,2,4,2,0.35,0.37
+J000786,Scheduling constraints,robustness,2,4,2,0.43,0.37
+J000797,Scheduling constraints,probe,2,1,5,0.54,0.56
+J000799,Scheduling constraints,core,2,1,4,0.39,0.46
+J000801,Scheduling constraints,core,2,2,3,0.13,0.14
+J000815,Scheduling constraints,core,2,4,5,0.29,0.27
+J000829,Scheduling constraints,probe,3,2,1,0.36,0.82
+J000830,Scheduling constraints,probe,3,3,2,0.26,0.71
+J000865,Scheduling constraints,probe,4,2,3,0.36,0.24
+J000905,One-to-one assignments,probe,1,5,2,0.6,0.42
+J000931,One-to-one assignments,robustness,2,4,5,0.47,0.81
+J000946,One-to-one assignments,core,2,5,1,0.71,0.73
+J000975,One-to-one assignments,probe,3,1,4,0.68,0.44
+J000981,One-to-one assignments,core,3,5,,0.66,
+J000997,One-to-one assignments,core,4,4,2,0.39,0.55
+J001002,One-to-one assignments,robustness,4,4,2,0.51,0.51
+J001004,One-to-one assignments,robustness,4,4,2,0.37,0.54
+J001010,One-to-one assignments,probe,4,1,3,0.35,0.61
+J001011,One-to-one assignments,probe,4,1,3,0.56,0.71
+J001013,One-to-one assignments,probe,4,2,1,0.35,0.92
+J001048,Exact truth counting,probe,1,3,1,0.64,0.27
+J001053,Exact truth counting,core,1,5,3,0.14,0.15
+J001055,Exact truth counting,core,1,4,2,0.32,0.34
+J001105,Exact truth counting,core,3,4,1,0.22,0.4
+J001108,Exact truth counting,robustness,3,1,3,0.22,0.33
+J001109,Exact truth counting,robustness,3,5,2,0.19,0.36
+J001117,Exact truth counting,probe,3,3,4,0.41,0.45
+J001118,Exact truth counting,probe,3,4,3,0.32,0.36
+J001120,Exact truth counting,probe,3,2,1,0.22,0.12
+J001121,Exact truth counting,probe,3,5,4,0.14,0.29
+J001125,Exact truth counting,core,3,3,2,0.2,0.09
+J001154,Exact truth counting,probe,4,3,2,0.31,0.33
+J001156,Exact truth counting,probe,4,3,2,0.49,0.49
+J001160,Exact truth counting,core,4,2,3,0.19,0.26
+J001164,Exact truth counting,core,4,5,1,0.15,0.14
+J001190,Truth-teller consistency,probe,1,5,1,0.18,0.29
+J001192,Truth-teller consistency,probe,1,4,1,0.3,0.19
+J001193,Truth-teller consistency,probe,1,4,1,0.1,0.2
+J001197,Truth-teller consistency,core,1,5,2,0.28,0.33
+J001226,Truth-teller consistency,probe,2,5,3,0.02,0.15
+J001228,Truth-teller consistency,probe,2,4,3,0.07,0.19
+J001229,Truth-teller consistency,probe,2,3,1,0.22,0.25
+J001233,Truth-teller consistency,core,2,1,3,0.36,0.42
+J001246,Truth-teller consistency,core,2,1,2,0.47,0.5
+J001249,Truth-teller consistency,core,3,4,3,0.19,0.15
+J001256,Truth-teller consistency,robustness,3,4,3,0.21,0.14
+J001258,Truth-teller consistency,robustness,3,4,3,0.25,0.1
+J001264,Truth-teller consistency,probe,3,3,1,0.11,0.14
+J001265,Truth-teller consistency,probe,3,5,1,0.05,0.09
+J001271,Truth-teller consistency,core,3,1,3,0.19,0.25
+J001278,Truth-teller consistency,core,3,3,4,0.18,0.06
+J001287,Truth-teller consistency,robustness,4,4,2,0.34,0.32
+J001293,Truth-teller consistency,robustness,4,4,1,0.35,0.34
+J001301,Truth-teller consistency,probe,4,4,3,0.15,0.14
+J001304,Truth-teller consistency,core,4,1,3,0.22,0.22
+J001305,Truth-teller consistency,core,4,3,1,0.29,0.26
+J001412,Sufficiency and inconsistency,core,3,4,5,0.5,0.6
+J001498,Object tracking through swaps,core,2,2,3,0.7,0.56
+J001505,Object tracking through swaps,core,2,4,3,0.34,0.37
+J001512,Object tracking through swaps,robustness,3,3,1,0.46,0.09
+J001521,Object tracking through swaps,core,3,4,3,0.8,0.15
+J001525,Object tracking through swaps,core,3,3,5,0.24,0.22
+J001531,Object tracking through swaps,core,3,4,2,0.33,0.14
+J001548,Object tracking through swaps,robustness,4,5,1,0.18,0.09
+J001551,Object tracking through swaps,core,4,4,3,0.35,0.12
+J001553,Object tracking through swaps,core,4,2,4,0.31,0.14
+J001556,Object tracking through swaps,core,4,4,2,0.15,0.06
+J001566,Object tracking through swaps,core,4,5,4,0.26,0.22
+J001600,Sequential procedure execution,core,2,1,3,0.06,0.06
+J001601,Sequential procedure execution,robustness,2,5,2,0.18,0.05
+J001602,Sequential procedure execution,robustness,2,5,1,0.1,0.02
+J001604,Sequential procedure execution,robustness,2,2,4,0.18,0.07
+J001606,Sequential procedure execution,robustness,2,5,3,0.05,0.01
+J001609,Sequential procedure execution,robustness,2,2,1,0.12,0.05
+J001610,Sequential procedure execution,robustness,2,2,1,0.15,0.1
+J001616,Sequential procedure execution,core,2,5,1,0.39,0.15
+J001627,Sequential procedure execution,core,2,2,1,0.16,0.18
+J001632,Sequential procedure execution,robustness,3,2,1,0.03,0.01
+J001641,Sequential procedure execution,robustness,3,1,2,0.03,0.04
+J001643,Sequential procedure execution,core,3,3,1,0.06,0.05
+J001650,Sequential procedure execution,core,3,2,4,0.04,0.06
+J001652,Sequential procedure execution,core,3,2,3,0.05,0.02
+J001657,Sequential procedure execution,core,3,5,4,0.03,0.01
+J001658,Sequential procedure execution,core,3,2,1,0.04,0.04
+J001662,Sequential procedure execution,core,4,5,1,0.05,0.04
+J001667,Sequential procedure execution,robustness,4,2,1,0.08,0.05
+J001675,Sequential procedure execution,core,4,5,2,0.05,0.1
+J001677,Sequential procedure execution,core,4,3,2,0.05,0.09
+J001685,Sequential procedure execution,core,4,5,1,0.06,0.05
+J001689,Sequential procedure execution,core,4,2,3,0.05,0.04
+J001786,Temporal interval relations,core,4,3,2,0.37,0.39
+J001862,Verbal spatial tracking,core,2,1,5,0.33,0.22
+J001879,Verbal spatial tracking,core,3,1,3,0.1,0.45
+J001883,Verbal spatial tracking,robustness,3,1,4,0.28,0.57
+J001892,Verbal spatial tracking,core,3,2,5,0.91,0.39
+J001894,Verbal spatial tracking,core,3,5,4,0.23,0.09
+J001907,Verbal spatial tracking,core,3,1,3,0.21,0.91
+J001916,Verbal spatial tracking,robustness,4,1,4,0.05,0.11
+J001927,Verbal spatial tracking,core,4,5,1,0.14,0.29
+J001937,Verbal spatial tracking,core,4,2,3,0.27,0.22
+J002026,Nested role and reference binding,core,3,5,3,0.21,0.34
+J002057,Nested role and reference binding,core,4,4,2,0.11,0.09
+J002063,Nested role and reference binding,core,4,4,2,0.11,0.14
+J002159,Perspective and belief tracking,robustness,4,1,5,0.33,0.18
+J002173,Perspective and belief tracking,core,4,5,3,0.35,0.18
+J002179,Perspective and belief tracking,core,4,5,3,0.18,0.14
+J002190,Deterministic causal intervention,robustness,1,4,3,0.34,0.29
+J002192,Deterministic causal intervention,robustness,1,1,2,0.5,0.15
+J002222,Deterministic causal intervention,robustness,2,3,4,0.4,0.36
+J002223,Deterministic causal intervention,robustness,2,2,3,0.59,0.36
+J002225,Deterministic causal intervention,robustness,2,5,1,0.6,0.5
+J002246,Deterministic causal intervention,core,2,1,3,0.5,0.94
+J002248,Deterministic causal intervention,core,2,3,5,0.49,0.51
+J002249,Deterministic causal intervention,core,2,1,3,0.38,0.76
+J002272,Deterministic causal intervention,core,3,2,3,0.36,0.4
+J002288,Deterministic causal intervention,robustness,4,1,2,0.35,0.36
+J002375,Exceptions and priority rules,core,3,2,4,0.38,0.52
+J002379,Exceptions and priority rules,robustness,3,3,5,0.34,0.45
+J002388,Exceptions and priority rules,core,3,4,5,0.89,0.39
+J002484,Planning with preconditions,core,2,3,2,0.62,0.44
+J002503,Planning with preconditions,robustness,3,3,4,0.3,0.69
+J002556,Planning with preconditions,core,4,4,2,0.39,0.51
+J002722,Deterministic preference ordering,robustness,2,3,4,0.46,0.68
+J002906,Rule verification and counterexamples,robustness,4,3,,0.87,
+J002931,Rule verification and counterexamples,core,4,2,3,0.64,0.82
+J003177,Deterministic fault diagnosis,core,4,5,3,0.74,0.97
