@@ -1,125 +1,492 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jev 1.14 vs Jev 1.13 and GPT-6 Luna Decisions: 1,136 questions</title>
-<style>body{max-width:1180px;margin:auto;padding:38px 24px 80px;background:#f7f9fc;color:#172c42;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.3rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{width:100%;height:auto;border-radius:12px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.9rem}td,th{border-bottom:1px solid #d5dfe9;padding:10px 12px;text-align:left}th{background:#e7eef5}code{font-size:.86em;overflow-wrap:anywhere}pre{overflow:auto;padding:18px;background:#e7eef5}nav{border-bottom:1px solid #d5dfe9;padding-bottom:18px;margin-bottom:30px;font-size:.9rem}</style>
-<nav><a href="https://github.com/etsabary/jev-1.14-comparison-benchmark">Repository and raw evidence</a> · <a href="https://etsabary.github.io/jev-deterministic-benchmark/extension_136.html">Frozen two-model reference</a></nav><main>
-<h1>Jev 1.14, Jev 1.13 and GPT-6 Luna Decisions</h1>
-<h2>The same 1,136 questions, with a fixed reference</h2>
-<p>Jev 1.14 scored <strong>932/1,136 (82.0%)</strong>, compared with <strong>910/1,136 (80.1%)</strong> for Jev 1.13 and <strong>687/1,136 (60.5%)</strong> for GPT-6 Luna Decisions. The new Jev release gained 22 correct answers overall. It improved some abilities substantially, while leaving several of the original weaknesses almost unchanged.</p>
-<p>This is a text-only comparison using the exact same instructions, facts, questions and five answer options in the same order. The original responses remain the reference. A separate 256-item Jev 1.13 recheck is reported in the baseline repository and does not replace them.</p>
-<p><img alt="Accuracy by reasoning family, with model snapshots and test dates" src="figures/ability_profile.png" /></p>
-<h2>Results and model identities</h2>
-<table>
-<thead>
-<tr>
-<th>Measure</th>
-<th style="text-align: right;">Jev 1.13</th>
-<th style="text-align: right;">Jev 1.14</th>
-<th style="text-align: right;">GPT-6 Luna Decisions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Questions attempted</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">1136</td>
-</tr>
-<tr>
-<td>Valid choices</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">1134</td>
-<td style="text-align: right;">1113</td>
-</tr>
-<tr>
-<td>Correct</td>
-<td style="text-align: right;">910</td>
-<td style="text-align: right;">932</td>
-<td style="text-align: right;">687</td>
-</tr>
-<tr>
-<td>Wrong valid choices</td>
-<td style="text-align: right;">226</td>
-<td style="text-align: right;">202</td>
-<td style="text-align: right;">426</td>
-</tr>
-<tr>
-<td>Unanswered</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">23</td>
-</tr>
-<tr>
-<td>Probability-format warnings</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr>
-<td>Correct / all attempted</td>
-<td style="text-align: right;">80.1%</td>
-<td style="text-align: right;">82.0%</td>
-<td style="text-align: right;">60.5%</td>
-</tr>
-<tr>
-<td>Correct / answered</td>
-<td style="text-align: right;">80.1%</td>
-<td style="text-align: right;">82.2%</td>
-<td style="text-align: right;">61.7%</td>
-</tr>
-<tr>
-<td>Core questions only</td>
-<td style="text-align: right;">530/640 (82.8%)</td>
-<td style="text-align: right;">543/640 (84.8%)</td>
-<td style="text-align: right;">401/640 (62.7%)</td>
-</tr>
-</tbody>
-</table>
-<p>The full reference contains 640 core questions and 496 related variants, contrasts and candidate checks. The combined score is useful for tracking the same bank over time; the related items are not independent observations. The core score and matched tests therefore remain separate views of performance.</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Eleven models on 1136 text decisions</title><style>body{max-width:1260px;margin:auto;padding:32px 24px 80px;background:#f8fafc;color:#193047;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.35rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{max-width:100%;height:auto;background:white;border-radius:10px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.86rem;margin:20px 0}th,td{border-bottom:1px solid #d5dfe9;padding:9px 11px;text-align:left;vertical-align:top}th{background:#e6eef5}code{font-size:.85em;overflow-wrap:anywhere}pre{overflow:auto;background:#e6eef5;padding:16px}nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #d5dfe9;padding-bottom:16px;font-size:.9rem}p{max-width:100ch}</style></head><body><nav><a href="index.html">Eleven-model comparison</a><a href="functions.html">Functions and load</a><a href="three_model_reference.html">Original three-model reference</a><a href="https://github.com/etsabary/jev-1.14-comparison-benchmark">Repository and evidence</a></nav><main><h1 id="eleven-models-on-the-same-1136-text-decisions">Eleven models on the same 1,136 text decisions</h1>
+<p>I have been intrigued by Jev because it does something different from the LLMs I usually use: it returns a typed decision with probabilities rather than a paragraph. That made it harder to place. Could it make better quick decisions than Luna, one of my favorite models? I wanted a comparison that would make its strengths and limits visible.</p>
+<p>On these tests, the answer was clearly yes. Jev was substantially stronger than both Luna services overall. That is a finding about <strong>System 1-style decisions</strong>: a single answer from supplied information, without an explicit thinking budget, tools or an agentic feedback loop. Those decisions matter when a system needs to route many requests quickly and cheaply. This is not a comparison of unrestricted reasoning, writing or agentic ability.</p>
+<p>Jev 1.14 remains the strongest overall result on this bank, with <strong>932/1,136 correct (82.0%)</strong>, followed by Jev 1.13 with <strong>910 (80.1%)</strong>. Among eight regular LLMs tested with switchable reasoning disabled, <strong>GPT-6 Luna scored 727 (64.0%)</strong> and <strong>Mercury 2.5 scored 702 (61.8%)</strong>. Mercury came close to regular Luna at lower reported cost and shorter median response time under its test-day promotional tariff.</p>
+<p>This comparison covers <strong>11 model services × 1,136 questions = 12,496 scored model-question cases</strong>. It preserves three historical native Decisions results and adds eight coordinated regular-LLM runs from October 15, 2026. The new LLMs used OpenRouter, pinned backend providers, a 16-token output cap and a numeric-answer-ID-only instruction. These are short-answer decision results, not unrestricted reasoning scores.</p>
+<p>The bank contains 640 core questions and 496 related variants, contrasts and candidate checks across 25 families. Related items are not independent observations. All models received the same underlying instructions, facts, question and five answer options in the same order; native Decisions and ordinary chat serialize that content differently.</p>
+<p>The <a href="three_model_reference.html">original three-model report</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data">frozen original evidence</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/summary.json">eleven-model summary</a>, and <a href="functions.html">function and load-level tables</a> remain available. The <a href="https://github.com/etsabary/visual-decision-benchmark">image benchmark</a> is separate.</p>
+<p><img alt="Overall and core-only accuracy across eleven services" src="figures/eleven_overall_accuracy.png" /></p>
+<h2 id="results-across-the-full-bank">Results across the full bank</h2>
+<p>Historical rows preserve their original recorded outcomes and retry rules. New LLM rows use the first attempt as primary. Errors, refusals, non-ID output and truncation are unsuccessful; wrong valid choices remain separate.</p>
+<p>The headline median and p95 use <strong>all 1,136 saved outcomes for each model</strong>, including timed failures. They give a ballpark view of the recorded services. Historical timing boundaries, dates and routes differ from the new run, so this is not a controlled eleven-way speed ranking.</p>
 <table>
 <thead>
 <tr>
 <th>Model</th>
-<th>Returned identity</th>
-<th>Test dates, Toronto</th>
+<th style="text-align: right;">Correct / 1,136</th>
+<th style="text-align: right;">Accuracy</th>
+<th style="text-align: right;">Core correct</th>
+<th style="text-align: right;">Wrong valid</th>
+<th style="text-align: right;">Unanswered</th>
+<th style="text-align: right;">Full-bank median</th>
+<th style="text-align: right;">p95</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Jev 1.13</td>
-<td><code>jev-1.13.0</code> (412), <code>typesafe/jev-1.13-20260917</code> (468), historical <code>jev-latest</code> (256)</td>
-<td>September 22 and October 14, 2026</td>
-</tr>
-<tr>
 <td>Jev 1.14</td>
-<td><code>typesafe/jev-1.14-20261014</code> on all 1,134 answered requests</td>
-<td>October 14–15, 2026</td>
+<td style="text-align: right;">932</td>
+<td style="text-align: right;">82.0%</td>
+<td style="text-align: right;">543/640</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">148 ms historical</td>
+<td style="text-align: right;">220 ms</td>
 </tr>
 <tr>
-<td>GPT-6 Luna Decisions</td>
-<td><code>openai/gpt-6-luna-decisions-20261006</code> on all 1,113 answered requests</td>
-<td>October 10 and 14, 2026</td>
+<td>Jev 1.13</td>
+<td style="text-align: right;">910</td>
+<td style="text-align: right;">80.1%</td>
+<td style="text-align: right;">530/640</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">327 ms historical</td>
+<td style="text-align: right;">1081 ms</td>
+</tr>
+<tr>
+<td>Luna 6 regular</td>
+<td style="text-align: right;">727</td>
+<td style="text-align: right;">64.0%</td>
+<td style="text-align: right;">431/640</td>
+<td style="text-align: right;">408</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">942 ms</td>
+<td style="text-align: right;">1961 ms</td>
+</tr>
+<tr>
+<td>Mercury 2.5</td>
+<td style="text-align: right;">702</td>
+<td style="text-align: right;">61.8%</td>
+<td style="text-align: right;">404/640</td>
+<td style="text-align: right;">432</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">534 ms</td>
+<td style="text-align: right;">1077 ms</td>
+</tr>
+<tr>
+<td>Luna 6 Decisions</td>
+<td style="text-align: right;">687</td>
+<td style="text-align: right;">60.5%</td>
+<td style="text-align: right;">401/640</td>
+<td style="text-align: right;">426</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">223 ms historical</td>
+<td style="text-align: right;">404 ms</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash-Lite</td>
+<td style="text-align: right;">598</td>
+<td style="text-align: right;">52.6%</td>
+<td style="text-align: right;">352/640</td>
+<td style="text-align: right;">524</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">341 ms</td>
+<td style="text-align: right;">523 ms</td>
+</tr>
+<tr>
+<td>Qwen3-30B-A3B Instruct 2507</td>
+<td style="text-align: right;">564</td>
+<td style="text-align: right;">49.6%</td>
+<td style="text-align: right;">334/640</td>
+<td style="text-align: right;">572</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1034 ms</td>
+<td style="text-align: right;">1823 ms</td>
+</tr>
+<tr>
+<td>Granite 4.2 8B</td>
+<td style="text-align: right;">478</td>
+<td style="text-align: right;">42.1%</td>
+<td style="text-align: right;">279/640</td>
+<td style="text-align: right;">612</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">324 ms</td>
+<td style="text-align: right;">866 ms</td>
+</tr>
+<tr>
+<td>GPT-5.4 nano</td>
+<td style="text-align: right;">464</td>
+<td style="text-align: right;">40.8%</td>
+<td style="text-align: right;">276/640</td>
+<td style="text-align: right;">672</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">683 ms</td>
+<td style="text-align: right;">1136 ms</td>
+</tr>
+<tr>
+<td>Phi-4 14B</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">37.7%</td>
+<td style="text-align: right;">258/640</td>
+<td style="text-align: right;">379</td>
+<td style="text-align: right;">329</td>
+<td style="text-align: right;">365 ms</td>
+<td style="text-align: right;">901 ms</td>
+</tr>
+<tr>
+<td>Mistral NeMo 12B</td>
+<td style="text-align: right;">421</td>
+<td style="text-align: right;">37.1%</td>
+<td style="text-align: right;">240/640</td>
+<td style="text-align: right;">701</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">490 ms</td>
+<td style="text-align: right;">1523 ms</td>
 </tr>
 </tbody>
 </table>
-<p>The Jev 1.14 release date is October 14. Its run crossed midnight locally. Error responses did not identify a model. The historical Jev alias belongs to the September 22 Jev 1.13 run; those response records preserve the alias rather than an exact snapshot. All new Jev calls explicitly requested their version, and the runner checked the returned snapshot. These dates and identities matter: later calls to a Luna or Jev alias may evaluate another release.</p>
-<h2>Where Jev 1.14 improved, and where it did not</h2>
-<p>The clearest gains were in <strong>verbal spatial tracking</strong>, from 24/43 to 32/43, and <strong>one-to-one assignments</strong>, from 49/61 to 56/61. Scheduling improved from 43/69 to 46/69. Spatial tracking still failed on 11 questions, and scheduling on 23, so the gains do not make either ability dependable without task-specific checking.</p>
-<p>Several weak areas barely moved. <strong>Exact truth counting stayed at 24/65</strong>, and <strong>object tracking through swaps stayed at 29/46</strong>. <strong>Sequential procedure execution rose from 5/42 to 6/42</strong>, still only 14.3%. Jev 1.14 therefore provides little evidence of a solution to the state-update and exact-count limitations found in the original benchmark.</p>
-<p>The new version also lost ground in some areas. Exceptions and priority rules fell from 48/52 to 45/52, temporal interval relations from 35/36 to 34/36, and correctly answered changed-evidence pairs from 20/25 to 19/25. Improvement is not uniform across functions.</p>
-<p>Across individual questions, Jev 1.14 corrected <strong>56</strong> previously unsuccessful cases and lost <strong>34</strong> previously correct cases. Two of those losses were provider errors; the remaining 32 were wrong valid choices. Both versions were correct on 876 questions, and both were unsuccessful on 170. On the 1,134 questions both answered, Jev 1.14 scored 932 and Jev 1.13 scored 908. This is one observed comparison across dates and historical routes, not an isolated measurement of model weights.</p>
-<h2>What looks dependable, and what still needs checking</h2>
-<p><strong>Bounded decisions from supplied facts are the strongest use case here.</strong> Jev 1.14 answered every sampled record-lookup, forward-implication, contraposition, Boolean-scope, transitive-comparison, preference-ordering, source-authority, reachability and fault-diagnosis question correctly. These are generated, self-contained tasks with explicit rules. The result supports further testing of classification and routing under similarly clear conditions; it does not guarantee correctness on new domains, long real-world contexts or safety-critical decisions.</p>
-<p><strong>Exact counts, repeated state changes and broad candidate verification remain weak.</strong> A caller should not assume Jev 1.14 can reliably maintain a changing state, execute a sequence of edits, count satisfied statements, or certify an arrangement simply because it returns a confident typed choice. Exact arithmetic and state transitions can be checked in code. Richer interpretations need their own domain evaluation and an uncertainty path.</p>
-<p><strong>Luna has clear strengths too.</strong> It answered all 37 lookup and all 37 reachability questions correctly, 44/45 preference questions, and 33/34 transitive comparisons. It exceeded both Jev versions on sequential procedures, with 9/42, although that is still poor absolute performance. It was substantially weaker on contraposition, with 13/46, and on object tracking, with 16/46. Its confidence filter identified a small strong subset, but its overall coverage at high confidence was much lower.</p>
-<h2>Confidence: accuracy and coverage together</h2>
-<p><img alt="Matched tests and confidence accuracy versus coverage" src="figures/reliability_profile.png" /></p>
+<h2 id="actual-cost-of-the-eight-new-full-runs">Actual cost of the eight new full runs</h2>
+<p>Costs cover <strong>1,136 questions per model</strong>, including recovery attempts. The per-1,000 column is a normalization of the same bill: reported run cost ÷ 1,136 × 1,000. It is not an additional run. The earlier 75-call pilot is separate.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Known cost for 1,136</th>
+<th style="text-align: right;">Normalized cost per 1,000</th>
+<th style="text-align: right;">Attempts missing cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Luna 6 regular</td>
+<td style="text-align: right;">$0.03431990</td>
+<td style="text-align: right;">$0.03021118</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Mercury 2.5</td>
+<td style="text-align: right;">$0.01321493</td>
+<td style="text-align: right;">$0.01163286</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash-Lite</td>
+<td style="text-align: right;">$0.03219570</td>
+<td style="text-align: right;">$0.02834129</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Qwen3-30B-A3B Instruct 2507</td>
+<td style="text-align: right;">$0.02922378</td>
+<td style="text-align: right;">$0.02572516</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Granite 4.2 8B</td>
+<td style="text-align: right;">$0.01555172</td>
+<td style="text-align: right;">$0.01368989</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>GPT-5.4 nano</td>
+<td style="text-align: right;">$0.07005030</td>
+<td style="text-align: right;">$0.06166400</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Phi-4 14B</td>
+<td style="text-align: right;">$0.02329726</td>
+<td style="text-align: right;">$0.02050815</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Mistral NeMo 12B</td>
+<td style="text-align: right;">$0.00923528</td>
+<td style="text-align: right;">$0.00812965</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+<p>The eight new runs reported <strong>$0.227088871 combined</strong>. Nine error attempts omitted charges, so this is a known reported amount, not exact billing. Mercury's captured tariff had an 80% promotional discount. Its cost advantage is specific to that price. Backend hardware and quantization differ even though OpenRouter is the shared front door.</p>
+<p>Jev 1.14's historical attempt ledger reported <strong>$0.027183072</strong>, with two errors omitting cost. Jev 1.13 has cost fields only for its 136 extension records ($0.003161340), not a full-bank bill. Luna Decisions' selected historical result records total $0.0395666 across 1,113 cost-reporting records; failed/retried attempts are not a complete accounting ledger here. These figures are retained with their coverage rather than presented as equivalent full-run bills.</p>
+<p><img alt="Actual 1136-question costs and first-attempt reply times of eight regular LLMs" src="figures/eleven_cost_and_speed.png" /></p>
+<h2 id="regular-luna-and-luna-decisions-differ-in-ways-the-total-score-conceals">Regular Luna and Luna Decisions differ in ways the total score conceals</h2>
+<p>Regular Luna answered 40 more questions correctly than the historical Luna Decisions run, 727 versus 687. Its core score was also higher, 431/640 versus 401/640. They agreed on 691 of the 1,112 questions both answered, or 62.1%. Similar aggregate scores do not mean they made the same decisions.</p>
+<p>The speed trade-off matters. The saved full-bank median was about 223 ms for Luna Decisions, compared with 942 ms for regular Luna and 534 ms for Mercury. Those are useful ballpark values, not a controlled speed comparison: the Decisions run came from earlier dates and a different request interface.</p>
+<p>The direction of the difference depends on the function. Regular Luna did better on forward implications (32/39 versus 24/39), Boolean scope (40/48 versus 33/48), rule verification and counterexamples (44/46 versus 36/46), and source authority (37/37 versus 31/37). Luna Decisions did better on belief tracking (32/44 versus 16/44), supplied-candidate checks (32/80 versus 17/80), and correctly answering both questions after an evidence change (13/25 versus 11/25). The two services were tested on different dates and returned different identity information. These differences cannot be attributed to the decision interface alone.</p>
+<h2 id="mercury-is-the-most-interesting-new-cost-alternative">Mercury is the most interesting new cost alternative</h2>
+<p>Mercury came within 25 correct answers of regular Luna while costing $0.01321493 for the actual 1,136-question run, compared with Luna's $0.03431990. Its median complete response was 0.534 seconds, compared with 0.942 seconds for Luna. Mercury's current 80% advertised tariff discount is part of this result; the cost advantage should be checked again after that discount changes. This one short-output test does not validate a general throughput or architecture claim.</p>
+<p>Mercury answered every sampled transitive-comparison question (34/34) and preference-ordering question (45/45), and nearly every lookup and source-authority question (36/37 in each family). It was much less dependable on exact truth counting (18/65), repeated object swaps (20/46), causal intervention (16/44), and sequential procedures (6/42). Its 61.8% total is a useful budget comparison, not a basis for accepting arbitrary decisions without checking.</p>
+<h2 id="the-smaller-open-weight-candidates-expose-a-substantial-quality-cost">The smaller open-weight candidates expose a substantial quality cost</h2>
+<p>Qwen3-30B-A3B Instruct produced a valid numeric answer on all 1,136 questions, but only 564 were correct (49.6%). It did relatively well on preference ordering (40/45), set relations (38/43), transitive comparisons (29/34), and lookup (31/37). Scheduling (24/69), causal intervention (12/44), exact truth counting (16/65), and truth-teller consistency (14/62) remained weak. It did not outperform Mercury on aggregate accuracy, known cost or median response time in this run.</p>
+<p>Granite 4.2 8B was fast and inexpensive, with a 0.324-second median and $0.01555172 in reported cost, but scored 478/1,136 (42.1%). Transitive comparisons (30/34), lookup (31/37), and set relations (35/43) were its better areas. Contraposition (5/46), sequential procedures (5/42), exact truth counting (12/65), and object swaps (10/46) were poor. Its post-hoc leading-ID score is almost unchanged at 479/1,136, so formatting alone does not account for the low total. Five error attempts omitted cost.</p>
+<p>Phi-4's strict score was 428/1,136 (37.7%), but 327 first responses failed the requested output format. Many began with an answer ID and then added explanation, sometimes reaching the 16-token cap. A uniform, post-hoc leading-ID parser raises its score to 536/1,136 (47.2%). This matters: the strict result mixes decision errors with failure to honor the short-output contract. The sensitivity check uses the saved responses, adds no calls, and is not an evaluation with a larger output budget or reasoning enabled. Phi-4 remained below Mercury and regular Luna even under that more permissive reading.</p>
+<p>Mistral NeMo was the cheapest new run at $0.009235281 reported, with two error attempts missing cost, but answered only 421/1,136 correctly (37.1%). Its stronger areas were transitive comparisons (31/34), lookup (29/37), and preference ordering (33/45). Exact truth counting (8/65), procedural execution (8/42), contraposition (10/46), and truth-teller consistency (14/62) were weak. Its leading-ID score does not improve the total.</p>
+<h2 id="the-two-earlier-budget-llms-are-now-evaluated-on-the-full-bank">The two earlier budget LLMs are now evaluated on the full bank</h2>
+<p>Gemini 2.5 Flash-Lite scored 598/1,136 (52.6%), with a 0.341-second median and a reported cost of $0.03219570. It was strong on lookup (36/37), transitive comparisons (31/34), and preference ordering (38/45), but weak on causal intervention (9/44), scheduling (16/69), exact counting (14/65), and sequential procedures (7/42). It was faster than Mercury on this setup, while Mercury was more accurate and cheaper at its discounted tariff.</p>
+<p>GPT-5.4 nano scored 464/1,136 (40.8%). All answers satisfied the numeric-ID format, so there is no formatting explanation for its low total. It cost $0.07005030, the highest amount among the eight new full runs, with a 0.683-second median. Its better areas were transitive comparisons (28/34), lookup (30/37), preference ordering (36/45), and exceptions (35/52). Contraposition (8/46), truth-teller consistency (10/62), scheduling (16/69), and exact truth counting (13/65) were weak. On this particular workload it offers no observed accuracy, median-latency or cost advantage over Mercury.</p>
+<h2 id="the-common-hard-cases-remain-hard">The common hard cases remain hard</h2>
+<p>No model is dependable on sequential procedure execution: the best strict result is Qwen's 11/42 (26.2%). The best exact truth-counting result remains 24/65 (36.9%), shared by the two Jev versions. Object tracking through repeated swaps and truth-teller consistency also remain substantial weaknesses. A typed answer, a short response or a low price does not remove the need to check exact state transitions and counts.</p>
+<p>Jev 1.14's broad advantage is clearest on bounded deductions and explicit constraints. It answered all sampled lookup, forward implication, contraposition, Boolean-scope, transitive-comparison, reachability, preference-ordering, source-authority and fault-diagnosis questions correctly. It also retained stronger performance on assignments (56/61), belief tracking (40/44), and planning with preconditions (36/37). Its 46/69 scheduling result and 6/42 procedural result show why those strengths should not be described as general reliability.</p>
+<p>There are 26 questions that none of the eleven models answered correctly under the strict primary rules. Their IDs are saved privately for a possible later key and wording audit. That count is not evidence that their reference answers are wrong. This expansion uses the existing key unchanged and does not claim a new independent audit of it.</p>
+<h2 id="what-can-and-cannot-be-concluded">What can and cannot be concluded</h2>
+<p>The eight new LLMs were tested on October 15, 2026, from 12:02 to 12:20 Toronto time. Every request went through OpenRouter, with a named backend pinned, fallback disabled, a fresh HTTPS connection, and at most two concurrent requests per model within each two-question wave. Provider hardware, quantization, default sampling and hidden checkpoint behavior are not controlled. The three historical decision-model records preserve their original dates and methods; their latency and total costs are not mixed into a new controlled speed ranking.</p>
+<p>The new runs made 9,096 HTTP/transport attempts for 9,088 scored first requests. Eight transient first-attempt failures received one retry; seven recovered to a usable response and one remained unanswered. Across all attempts there were six HTTP 429s, one HTTP 503 and two local DNS-resolution failures. Local DNS failures should not be described as model reasoning failures. All 9,087 attempts with returned usage reported zero reasoning tokens, and no reasoning field contained a trace. Ordinary visible explanation still occurred in some responses. Reported cost totals $0.227088871; nine error attempts supplied no cost, which remains unknown rather than zero. The earlier 75-call pilot is retained separately and is not included in these full-run costs.</p>
+<p>The first-attempt strict score is the registered primary view. Invalid format and truncation are unsuccessful in that view, rather than asserted to be wrong logical choices. Recovery and leading-ID sensitivity are reported separately. No confidence probabilities were requested from the regular LLMs, so they cannot be given the same confidence-filter analysis as the native Decisions models. The 640 core items and 496 related variants are shown separately because the full bank does not contain 1,136 independent observations.</p>
+<h2 id="where-jev-114-improved-over-113">Where Jev 1.14 improved over 1.13</h2>
+<p>The overall text gain is modest: <strong>22 additional correct answers, from 80.1% to 82.0%</strong>. Some individual functions improved much more. <strong>One-to-one assignments rose from 49/61 to 56/61</strong>, and <strong>verbal spatial tracking from 24/43 to 32/43</strong>. Scheduling rose from 43/69 to 46/69, still leaving 23 errors. Exact truth counting stayed at 24/65, and sequential procedure execution moved only from 5/42 to 6/42.</p>
+<p>The improvement was not uniform. Exceptions and priority rules fell from 48/52 to 45/52, temporal interval relations from 35/36 to 34/36, and correctly answered changed-evidence pairs from 20/25 to 19/25. Across individual questions, 1.14 corrected 56 previously unsuccessful cases and lost 34 previously correct cases; two losses were provider errors rather than wrong valid choices. This is another reason to validate an upgrade against the tasks an application actually uses.</p>
+<p>A one-to-one assignment means giving each person, object or time slot a unique partner while respecting clues. An illustrative question is: three people need different desks; one cannot use the window desk and another must sit left of the third; which complete assignment satisfies every rule? Spatial tracking means updating a direction or position through described movements, such as following successive turns and then identifying where someone is facing. These examples explain the categories; they are not additional scored questions. The <a href="functions.html">task examples</a> explain the remaining functions.</p>
+<h2 id="image-decisions-add-another-dimension">Image decisions add another dimension</h2>
+<p>The separate <a href="https://github.com/etsabary/visual-decision-benchmark">image benchmark</a> used 200 questions per configuration, tested on October 15, 2026. Its scores are not combined with the 1,136-question text bank. Mercury was not tested on images.</p>
+<table>
+<thead>
+<tr>
+<th>Image configuration</th>
+<th style="text-align: right;">Correct / 200</th>
+<th style="text-align: right;">Accuracy</th>
+<th style="text-align: right;">Median full reply</th>
+<th style="text-align: right;">Known actual 200-question cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jev 1.14</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">70.5%</td>
+<td style="text-align: right;">307 ms</td>
+<td style="text-align: right;">$0.02397688*</td>
+</tr>
+<tr>
+<td>Luna Decisions</td>
+<td style="text-align: right;">121</td>
+<td style="text-align: right;">60.5%</td>
+<td style="text-align: right;">383 ms</td>
+<td style="text-align: right;">$0.02254620*</td>
+</tr>
+<tr>
+<td>Luna regular</td>
+<td style="text-align: right;">117</td>
+<td style="text-align: right;">58.5%</td>
+<td style="text-align: right;">2354 ms</td>
+<td style="text-align: right;">$0.02958170</td>
+</tr>
+<tr>
+<td>GPT-5.4 nano</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">35.0%</td>
+<td style="text-align: right;">1605 ms</td>
+<td style="text-align: right;">$0.05052450</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash-Lite</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">37.5%</td>
+<td style="text-align: right;">873 ms</td>
+<td style="text-align: right;">$0.00864040*</td>
+</tr>
+</tbody>
+</table>
+<p>An asterisk marks missing error charges. Image costs here are actual 200-question amounts; the image repo’s per-1,000 chart remains a separately labelled normalization.</p>
+<p>The image results make the value of image input concrete, while also showing where the overall winner loses. Jev scored 9/10 on conditional counting, spatial relationships and flowcharts. Conditional counting means counting only objects meeting a rule, such as red shapes inside a marked region. A flowchart question asks a model to follow the pictured branches for a supplied input and select the resulting outcome.</p>
+<p>Luna Decisions was substantially stronger on <strong>rotation and reflection</strong>, at 8/10 versus Jev's 3/10: recognizing which option is the rotated or mirrored version of a pictured shape. Regular Luna was stronger on <strong>visual rule application</strong>, at 6/10 versus Jev's 3/10: applying a pictured transformation or legend to choose the correct next result. Both Luna services scored 7/10 on sequential visual state tracking, compared with Jev's 6/10. The text bank also has a smaller counterexample to Jev's overall lead: Qwen answered 11/42 procedural questions correctly versus Jev 1.14's 6/42, although neither result is dependable.</p>
+<p>The release's modest text gain should be distinguished from its broader features. In the <a href="https://typesafe.ai/blog/jev-1-14">October 14 release announcement</a>, TypeSafe describes incremental model improvements and expects the largest gain in multilingual support. We did not test languages other than English. The release also enabled experimental image input, a bounding-box output type and longer context. Image access was enabled for 1.13 too; bounding-box output was specific to 1.14. Our image bank establishes useful behavior on the tested 1.14 OpenRouter route, not a measured vision improvement over 1.13. Bounding boxes, long-context quality and multilingual gains remain outside these tests. TypeSafe labels these added features experimental rather than production guarantees.</p>
+<p>TypeSafe says 1.13 was already multimodal. Enabling image access to that existing model should therefore not be counted as a 1.14 model improvement. A matched 1.13 image run would be needed to measure the version-to-version vision gain.</p>
+<h2 id="accuracy-across-the-25-functions">Accuracy across the 25 functions</h2>
+<p>The heatmap labels show correct counts; color shows the fraction correct within each family. The <a href="functions.html">full function and load tables</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/family_comparison.csv">family CSV</a> retain all denominators and results.</p>
+<p><img alt="Correct counts and accuracy by family for all eleven services" src="figures/eleven_family_accuracy.png" /></p>
+<h2 id="matched-diagnostic-tests">Matched diagnostic tests</h2>
+<p>Rotation and evidence-change scores use planned panel denominators, so missing answers cannot improve them. Semantic consistency is shown only among complete rotation panels; a consistent choice can still be wrong. Candidate-check scores include all 80 planned checks.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">All rotations correct</th>
+<th style="text-align: right;">Consistent / complete panels</th>
+<th style="text-align: right;">Both evidence answers correct</th>
+<th style="text-align: right;">Candidate checks correct</th>
+<th style="text-align: right;">All five checks correct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jev 1.14</td>
+<td style="text-align: right;">21/25</td>
+<td style="text-align: right;">23/25</td>
+<td style="text-align: right;">19/25</td>
+<td style="text-align: right;">41/80</td>
+<td style="text-align: right;">1/16</td>
+</tr>
+<tr>
+<td>Jev 1.13</td>
+<td style="text-align: right;">21/25</td>
+<td style="text-align: right;">22/25</td>
+<td style="text-align: right;">20/25</td>
+<td style="text-align: right;">36/80</td>
+<td style="text-align: right;">1/16</td>
+</tr>
+<tr>
+<td>Luna 6 regular</td>
+<td style="text-align: right;">16/25</td>
+<td style="text-align: right;">17/25</td>
+<td style="text-align: right;">11/25</td>
+<td style="text-align: right;">17/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Mercury 2.5</td>
+<td style="text-align: right;">14/25</td>
+<td style="text-align: right;">14/24</td>
+<td style="text-align: right;">13/25</td>
+<td style="text-align: right;">28/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Luna 6 Decisions</td>
+<td style="text-align: right;">14/25</td>
+<td style="text-align: right;">15/21</td>
+<td style="text-align: right;">13/25</td>
+<td style="text-align: right;">32/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash-Lite</td>
+<td style="text-align: right;">12/25</td>
+<td style="text-align: right;">12/25</td>
+<td style="text-align: right;">9/25</td>
+<td style="text-align: right;">24/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Qwen3-30B-A3B Instruct 2507</td>
+<td style="text-align: right;">11/25</td>
+<td style="text-align: right;">11/25</td>
+<td style="text-align: right;">9/25</td>
+<td style="text-align: right;">21/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Granite 4.2 8B</td>
+<td style="text-align: right;">7/25</td>
+<td style="text-align: right;">7/23</td>
+<td style="text-align: right;">7/25</td>
+<td style="text-align: right;">25/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>GPT-5.4 nano</td>
+<td style="text-align: right;">6/25</td>
+<td style="text-align: right;">7/25</td>
+<td style="text-align: right;">7/25</td>
+<td style="text-align: right;">17/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Phi-4 14B</td>
+<td style="text-align: right;">5/25</td>
+<td style="text-align: right;">6/9</td>
+<td style="text-align: right;">7/25</td>
+<td style="text-align: right;">9/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+<tr>
+<td>Mistral NeMo 12B</td>
+<td style="text-align: right;">5/25</td>
+<td style="text-align: right;">5/24</td>
+<td style="text-align: right;">5/25</td>
+<td style="text-align: right;">19/80</td>
+<td style="text-align: right;">0/16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="output-format-and-recovery">Output format and recovery</h2>
+<p>The leading-ID column is an explicitly <strong>post-hoc sensitivity check</strong>, applied uniformly to all eight saved LLM runs. It reads a numeric answer ID at the start even if an explanation follows or later output is truncated. It adds no calls and does not replace the strict primary score. A larger output budget or reasoning-enabled evaluation would be a different experiment.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Strict correct</th>
+<th style="text-align: right;">Leading-ID correct</th>
+<th style="text-align: right;">Invalid first output</th>
+<th style="text-align: right;">First transport/HTTP failures</th>
+<th style="text-align: right;">Recovery attempts</th>
+<th style="text-align: right;">Eventual correct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Luna 6 regular</td>
+<td style="text-align: right;">727</td>
+<td style="text-align: right;">727</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">727</td>
+</tr>
+<tr>
+<td>Mercury 2.5</td>
+<td style="text-align: right;">702</td>
+<td style="text-align: right;">703</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">702</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash-Lite</td>
+<td style="text-align: right;">598</td>
+<td style="text-align: right;">599</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">598</td>
+</tr>
+<tr>
+<td>Qwen3-30B-A3B Instruct 2507</td>
+<td style="text-align: right;">564</td>
+<td style="text-align: right;">564</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">564</td>
+</tr>
+<tr>
+<td>Granite 4.2 8B</td>
+<td style="text-align: right;">478</td>
+<td style="text-align: right;">479</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">478</td>
+</tr>
+<tr>
+<td>GPT-5.4 nano</td>
+<td style="text-align: right;">464</td>
+<td style="text-align: right;">464</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">464</td>
+</tr>
+<tr>
+<td>Phi-4 14B</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">536</td>
+<td style="text-align: right;">327</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">429</td>
+</tr>
+<tr>
+<td>Mistral NeMo 12B</td>
+<td style="text-align: right;">421</td>
+<td style="text-align: right;">421</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">421</td>
+</tr>
+</tbody>
+</table>
+<h2 id="historical-confidence-and-coverage">Historical confidence and coverage</h2>
+<p>Native Decisions models returned confidence and option probabilities. Regular LLMs were asked only for an answer ID, so an equivalent confidence-filter comparison is not available. The historical thresholds are exploratory because they were examined on the same bank.</p>
 <table>
 <thead>
 <tr>
 <th>Confidence cutoff</th>
-<th style="text-align: right;">Jev 1.13 correct / retained</th>
-<th style="text-align: right;">Jev 1.14 correct / retained</th>
-<th style="text-align: right;">Luna correct / retained</th>
+<th style="text-align: right;">Jev 1.13</th>
+<th style="text-align: right;">Jev 1.14</th>
+<th style="text-align: right;">Luna Decisions</th>
 </tr>
 </thead>
 <tbody>
@@ -143,290 +510,182 @@
 </tr>
 </tbody>
 </table>
-<p>At confidence ≥0.95, Jev 1.14 retained 603 questions and made one error; Jev 1.13 retained 544 and made one error. The new release covers a larger fraction of this bank at roughly the same observed selective accuracy. Luna retained 96 with no observed errors. That smaller error-free subset does not establish a zero future error rate. Confidence is a provider-reported signal, distinct from selected-option probability. The cutoffs are exploratory because they were examined on these results; they are not validated production thresholds.</p>
-<h2>Matched diagnostic tests</h2>
+<p>At ≥0.95, Jev 1.14 retained 603 questions with one error, while Luna Decisions retained 96 with no observed errors. An observed error-free subset is not a guarantee of zero future error. No LLM confidence or calibration is inferred from a short answer.</p>
+<h2 id="supporting-historical-speed-cohorts">Supporting historical speed cohorts</h2>
+<p>The main table uses each full 1,136-record bank. These older cohort views remain available to explain why familiar historical medians differ. The original Jev 1.13 1,000-question cohort measured response headers across TypeSafe direct, Experiential and OpenRouter. Its later extension measured the response body. Combining those cohorts gives a mixed-boundary median, not a new measurement. Jev 1.14 and Luna Decisions use saved response-body timings.</p>
 <table>
 <thead>
 <tr>
-<th>Outcome</th>
-<th style="text-align: right;">Jev 1.13</th>
-<th style="text-align: right;">Jev 1.14</th>
-<th style="text-align: right;">Luna Decisions</th>
+<th>Model</th>
+<th style="text-align: right;">Supporting historical cohort</th>
+<th style="text-align: right;">Timed outcomes</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">p95</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>All five option rotations correct</td>
-<td style="text-align: right;">21/25</td>
-<td style="text-align: right;">21/25</td>
-<td style="text-align: right;">14/25</td>
+<td>Jev 1.13</td>
+<td style="text-align: right;">Original 1,000-question cohort</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">338.1 ms</td>
+<td style="text-align: right;">1243.2 ms</td>
 </tr>
 <tr>
-<td>Same semantic choice across rotations</td>
-<td style="text-align: right;">22/25</td>
-<td style="text-align: right;">23/25</td>
-<td style="text-align: right;">15/21</td>
+<td>Jev 1.13</td>
+<td style="text-align: right;">Original OpenRouter-only subset</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">262.0 ms</td>
+<td style="text-align: right;">462.0 ms</td>
 </tr>
 <tr>
-<td>Both changed-evidence answers correct</td>
-<td style="text-align: right;">20/25</td>
-<td style="text-align: right;">19/25</td>
-<td style="text-align: right;">13/25</td>
+<td>Jev 1.13</td>
+<td style="text-align: right;">All successful bank outcomes</td>
+<td style="text-align: right;">1136</td>
+<td style="text-align: right;">327.4 ms</td>
+<td style="text-align: right;">1081.2 ms</td>
 </tr>
 <tr>
-<td>Supplied-candidate checks correct</td>
-<td style="text-align: right;">36/80</td>
-<td style="text-align: right;">41/80</td>
-<td style="text-align: right;">32/80</td>
+<td>Jev 1.13</td>
+<td style="text-align: right;">Shared 136-question extension</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">154.4 ms</td>
+<td style="text-align: right;">245.5 ms</td>
 </tr>
 <tr>
-<td>Original parent puzzles correct</td>
-<td style="text-align: right;">9/16</td>
-<td style="text-align: right;">10/16</td>
-<td style="text-align: right;">6/16</td>
+<td>Jev 1.14</td>
+<td style="text-align: right;">All successful bank outcomes</td>
+<td style="text-align: right;">1134</td>
+<td style="text-align: right;">148.0 ms</td>
+<td style="text-align: right;">220.4 ms</td>
 </tr>
 <tr>
-<td>All five candidate checks correct</td>
-<td style="text-align: right;">1/16</td>
-<td style="text-align: right;">1/16</td>
-<td style="text-align: right;">0/16</td>
+<td>Jev 1.14</td>
+<td style="text-align: right;">Shared 136-question extension</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">148.1 ms</td>
+<td style="text-align: right;">219.5 ms</td>
+</tr>
+<tr>
+<td>Luna 6 Decisions</td>
+<td style="text-align: right;">Original 1,000-question cohort</td>
+<td style="text-align: right;">983</td>
+<td style="text-align: right;">221.5 ms</td>
+<td style="text-align: right;">319.3 ms</td>
+</tr>
+<tr>
+<td>Luna 6 Decisions</td>
+<td style="text-align: right;">All successful bank outcomes</td>
+<td style="text-align: right;">1113</td>
+<td style="text-align: right;">222.7 ms</td>
+<td style="text-align: right;">401.4 ms</td>
+</tr>
+<tr>
+<td>Luna 6 Decisions</td>
+<td style="text-align: right;">Shared 136-question extension</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">237.3 ms</td>
+<td style="text-align: right;">714.5 ms</td>
 </tr>
 </tbody>
 </table>
-<p>Luna fully answered 21/25 rotation panels, 22/25 evidence pairs and 12/16 parent-plus-check sets; both Jev versions fully answered every planned panel. Refusals remain unsuccessful in planned-case denominators. On the 21 rotation panels all three fully answered, both Jev versions got all five choices correct in 18 panels, compared with Luna's 14. On the 22 fully answered evidence pairs, the counts were 18 for Jev 1.13, 17 for Jev 1.14 and 13 for Luna. The summary also records the shared-complete candidate checks.</p>
-<p>Supplying a candidate improved Jev's verification score from 36/80 to 41/80, compared with Luna's 32/80. The continued errors show that removing solution search does not remove all difficulty in checking or counting constraints. This observation does not establish a particular internal reasoning mechanism. A stable semantic choice across rotations can still be wrong, and changing an answer after an evidence edit is insufficient unless the new answer is correct.</p>
-<h2>All reasoning families</h2>
+<p>Jev 1.13 was tested September 22 and October 14, 2026; Jev 1.14 on October 14 and 15; Luna Decisions on October 10 and 14. Dates are Toronto local dates. Luna's extension has 130 successful timings because six questions remained unanswered. The chart's left panel uses all 1,136 outcomes, matching the main table; its right panel shows successful extension records only.</p>
+<p><img alt="Preserved full-bank historical timings and successful shared-extension cohorts" src="figures/eleven_historical_speed.png" /></p>
+<h2 id="model-identities-routes-and-dates">Model identities routes and dates</h2>
 <table>
 <thead>
 <tr>
-<th>Function</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">Jev 1.13</th>
-<th style="text-align: right;">Jev 1.14</th>
-<th style="text-align: right;">Luna Decisions</th>
-<th style="text-align: right;">Jev change, correct answers</th>
+<th>Service</th>
+<th style="text-align: right;">Returned identities and counts</th>
+<th style="text-align: right;">Backend tag</th>
+<th style="text-align: right;">Toronto dates</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Record lookup and filtering</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">+0</td>
+<td>Jev 1.14</td>
+<td style="text-align: right;"><code>typesafe/jev-1.14-20261014</code> (1134); <code>unreported (error)</code> (2)</td>
+<td style="text-align: right;">historical routes retained</td>
+<td style="text-align: right;">2026-10-14, 2026-10-15</td>
 </tr>
 <tr>
-<td>Forward conditional reasoning</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">39 (100.0%)</td>
-<td style="text-align: right;">39 (100.0%)</td>
-<td style="text-align: right;">24 (61.5%)</td>
-<td style="text-align: right;">+0</td>
+<td>Jev 1.13</td>
+<td style="text-align: right;"><code>typesafe/jev-1.13-20260917</code> (468); <code>jev-1.13.0</code> (412); <code>jev-latest</code> (256)</td>
+<td style="text-align: right;">historical routes retained</td>
+<td style="text-align: right;">2026-09-22, 2026-10-14</td>
 </tr>
 <tr>
-<td>Necessary conditions and contraposition</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">45 (97.8%)</td>
-<td style="text-align: right;">46 (100.0%)</td>
-<td style="text-align: right;">13 (28.3%)</td>
-<td style="text-align: right;">+1</td>
+<td>Luna 6 regular</td>
+<td style="text-align: right;"><code>openai/gpt-6-luna</code> (1136)</td>
+<td style="text-align: right;">openai</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>Boolean scope and exclusivity</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">47 (97.9%)</td>
-<td style="text-align: right;">48 (100.0%)</td>
-<td style="text-align: right;">33 (68.8%)</td>
-<td style="text-align: right;">+1</td>
+<td>Mercury 2.5</td>
+<td style="text-align: right;"><code>inception/mercury-2.5</code> (1136)</td>
+<td style="text-align: right;">inception</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>Quantifiers and set relations</td>
-<td style="text-align: right;">43</td>
-<td style="text-align: right;">42 (97.7%)</td>
-<td style="text-align: right;">42 (97.7%)</td>
-<td style="text-align: right;">38 (88.4%)</td>
-<td style="text-align: right;">+0</td>
+<td>Luna 6 Decisions</td>
+<td style="text-align: right;"><code>openai/gpt-6-luna-decisions-20261006</code> (1113); <code>unreported (error)</code> (23)</td>
+<td style="text-align: right;">historical routes retained</td>
+<td style="text-align: right;">2026-10-10, 2026-10-14</td>
 </tr>
 <tr>
-<td>Transitive comparisons</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">34 (100.0%)</td>
-<td style="text-align: right;">34 (100.0%)</td>
-<td style="text-align: right;">33 (97.1%)</td>
-<td style="text-align: right;">+0</td>
+<td>Gemini 2.5 Flash-Lite</td>
+<td style="text-align: right;"><code>google/gemini-2.5-flash-lite</code> (1136)</td>
+<td style="text-align: right;">google-ai-studio</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>Scheduling constraints</td>
-<td style="text-align: right;">69</td>
-<td style="text-align: right;">43 (62.3%)</td>
-<td style="text-align: right;">46 (66.7%)</td>
-<td style="text-align: right;">25 (36.2%)</td>
-<td style="text-align: right;">+3</td>
+<td>Qwen3-30B-A3B Instruct 2507</td>
+<td style="text-align: right;"><code>qwen/qwen3-30b-a3b-instruct-2507</code> (1136)</td>
+<td style="text-align: right;">siliconflow/fp8</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>One-to-one assignments</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">49 (80.3%)</td>
-<td style="text-align: right;">56 (91.8%)</td>
-<td style="text-align: right;">35 (57.4%)</td>
-<td style="text-align: right;">+7</td>
+<td>Granite 4.2 8B</td>
+<td style="text-align: right;"><code>ibm-granite/granite-4.2-8b</code> (1132); <code>unreported (error)</code> (4)</td>
+<td style="text-align: right;">deepinfra/bf16</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>Exact truth counting</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">24 (36.9%)</td>
-<td style="text-align: right;">24 (36.9%)</td>
-<td style="text-align: right;">19 (29.2%)</td>
-<td style="text-align: right;">+0</td>
+<td>GPT-5.4 nano</td>
+<td style="text-align: right;"><code>openai/gpt-5.4-nano</code> (1136)</td>
+<td style="text-align: right;">openai</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>Truth-teller consistency</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">31 (50.0%)</td>
-<td style="text-align: right;">31 (50.0%)</td>
-<td style="text-align: right;">20 (32.3%)</td>
-<td style="text-align: right;">+0</td>
+<td>Phi-4 14B</td>
+<td style="text-align: right;"><code>microsoft/phi-4</code> (1134); <code>unreported (error)</code> (2)</td>
+<td style="text-align: right;">deepinfra/bf16</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 <tr>
-<td>Sufficiency and inconsistency</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">28 (80.0%)</td>
-<td style="text-align: right;">29 (82.9%)</td>
-<td style="text-align: right;">19 (54.3%)</td>
-<td style="text-align: right;">+1</td>
-</tr>
-<tr>
-<td>Object tracking through swaps</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">29 (63.0%)</td>
-<td style="text-align: right;">29 (63.0%)</td>
-<td style="text-align: right;">16 (34.8%)</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Sequential procedure execution</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">5 (11.9%)</td>
-<td style="text-align: right;">6 (14.3%)</td>
-<td style="text-align: right;">9 (21.4%)</td>
-<td style="text-align: right;">+1</td>
-</tr>
-<tr>
-<td>Temporal interval relations</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">35 (97.2%)</td>
-<td style="text-align: right;">34 (94.4%)</td>
-<td style="text-align: right;">19 (52.8%)</td>
-<td style="text-align: right;">-1</td>
-</tr>
-<tr>
-<td>Verbal spatial tracking</td>
-<td style="text-align: right;">43</td>
-<td style="text-align: right;">24 (55.8%)</td>
-<td style="text-align: right;">32 (74.4%)</td>
-<td style="text-align: right;">21 (48.8%)</td>
-<td style="text-align: right;">+8</td>
-</tr>
-<tr>
-<td>Nested role and reference binding</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">34 (77.3%)</td>
-<td style="text-align: right;">34 (77.3%)</td>
-<td style="text-align: right;">20 (45.5%)</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Perspective and belief tracking</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">39 (88.6%)</td>
-<td style="text-align: right;">40 (90.9%)</td>
-<td style="text-align: right;">32 (72.7%)</td>
-<td style="text-align: right;">+1</td>
-</tr>
-<tr>
-<td>Deterministic causal intervention</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">36 (81.8%)</td>
-<td style="text-align: right;">36 (81.8%)</td>
-<td style="text-align: right;">20 (45.5%)</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Exceptions and priority rules</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">48 (92.3%)</td>
-<td style="text-align: right;">45 (86.5%)</td>
-<td style="text-align: right;">45 (86.5%)</td>
-<td style="text-align: right;">-3</td>
-</tr>
-<tr>
-<td>Planning with preconditions</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">35 (94.6%)</td>
-<td style="text-align: right;">36 (97.3%)</td>
-<td style="text-align: right;">28 (75.7%)</td>
-<td style="text-align: right;">+1</td>
-</tr>
-<tr>
-<td>Directed reachability</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Deterministic preference ordering</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">44 (97.8%)</td>
-<td style="text-align: right;">45 (100.0%)</td>
-<td style="text-align: right;">44 (97.8%)</td>
-<td style="text-align: right;">+1</td>
-</tr>
-<tr>
-<td>Rule verification and counterexamples</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">45 (97.8%)</td>
-<td style="text-align: right;">45 (97.8%)</td>
-<td style="text-align: right;">36 (78.3%)</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Source authority and stale records</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">37 (100.0%)</td>
-<td style="text-align: right;">31 (83.8%)</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Deterministic fault diagnosis</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">43 (97.7%)</td>
-<td style="text-align: right;">44 (100.0%)</td>
-<td style="text-align: right;">33 (75.0%)</td>
-<td style="text-align: right;">+1</td>
+<td>Mistral NeMo 12B</td>
+<td style="text-align: right;"><code>mistralai/mistral-nemo</code> (1134); <code>unreported (error)</code> (2)</td>
+<td style="text-align: right;">deepinfra/fp8</td>
+<td style="text-align: right;">2026-10-15</td>
 </tr>
 </tbody>
 </table>
-<h2>API outcomes and cost</h2>
-<p>Jev 1.14 made <strong>1136 HTTP attempts</strong>. Two returned HTTP 499 with a provider <code>internal_error</code> and “Unable to complete this request.” They were retained as unanswered and were not retried because 499 is outside the runner's frozen retry list. They are not demonstrated logical mistakes. Eight other responses contained valid choices but probability distributions failing the strict normalization check; those first choices were scored, and the probability warnings remain visible. This is the same choice/probability separation used for the earlier Jev results.</p>
-<p>Successful responses reported <strong>647,216 input tokens</strong>, <strong>58,968 output tokens</strong>, and <strong>$0.02718307</strong> in cost. The two errors omitted usage, so their billed cost is unknown. Median successful response-body latency was 148 ms, with p95 220 ms. Different dates, historical timer boundaries and provider conditions prevent a controlled speed or total-cost comparison with the older runs.</p>
-<h2>Data, reproduction and limits</h2>
-<p>The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/questions_1136.csv">questions</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data">three sets of results</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/attempts_jev114.jsonl">attempt ledger</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/jev114_run_manifest.json">model manifest</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/analysis/family_comparison.csv">family comparison</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/analysis/changed_choices.csv">changed choices</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/analysis/summary.json">aggregate summary</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/checksums.json">checksums</a> are retained. Changed-choice rows expose recorded model outputs, not gold answers. The answer key remains outside Git.</p>
-<p>This bank mixes 25 task templates, engineered load levels and dependent variants. The reference is fixed, but it is not a standardized measure of intelligence or a deployment safety test. Gold answers have computational validation; a fully independent audit of the printed questions is separate work. Shared template or wording defects can affect every model. Future key corrections should be versioned and applied to all three sets of saved responses.</p>
-<p>The <a href="https://github.com/etsabary/jev-deterministic-benchmark">original Jev benchmark</a> and <a href="https://github.com/etsabary/luna-decisions-benchmark/tree/0f10c51/extension_136">expanded two-model reference</a> remain unchanged. This repository is the separate Jev 1.14 comparison. The new run evaluates the release explicitly listed as <a href="https://openrouter.ai/typesafe/jev-1.14">Jev 1.14</a>, using OpenRouter's native Decisions endpoint. The recorded Luna model is GPT-6 Luna Decisions, snapshot October 6, 2026. There is no multimodal testing in this report.</p>
-<pre><code class="language-bash"># No credentials, private key or API calls needed
+<p>New regular LLMs generally returned aliases, not dated checkpoints. The captured <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/model_metadata.json">model metadata</a> includes endpoint names and advertised snapshot hints; those are not proof of the hidden weights used for each call. An unchanged alias cannot establish an unchanged hidden checkpoint. Historical <code>jev-latest</code> records belong to the September 22 Jev 1.13 run, not a new call to that alias.</p>
+<h2 id="evidence-reproduction-and-limits">Evidence reproduction and limits</h2>
+<p>The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/questions_1136.csv">questions</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/request_plan.jsonl">new request plan</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl">sanitized attempts</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/dispatches.jsonl">dispatch ledger</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/results.jsonl">terminal outcomes</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/run_manifest.json">frozen protocol</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/source_audit.json">source audit</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/release_checksums.json">release checksums</a> preserve the comparison. Provider account IDs and BYOK account flags were removed. Recorded model outputs are public; the answer key and individual correctness records remain private.</p>
+<p><code>text_models.py</code> reconstructs all 9,088 new payloads and validates saved responses, costs and timing arithmetic without a network connection or key. It is a portable offline verifier, not the original live executor. <code>score_expansion.py</code> reproduces all eleven accuracy scores and matched diagnostics using the external original key. Public aggregate consistency checks cannot independently establish that every reference answer is true. Shared wording or generator defects remain possible; later key corrections should be versioned and applied to every saved model response.</p>
+<pre><code class="language-bash"># Standard library only. No credentials, answer key or paid API calls.
 python3 validate.py
-python3 -m unittest -v test_analysis.py
-python3 run_benchmark.py
+python3 text_models.py
+python3 -m unittest -v test_analysis.py test_text_models.py test_publication.py
 
-# Re-score using the external original key
-python3 analyze.py --answer-key /path/to/answer_key_PRIVATE.csv
+# Reproduce accuracy with the external original key; no per-item output.
+python3 score_expansion.py --answer-key /path/to/answer_key.csv
 
-# Rebuild graphics and the report
+# Rebuild expanded graphics, README and Pages.
 python3 -m pip install -r requirements-reports.txt
-python3 plot_results.py
+python3 plot_expansion.py
 python3 build_report.py
-</code></pre></main></html>
+python3 freeze_expansion_checksums.py
+</code></pre>
+<p>The original comparison remains in <a href="three_model_reference.html">THREE_MODEL_REFERENCE.md</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/tree/c30258100569fd0b81c8db89020733f74b87e484">commit c302581</a>. Its data, analysis and original figures are unchanged. <code>analyze.py</code>, <code>plot_results.py</code> and <code>build_reference_report.py</code> remain the three-model tools; the expansion has separate evidence and offline verification. The <a href="https://github.com/etsabary/jev-deterministic-benchmark">original Jev benchmark</a> and <a href="https://github.com/etsabary/luna-decisions-benchmark/tree/0f10c51/extension_136">two-model extension</a> remain historical references.</p></main></body></html>

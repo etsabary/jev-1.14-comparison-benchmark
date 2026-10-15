@@ -1,0 +1,26 @@
+{
+  "frozen_private_execution_file_hashes": {
+    "manifest.json": "ccae6139d6bafdb8392b0c500252503257e9da2d530b1c3b5659b252ebc55093",
+    "software.json": "8a63313b31d00154bc0d8f06691b1b54d7bb22b8182db94ee31ac73cc90fa2c8",
+    "live_model_metadata.json": "10d299b3250f2ef9bad5697fc4cbbf899cebcdafc92f9fedad68fa3933cb1d72",
+    "attempts.jsonl": "b5f6b4773f94d8ff0659e75ad30bdae492aafa5ad1817dcccbbed49860956849",
+    "dispatches.jsonl": "829f16e50ed31b3d42912d50b28875fcd8d1f1c57fa7c7dc709f8552aff8b594",
+    "results.jsonl": "31f922e3a01bb33280a301de496b0b3d5fea29207803599997d33d8d14b9d481",
+    "identities_complete.json": "17cfc0b769b0242f125f7a2d5e4763cd4235f1db0f60773a371234ed0eca2cf4"
+  },
+  "execution_source_hashes": {
+    "runner_sha256": "f158eef5ca57a91a807e7f57efcc38a66bb1a6c5837407fb71cf65dbd88ba62b",
+    "tests_sha256": "ccc37824fb9aa86c528878d9f6cd3fd2d1902a39a78afbd455165ef41b48ccd5",
+    "transport_sha256": "623045ac288f8054c5a182ae6d8b1243dc0554a001908f9bff4939e3a81f08f0",
+    "transport_import_sha256": "aa7f56f97f08c611531cf55173ba03ee2e7847fbc4cd1c46694629e6d4f72999"
+  },
+  "public_sanitization": "Remove account user_id and BYOK flags; retain choices, usage, timings, request bindings and provider error classification. No per-item scoring or gold key is exported.",
+  "attempts": 9096,
+  "first_requests": 9088,
+  "questions_per_model": 1136,
+  "public_portable_code": "text_models.py reconstructs the original payloads and validates saved evidence offline; it is not the original live executor",
+  "preserved_reference_reports": {
+    "THREE_MODEL_REFERENCE.md": "41b005e5bdbc2c72bcfbbda272cecd4a919be20a05fa4a063c2b3e3b25f67471",
+    "docs/three_model_reference.html": "f131872d2cc9bdf64a5e8b7a61d83b7ff04748a1f10f5a18d0bbd73804563cf3"
+  }
+}

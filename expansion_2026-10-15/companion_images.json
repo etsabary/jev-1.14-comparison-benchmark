@@ -1,0 +1,291 @@
+{
+  "source_repository": "https://github.com/etsabary/visual-decision-benchmark",
+  "source_commit": "758cd578f571e742a9ce0277b5e35667ee2bb40b",
+  "test_date_toronto": "2026-10-15",
+  "questions_per_configuration": 200,
+  "source_summary_sha256": "680fbbbe4264b8519f5fe9f6ae4f133d9ba0fbe699034d27a96c27384ba05063",
+  "models": {
+    "typesafe/jev-1.14": {
+      "correct_first": 141,
+      "accuracy_scheduled": 0.705,
+      "usable_first": 195,
+      "latency_first_all_ms": {
+        "median": 307.1314584813081,
+        "p90": 556.7650381126441,
+        "p95": 723.9778851129809
+      },
+      "core_cost": {
+        "reported_usd": 0.023976876,
+        "exact_decimal_usd": "0.023976876",
+        "known_records": 195,
+        "missing_records": 5
+      }
+    },
+    "openai/gpt-6-luna-decisions": {
+      "correct_first": 121,
+      "accuracy_scheduled": 0.605,
+      "usable_first": 198,
+      "latency_first_all_ms": {
+        "median": 383.0100414925255,
+        "p90": 658.4688036120496,
+        "p95": 799.3361333152274
+      },
+      "core_cost": {
+        "reported_usd": 0.0225462,
+        "exact_decimal_usd": "0.0225462",
+        "known_records": 199,
+        "missing_records": 3
+      }
+    },
+    "openai/gpt-6-luna": {
+      "correct_first": 117,
+      "accuracy_scheduled": 0.585,
+      "usable_first": 200,
+      "latency_first_all_ms": {
+        "median": 2354.4554370164406,
+        "p90": 4474.265654064947,
+        "p95": 5057.388358071326
+      },
+      "core_cost": {
+        "reported_usd": 0.0295817,
+        "exact_decimal_usd": "0.029581700",
+        "known_records": 200,
+        "missing_records": 0
+      }
+    },
+    "openai/gpt-5.4-nano": {
+      "correct_first": 70,
+      "accuracy_scheduled": 0.35,
+      "usable_first": 196,
+      "latency_first_all_ms": {
+        "median": 1604.5854165276978,
+        "p90": 2655.022999359062,
+        "p95": 2977.7548517973614
+      },
+      "core_cost": {
+        "reported_usd": 0.0505245,
+        "exact_decimal_usd": "0.05052450",
+        "known_records": 200,
+        "missing_records": 0
+      }
+    },
+    "google/gemini-2.5-flash-lite": {
+      "correct_first": 75,
+      "accuracy_scheduled": 0.375,
+      "usable_first": 180,
+      "latency_first_all_ms": {
+        "median": 872.8391879994888,
+        "p90": 1313.775479112519,
+        "p95": 1742.8930548165222
+      },
+      "core_cost": {
+        "reported_usd": 0.0086404,
+        "exact_decimal_usd": "0.0086404",
+        "known_records": 200,
+        "missing_records": 1
+      }
+    }
+  },
+  "families": [
+    {
+      "family_id": "V01",
+      "family": "Attribute binding and set logic",
+      "n": "10",
+      "typesafe/jev-1.14": "10",
+      "openai/gpt-6-luna-decisions": "9",
+      "openai/gpt-6-luna": "8",
+      "openai/gpt-5.4-nano": "6",
+      "google/gemini-2.5-flash-lite": "5"
+    },
+    {
+      "family_id": "V02",
+      "family": "Conditional counting",
+      "n": "10",
+      "typesafe/jev-1.14": "9",
+      "openai/gpt-6-luna-decisions": "5",
+      "openai/gpt-6-luna": "5",
+      "openai/gpt-5.4-nano": "4",
+      "google/gemini-2.5-flash-lite": "3"
+    },
+    {
+      "family_id": "V03",
+      "family": "Spatial relationships",
+      "n": "10",
+      "typesafe/jev-1.14": "9",
+      "openai/gpt-6-luna-decisions": "6",
+      "openai/gpt-6-luna": "5",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "4"
+    },
+    {
+      "family_id": "V04",
+      "family": "Connectivity and reachability",
+      "n": "10",
+      "typesafe/jev-1.14": "4",
+      "openai/gpt-6-luna-decisions": "3",
+      "openai/gpt-6-luna": "3",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "4"
+    },
+    {
+      "family_id": "V05",
+      "family": "Navigation and planning",
+      "n": "10",
+      "typesafe/jev-1.14": "7",
+      "openai/gpt-6-luna-decisions": "3",
+      "openai/gpt-6-luna": "5",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "1"
+    },
+    {
+      "family_id": "V06",
+      "family": "Rotation and reflection",
+      "n": "10",
+      "typesafe/jev-1.14": "3",
+      "openai/gpt-6-luna-decisions": "8",
+      "openai/gpt-6-luna": "4",
+      "openai/gpt-5.4-nano": "4",
+      "google/gemini-2.5-flash-lite": "3"
+    },
+    {
+      "family_id": "V07",
+      "family": "Geometry, folding and fit",
+      "n": "10",
+      "typesafe/jev-1.14": "4",
+      "openai/gpt-6-luna-decisions": "4",
+      "openai/gpt-6-luna": "2",
+      "openai/gpt-5.4-nano": "2",
+      "google/gemini-2.5-flash-lite": "4"
+    },
+    {
+      "family_id": "V08",
+      "family": "Visual rule application",
+      "n": "10",
+      "typesafe/jev-1.14": "3",
+      "openai/gpt-6-luna-decisions": "4",
+      "openai/gpt-6-luna": "6",
+      "openai/gpt-5.4-nano": "4",
+      "google/gemini-2.5-flash-lite": "1"
+    },
+    {
+      "family_id": "V09",
+      "family": "Sequential state tracking",
+      "n": "10",
+      "typesafe/jev-1.14": "6",
+      "openai/gpt-6-luna-decisions": "7",
+      "openai/gpt-6-luna": "7",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "5"
+    },
+    {
+      "family_id": "V10",
+      "family": "Constraint satisfaction",
+      "n": "10",
+      "typesafe/jev-1.14": "6",
+      "openai/gpt-6-luna-decisions": "1",
+      "openai/gpt-6-luna": "4",
+      "openai/gpt-5.4-nano": "1",
+      "google/gemini-2.5-flash-lite": "4"
+    },
+    {
+      "family_id": "V11",
+      "family": "Flowcharts and decision trees",
+      "n": "10",
+      "typesafe/jev-1.14": "9",
+      "openai/gpt-6-luna-decisions": "3",
+      "openai/gpt-6-luna": "5",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "2"
+    },
+    {
+      "family_id": "V12",
+      "family": "Causal and counterfactual reasoning",
+      "n": "10",
+      "typesafe/jev-1.14": "7",
+      "openai/gpt-6-luna-decisions": "6",
+      "openai/gpt-6-luna": "3",
+      "openai/gpt-5.4-nano": "4",
+      "google/gemini-2.5-flash-lite": "2"
+    },
+    {
+      "family_id": "V13",
+      "family": "Charts and quantitative comparisons",
+      "n": "10",
+      "typesafe/jev-1.14": "7",
+      "openai/gpt-6-luna-decisions": "8",
+      "openai/gpt-6-luna": "7",
+      "openai/gpt-5.4-nano": "1",
+      "google/gemini-2.5-flash-lite": "1"
+    },
+    {
+      "family_id": "V14",
+      "family": "Document reconciliation",
+      "n": "10",
+      "typesafe/jev-1.14": "6",
+      "openai/gpt-6-luna-decisions": "6",
+      "openai/gpt-6-luna": "6",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "4"
+    },
+    {
+      "family_id": "V15",
+      "family": "Interface state decisions",
+      "n": "10",
+      "typesafe/jev-1.14": "10",
+      "openai/gpt-6-luna-decisions": "9",
+      "openai/gpt-6-luna": "10",
+      "openai/gpt-5.4-nano": "7",
+      "google/gemini-2.5-flash-lite": "8"
+    },
+    {
+      "family_id": "V16",
+      "family": "Inspection against a reference",
+      "n": "10",
+      "typesafe/jev-1.14": "10",
+      "openai/gpt-6-luna-decisions": "9",
+      "openai/gpt-6-luna": "10",
+      "openai/gpt-5.4-nano": "5",
+      "google/gemini-2.5-flash-lite": "6"
+    },
+    {
+      "family_id": "V17",
+      "family": "Matching across images",
+      "n": "10",
+      "typesafe/jev-1.14": "7",
+      "openai/gpt-6-luna-decisions": "6",
+      "openai/gpt-6-luna": "7",
+      "openai/gpt-5.4-nano": "5",
+      "google/gemini-2.5-flash-lite": "4"
+    },
+    {
+      "family_id": "V18",
+      "family": "Image and text consistency",
+      "n": "10",
+      "typesafe/jev-1.14": "10",
+      "openai/gpt-6-luna-decisions": "8",
+      "openai/gpt-6-luna": "6",
+      "openai/gpt-5.4-nano": "2",
+      "google/gemini-2.5-flash-lite": "5"
+    },
+    {
+      "family_id": "V19",
+      "family": "Perspective and knowledge tracking",
+      "n": "10",
+      "typesafe/jev-1.14": "4",
+      "openai/gpt-6-luna-decisions": "6",
+      "openai/gpt-6-luna": "5",
+      "openai/gpt-5.4-nano": "3",
+      "google/gemini-2.5-flash-lite": "2"
+    },
+    {
+      "family_id": "V20",
+      "family": "Insufficient evidence",
+      "n": "10",
+      "typesafe/jev-1.14": "10",
+      "openai/gpt-6-luna-decisions": "10",
+      "openai/gpt-6-luna": "9",
+      "openai/gpt-5.4-nano": "4",
+      "google/gemini-2.5-flash-lite": "7"
+    }
+  ]
+}

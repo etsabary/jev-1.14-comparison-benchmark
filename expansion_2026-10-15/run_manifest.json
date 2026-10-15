@@ -1,0 +1,92 @@
+{
+  "version": "text-eight-llms-plus-three-historical-20261015-v1",
+  "models": {
+    "openai/gpt-6-luna": {
+      "name": "Luna 6 regular",
+      "provider_tag": "openai",
+      "provider_name": "OpenAI",
+      "mode": "switchable"
+    },
+    "openai/gpt-5.4-nano": {
+      "name": "GPT-5.4 nano",
+      "provider_tag": "openai",
+      "provider_name": "OpenAI",
+      "mode": "switchable"
+    },
+    "google/gemini-2.5-flash-lite": {
+      "name": "Gemini 2.5 Flash-Lite",
+      "provider_tag": "google-ai-studio",
+      "provider_name": "Google AI Studio",
+      "mode": "switchable"
+    },
+    "ibm-granite/granite-4.2-8b": {
+      "name": "Granite 4.2 8B",
+      "provider_tag": "deepinfra/bf16",
+      "provider_name": "DeepInfra",
+      "mode": "switchable"
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "name": "Qwen3-30B-A3B Instruct 2507",
+      "provider_tag": "siliconflow/fp8",
+      "provider_name": "SiliconFlow",
+      "mode": "nonthinking_checkpoint"
+    },
+    "microsoft/phi-4": {
+      "name": "Phi-4 14B",
+      "provider_tag": "deepinfra/bf16",
+      "provider_name": "DeepInfra",
+      "mode": "ordinary_instruct"
+    },
+    "mistralai/mistral-nemo": {
+      "name": "Mistral NeMo 12B",
+      "provider_tag": "deepinfra/fp8",
+      "provider_name": "DeepInfra",
+      "mode": "ordinary_instruct"
+    },
+    "inception/mercury-2.5": {
+      "name": "Mercury 2.5",
+      "provider_tag": "inception",
+      "provider_name": "Inception",
+      "mode": "switchable"
+    }
+  },
+  "historical_models": [
+    "Jev 1.13",
+    "Jev 1.14",
+    "Luna 6 Decisions"
+  ],
+  "questions_per_model": 1136,
+  "new_scored_requests": 9088,
+  "combined_scored_model_questions": 12496,
+  "original_files_sha256": {
+    "questions_1136.csv": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+    "item_metadata.csv": "34a6d3d36dfb09c4575212e3bffcc260c14d434741110245a025aa9a6ae4c98a",
+    "results_jev113.csv": "3cb26b1f072aebaf973b071a95b2577ab24eb6e7a69c6b88399f74e741e38aa6",
+    "results_jev114.csv": "5133ffcd736a4c5ad27325e4a8cdf3d9a3178fd9b9b1ba6d656804b264cf0e92",
+    "results_luna.csv": "7d8d60d5e3091605516daf955de32159dc5b35934ea60b85fb7e40aa7af28229",
+    "baseline_reference_manifest.json": "8cf7e85c48951ac0a8f6798c6cfad190204b941c5917ce34d2fb21023dc3847a"
+  },
+  "route": "https://openrouter.ai/api/v1/chat/completions",
+  "output_profile": "Same exact frozen question plus plain numeric-ID-only suffix, 16 token cap, no tools or constrained decoding",
+  "output_instruction_suffix": "\n\nReturn only the numeric option ID (1, 2, 3, 4 or 5), without explanation.",
+  "sampling": "Provider defaults; no temperature/top_p/seed overrides",
+  "reasoning": "Explicitly off for switchable models; ordinary and nonthinking checkpoints have no reasoning parameter",
+  "provider_policy": "Exact provider/quantization tag, standard service, no fallback, require_parameters true",
+  "concurrency": {
+    "maximum_global": 16,
+    "maximum_per_model": 2,
+    "questions_per_wave": 2,
+    "barrier": "All 16 model-question cases settle before next two-question wave"
+  },
+  "order": "First 25 IDs are the outcome-independent pilot sample; all remaining IDs SHA256 ordered; model launch order seed 2026101508",
+  "timing": "New HTTPS connection per attempt; monotonic connect through complete response body; excludes local queue/preparation; retry waits recorded separately",
+  "primary_score": "First attempt per planned case. Errors, refusals, truncation and non-ID output unsuccessful; no correctness-guided retries",
+  "retry_policy": "At most one recovery for transport failure or HTTP 408/429/5xx; never retry valid wrong answers or format failures",
+  "timeout_seconds": 90,
+  "known_spend_guard_usd": 1.0,
+  "guard_semantics": "Soft stop before dispatch at known reported cost >= guard; in-flight/missing costs not a hard billing cap",
+  "identity_policy": "Exact returned model/provider locked on first success; stop whole run on change",
+  "historical_timing_limit": "Historical Decisions were not contemporaneous and used different timing boundaries; no controlled eleven-way speed claim",
+  "pilot_policy": "Prior 75 paid pilot responses preserved separately, not merged with this coordinated full pass",
+  "publication": "Authorized by repository owner on October 15, 2026"
+}

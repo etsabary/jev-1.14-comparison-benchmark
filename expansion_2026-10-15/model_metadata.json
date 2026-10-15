@@ -1,0 +1,1017 @@
+{
+  "retrieved": {
+    "utc": "2026-10-15T16:02:00.625046+00:00",
+    "toronto": "2026-10-15T12:02:00.625046-04:00"
+  },
+  "catalog": {
+    "openai/gpt-6-luna": {
+      "id": "openai/gpt-6-luna",
+      "canonical_slug": "openai/gpt-6-luna-20260922",
+      "hugging_face_id": null,
+      "name": "OpenAI: GPT-6 Luna",
+      "created": 1790100786,
+      "description": "GPT-6 Luna is the fast, cost-efficient model in OpenAI's GPT-6 series, positioned below GPT-6 Sol. It is suited for high-volume and latency-sensitive workloads such as chat, classification, and lightweight agentic...",
+      "context_length": 1050000,
+      "architecture": {
+        "modality": "text+image+file->text",
+        "input_modalities": [
+          "file",
+          "image",
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.0000002",
+            "completion": "0.00000075",
+            "input_cache_read": "0.00000002",
+            "input_cache_write": "0.00000025"
+          }
+        ]
+      },
+      "top_provider": {
+        "context_length": 1050000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_completion_tokens",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "verbosity"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/openai/gpt-6-luna-20260922/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 38.1,
+          "coding_index": null,
+          "agentic_index": null
+        }
+      },
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true,
+        "supported_efforts": [
+          "max",
+          "xhigh",
+          "high",
+          "medium",
+          "low",
+          "none"
+        ],
+        "default_effort": "medium"
+      }
+    },
+    "inception/mercury-2.5": {
+      "id": "inception/mercury-2.5",
+      "canonical_slug": "inception/mercury-2.5-20260908",
+      "hugging_face_id": null,
+      "name": "Inception: Mercury 2.5",
+      "created": 1788892137,
+      "description": "Mercury 2.5 is the fastest reasoning LLM, and the latest diffusion LLM (dLLM) from Inception. Instead of generating tokens sequentially, Mercury 2.5 produces and refines multiple tokens in parallel, achieving...",
+      "context_length": 260000,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000004",
+        "completion": "0.00000015",
+        "input_cache_read": "0.000000004"
+      },
+      "top_provider": {
+        "context_length": 260000,
+        "max_completion_tokens": 65536,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/inception/mercury-2.5-20260908/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 12.3,
+          "coding_index": null,
+          "agentic_index": null
+        }
+      },
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true,
+        "supported_efforts": [
+          "high",
+          "medium",
+          "low",
+          "none"
+        ],
+        "default_effort": "medium"
+      }
+    },
+    "ibm-granite/granite-4.2-8b": {
+      "id": "ibm-granite/granite-4.2-8b",
+      "canonical_slug": "ibm-granite/granite-4.2-8b-20260831",
+      "hugging_face_id": "ibm-granite/granite-4.2-8b",
+      "name": "IBM: Granite 4.2 8B",
+      "created": 1788206780,
+      "description": "Granite 4.2 8B is a dense reasoning model from IBM. It is suited for mathematics, code generation, multilingual dialogue, and agentic workflows that need multi-step reasoning. It supports full, low-effort,...",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000006",
+        "completion": "0.00000025",
+        "input_cache_read": "0.000000015"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": 117964,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 1,
+        "top_p": 0.95
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/ibm-granite/granite-4.2-8b-20260831/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 11.1,
+          "coding_index": 22.4,
+          "agentic_index": 1.3
+        }
+      },
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": true,
+        "supported_efforts": [
+          "high",
+          "low",
+          "none"
+        ],
+        "default_effort": "high"
+      }
+    },
+    "openai/gpt-5.4-nano": {
+      "id": "openai/gpt-5.4-nano",
+      "canonical_slug": "openai/gpt-5.4-nano-20260317",
+      "hugging_face_id": "",
+      "name": "OpenAI: GPT-5.4 Nano",
+      "created": 1773748187,
+      "description": "GPT-5.4 nano is the most lightweight and cost-efficient variant of the GPT-5.4 family, optimized for speed-critical and high-volume tasks. It supports text and image inputs and is designed for low-latency...",
+      "context_length": 400000,
+      "architecture": {
+        "modality": "text+image+file->text",
+        "input_modalities": [
+          "file",
+          "image",
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.00000125",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000002"
+      },
+      "top_provider": {
+        "context_length": 400000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_completion_tokens",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "verbosity"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": "2025-08-31",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/openai/gpt-5.4-nano-20260317/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 20.7,
+          "coding_index": 56.1,
+          "agentic_index": 16
+        }
+      },
+      "reasoning": {
+        "mandatory": false,
+        "default_enabled": false,
+        "supported_efforts": [
+          "xhigh",
+          "high",
+          "medium",
+          "low",
+          "none"
+        ],
+        "default_effort": "medium"
+      }
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "canonical_slug": "qwen/qwen3-30b-a3b-instruct-2507",
+      "hugging_face_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "created": 1753806965,
+      "description": "Qwen3-30B-A3B-Instruct-2507 is a 30.5B-parameter mixture-of-experts language model from Qwen, with 3.3B active parameters per inference. It operates in non-thinking mode and is designed for high-quality instruction following, multilingual understanding, and...",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen3",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000003"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": 235929,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": "2025-06-30",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/qwen/qwen3-30b-a3b-instruct-2507/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 7.5,
+          "coding_index": null,
+          "agentic_index": null
+        }
+      }
+    },
+    "google/gemini-2.5-flash-lite": {
+      "id": "google/gemini-2.5-flash-lite",
+      "canonical_slug": "google/gemini-2.5-flash-lite",
+      "hugging_face_id": "",
+      "name": "Google: Gemini 2.5 Flash Lite",
+      "created": 1753200276,
+      "description": "Gemini 2.5 Flash-Lite is a lightweight reasoning model in the Gemini 2.5 family, optimized for ultra-low latency and cost efficiency. It offers improved throughput, faster token generation, and better performance...",
+      "context_length": 1048576,
+      "architecture": {
+        "modality": "text+image+file+audio+video->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "file",
+          "audio",
+          "video"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Gemini",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000004",
+        "image": "0.0000001",
+        "audio": "0.0000003",
+        "input_audio_cache": "0.00000003",
+        "web_search": "0.014",
+        "internal_reasoning": "0.0000004",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.0000000833333333333333"
+      },
+      "top_provider": {
+        "context_length": 1048576,
+        "max_completion_tokens": 65535,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": "2025-01-31",
+      "expiration_date": "2026-10-20",
+      "links": {
+        "details": "/api/v1/models/google/gemini-2.5-flash-lite/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 10.4,
+          "coding_index": null,
+          "agentic_index": null
+        }
+      },
+      "reasoning": {
+        "mandatory": false
+      }
+    },
+    "microsoft/phi-4": {
+      "id": "microsoft/phi-4",
+      "canonical_slug": "microsoft/phi-4",
+      "hugging_face_id": "microsoft/phi-4",
+      "name": "Microsoft: Phi 4",
+      "created": 1736489872,
+      "description": "[Microsoft Research](/microsoft) Phi-4 is designed to perform well in complex reasoning tasks and can operate efficiently in situations with limited memory or where quick responses are needed. At 14 billion...",
+      "context_length": 16384,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000007",
+        "completion": "0.00000014"
+      },
+      "top_provider": {
+        "context_length": 16384,
+        "max_completion_tokens": 14745,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": "2024-06-30",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/microsoft/phi-4/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 5.9,
+          "coding_index": null,
+          "agentic_index": null
+        }
+      }
+    },
+    "mistralai/mistral-nemo": {
+      "id": "mistralai/mistral-nemo",
+      "canonical_slug": "mistralai/mistral-nemo",
+      "hugging_face_id": "mistralai/Mistral-Nemo-Instruct-2407",
+      "name": "Mistral: Mistral Nemo",
+      "created": 1721347200,
+      "description": "A 12B parameter model with a 128k token context length built by Mistral in collaboration with NVIDIA. The model is multilingual, supporting English, French, German, Spanish, Italian, Portuguese, Chinese, Japanese,...",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.000000029",
+        "completion": "0.00000003"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": 16384,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 0.3
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": "2024-04-30",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/mistralai/mistral-nemo/endpoints"
+      }
+    }
+  },
+  "endpoints": {
+    "openai/gpt-6-luna": {
+      "name": "OpenAI | openai/gpt-6-luna-20260922",
+      "model_id": "openai/gpt-6-luna",
+      "model_name": "OpenAI: GPT-6 Luna",
+      "context_length": 1050000,
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "discount": 0,
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.0000002",
+            "completion": "0.00000075",
+            "input_cache_read": "0.00000002",
+            "input_cache_write": "0.00000025"
+          }
+        ]
+      },
+      "provider_name": "OpenAI",
+      "tag": "openai",
+      "service_tier": null,
+      "quantization": "unknown",
+      "max_completion_tokens": 128000,
+      "max_prompt_tokens": 922000,
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "seed",
+        "max_tokens",
+        "response_format",
+        "structured_outputs",
+        "tools",
+        "tool_choice",
+        "verbosity",
+        "reasoning_effort"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 100,
+      "supports_implicit_caching": false,
+      "native_tools": {
+        "openrouter:web_search": {
+          "type": "web_search"
+        },
+        "openrouter:apply_patch": {
+          "type": "apply_patch"
+        }
+      },
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "openai/gpt-5.4-nano": {
+      "name": "OpenAI | openai/gpt-5.4-nano-20260317",
+      "model_id": "openai/gpt-5.4-nano",
+      "model_name": "OpenAI: GPT-5.4 Nano",
+      "context_length": 400000,
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.00000125",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000002",
+        "discount": 0
+      },
+      "provider_name": "OpenAI",
+      "tag": "openai",
+      "service_tier": null,
+      "quantization": "unknown",
+      "max_completion_tokens": 128000,
+      "max_prompt_tokens": null,
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "seed",
+        "max_tokens",
+        "response_format",
+        "structured_outputs",
+        "tools",
+        "tool_choice",
+        "verbosity",
+        "reasoning_effort"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 100,
+      "supports_implicit_caching": true,
+      "native_tools": {
+        "openrouter:web_search": {
+          "type": "web_search"
+        },
+        "openrouter:apply_patch": {
+          "type": "apply_patch"
+        }
+      },
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "google/gemini-2.5-flash-lite": {
+      "name": "Google AI Studio | google/gemini-2.5-flash-lite",
+      "model_id": "google/gemini-2.5-flash-lite",
+      "model_name": "Google: Gemini 2.5 Flash Lite",
+      "context_length": 1048576,
+      "pricing": {
+        "prompt": "0.0000001",
+        "completion": "0.0000004",
+        "image": "0.0000001",
+        "audio": "0.0000003",
+        "input_audio_cache": "0.00000003",
+        "web_search": "0.014",
+        "internal_reasoning": "0.0000004",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.0000000833333333333333",
+        "discount": 0
+      },
+      "provider_name": "Google AI Studio",
+      "tag": "google-ai-studio",
+      "service_tier": null,
+      "quantization": "unknown",
+      "max_completion_tokens": 65535,
+      "max_prompt_tokens": null,
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "structured_outputs",
+        "response_format",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "seed",
+        "tools",
+        "tool_choice",
+        "stop"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 99.93055555555556,
+      "supports_implicit_caching": false,
+      "native_tools": {},
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "ibm-granite/granite-4.2-8b": {
+      "name": "DeepInfra | ibm-granite/granite-4.2-8b-20260831",
+      "model_id": "ibm-granite/granite-4.2-8b",
+      "model_name": "IBM: Granite 4.2 8B",
+      "context_length": 131072,
+      "pricing": {
+        "prompt": "0.00000006",
+        "completion": "0.00000025",
+        "input_cache_read": "0.000000015",
+        "discount": 0
+      },
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/bf16",
+      "service_tier": null,
+      "quantization": "bf16",
+      "max_completion_tokens": 117964,
+      "max_prompt_tokens": null,
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "tools",
+        "response_format",
+        "reasoning_effort"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 100,
+      "supports_implicit_caching": true,
+      "native_tools": {},
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "name": "SiliconFlow | qwen/qwen3-30b-a3b-instruct-2507",
+      "model_id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "model_name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "context_length": 262144,
+      "pricing": {
+        "prompt": "0.00000009",
+        "completion": "0.0000003",
+        "discount": 0
+      },
+      "provider_name": "SiliconFlow",
+      "tag": "siliconflow/fp8",
+      "service_tier": null,
+      "quantization": "fp8",
+      "max_completion_tokens": 235929,
+      "max_prompt_tokens": null,
+      "supported_parameters": [
+        "structured_outputs",
+        "response_format",
+        "temperature",
+        "top_p",
+        "top_k",
+        "frequency_penalty",
+        "tools",
+        "tool_choice",
+        "max_tokens"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 99.93055555555556,
+      "supports_implicit_caching": false,
+      "native_tools": {},
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "microsoft/phi-4": {
+      "name": "DeepInfra | microsoft/phi-4",
+      "model_id": "microsoft/phi-4",
+      "model_name": "Microsoft: Phi 4",
+      "context_length": 16384,
+      "pricing": {
+        "prompt": "0.00000007",
+        "completion": "0.00000014",
+        "discount": 0
+      },
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/bf16",
+      "service_tier": null,
+      "quantization": "bf16",
+      "max_completion_tokens": 14745,
+      "max_prompt_tokens": 4096,
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "structured_outputs",
+        "response_format"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 100,
+      "supports_implicit_caching": false,
+      "native_tools": {},
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "mistralai/mistral-nemo": {
+      "name": "DeepInfra | mistralai/mistral-nemo",
+      "model_id": "mistralai/mistral-nemo",
+      "model_name": "Mistral: Mistral Nemo",
+      "context_length": 131072,
+      "pricing": {
+        "prompt": "0.000000029",
+        "completion": "0.00000003",
+        "discount": 0
+      },
+      "provider_name": "DeepInfra",
+      "tag": "deepinfra/fp8",
+      "service_tier": null,
+      "quantization": "fp8",
+      "max_completion_tokens": 16384,
+      "max_prompt_tokens": null,
+      "supported_parameters": [
+        "max_tokens",
+        "temperature",
+        "top_p",
+        "stop",
+        "frequency_penalty",
+        "presence_penalty",
+        "repetition_penalty",
+        "top_k",
+        "seed",
+        "min_p",
+        "logit_bias",
+        "response_format",
+        "structured_outputs",
+        "tools",
+        "tool_choice"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": false,
+        "function": false
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 100,
+      "supports_implicit_caching": false,
+      "native_tools": {},
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    },
+    "inception/mercury-2.5": {
+      "name": "Inception | inception/mercury-2.5-20260908",
+      "model_id": "inception/mercury-2.5",
+      "model_name": "Inception: Mercury 2.5",
+      "context_length": 260000,
+      "pricing": {
+        "prompt": "0.00000004",
+        "completion": "0.00000015",
+        "input_cache_read": "0.000000004",
+        "discount": 0.8
+      },
+      "provider_name": "Inception",
+      "tag": "inception",
+      "service_tier": null,
+      "quantization": "unknown",
+      "max_completion_tokens": 65536,
+      "max_prompt_tokens": null,
+      "supported_parameters": [
+        "reasoning",
+        "include_reasoning",
+        "max_tokens",
+        "stop",
+        "temperature",
+        "tools",
+        "tool_choice",
+        "response_format",
+        "structured_outputs",
+        "reasoning_effort"
+      ],
+      "supports_tool_choice": {
+        "none": true,
+        "auto": true,
+        "required": true,
+        "function": true
+      },
+      "status": 0,
+      "uptime_last_30m": 100,
+      "uptime_last_5m": 100,
+      "uptime_last_1d": 89.09722222222223,
+      "supports_implicit_caching": true,
+      "native_tools": {},
+      "supports_voice_cloning": false,
+      "supports_multiple_audio_references": false,
+      "supports_image_reference": false,
+      "supports_diarization": false,
+      "latency_last_30m": null,
+      "throughput_last_30m": null
+    }
+  }
+}

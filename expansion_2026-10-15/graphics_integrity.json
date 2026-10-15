@@ -1,0 +1,15 @@
+{
+  "plotter_sha256": "9963884f461547a16b4cb5c116083e2aaaa27dbaf8882ae8540d1502f2314eed",
+  "matplotlib_version": "3.10.9",
+  "source_summary_sha256": "10bd5abce94a75e12193e1705891b1446bb60f6a1e353a2de136b204cf91e932",
+  "files_sha256": {
+    "eleven_cost_and_speed.png": "4d899f09fbc6575c5a5978a45f8501aeef9aa1760eaaea89b8c5e4daee77de4c",
+    "eleven_cost_and_speed.svg": "dd03b9dc5da74254a19e47c956f2960c22304c50997c68b67c0cd43cae0c85c0",
+    "eleven_family_accuracy.png": "e80a154c2833e5336efa2cd21adce24047c74350747935b3912f234394a7a170",
+    "eleven_family_accuracy.svg": "2a0a759867c404edbb76b4fb49b0ab223bab013ff9153b3c847fb8fbb6745925",
+    "eleven_historical_speed.png": "310a1c0d16303e6fa8d339675dba9c8ec6078bd663463ba365ca594ab31baec9",
+    "eleven_historical_speed.svg": "53da24301dc655d17ebc6c4036aff61e4d390fbf7cb5ea1e9db7006a0029c3db",
+    "eleven_overall_accuracy.png": "1e5752866a4435d6aedfbb5a995cd8173fe327ecd77b6e36a6657afbdf4c9fd2",
+    "eleven_overall_accuracy.svg": "e0b88f6418191ab757289e76ce602806ca3eecd35ba52289a72330e14b6e5b58"
+  }
+}

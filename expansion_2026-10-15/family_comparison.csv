@@ -1,0 +1,26 @@
+family_id,family,n,Jev 1.13,Jev 1.14,Luna 6 Decisions,Luna 6 regular,GPT-5.4 nano,Gemini 2.5 Flash-Lite,Granite 4.2 8B,Qwen3-30B-A3B Instruct 2507,Phi-4 14B,Mistral NeMo 12B,Mercury 2.5
+F01,Record lookup and filtering,37,37,37,37,37,30,36,31,31,32,29,36
+F02,Forward conditional reasoning,39,39,39,24,32,16,31,19,23,7,13,25
+F03,Necessary conditions and contraposition,46,45,46,13,13,8,25,5,17,0,10,24
+F04,Boolean scope and exclusivity,48,47,48,33,40,13,22,14,24,6,17,37
+F05,Quantifiers and set relations,43,42,42,38,38,24,32,35,38,29,21,39
+F06,Transitive comparisons,34,34,34,33,31,28,31,30,29,32,31,34
+F07,Scheduling constraints,69,43,46,25,27,16,16,25,24,21,19,36
+F08,One-to-one assignments,61,49,56,35,35,25,32,31,30,28,24,36
+F09,Exact truth counting,65,24,24,19,18,13,14,12,16,9,8,18
+F10,Truth-teller consistency,62,31,31,20,19,10,18,14,14,13,14,21
+F11,Sufficiency and inconsistency,35,28,29,19,22,14,14,21,14,20,15,18
+F12,Object tracking through swaps,46,29,29,16,17,14,16,10,21,18,14,20
+F13,Sequential procedure execution,42,5,6,9,9,9,7,5,11,7,8,6
+F14,Temporal interval relations,36,35,34,19,24,9,17,16,14,11,11,28
+F15,Verbal spatial tracking,43,24,32,21,27,20,23,12,16,8,14,19
+F16,Nested role and reference binding,44,34,34,20,24,14,21,14,19,19,12,21
+F17,Perspective and belief tracking,44,39,40,32,16,22,26,20,20,24,19,21
+F18,Deterministic causal intervention,44,36,36,20,25,13,9,9,12,11,11,16
+F19,Exceptions and priority rules,52,48,45,45,45,35,32,24,37,14,14,41
+F20,Planning with preconditions,37,35,36,28,27,10,13,10,19,11,11,21
+F21,Directed reachability,37,37,37,37,37,21,30,17,17,23,11,33
+F22,Deterministic preference ordering,45,44,45,44,45,36,38,35,40,28,33,45
+F23,Rule verification and counterexamples,46,45,45,36,44,22,29,27,31,19,17,36
+F24,Source authority and stale records,37,37,37,31,37,17,31,25,25,18,25,36
+F25,Deterministic fault diagnosis,44,43,44,33,38,25,35,17,22,20,20,35
