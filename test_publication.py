@@ -38,14 +38,14 @@ class Publication(unittest.TestCase):
             elif isinstance(value,list):
                 for v in value:inspect(v)
         # Aggregate correct_first in the already-public image summary is intentional.
-        for p in EXPANSION.iterdir():
+        for p in [*EXPANSION.iterdir(),*(ROOT/'decision_refresh_2026-10-15').iterdir(),*(ROOT/'matched_2026-10-15').iterdir()]:
             if p.name=='companion_images.json':continue
             if p.suffix=='.jsonl':
                 for r in rows(p):inspect(r)
             elif p.suffix=='.json':inspect(json.loads(p.read_text()))
 
     def test_no_secrets_or_owner_paths(self):
-        for p in EXPANSION.iterdir():
+        for p in [*EXPANSION.iterdir(),*(ROOT/'decision_refresh_2026-10-15').iterdir(),*(ROOT/'matched_2026-10-15').iterdir()]:
             if p.is_file():
                 text=p.read_text()
                 self.assertNotIn('/Users/',text,p)
@@ -63,15 +63,15 @@ class Publication(unittest.TestCase):
             self.assertEqual(image.read_bytes(),(ROOT/'docs/figures'/image.name).read_bytes())
 
     def test_main_table_all_1136_latencies(self):
-        s=json.loads((EXPANSION/'summary.json').read_text())
+        s=json.loads((ROOT/'matched_2026-10-15/summary.json').read_text())
         for m,d in s['models'].items():
-            q=d['latency_first_all'] if 'latency_first_all' in d else s['historical_speeds'][m]['full_bank_saved_latency_all_outcomes']
+            q=d['latency_first_all']
             self.assertEqual(q['n'],1136)
         text=(ROOT/'README.md').read_text()
         self.assertNotIn('{{',text)
-        self.assertIn('327 ms historical',text)
-        self.assertIn('148 ms historical',text)
-        self.assertIn('223 ms historical',text)
+        self.assertNotIn('historical',text.lower())
+        for m,d in s['models'].items():
+            self.assertIn(f"{d['latency_first_all']['median_ms']:.0f} ms",text)
         self.assertIn('System 1-style',text)
         self.assertIn('327 first responses',text)
 

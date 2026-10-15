@@ -1,0 +1,49 @@
+{
+  "version": "three-decisions-refresh-20261015-v1",
+  "models": {
+    "typesafe/jev-1.13": {
+      "summary_id": "jev113",
+      "label": "Jev 1.13",
+      "provider_tag": "typesafe",
+      "provider_name": "TypeSafe",
+      "required_snapshot": "typesafe/jev-1.13-20260917"
+    },
+    "typesafe/jev-1.14": {
+      "summary_id": "jev114",
+      "label": "Jev 1.14",
+      "provider_tag": "typesafe",
+      "provider_name": "TypeSafe",
+      "required_snapshot": "typesafe/jev-1.14-20261014"
+    },
+    "openai/gpt-6-luna-decisions": {
+      "summary_id": "luna_decisions",
+      "label": "Luna 6 Decisions",
+      "provider_tag": "openai",
+      "provider_name": "OpenAI",
+      "required_snapshot": "openai/gpt-6-luna-decisions-20261006"
+    }
+  },
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "questions_each": 1136,
+  "planned_cases": 3408,
+  "endpoint": "https://openrouter.ai/api/alpha/decisions",
+  "input": "Exact original native choice state, instructions and five criteria; provider routing is the only added request field",
+  "llm_reference_plan_sha256": "e2bd288769aafab39269059a74337c4d297a6f662f60b4f2a92523728d9ef744",
+  "order": "Same question order as eight LLMs; model launch order seed 2026101503",
+  "concurrency": {
+    "maximum_global": 6,
+    "maximum_per_model": 2,
+    "questions_per_wave": 2,
+    "barrier": "All six cases settle before next two-question wave"
+  },
+  "timing": "New HTTPS connection per attempt; monotonic connect through complete response body; excludes local queue/preparation; retry waits recorded separately",
+  "connection_timeout_seconds": 10,
+  "total_timeout_seconds": 90,
+  "primary": "First attempt for all 1136 cases per model; failures remain unsuccessful",
+  "retry": "At most one recovery for transport failure or HTTP 408/429/5xx, never for a valid wrong answer or probability warning",
+  "parser": "Valid typed choice is scored independently of probability rounding; warnings and confidence validity retained",
+  "provider_policy": "Exact only tag, no fallback; required returned dated checkpoint and provider checked on every HTTP success",
+  "known_spend_guard_usd": 0.5,
+  "guard_limit": "Soft stop before dispatch; missing/in-flight charges not a hard billing cap",
+  "comparison_limit": "Same day and client timing method, not simultaneous with eight LLMs; native and chat endpoints and backend hardware differ"
+}

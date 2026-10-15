@@ -8,13 +8,16 @@ EXPANSION=ROOT/'expansion_2026-10-15'
 SOURCES=['README.md','FUNCTIONS.md','THREE_MODEL_REFERENCE.md','report_layout.md','report_sections.md',
          'task_examples.md','text_models.py','score_expansion.py','plot_expansion.py','build_report.py',
          'build_reference_report.py','test_text_models.py','test_publication.py','freeze_expansion_checksums.py',
-         'docs/index.html','docs/functions.html','docs/three_model_reference.html','.github/workflows/validate.yml']
+         'docs/index.html','docs/functions.html','docs/three_model_reference.html','.github/workflows/validate.yml',
+         'decision_refresh.py','matched_analysis.py','plot_matched.py','test_decision_refresh.py','test_matched.py']
 
 
 def paths():
     return sorted({*(ROOT/name for name in SOURCES),
                    *(p for p in EXPANSION.iterdir() if p.is_file() and p.name!='release_checksums.json'),
-                   *(ROOT/'figures').glob('eleven_*'),*(ROOT/'docs/figures').glob('eleven_*')})
+                   *(ROOT/'decision_refresh_2026-10-15').iterdir(),*(ROOT/'matched_2026-10-15').iterdir(),
+                   *(ROOT/'figures').glob('eleven_*'),*(ROOT/'docs/figures').glob('eleven_*'),
+                   *(ROOT/'figures').glob('matched_*'),*(ROOT/'docs/figures').glob('matched_*')})
 
 
 def freeze():

@@ -1,0 +1,17 @@
+{
+  "source_run_files_sha256": {
+    "manifest.json": "5e6ef55de28db28499f8b14188fdf8b9f8b5d2ed6b6e7fae27c6f04c3c201e69",
+    "software.json": "9f80a0dc85e3cd001145f65242da92be170863dcf5a1659bb1ccdc645dfc012a",
+    "model_metadata.json": "92862c41bd4bfb4637a99c4585becc5fe77971c0595e664b7c1f4f92d5dae3f8",
+    "attempts.jsonl": "3b1cb2a91828c994d981fb21ff32fe5462726cd8c354078c95b31578f2e0ce33",
+    "dispatches.jsonl": "e635dc626bbbbb836c5648d6304e0de5e8094ba1522607e705c64503ce38ff4f",
+    "results.jsonl": "54b1cb0f6900b6bd06d53dc86cddc6bc9628beeb73e8baefbc8d9319e7bdcd8f"
+  },
+  "completed": {
+    "utc": "2026-10-15T17:18:31.768302+00:00",
+    "toronto": "2026-10-15T13:18:31.768302-04:00"
+  },
+  "sanitization": "Public raw API responses allowlist typed outputs, model/provider identity, usage and basic errors; account IDs, BYOK flags and other account metadata omitted",
+  "privacy": "No answer key, individual correctness, API credentials or local owner paths are included",
+  "previous_release_commit": "b9c7b1f3abb0e1728c7b4f8585d027b3c3a82921"
+}
