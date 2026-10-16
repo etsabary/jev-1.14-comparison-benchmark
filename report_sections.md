@@ -4,7 +4,7 @@
 
 {{LUNA_FUNCTIONS}}
 
-## Mercury is the most interesting new cost alternative
+## Mercury remains a useful regular LLM cost comparison
 
 Mercury came within 25 correct answers of regular Luna while costing $0.01321493 for the actual 1,136-question run, compared with Luna's $0.03431990. Its median complete response was 0.534 seconds, compared with 0.942 seconds for Luna. Mercury's current 80% advertised tariff discount is part of this result; the cost advantage should be checked again after that discount changes. This short-output test does not validate a general throughput or architecture claim.
 

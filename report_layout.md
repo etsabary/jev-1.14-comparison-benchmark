@@ -1,4 +1,4 @@
-# Eleven models on the same 1,136 text decisions
+# {{MODEL_COUNT}} models on the same 1,136 text decisions
 
 I have been intrigued by Jev because it does something different from the LLMs I usually use: it returns a typed decision with probabilities rather than a paragraph. That made it harder to place. Could it make better quick decisions than Luna, one of my favorite models? I wanted a comparison that would make its strengths and limits visible.
 
@@ -6,13 +6,13 @@ On these tests, the answer was clearly yes. Jev was substantially stronger than 
 
 {{LEAD_RESULTS}}
 
-All **11 model services × 1,136 questions = 12,496 scored model-question cases** were collected on **October 15, 2026**, through OpenRouter. The eight regular LLM runs are unchanged. Jev 1.13, Jev 1.14 and Luna Decisions were rerun later that day using the same HTTP timer and per-model concurrency. The main results use these fresh answers, scores, costs and speeds together.
+{{TEST_CONTEXT}}
 
 The bank contains 640 core questions and 496 related variants, contrasts and candidate checks across 25 families. Related items are not independent observations. Every model received the same underlying instructions, facts, question and five answer options in the same order. Native Decisions and ordinary chat serialize that content differently.
 
 The [function and load-level tables](FUNCTIONS.md) explain every family. The separate [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is not pooled with the text scores.
 
-![Overall and core-only accuracy across eleven services](figures/matched_overall_accuracy.png)
+![Overall and core-only accuracy including the October 16 additions](figures/overall_accuracy.png)
 
 ## Results across the full bank
 
@@ -20,17 +20,19 @@ Every row uses the **first attempt**. Errors, refusals, invalid output and trunc
 
 {{RESULTS}}
 
-All timers run from connection start through the complete response body. This removes the earlier mix of header-only and full-body measurements. The tests used two sessions on the same day, so changing provider load can still affect the comparison. Failure counts and usable-response timings remain available in the [aggregate evidence](matched_2026-10-15/summary.json).
+All timers run from connection start through the complete response body. The same timing boundary and two concurrent requests per model are used across the October 15 and October 16 runs. Different dates, routes and provider load can still affect the comparison. Failure counts and usable-response timings remain available in the [overall aggregate evidence](overall_2026-10-16/summary.json).
 
-## Cost of the eleven full runs
+## Cost of the full runs
 
-Costs cover **1,136 questions per model**, including recovery attempts. The per-1,000 column normalizes the same bill: reported run cost ÷ 1,136 × 1,000. It is not an additional run. Earlier pilots and superseded runs are excluded from these totals.
+Costs cover **1,136 questions per model**, including recovery attempts. The per-1,000 column normalizes the same run cost: run cost ÷ 1,136 × 1,000. It is not an additional run. Earlier pilots and superseded runs are excluded from these totals. Nimble returns token usage without a dollar charge, so its cost is calculated from that usage and the captured published tariff, rather than labelled API-reported billing. Free sign-up credit does not change the tariff value of the work.
 
 {{COSTS}}
 
 {{COST_CONTEXT}}
 
-![Actual 1136-question costs and first-attempt response times for eleven models](figures/matched_cost_and_speed.png)
+![Actual 1136-question costs and first-attempt response times including October 16 additions](figures/overall_cost_and_speed.png)
+
+{{ADDITIONS_ANALYSIS}}
 
 {{ANALYSIS}}
 
@@ -42,7 +44,7 @@ A one-to-one assignment means giving each person, object or time slot a unique p
 
 ## Image decisions add another dimension
 
-The separate [image benchmark](https://github.com/etsabary/visual-decision-benchmark) used 200 questions per configuration, tested on October 15, 2026. Its scores are unchanged by this text rerun. Mercury was not tested on images.
+The separate [image benchmark](https://github.com/etsabary/visual-decision-benchmark) used 200 questions per configuration, tested on October 15, 2026. Its scores are unchanged. Mercury was not tested on images. On October 16, Microsoft explicitly rejected the native image request. Both Nimble versions accepted its image-shaped JSON and returned choices, but their [API contract](https://docs.bespokelabs.ai/api-reference/systemone) explicitly says that a JSON state is read as JSON text. Each probe billed 26,253 input tokens; accepting the encoded image data as text is not evidence of pixel processing. No native-image score is assigned to these three API routes, and the 200-question image bank was not run through a text substitute. The [capability record and probe costs](overall_2026-10-16/image_capabilities.json) and [sanitized responses](overall_2026-10-16/image_compatibility_probes.jsonl) retain the evidence. This concerns the tested APIs, not every possible future endpoint or capability of their underlying base models.
 
 {{IMAGES}}
 
@@ -56,9 +58,9 @@ The release's text gain should be distinguished from its broader features. In th
 
 ## Accuracy across the 25 functions
 
-Cell labels show correct counts; color shows accuracy within each family. The [function tables](FUNCTIONS.md) and [family CSV](matched_2026-10-15/family_comparison.csv) retain all denominators.
+Cell labels show correct counts; color shows accuracy within each family. The [function tables](FUNCTIONS.md) and [family CSV](overall_2026-10-16/family_comparison.csv) retain all denominators, including the new models.
 
-![Correct counts and accuracy by family for eleven services](figures/matched_family_accuracy.png)
+![Correct counts and accuracy by family including October 16 additions](figures/overall_family_accuracy.png)
 
 ## Matched diagnostic tests
 
@@ -78,7 +80,7 @@ The native services return typed choices rather than generated answer IDs. A usa
 
 ## Confidence and coverage
 
-Native Decisions services returned confidence and option probabilities. Regular LLMs were asked only for an answer ID, so an equivalent confidence-filter comparison is unavailable. These thresholds use the fresh native responses and remain exploratory because they were examined on the same bank.
+Native Decisions services returned confidence and option probabilities. Their confidence values need not share a scale: Nimble defines confidence as concentration of the answer distribution, not the probability of being correct. Regular LLMs were asked only for an answer ID, so an equivalent confidence-filter comparison is unavailable. These thresholds use the selected native responses and remain exploratory because they were examined on the same bank.
 
 {{CONFIDENCE}}
 
@@ -98,19 +100,19 @@ These repeats measure observed service variation as well as possible model behav
 
 {{SESSIONS}}
 
-Both sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The [refresh transport](decision_refresh.py) uses the same HTTP timing function as the eight-LLM executor, with only the endpoint path changed.
+All sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The October 16 runner allowed two per model, and both Nimble models together stayed within the documented four-request free-credit concurrency limit. The [addition transport](added_decisions.py) retains the same timer operations as the [October 15 transport](decision_refresh.py), with configurable host and endpoint path.
 
-Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. The native services used `/api/alpha/decisions` with the original typed-choice payloads. Backend providers were explicitly selected with fallback disabled. OpenRouter is the common front door, but backend hardware, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.
+Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. OpenRouter native services used `/api/alpha/decisions` with backend selection and fallback disabled. Nimble used Bespoke's `/v1/systemone` directly, with the same original state, instructions and five answer options. No reasoning trace or agentic iteration was requested. Backend hardware, routes, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.
 
 {{IDENTITIES}}
 
-The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Ordinary LLMs generally returned aliases, not dated checkpoints; an unchanged alias does not prove an unchanged hidden model. Captured endpoint metadata is retained for [the eight LLMs](expansion_2026-10-15/model_metadata.json) and [the three native services](decision_refresh_2026-10-15/model_metadata.json).
+The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Microsoft likewise returned the required October 9 identity. Nimble was requested by its explicit v4 and v4 Max names, not `nimble-latest`; its API documentation says the response repeats the requested name, so this is not independent checkpoint attestation. Ordinary LLMs generally returned aliases, not dated checkpoints. Captured endpoint metadata is retained for [the eight LLMs](expansion_2026-10-15/model_metadata.json), [the original three native services](decision_refresh_2026-10-15/model_metadata.json) and [the October 16 additions](additions_2026-10-16).
 
 ## Evidence reproduction and limits
 
-The [questions](data/questions_1136.csv), [selected eleven-model summary](matched_2026-10-15/summary.json), [native request plan](decision_refresh_2026-10-15/request_plan.jsonl), [native attempt ledger](decision_refresh_2026-10-15/attempts.jsonl), [refresh protocol](decision_refresh_2026-10-15/run_manifest.json), and [unchanged eight-LLM evidence](expansion_2026-10-15) preserve the current comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.
+The [questions](data/questions_1136.csv), [overall summary](overall_2026-10-16/summary.json), [October 16 addition ledgers and protocols](additions_2026-10-16), [unchanged eleven-model summary](matched_2026-10-15/summary.json), [October 15 native attempt ledger](decision_refresh_2026-10-15/attempts.jsonl), and [unchanged eight-LLM evidence](expansion_2026-10-15) preserve the comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.
 
-All new primary scores use first attempts; retries are limited to one recovery for transport failures or HTTP 408, 429 and 5xx responses. Valid wrong answers and format failures are never retried. Reported cost includes eligible recoveries; missing charges remain unknown, not zero.
+All new primary scores use first attempts; retries are limited to one recovery for transport failures or HTTP 408, 429 and 5xx responses. Valid wrong answers and format failures are never retried. Cost includes eligible recoveries; missing charges remain unknown, not zero. Nimble documents HTTP errors as uncharged, while transport timeouts with no response remain unknown.
 
 The bank mixes 25 generated task families and dependent variants. It is not a standardized intelligence or deployment-safety test. The fixed key is unchanged, and this rerun does not add an independent audit of every printed question. Later key corrections should be versioned and applied to every saved response.
 
@@ -119,14 +121,16 @@ The bank mixes 25 generated task families and dependent variants. It is not a st
 python3 validate.py
 python3 text_models.py
 python3 matched_analysis.py
-python3 -m unittest -v test_analysis.py test_text_models.py test_decision_refresh.py test_publication.py test_matched.py
+python3 overall_analysis.py
+python3 -m unittest -v test_analysis.py test_text_models.py test_decision_refresh.py test_added_decisions.py test_overall.py test_publication.py test_matched.py
 
 # Reproduce scores using the external original key.
 python3 matched_analysis.py --answer-key /path/to/answer_key.csv
+python3 overall_analysis.py --answer-key /path/to/answer_key.csv
 
 # Rebuild current figures, README and Pages.
 python3 -m pip install -r requirements-reports.txt
-python3 plot_matched.py
+python3 plot_overall.py
 python3 build_report.py
 python3 freeze_expansion_checksums.py
 ```

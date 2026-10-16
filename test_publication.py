@@ -8,6 +8,12 @@ import unittest
 from text_models import ROOT,EXPANSION,rows
 
 
+def evidence_files():
+    return [p for folder in (EXPANSION,ROOT/'decision_refresh_2026-10-15',ROOT/'matched_2026-10-15',
+                             ROOT/'additions_2026-10-16',ROOT/'overall_2026-10-16')
+            for p in folder.rglob('*') if p.is_file()]
+
+
 class Links(HTMLParser):
     def __init__(self):super().__init__();self.targets=[]
     def handle_starttag(self,tag,attrs):
@@ -38,14 +44,14 @@ class Publication(unittest.TestCase):
             elif isinstance(value,list):
                 for v in value:inspect(v)
         # Aggregate correct_first in the already-public image summary is intentional.
-        for p in [*EXPANSION.iterdir(),*(ROOT/'decision_refresh_2026-10-15').iterdir(),*(ROOT/'matched_2026-10-15').iterdir()]:
+        for p in evidence_files():
             if p.name=='companion_images.json':continue
             if p.suffix=='.jsonl':
                 for r in rows(p):inspect(r)
             elif p.suffix=='.json':inspect(json.loads(p.read_text()))
 
     def test_no_secrets_or_owner_paths(self):
-        for p in [*EXPANSION.iterdir(),*(ROOT/'decision_refresh_2026-10-15').iterdir(),*(ROOT/'matched_2026-10-15').iterdir()]:
+        for p in evidence_files():
             if p.is_file():
                 text=p.read_text()
                 self.assertNotIn('/Users/',text,p)

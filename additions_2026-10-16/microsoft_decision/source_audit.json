@@ -1,0 +1,15 @@
+{
+  "completed": {
+    "utc": "2026-10-16T17:48:14.523610+00:00",
+    "toronto": "2026-10-16T13:48:14.523610-04:00"
+  },
+  "source_run_files_sha256": {
+    "manifest.json": "5d88422e0af631d1912bb12e5ddd92b3889b781742f56f3bb4e8ccb25a4121ed",
+    "software.json": "e04fac906e3d506b81ed34a991bc4730760573415f9967e1b19b2a942c8a0304",
+    "model_metadata.json": "7708228f494750b45f3384e034663b44007ad4e7799c8574ccfbdd55d0047505",
+    "attempts.jsonl": "955f1a9037c0ba11c73c7ae0bdc5066f42be080db3ffb711def571a9b950034b",
+    "dispatches.jsonl": "481fb1d58a674c18f3b8a873f20d6749e85a97cf8df141bf5e940ec8751fc520",
+    "results.jsonl": "4acec34cc0ab78ad344a036f854bc346b0b6d96c4dedafd32564f45090640b8d"
+  },
+  "sanitization": "Allowlisted model, provider, typed answers, usage and basic errors; no account metadata, credentials, owner paths, key or per-item correctness"
+}

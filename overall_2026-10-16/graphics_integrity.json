@@ -1,0 +1,13 @@
+{
+  "plotter_sha256": "c60ee4716ba09d4c77b713e33b349b5db6b2f374f76a8d927c1fbfb2cf6afcaf",
+  "matplotlib_version": "3.10.9",
+  "source_summary_sha256": "f4a362b2195dc999f3948e7e345a7565a50cbc08115653f718de5ebf6b303a00",
+  "files_sha256": {
+    "overall_accuracy.png": "2d15ee3cafef771b9f019af01dfbf14c70d063f29154d4fc1945c514fd549fd5",
+    "overall_accuracy.svg": "b5b3585b5e7cbeec5094d737a2f8839374090074e038ae87fd7dd37951695fd3",
+    "overall_cost_and_speed.png": "68d1a9c003834bbce416053464f5d4aa79ea1b2f8209d20f5435a91f2906b68a",
+    "overall_cost_and_speed.svg": "723e57d74ab4d63484bf4e30b2942586e611c54618c61c873eea3edc98ee9426",
+    "overall_family_accuracy.png": "d62042e232091412e839d052a7058e59dc083d2fa705f6eb2a8037138fc28e08",
+    "overall_family_accuracy.svg": "3e274efe18b8f2f4c49f04aa91dfeaf050b2b0304770d25af4472e7f4781648a"
+  }
+}

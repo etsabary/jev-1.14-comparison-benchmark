@@ -1,0 +1,37 @@
+{
+  "version": "october-16-native-decisions-v1",
+  "model_id": "nimble_v4_max",
+  "model": {
+    "label": "Nimble v4 Max",
+    "model": "nimble-v4-max",
+    "host": "api.bespokelabs.ai",
+    "path": "/v1/systemone",
+    "provider_tag": "bespoke-direct",
+    "provider_name": "Bespoke Labs",
+    "identities": [
+      "nimble-v4-max",
+      "bespokelabs/nimble-v4-max"
+    ],
+    "key_name": "BESPOKE_API_KEY",
+    "input_usd_per_million": "0.09",
+    "pricing_source": "https://docs.bespokelabs.ai/nimble/pricing"
+  },
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "questions_each": 1136,
+  "planned_cases": 1136,
+  "endpoint": "https://api.bespokelabs.ai/v1/systemone",
+  "input": "Exact original native choice state, instructions and five criteria; routing only added for OpenRouter",
+  "timing": "New HTTPS connection per attempt; monotonic connect through complete response body; excludes local queue/preparation; retry waits recorded separately",
+  "concurrency": {
+    "maximum_per_model": 2,
+    "questions_per_wave": 2,
+    "barrier": "Both cases settle before next wave"
+  },
+  "primary": "First attempt; errors and invalid answers remain unsuccessful",
+  "retry": "At most one recovery for transport failure or HTTP 408/429/5xx; no answer-dependent retries",
+  "order": "Same question order as October 15 eight-LLM run",
+  "cost": "API-reported cost where present; otherwise Nimble input usage times captured public tariff, separately labelled; missing is never zero",
+  "known_spend_guard_usd": "0.50",
+  "guard_limit": "Soft dispatch guard; missing and in-flight charges prevent a hard billing cap",
+  "images": "Unsupported by documented text-only decision API; no OCR/caption replacement"
+}

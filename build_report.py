@@ -1,4 +1,4 @@
-"""Build the current eleven-model report from the same-day selected evidence."""
+"""Build the current overall comparison, retaining the original selected runs."""
 import json
 from pathlib import Path
 import re
@@ -25,7 +25,7 @@ def render(text, title):
     body = markdown.markdown(text, extensions=['tables', 'fenced_code', 'toc'])
     pages = {'THREE_MODEL_REFERENCE.md': 'three_model_reference.html', 'FUNCTIONS.md': 'functions.html', 'README.md': 'index.html'}
     body = re.sub(r'href="(?!https?://|#)([^"]+)"', lambda m: 'href="'+pages.get(m[1], REPO+'/blob/main/'+m[1])+'"', body)
-    return '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'''+title+'''</title><style>body{max-width:1260px;margin:auto;padding:32px 24px 80px;background:#f8fafc;color:#193047;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.35rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{max-width:100%;height:auto;background:white;border-radius:10px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.86rem;margin:20px 0}th,td{border-bottom:1px solid #d5dfe9;padding:9px 11px;text-align:left;vertical-align:top}th{background:#e6eef5}code{font-size:.85em;overflow-wrap:anywhere}pre{overflow:auto;background:#e6eef5;padding:16px}nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #d5dfe9;padding-bottom:16px;font-size:.9rem}p{max-width:100ch}</style></head><body><nav><a href="index.html">Eleven-model comparison</a><a href="functions.html">Functions and load</a><a href="three_model_reference.html">Original three-model reference</a><a href="'''+REPO+'">Repository and evidence</a></nav><main>'+body+'</main></body></html>\n'
+    return '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'''+title+'''</title><style>body{max-width:1260px;margin:auto;padding:32px 24px 80px;background:#f8fafc;color:#193047;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.35rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{max-width:100%;height:auto;background:white;border-radius:10px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.86rem;margin:20px 0}th,td{border-bottom:1px solid #d5dfe9;padding:9px 11px;text-align:left;vertical-align:top}th{background:#e6eef5}code{font-size:.85em;overflow-wrap:anywhere}pre{overflow:auto;background:#e6eef5;padding:16px}nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #d5dfe9;padding-bottom:16px;font-size:.9rem}p{max-width:100ch}</style></head><body><nav><a href="index.html">Overall comparison</a><a href="functions.html">Functions and load</a><a href="three_model_reference.html">Original three-model reference</a><a href="'''+REPO+'">Repository and evidence</a></nav><main>'+body+'</main></body></html>\n'
 
 
 def expand(text, parts):
@@ -38,11 +38,20 @@ def expand(text, parts):
 
 
 def build():
-    s = json.loads((ROOT/'matched_2026-10-15/summary.json').read_text())
+    source = ROOT/'overall_2026-10-16/summary.json'
+    assert source.exists(), 'Build the combined October 16 analysis first'
+    s = json.loads(source.read_text())
     models = s['models']
     order = sorted(models, key=lambda m: -models[m]['primary']['correct'])
+    added = s['added_model_ids']
+    native = NATIVE + tuple(added)
     families = {f['family_id']: f for f in s['by_family']}
     parts = {}
+    parts['MODEL_COUNT'] = str(len(models))
+    parts['TEST_CONTEXT'] = (f"The overall comparison contains **{len(models)} services × 1,136 questions = {len(models)*1136:,} scored model-question cases**. "
+        +f"**Added October 16, 2026:** {', '.join(models[m]['label'] for m in added)}. These results are included in the main ranking, function tables and graphics, not isolated as a separate pilot. "
+        +"The original eleven services were tested on October 15 and their saved results are unchanged. "
+        +"Microsoft uses OpenRouter/Azure; Nimble uses Bespoke's direct API where tested. Different dates, routes and provider load limit speed comparisons, even with the same client timer.")
     def count(model, fid):
         f = families[fid]
         return f"{f['models'][model]['correct']}/{f['n']}"
@@ -50,22 +59,24 @@ def build():
         p = next(p for p in s['pairwise'] if {p['a'], p['b']} == {a, b})
         return p
     j13, j14, ld, lr = (models[m] for m in (*NATIVE, 'openai/gpt-6-luna'))
-    parts['LEAD_RESULTS'] = (f"Jev 1.14 scored **{j14['primary']['correct']}/1,136 ({pct(j14['primary']['correct'],1136)})**, "
-        f"compared with **{j13['primary']['correct']} ({pct(j13['primary']['correct'],1136)})** for Jev 1.13 and "
-        f"**{ld['primary']['correct']} ({pct(ld['primary']['correct'],1136)})** for Luna Decisions. "
-        f"Regular Luna scored **727 (64.0%)** and Mercury 2.5 scored **702 (61.8%)**. "
-        "Mercury came close to regular Luna at lower reported cost and shorter median response time under its test-day promotional tariff.")
-    parts['RESULTS'] = table(['Model', 'Correct / 1,136', 'Accuracy', 'Core correct', 'Wrong valid', 'Unanswered', 'Full-bank median', 'p95'], [
+    best = models[order[0]]
+    parts['LEAD_RESULTS'] = (f"**{best['label']} now leads the expanded comparison at {best['primary']['correct']}/1,136 ({pct(best['primary']['correct'],1136)})**. "
+        f"Jev 1.14 scored **{j14['primary']['correct']} ({pct(j14['primary']['correct'],1136)})**, Jev 1.13 **{j13['primary']['correct']} ({pct(j13['primary']['correct'],1136)})**, "
+        +', '.join(f"{models[m]['label']} **{models[m]['primary']['correct']} ({pct(models[m]['primary']['correct'],1136)})**" for m in order if m in added and m != order[0])+'. '
+        +f"Regular Luna scored **727 (64.0%)**, Mercury 2.5 **702 (61.8%)**, and Luna Decisions **{ld['primary']['correct']} ({pct(ld['primary']['correct'],1136)})**. "
+        +"The new native decision services strengthen the inexpensive alternatives to regular LLMs, while exposing different limits by function.")
+    parts['RESULTS'] = table(['Model', 'Correct / 1,136', 'Accuracy', 'Core correct', 'Wrong valid', 'Unanswered', 'Full-bank median', 'p95', 'Test date'], [
         [models[m]['label'], models[m]['primary']['correct'], pct(models[m]['primary']['correct'],1136),
          f"{models[m]['by_role']['core']['correct']}/640", models[m]['primary']['wrong'], models[m]['primary']['unanswered'],
-         f"{models[m]['latency_first_all']['median_ms']:.0f} ms", f"{models[m]['latency_first_all']['p95_ms']:.0f} ms"] for m in order])
-    parts['COSTS'] = table(['Model', 'Known cost for 1,136', 'Normalized cost per 1,000', 'Attempts missing cost'], [
+         f"{models[m]['latency_first_all']['median_ms']:.0f} ms", f"{models[m]['latency_first_all']['p95_ms']:.0f} ms", ', '.join(models[m]['dates_toronto'])] for m in order])
+    parts['COSTS'] = table(['Model', 'Cost for 1,136', 'Normalized cost per 1,000', 'Attempts missing cost', 'Cost basis'], [
         [models[m]['label'], f"${models[m]['cost_all_attempts']['known_usd']:.8f}", f"${models[m]['known_usd_per_1000_questions']:.8f}",
-         models[m]['cost_all_attempts']['missing_attempts']] for m in order])
-    cost = s['total_selected_reported_cost']
-    parts['COST_CONTEXT'] = (f"The selected eleven runs reported **${cost['known_usd']:.9f} combined**. "
-        f"{cost['missing_attempts']} error attempts omitted charges, so this is a known reported amount, not exact billing. "
+         models[m]['cost_all_attempts']['missing_attempts'],'Token usage × tariff' if models[m].get('cost_basis','').startswith('Usage') else 'API-reported'] for m in order])
+    cost = s['total_selected_accounted_cost']
+    parts['COST_CONTEXT'] = (f"The selected {len(models)} runs account for **${cost['known_usd']:.9f} combined**. "
+        f"{cost['missing_attempts']} attempts have unknown charges. API-returned charges and calculations from input-token usage and a published tariff are distinguished; neither is a statement of an independently reconciled invoice. "
         "Mercury's captured tariff had an 80% promotional discount. Its cost advantage is specific to that price.")
+    parts['ADDITIONS_ANALYSIS'] = (ROOT/'addition_analysis.md').read_text()
     p = pair('openai/gpt-6-luna', 'luna_decisions')
     parts['LUNA_COMPARISON'] = (f"Regular Luna answered **727/1,136** correctly, compared with **{ld['primary']['correct']}/1,136** for Luna Decisions. "
         f"Its core score was 431/640, compared with {ld['by_role']['core']['correct']}/640. "
@@ -94,7 +105,7 @@ def build():
         +', '.join(f['family'].lower() for f in s['by_family'] if f['models']['jev114']['correct']==f['n'])+'. '
         +f"Its {count('jev114','F07')} scheduling result "
         f"and {count('jev114','F13')} procedural result show why its bounded-deduction strengths should not be described as general reliability.\n\n"
-        f"There are {s['none_of_eleven_correct']} questions that none of the eleven models answered correctly under the strict primary rules. "
+        f"There are {s['none_of_tested_models_correct']} questions that none of the {len(models)} models answered correctly under the strict primary rules. "
         "Their IDs remain private for a possible later key and wording audit. This count does not establish that their reference answers are wrong; the original key is unchanged.")
     comparison = pair('jev113','jev114')
     corrected = comparison['only_b_correct'] if comparison['a']=='jev113' else comparison['only_a_correct']
@@ -110,20 +121,20 @@ def build():
             ('F19','Exceptions and priority rules'),('F14','temporal intervals')])+'. '
         +f"On changed-evidence pairs, the counts with both answers correct were {j13['panels']['contrast']['both_correct']}/25 and {j14['panels']['contrast']['both_correct']}/25. "
         +"A version upgrade should therefore be checked against the tasks an application actually uses.")
-    parts['PROCEDURE_CROSSOVER'] = (f"The text bank also has a counterexample to Jev's overall lead: Qwen answered 11/42 procedural questions correctly, "
+    parts['PROCEDURE_CROSSOVER'] = (f"The text bank also shows why totals do not describe every function: Qwen answered 11/42 procedural questions correctly, "
         f"versus Jev 1.14's {count('jev114','F13')}. Neither result is dependable.")
     parts['PANELS'] = table(['Model','All rotations correct','Consistent / complete panels','Both evidence answers correct','Candidate checks correct','All five checks correct'], [
         [models[m]['label'],f"{models[m]['panels']['rotation']['all_correct']}/25",f"{models[m]['panels']['rotation']['consistent']}/{models[m]['panels']['rotation']['complete']}",
          f"{models[m]['panels']['contrast']['both_correct']}/25",f"{models[m]['panels']['candidate_checks']['correct']}/80",f"{models[m]['panels']['candidate_checks']['all_checks_correct']}/16"] for m in order])
     parts['FORMAT'] = table(['Model','Strict correct','Leading-ID correct','Invalid first output','First transport/HTTP failures','Recovery attempts','Eventual correct'], [
         [models[m]['label'],models[m]['primary']['correct'],models[m]['format_sensitivity_POSTHOC']['leading_id_correct'],models[m]['statuses_first'].get('invalid_output',0),
-         models[m]['statuses_first'].get('http_failure',0),models[m]['recovery_attempts'],models[m]['eventual']['correct']] for m in order if m not in NATIVE])
+         models[m]['statuses_first'].get('http_failure',0),models[m]['recovery_attempts'],models[m]['eventual']['correct']] for m in order if m not in native])
     parts['NATIVE_OUTCOMES'] = table(['Decisions service','Usable first choices','First transport/HTTP failures','Probability warnings','Recovery attempts','Eventual correct'], [
         [models[m]['label'],models[m]['primary']['answered'],models[m]['statuses_first'].get('http_failure',0),models[m]['primary']['probability_warnings'],
-         models[m]['recovery_attempts'],models[m]['eventual']['correct']] for m in NATIVE])
-    parts['CONFIDENCE'] = table(['Confidence cutoff','Jev 1.13','Jev 1.14','Luna Decisions'], [
+         models[m]['recovery_attempts'],models[m]['eventual']['correct']] for m in native])
+    parts['CONFIDENCE'] = table(['Confidence cutoff']+[models[m]['label'] for m in native], [
         [f'≥{cutoff:g}']+[f"{next(x for x in models[m]['confidence'] if x['threshold']==cutoff)['correct']}/{next(x for x in models[m]['confidence'] if x['threshold']==cutoff)['attempted']} "
-          f"({pct(next(x for x in models[m]['confidence'] if x['threshold']==cutoff)['attempted'],1136)} coverage)" for m in NATIVE] for cutoff in (.8,.9,.95)])
+          f"({pct(next(x for x in models[m]['confidence'] if x['threshold']==cutoff)['attempted'],1136)} coverage)" for m in native] for cutoff in (.8,.9,.95)])
     parts['REPEAT'] = table(['Service','Previous correct / 1,136','Fresh correct / 1,136','Previously unsuccessful now correct','Previously correct now unsuccessful'], [
         [models[m]['label'],s['repeat_comparison'][m]['previous_primary']['correct'],models[m]['primary']['correct'],
          s['repeat_comparison'][m]['old_to_new']['only_b_correct'],s['repeat_comparison'][m]['old_to_new']['only_a_correct']] for m in NATIVE])
@@ -136,7 +147,7 @@ def build():
         "the eventual score was 680/1,136. The main comparison keeps the stricter 677/1,136 first-attempt result, as it does for the eight regular LLMs.")
     parts['SESSIONS'] = table(['Session','Toronto start','Toronto finish'], [
         [label]+[datetime.fromisoformat(s['sessions_utc'][key][field]).astimezone(ZoneInfo('America/Toronto')).strftime('%Y-%m-%d %H:%M:%S') for field in ('started','completed')]
-        for key,label in [('eight_regular_llms','Eight regular LLMs'),('three_decisions','Three Decisions services')]])
+        for key,label in [('eight_regular_llms','Eight regular LLMs'),('three_decisions','Original three Decisions services')]+[(m,models[m]['label']) for m in added]])
     parts['IDENTITIES'] = table(['Service','Returned identities and counts','Backend tag','Toronto dates'], [
         [models[m]['label'],'; '.join('`'+k+'` ('+str(v)+')' for k,v in models[m]['identities'].items()),models[m]['provider_tag'],', '.join(models[m]['dates_toronto'])] for m in order])
     companion = json.loads((ROOT/'expansion_2026-10-15/companion_images.json').read_text())
@@ -147,7 +158,7 @@ def build():
     text = expand((ROOT/'report_layout.md').read_text(), parts)
     assert 'historical' not in text.lower()
     (ROOT/'README.md').write_text(text)
-    functions = '# Results by function and load level\n\nThe [main report](README.md) explains the same-day test conditions. All cells below use strict first-attempt results.\n\n'+(ROOT/'task_examples.md').read_text()+'\n## All 25 functions\n\n'
+    functions = '# Results by function and load level\n\nThe [main report](README.md) explains the October 15 original runs and October 16 additions. All cells below use strict first-attempt results. The new models are included in every table.\n\n'+(ROOT/'task_examples.md').read_text()+'\n## All 25 functions\n\n'
     functions += table(['Function','n']+[models[m]['label'] for m in order], [[f['family'],f['n']]+[f"{f['models'][m]['correct']} ({pct(f['models'][m]['correct'],f['n'])})" for m in order] for f in s['by_family']])
     for field,heading in [('by_role','Core and related item types'),('by_level','Engineered load levels')]:
         functions += '## '+heading+'\n\n'+table(['Group','n']+[models[m]['label'] for m in order], [
@@ -155,9 +166,9 @@ def build():
     (ROOT/'FUNCTIONS.md').write_text(functions.rstrip()+'\n')
     for path in (ROOT/'figures').iterdir():
         shutil.copyfile(path, ROOT/'docs/figures'/path.name)
-    (ROOT/'docs/index.html').write_text(render(text,'Eleven models on 1136 text decisions'))
+    (ROOT/'docs/index.html').write_text(render(text,f'{len(models)} models on 1136 text decisions'))
     (ROOT/'docs/functions.html').write_text(render(functions,'Text decision results by function and load'))
-    print('Built same-day eleven-model README, function tables and Pages; original evidence preserved')
+    print('Built overall README, function tables and Pages; original evidence preserved')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,63 @@
+{
+  "review_date_toronto": "2026-10-16",
+  "checked": {
+    "utc": "2026-10-16T17:56:34.633430+00:00",
+    "toronto": "2026-10-16T13:56:34.633430-04:00"
+  },
+  "scope": "Current tested hosted routes and documented API contracts; not a claim about every base-model capability or future endpoint",
+  "scored_image_questions_added": 0,
+  "native_image_compatibility_requests": 3,
+  "image_score_policy": "Not eligible for a native-image bank through these APIs; no zero score, image accuracy, image benchmark latency or 200-question cost assigned",
+  "no_substitution": "No OCR, captions, image modification or text-only substitute was used",
+  "text_benchmark": "https://github.com/etsabary/jev-1.14-comparison-benchmark",
+  "nimble_contract": {
+    "source": "https://docs.bespokelabs.ai/api-reference/openapi.yaml",
+    "source_sha256": "0840dc7ddfa521f69f84322e26375f53ed4787189376818ee3797454bd075a57",
+    "documentation": "https://docs.bespokelabs.ai/api-reference/systemone",
+    "state_description_excerpt": "Nimble reads a JSON state as JSON text.",
+    "interpretation": "The accepted image_url array is JSON text, not a documented image-decoding modality. HTTP 200 is not evidence of vision.",
+    "identity_limit": "The response model field repeats the requested model name; it does not independently attest a hidden checkpoint"
+  },
+  "models": {
+    "microsoft_decision": {
+      "label": "Microsoft-Decision-1",
+      "route": "OpenRouter/Azure",
+      "image_status": "native_image_input_rejected",
+      "probe_http_status": 400,
+      "source": "https://openrouter.ai/api/v1/models/microsoft/microsoft-decision-1/endpoints",
+      "declared_input_modalities": [
+        "text"
+      ],
+      "probe_error": "Azure does not accept \"image_url\" parts in state",
+      "accuracy": null,
+      "scheduled_image_cases": 0
+    },
+    "nimble_v4": {
+      "label": "Nimble v4",
+      "route": "Bespoke direct",
+      "image_status": "image_shaped_json_read_as_text_by_documented_contract",
+      "probe_http_status": 200,
+      "probe_input_tokens": 26253,
+      "probe_confidence": 0.015739724828169765,
+      "source": "https://docs.bespokelabs.ai/api-reference/openapi.yaml",
+      "accuracy": null,
+      "scheduled_image_cases": 0
+    },
+    "nimble_v4_max": {
+      "label": "Nimble v4 Max",
+      "route": "Bespoke direct",
+      "image_status": "image_shaped_json_read_as_text_by_documented_contract",
+      "probe_http_status": 200,
+      "probe_input_tokens": 26253,
+      "probe_confidence": 0.011181337445765771,
+      "source": "https://docs.bespokelabs.ai/api-reference/openapi.yaml",
+      "accuracy": null,
+      "scheduled_image_cases": 0
+    }
+  },
+  "probe_cost": {
+    "known_tariff_usd": "0.00341289",
+    "missing_charge_records": 1,
+    "included_in_scored_benchmark_costs": false
+  }
+}

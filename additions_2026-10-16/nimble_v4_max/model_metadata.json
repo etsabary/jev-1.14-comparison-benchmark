@@ -1,0 +1,19 @@
+{
+  "retrieved": {
+    "utc": "2026-10-16T17:49:02.570150+00:00",
+    "toronto": "2026-10-16T13:49:02.570150-04:00"
+  },
+  "data": {
+    "source": "https://docs.bespokelabs.ai/nimble/overview",
+    "pricing_source": "https://docs.bespokelabs.ai/nimble/pricing",
+    "input_modalities": [
+      "text",
+      "json"
+    ],
+    "input_usd_per_million": "0.09",
+    "output_usd_per_million": "0",
+    "limits_source": "https://docs.bespokelabs.ai/nimble/limits-and-errors",
+    "documented_concurrency_before_purchase": 4,
+    "identity_limit": "Named hosted version; no dated immutable checkpoint is documented"
+  }
+}
