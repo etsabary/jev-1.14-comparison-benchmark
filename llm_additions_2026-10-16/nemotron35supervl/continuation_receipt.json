@@ -1,0 +1,16 @@
+{
+  "time": {
+    "utc": "2026-10-16T18:49:34.292775+00:00",
+    "toronto": "2026-10-16T14:49:34.292775-04:00"
+  },
+  "reason": "HTTP 200 containing transient upstream error with no choices has no model/provider identity to attest.",
+  "source_sha256": "e545efcc52ce6795a4fefa40ef530c5013cb7c8d513daea4b6f35d74e597da9e",
+  "source_path": "runs/text_field_2026-10-16/resume_envelope_errors.py",
+  "existing_attempts_prefix_bytes": 2146445,
+  "existing_attempts_prefix_sha256": "31dba2c653c3c4d25588106a2027a255f55bfb2edf282a192987767719ac710b",
+  "reconciled_case_indices": [
+    861
+  ],
+  "request_or_timer_or_scoring_changes": false,
+  "policy": "All recorded attempts retained. No existing attempt replayed. No extra recovery for the HTTP-200 envelope; it remains unsuccessful under the original parser."
+}

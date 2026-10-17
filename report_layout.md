@@ -12,15 +12,17 @@ The bank contains 640 core questions and 496 related variants, contrasts and can
 
 The [function and load-level tables](FUNCTIONS.md) explain every family. The separate [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is not pooled with the text scores.
 
-![Overall and core-only accuracy including the October 16 additions](figures/overall_accuracy.png)
+![Overall and core-only accuracy including the October 16 additions](figures/expanded_accuracy.png)
 
 ## Results across the full bank
+
+Models with at least 5% model-output failures are excluded from the main comparison. This author-requested, post-hoc reporting rule removes Haiku, DeepSeek and Phi-4 from the ranking, all function tables and charts. Their complete runs remain in the [separate diagnostics](OUTPUT_COMPLIANCE.md). Provider and transport failures do not count toward this format cutoff. Models below the cutoff retain every failed first attempt in their scores.
 
 Every row uses the **first attempt**. Errors, refusals, invalid output and truncation are unsuccessful; wrong valid choices remain separate. The median and p95 use **all 1,136 timed first attempts per model**, including failures. p95 is the response time at or below which roughly 95% of requests completed.
 
 {{RESULTS}}
 
-All timers run from connection start through the complete response body. The same timing boundary and two concurrent requests per model are used across the October 15 and October 16 runs. Different dates, routes and provider load can still affect the comparison. Failure counts and usable-response timings remain available in the [overall aggregate evidence](overall_2026-10-16/summary.json).
+All timers run from connection start through the complete response body. The same timing boundary and up to two concurrent requests per model are used across the October 15 and October 16 runs. Different dates, routes and provider load can still affect the comparison. Failure counts and usable-response timings remain available in the [overall aggregate evidence](overall_expanded_2026-10-16/summary.json).
 
 ## Cost of the full runs
 
@@ -30,7 +32,7 @@ Costs cover **1,136 questions per model**, including recovery attempts. The per-
 
 {{COST_CONTEXT}}
 
-![Actual 1136-question costs and first-attempt response times including October 16 additions](figures/overall_cost_and_speed.png)
+![Actual 1136-question costs and first-attempt response times including October 16 additions](figures/expanded_cost_and_speed.png)
 
 {{ADDITIONS_ANALYSIS}}
 
@@ -58,9 +60,9 @@ The release's text gain should be distinguished from its broader features. In th
 
 ## Accuracy across the 25 functions
 
-Cell labels show correct counts; color shows accuracy within each family. The [function tables](FUNCTIONS.md) and [family CSV](overall_2026-10-16/family_comparison.csv) retain all denominators, including the new models.
+Cell labels show correct counts; color shows accuracy within each family. The [function tables](FUNCTIONS.md) and [family CSV](overall_expanded_2026-10-16/family_comparison.csv) retain all denominators, including the new models.
 
-![Correct counts and accuracy by family including October 16 additions](figures/overall_family_accuracy.png)
+![Correct counts and accuracy by family including October 16 additions](figures/expanded_family_accuracy.png)
 
 ## Matched diagnostic tests
 
@@ -70,7 +72,9 @@ Rotation and evidence-change scores use planned panel denominators, so missing a
 
 ## Output format and recovery
 
-The leading-ID column is a **post-hoc sensitivity check**, applied uniformly to the eight saved LLM runs. It reads a numeric answer ID at the start even if an explanation follows or later output is truncated. It adds no calls and does not replace the strict primary score. A larger output budget or reasoning-enabled evaluation would be a different experiment.
+The leading-ID column is a **post-hoc sensitivity check**, applied uniformly to the saved regular-LLM runs. It reads a numeric answer ID at the start even if an explanation follows or later output is truncated. It adds no calls and does not replace the strict primary score. A larger output budget or reasoning-enabled evaluation would be a different experiment. Explanatory text without a leading answer ID is not converted into a guessed choice.
+
+The three models above the output-failure cutoff appear only in the [diagnostics](OUTPUT_COMPLIANCE.md), not in this table. “Invalid first output” counts model-output failures; provider errors and incomplete response bodies appear in the separate failure column.
 
 {{FORMAT}}
 
@@ -100,17 +104,19 @@ These repeats measure observed service variation as well as possible model behav
 
 {{SESSIONS}}
 
-All sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The October 16 runner allowed two per model, and both Nimble models together stayed within the documented four-request free-credit concurrency limit. The [addition transport](added_decisions.py) retains the same timer operations as the [October 15 transport](decision_refresh.py), with configurable host and endpoint path.
+All sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The seven October 16 regular-LLM processes ran independent waves, allowing up to 14 concurrent requests in total; GLM continued after the others had finished. The native-addition runner also allowed two per model, and both Nimble models together stayed within the documented four-request free-credit concurrency limit. The [addition transport](added_decisions.py) retains the same timer operations as the [October 15 transport](decision_refresh.py), with configurable host and endpoint path.
 
-Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. OpenRouter native services used `/api/alpha/decisions` with backend selection and fallback disabled. Nimble used Bespoke's `/v1/systemone` directly, with the same original state, instructions and five answer options. No reasoning trace or agentic iteration was requested. Backend hardware, routes, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.
+Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. Temperature was omitted in the original eight-LLM session and in the October 16 regular-LLM additions. This preserves that request protocol but does not establish equal provider-default sampling settings. Hidden reasoning was disabled; a model could still generate an explanation as its visible output, which was unusable under the answer-ID contract if it was not a complete numeric answer. OpenRouter native services used `/api/alpha/decisions` with backend selection and fallback disabled. Nimble used Bespoke's `/v1/systemone` directly, with the same original state, instructions and five answer options. No agentic iteration was requested. Backend hardware, routes, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.
 
 {{IDENTITIES}}
 
-The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Microsoft likewise returned the required October 9 identity. Nimble was requested by its explicit v4 and v4 Max names, not `nimble-latest`; its API documentation says the response repeats the requested name, so this is not independent checkpoint attestation. Ordinary LLMs generally returned aliases, not dated checkpoints. Captured endpoint metadata is retained for [the eight LLMs](expansion_2026-10-15/model_metadata.json), [the original three native services](decision_refresh_2026-10-15/model_metadata.json) and [the October 16 additions](additions_2026-10-16).
+The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Microsoft likewise returned the required October 9 identity. Nimble was requested by its explicit v4 and v4 Max names, not `nimble-latest`; its API documentation says the response repeats the requested name, so this is not independent checkpoint attestation. Ordinary LLMs generally returned aliases, not dated checkpoints. Captured endpoint metadata is retained for [the eight LLMs](expansion_2026-10-15/model_metadata.json), [the original three native services](decision_refresh_2026-10-15/model_metadata.json), [the October 16 native additions](additions_2026-10-16) and [the October 16 regular LLM additions](llm_additions_2026-10-16).
+
+GLM 5.3 Flash rejected the request to disable reasoning and was excluded before scoring. GLM 4.7 Flash replaced it with the author's approval. The [compatibility probes](llm_additions_2026-10-16/compatibility_probes.json) are separate from the 1,136-question runs and their costs.
 
 ## Evidence reproduction and limits
 
-The [questions](data/questions_1136.csv), [overall summary](overall_2026-10-16/summary.json), [October 16 addition ledgers and protocols](additions_2026-10-16), [unchanged eleven-model summary](matched_2026-10-15/summary.json), [October 15 native attempt ledger](decision_refresh_2026-10-15/attempts.jsonl), and [unchanged eight-LLM evidence](expansion_2026-10-15) preserve the comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.
+The [questions](data/questions_1136.csv), [current overall summary](overall_expanded_2026-10-16/summary.json), [unchanged fourteen-model summary](overall_2026-10-16/summary.json), [regular-LLM addition ledgers](llm_additions_2026-10-16), [native October 16 ledgers](additions_2026-10-16), [unchanged eleven-model summary](matched_2026-10-15/summary.json), [October 15 native attempt ledger](decision_refresh_2026-10-15/attempts.jsonl), and [unchanged eight-LLM evidence](expansion_2026-10-15) preserve the comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.
 
 All new primary scores use first attempts; retries are limited to one recovery for transport failures or HTTP 408, 429 and 5xx responses. Valid wrong answers and format failures are never retried. Cost includes eligible recoveries; missing charges remain unknown, not zero. Nimble documents HTTP errors as uncharged, while transport timeouts with no response remain unknown.
 
@@ -122,11 +128,13 @@ python3 validate.py
 python3 text_models.py
 python3 matched_analysis.py
 python3 overall_analysis.py
-python3 -m unittest -v test_analysis.py test_text_models.py test_decision_refresh.py test_added_decisions.py test_overall.py test_publication.py test_matched.py
+python3 text_additions.py
+python3 -m unittest discover -p 'test_*.py'
 
 # Reproduce scores using the external original key.
 python3 matched_analysis.py --answer-key /path/to/answer_key.csv
 python3 overall_analysis.py --answer-key /path/to/answer_key.csv
+python3 text_additions.py --answer-key /path/to/answer_key.csv
 
 # Rebuild current figures, README and Pages.
 python3 -m pip install -r requirements-reports.txt

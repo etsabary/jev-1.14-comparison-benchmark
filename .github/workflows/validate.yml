@@ -12,4 +12,6 @@ jobs:
       - run: python3 text_models.py
       - run: python3 matched_analysis.py
       - run: python3 overall_analysis.py
+      - run: python3 text_additions.py
       - run: python3 -m unittest -v test_analysis.py test_text_models.py test_decision_refresh.py test_added_decisions.py test_overall.py test_publication.py test_matched.py
+      - run: python3 -m unittest -v test_text_additions.py

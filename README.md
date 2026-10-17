@@ -1,20 +1,22 @@
-# 14 models on the same 1,136 text decisions
+# 19 models on the same 1,136 text decisions
 
 I have been intrigued by Jev because it does something different from the LLMs I usually use: it returns a typed decision with probabilities rather than a paragraph. That made it harder to place. Could it make better quick decisions than Luna, one of my favorite models? I wanted a comparison that would make its strengths and limits visible.
 
 On these tests, the answer was clearly yes. Jev was substantially stronger than both Luna services overall. That is a finding about **System 1-style decisions**: a single answer from supplied information, without an explicit thinking budget, tools or an agentic feedback loop. Those decisions matter when a system needs to route many requests quickly and cheaply. This is not a comparison of unrestricted reasoning, writing or agentic ability.
 
-**Nimble v4 Max now leads the expanded comparison at 997/1,136 (87.8%)**. Jev 1.14 scored **929 (81.8%)**, Jev 1.13 **919 (80.9%)**, Nimble v4 **902 (79.4%)**, Microsoft-Decision-1 **841 (74.0%)**. Regular Luna scored **727 (64.0%)**, Mercury 2.5 **702 (61.8%)**, and Luna Decisions **677 (59.6%)**. The new native decision services strengthen the inexpensive alternatives to regular LLMs, while exposing different limits by function.
+**Nimble v4 Max now leads the expanded comparison at 997/1,136 (87.8%)**. Jev 1.14 scored **929 (81.8%)**, Jev 1.13 **919 (80.9%)**, and Luna Decisions **677 (59.6%)**. The strongest regular LLM under this decision-only contract was **Tencent Hy3: 790 (69.5%)**. The tables separate correct choices, wrong choices and outputs that could not be used as decisions.
 
-The overall comparison contains **14 services × 1,136 questions = 15,904 scored model-question cases**. **Added October 16, 2026:** Microsoft-Decision-1, Nimble v4, Nimble v4 Max. These results are included in the main ranking, function tables and graphics, not isolated as a separate pilot. The original eleven services were tested on October 15 and their saved results are unchanged. Microsoft uses OpenRouter/Azure; Nimble uses Bespoke's direct API where tested. Different dates, routes and provider load limit speed comparisons, even with the same client timer.
+The main comparison contains **19 services × 1,136 questions = 21,584 scored model-question cases**. 22 services were tested in total (24,992 cases). Haiku, DeepSeek and Phi-4 are retained in the [output-compliance diagnostics](OUTPUT_COMPLIANCE.md), outside the main ranking because at least 5% of their first outputs failed the decision-only contract. **Added October 16, 2026:** Microsoft-Decision-1, Nimble v4, Nimble v4 Max, Nemotron 3.5 Lightning, GLM 4.7 Flash, MiMo V2.6 Flash, Qwen3.8 Flash, Tencent Hy3, Nemotron 3.5 Super VL. These results are included in the main ranking, function tables and graphics, not isolated as a separate pilot. The original eleven services were tested on October 15 and their saved results are unchanged. Microsoft uses OpenRouter/Azure; Nimble uses Bespoke's direct API; the regular LLM additions use separately pinned OpenRouter backends. Different dates, routes and provider load limit speed comparisons, even with the same client timer.
 
 The bank contains 640 core questions and 496 related variants, contrasts and candidate checks across 25 families. Related items are not independent observations. Every model received the same underlying instructions, facts, question and five answer options in the same order. Native Decisions and ordinary chat serialize that content differently.
 
 The [function and load-level tables](FUNCTIONS.md) explain every family. The separate [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is not pooled with the text scores.
 
-![Overall and core-only accuracy including the October 16 additions](figures/overall_accuracy.png)
+![Overall and core-only accuracy including the October 16 additions](figures/expanded_accuracy.png)
 
 ## Results across the full bank
+
+Models with at least 5% model-output failures are excluded from the main comparison. This author-requested, post-hoc reporting rule removes Haiku, DeepSeek and Phi-4 from the ranking, all function tables and charts. Their complete runs remain in the [separate diagnostics](OUTPUT_COMPLIANCE.md). Provider and transport failures do not count toward this format cutoff. Models below the cutoff retain every failed first attempt in their scores.
 
 Every row uses the **first attempt**. Errors, refusals, invalid output and truncation are unsuccessful; wrong valid choices remain separate. The median and p95 use **all 1,136 timed first attempts per model**, including failures. p95 is the response time at or below which roughly 95% of requests completed.
 
@@ -25,17 +27,22 @@ Every row uses the **first attempt**. Errors, refusals, invalid output and trunc
 | Jev 1.13 | 919 | 80.9% | 533/640 | 217 | 0 | 197 ms | 340 ms | 2026-10-15 |
 | Nimble v4 | 902 | 79.4% | 522/640 | 234 | 0 | 214 ms | 260 ms | 2026-10-16 |
 | Microsoft-Decision-1 | 841 | 74.0% | 476/640 | 295 | 0 | 288 ms | 574 ms | 2026-10-16 |
+| Tencent Hy3 | 790 | 69.5% | 446/640 | 340 | 6 | 1423 ms | 1926 ms | 2026-10-16 |
+| Qwen3.8 Flash | 763 | 67.2% | 438/640 | 340 | 33 | 862 ms | 5717 ms | 2026-10-16 |
 | Luna 6 regular | 727 | 64.0% | 431/640 | 408 | 1 | 942 ms | 1961 ms | 2026-10-15 |
+| Nemotron 3.5 Super VL | 710 | 62.5% | 414/640 | 424 | 2 | 465 ms | 835 ms | 2026-10-16 |
 | Mercury 2.5 | 702 | 61.8% | 404/640 | 432 | 2 | 534 ms | 1077 ms | 2026-10-15 |
+| MiMo V2.6 Flash | 684 | 60.2% | 399/640 | 412 | 40 | 1429 ms | 6032 ms | 2026-10-16 |
 | Luna 6 Decisions | 677 | 59.6% | 390/640 | 426 | 33 | 261 ms | 533 ms | 2026-10-15 |
 | Gemini 2.5 Flash-Lite | 598 | 52.6% | 352/640 | 524 | 14 | 341 ms | 523 ms | 2026-10-15 |
 | Qwen3-30B-A3B Instruct 2507 | 564 | 49.6% | 334/640 | 572 | 0 | 1034 ms | 1823 ms | 2026-10-15 |
 | Granite 4.2 8B | 478 | 42.1% | 279/640 | 612 | 46 | 324 ms | 866 ms | 2026-10-15 |
 | GPT-5.4 nano | 464 | 40.8% | 276/640 | 672 | 0 | 683 ms | 1136 ms | 2026-10-15 |
-| Phi-4 14B | 428 | 37.7% | 258/640 | 379 | 329 | 365 ms | 901 ms | 2026-10-15 |
 | Mistral NeMo 12B | 421 | 37.1% | 240/640 | 701 | 14 | 490 ms | 1523 ms | 2026-10-15 |
+| Nemotron 3.5 Lightning | 378 | 33.3% | 233/640 | 690 | 68 | 280 ms | 533 ms | 2026-10-16 |
+| GLM 4.7 Flash | 334 | 29.4% | 188/640 | 800 | 2 | 560 ms | 17056 ms | 2026-10-16 |
 
-All timers run from connection start through the complete response body. The same timing boundary and two concurrent requests per model are used across the October 15 and October 16 runs. Different dates, routes and provider load can still affect the comparison. Failure counts and usable-response timings remain available in the [overall aggregate evidence](overall_2026-10-16/summary.json).
+All timers run from connection start through the complete response body. The same timing boundary and up to two concurrent requests per model are used across the October 15 and October 16 runs. Different dates, routes and provider load can still affect the comparison. Failure counts and usable-response timings remain available in the [overall aggregate evidence](overall_expanded_2026-10-16/summary.json).
 
 ## Cost of the full runs
 
@@ -48,19 +55,24 @@ Costs cover **1,136 questions per model**, including recovery attempts. The per-
 | Jev 1.13 | $0.02723011 | $0.02397017 | 0 | API-reported |
 | Nimble v4 | $0.01495988 | $0.01316891 | 0 | Token usage × tariff |
 | Microsoft-Decision-1 | $0.01327712 | $0.01168761 | 0 | API-reported |
+| Tencent Hy3 | $0.02774624 | $0.02442450 | 1 | API-reported |
+| Qwen3.8 Flash | $0.05003065 | $0.04404107 | 34 | API-reported |
 | Luna 6 regular | $0.03431990 | $0.03021118 | 0 | API-reported |
+| Nemotron 3.5 Super VL | $0.03381740 | $0.02976884 | 2 | API-reported |
 | Mercury 2.5 | $0.01321493 | $0.01163286 | 0 | API-reported |
+| MiMo V2.6 Flash | $0.04312187 | $0.03795939 | 5 | API-reported |
 | Luna 6 Decisions | $0.03941610 | $0.03469727 | 61 | API-reported |
 | Gemini 2.5 Flash-Lite | $0.03219570 | $0.02834129 | 0 | API-reported |
 | Qwen3-30B-A3B Instruct 2507 | $0.02922378 | $0.02572516 | 0 | API-reported |
 | Granite 4.2 8B | $0.01555172 | $0.01368989 | 5 | API-reported |
 | GPT-5.4 nano | $0.07005030 | $0.06166400 | 0 | API-reported |
-| Phi-4 14B | $0.02329726 | $0.02050815 | 2 | API-reported |
 | Mistral NeMo 12B | $0.00923528 | $0.00812965 | 2 | API-reported |
+| Nemotron 3.5 Lightning | $0.02323863 | $0.02045654 | 82 | API-reported |
+| GLM 4.7 Flash | $0.02005890 | $0.01765748 | 2 | API-reported |
 
-The selected 14 runs account for **$0.382861929 combined**. 70 attempts have unknown charges. API-returned charges and calculations from input-token usage and a published tariff are distinguished; neither is a statement of an independently reconciled invoice. Mercury's captured tariff had an 80% promotional discount. Its cost advantage is specific to that price.
+The selected 19 runs account for **$0.557578357 combined**. 194 attempts have unknown charges. API-returned charges and calculations from input-token usage and a published tariff are distinguished; neither is a statement of an independently reconciled invoice. All 22 tested runs, including the three unranked diagnostics, account for $0.680478351 in known charges or tariff calculations. Mercury's captured tariff had an 80% promotional discount. Its cost advantage is specific to that price.
 
-![Actual 1136-question costs and first-attempt response times including October 16 additions](figures/overall_cost_and_speed.png)
+![Actual 1136-question costs and first-attempt response times including October 16 additions](figures/expanded_cost_and_speed.png)
 
 ## Nimble v4 Max changes the overall leader
 
@@ -86,11 +98,59 @@ Microsoft-Decision-1 scored **841/1,136 (74.0%)**, with all first answers usable
 
 Microsoft was perfect on the sampled lookup, transitive-comparison, reachability, source-authority and fault-diagnosis questions. It was also strong on belief tracking (40/44) and exceptions (48/52). Exact truth counting was 37/65, ahead of Jev 1.14's 26/65, but necessary conditions and contraposition were only 22/46, swap tracking 24/46 and sequential procedures 6/42. It is a stronger inexpensive text-decision result than the regular LLMs in this bank, not the strongest model overall.
 
-## What the additions change
+## The three native additions completed without a failed first attempt
 
-All three new services completed 1,136 first attempts without a transport failure, invalid choice or recovery request. Their 3,408 new cases bring the overall comparison to **14 services and 15,904 scored model-question cases**. None of the original eleven runs was repeated or replaced. Sixteen questions remain unanswered correctly by any of the fourteen services, down from 29 in the eleven-model comparison; the original key is unchanged.
+All three services completed 1,136 first attempts without a transport failure, invalid choice or recovery request. Their 3,408 cases are preserved in the [fourteen-model snapshot](overall_2026-10-16/summary.json). The later regular-LLM runs extend that evidence without replacing any original response. The current ranking applies the output-compliance inclusion rule to old and new models alike.
 
 Microsoft reports a dollar charge in each response. Nimble reports input-token usage but no dollar charge, so its displayed costs are usage multiplied by the captured published prices: $0.04 per million input tokens for v4 and $0.09 for Max, with free output. These are tariff calculations, not independently reconciled invoices. Similar per-token prices do not imply identical per-question costs because services count different prompt overheads and tokens.
+
+## Tencent Hy3 outscored regular Luna at lower reported cost
+
+Tencent Hy3 scored **790/1,136 (69.5%)**, 63 more correct answers than regular Luna and 113 more than Luna Decisions. Its core-only result was 446/640 (69.7%), versus regular Luna's 431/640. Reported full-run cost was **$0.02774624**, below regular Luna's $0.03431990, but its median response was slower: **1,423 ms versus 942 ms**. One failed attempt omitted a charge. Tencent's captured pricing included a lower-price time window; the reported cost describes the window in which this run occurred.
+
+Hy3 answered every sampled lookup, transitive-comparison, directed-reachability and source-authority question correctly. Belief tracking was 34/44, versus regular Luna's 16/44 and Luna Decisions' 30/44. This family asks whose knowledge should change after an event, given what each person observed. Necessary conditions were also stronger than regular Luna, at 31/46 versus 13/46. Exact truth counting (15/65), sequential procedures (12/42) and repeated swaps (22/46) remained weak.
+
+Hy3 did answer 59 questions that Jev 1.14 missed, while Jev answered 198 that Hy3 missed. Sequential procedures were a family-level crossover, at 12/42 versus Jev's 4/42; neither result supports dependable procedural execution. Microsoft-Decision-1 still scored 51 more questions correctly overall than Hy3, with a 288 ms median and $0.01327712 reported cost. The leading native decision services retain substantial advantages on this tested contract.
+
+## Qwen3.8 Flash improved on the older Qwen configuration
+
+Qwen3.8 Flash scored **763/1,136 (67.2%)**, compared with 564/1,136 (49.6%) for Qwen3-30B-A3B Instruct 2507. These are different model configurations, not a controlled checkpoint upgrade. It also outscored regular Luna by 36 correct answers, with an **862 ms median** versus Luna's 942 ms. Its reported run cost was higher, at **$0.05003065**, with 34 failed attempts omitting charges.
+
+It was strong on directed reachability (37/37), fault diagnosis (43/44), preference ordering (44/45) and transitive comparison (33/34). Necessary conditions improved to 33/46, versus regular Luna's 13/46. Temporal interval reasoning was weaker at 19/36, compared with regular Luna's 24/36 and Tencent's 31/36. Procedures (6/42), exact truth counting (20/65) and causal intervention (16/44) remained poor.
+
+Only three first outputs failed the answer format. Thirty other first attempts failed at the provider or transport level. Permitted recoveries raised the eventual score to 779/1,136, but the ranking retains the first-attempt 763. Its **5,717 ms p95** also shows a much slower tail than its median suggests.
+
+## MiMo finished near Luna Decisions with a slower response
+
+MiMo V2.6 Flash scored **684/1,136 (60.2%)**, seven more correct answers than Luna Decisions but 43 fewer than regular Luna. Its median was **1,429 ms** and p95 **6,032 ms**, with **$0.04312187** in reported charges and five attempts with unknown charges. It did not improve on regular Luna's overall accuracy, median latency or known run cost.
+
+MiMo answered all 37 lookup questions correctly and scored 36/37 on reachability, 42/45 on preference ordering and 40/46 on rule verification. Necessary conditions (18/46), exact truth counting (14/65), causal intervention (18/44) and sequential procedures (5/42) were weaker. It had 35 capped model outputs and five provider or body-read failures. The 3.1% format-failure rate stays below the main comparison's 5% exclusion cutoff; all 40 unsuccessful first attempts remain in its denominator.
+
+## Nemotron 3.5 Super VL scored 62.5 percent
+
+Nemotron 3.5 Super VL answered **710/1,136** questions correctly, compared with regular Luna's 727 and Mercury 2.5's 702. Its median full response was **465 ms**, versus 942 ms for regular Luna and 534 ms for Mercury. Reported charges for the full run were **$0.03381740**, close to regular Luna's $0.03431990 and above Mercury's $0.01321493 promotional run cost. Two provider errors omitted charges. The score includes those unanswered cases.
+
+Nimble v4 Max scored 997/1,136 (87.8%) at a calculated tariff cost of $0.03365973 and a 236 ms median. Its run cost was almost the same as Super VL's reported charge, with 287 more correct first answers and roughly half the median response time. Both were tested on October 16, through different providers and interfaces.
+
+This is a different, larger Nemotron configuration from Lightning. It returned 1,134 valid first answers, all without a reported hidden reasoning trace. One upstream failure arrived as HTTP 502; another arrived inside an HTTP-200 error envelope without a model answer. The second response initially triggered an identity guard. Its recorded attempt was preserved as unsuccessful, and only unattempted questions were resumed. No existing question was replayed or replaced. The [continuation receipt and frozen helper](llm_additions_2026-10-16/nemotron35supervl) document the handling.
+
+Super VL was perfect on sampled lookup and transitive comparisons, and scored 43/46 on rule verification and 40/43 on set relations. Necessary conditions were only 11/46, exact truth counting 17/65 and procedures 8/42. It returned decisions consistently under the short-output instruction; the weak family scores mostly reflect wrong valid choices rather than format failures.
+
+## Nemotron Lightning was fast but scored 33.3 percent
+
+Nemotron 3.5 Lightning answered **378/1,136** questions correctly with a **280 ms median** and **533 ms p95**. Its reported cost was **$0.02323863**, including eligible retries; 82 failed attempts omitted charges. Its first attempts included 67 upstream rate limits and one DNS failure. Recoveries brought the eventual score to 395/1,136, with 14 cases still unanswered. Valid first answers were correct on 378/1,068 cases (35.4%), so transport failures do not account for the low score. Every valid first answer was a complete numeric choice using two output tokens, without reported reasoning tokens.
+
+Lightning's strongest sampled family was transitive comparison, at 27/34: for example, using A before B and B before C to compare A with C. It scored 25/37 on lookup and filtering, but only 5/44 on causal intervention, 7/46 on necessary conditions and 7/43 on verbal spatial tracking. These are results for the tested short-output, reasoning-off configuration.
+
+An earlier, separate 25-question pilot used temperature 0 and scored 15/25. The full run omitted temperature to preserve the original eight-LLM request protocol; it scored 9/25 on those same pilot items, with 24 valid first answers. The two samples used different sampling configurations and are not pooled. The full result does not establish performance under a greedy or reasoning-enabled configuration.
+
+## GLM followed the output instruction but scored 29.4 percent
+
+GLM 4.7 Flash returned **1,134 usable first decisions**, all complete two-token numeric choices with zero reported reasoning tokens. Only **334/1,136 (29.4%)** were correct; 800 were wrong valid choices. The remaining two responses were provider-error envelopes, not model explanations or truncation. GLM stays in the main ranking because it complied with the output contract. Its low accuracy is a different result from Haiku's high unanswered rate.
+
+Transitive comparisons were its strongest sampled family at 30/34. Necessary conditions were 4/46, Boolean scope 6/48, rule verification 8/46 and source authority 8/37. It preserved the same semantic choice across all rotations in only 2/25 complete rotation panels. Returning a valid option ID did not establish consistent interpretation of the choices.
+
+Its median full response was **560 ms**, but p95 was **17,056 ms**. The run cost **$0.02005890** in reported charges, with two unknown error charges. The tested route was OpenRouter/Cloudflare; this is an end-to-end service measurement. The [continuation receipt](llm_additions_2026-10-16/glm47flash/continuation_receipt.json) preserves both upstream failures and documents resuming only unattempted questions after the original identity guard paused the run.
 
 ## Regular Luna and Luna Decisions differ in ways the total score conceals
 
@@ -102,7 +162,7 @@ The direction of the difference depends on the function. Regular Luna versus Lun
 
 ## Mercury remains a useful regular LLM cost comparison
 
-Mercury came within 25 correct answers of regular Luna while costing $0.01321493 for the actual 1,136-question run, compared with Luna's $0.03431990. Its median complete response was 0.534 seconds, compared with 0.942 seconds for Luna. Mercury's current 80% advertised tariff discount is part of this result; the cost advantage should be checked again after that discount changes. This short-output test does not validate a general throughput or architecture claim.
+Mercury came within 25 correct answers of regular Luna while costing $0.01321493 for the actual 1,136-question run, compared with Luna's $0.03431990. Its median complete response was 0.534 seconds, compared with 0.942 seconds for Luna. Mercury's captured tariff included an 80% promotional discount; its cost advantage reflects that price. This short-output test does not validate a general throughput or architecture claim.
 
 Mercury answered every sampled transitive-comparison question (34/34) and preference-ordering question (45/45), and nearly every lookup and source-authority question (36/37 in each family). It was much less dependable on exact truth counting (18/65), repeated object swaps (20/46), causal intervention (16/44), and sequential procedures (6/42). Its 61.8% total is a useful budget comparison, not a basis for accepting arbitrary decisions without checking.
 
@@ -111,8 +171,6 @@ Mercury answered every sampled transitive-comparison question (34/34) and prefer
 Qwen3-30B-A3B Instruct produced a valid numeric answer on all 1,136 questions, but only 564 were correct (49.6%). It did relatively well on preference ordering (40/45), set relations (38/43), transitive comparisons (29/34), and lookup (31/37). Scheduling (24/69), causal intervention (12/44), exact truth counting (16/65), and truth-teller consistency (14/62) remained weak. It did not outperform Mercury on aggregate accuracy, known cost or median response time in this run.
 
 Granite 4.2 8B was fast and inexpensive, with a 0.324-second median and $0.01555172 in reported cost, but scored 478/1,136 (42.1%). Transitive comparisons (30/34), lookup (31/37), and set relations (35/43) were its better areas. Contraposition (5/46), sequential procedures (5/42), exact truth counting (12/65), and object swaps (10/46) were poor. Its post-hoc leading-ID score is almost unchanged at 479/1,136, so formatting alone does not account for the low total. Five error attempts omitted cost.
-
-Phi-4's strict score was 428/1,136 (37.7%), but 327 first responses failed the requested output format. Many began with an answer ID and then added explanation, sometimes reaching the 16-token cap. A uniform, post-hoc leading-ID parser raises its score to 536/1,136 (47.2%). The strict result therefore mixes decision errors with failure to honor the short-output contract. The sensitivity check uses saved responses, adds no calls, and is not an evaluation with a larger output budget or reasoning enabled. Phi-4 remained below Mercury and regular Luna even under that more permissive reading.
 
 Mistral NeMo was the cheapest regular-LLM run at $0.009235281 reported, with two error attempts missing cost, but answered only 421/1,136 correctly (37.1%). Its stronger areas were transitive comparisons (31/34), lookup (29/37), and preference ordering (33/45). Exact truth counting (8/65), procedural execution (8/42), contraposition (10/46), and truth-teller consistency (14/62) were weak. Its leading-ID score does not improve the total.
 
@@ -128,7 +186,7 @@ No model is dependable on sequential procedure execution: the best strict result
 
 Jev 1.14 scored 56/61 on assignments, 39/44 on belief tracking, and 36/37 on planning with preconditions. It answered every sampled question correctly in 8 families: record lookup and filtering, forward conditional reasoning, quantifiers and set relations, transitive comparisons, directed reachability, deterministic preference ordering, source authority and stale records, deterministic fault diagnosis. Its 45/69 scheduling result and 4/42 procedural result show why its bounded-deduction strengths should not be described as general reliability.
 
-There are 16 questions that none of the 14 models answered correctly under the strict primary rules. Their IDs remain private for a possible later key and wording audit. This count does not establish that their reference answers are wrong; the original key is unchanged.
+There are 8 questions that none of the 19 ranked models answered correctly under the strict primary rules. Their IDs remain private for a possible later key and wording audit. This count does not establish that their reference answers are wrong; the original key is unchanged.
 
 ## Where Jev 1.14 improved over 1.13
 
@@ -174,9 +232,9 @@ The release's text gain should be distinguished from its broader features. In th
 
 ## Accuracy across the 25 functions
 
-Cell labels show correct counts; color shows accuracy within each family. The [function tables](FUNCTIONS.md) and [family CSV](overall_2026-10-16/family_comparison.csv) retain all denominators, including the new models.
+Cell labels show correct counts; color shows accuracy within each family. The [function tables](FUNCTIONS.md) and [family CSV](overall_expanded_2026-10-16/family_comparison.csv) retain all denominators, including the new models.
 
-![Correct counts and accuracy by family including October 16 additions](figures/overall_family_accuracy.png)
+![Correct counts and accuracy by family including October 16 additions](figures/expanded_family_accuracy.png)
 
 ## Matched diagnostic tests
 
@@ -189,30 +247,42 @@ Rotation and evidence-change scores use planned panel denominators, so missing a
 | Jev 1.13 | 22/25 | 24/25 | 20/25 | 37/80 | 1/16 |
 | Nimble v4 | 20/25 | 22/25 | 17/25 | 42/80 | 2/16 |
 | Microsoft-Decision-1 | 19/25 | 22/25 | 19/25 | 49/80 | 2/16 |
+| Tencent Hy3 | 17/25 | 17/23 | 15/25 | 28/80 | 0/16 |
+| Qwen3.8 Flash | 16/25 | 16/22 | 15/25 | 33/80 | 0/16 |
 | Luna 6 regular | 16/25 | 17/25 | 11/25 | 17/80 | 0/16 |
+| Nemotron 3.5 Super VL | 15/25 | 15/24 | 11/25 | 26/80 | 0/16 |
 | Mercury 2.5 | 14/25 | 14/24 | 13/25 | 28/80 | 0/16 |
+| MiMo V2.6 Flash | 12/25 | 13/21 | 13/25 | 31/80 | 0/16 |
 | Luna 6 Decisions | 13/25 | 14/20 | 13/25 | 33/80 | 0/16 |
 | Gemini 2.5 Flash-Lite | 12/25 | 12/25 | 9/25 | 24/80 | 0/16 |
 | Qwen3-30B-A3B Instruct 2507 | 11/25 | 11/25 | 9/25 | 21/80 | 0/16 |
 | Granite 4.2 8B | 7/25 | 7/23 | 7/25 | 25/80 | 0/16 |
 | GPT-5.4 nano | 6/25 | 7/25 | 7/25 | 17/80 | 0/16 |
-| Phi-4 14B | 5/25 | 6/9 | 7/25 | 9/80 | 0/16 |
 | Mistral NeMo 12B | 5/25 | 5/24 | 5/25 | 19/80 | 0/16 |
+| Nemotron 3.5 Lightning | 1/25 | 1/19 | 2/25 | 9/80 | 0/16 |
+| GLM 4.7 Flash | 2/25 | 2/25 | 5/25 | 16/80 | 0/16 |
 
 ## Output format and recovery
 
-The leading-ID column is a **post-hoc sensitivity check**, applied uniformly to the eight saved LLM runs. It reads a numeric answer ID at the start even if an explanation follows or later output is truncated. It adds no calls and does not replace the strict primary score. A larger output budget or reasoning-enabled evaluation would be a different experiment.
+The leading-ID column is a **post-hoc sensitivity check**, applied uniformly to the saved regular-LLM runs. It reads a numeric answer ID at the start even if an explanation follows or later output is truncated. It adds no calls and does not replace the strict primary score. A larger output budget or reasoning-enabled evaluation would be a different experiment. Explanatory text without a leading answer ID is not converted into a guessed choice.
 
-| Model | Strict correct | Leading-ID correct | Invalid first output | First transport/HTTP failures | Recovery attempts | Eventual correct |
+The three models above the output-failure cutoff appear only in the [diagnostics](OUTPUT_COMPLIANCE.md), not in this table. “Invalid first output” counts model-output failures; provider errors and incomplete response bodies appear in the separate failure column.
+
+| Model | Strict correct | Leading-ID correct | Invalid first output | First provider/transport failures | Recovery attempts | Eventual correct |
 |---|---:|---:|---:|---:|---:|---:|
+| Tencent Hy3 | 790 | 791 | 5 | 1 | 1 | 791 |
+| Qwen3.8 Flash | 763 | 763 | 3 | 30 | 30 | 779 |
 | Luna 6 regular | 727 | 727 | 1 | 0 | 0 | 727 |
+| Nemotron 3.5 Super VL | 710 | 710 | 0 | 2 | 0 | 710 |
 | Mercury 2.5 | 702 | 703 | 2 | 0 | 0 | 702 |
+| MiMo V2.6 Flash | 684 | 684 | 35 | 5 | 5 | 687 |
 | Gemini 2.5 Flash-Lite | 598 | 599 | 14 | 0 | 0 | 598 |
 | Qwen3-30B-A3B Instruct 2507 | 564 | 564 | 0 | 0 | 0 | 564 |
 | Granite 4.2 8B | 478 | 479 | 42 | 4 | 4 | 478 |
 | GPT-5.4 nano | 464 | 464 | 0 | 0 | 0 | 464 |
-| Phi-4 14B | 428 | 536 | 327 | 2 | 2 | 429 |
 | Mistral NeMo 12B | 421 | 421 | 12 | 2 | 2 | 421 |
+| Nemotron 3.5 Lightning | 378 | 378 | 0 | 68 | 68 | 395 |
+| GLM 4.7 Flash | 334 | 334 | 0 | 2 | 0 | 334 |
 
 The native services return typed choices rather than generated answer IDs. A usable choice is scored even when its probability distribution has a rounding or normalization warning. Provider failures are unsuccessful first attempts, not demonstrated logical mistakes. The eventual scores below include the permitted recovery attempt and do not replace the main results.
 
@@ -249,7 +319,7 @@ The fresh three-model run replaced both scores and timings in the current compar
 
 The ranking is unchanged, but Jev 1.14's margin over 1.13 narrowed from 22 to 10 correct answers (about 0.9 percentage points in the fresh run). The version improvement is therefore smaller than the first comparison suggested. Assignments and spatial tracking still improve; scheduling is now tied, while sequential procedure execution is worse.
 
-Luna Decisions fell from 687 to 677 correct, with 33 first-attempt HTTP failures versus 23 unanswered cases in the previous selected results. Both views contain 426 wrong valid choices, but individual answers changed in both directions. Earlier retry rules also differed, so the lower total is not an isolated measurement of model intelligence. Five of the 33 failed first attempts recovered on the permitted retry; the eventual score was 680/1,136. The main comparison keeps the stricter 677/1,136 first-attempt result, as it does for the eight regular LLMs.
+Luna Decisions fell from 687 to 677 correct, with 33 first-attempt HTTP failures versus 23 unanswered cases in the previous selected results. Both views contain 426 wrong valid choices, but individual answers changed in both directions. Earlier retry rules also differed, so the lower total is not an isolated measurement of model intelligence. Five of the 33 failed first attempts recovered on the permitted retry; the eventual score was 680/1,136. The main comparison keeps the stricter 677/1,136 first-attempt result, as it does for every ranked model.
 
 These repeats measure observed service variation as well as possible model behavior. The original Jev 1.13 run used several routes, and earlier runs had different retry rules. A changed answer alone does not establish a change in model weights.
 
@@ -262,10 +332,16 @@ These repeats measure observed service variation as well as possible model behav
 | Microsoft-Decision-1 | 2026-10-16 13:44:04 | 2026-10-16 13:48:14 |
 | Nimble v4 | 2026-10-16 13:48:52 | 2026-10-16 13:51:42 |
 | Nimble v4 Max | 2026-10-16 13:49:02 | 2026-10-16 13:52:04 |
+| Nemotron 3.5 Lightning | 2026-10-16 14:27:43 | 2026-10-16 14:33:18 |
+| GLM 4.7 Flash | 2026-10-16 14:44:48 | 2026-10-16 15:54:08 |
+| MiMo V2.6 Flash | 2026-10-16 14:42:15 | 2026-10-16 15:17:23 |
+| Qwen3.8 Flash | 2026-10-16 14:42:15 | 2026-10-16 15:01:32 |
+| Tencent Hy3 | 2026-10-16 14:42:15 | 2026-10-16 14:57:33 |
+| Nemotron 3.5 Super VL | 2026-10-16 14:42:15 | 2026-10-16 14:50:52 |
 
-All sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The October 16 runner allowed two per model, and both Nimble models together stayed within the documented four-request free-credit concurrency limit. The [addition transport](added_decisions.py) retains the same timer operations as the [October 15 transport](decision_refresh.py), with configurable host and endpoint path.
+All sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The seven October 16 regular-LLM processes ran independent waves, allowing up to 14 concurrent requests in total; GLM continued after the others had finished. The native-addition runner also allowed two per model, and both Nimble models together stayed within the documented four-request free-credit concurrency limit. The [addition transport](added_decisions.py) retains the same timer operations as the [October 15 transport](decision_refresh.py), with configurable host and endpoint path.
 
-Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. OpenRouter native services used `/api/alpha/decisions` with backend selection and fallback disabled. Nimble used Bespoke's `/v1/systemone` directly, with the same original state, instructions and five answer options. No reasoning trace or agentic iteration was requested. Backend hardware, routes, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.
+Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. Temperature was omitted in the original eight-LLM session and in the October 16 regular-LLM additions. This preserves that request protocol but does not establish equal provider-default sampling settings. Hidden reasoning was disabled; a model could still generate an explanation as its visible output, which was unusable under the answer-ID contract if it was not a complete numeric answer. OpenRouter native services used `/api/alpha/decisions` with backend selection and fallback disabled. Nimble used Bespoke's `/v1/systemone` directly, with the same original state, instructions and five answer options. No agentic iteration was requested. Backend hardware, routes, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.
 
 | Service | Returned identities and counts | Backend tag | Toronto dates |
 |---|---:|---:|---:|
@@ -274,21 +350,28 @@ Ordinary LLMs used `/api/v1/chat/completions`, a 16-token cap, a numeric-ID-only
 | Jev 1.13 | `typesafe/jev-1.13-20260917` (1136) | typesafe | 2026-10-15 |
 | Nimble v4 | `nimble-v4` (1136) | bespoke-direct | 2026-10-16 |
 | Microsoft-Decision-1 | `microsoft/microsoft-decision-1-20261009` (1136) | azure | 2026-10-16 |
+| Tencent Hy3 | `tencent/hy3` (1135); `unreported (error)` (1) | tencent/fp8 | 2026-10-16 |
+| Qwen3.8 Flash | `qwen/qwen3.8-flash` (1106); `unreported (error)` (30) | alibaba/us-east-1 | 2026-10-16 |
 | Luna 6 regular | `openai/gpt-6-luna` (1136) | openai | 2026-10-15 |
+| Nemotron 3.5 Super VL | `nvidia/nemotron-3.5-super-vl` (1134); `unreported (error)` (2) | crusoe/bf16 | 2026-10-16 |
 | Mercury 2.5 | `inception/mercury-2.5` (1136) | inception | 2026-10-15 |
+| MiMo V2.6 Flash | `xiaomi/mimo-v2.6-flash` (1131); `unreported (error)` (5) | xiaomi/fp8 | 2026-10-16 |
 | Luna 6 Decisions | `openai/gpt-6-luna-decisions-20261006` (1103); `unreported (error)` (33) | openai | 2026-10-15 |
 | Gemini 2.5 Flash-Lite | `google/gemini-2.5-flash-lite` (1136) | google-ai-studio | 2026-10-15 |
 | Qwen3-30B-A3B Instruct 2507 | `qwen/qwen3-30b-a3b-instruct-2507` (1136) | siliconflow/fp8 | 2026-10-15 |
 | Granite 4.2 8B | `ibm-granite/granite-4.2-8b` (1132); `unreported (error)` (4) | deepinfra/bf16 | 2026-10-15 |
 | GPT-5.4 nano | `openai/gpt-5.4-nano` (1136) | openai | 2026-10-15 |
-| Phi-4 14B | `microsoft/phi-4` (1134); `unreported (error)` (2) | deepinfra/bf16 | 2026-10-15 |
 | Mistral NeMo 12B | `mistralai/mistral-nemo` (1134); `unreported (error)` (2) | deepinfra/fp8 | 2026-10-15 |
+| Nemotron 3.5 Lightning | `nvidia/nemotron-3.5-lightning` (1068); `unreported (error)` (68) | coreweave/bf16 | 2026-10-16 |
+| GLM 4.7 Flash | `z-ai/glm-4.7-flash` (1134); `unreported (error)` (2) | cloudflare | 2026-10-16 |
 
-The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Microsoft likewise returned the required October 9 identity. Nimble was requested by its explicit v4 and v4 Max names, not `nimble-latest`; its API documentation says the response repeats the requested name, so this is not independent checkpoint attestation. Ordinary LLMs generally returned aliases, not dated checkpoints. Captured endpoint metadata is retained for [the eight LLMs](expansion_2026-10-15/model_metadata.json), [the original three native services](decision_refresh_2026-10-15/model_metadata.json) and [the October 16 additions](additions_2026-10-16).
+The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Microsoft likewise returned the required October 9 identity. Nimble was requested by its explicit v4 and v4 Max names, not `nimble-latest`; its API documentation says the response repeats the requested name, so this is not independent checkpoint attestation. Ordinary LLMs generally returned aliases, not dated checkpoints. Captured endpoint metadata is retained for [the eight LLMs](expansion_2026-10-15/model_metadata.json), [the original three native services](decision_refresh_2026-10-15/model_metadata.json), [the October 16 native additions](additions_2026-10-16) and [the October 16 regular LLM additions](llm_additions_2026-10-16).
+
+GLM 5.3 Flash rejected the request to disable reasoning and was excluded before scoring. GLM 4.7 Flash replaced it with the author's approval. The [compatibility probes](llm_additions_2026-10-16/compatibility_probes.json) are separate from the 1,136-question runs and their costs.
 
 ## Evidence reproduction and limits
 
-The [questions](data/questions_1136.csv), [overall summary](overall_2026-10-16/summary.json), [October 16 addition ledgers and protocols](additions_2026-10-16), [unchanged eleven-model summary](matched_2026-10-15/summary.json), [October 15 native attempt ledger](decision_refresh_2026-10-15/attempts.jsonl), and [unchanged eight-LLM evidence](expansion_2026-10-15) preserve the comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.
+The [questions](data/questions_1136.csv), [current overall summary](overall_expanded_2026-10-16/summary.json), [unchanged fourteen-model summary](overall_2026-10-16/summary.json), [regular-LLM addition ledgers](llm_additions_2026-10-16), [native October 16 ledgers](additions_2026-10-16), [unchanged eleven-model summary](matched_2026-10-15/summary.json), [October 15 native attempt ledger](decision_refresh_2026-10-15/attempts.jsonl), and [unchanged eight-LLM evidence](expansion_2026-10-15) preserve the comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.
 
 All new primary scores use first attempts; retries are limited to one recovery for transport failures or HTTP 408, 429 and 5xx responses. Valid wrong answers and format failures are never retried. Cost includes eligible recoveries; missing charges remain unknown, not zero. Nimble documents HTTP errors as uncharged, while transport timeouts with no response remain unknown.
 
@@ -300,11 +383,13 @@ python3 validate.py
 python3 text_models.py
 python3 matched_analysis.py
 python3 overall_analysis.py
-python3 -m unittest -v test_analysis.py test_text_models.py test_decision_refresh.py test_added_decisions.py test_overall.py test_publication.py test_matched.py
+python3 text_additions.py
+python3 -m unittest discover -p 'test_*.py'
 
 # Reproduce scores using the external original key.
 python3 matched_analysis.py --answer-key /path/to/answer_key.csv
 python3 overall_analysis.py --answer-key /path/to/answer_key.csv
+python3 text_additions.py --answer-key /path/to/answer_key.csv
 
 # Rebuild current figures, README and Pages.
 python3 -m pip install -r requirements-reports.txt

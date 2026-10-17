@@ -6,20 +6,25 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 import numpy as np
 
 from plot_matched import SHORT as ORIGINAL_SHORT
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / 'overall_2026-10-16'
+SOURCE = ROOT / 'overall_expanded_2026-10-16'
 DEST = ROOT / 'figures'
 SHORT = {**ORIGINAL_SHORT, 'microsoft_decision': 'Microsoft-Decision-1',
-         'nimble_v4': 'Nimble v4', 'nimble_v4_max': 'Nimble v4 Max'}
+         'nimble_v4': 'Nimble v4', 'nimble_v4_max': 'Nimble v4 Max',
+         'nemotron35lightning':'Nemotron 3.5 Lightning','haiku55':'Haiku 5.5',
+         'glm47flash':'GLM 4.7 Flash','deepseek41flash':'DeepSeek V4.1 Flash',
+         'mimo26flash':'MiMo V2.6 Flash','qwen38flash':'Qwen3.8 Flash',
+         'tencenthy3':'Tencent Hy3','nemotron35supervl':'Nemotron 3.5 Super VL'}
 
 
 def save(fig, name):
     for extension in ('png', 'svg'):
-        target = DEST / ('overall_' + name + '.' + extension)
+        target = DEST / ('expanded_' + name + '.' + extension)
         fig.savefig(target, dpi=170,
                     bbox_inches='tight', facecolor='white')
         if extension == 'svg':
@@ -29,9 +34,10 @@ def save(fig, name):
 
 def main():
     summary = json.loads((SOURCE / 'summary.json').read_text())
-    models = summary['models']
+    assert not summary['pending_model_ids'], 'Do not publish an unfinished model expansion'
+    models = {m:summary['models'][m] for m in summary['publication']['eligible_model_ids']}
     added = set(summary['added_model_ids'])
-    native = {'jev113', 'jev114', 'luna_decisions'} | added
+    native = {'jev113', 'jev114', 'luna_decisions'} | set(summary['native_added_model_ids'])
     names = {m: SHORT[m] + (' *' if m in added else '') for m in models}
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 10,
                          'axes.spines.top': False, 'axes.spines.right': False,
@@ -61,7 +67,7 @@ def main():
     ax.legend(frameon=False, loc='lower right')
     ax.grid(axis='x', alpha=.17)
     ax.set_axisbelow(True)
-    fig.text(.18, .025, 'Original eleven: October 15, 2026. Hatched additions: October 16 (Toronto). First attempts only; failures unsuccessful.\nSame frozen questions and options. Related variants are not independent observations.', fontsize=9, color='#45535c')
+    fig.text(.18, .025, 'Tests: October 15 and 16, 2026 (Toronto). First attempts only; failures unsuccessful.\nHaiku, DeepSeek and Phi-4 excluded for ≥5% output-format failures (post-hoc inclusion rule).\nSame frozen questions and options; related variants are not independent observations.', fontsize=9, color='#45535c')
     fig.subplots_adjust(left=.24, bottom=.13, top=.9)
     save(fig, 'accuracy')
 
@@ -75,10 +81,10 @@ def main():
         for j, m in enumerate(columns):
             ax.text(j, i, str(f['models'][m]['correct']), ha='center', va='center', fontsize=9,
                     color='white' if data[i, j] >= 63 else '#162d42')
-    ax.set_title('Different strengths beneath the overall scores', loc='left', fontsize=18, pad=28)
+    ax.set_title('Accuracy across 25 text decision functions', loc='left', fontsize=18, pad=28)
     ax.text(0, 1.018, 'Labels: correct count. Color: family accuracy. * Added October 16; all other runs October 15.', transform=ax.transAxes)
     fig.colorbar(im, ax=ax, shrink=.6, pad=.02).set_label('Correct / planned (%)')
-    fig.text(.30, .018, 'Same 1,136 text questions across 25 families. Dates: October 15 and 16, 2026 (Toronto).\nSingle-shot decisions; no tools, answer feedback or explicit reasoning trace.', fontsize=9, color='#45535c')
+    fig.text(.30, .018, 'Same 1,136 text questions across 25 families. Dates: October 15 and 16, 2026 (Toronto).\nHaiku, DeepSeek and Phi-4 excluded for ≥5% format failures; inclusion rule chosen after testing.\nSingle-shot decisions; no tools, answer feedback or explicit reasoning trace.', fontsize=9, color='#45535c')
     fig.subplots_adjust(left=.30, bottom=.19, top=.94, right=.95)
     save(fig, 'family_accuracy')
 
@@ -100,23 +106,27 @@ def main():
     axes[0].set_xlabel('US cents / actual 1,136-question run, including retries')
     axes[0].set_title('Cost: returned charges or labelled calculation', loc='left')
     axes[0].set_yticks(y, [names[m] for m in order])
-    axes[1].barh(y, medians, color='#163e65', height=.6, label='Median')
+    axes[1].hlines(y, medians, p95, color='#7599ba', linewidth=2, alpha=.65)
+    axes[1].scatter(medians, y, color='#163e65', s=35, label='Median', zorder=3)
     axes[1].scatter(p95, y, color='#c37c25', marker='D', s=30, label='p95')
     for i, value in enumerate(medians):
-        axes[1].text(value + .025, i + .23, f'{value:.3f} s', va='top', fontsize=9)
-    axes[1].set_xlim(0, max(p95) * 1.2)
-    axes[1].set_xlabel('First-attempt connect-to-full-response seconds')
+        axes[1].text(value * 1.04, i + .18, f'{value:.3f} s', va='top', fontsize=9)
+    axes[1].set_xscale('log')
+    axes[1].set_xlim(min(medians)*.7, max(p95)*1.3)
+    axes[1].set_xticks([v for v in (.1,.2,.5,1,2,5,10,20,50) if min(medians)*.7<=v<=max(p95)*1.3])
+    axes[1].xaxis.set_major_formatter(ScalarFormatter())
+    axes[1].set_xlabel('Connect-to-full-response seconds (log scale)')
     axes[1].set_title('Same full-response timer; different services/dates', loc='left')
     axes[1].legend(frameon=False)
     axes[0].invert_yaxis()
     for ax in axes:
         ax.grid(axis='x', alpha=.17)
         ax.set_axisbelow(True)
-    fig.suptitle(f'{len(models)} services: quality has to be read alongside cost and speed', x=.07, ha='left', fontsize=18, fontweight='bold')
-    fig.text(.07, .025, '* Added October 16, 2026; original eleven tested October 15 (Toronto). Microsoft: OpenRouter/Azure; Nimble: Bespoke direct.\nAll 1,136 first attempts per model, including failures. New HTTPS connection and at most two concurrent requests/model.\n~ Nimble cost calculated from returned input-token usage and published tariff. Missing charges unknown. Mercury promotional tariff.', fontsize=9, color='#45535c')
+    fig.suptitle(f'{len(models)} services: cost and speed for 1,136 text decisions', x=.07, ha='left', fontsize=18, fontweight='bold')
+    fig.text(.07, .025, '* Added October 16, 2026; other runs October 15 (Toronto). Microsoft: OpenRouter/Azure; Nimble: Bespoke direct.\nAll 1,136 first attempts/model, including failures. Same full-response timer; at most two concurrent requests/model.\n~ Nimble cost calculated from token usage and tariff. Missing charges unknown. Mercury promotional tariff.\nHaiku, DeepSeek and Phi-4 excluded for ≥5% format failures (post-hoc inclusion rule).', fontsize=9, color='#45535c')
     fig.subplots_adjust(left=.23, top=.9, bottom=.15, wspace=.18)
     save(fig, 'cost_and_speed')
-    paths = sorted(DEST.glob('overall_*'))
+    paths = sorted(DEST.glob('expanded_*'))
     (SOURCE / 'graphics_integrity.json').write_text(json.dumps({
         'plotter_sha256': sha256(Path(__file__).read_bytes()).hexdigest(),
         'matplotlib_version': matplotlib.__version__,

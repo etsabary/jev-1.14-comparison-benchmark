@@ -73,14 +73,15 @@ class Overall(unittest.TestCase):
 
     def test_combined_publication(self):
         text = (a.ROOT / 'README.md').read_text()
-        self.assertIn('14 models', text)
-        self.assertIn('15,904', text)
+        current=json.loads((a.ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
+        self.assertIn(str(current['publication']['ranked_model_count'])+' models', text)
+        self.assertIn(f"{current['model_count']*1136:,}", text)
         self.assertIn('Added October 16, 2026', text)
         self.assertIn('Nimble v4 Max now leads', text)
         for model in self.summary['added_model_ids']:
             self.assertIn(self.summary['models'][model]['label'], text)
-        graphics = json.loads((a.OVERALL / 'graphics_integrity.json').read_text())
-        self.assertEqual(graphics['source_summary_sha256'], sha256((a.OVERALL / 'summary.json').read_bytes()).hexdigest())
+        graphics = json.loads((a.ROOT/'overall_expanded_2026-10-16/graphics_integrity.json').read_text())
+        self.assertEqual(graphics['source_summary_sha256'], sha256((a.ROOT/'overall_expanded_2026-10-16/summary.json').read_bytes()).hexdigest())
         self.assertEqual(graphics['plotter_sha256'], sha256((a.ROOT / 'plot_overall.py').read_bytes()).hexdigest())
         for name, expected in graphics['files_sha256'].items():
             self.assertEqual(sha256((a.ROOT / 'figures' / name).read_bytes()).hexdigest(), expected)

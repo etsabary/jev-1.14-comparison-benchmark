@@ -1,0 +1,239 @@
+{
+  "retrieved": {
+    "utc": "2026-10-16T18:27:43.139619+00:00",
+    "toronto": "2026-10-16T14:27:43.139619-04:00"
+  },
+  "url": "https://openrouter.ai/api/v1/models/nvidia/nemotron-3.5-lightning/endpoints",
+  "data": {
+    "id": "nvidia/nemotron-3.5-lightning",
+    "name": "NVIDIA: Nemotron 3.5 Lightning",
+    "created": 1786452751,
+    "description": "NVIDIA Nemotron 3.5 Lightning is an open mixture-of-experts model from NVIDIA, with 3B active parameters out of 30B total. It is suited for high-throughput agentic workloads and specialized tasks that...",
+    "architecture": {
+      "tokenizer": "Other",
+      "instruct_type": null,
+      "modality": "text->text",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "endpoints": [
+      {
+        "name": "Darkbloom | nvidia/nemotron-3.5-lightning-20260807",
+        "model_id": "nvidia/nemotron-3.5-lightning",
+        "model_name": "NVIDIA: Nemotron 3.5 Lightning",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.000000025",
+          "completion": "0.00000012",
+          "input_cache_read": "0.0000000125",
+          "discount": 0
+        },
+        "provider_name": "Darkbloom",
+        "tag": "darkbloom/int4",
+        "service_tier": null,
+        "quantization": "int4",
+        "max_completion_tokens": 32768,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "temperature",
+          "top_p",
+          "top_k",
+          "frequency_penalty",
+          "presence_penalty",
+          "repetition_penalty",
+          "stop",
+          "seed",
+          "max_tokens",
+          "response_format",
+          "structured_outputs",
+          "logprobs",
+          "top_logprobs",
+          "tools",
+          "tool_choice"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 100,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      },
+      {
+        "name": "Io Net | nvidia/nemotron-3.5-lightning-20260807",
+        "model_id": "nvidia/nemotron-3.5-lightning",
+        "model_name": "NVIDIA: Nemotron 3.5 Lightning",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.0000000469",
+          "completion": "0.000000134",
+          "input_cache_read": "0.00000002345",
+          "discount": 0.33
+        },
+        "provider_name": "Io Net",
+        "tag": "io-net",
+        "service_tier": null,
+        "quantization": "unknown",
+        "max_completion_tokens": 131072,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "max_tokens",
+          "temperature",
+          "logprobs",
+          "top_logprobs",
+          "tools",
+          "response_format",
+          "tool_choice",
+          "structured_outputs"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 97.5359342915811,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      },
+      {
+        "name": "DeepInfra | nvidia/nemotron-3.5-lightning-20260807",
+        "model_id": "nvidia/nemotron-3.5-lightning",
+        "model_name": "NVIDIA: Nemotron 3.5 Lightning",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.00000006",
+          "completion": "0.00000016",
+          "input_cache_read": "0.00000003",
+          "discount": 0
+        },
+        "provider_name": "DeepInfra",
+        "tag": "deepinfra/bf16",
+        "service_tier": null,
+        "quantization": "bf16",
+        "max_completion_tokens": 32768,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "max_tokens",
+          "temperature",
+          "top_p",
+          "stop",
+          "frequency_penalty",
+          "presence_penalty",
+          "repetition_penalty",
+          "top_k",
+          "seed",
+          "min_p",
+          "structured_outputs",
+          "response_format",
+          "tools",
+          "tool_choice",
+          "logit_bias"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": false,
+          "function": false
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 99.91482112436117,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      },
+      {
+        "name": "CoreWeave | nvidia/nemotron-3.5-lightning-20260807",
+        "model_id": "nvidia/nemotron-3.5-lightning",
+        "model_name": "NVIDIA: Nemotron 3.5 Lightning",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.00000007",
+          "completion": "0.0000002",
+          "input_cache_read": "0.00000004",
+          "discount": 0
+        },
+        "provider_name": "CoreWeave",
+        "tag": "coreweave/bf16",
+        "service_tier": null,
+        "quantization": "bf16",
+        "max_completion_tokens": 235929,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "max_tokens",
+          "temperature",
+          "top_p",
+          "top_k",
+          "repetition_penalty",
+          "frequency_penalty",
+          "presence_penalty",
+          "stop",
+          "seed",
+          "response_format",
+          "structured_outputs",
+          "logprobs",
+          "top_logprobs",
+          "tools",
+          "tool_choice"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 100,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      }
+    ]
+  }
+}

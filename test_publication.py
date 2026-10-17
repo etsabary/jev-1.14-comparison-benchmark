@@ -10,7 +10,8 @@ from text_models import ROOT,EXPANSION,rows
 
 def evidence_files():
     return [p for folder in (EXPANSION,ROOT/'decision_refresh_2026-10-15',ROOT/'matched_2026-10-15',
-                             ROOT/'additions_2026-10-16',ROOT/'overall_2026-10-16')
+                             ROOT/'additions_2026-10-16',ROOT/'overall_2026-10-16',
+                             ROOT/'llm_additions_2026-10-16',ROOT/'overall_expanded_2026-10-16')
             for p in folder.rglob('*') if p.is_file()]
 
 
@@ -58,7 +59,7 @@ class Publication(unittest.TestCase):
                 self.assertIsNone(re.search(r'sk-(?:or-v1-)?[A-Za-z0-9_-]{24,}',text),p)
 
     def test_relative_site_links_and_images(self):
-        for name in ['index.html','functions.html','three_model_reference.html']:
+        for name in ['index.html','functions.html','three_model_reference.html','output_compliance.html']:
             p=ROOT/'docs'/name;links=Links();links.feed(p.read_text())
             for target in links.targets:
                 if re.match(r'^(https?:|mailto:|#|data:)',target):continue
@@ -76,10 +77,25 @@ class Publication(unittest.TestCase):
         text=(ROOT/'README.md').read_text()
         self.assertNotIn('{{',text)
         self.assertNotIn('historical',text.lower())
+        current=json.loads((ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
         for m,d in s['models'].items():
+            if m not in current['publication']['eligible_model_ids']:continue
             self.assertIn(f"{d['latency_first_all']['median_ms']:.0f} ms",text)
         self.assertIn('System 1-style',text)
-        self.assertIn('327 first responses',text)
+        self.assertIn('327 first responses',(ROOT/'OUTPUT_COMPLIANCE.md').read_text())
+
+    def test_output_exclusions_applied_to_every_current_table(self):
+        s=json.loads((ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
+        for name in ('README.md','FUNCTIONS.md'):
+            text=(ROOT/name).read_text()
+            rows=[line for line in text.splitlines() if line.startswith('|')]
+            for m in s['publication']['excluded_model_ids']:
+                self.assertFalse(any(s['models'][m]['label'] in row for row in rows),(name,m))
+        import csv
+        with (ROOT/'overall_expanded_2026-10-16/family_comparison.csv').open() as f:
+            fields=csv.DictReader(f).fieldnames
+        for m in s['publication']['excluded_model_ids']:
+            self.assertNotIn(s['models'][m]['label'],fields)
 
 
 if __name__=='__main__':unittest.main()

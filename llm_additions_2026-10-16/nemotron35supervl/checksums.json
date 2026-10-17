@@ -1,0 +1,17 @@
+{
+  "attempts.jsonl": "77b05aed9bcb7246910e7da78e4c881f2cb41b1098acdcf522202c712cf6c7b7",
+  "continuation_receipt.json": "b70ec901e1911781d2db98689effd0e550369ebb2685b9675e4cb71d33bef08e",
+  "dispatches.jsonl": "ded31787b9dfbcaa8e7bfb252f676178b642eeb9d7df1d007c01ac3f61ee56b4",
+  "model_metadata.json": "c4b043c12427b23e11c65c12358e84b8a90e49ce56c09e293a460b8c40b346d1",
+  "request_plan.jsonl": "af8512fef738db44e64837b07d426a3333331ff09d78587093e0c304d9fceda9",
+  "results.jsonl": "b0e708b8e36afa4af1be2bd4a403ecf2480bbb48f9c09b5eb99a31f4a38b501f",
+  "retry_waits.jsonl": "fc5b030de474f7eaed89104dddf64a7bd89ef16503e1863d79a1afdf4fb8a66c",
+  "run_manifest.json": "376f751e70606ca261583aa5a5b3702b678ec98e53e88bb8793492da8c75d0d4",
+  "software.json": "8bdd524df9af49706544e01fb438864bd9fa8f7b443ac570f0f2774f4818a0ef",
+  "source/nemotron_2026-10-16/runner.py": "3513406aeaf1897b19cfd73e893b64c90717feb026590f0e3ef4e27e89f65429",
+  "source/nemotron_2026-10-16/test_runner.py": "336434424e1ea47c66861751837aea249ae1f8560d118a48c3eebb04ac08d60c",
+  "source/resume_envelope_errors.py": "e545efcc52ce6795a4fefa40ef530c5013cb7c8d513daea4b6f35d74e597da9e",
+  "source/text_field_2026-10-16/field_runner.py": "e9402c455b06b984bc5b08ece8e56ec8f453b810a1a11920c1f77412179873a0",
+  "source/text_field_2026-10-16/test_field_runner.py": "03f8ac24ba41143cc117111019c3f3b6d6667d24af0c794a0d557ed3da2a1900",
+  "source_audit.json": "89ca21321804659ad98f7b9e38f448609be956cc2f2c5aa6dbf668f22f7faeec"
+}

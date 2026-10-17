@@ -22,8 +22,8 @@ Microsoft-Decision-1 scored **841/1,136 (74.0%)**, with all first answers usable
 
 Microsoft was perfect on the sampled lookup, transitive-comparison, reachability, source-authority and fault-diagnosis questions. It was also strong on belief tracking (40/44) and exceptions (48/52). Exact truth counting was 37/65, ahead of Jev 1.14's 26/65, but necessary conditions and contraposition were only 22/46, swap tracking 24/46 and sequential procedures 6/42. It is a stronger inexpensive text-decision result than the regular LLMs in this bank, not the strongest model overall.
 
-## What the additions change
+## The three native additions completed without a failed first attempt
 
-All three new services completed 1,136 first attempts without a transport failure, invalid choice or recovery request. Their 3,408 new cases bring the overall comparison to **14 services and 15,904 scored model-question cases**. None of the original eleven runs was repeated or replaced. Sixteen questions remain unanswered correctly by any of the fourteen services, down from 29 in the eleven-model comparison; the original key is unchanged.
+All three services completed 1,136 first attempts without a transport failure, invalid choice or recovery request. Their 3,408 cases are preserved in the [fourteen-model snapshot](overall_2026-10-16/summary.json). The later regular-LLM runs extend that evidence without replacing any original response. The current ranking applies the output-compliance inclusion rule to old and new models alike.
 
 Microsoft reports a dollar charge in each response. Nimble reports input-token usage but no dollar charge, so its displayed costs are usage multiplied by the captured published prices: $0.04 per million input tokens for v4 and $0.09 for Max, with free output. These are tariff calculations, not independently reconciled invoices. Similar per-token prices do not imply identical per-question costs because services count different prompt overheads and tokens.

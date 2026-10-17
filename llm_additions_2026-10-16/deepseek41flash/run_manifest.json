@@ -1,0 +1,34 @@
+{
+  "version": "seven-field-additions-20261016-v1",
+  "label": "DeepSeek V4.1 Flash",
+  "model_id": "deepseek41flash",
+  "model_requested": "deepseek/deepseek-v4.1-flash",
+  "provider_tag": "deepinfra/fp8",
+  "provider_name": "DeepInfra",
+  "required_metadata_snapshot": "deepseek/deepseek-v4.1-flash-20260910",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "question_count": 1136,
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "question_order": "Exact saved eight-LLM bank order",
+  "prompt": "Exact frozen prompt_text plus original numeric-ID-only suffix; no key or answer feedback",
+  "max_tokens": 16,
+  "stream": false,
+  "reasoning": {
+    "enabled": false
+  },
+  "temperature": "Omitted, matching original eight regular LLM benchmark runs",
+  "concurrency": {
+    "maximum_per_model": 2,
+    "questions_per_wave": 2,
+    "barrier": "Each model independently waits for its two cases; at most 14 requests globally"
+  },
+  "timing": "Unmodified decision_refresh.send, new HTTPS connection, connect through full response JSON body; local preparation, queue and retry wait excluded",
+  "connect_timeout_seconds": 10,
+  "total_response_timeout_seconds": 90,
+  "retry": "At most one retry for transport failure or HTTP 408/429/5xx, never for invalid output or wrong answers",
+  "primary": "First attempts, denominator 1136, failures unsuccessful; recovery separate",
+  "compatibility_probes": "Separate from full run and never substituted into primary results",
+  "identity_limit": "Provider pinned and metadata dated snapshot captured; an alias response is not independent checkpoint attestation",
+  "known_spend_guard_usd": 0.25,
+  "guard_limit": "Soft before-dispatch guard, unknown and in-flight charges not a hard billing cap"
+}

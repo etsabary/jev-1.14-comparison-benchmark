@@ -1,0 +1,23 @@
+{
+  "completed": {
+    "utc": "2026-10-16T18:33:18.292863+00:00",
+    "toronto": "2026-10-16T14:33:18.292863-04:00"
+  },
+  "source_run_files_sha256": {
+    "manifest.json": "cb1a62bbe381c1891d55f0aa7155107975d5354c7912f1e8c7fd96c487e9fd09",
+    "software.json": "16f5b42656001943a7a1e66e6997410840d7c09323216b4b2a54aa0963fbf8ca",
+    "model_metadata.json": "af967b3a67127055a9b239a6901591837487bfad1f9db8b42d367cdd79a66752",
+    "dispatches.jsonl": "b10227a59273f0bba00ae41e7cdc61f1cfe3f2ae8b1eeaa1c2e6038d56356fd6",
+    "attempts.jsonl": "c725a025c8258b1f619efc348b2930b45bf24d1829342cb31c65b11057901823",
+    "results.jsonl": "20a6fdc41024bf8bd9da4e8a8208d961187ea866dc5c2ba82f28e2f62054bbec"
+  },
+  "frozen_source_map": {
+    "runs/nemotron_2026-10-16/runner.py": "source/nemotron_2026-10-16/runner.py",
+    "runs/nemotron_2026-10-16/test_runner.py": "source/nemotron_2026-10-16/test_runner.py",
+    "decision_refresh.py": "repository:decision_refresh.py",
+    "text_models.py": "repository:text_models.py",
+    "run_benchmark.py": "repository:run_benchmark.py"
+  },
+  "sanitization": "Allowlisted response identity, generated answer, usage and basic errors. Account metadata and credentials removed. No key or per-question correctness.",
+  "original_fourteen_summary_sha256": "f4a362b2195dc999f3948e7e345a7565a50cbc08115653f718de5ebf6b303a00"
+}

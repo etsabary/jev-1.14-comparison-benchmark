@@ -1,0 +1,439 @@
+{
+  "included_in_scored_benchmark_costs": false,
+  "probe_count": 9,
+  "known_reported_cost_usd": 0.0001738755,
+  "unknown_charge_attempts": 2,
+  "excluded_candidate": {
+    "model": "z-ai/glm-5.3-flash",
+    "provider_tag": "deepinfra/fp4",
+    "reason": "HTTP 400: Reasoning is mandatory for this endpoint and cannot be disabled.",
+    "scored_questions": 0,
+    "replacement": "GLM 4.7 Flash, approved by benchmark author"
+  },
+  "probes": [
+    {
+      "model_id": "deepseek41flash",
+      "model_requested": "deepseek/deepseek-v4.1-flash",
+      "item_id": "J000023",
+      "request_payload_sha256": "f5c5206b9b67b5b18c43525358f8843eae68725aa274e9f84558b43f61e86c65",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:40:53.344515+00:00",
+        "toronto": "2026-10-16T14:40:53.344515-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:53.895636+00:00",
+        "toronto": "2026-10-16T14:40:53.895636-04:00"
+      },
+      "latency_ms": 551.0568750323728,
+      "reported_cost_usd": 2.8e-05,
+      "raw_response": {
+        "id": "gen-1792176053-PnhHFrQUEn0zU4WBtIDz",
+        "model": "deepseek/deepseek-v4.1-flash",
+        "provider": "DeepInfra",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 194,
+          "completion_tokens": 2,
+          "total_tokens": 196,
+          "cost": 2.8e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "model_id": "glm47flash",
+      "model_requested": "z-ai/glm-4.7-flash",
+      "item_id": "J000023",
+      "request_payload_sha256": "1952d865e8890ca997cc73d67430493fb84445090f97bae4afc35444ca55f912",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:44:15.753423+00:00",
+        "toronto": "2026-10-16T14:44:15.753423-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:44:16.140022+00:00",
+        "toronto": "2026-10-16T14:44:16.140022-04:00"
+      },
+      "latency_ms": 386.54520793352276,
+      "reported_cost_usd": 1.2658e-05,
+      "raw_response": {
+        "id": "gen-1792176255-bHJDK8nGC0HFn8vX3T0s",
+        "model": "z-ai/glm-4.7-flash",
+        "provider": "Cloudflare",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "1",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 196,
+          "completion_tokens": 2,
+          "total_tokens": 198,
+          "cost": 1.2658e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "model_id": "glm53flash",
+      "model_requested": "z-ai/glm-5.3-flash",
+      "item_id": "J000023",
+      "request_payload_sha256": "223a6d03a7f5ca4b4d3013af1ab66a9b8ebf5369c502e7f183b9b3d077963a77",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 400,
+      "status": "http_failure",
+      "started": {
+        "utc": "2026-10-16T18:40:53.723703+00:00",
+        "toronto": "2026-10-16T14:40:53.723703-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:53.809879+00:00",
+        "toronto": "2026-10-16T14:40:53.809879-04:00"
+      },
+      "latency_ms": 86.1112920101732,
+      "reported_cost_usd": null,
+      "raw_response": {
+        "error": {
+          "code": 400,
+          "message": "Reasoning is mandatory for this endpoint and cannot be disabled.",
+          "metadata": {
+            "provider_name": null
+          }
+        }
+      }
+    },
+    {
+      "model_id": "haiku55",
+      "model_requested": "anthropic/claude-haiku-5.5",
+      "item_id": "J000023",
+      "request_payload_sha256": "693167c0d580e735861f1ec7302b4896d5aa134028a488a065f9ce0f71df282f",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:40:53.478856+00:00",
+        "toronto": "2026-10-16T14:40:53.478856-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:54.336324+00:00",
+        "toronto": "2026-10-16T14:40:54.336324-04:00"
+      },
+      "latency_ms": 857.4045830173418,
+      "reported_cost_usd": 3.18e-05,
+      "raw_response": {
+        "id": "gen-1792176053-g1rtsh7szyBEpW1PIAQ5",
+        "model": "anthropic/claude-haiku-5.5",
+        "provider": "Anthropic",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "end_turn",
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 303,
+          "completion_tokens": 3,
+          "total_tokens": 306,
+          "cost": 3.18e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "model_id": "mimo26flash",
+      "model_requested": "xiaomi/mimo-v2.6-flash",
+      "item_id": "J000023",
+      "request_payload_sha256": "4d60f28856246d348e9cf8a57e62c048fd19ff92519fceed3f5188e653579a19",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:40:53.513650+00:00",
+        "toronto": "2026-10-16T14:40:53.513650-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:54.263311+00:00",
+        "toronto": "2026-10-16T14:40:54.263311-04:00"
+      },
+      "latency_ms": 749.5894589228556,
+      "reported_cost_usd": 2.856e-05,
+      "raw_response": {
+        "id": "gen-1792176053-xmuIY5Mg57crqOpfUJuz",
+        "model": "xiaomi/mimo-v2.6-flash",
+        "provider": "Xiaomi",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 200,
+          "completion_tokens": 2,
+          "total_tokens": 202,
+          "cost": 2.856e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "model_id": "nemotron35supervl",
+      "model_requested": "nvidia/nemotron-3.5-super-vl",
+      "item_id": "J000023",
+      "request_payload_sha256": "17da9524bf847c90b3dbef8f4f5c2c95aa53ae69375a9a5942b89ec91b33dd50",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:40:53.560623+00:00",
+        "toronto": "2026-10-16T14:40:53.560623-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:54.179719+00:00",
+        "toronto": "2026-10-16T14:40:54.179719-04:00"
+      },
+      "latency_ms": 619.0328330267221,
+      "reported_cost_usd": 2.12e-05,
+      "raw_response": {
+        "id": "gen-1792176053-UXiXJYjXNbKC3aARLAhY",
+        "model": "nvidia/nemotron-3.5-super-vl",
+        "provider": "Crusoe",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 204,
+          "completion_tokens": 2,
+          "total_tokens": 206,
+          "cost": 2.12e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "model_id": "qwen38flash",
+      "model_requested": "qwen/qwen3.8-flash",
+      "item_id": "J000023",
+      "request_payload_sha256": "59e53438e9f049a077d8767429a4e73bb21631e38d957d44ab094269e7213dc8",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 429,
+      "status": "http_failure",
+      "started": {
+        "utc": "2026-10-16T18:40:53.648630+00:00",
+        "toronto": "2026-10-16T14:40:53.648630-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:58.209345+00:00",
+        "toronto": "2026-10-16T14:40:58.209345-04:00"
+      },
+      "latency_ms": 4560.573082999326,
+      "reported_cost_usd": null,
+      "raw_response": {
+        "error": {
+          "code": 429,
+          "message": "Provider returned error",
+          "metadata": {
+            "provider_name": "Alibaba",
+            "provider_error_code": "Throttling.Concurrency",
+            "limit_source": "upstream_provider_shared_pool"
+          }
+        }
+      }
+    },
+    {
+      "model_id": "qwen38flash",
+      "model_requested": "qwen/qwen3.8-flash",
+      "item_id": "J000023",
+      "request_payload_sha256": "59e53438e9f049a077d8767429a4e73bb21631e38d957d44ab094269e7213dc8",
+      "stage": "compatibility_not_scored",
+      "retry_probe": true,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:41:50.459220+00:00",
+        "toronto": "2026-10-16T14:41:50.459220-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:41:51.261251+00:00",
+        "toronto": "2026-10-16T14:41:51.261251-04:00"
+      },
+      "latency_ms": 801.6663750167936,
+      "reported_cost_usd": 3.392e-05,
+      "raw_response": {
+        "id": "gen-1792176110-yy8eOpMChZtAIm8GXCIi",
+        "model": "qwen/qwen3.8-flash",
+        "provider": "Alibaba",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 223,
+          "completion_tokens": 1,
+          "total_tokens": 224,
+          "cost": 3.392e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "model_id": "tencenthy3",
+      "model_requested": "tencent/hy3",
+      "item_id": "J000023",
+      "request_payload_sha256": "9b276c02311c73cec39d331f5897f08d811eca17f286ac821fa6dbc7066d1dbb",
+      "stage": "compatibility_not_scored",
+      "retry_probe": false,
+      "http_status": 200,
+      "status": "ok",
+      "started": {
+        "utc": "2026-10-16T18:40:53.532983+00:00",
+        "toronto": "2026-10-16T14:40:53.532983-04:00"
+      },
+      "completed": {
+        "utc": "2026-10-16T18:40:56.009793+00:00",
+        "toronto": "2026-10-16T14:40:56.009793-04:00"
+      },
+      "latency_ms": 2476.7254169564694,
+      "reported_cost_usd": 1.77375e-05,
+      "raw_response": {
+        "id": "gen-1792176053-XkOU8eg1qo38RhgLPT9n",
+        "model": "tencent/hy3",
+        "provider": "Tencent",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "native_finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "reasoning": null
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 207,
+          "completion_tokens": 2,
+          "total_tokens": 209,
+          "cost": 1.77375e-05,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+          }
+        }
+      }
+    }
+  ]
+}

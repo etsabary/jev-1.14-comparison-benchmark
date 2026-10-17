@@ -1,0 +1,32 @@
+{
+  "version": "nemotron-lightning-full-text-20261016-v1",
+  "model_requested": "nvidia/nemotron-3.5-lightning",
+  "provider_tag": "coreweave/bf16",
+  "provider_name": "CoreWeave",
+  "required_metadata_snapshot": "nvidia/nemotron-3.5-lightning-20260807",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "question_count": 1136,
+  "question_order": "Exact saved eight-LLM bank order",
+  "prompt": "Exact frozen prompt_text plus original numeric-ID-only suffix; no key or answer feedback",
+  "max_tokens": 16,
+  "stream": false,
+  "reasoning": {
+    "enabled": false
+  },
+  "temperature": "Omitted, matching original eight regular LLM benchmark runs",
+  "concurrency": {
+    "maximum": 2,
+    "questions_per_wave": 2,
+    "barrier": "Both cases settle before next wave"
+  },
+  "timing": "Unmodified decision_refresh.send transport, with chat-completions path; new HTTPS connection, connect through full response JSON body; preparation, local queue and retry wait excluded",
+  "connect_timeout_seconds": 10,
+  "total_response_timeout_seconds": 90,
+  "retry": "At most one retry for transport failure or HTTP 408/429/5xx; never for invalid output or wrong answers",
+  "primary": "First attempts, denominator 1136, failures unsuccessful; recovery separate",
+  "pilot_excluded": "All 25 earlier pilot questions rerun under full protocol; pilot used temperature=0 and is not merged or substituted",
+  "identity_limit": "Provider pinned; dated snapshot captured in endpoint metadata. Response model may be alias, not independent checkpoint attestation.",
+  "known_spend_guard_usd": 0.15,
+  "guard_limit": "Soft stop before dispatch, not hard cap on unknown/in-flight charges"
+}

@@ -1,0 +1,25 @@
+{
+  "completed": {
+    "utc": "2026-10-16T19:17:23.031202+00:00",
+    "toronto": "2026-10-16T15:17:23.031202-04:00"
+  },
+  "source_run_files_sha256": {
+    "manifest.json": "075aab292a8f00823975377d1b6a9d2d8b08469f6bfc0a1e358ef67b6329222f",
+    "software.json": "8bdd524df9af49706544e01fb438864bd9fa8f7b443ac570f0f2774f4818a0ef",
+    "model_metadata.json": "b2e36a770d107cad10f7e309ce7e0d6090792411a673d9a28c8f99b4a4f392fa",
+    "dispatches.jsonl": "80905b4ad28d4e35a8f6901a917b21d3f02c6fe7ccd4cc24e87d589ee31c6f67",
+    "attempts.jsonl": "b4a5dadd72ad8411921c69023a1e53853afb2788104c788230e6ee377b0f7ba5",
+    "results.jsonl": "b9ea53be094dd3b3548e0248cb43101038eb706c2c00284a09614ac53cd309ea"
+  },
+  "frozen_source_map": {
+    "runs/nemotron_2026-10-16/runner.py": "source/nemotron_2026-10-16/runner.py",
+    "runs/nemotron_2026-10-16/test_runner.py": "source/nemotron_2026-10-16/test_runner.py",
+    "runs/text_field_2026-10-16/field_runner.py": "source/text_field_2026-10-16/field_runner.py",
+    "runs/text_field_2026-10-16/test_field_runner.py": "source/text_field_2026-10-16/test_field_runner.py",
+    "decision_refresh.py": "repository:decision_refresh.py",
+    "text_models.py": "repository:text_models.py",
+    "run_benchmark.py": "repository:run_benchmark.py"
+  },
+  "sanitization": "Allowlisted response identity, generated answer, usage and basic errors. Account metadata and credentials removed. No key or per-question correctness.",
+  "original_fourteen_summary_sha256": "f4a362b2195dc999f3948e7e345a7565a50cbc08115653f718de5ebf6b303a00"
+}
