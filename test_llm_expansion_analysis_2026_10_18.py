@@ -98,8 +98,13 @@ class LlmExpansionAnalysis(unittest.TestCase):
                 continue
             audit = json.loads((folder / 'source_audit.json').read_text())
             for name, expected in audit['source_evidence_sha256'].items():
-                self.assertEqual((folder / name).read_bytes(), (a.source_dir(m) / name).read_bytes())
+                # Every public clone checks original captured-byte hashes. The
+                # owner can additionally compare private local source files;
+                # those private runtime directories are deliberately not Git data.
                 self.assertEqual(a.digest_file(folder / name), expected)
+                source=a.source_dir(m)/name
+                if source.exists():
+                    self.assertEqual((folder/name).read_bytes(),source.read_bytes())
             manifest = json.loads((folder / 'manifest.json').read_text())
             self.assertEqual(len(manifest['request_plan']), 1136)
             self.assertFalse((folder / 'run_manifest.json').exists())

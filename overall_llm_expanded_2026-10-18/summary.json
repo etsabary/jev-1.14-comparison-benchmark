@@ -28513,7 +28513,7 @@
     "native_additions_2026-10-18/liquid_ultra/run_manifest.json": "f50354bf23172e152a97e72c6e039c705bc2968445bd758263b1bc82c41a9a16",
     "overall_expanded_2026-10-18/summary.json": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
     "llm_expansion_analysis_2026_10_18.py": "ae70d51954dc839569f24a7ab7873571e4aa2e9bd29bd3e71cd0338df41eb55d",
-    "test_llm_expansion_analysis_2026_10_18.py": "563fb41afd5076858813570457b3bcb3c1f94e50130162534b80532dee782153",
+    "test_llm_expansion_analysis_2026_10_18.py": "258646673d619b5bd0dad68706184ae4647beda0316d67734b642e7add2d88a5",
     "native_expansion_analysis.py": "b78154a9a68848b92f97513bf52b461fc3fcd732836d7b7994d3ded854c3ed7d",
     "analysis_core.py": "639268921cfdd2bdb770b96046756cdecb13c1f368b12b069f20df1a7aec3137",
     "matched_analysis.py": "78ce17d47b772188bce31bb79bad5834d50bd816cedbc16aa985120b3ba17e76",
