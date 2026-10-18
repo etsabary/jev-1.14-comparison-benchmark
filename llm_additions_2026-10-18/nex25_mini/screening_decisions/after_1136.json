@@ -1,0 +1,67 @@
+{
+  "model_id": "nex25_mini",
+  "decision": "continue",
+  "gate_result": "pass",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "manifest_sha256": "946601177dd633b95683c1cbdae6ade36e22576c8dc746739202b886e21bf2b9",
+  "screen_sha256": "b810d0a69e467515e30d46e7c56b6410d50ef51f26e072e19a822ca3c1eac37c",
+  "evaluated_first_attempts": 1136,
+  "primary": {
+    "attempted": 1136,
+    "answered": 1136,
+    "correct": 651,
+    "wrong": 485,
+    "unanswered": 0,
+    "accuracy_attempted": 0.5730633802816901,
+    "accuracy_answered": 0.5730633802816901,
+    "probability_warnings": 0
+  },
+  "eventual": {
+    "attempted": 1136,
+    "answered": 1136,
+    "correct": 651,
+    "wrong": 485,
+    "unanswered": 0,
+    "accuracy_attempted": 0.5730633802816901,
+    "accuracy_answered": 0.5730633802816901,
+    "probability_warnings": 0
+  },
+  "compliance": {
+    "planned": 1136,
+    "recorded_first_attempts": 1136,
+    "usable_first_answers": 1136,
+    "model_output_failures": 0,
+    "provider_transport_failures": 0,
+    "model_output_failure_fraction": 0.0,
+    "passes_output_format_screen": true
+  },
+  "first_latency": {
+    "n": 1136,
+    "median_ms": 500.23895845515653,
+    "p95_ms": 1215.092218684731
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.008746245,
+    "exact_usd": "0.008746245",
+    "reported_attempts": 1136,
+    "missing_attempts": 0
+  },
+  "cutoffs": {
+    "accuracy_below": 0.5,
+    "model_output_failures_fraction_at_least": 0.05,
+    "median_ms_above": 2000,
+    "minimum_cases": 100,
+    "recheck_every_cases": 100,
+    "maximum_active_models": 4,
+    "approved_by": "Benchmark author, October 18, 2026"
+  },
+  "reasons": [],
+  "authorized_by": "Benchmark author, October 18, 2026",
+  "reason": "Passes all three author-approved operational cutoffs on the recorded first-attempt prefix",
+  "controller_sha256": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a",
+  "attempts_prefix": {
+    "bytes": 2373811,
+    "sha256": "032b1cae844344cfb8b5bfadeeca627f92230d4db94d980092ec1a359b2b3476"
+  },
+  "selection_limit": "Sequential prefix includes related variants and uneven family coverage; operational selection, not a representative accuracy estimate"
+}

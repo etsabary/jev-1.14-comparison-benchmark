@@ -1,0 +1,71 @@
+{
+  "model_id": "ling31_flash",
+  "decision": "stop",
+  "gate_result": "fail",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "manifest_sha256": "37585d3c4b15154b5cb234129331f2afaba65d3e549940bd2498c85c8f4344b3",
+  "screen_sha256": "a3e8d92effc7dc85ca0a1052e29cd28700f844de5f00b4920a6a9ca3602fc6d3",
+  "evaluated_first_attempts": 100,
+  "primary": {
+    "attempted": 100,
+    "answered": 14,
+    "correct": 12,
+    "wrong": 2,
+    "unanswered": 86,
+    "accuracy_attempted": 0.12,
+    "accuracy_answered": 0.8571428571428571,
+    "probability_warnings": 0
+  },
+  "eventual": {
+    "attempted": 100,
+    "answered": 14,
+    "correct": 12,
+    "wrong": 2,
+    "unanswered": 86,
+    "accuracy_attempted": 0.12,
+    "accuracy_answered": 0.8571428571428571,
+    "probability_warnings": 0
+  },
+  "compliance": {
+    "planned": 100,
+    "recorded_first_attempts": 100,
+    "usable_first_answers": 14,
+    "model_output_failures": 86,
+    "provider_transport_failures": 0,
+    "model_output_failure_fraction": 0.86,
+    "passes_output_format_screen": false
+  },
+  "first_latency": {
+    "n": 100,
+    "median_ms": 2647.233104042243,
+    "p95_ms": 6602.225803851616
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00254607,
+    "exact_usd": "0.002546070",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "cutoffs": {
+    "accuracy_below": 0.5,
+    "model_output_failures_fraction_at_least": 0.05,
+    "median_ms_above": 2000,
+    "minimum_cases": 100,
+    "recheck_every_cases": 100,
+    "maximum_active_models": 4,
+    "approved_by": "Benchmark author, October 18, 2026"
+  },
+  "reasons": [
+    "accuracy_below_50_percent",
+    "model_output_failures_at_least_5_percent",
+    "median_above_2000_ms"
+  ],
+  "authorized_by": "Benchmark author, October 18, 2026",
+  "reason": "accuracy_below_50_percent; model_output_failures_at_least_5_percent; median_above_2000_ms",
+  "controller_sha256": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a",
+  "attempts_prefix": {
+    "bytes": 222192,
+    "sha256": "a1471b45efff3a8273a737bfa503250d162972f69173cb611ea8a6cbb4368331"
+  },
+  "selection_limit": "Sequential prefix includes related variants and uneven family coverage; operational selection, not a representative accuracy estimate"
+}

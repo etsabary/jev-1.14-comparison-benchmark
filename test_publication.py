@@ -32,8 +32,15 @@ class Publication(unittest.TestCase):
             self.assertEqual(sha256((ROOT/name).read_bytes()).hexdigest(),expected)
 
     def test_release_file_hashes(self):
+        archive=ROOT/'publication_archive_2026-10-16'
+        archived=json.loads((archive/'manifest.json').read_text())['files']
+        self.assertEqual(set(archived),{'README.md','FUNCTIONS.md','OUTPUT_COMPLIANCE.md',
+            'docs/index.html','docs/functions.html','docs/output_compliance.html','test_overall.py','test_publication.py'})
+        for name, entry in archived.items():self.assertEqual(entry['archive_path'],name+'.snapshot')
         for name,digest in json.loads((EXPANSION/'release_checksums.json').read_text()).items():
-            self.assertEqual(sha256((ROOT/name).read_bytes()).hexdigest(),digest,name)
+            path=archive/archived[name]['archive_path'] if name in archived else ROOT/name
+            if name in archived:self.assertEqual(archived[name]['sha256'],digest,name)
+            self.assertEqual(sha256(path.read_bytes()).hexdigest(),digest,name)
 
     def test_no_private_fields_in_public_data(self):
         forbidden={'user_id','is_byok','gold_option','gold_text','gold_canonical','correct_first','correct_eventual',

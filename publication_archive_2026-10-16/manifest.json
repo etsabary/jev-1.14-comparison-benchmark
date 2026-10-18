@@ -1,0 +1,39 @@
+{
+  "source_commit": "83dfec83825a39c55a225b9e567c0fc0513597e4",
+  "files": {
+    "README.md": {
+      "archive_path": "README.md.snapshot",
+      "sha256": "7e4a6a0b8b81b80a89d1600cbf2b5a6207dc3160601c620f2c1e833cbd841884"
+    },
+    "FUNCTIONS.md": {
+      "archive_path": "FUNCTIONS.md.snapshot",
+      "sha256": "6d2204925ef0c093d4a4c01e777371849f977fe17c86e3b827ec03a99c7a1890"
+    },
+    "OUTPUT_COMPLIANCE.md": {
+      "archive_path": "OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "08cb258991cbcef7057ad0cef0fec6974fda5006a0219ce9476dadb530abec99"
+    },
+    "docs/index.html": {
+      "archive_path": "docs/index.html.snapshot",
+      "sha256": "649a143fe5a62d5aed41ffff286f64fdbf9e51f42fe4d29c8f700b5429db10c2"
+    },
+    "docs/functions.html": {
+      "archive_path": "docs/functions.html.snapshot",
+      "sha256": "8eaeeee9b5531ff0f48abd0d7e3eb18517ef1d26bd9dbbfa307a3b086bcf42c8"
+    },
+    "docs/output_compliance.html": {
+      "archive_path": "docs/output_compliance.html.snapshot",
+      "sha256": "6e275cac59198da0bd3746835c5361b49982170a25330e1d73e6abba0c850cca"
+    },
+    "test_overall.py": {
+      "archive_path": "test_overall.py.snapshot",
+      "sha256": "72e830ee8f354f83c09a26505bee5c7faf42434a2def67e668fed1377992dae3"
+    },
+    "test_publication.py": {
+      "archive_path": "test_publication.py.snapshot",
+      "sha256": "6e4694aa875ecbc985e001807c0ccf0b4a2bac36786d941314037120b55e0ef8"
+    }
+  },
+  "purpose": "Exact superseded presentation and publication-test bytes. Measurement evidence and original release_checksums.json stay in place unchanged. The current publication is sealed separately.",
+  "snapshot_note": "Snapshot suffix preserves source bytes at their original logical paths without presenting relocated HTML/Markdown as a separately rendered site."
+}

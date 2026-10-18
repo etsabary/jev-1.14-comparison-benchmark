@@ -37,3 +37,40 @@ Phi-4 had **327 first responses** that failed the output format, plus two HTTP f
 ## Evidence remains unchanged
 
 The [original eight-LLM evidence](expansion_2026-10-15) preserves Phi-4's run. The [October 16 regular-LLM ledgers](llm_additions_2026-10-16) preserve Haiku and DeepSeek. The private reference key is unchanged. No answer was discarded, replaced or inferred from an unfinished explanation.
+
+## October 18 stopped samples
+
+The new generative candidates were screened after the fixed first 100 questions and rechecked cumulatively after each further 100. The author approved a hold for accuracy below 50%, model-output failures at least 5%, or median response time above 2,000 ms. The prefix has uneven family coverage and dependent variants; these are operational selection rules, not a representative full-bank accuracy estimate. Provider failures are distinct from explanations, refusals and malformed output. No stopped sample is extrapolated to 1,136 or included in the main ranking.
+
+| Stopped configuration | Completed | Correct on completed | Model-output failures | Provider/transport failures | Sample median | Known actual sample cost | Unknown charges | Stop reasons |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Mistral Small 4 | 100 | 18/100 | 0 | 68 | 292 ms 🟨 Fast | $0.00129714 + ? | 135 | accuracy_below_50_percent |
+| Solar Pro 4 | 800 | 424/800 | 40 | 0 | 591 ms 🟧 Moderate | $0.02372823 | 0 | model_output_failures_at_least_5_percent |
+| Ling 3.1 Flash | 100 | 12/100 | 86 | 0 | 2647 ms 🟥 Slow | $0.00254607 | 0 | accuracy_below_50_percent, model_output_failures_at_least_5_percent, median_above_2000_ms |
+| Laguna S2.1 | 100 | 42/100 | 23 | 11 | 260 ms 🟨 Fast | $0.00238887 + ? | 12 | accuracy_below_50_percent, model_output_failures_at_least_5_percent |
+| DeepSeek V4.1 Flash 1017 | 100 | 62/100 | 7 | 0 | 388 ms 🟨 Fast | $0.00273750 | 0 | model_output_failures_at_least_5_percent |
+
+Sample costs above are actual recorded costs, not normalized per-1,000 prices. Their median bands describe only their observed sample. [Bound screening receipts and unchanged attempt ledgers](llm_additions_2026-10-18) retain the progression and the approved cutoffs.
+
+The separate native Solar Decide route was stopped for latency after 347 recorded responses: 311/347 correct, with a 4577 ms sample median. It had 1 unresolved dispatch whose result and charge remain unknown. It is not the Solar Pro 4 chat model in the table. Its [stop receipt and original partial evidence](native_additions_2026-10-18/solar_decide_partial) remain unchanged and are not replayed.
+
+## Compatibility-only interfaces
+
+| Interface | Probe HTTP status | Recorded error | Known probe charge |
+|---|---:|---:|---:|
+| Xing 4.0 29B A4B free | 429 | Provider returned error | Unknown |
+| Tev1 4B experimental chat interface | 400 | togethercomputer/tev1-4b-experimental is a decisions model and cannot be used with the chat/completions endpoint. Use the /api/alpha/decisions endpoint instead. | Unknown |
+
+These are unscored compatibility calls, not zero-accuracy benchmark runs. Tev subsequently completed all 1,136 questions through OpenRouter's native adapter; it remains a decision-specialized generative model, not an architectural non-generative control. Xing's free route returned a rate-limit error; this does not establish its decision accuracy.
+
+## Separate experimental costs
+
+| Cost bucket | Known actual cost | Attempts with unknown charges |
+|---|---:|---:|
+| Four selected complete runs | $0.10295960 + ? | 40 |
+| Stopped samples | $0.03269781 + ? | 147 |
+| Compatibility probes | $0.00017619 + ? | 2 |
+| All new experimental calls | $0.13583360 + ? | 189 |
+
+
+Missing charges are not zero. Only the four selected complete runs contribute to current full-bank model costs; stopped-sample and compatibility charges are separate and none of these totals is an independently reconciled invoice. The [current aggregate](overall_llm_expanded_2026-10-18/summary.json) retains exact amounts and counts.

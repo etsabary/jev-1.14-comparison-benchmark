@@ -1,0 +1,163 @@
+{
+  "status": "SCREEN_100_COMPLETE",
+  "model_id": "deepseek41_flash1017",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "screened_cases": 100,
+  "request_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "first_status_counts": {
+    "ok": 93,
+    "invalid_output": 7
+  },
+  "model_output_failures": 7,
+  "first_latency": {
+    "n": 100,
+    "median_ms": 387.7931665047072,
+    "p95_ms": 1050.1335128967185
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00273750064,
+    "exact_usd": "0.00273750064",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "accuracy": "Not computed here; requires a separate offline scorer",
+  "files_prefix_binding": {
+    "manifest.json": {
+      "bytes": 579627,
+      "sha256": "851b31adbe1e89ea27b03f1cb2765f9b716ed88d85acc0ee8081cf6613a093fb"
+    },
+    "software.json": {
+      "bytes": 565,
+      "sha256": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b"
+    },
+    "model_metadata.json": {
+      "bytes": 24973,
+      "sha256": "ef751bb1e0ed7b096f84ec423dfcb7ef941cd3d287bc3f699f0995a3706d7dc2"
+    },
+    "compatibility_probe.json": {
+      "bytes": 2558,
+      "sha256": "732d569d76a07903145e3792a0d7c4b19355bda89312a997feb67c19baae6874"
+    },
+    "probe_dispatches.jsonl": {
+      "bytes": 589,
+      "sha256": "2a7dc6cecb45de1a0b5f22a2d141d5c2422e9ae01783f42a369a48b7c739ddc6"
+    },
+    "probe_attempts.jsonl": {
+      "bytes": 2164,
+      "sha256": "6b321e131dcd582cf720559b57e5f00739d952dae8d778db22471ae035994b06"
+    },
+    "dispatches.jsonl": {
+      "bytes": 55868,
+      "sha256": "fb131281c6b61ca59823e6ff79a5f0b78c9d31816b40b13ac47659c9b5feb2aa"
+    },
+    "attempts.jsonl": {
+      "bytes": 215254,
+      "sha256": "dde008f97b2b4aeaa585f5d40cffea414ef56d340a2c72b3263b03c6b2173370"
+    },
+    "results.jsonl": {
+      "bytes": 54264,
+      "sha256": "be56dff2acba74b15fca60829ed963902d02412077692bab94708f6a5031116b"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model_id": "xing4_free",
+  "export_state": "COMPATIBILITY_BLOCKED",
+  "previous_36_model_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "source_evidence_sha256": {
+    "manifest.json": "148dbaa93651073633ec6050aacd4fc523b601e7fb61d38ab65aed58205356cd",
+    "software.json": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b",
+    "model_metadata.json": "7c2af4af271ee3417935684d5ae724088c947f76982dbdbe4edb95556863be34",
+    "compatibility_probe.json": "8ff2640bf5a41147bca8e87d1543a222314d5e7c04f5fb79eebeb3501b0c32cd",
+    "probe_dispatches.jsonl": "ba3d3e18d6a67367a2340588deed93845138a1f583f86945a6e17af201a27798",
+    "probe_attempts.jsonl": "bcf55c4c9f754a154977b9fa40988f0c6a9f10f6405eb8103805e065641dfdb7"
+  },
+  "controllers_sha256": {
+    "llm_screening_2026_10_18.py": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a"
+  },
+  "byte_preservation": "Original sanitized capture bytes and filenames retained, including full manifest and prefix-bound ledgers",
+  "privacy": "No owner paths, account metadata, credentials, gold key or per-item correctness; reject instead of rewriting any unsafe bound evidence"
+}

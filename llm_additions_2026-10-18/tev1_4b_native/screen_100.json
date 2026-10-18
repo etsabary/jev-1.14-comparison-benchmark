@@ -1,0 +1,162 @@
+{
+  "status": "SCREEN_100_COMPLETE",
+  "model_id": "tev1_4b_native",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "screened_cases": 100,
+  "request_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "first_status_counts": {
+    "ok": 100
+  },
+  "model_output_failures": 0,
+  "first_latency": {
+    "n": 100,
+    "median_ms": 215.53950000088662,
+    "p95_ms": 268.79668094334187
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00149121,
+    "exact_usd": "0.001491210",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "accuracy": "Not computed here; requires a separate offline scorer",
+  "files_prefix_binding": {
+    "manifest.json": {
+      "bytes": 583786,
+      "sha256": "05c231485d06d8859168cd5e4e510861c3192c3230c17502f304bef7ce675d6e"
+    },
+    "software.json": {
+      "bytes": 782,
+      "sha256": "ed985a1d1f9ec4ea95382d7701a8bb95e13c7a25ce9ab15239c4ae168e4051b8"
+    },
+    "model_metadata.json": {
+      "bytes": 2045,
+      "sha256": "08a3718d96372ee0df953c16694b43ec8c21224794cec0c0ef0ff32ab8124792"
+    },
+    "compatibility_probe.json": {
+      "bytes": 2430,
+      "sha256": "c6b334cc5aed4332187b80c2fba0e8e2992c6140105aa15cd6181e2397dbf470"
+    },
+    "probe_dispatches.jsonl": {
+      "bytes": 591,
+      "sha256": "80a2b00f5bc19b524182a5fe958be5d32d95e038ff81f216e88769c7151f0a9a"
+    },
+    "probe_attempts.jsonl": {
+      "bytes": 2124,
+      "sha256": "d9eb1ad9f0d34ec5fc22f04977dc45424a941e91f3bca978db4d9431334f1ebd"
+    },
+    "dispatches.jsonl": {
+      "bytes": 56149,
+      "sha256": "7e0c7458abee94cc5afc59e9e3e8be72e4ad9cf52280ecface34e7fc6173ae2c"
+    },
+    "attempts.jsonl": {
+      "bytes": 208056,
+      "sha256": "1461576c80f8c2c594c1f9977673294189459f2af2204ecabacddfc37d0c93b7"
+    },
+    "results.jsonl": {
+      "bytes": 54425,
+      "sha256": "a23ed2d1974497371ee29bf76e710845061aa620a00282d370fdd0f60c3d0644"
+    }
+  }
+}

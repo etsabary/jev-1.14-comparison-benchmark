@@ -1,0 +1,20 @@
+{
+  "status": "COMPLETE_1136",
+  "completed": {
+    "utc": "2026-10-18T16:31:31.208806+00:00",
+    "toronto": "2026-10-18T12:31:31.208806-04:00"
+  },
+  "files_sha256": {
+    "manifest.json": "05c231485d06d8859168cd5e4e510861c3192c3230c17502f304bef7ce675d6e",
+    "software.json": "ed985a1d1f9ec4ea95382d7701a8bb95e13c7a25ce9ab15239c4ae168e4051b8",
+    "model_metadata.json": "08a3718d96372ee0df953c16694b43ec8c21224794cec0c0ef0ff32ab8124792",
+    "compatibility_probe.json": "c6b334cc5aed4332187b80c2fba0e8e2992c6140105aa15cd6181e2397dbf470",
+    "probe_dispatches.jsonl": "80a2b00f5bc19b524182a5fe958be5d32d95e038ff81f216e88769c7151f0a9a",
+    "probe_attempts.jsonl": "d9eb1ad9f0d34ec5fc22f04977dc45424a941e91f3bca978db4d9431334f1ebd",
+    "screen_100.json": "d20f2ee4ea36d8f8cc3de4d0345fd545eb2f212168950d8ccd202835b8fed7e1",
+    "continuation_receipt.json": "af470d22566e9fb04b0ee5e7379ffde8b85a96fff8f73e6cd9a980877f334ced",
+    "dispatches.jsonl": "0a5b0e6df684d0343f6bfabbee359a2cca1410c8f5a8c79d88c30bdd391c2c67",
+    "attempts.jsonl": "d1743a539dc9af32f2771b861395fbf42163097a25d6f15689dddd3fe1d90882",
+    "results.jsonl": "01e0b8b466eb0f7295cfebc2cdf18e8e09c33bd14d86fcc6b951738fcd7001bc"
+  }
+}

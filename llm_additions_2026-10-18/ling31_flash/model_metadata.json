@@ -1,0 +1,135 @@
+{
+  "retrieved": {
+    "utc": "2026-10-18T16:21:09.893297+00:00",
+    "toronto": "2026-10-18T12:21:09.893297-04:00"
+  },
+  "model_id": "ling31_flash",
+  "url": "https://openrouter.ai/api/v1/models/inclusionai/ling-3.1-flash/endpoints",
+  "data": {
+    "id": "inclusionai/ling-3.1-flash",
+    "name": "inclusionAI: Ling 3.1 Flash",
+    "created": 1790950024,
+    "description": "Ling 3.1 Flash is a hybrid reasoning mixture-of-experts model from inclusionAI, with 25B active parameters out of 560B total.",
+    "architecture": {
+      "tokenizer": "Other",
+      "instruct_type": null,
+      "modality": "text->text",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "endpoints": [
+      {
+        "name": "Novita | inclusionai/ling-3.1-flash-20261002",
+        "model_id": "inclusionai/ling-3.1-flash",
+        "model_name": "inclusionAI: Ling 3.1 Flash",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.000000075",
+          "completion": "0.000000225",
+          "input_cache_read": "0.000000015",
+          "discount": 0.75
+        },
+        "provider_name": "Novita",
+        "tag": "novita",
+        "service_tier": null,
+        "quantization": "unknown",
+        "max_completion_tokens": 235929,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "max_tokens",
+          "temperature",
+          "top_p",
+          "stop",
+          "frequency_penalty",
+          "presence_penalty",
+          "seed",
+          "top_k",
+          "repetition_penalty",
+          "tools",
+          "tool_choice",
+          "logprobs",
+          "top_logprobs"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": false,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 100,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      },
+      {
+        "name": "DeepInfra | inclusionai/ling-3.1-flash-20261002",
+        "model_id": "inclusionai/ling-3.1-flash",
+        "model_name": "inclusionAI: Ling 3.1 Flash",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.00000021",
+          "completion": "0.00000063",
+          "input_cache_read": "0.000000042",
+          "discount": 0.3
+        },
+        "provider_name": "DeepInfra",
+        "tag": "deepinfra/fp4",
+        "service_tier": null,
+        "quantization": "fp4",
+        "max_completion_tokens": 235929,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "max_tokens",
+          "temperature",
+          "top_p",
+          "stop",
+          "frequency_penalty",
+          "presence_penalty",
+          "repetition_penalty",
+          "top_k",
+          "seed",
+          "min_p",
+          "logit_bias",
+          "structured_outputs",
+          "tools",
+          "tool_choice",
+          "response_format"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": false,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 99.86263736263736,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      }
+    ]
+  }
+}

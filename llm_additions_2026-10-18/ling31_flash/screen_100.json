@@ -1,0 +1,163 @@
+{
+  "status": "SCREEN_100_COMPLETE",
+  "model_id": "ling31_flash",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "screened_cases": 100,
+  "request_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "first_status_counts": {
+    "ok": 14,
+    "invalid_output": 86
+  },
+  "model_output_failures": 86,
+  "first_latency": {
+    "n": 100,
+    "median_ms": 2647.233104042243,
+    "p95_ms": 6602.225803851616
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00254607,
+    "exact_usd": "0.002546070",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "accuracy": "Not computed here; requires a separate offline scorer",
+  "files_prefix_binding": {
+    "manifest.json": {
+      "bytes": 562549,
+      "sha256": "37585d3c4b15154b5cb234129331f2afaba65d3e549940bd2498c85c8f4344b3"
+    },
+    "software.json": {
+      "bytes": 565,
+      "sha256": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b"
+    },
+    "model_metadata.json": {
+      "bytes": 4002,
+      "sha256": "6327e173fa476543149445a1a8e386d0d330e1de337aa3ef18a8b4c5ced3f7e2"
+    },
+    "compatibility_probe.json": {
+      "bytes": 2530,
+      "sha256": "c6892288f9ccb52142f0b61a0750b24b4051a14659bd74466c49cc33c78a3e6c"
+    },
+    "probe_dispatches.jsonl": {
+      "bytes": 574,
+      "sha256": "e309e4b27c48b40636c8ddbb64287d0e3307b8141894c8c6ff7b6a0467af57f1"
+    },
+    "probe_attempts.jsonl": {
+      "bytes": 2136,
+      "sha256": "ff3fddae798791cb818a6f86a547dcabcce333f255420126389056127b290ebd"
+    },
+    "dispatches.jsonl": {
+      "bytes": 54368,
+      "sha256": "36b3e0ea238a919319ac60b6a8ec155bbd114bdd051973a8bfef2e3cfa34db71"
+    },
+    "attempts.jsonl": {
+      "bytes": 222192,
+      "sha256": "a1471b45efff3a8273a737bfa503250d162972f69173cb611ea8a6cbb4368331"
+    },
+    "results.jsonl": {
+      "bytes": 54671,
+      "sha256": "0da295e55b87bc7dae95ebb6a8dfb1c9beb43c346b5fe2e2abbb122c8ecfa2ef"
+    }
+  }
+}

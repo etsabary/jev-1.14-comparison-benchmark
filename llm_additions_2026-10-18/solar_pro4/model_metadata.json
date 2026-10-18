@@ -1,0 +1,129 @@
+{
+  "retrieved": {
+    "utc": "2026-10-18T16:21:09.850512+00:00",
+    "toronto": "2026-10-18T12:21:09.850512-04:00"
+  },
+  "model_id": "solar_pro4",
+  "url": "https://openrouter.ai/api/v1/models/upstage/solar-pro4/endpoints",
+  "data": {
+    "id": "upstage/solar-pro4",
+    "name": "Upstage: Solar Pro 4",
+    "created": 1786371636,
+    "description": "Solar Pro 4 is Upstage's cost-efficient large language model, featuring a 524K context window. It is built for long-horizon tasks and agentic workflows, with strong capabilities in office productivity, document-intensive...",
+    "architecture": {
+      "tokenizer": "Other",
+      "instruct_type": null,
+      "modality": "text->text",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "endpoints": [
+      {
+        "name": "Upstage | upstage/solar-pro4-20260810",
+        "model_id": "upstage/solar-pro4",
+        "model_name": "Upstage: Solar Pro 4",
+        "context_length": 524288,
+        "pricing": {
+          "prompt": "0.00000009",
+          "completion": "0.00000036",
+          "input_cache_read": "0.000000018",
+          "discount": 0.7
+        },
+        "provider_name": "Upstage",
+        "tag": "upstage/zdr",
+        "service_tier": null,
+        "quantization": "unknown",
+        "max_completion_tokens": 131072,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "temperature",
+          "max_tokens",
+          "response_format",
+          "structured_outputs",
+          "tools",
+          "tool_choice",
+          "top_p",
+          "frequency_penalty",
+          "presence_penalty",
+          "parallel_tool_calls",
+          "reasoning_effort"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 100,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      },
+      {
+        "name": "Upstage | upstage/solar-pro4-20260810",
+        "model_id": "upstage/solar-pro4",
+        "model_name": "Upstage: Solar Pro 4",
+        "context_length": 524288,
+        "pricing": {
+          "prompt": "0.00000009",
+          "completion": "0.00000036",
+          "input_cache_read": "0.000000018",
+          "discount": 0.7
+        },
+        "provider_name": "Upstage",
+        "tag": "upstage",
+        "service_tier": null,
+        "quantization": "unknown",
+        "max_completion_tokens": 131072,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "temperature",
+          "max_tokens",
+          "top_p",
+          "frequency_penalty",
+          "presence_penalty",
+          "response_format",
+          "structured_outputs",
+          "tools",
+          "tool_choice",
+          "parallel_tool_calls",
+          "reasoning_effort"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 100,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      }
+    ]
+  }
+}

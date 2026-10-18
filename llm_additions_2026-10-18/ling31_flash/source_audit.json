@@ -1,0 +1,25 @@
+{
+  "model_id": "ling31_flash",
+  "export_state": "STOPPED_SCREEN",
+  "previous_36_model_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "source_evidence_sha256": {
+    "manifest.json": "37585d3c4b15154b5cb234129331f2afaba65d3e549940bd2498c85c8f4344b3",
+    "software.json": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b",
+    "model_metadata.json": "6327e173fa476543149445a1a8e386d0d330e1de337aa3ef18a8b4c5ced3f7e2",
+    "compatibility_probe.json": "c6892288f9ccb52142f0b61a0750b24b4051a14659bd74466c49cc33c78a3e6c",
+    "probe_dispatches.jsonl": "e309e4b27c48b40636c8ddbb64287d0e3307b8141894c8c6ff7b6a0467af57f1",
+    "probe_attempts.jsonl": "ff3fddae798791cb818a6f86a547dcabcce333f255420126389056127b290ebd",
+    "dispatches.jsonl": "36b3e0ea238a919319ac60b6a8ec155bbd114bdd051973a8bfef2e3cfa34db71",
+    "attempts.jsonl": "a1471b45efff3a8273a737bfa503250d162972f69173cb611ea8a6cbb4368331",
+    "results.jsonl": "0da295e55b87bc7dae95ebb6a8dfb1c9beb43c346b5fe2e2abbb122c8ecfa2ef",
+    "screen_100.json": "a3e8d92effc7dc85ca0a1052e29cd28700f844de5f00b4920a6a9ca3602fc6d3",
+    "progress.jsonl": "fe54c672b46ca42bffd04277fbbe6cb3024973ae9f0eb2034b8417e8279e51b1",
+    "STOPPED_SCREEN.json": "44279344370bcd143b02b616a79bc1fe7909c5011e35d80ea18f3cb85264e32f",
+    "screening_decisions/after_0100.json": "44279344370bcd143b02b616a79bc1fe7909c5011e35d80ea18f3cb85264e32f"
+  },
+  "controllers_sha256": {
+    "llm_screening_2026_10_18.py": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a"
+  },
+  "byte_preservation": "Original sanitized capture bytes and filenames retained, including full manifest and prefix-bound ledgers",
+  "privacy": "No owner paths, account metadata, credentials, gold key or per-item correctness; reject instead of rewriting any unsafe bound evidence"
+}

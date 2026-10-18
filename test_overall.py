@@ -72,7 +72,11 @@ class Overall(unittest.TestCase):
         self.assertFalse(capability['probe_cost']['included_in_scored_benchmark_costs'])
 
     def test_combined_publication(self):
-        text = (a.ROOT / 'README.md').read_text()
+        # The October16 assertions describe that version, not the current leader.
+        # Its exact presentation bytes remain bound by the original release seal.
+        archive=a.ROOT/'publication_archive_2026-10-16'
+        manifest=json.loads((archive/'manifest.json').read_text())
+        text=(archive/manifest['files']['README.md']['archive_path']).read_text()
         current=json.loads((a.ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
         self.assertIn(str(current['publication']['ranked_model_count'])+' models', text)
         self.assertIn(f"{current['model_count']*1136:,}", text)

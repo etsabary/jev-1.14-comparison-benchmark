@@ -1,0 +1,38 @@
+{
+  "model_id": "tev1_4b_native",
+  "export_state": "COMPLETE_1136",
+  "previous_36_model_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "source_evidence_sha256": {
+    "manifest.json": "05c231485d06d8859168cd5e4e510861c3192c3230c17502f304bef7ce675d6e",
+    "software.json": "ed985a1d1f9ec4ea95382d7701a8bb95e13c7a25ce9ab15239c4ae168e4051b8",
+    "model_metadata.json": "08a3718d96372ee0df953c16694b43ec8c21224794cec0c0ef0ff32ab8124792",
+    "compatibility_probe.json": "c6b334cc5aed4332187b80c2fba0e8e2992c6140105aa15cd6181e2397dbf470",
+    "probe_dispatches.jsonl": "80a2b00f5bc19b524182a5fe958be5d32d95e038ff81f216e88769c7151f0a9a",
+    "probe_attempts.jsonl": "d9eb1ad9f0d34ec5fc22f04977dc45424a941e91f3bca978db4d9431334f1ebd",
+    "dispatches.jsonl": "0a5b0e6df684d0343f6bfabbee359a2cca1410c8f5a8c79d88c30bdd391c2c67",
+    "attempts.jsonl": "d1743a539dc9af32f2771b861395fbf42163097a25d6f15689dddd3fe1d90882",
+    "results.jsonl": "01e0b8b466eb0f7295cfebc2cdf18e8e09c33bd14d86fcc6b951738fcd7001bc",
+    "screen_100.json": "d20f2ee4ea36d8f8cc3de4d0345fd545eb2f212168950d8ccd202835b8fed7e1",
+    "continuation_receipt.json": "af470d22566e9fb04b0ee5e7379ffde8b85a96fff8f73e6cd9a980877f334ced",
+    "progress.jsonl": "3ff38b33f421a771bc53605b044a2ae6c77d17dba8fdfee07aa6290b5c51a093",
+    "completion.json": "10de2a5c027688d300912ce18441f0eeea1f6511027918f29d96cb65c7875fe4",
+    "screening_decisions/after_0100.json": "af470d22566e9fb04b0ee5e7379ffde8b85a96fff8f73e6cd9a980877f334ced",
+    "screening_decisions/after_0200.json": "cc1781efaa16648071e622d4e3f604d3a653a75a4729e209767c62caeab6904a",
+    "screening_decisions/after_0300.json": "3cd118e30a91829313eaa28186070a6ffad4fac5d2b7b7304c99d780d73ba7bc",
+    "screening_decisions/after_0400.json": "689d71d51aed4efc5757ded178c96a41bc872f6970a8e309e005b3d2ccf89a6d",
+    "screening_decisions/after_0500.json": "d80067289e2ce70fd1efd4b4261b834ab16fe26904a83669e2e92ecefb5e650e",
+    "screening_decisions/after_0600.json": "7a2c00d6c4d847307cfc124b8b1555d4f40e163122ed26938e00ffa713fee214",
+    "screening_decisions/after_0700.json": "a556a5314dfafacad0474270b445d5d0fee9782623e3ea78dd0bd663bced5a8e",
+    "screening_decisions/after_0800.json": "871072ccecbbeb87e4d7674c9259142fc1fd0a3619af2a6ee71c865b1c518ade",
+    "screening_decisions/after_0900.json": "f0031bd7b22014bb4411fb3534624b42140ec20159e01ddbf482fb6be8a6c7a9",
+    "screening_decisions/after_1000.json": "9e406f56624b8f407e83829f5fb301bcb9830f194a4faa574a046863467d53ef",
+    "screening_decisions/after_1100.json": "a1d41c5571826431964e1ccb77bb7fc02a93d38cd1d791ef32bbc4e7ef17730e",
+    "screening_decisions/after_1136.json": "626f4a419691b6446d65da3c7ce1cbf17b01a7ff481fb48150ae7adb96894bd0"
+  },
+  "controllers_sha256": {
+    "llm_screening_2026_10_18.py": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a",
+    "tev_screening_2026_10_18.py": "3f861396a14ba7dfb8bbe2d8c6cda3318b089789b3d22d418658d6e2c4fad8e1"
+  },
+  "byte_preservation": "Original sanitized capture bytes and filenames retained, including full manifest and prefix-bound ledgers",
+  "privacy": "No owner paths, account metadata, credentials, gold key or per-item correctness; reject instead of rewriting any unsafe bound evidence"
+}

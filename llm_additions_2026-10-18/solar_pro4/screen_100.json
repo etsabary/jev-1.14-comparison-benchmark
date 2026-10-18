@@ -1,0 +1,163 @@
+{
+  "status": "SCREEN_100_COMPLETE",
+  "model_id": "solar_pro4",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "screened_cases": 100,
+  "request_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "first_status_counts": {
+    "ok": 98,
+    "invalid_output": 2
+  },
+  "model_output_failures": 2,
+  "first_latency": {
+    "n": 100,
+    "median_ms": 597.0521040144376,
+    "p95_ms": 980.7020858337635
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00293859,
+    "exact_usd": "0.00293859",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "accuracy": "Not computed here; requires a separate offline scorer",
+  "files_prefix_binding": {
+    "manifest.json": {
+      "bytes": 551165,
+      "sha256": "60c7841392aa0dcb8be36986b267cac0d23f1f275a3cc47e9efdde2d3212f701"
+    },
+    "software.json": {
+      "bytes": 565,
+      "sha256": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b"
+    },
+    "model_metadata.json": {
+      "bytes": 3933,
+      "sha256": "d14157c4ccdb42ccb068575773112205c81f8966221c251599e3131694e78c45"
+    },
+    "compatibility_probe.json": {
+      "bytes": 2503,
+      "sha256": "035709c0bc5713ef89989b61a031fb7fef7bc8e9e4ca6a124b0578652fb22f55"
+    },
+    "probe_dispatches.jsonl": {
+      "bytes": 564,
+      "sha256": "b1962f02381972394af10e9f3c6a853a231848f8b92dd31b3871c96997286647"
+    },
+    "probe_attempts.jsonl": {
+      "bytes": 2109,
+      "sha256": "a5b776018d88d6828ababf76a51d35b6007043d3a0e5aca9cd36233b0cf39207"
+    },
+    "dispatches.jsonl": {
+      "bytes": 53367,
+      "sha256": "4e5e26516a4bb543340aa5bcfe97b80febf7943e93bccf7ecb2401373ce57e17"
+    },
+    "attempts.jsonl": {
+      "bytes": 208066,
+      "sha256": "b146d8097e2d4f2a6c79898c5e7d736329cb7ca64b25a3d2739c6a745410c6e2"
+    },
+    "results.jsonl": {
+      "bytes": 51610,
+      "sha256": "517de22c9cc545d6f0fb35260e243403ccced25a1a48a96acdd612c8cb14ab68"
+    }
+  }
+}

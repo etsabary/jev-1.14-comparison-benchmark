@@ -1,0 +1,50 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "tev1_4b",
+  "model_requested": "togethercomputer/tev1-4b-experimental",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "message_sha256": "0d51ca898a2260c8c48bed718fe9d7d1f5d80dc2964ccc081da8718305e08c09",
+  "request_payload_sha256": "69c156b2c19edcd24cbac9e2b6fe7a2090188ae1aeb660a5f7a0e1e65ae74b24",
+  "request_body_bytes": 1456,
+  "stage": "compatibility_probe",
+  "attempt": 1,
+  "http_status": 400,
+  "error": "HTTP 400",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 16:21:12 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 45.13466695789248,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T16:21:12.143067+00:00",
+    "toronto": "2026-10-18T12:21:12.143067-04:00"
+  },
+  "completed": {
+    "utc": "2026-10-18T16:21:12.188262+00:00",
+    "toronto": "2026-10-18T12:21:12.188262-04:00"
+  },
+  "latency_ms": 45.18379201181233,
+  "raw_response": {
+    "error": {
+      "code": 400,
+      "message": "togethercomputer/tev1-4b-experimental is a decisions model and cannot be used with the chat/completions endpoint. Use the /api/alpha/decisions endpoint instead."
+    }
+  },
+  "status": "http_failure",
+  "choice": null,
+  "output_text": null,
+  "finish_reason": null,
+  "model_returned": null,
+  "provider": null,
+  "request_id": null,
+  "usage": {},
+  "reported_cost_usd": null,
+  "accounted_cost_usd": null,
+  "cost_source": "unreported",
+  "reported_reasoning_tokens": null,
+  "reasoning_text_present": false,
+  "model_output_failure": false
+}

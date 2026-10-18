@@ -1,0 +1,91 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "deepseek41_flash1017",
+  "model_requested": "deepseek/deepseek-v4.1-flash-1017",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "message_sha256": "9610c8f706eb7a372f2112adf9b0c95f64f0a6240a0ee391f98519e99ce7b95e",
+  "request_payload_sha256": "9bd959c8c7423eaefd2f5aaf7ac7809126abaef560a9eccc6f70c6048dccbada",
+  "request_body_bytes": 1029,
+  "stage": "compatibility_probe",
+  "attempt": 1,
+  "http_status": 200,
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 16:21:11 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 161.2000830937177,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T16:21:11.449174+00:00",
+    "toronto": "2026-10-18T12:21:11.449174-04:00"
+  },
+  "completed": {
+    "utc": "2026-10-18T16:21:12.134740+00:00",
+    "toronto": "2026-10-18T12:21:12.134740-04:00"
+  },
+  "latency_ms": 685.5454579927027,
+  "raw_response": {
+    "id": "gen-1792340471-En8jiD75D4XCE21h2ALo",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "provider": "DeepInfra",
+    "object": "chat.completion",
+    "created": 1792340471,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "5",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 194,
+      "completion_tokens": 2,
+      "total_tokens": 196,
+      "cost": 1.96e-05,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "status": "ok",
+  "choice": "5",
+  "output_text": "5",
+  "finish_reason": "stop",
+  "model_returned": "deepseek/deepseek-v4.1-flash-1017",
+  "provider": "DeepInfra",
+  "request_id": "gen-1792340471-En8jiD75D4XCE21h2ALo",
+  "usage": {
+    "prompt_tokens": 194,
+    "completion_tokens": 2,
+    "total_tokens": 196,
+    "cost": 1.96e-05,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "reported_cost_usd": 1.96e-05,
+  "accounted_cost_usd": 1.96e-05,
+  "cost_source": "api_reported",
+  "reported_reasoning_tokens": 0,
+  "reasoning_text_present": false,
+  "model_output_failure": false
+}

@@ -1,0 +1,162 @@
+{
+  "status": "SCREEN_100_COMPLETE",
+  "model_id": "qwen3_235b",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "screened_cases": 100,
+  "request_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "first_status_counts": {
+    "ok": 100
+  },
+  "model_output_failures": 0,
+  "first_latency": {
+    "n": 100,
+    "median_ms": 498.1753340107389,
+    "p95_ms": 1329.8165797255933
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00261569,
+    "exact_usd": "0.00261569",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "accuracy": "Not computed here; requires a separate offline scorer",
+  "files_prefix_binding": {
+    "manifest.json": {
+      "bytes": 559196,
+      "sha256": "f0fc7c2dc34571e1024c223946383a53353cd611cf6cbea9b62b252924f2d428"
+    },
+    "software.json": {
+      "bytes": 565,
+      "sha256": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b"
+    },
+    "model_metadata.json": {
+      "bytes": 11412,
+      "sha256": "b05e4567984b2d973de8f050343402d4289d12927be1e6ec416b01acaead2781"
+    },
+    "compatibility_probe.json": {
+      "bytes": 2526,
+      "sha256": "88218a118d9a2671339f7fd84c291b58f77cc9d8a4e144b77b472d810e888944"
+    },
+    "probe_dispatches.jsonl": {
+      "bytes": 570,
+      "sha256": "8a3ed254b51e3c0488097a7def622cb2e9efed334ebf2e9130f974d5cd7cb5ca"
+    },
+    "probe_attempts.jsonl": {
+      "bytes": 2132,
+      "sha256": "b9f051b533c6fa0060c8a599b29d91ef3700806b42b8503cbb088ce0f58b64fa"
+    },
+    "dispatches.jsonl": {
+      "bytes": 54065,
+      "sha256": "1cf35bfd9c067c9626c5ec1159ee31d3372adc64d5b99fc074b2086975770e2b"
+    },
+    "attempts.jsonl": {
+      "bytes": 210408,
+      "sha256": "d031cf2b45e6ba36cba1c4843d52733371d436b3acd2dfaf7da692dda42e835f"
+    },
+    "results.jsonl": {
+      "bytes": 52292,
+      "sha256": "651c41e3e6cff1b81fc9548a97886d48e6bfdee343768d20b32d980f739ab6f6"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "nex25_mini",
+  "model_requested": "nex-agi/nex-n2.5-mini",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "message_sha256": "9610c8f706eb7a372f2112adf9b0c95f64f0a6240a0ee391f98519e99ce7b95e",
+  "request_payload_sha256": "1e4b7ed23624ca451e9fcd280e776cf5bce8c85c567b51ba91212f3804d2121e",
+  "request_body_bytes": 1016,
+  "stage": "compatibility_probe",
+  "attempt": 1,
+  "http_status": 200,
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 16:21:12 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 1199.0903749829158,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T16:21:10.868161+00:00",
+    "toronto": "2026-10-18T12:21:10.868161-04:00"
+  },
+  "completed": {
+    "utc": "2026-10-18T16:21:12.081776+00:00",
+    "toronto": "2026-10-18T12:21:12.081776-04:00"
+  },
+  "latency_ms": 1213.582874974236,
+  "raw_response": {
+    "id": "gen-1792340470-pj1SHSFMSZ7Soj2AhShU",
+    "model": "nex-agi/nex-n2.5-mini",
+    "provider": "Nex AGI",
+    "object": "chat.completion",
+    "created": 1792340470,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "5",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 210,
+      "completion_tokens": 2,
+      "total_tokens": 212,
+      "cost": 5.45e-06,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "status": "ok",
+  "choice": "5",
+  "output_text": "5",
+  "finish_reason": "stop",
+  "model_returned": "nex-agi/nex-n2.5-mini",
+  "provider": "Nex AGI",
+  "request_id": "gen-1792340470-pj1SHSFMSZ7Soj2AhShU",
+  "usage": {
+    "prompt_tokens": 210,
+    "completion_tokens": 2,
+    "total_tokens": 212,
+    "cost": 5.45e-06,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "reported_cost_usd": 5.45e-06,
+  "accounted_cost_usd": 5.45e-06,
+  "cost_source": "api_reported",
+  "reported_reasoning_tokens": 0,
+  "reasoning_text_present": false,
+  "model_output_failure": false
+}

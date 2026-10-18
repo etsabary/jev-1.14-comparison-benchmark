@@ -1,0 +1,91 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "qwen3_235b",
+  "model_requested": "qwen/qwen3-235b-a22b-2507",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "message_sha256": "9610c8f706eb7a372f2112adf9b0c95f64f0a6240a0ee391f98519e99ce7b95e",
+  "request_payload_sha256": "814b31727688175b99c8752537a1756ed9bdcdf807d98a4f2b5672963fd12568",
+  "request_body_bytes": 991,
+  "stage": "compatibility_probe",
+  "attempt": 1,
+  "http_status": 200,
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 16:21:11 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 187.3060839716345,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T16:21:11.054380+00:00",
+    "toronto": "2026-10-18T12:21:11.054380-04:00"
+  },
+  "completed": {
+    "utc": "2026-10-18T16:21:11.834257+00:00",
+    "toronto": "2026-10-18T12:21:11.834257-04:00"
+  },
+  "latency_ms": 779.837833950296,
+  "raw_response": {
+    "id": "gen-1792340471-CjQE4vSAdxyArvkpTEM0",
+    "model": "qwen/qwen3-235b-a22b-2507",
+    "provider": "DeepInfra",
+    "object": "chat.completion",
+    "created": 1792340471,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "5",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 199,
+      "completion_tokens": 2,
+      "total_tokens": 201,
+      "cost": 1.901e-05,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "status": "ok",
+  "choice": "5",
+  "output_text": "5",
+  "finish_reason": "stop",
+  "model_returned": "qwen/qwen3-235b-a22b-2507",
+  "provider": "DeepInfra",
+  "request_id": "gen-1792340471-CjQE4vSAdxyArvkpTEM0",
+  "usage": {
+    "prompt_tokens": 199,
+    "completion_tokens": 2,
+    "total_tokens": 201,
+    "cost": 1.901e-05,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "reported_cost_usd": 1.901e-05,
+  "accounted_cost_usd": 1.901e-05,
+  "cost_source": "api_reported",
+  "reported_reasoning_tokens": 0,
+  "reasoning_text_present": false,
+  "model_output_failure": false
+}

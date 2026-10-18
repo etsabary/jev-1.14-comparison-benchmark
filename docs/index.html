@@ -1,1232 +1,563 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>19 models on 1136 text decisions</title><style>body{max-width:1260px;margin:auto;padding:32px 24px 80px;background:#f8fafc;color:#193047;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.35rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{max-width:100%;height:auto;background:white;border-radius:10px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.86rem;margin:20px 0}th,td{border-bottom:1px solid #d5dfe9;padding:9px 11px;text-align:left;vertical-align:top}th{background:#e6eef5}code{font-size:.85em;overflow-wrap:anywhere}pre{overflow:auto;background:#e6eef5;padding:16px}nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #d5dfe9;padding-bottom:16px;font-size:.9rem}p{max-width:100ch}</style></head><body><nav><a href="index.html">Overall comparison</a><a href="functions.html">Functions and load</a><a href="three_model_reference.html">Original three-model reference</a><a href="https://github.com/etsabary/jev-1.14-comparison-benchmark">Repository and evidence</a></nav><main><h1 id="19-models-on-the-same-1136-text-decisions">19 models on the same 1,136 text decisions</h1>
-<p>I have been intrigued by Jev because it does something different from the LLMs I usually use: it returns a typed decision with probabilities rather than a paragraph. That made it harder to place. Could it make better quick decisions than Luna, one of my favorite models? I wanted a comparison that would make its strengths and limits visible.</p>
-<p>On these tests, the answer was clearly yes. Jev was substantially stronger than both Luna services overall. That is a finding about <strong>System 1-style decisions</strong>: a single answer from supplied information, without an explicit thinking budget, tools or an agentic feedback loop. Those decisions matter when a system needs to route many requests quickly and cheaply. This is not a comparison of unrestricted reasoning, writing or agentic ability.</p>
-<p><strong>Nimble v4 Max now leads the expanded comparison at 997/1,136 (87.8%)</strong>. Jev 1.14 scored <strong>929 (81.8%)</strong>, Jev 1.13 <strong>919 (80.9%)</strong>, and Luna Decisions <strong>677 (59.6%)</strong>. The strongest regular LLM under this decision-only contract was <strong>Tencent Hy3: 790 (69.5%)</strong>. The tables separate correct choices, wrong choices and outputs that could not be used as decisions.</p>
-<p>The main comparison contains <strong>19 services × 1,136 questions = 21,584 scored model-question cases</strong>. 22 services were tested in total (24,992 cases). Haiku, DeepSeek and Phi-4 are retained in the <a href="output_compliance.html">output-compliance diagnostics</a>, outside the main ranking because at least 5% of their first outputs failed the decision-only contract. <strong>Added October 16, 2026:</strong> Microsoft-Decision-1, Nimble v4, Nimble v4 Max, Nemotron 3.5 Lightning, GLM 4.7 Flash, MiMo V2.6 Flash, Qwen3.8 Flash, Tencent Hy3, Nemotron 3.5 Super VL. These results are included in the main ranking, function tables and graphics, not isolated as a separate pilot. The original eleven services were tested on October 15 and their saved results are unchanged. Microsoft uses OpenRouter/Azure; Nimble uses Bespoke's direct API; the regular LLM additions use separately pinned OpenRouter backends. Different dates, routes and provider load limit speed comparisons, even with the same client timer.</p>
-<p>The bank contains 640 core questions and 496 related variants, contrasts and candidate checks across 25 families. Related items are not independent observations. Every model received the same underlying instructions, facts, question and five answer options in the same order. Native Decisions and ordinary chat serialize that content differently.</p>
-<p>The <a href="functions.html">function and load-level tables</a> explain every family. The separate <a href="https://github.com/etsabary/visual-decision-benchmark">image benchmark</a> is not pooled with the text scores.</p>
-<p><img alt="Overall and core-only accuracy including the October 16 additions" src="figures/expanded_accuracy.png" /></p>
-<h2 id="results-across-the-full-bank">Results across the full bank</h2>
-<p>Models with at least 5% model-output failures are excluded from the main comparison. This author-requested, post-hoc reporting rule removes Haiku, DeepSeek and Phi-4 from the ranking, all function tables and charts. Their complete runs remain in the <a href="output_compliance.html">separate diagnostics</a>. Provider and transport failures do not count toward this format cutoff. Models below the cutoff retain every failed first attempt in their scores.</p>
-<p>Every row uses the <strong>first attempt</strong>. Errors, refusals, invalid output and truncation are unsuccessful; wrong valid choices remain separate. The median and p95 use <strong>all 1,136 timed first attempts per model</strong>, including failures. p95 is the response time at or below which roughly 95% of requests completed.</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october18-combined"><title>37 models on 1,136 text decisions</title><style>body{max-width:1260px;margin:auto;padding:32px 24px 80px;background:#f8fafc;color:#193047;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.35rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{max-width:100%;height:auto;background:white;border-radius:10px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.86rem;margin:20px 0}th,td{border-bottom:1px solid #d5dfe9;padding:9px 11px;text-align:left;vertical-align:top}th{background:#e6eef5}code{font-size:.85em;overflow-wrap:anywhere}pre{overflow:auto;background:#e6eef5;padding:16px}nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #d5dfe9;padding-bottom:16px;font-size:.9rem}p{max-width:100ch}
+.metric-cell{font-weight:600;white-space:nowrap;color:#193047}
+.band-1{background:#d8f1e8}.band-2{background:#fff4c2}
+.band-3{background:#ffe4ca}.band-4{background:#fbdedd}
+.metric-unknown{background:#e7eaee;color:#193047}
+.cost-incomplete{text-decoration-line:underline;text-decoration-style:dotted;text-decoration-color:#9a6700;text-underline-offset:.25em;border-bottom:2px solid #bd820c}
+.legend-note{font-size:.9rem}main{min-width:0}table{overscroll-behavior-x:contain}
+@media(max-width:640px){body{padding:18px 12px 56px}h1{font-size:1.8rem}th,td{padding:8px}table{font-size:.8rem}nav{gap:10px}}
+</style></head><body><nav><a href="index.html">Overall comparison</a><a href="functions.html">Functions and load</a><a href="output_compliance.html">Output diagnostics</a><a href="three_model_reference.html">Original three-model reference</a><a href="https://github.com/etsabary/jev-1.14-comparison-benchmark">Repository and evidence</a></nav><main><h1 id="37-models-on-the-same-1136-text-decisions">37 models on the same 1136 text decisions</h1>
+<p>I started this benchmark because Jev interested me, but I could not place its intelligence relative to the LLMs I use. Could a service that returns a typed decision rather than a paragraph make better quick decisions than Luna? On this bank, Jev was substantially stronger. Expanding the comparison has since found models that exceed Jev, and a regular LLM that comes close.</p>
+<p><strong>Respan Span-02 scored 1,011/1,136 (89.0%), Perplexity Decider v1.2 scored 1,010 (88.9%), and Nimble Max scored 997 (87.8%).</strong> Jev 1.14 scored 929 (81.8%), Jev 1.13 scored 919 (80.9%), regular Luna scored 727 (64.0%) and Luna Decisions scored 677 (59.6%). The strongest regular LLM under the same short-output contract is now <strong>Gemma 4 31B: 902/1,136 (79.4%)</strong>.</p>
+<p>These are <strong>System 1-style decisions</strong>: one answer from supplied information, without an explicit thinking budget, tools or an agentic feedback loop. They matter for systems routing many requests under time and cost constraints. This does not compare unrestricted reasoning, writing or agentic ability.</p>
+<p><strong>Updated October 18, 2026.</strong> The main comparison contains <strong>37 complete routes × 1,136 questions = 42,032 model-question cases</strong>. There are 40 complete runs in the saved record, or 45,440 cases; three output-noncompliant runs remain outside the ranking. The October 18 release adds 14 complete native-decision routes, three regular LLMs and the decision-specialized generative Tev1. Five stopped LLM samples, the stopped Solar Decide sample and two failed interface probes are separate diagnostics, not additional full-bank results. The previous release ranked 19 models from 22 complete runs (24,992 model-question cases); those saved results, costs and response times are unchanged.</p>
+<p>The bank has <strong>640 core questions plus 496 related variants, contrasts and candidate checks across 25 families</strong>. Related items are not independent observations. The <a href="functions.html">function tables and examples</a> explain the abilities. The <a href="https://github.com/etsabary/visual-decision-benchmark">image benchmark</a> remains separate. A harder future bank is also a separate project; no new questions enter this release.</p>
+<p><img alt="Overall and core accuracy across all 37 included routes" src="figures/october18/overall_accuracy.png" /></p>
+<h2 id="full-bank-results-with-cost-and-speed-scales">Full bank results with cost and speed scales</h2>
+<p>Every score uses the first attempt on all 1,136 questions. Failed requests, refusals, invalid output and truncations remain unsuccessful. Median and p95 include <strong>all 1,136 timed first attempts</strong>, including failures. p95 is the response time at or below which roughly 95% of requests completed. A lower median can coexist with a long slow tail.</p>
+<p>The labels use fixed descriptive bands for this workload, not universal definitions. Speed: 🟩 Fastest ≤250 ms; 🟨 Fast &gt;250 to 500 ms; 🟧 Moderate &gt;500 to 1,000 ms; 🟥 Slow &gt;1,000 ms. Cost per 1,000: 🟩 Lowest ≤$0.01; 🟨 Low &gt;$0.01 to $0.025; 🟧 Mid &gt;$0.025 to $0.05; 🟥 Highest &gt;$0.05. Both the label and the numerical value remain visible, so color is not required to read the comparison.</p>
+<p>Costs per 1,000 normalize the actual 1,136-question run, including eligible recoveries: run cost ÷ 1,136 × 1,000. <strong><code>+ ?</code> means some charges are unknown</strong>, so that color band describes the known lower bound and may understate the final cost. <code>~</code> marks token usage multiplied by a captured published tariff instead of a returned dollar charge. Dates are Toronto dates. * marks an October 18 addition.</p>
 <table>
 <thead>
 <tr>
 <th>Model</th>
-<th style="text-align: right;">Correct / 1,136</th>
-<th style="text-align: right;">Accuracy</th>
-<th style="text-align: right;">Core correct</th>
-<th style="text-align: right;">Wrong valid</th>
-<th style="text-align: right;">Unanswered</th>
-<th style="text-align: right;">Full-bank median</th>
-<th style="text-align: right;">p95</th>
-<th style="text-align: right;">Test date</th>
+<th>Correct / 1,136</th>
+<th>Accuracy</th>
+<th>Core correct</th>
+<th>Median</th>
+<th>p95</th>
+<th>Cost per 1,000</th>
+<th>Test date</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Respan Span-02 *</td>
+<td>1011</td>
+<td>89.0%</td>
+<td>568/640</td>
+<td class="metric-cell band-1 metric-speed">202 ms 🟩 Fastest</td>
+<td>1661 ms</td>
+<td class="metric-cell band-1 metric-cost">$0.00338 🟩 Lowest</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Perplexity Decider v1.2 *</td>
+<td>1010</td>
+<td>88.9%</td>
+<td>573/640</td>
+<td class="metric-cell band-1 metric-speed">250 ms 🟩 Fastest</td>
+<td>323 ms</td>
+<td class="metric-cell band-1 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.00672 🟩 Lowest + ?</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
 <td>Nimble v4 Max</td>
-<td style="text-align: right;">997</td>
-<td style="text-align: right;">87.8%</td>
-<td style="text-align: right;">573/640</td>
-<td style="text-align: right;">139</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">236 ms</td>
-<td style="text-align: right;">324 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>997</td>
+<td>87.8%</td>
+<td>573/640</td>
+<td class="metric-cell band-1 metric-speed">236 ms 🟩 Fastest</td>
+<td>324 ms</td>
+<td class="metric-cell band-3 metric-cost">~$0.02963 🟧 Mid</td>
+<td>2026-10-16</td>
+</tr>
+<tr>
+<td>Liquid d1-ultra *</td>
+<td>971</td>
+<td>85.5%</td>
+<td>556/640</td>
+<td class="metric-cell band-1 metric-speed">196 ms 🟩 Fastest</td>
+<td>261 ms</td>
+<td class="metric-cell band-2 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.01157 🟨 Low + ?</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Jev 1.14</td>
-<td style="text-align: right;">929</td>
-<td style="text-align: right;">81.8%</td>
-<td style="text-align: right;">538/640</td>
-<td style="text-align: right;">207</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">182 ms</td>
-<td style="text-align: right;">280 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>929</td>
+<td>81.8%</td>
+<td>538/640</td>
+<td class="metric-cell band-1 metric-speed">182 ms 🟩 Fastest</td>
+<td>280 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.02397 🟨 Low</td>
+<td>2026-10-15</td>
+</tr>
+<tr>
+<td>Mercury Decide *</td>
+<td>929</td>
+<td>81.8%</td>
+<td>531/640</td>
+<td class="metric-cell band-1 metric-speed">240 ms 🟩 Fastest</td>
+<td>387 ms</td>
+<td class="metric-cell band-1 metric-cost">$0.00670 🟩 Lowest</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Jev 1.13</td>
-<td style="text-align: right;">919</td>
-<td style="text-align: right;">80.9%</td>
-<td style="text-align: right;">533/640</td>
-<td style="text-align: right;">217</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">197 ms</td>
-<td style="text-align: right;">340 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>919</td>
+<td>80.9%</td>
+<td>533/640</td>
+<td class="metric-cell band-1 metric-speed">197 ms 🟩 Fastest</td>
+<td>340 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.02397 🟨 Low</td>
+<td>2026-10-15</td>
 </tr>
 <tr>
 <td>Nimble v4</td>
-<td style="text-align: right;">902</td>
-<td style="text-align: right;">79.4%</td>
-<td style="text-align: right;">522/640</td>
-<td style="text-align: right;">234</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">214 ms</td>
-<td style="text-align: right;">260 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>902</td>
+<td>79.4%</td>
+<td>522/640</td>
+<td class="metric-cell band-1 metric-speed">214 ms 🟩 Fastest</td>
+<td>260 ms</td>
+<td class="metric-cell band-2 metric-cost">~$0.01317 🟨 Low</td>
+<td>2026-10-16</td>
+</tr>
+<tr>
+<td>Gemma 4 31B *</td>
+<td>902</td>
+<td>79.4%</td>
+<td>522/640</td>
+<td class="metric-cell band-2 metric-speed">491 ms 🟨 Fast</td>
+<td>1154 ms</td>
+<td class="metric-cell band-3 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.04131 🟧 Mid + ?</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Liquid d1 *</td>
+<td>864</td>
+<td>76.1%</td>
+<td>505/640</td>
+<td class="metric-cell band-1 metric-speed">215 ms 🟩 Fastest</td>
+<td>894 ms</td>
+<td class="metric-cell band-1 metric-cost">$0.00551 🟩 Lowest</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Cloudflare Clef *</td>
+<td>859</td>
+<td>75.6%</td>
+<td>494/640</td>
+<td class="metric-cell band-2 metric-speed">283 ms 🟨 Fast</td>
+<td>415 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.01704 🟨 Low</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Perplexity Decider Flash v1.2 *</td>
+<td>855</td>
+<td>75.3%</td>
+<td>499/640</td>
+<td class="metric-cell band-1 metric-speed">161 ms 🟩 Fastest</td>
+<td>236 ms</td>
+<td class="metric-cell band-1 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.00327 🟩 Lowest + ?</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Microsoft-Decision-1</td>
-<td style="text-align: right;">841</td>
-<td style="text-align: right;">74.0%</td>
-<td style="text-align: right;">476/640</td>
-<td style="text-align: right;">295</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">288 ms</td>
-<td style="text-align: right;">574 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>841</td>
+<td>74.0%</td>
+<td>476/640</td>
+<td class="metric-cell band-2 metric-speed">288 ms 🟨 Fast</td>
+<td>574 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.01169 🟨 Low</td>
+<td>2026-10-16</td>
+</tr>
+<tr>
+<td>Drex v2.0 *</td>
+<td>833</td>
+<td>73.3%</td>
+<td>485/640</td>
+<td class="metric-cell band-1 metric-speed">232 ms 🟩 Fastest</td>
+<td>724 ms</td>
+<td class="metric-cell band-2 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.01588 🟨 Low + ?</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Cloudflare Clef Flash *</td>
+<td>794</td>
+<td>69.9%</td>
+<td>465/640</td>
+<td class="metric-cell band-2 metric-speed">262 ms 🟨 Fast</td>
+<td>353 ms</td>
+<td class="metric-cell band-1 metric-cost">$0.00852 🟩 Lowest</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Drex v1.5 *</td>
+<td>791</td>
+<td>69.6%</td>
+<td>460/640</td>
+<td class="metric-cell band-1 metric-speed">197 ms 🟩 Fastest</td>
+<td>601 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.01061 🟨 Low</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Tencent Hy3</td>
-<td style="text-align: right;">790</td>
-<td style="text-align: right;">69.5%</td>
-<td style="text-align: right;">446/640</td>
-<td style="text-align: right;">340</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1423 ms</td>
-<td style="text-align: right;">1926 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>790</td>
+<td>69.5%</td>
+<td>446/640</td>
+<td class="metric-cell band-4 metric-speed">1423 ms 🟥 Slow</td>
+<td>1926 ms</td>
+<td class="metric-cell band-2 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.02442 🟨 Low + ?</td>
+<td>2026-10-16</td>
+</tr>
+<tr>
+<td>Cloudflare Clef Omni *</td>
+<td>790</td>
+<td>69.5%</td>
+<td>466/640</td>
+<td class="metric-cell band-1 metric-speed">248 ms 🟩 Fastest</td>
+<td>415 ms</td>
+<td class="metric-cell band-4 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.05945 🟥 Highest + ?</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Qwen3.8 Flash</td>
-<td style="text-align: right;">763</td>
-<td style="text-align: right;">67.2%</td>
-<td style="text-align: right;">438/640</td>
-<td style="text-align: right;">340</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">862 ms</td>
-<td style="text-align: right;">5717 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>763</td>
+<td>67.2%</td>
+<td>438/640</td>
+<td class="metric-cell band-3 metric-speed">862 ms 🟧 Moderate</td>
+<td>5717 ms</td>
+<td class="metric-cell band-3 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.04404 🟧 Mid + ?</td>
+<td>2026-10-16</td>
+</tr>
+<tr>
+<td>Kev 4B *</td>
+<td>737</td>
+<td>64.9%</td>
+<td>418/640</td>
+<td class="metric-cell band-1 metric-speed">228 ms 🟩 Fastest</td>
+<td>371 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.01114 🟨 Low</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Luna 6 regular</td>
-<td style="text-align: right;">727</td>
-<td style="text-align: right;">64.0%</td>
-<td style="text-align: right;">431/640</td>
-<td style="text-align: right;">408</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">942 ms</td>
-<td style="text-align: right;">1961 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>727</td>
+<td>64.0%</td>
+<td>431/640</td>
+<td class="metric-cell band-3 metric-speed">942 ms 🟧 Moderate</td>
+<td>1961 ms</td>
+<td class="metric-cell band-3 metric-cost">$0.03021 🟧 Mid</td>
+<td>2026-10-15</td>
 </tr>
 <tr>
 <td>Nemotron 3.5 Super VL</td>
-<td style="text-align: right;">710</td>
-<td style="text-align: right;">62.5%</td>
-<td style="text-align: right;">414/640</td>
-<td style="text-align: right;">424</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">465 ms</td>
-<td style="text-align: right;">835 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>710</td>
+<td>62.5%</td>
+<td>414/640</td>
+<td class="metric-cell band-2 metric-speed">465 ms 🟨 Fast</td>
+<td>835 ms</td>
+<td class="metric-cell band-3 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.02977 🟧 Mid + ?</td>
+<td>2026-10-16</td>
+</tr>
+<tr>
+<td>Qwen3 235B A22B Instruct 2507 *</td>
+<td>706</td>
+<td>62.1%</td>
+<td>417/640</td>
+<td class="metric-cell band-3 metric-speed">556 ms 🟧 Moderate</td>
+<td>1667 ms</td>
+<td class="metric-cell band-3 metric-cost">$0.02653 🟧 Mid</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Mercury 2.5</td>
-<td style="text-align: right;">702</td>
-<td style="text-align: right;">61.8%</td>
-<td style="text-align: right;">404/640</td>
-<td style="text-align: right;">432</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">534 ms</td>
-<td style="text-align: right;">1077 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>702</td>
+<td>61.8%</td>
+<td>404/640</td>
+<td class="metric-cell band-3 metric-speed">534 ms 🟧 Moderate</td>
+<td>1077 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.01163 🟨 Low</td>
+<td>2026-10-15</td>
 </tr>
 <tr>
 <td>MiMo V2.6 Flash</td>
-<td style="text-align: right;">684</td>
-<td style="text-align: right;">60.2%</td>
-<td style="text-align: right;">399/640</td>
-<td style="text-align: right;">412</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">1429 ms</td>
-<td style="text-align: right;">6032 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>684</td>
+<td>60.2%</td>
+<td>399/640</td>
+<td class="metric-cell band-4 metric-speed">1429 ms 🟥 Slow</td>
+<td>6032 ms</td>
+<td class="metric-cell band-3 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.03796 🟧 Mid + ?</td>
+<td>2026-10-16</td>
 </tr>
 <tr>
 <td>Luna 6 Decisions</td>
-<td style="text-align: right;">677</td>
-<td style="text-align: right;">59.6%</td>
-<td style="text-align: right;">390/640</td>
-<td style="text-align: right;">426</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">261 ms</td>
-<td style="text-align: right;">533 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>677</td>
+<td>59.6%</td>
+<td>390/640</td>
+<td class="metric-cell band-2 metric-speed">261 ms 🟨 Fast</td>
+<td>533 ms</td>
+<td class="metric-cell band-3 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.03470 🟧 Mid + ?</td>
+<td>2026-10-15</td>
+</tr>
+<tr>
+<td>Tev1 4B experimental (OpenRouter native adapter) *</td>
+<td>676</td>
+<td>59.5%</td>
+<td>393/640</td>
+<td class="metric-cell band-1 metric-speed">202 ms 🟩 Fastest</td>
+<td>254 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.01510 🟨 Low</td>
+<td>2026-10-18</td>
+</tr>
+<tr>
+<td>Nex N2.5 Mini *</td>
+<td>651</td>
+<td>57.3%</td>
+<td>374/640</td>
+<td class="metric-cell band-3 metric-speed">500 ms 🟧 Moderate</td>
+<td>1215 ms</td>
+<td class="metric-cell band-1 metric-cost">$0.00770 🟩 Lowest</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Gemini 2.5 Flash-Lite</td>
-<td style="text-align: right;">598</td>
-<td style="text-align: right;">52.6%</td>
-<td style="text-align: right;">352/640</td>
-<td style="text-align: right;">524</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">341 ms</td>
-<td style="text-align: right;">523 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>598</td>
+<td>52.6%</td>
+<td>352/640</td>
+<td class="metric-cell band-2 metric-speed">341 ms 🟨 Fast</td>
+<td>523 ms</td>
+<td class="metric-cell band-3 metric-cost">$0.02834 🟧 Mid</td>
+<td>2026-10-15</td>
 </tr>
 <tr>
 <td>Qwen3-30B-A3B Instruct 2507</td>
-<td style="text-align: right;">564</td>
-<td style="text-align: right;">49.6%</td>
-<td style="text-align: right;">334/640</td>
-<td style="text-align: right;">572</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1034 ms</td>
-<td style="text-align: right;">1823 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>564</td>
+<td>49.6%</td>
+<td>334/640</td>
+<td class="metric-cell band-4 metric-speed">1034 ms 🟥 Slow</td>
+<td>1823 ms</td>
+<td class="metric-cell band-3 metric-cost">$0.02573 🟧 Mid</td>
+<td>2026-10-15</td>
+</tr>
+<tr>
+<td>ScaleDown Classify-1 *</td>
+<td>499</td>
+<td>43.9%</td>
+<td>294/640</td>
+<td class="metric-cell band-2 metric-speed">268 ms 🟨 Fast</td>
+<td>354 ms</td>
+<td class="metric-cell band-2 metric-cost">$0.02066 🟨 Low</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>Granite 4.2 8B</td>
-<td style="text-align: right;">478</td>
-<td style="text-align: right;">42.1%</td>
-<td style="text-align: right;">279/640</td>
-<td style="text-align: right;">612</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">324 ms</td>
-<td style="text-align: right;">866 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>478</td>
+<td>42.1%</td>
+<td>279/640</td>
+<td class="metric-cell band-2 metric-speed">324 ms 🟨 Fast</td>
+<td>866 ms</td>
+<td class="metric-cell band-2 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.01369 🟨 Low + ?</td>
+<td>2026-10-15</td>
+</tr>
+<tr>
+<td>Solar Decide Flash *</td>
+<td>477</td>
+<td>42.0%</td>
+<td>277/640</td>
+<td class="metric-cell band-3 metric-speed">542 ms 🟧 Moderate</td>
+<td>738 ms</td>
+<td class="metric-cell band-3 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.02952 🟧 Mid + ?</td>
+<td>2026-10-18</td>
 </tr>
 <tr>
 <td>GPT-5.4 nano</td>
-<td style="text-align: right;">464</td>
-<td style="text-align: right;">40.8%</td>
-<td style="text-align: right;">276/640</td>
-<td style="text-align: right;">672</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">683 ms</td>
-<td style="text-align: right;">1136 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>464</td>
+<td>40.8%</td>
+<td>276/640</td>
+<td class="metric-cell band-3 metric-speed">683 ms 🟧 Moderate</td>
+<td>1136 ms</td>
+<td class="metric-cell band-4 metric-cost">$0.06166 🟥 Highest</td>
+<td>2026-10-15</td>
 </tr>
 <tr>
 <td>Mistral NeMo 12B</td>
-<td style="text-align: right;">421</td>
-<td style="text-align: right;">37.1%</td>
-<td style="text-align: right;">240/640</td>
-<td style="text-align: right;">701</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">490 ms</td>
-<td style="text-align: right;">1523 ms</td>
-<td style="text-align: right;">2026-10-15</td>
+<td>421</td>
+<td>37.1%</td>
+<td>240/640</td>
+<td class="metric-cell band-2 metric-speed">490 ms 🟨 Fast</td>
+<td>1523 ms</td>
+<td class="metric-cell band-1 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.00813 🟩 Lowest + ?</td>
+<td>2026-10-15</td>
 </tr>
 <tr>
 <td>Nemotron 3.5 Lightning</td>
-<td style="text-align: right;">378</td>
-<td style="text-align: right;">33.3%</td>
-<td style="text-align: right;">233/640</td>
-<td style="text-align: right;">690</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">280 ms</td>
-<td style="text-align: right;">533 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>378</td>
+<td>33.3%</td>
+<td>233/640</td>
+<td class="metric-cell band-2 metric-speed">280 ms 🟨 Fast</td>
+<td>533 ms</td>
+<td class="metric-cell band-2 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.02046 🟨 Low + ?</td>
+<td>2026-10-16</td>
 </tr>
 <tr>
 <td>GLM 4.7 Flash</td>
-<td style="text-align: right;">334</td>
-<td style="text-align: right;">29.4%</td>
-<td style="text-align: right;">188/640</td>
-<td style="text-align: right;">800</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">560 ms</td>
-<td style="text-align: right;">17056 ms</td>
-<td style="text-align: right;">2026-10-16</td>
+<td>334</td>
+<td>29.4%</td>
+<td>188/640</td>
+<td class="metric-cell band-3 metric-speed">560 ms 🟧 Moderate</td>
+<td>17056 ms</td>
+<td class="metric-cell band-2 metric-cost cost-incomplete" title="Known cost only; additional charges unreported">$0.01766 🟨 Low + ?</td>
+<td>2026-10-16</td>
 </tr>
 </tbody>
 </table>
-<p>All timers run from connection start through the complete response body. The same timing boundary and up to two concurrent requests per model are used across the October 15 and October 16 runs. Different dates, routes and provider load can still affect the comparison. Failure counts and usable-response timings remain available in the <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_expanded_2026-10-16/summary.json">overall aggregate evidence</a>.</p>
-<h2 id="cost-of-the-full-runs">Cost of the full runs</h2>
-<p>Costs cover <strong>1,136 questions per model</strong>, including recovery attempts. The per-1,000 column normalizes the same run cost: run cost ÷ 1,136 × 1,000. It is not an additional run. Earlier pilots and superseded runs are excluded from these totals. Nimble returns token usage without a dollar charge, so its cost is calculated from that usage and the captured published tariff, rather than labelled API-reported billing. Free sign-up credit does not change the tariff value of the work.</p>
+<p>The 37 included runs account for <strong>$0.89907359</strong> in known charges or tariff calculations, with <strong>352 attempt charges unreported</strong>. These are not independently reconciled invoices. Compatibility calls and stopped samples are excluded from ranked-run totals. Promotions and later tariff changes are not applied retroactively.</p>
+<p>Within that ranked-run total, the 14 complete October 18 native-decision additions reported <strong>$0.238535627</strong>, with <strong>118 attempt charges unknown</strong>. The <strong>15 native-route compatibility calls</strong>, including the stopped route's probe, reported <strong>$0.00018676</strong> separately, with <strong>0 unknown charges</strong>. The stopped native Solar sample is accounted for separately below; it is not part of the 14 full runs.</p>
+<p>Nimble Max's saved cost uses its October 16 tariff of $0.09 per million input tokens. Its <a href="https://docs.bespokelabs.ai/nimble/pricing.md">documented tariff checked October 18</a> is $0.04. At that price, the saved 373,997 input tokens would cost $0.01495988 for 1,136 questions, or $0.013169 per 1,000. This is a price-only calculation, not a new run. The deprecated <code>nimble-v4</code> name now redirects to Max: its dated row does not imply a separate current checkpoint.</p>
+<h2 id="span-02-and-perplexity-decider-exceed-the-previous-full-bank-leader">Span-02 and Perplexity Decider exceed the previous full-bank leader</h2>
+<p>Respan Span-02 scored <strong>1,011/1,136 (89.0%)</strong>, and Perplexity Decider v1.2 scored <strong>1,010/1,136 (88.9%)</strong>. Nimble Max's previous result was 997/1,136 (87.8%). These are gains of 14 and 13 correct answers. The new results improve the full-bank total, but the core-only comparison is different: Perplexity and Nimble Max both scored 573/640 (89.5%); Span-02 scored 568/640 (88.8%). Span's higher total comes from the related variants and checks, rather than a higher score on the underlying core questions.</p>
+<p>The one-answer difference between Span and Perplexity is not a useful basis for declaring one generally smarter. Span was correct on 71 questions that Perplexity missed, while Perplexity was correct on 70 that Span missed. One Perplexity first attempt failed at the transport level; its permitted recovery was correct and brought its eventual score to 1,011. The primary ranking retains 1,010. The family profiles, cost and response-time tails explain more than the one-answer ordering.</p>
+<p>Span's median was <strong>202 ms</strong>, with <strong>$0.00384482</strong> reported for the full bank, or <strong>$0.00338 per 1,000 questions</strong>. Every first answer was usable. Perplexity's median was <strong>250 ms</strong>, with <strong>$0.00763898</strong> reported for its run and one unreported transport charge. Perplexity had the more predictable slow tail: <strong>323 ms p95</strong>, compared with Span's <strong>1,661 ms</strong>. A fast median does not mean every request is fast.</p>
+<h2 id="span-improves-procedures-but-loses-some-simpler-rules">Span improves procedures but loses some simpler rules</h2>
+<p>Span scored <strong>29/42 on sequential procedures</strong>, compared with Nimble Max's 14/42, Perplexity's 11/42 and Jev 1.14's 4/42. These questions require updating a state after each operation, such as swapping two registers, testing the updated value and then overwriting another register. Span also improved scheduling to 55/69, one-to-one assignments to 60/61, and verbal spatial tracking to 40/43. One-to-one assignments require giving every person or item a unique partner while respecting interacting clues. Spatial tracking requires maintaining position and heading through described turns and moves.</p>
+<p>The procedure gain is substantial on this bank, but 29/42 still leaves 13 wrong answers. Exact truth counting was only 41/65, and repeated swaps were 25/46. Span also scored <strong>28/39 on forward conditional rules</strong>, where both Perplexity and Nimble Max scored 39/39. Belief tracking was 38/44, versus their 44/44. These are concrete reasons to test the caller's own rule types rather than choose a route solely by its overall score.</p>
+<p>Perplexity was stronger on those direct implications, necessary conditions, temporal intervals and belief tracking. It also reached 60/61 on one-to-one assignments, 53/69 on scheduling and 33/35 on sufficiency and inconsistency. Its <strong>11/42 procedure score</strong> and <strong>39/65 truth-counting score</strong> leave those functions unreliable. The overall result does not support unattended execution of multi-step instructions.</p>
+<h2 id="liquid-d1-ultra-improves-on-jev-with-a-similar-median">Liquid d1-ultra improves on Jev with a similar median</h2>
+<p>Liquid d1-ultra scored <strong>971/1,136 (85.5%)</strong>, 42 more correct answers than Jev 1.14. Its core score was 556/640 (86.9%), versus Jev's 538/640 (84.1%). Its <strong>196 ms median</strong> was close to Jev's 182 ms, and its <strong>261 ms p95</strong> was slightly below Jev's 280 ms. It reported <strong>$0.01314377</strong> for the full run, with one unknown transport charge, compared with Jev's $0.02723011.</p>
+<p>d1-ultra was perfect on the sampled necessary conditions, Boolean scope, exceptions, planning, reachability, preference ordering, rule verification, source authority and fault diagnosis. Its weak areas included procedures (8/42), repeated swaps (25/46) and truth-teller consistency (38/62). The smaller d1 scored 864/1,136 (76.1%), with a 215 ms median and $0.00625894 reported cost. Both versions offer useful price and quality comparisons, but neither matched the leading full-bank scores.</p>
+<h2 id="mercury-decide-matches-jevs-total-with-a-different-pattern">Mercury Decide matches Jev's total with a different pattern</h2>
+<p>Mercury Decide scored <strong>929/1,136 (81.8%)</strong>, exactly Jev 1.14's total. Its core score was slightly lower, at 531/640 versus Jev's 538/640. Its <strong>240 ms median</strong> was slower than Jev's 182 ms, while its <strong>$0.00760874 reported run cost</strong> was about 28% of Jev's captured run cost. All 1,136 first answers were usable. The captured Mercury Decide price was promotional.</p>
+<p>The tied total conceals different strengths. Mercury scored 33/46 on repeated swaps, 42/44 on belief tracking and 51/52 on priority rules, versus Jev's 27/46, 39/44 and 46/52. Necessary conditions were much weaker at 26/46 versus Jev's 45/46. Procedures were only 10/42. It is a plausible lower-cost route for some of the tested functions, not an interchangeable copy of Jev.</p>
+<p>Mercury Decide is also distinct from the previously tested regular Mercury 2.5, which scored 702/1,136 (61.8%) with a 534 ms median and $0.01321493 reported cost. The native decision route performed substantially better on this contract. These are different hosted configurations tested on different dates, rather than an experiment isolating the effect of a decision head.</p>
+<h2 id="native-decision-output-does-not-by-itself-establish-high-accuracy">Native decision output does not by itself establish high accuracy</h2>
+<p>Clef scored 859/1,136 (75.6%), Clef Flash 794 (69.9%) and Clef Omni 790 (69.5%). Their medians were all below 300 ms. Omni's $0.06753705 reported text-run cost was the highest among the completed new native routes, without a text-accuracy gain over the cheaper Clef routes. Its listed non-text capabilities were not tested here.</p>
+<p>Drex v2.0 scored 833/1,136 (73.3%), with a 232 ms median. It encountered 31 first-attempt HTTP 429 provider failures. The earlier v1.5 scored 791 (69.6%), with a 197 ms median and no failed first response. Kev 4B scored 737 (64.9%), near regular Luna's 727, but with a much shorter median: 228 ms versus 942 ms. Kev's core result was lower than Luna's, at 418/640 versus 431/640. These are hosted-route measurements, not local-hardware speed estimates.</p>
+<p>Classify-1 scored <strong>499/1,136 (43.9%)</strong>, and Solar Decide Flash scored <strong>477 (42.0%)</strong>. Their low scores mostly reflect wrong valid choices, not explanatory output. The stopped, slower Solar Decide route is a separate configuration and has only a partial diagnostic below. These results show why direct decision output, model size and a low per-token tariff are insufficient selection criteria.</p>
+<p>Perplexity Flash scored 855/1,136 (75.3%), including 50 first-attempt token-rate-limit failures. Among its 1,086 usable first answers, 855 were correct (78.7%). Its 161 ms median includes the failed requests. The higher conditional percentage is diagnostic only; it does not replace the full-denominator score.</p>
+<h2 id="gemma-is-the-strongest-regular-llm-tested-under-this-contract">Gemma is the strongest regular LLM tested under this contract</h2>
+<p>Gemma 4 31B scored <strong>902/1,136 (79.4%)</strong>, 175 more correct answers than regular Luna and 225 more than Luna Decisions. It finished 27 questions behind Jev 1.14. Its core-only result was 522/640 (81.6%), compared with Jev's 538/640 and regular Luna's 431/640. The same 902 total as the saved Nimble v4 result does not imply that they answer the same questions correctly.</p>
+<p>Its <strong>491 ms median</strong> was shorter than regular Luna's 942 ms, but longer than Jev's 182 ms or Nimble Max's 236 ms. Known full-run cost was <strong>$0.04693176</strong>, above regular Luna's $0.03431990. Forty attempt charges were unreported. Gemma had 47 model-output failures (4.1%) and 28 first-attempt provider failures. It stays below the agreed 5% output-failure cutoff, but all 75 unsuccessful first attempts remain in the score. Recovery improved its eventual result to 915; the ranking retains 902.</p>
+<p>Gemma was strong on necessary conditions and contraposition (44/46), one-to-one assignments (54/61), belief tracking (42/44), priority rules (48/52) and causal intervention (38/44). Belief tracking asks whose knowledge changes after an event, given what each person witnessed. Causal intervention changes a variable by instruction and asks which downstream effects follow; it is not merely observing that variable. Gemma exceeded Jev on these sampled belief, priority and causal questions, despite scoring lower overall.</p>
+<p>Its weaknesses remained substantial: scheduling 41/69, exact truth counting 27/65, truth-teller consistency 27/62, swaps 24/46 and procedures 9/42. A model that can handle many implications can still fail when it must maintain an updated state or make several constraints hold simultaneously.</p>
+<h2 id="qwen-is-near-regular-mercury-and-nex-is-a-cheaper-lower-scoring-option">Qwen is near regular Mercury and Nex is a cheaper lower scoring option</h2>
+<p>Qwen3 235B A22B Instruct 2507 scored <strong>706/1,136 (62.1%)</strong>, with all first answers usable, a <strong>556 ms median</strong>, a 1,667 ms p95 and <strong>$0.03013258</strong> reported cost. It scored 142 questions above the smaller Qwen3-30B-A3B Instruct 2507 configuration, but only four above regular Mercury 2.5. Mercury's saved median was 534 ms and its cost $0.01321493 at the captured promotional price. A larger hosted model did not produce a substantial aggregate gain over that cheaper alternative.</p>
+<p>Qwen scored 37/37 on lookup and source authority, 44/45 on preference ordering and 42/46 on counterexamples. It was much weaker on forward conditionals (14/39), exact truth counting (10/65), procedures (8/42) and causal intervention (22/44). Its swap score of 27/46 matched Jev 1.14 and exceeded Span's 25/46, without making either result dependable.</p>
+<p>Nex N2.5 Mini scored <strong>651/1,136 (57.3%)</strong>, with all first answers usable, a <strong>500 ms median</strong>, a 1,215 ms p95 and <strong>$0.008746245</strong> reported cost. It was the cheapest completed new regular LLM, but did not improve on regular Luna, Luna Decisions or the leading native routes. Its better families included transitive comparisons (34/34), reachability (37/37), source authority (37/37) and set relations (38/43). Belief tracking was 24/44, causal intervention 15/44, swaps 14/46 and procedures 10/42. Span's native route was cheaper and more accurate overall in these captured runs.</p>
+<h2 id="tev-is-a-small-generative-decision-model-with-a-different-interface">Tev is a small generative decision model with a different interface</h2>
+<p>Tev1 4B experimental scored <strong>676/1,136 (59.5%)</strong>, one fewer correct answer than Luna Decisions, with all first answers usable. Its <strong>202 ms median</strong>, <strong>254 ms p95</strong> and <strong>$0.01714902</strong> reported full-run cost offer a useful speed and cost comparison with Luna Decisions' 261 ms, 533 ms and $0.03941610, respectively. Luna's total also has 61 unreported attempt charges. These close accuracy counts are descriptive results, not proof of statistical equivalence.</p>
+<p>Tev scored 37/37 on lookup, 44/45 on preference ordering and 37/44 on fault diagnosis. Necessary conditions were 27/46, scheduling 25/69, swaps 18/46 and procedures 11/42. It did not approach the leading overall accuracy scores.</p>
+<p>Tev's <a href="https://huggingface.co/togethercomputer/Tev1-4B-experimental">documented architecture</a> generates an option through a language-model head. OpenRouter rejected its chat/completions call with HTTP 400 and required the native decisions endpoint. The complete run therefore uses a <strong>decision-specialized generative model through OpenRouter's native adapter</strong>, not a claimed non-generative architecture. The failed chat probe is preserved separately; it is not scored as an incorrect decision.</p>
+<p><img alt="Accuracy, full response times and normalized costs of the four generative additions and six reference routes" src="figures/october18/generative_accuracy_cost_speed.png" /></p>
+<h2 id="output-compliance-and-the-stopped-llm-samples">Output compliance and the stopped LLM samples</h2>
+<p>The existing main-table rule excludes complete runs with at least 5% model-output failures. That author-requested, post-hoc rule still excludes the earlier Haiku, DeepSeek and Phi-4 runs; their <a href="output_compliance.html">complete diagnostics</a> are preserved. Provider failures are counted separately and do not count toward the format cutoff.</p>
+<p>For the new LLMs, the agreed operational screen stops a route after the first 100 questions, or at a subsequent cumulative 100-question check, if accuracy falls below 50%, model-output failures reach 5%, or the median exceeds two seconds. A final check covers all 1,136. This is practical outcome-based selection of useful additions, not a representative survey or a pre-registered superiority study. The first 100 questions cover all families unevenly and include related variants. Partial accuracy is not extrapolated to the full bank, and this new stopping policy is not retroactively used to remove older completed low-scoring rows.</p>
 <table>
 <thead>
 <tr>
-<th>Model</th>
-<th style="text-align: right;">Cost for 1,136</th>
-<th style="text-align: right;">Normalized cost per 1,000</th>
-<th style="text-align: right;">Attempts missing cost</th>
-<th style="text-align: right;">Cost basis</th>
+<th>Added model</th>
+<th>First correct</th>
+<th>Eventual correct</th>
+<th>Usable first</th>
+<th>Output failures</th>
+<th>Provider failures</th>
+<th>Actual 1,136 cost</th>
+<th>Unknown charges</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nimble v4 Max</td>
-<td style="text-align: right;">$0.03365973</td>
-<td style="text-align: right;">$0.02963004</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">Token usage × tariff</td>
+<td>Gemma 4 31B</td>
+<td>902</td>
+<td>915</td>
+<td>1061</td>
+<td>47</td>
+<td>28</td>
+<td>$0.04693176</td>
+<td>40</td>
 </tr>
 <tr>
-<td>Jev 1.14</td>
-<td style="text-align: right;">$0.02723011</td>
-<td style="text-align: right;">$0.02397017</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
+<td>Qwen3 235B A22B Instruct 2507</td>
+<td>706</td>
+<td>706</td>
+<td>1136</td>
+<td>0</td>
+<td>0</td>
+<td>$0.03013258</td>
+<td>0</td>
 </tr>
 <tr>
-<td>Jev 1.13</td>
-<td style="text-align: right;">$0.02723011</td>
-<td style="text-align: right;">$0.02397017</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
+<td>Tev1 4B experimental (OpenRouter native adapter)</td>
+<td>676</td>
+<td>676</td>
+<td>1136</td>
+<td>0</td>
+<td>0</td>
+<td>$0.01714902</td>
+<td>0</td>
 </tr>
 <tr>
-<td>Nimble v4</td>
-<td style="text-align: right;">$0.01495988</td>
-<td style="text-align: right;">$0.01316891</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">Token usage × tariff</td>
-</tr>
-<tr>
-<td>Microsoft-Decision-1</td>
-<td style="text-align: right;">$0.01327712</td>
-<td style="text-align: right;">$0.01168761</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Tencent Hy3</td>
-<td style="text-align: right;">$0.02774624</td>
-<td style="text-align: right;">$0.02442450</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Qwen3.8 Flash</td>
-<td style="text-align: right;">$0.05003065</td>
-<td style="text-align: right;">$0.04404107</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Luna 6 regular</td>
-<td style="text-align: right;">$0.03431990</td>
-<td style="text-align: right;">$0.03021118</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Super VL</td>
-<td style="text-align: right;">$0.03381740</td>
-<td style="text-align: right;">$0.02976884</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Mercury 2.5</td>
-<td style="text-align: right;">$0.01321493</td>
-<td style="text-align: right;">$0.01163286</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>MiMo V2.6 Flash</td>
-<td style="text-align: right;">$0.04312187</td>
-<td style="text-align: right;">$0.03795939</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Luna 6 Decisions</td>
-<td style="text-align: right;">$0.03941610</td>
-<td style="text-align: right;">$0.03469727</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Gemini 2.5 Flash-Lite</td>
-<td style="text-align: right;">$0.03219570</td>
-<td style="text-align: right;">$0.02834129</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Qwen3-30B-A3B Instruct 2507</td>
-<td style="text-align: right;">$0.02922378</td>
-<td style="text-align: right;">$0.02572516</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Granite 4.2 8B</td>
-<td style="text-align: right;">$0.01555172</td>
-<td style="text-align: right;">$0.01368989</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>GPT-5.4 nano</td>
-<td style="text-align: right;">$0.07005030</td>
-<td style="text-align: right;">$0.06166400</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Mistral NeMo 12B</td>
-<td style="text-align: right;">$0.00923528</td>
-<td style="text-align: right;">$0.00812965</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Lightning</td>
-<td style="text-align: right;">$0.02323863</td>
-<td style="text-align: right;">$0.02045654</td>
-<td style="text-align: right;">82</td>
-<td style="text-align: right;">API-reported</td>
-</tr>
-<tr>
-<td>GLM 4.7 Flash</td>
-<td style="text-align: right;">$0.02005890</td>
-<td style="text-align: right;">$0.01765748</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">API-reported</td>
+<td>Nex N2.5 Mini</td>
+<td>651</td>
+<td>651</td>
+<td>1136</td>
+<td>0</td>
+<td>0</td>
+<td>$0.00874624</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
-<p>The selected 19 runs account for <strong>$0.557578357 combined</strong>. 194 attempts have unknown charges. API-returned charges and calculations from input-token usage and a published tariff are distinguished; neither is a statement of an independently reconciled invoice. All 22 tested runs, including the three unranked diagnostics, account for $0.680478351 in known charges or tariff calculations. Mercury's captured tariff had an 80% promotional discount. Its cost advantage is specific to that price.</p>
-<p><img alt="Actual 1136-question costs and first-attempt response times including October 16 additions" src="figures/expanded_cost_and_speed.png" /></p>
-<h2 id="nimble-v4-max-changes-the-overall-leader">Nimble v4 Max changes the overall leader</h2>
-<p><strong>Added October 16, 2026.</strong> Nimble v4 Max scored <strong>997/1,136 (87.8%)</strong>, ahead of Jev 1.14's 929/1,136 (81.8%). Its advantage is 68 correct answers, or 6.0 percentage points. The core-only comparison has the same direction: 573/640 (89.5%) versus 538/640 (84.1%). The new result changes the overall conclusion: Jev remains substantially stronger than both Luna services on these questions, but no longer leads this expanded text comparison.</p>
-<p>Max improved on Jev 1.14 in 16 families, tied it in eight and scored one question lower on sufficiency and inconsistency (29/35 versus 30/35). It was correct on 98 questions Jev 1.14 missed, while Jev was correct on 30 that Max missed. That is a substantial overall gain without making either service a universal replacement for the other.</p>
-<p>The clearest gains are truth-teller consistency (46/62 versus 31/62), exact truth counting (37/65 versus 26/65), and sequential procedures (14/42 versus 4/42). Truth-teller consistency means finding an account in which people's claims about who is truthful fit together. Exact truth counting asks how many supplied statements hold under the same facts. Sequential procedures require updating a state after each prescribed operation. Max improves those functions, but 37/65 on counting and 14/42 on procedures remain poor bases for unattended decisions. Its 47/69 scheduling and 32/46 swap-tracking scores also leave substantial weaknesses.</p>
-<p>Max answered every sampled question correctly in 15 families, including necessary conditions, Boolean scope, temporal intervals, belief tracking, exceptions and priority rules. Those are observations on this generated bank, not reliability guarantees. At a returned confidence cutoff of 0.9 it retained 742 questions, all correct in this run (65.3% coverage). The cutoff was examined on the same bank and has not been validated on a new workload.</p>
-<p>Its median complete response was <strong>236 ms</strong>, compared with 182 ms for Jev 1.14, and its calculated tariff cost was <strong>$0.03365973</strong> for the full bank, compared with Jev's reported $0.02723011. Max buys higher observed accuracy at somewhat greater cost and latency. Nimble used Bespoke directly, while Jev used OpenRouter, on different days; these timings describe the tested services, not an isolated architecture comparison.</p>
-<h2 id="nimble-v4-offers-a-different-price-and-quality-trade-off">Nimble v4 offers a different price and quality trade-off</h2>
-<p>The smaller Nimble v4 scored <strong>902/1,136 (79.4%)</strong>, 27 questions below Jev 1.14 and 175 above regular Luna. Its calculated tariff cost was <strong>$0.01495988</strong>, about 45% below Jev 1.14's reported cost. Its median was <strong>214 ms</strong>, with a 260 ms p95. It did not improve on Jev's overall score or median latency, but its lower cost makes it a useful alternative on tasks where its particular strengths fit.</p>
-<p>Nimble v4 scored 44/44 on belief tracking, 37/37 on planning with preconditions and 46/46 on rule verification, compared with Jev 1.14's 39/44, 36/37 and 45/46. It also reached 38/65 on exact truth counting, slightly above Max and well above Jev, although still far from dependable. Its weaker areas include swap tracking (21/46), sequential procedures (8/42), scheduling (39/69) and spatial tracking (24/43). The lower total is not a formatting penalty: all 1,136 first answers were usable typed choices.</p>
-<h2 id="microsoft-improves-the-low-cost-comparison">Microsoft improves the low-cost comparison</h2>
-<p>Microsoft-Decision-1 scored <strong>841/1,136 (74.0%)</strong>, with all first answers usable, a <strong>288 ms</strong> median and a 574 ms p95. Its <strong>$0.013277124 API-reported cost</strong> is almost the same as Mercury's $0.01321493 promotional run cost, while it answered 139 more questions correctly. It also had a shorter observed median than Mercury's 534 ms. Both used OpenRouter, but their dates and backends differ.</p>
-<p>Microsoft was perfect on the sampled lookup, transitive-comparison, reachability, source-authority and fault-diagnosis questions. It was also strong on belief tracking (40/44) and exceptions (48/52). Exact truth counting was 37/65, ahead of Jev 1.14's 26/65, but necessary conditions and contraposition were only 22/46, swap tracking 24/46 and sequential procedures 6/42. It is a stronger inexpensive text-decision result than the regular LLMs in this bank, not the strongest model overall.</p>
-<h2 id="the-three-native-additions-completed-without-a-failed-first-attempt">The three native additions completed without a failed first attempt</h2>
-<p>All three services completed 1,136 first attempts without a transport failure, invalid choice or recovery request. Their 3,408 cases are preserved in the <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_2026-10-16/summary.json">fourteen-model snapshot</a>. The later regular-LLM runs extend that evidence without replacing any original response. The current ranking applies the output-compliance inclusion rule to old and new models alike.</p>
-<p>Microsoft reports a dollar charge in each response. Nimble reports input-token usage but no dollar charge, so its displayed costs are usage multiplied by the captured published prices: $0.04 per million input tokens for v4 and $0.09 for Max, with free output. These are tariff calculations, not independently reconciled invoices. Similar per-token prices do not imply identical per-question costs because services count different prompt overheads and tokens.</p>
-<h2 id="tencent-hy3-outscored-regular-luna-at-lower-reported-cost">Tencent Hy3 outscored regular Luna at lower reported cost</h2>
-<p>Tencent Hy3 scored <strong>790/1,136 (69.5%)</strong>, 63 more correct answers than regular Luna and 113 more than Luna Decisions. Its core-only result was 446/640 (69.7%), versus regular Luna's 431/640. Reported full-run cost was <strong>$0.02774624</strong>, below regular Luna's $0.03431990, but its median response was slower: <strong>1,423 ms versus 942 ms</strong>. One failed attempt omitted a charge. Tencent's captured pricing included a lower-price time window; the reported cost describes the window in which this run occurred.</p>
-<p>Hy3 answered every sampled lookup, transitive-comparison, directed-reachability and source-authority question correctly. Belief tracking was 34/44, versus regular Luna's 16/44 and Luna Decisions' 30/44. This family asks whose knowledge should change after an event, given what each person observed. Necessary conditions were also stronger than regular Luna, at 31/46 versus 13/46. Exact truth counting (15/65), sequential procedures (12/42) and repeated swaps (22/46) remained weak.</p>
-<p>Hy3 did answer 59 questions that Jev 1.14 missed, while Jev answered 198 that Hy3 missed. Sequential procedures were a family-level crossover, at 12/42 versus Jev's 4/42; neither result supports dependable procedural execution. Microsoft-Decision-1 still scored 51 more questions correctly overall than Hy3, with a 288 ms median and $0.01327712 reported cost. The leading native decision services retain substantial advantages on this tested contract.</p>
-<h2 id="qwen38-flash-improved-on-the-older-qwen-configuration">Qwen3.8 Flash improved on the older Qwen configuration</h2>
-<p>Qwen3.8 Flash scored <strong>763/1,136 (67.2%)</strong>, compared with 564/1,136 (49.6%) for Qwen3-30B-A3B Instruct 2507. These are different model configurations, not a controlled checkpoint upgrade. It also outscored regular Luna by 36 correct answers, with an <strong>862 ms median</strong> versus Luna's 942 ms. Its reported run cost was higher, at <strong>$0.05003065</strong>, with 34 failed attempts omitting charges.</p>
-<p>It was strong on directed reachability (37/37), fault diagnosis (43/44), preference ordering (44/45) and transitive comparison (33/34). Necessary conditions improved to 33/46, versus regular Luna's 13/46. Temporal interval reasoning was weaker at 19/36, compared with regular Luna's 24/36 and Tencent's 31/36. Procedures (6/42), exact truth counting (20/65) and causal intervention (16/44) remained poor.</p>
-<p>Only three first outputs failed the answer format. Thirty other first attempts failed at the provider or transport level. Permitted recoveries raised the eventual score to 779/1,136, but the ranking retains the first-attempt 763. Its <strong>5,717 ms p95</strong> also shows a much slower tail than its median suggests.</p>
-<h2 id="mimo-finished-near-luna-decisions-with-a-slower-response">MiMo finished near Luna Decisions with a slower response</h2>
-<p>MiMo V2.6 Flash scored <strong>684/1,136 (60.2%)</strong>, seven more correct answers than Luna Decisions but 43 fewer than regular Luna. Its median was <strong>1,429 ms</strong> and p95 <strong>6,032 ms</strong>, with <strong>$0.04312187</strong> in reported charges and five attempts with unknown charges. It did not improve on regular Luna's overall accuracy, median latency or known run cost.</p>
-<p>MiMo answered all 37 lookup questions correctly and scored 36/37 on reachability, 42/45 on preference ordering and 40/46 on rule verification. Necessary conditions (18/46), exact truth counting (14/65), causal intervention (18/44) and sequential procedures (5/42) were weaker. It had 35 capped model outputs and five provider or body-read failures. The 3.1% format-failure rate stays below the main comparison's 5% exclusion cutoff; all 40 unsuccessful first attempts remain in its denominator.</p>
-<h2 id="nemotron-35-super-vl-scored-625-percent">Nemotron 3.5 Super VL scored 62.5 percent</h2>
-<p>Nemotron 3.5 Super VL answered <strong>710/1,136</strong> questions correctly, compared with regular Luna's 727 and Mercury 2.5's 702. Its median full response was <strong>465 ms</strong>, versus 942 ms for regular Luna and 534 ms for Mercury. Reported charges for the full run were <strong>$0.03381740</strong>, close to regular Luna's $0.03431990 and above Mercury's $0.01321493 promotional run cost. Two provider errors omitted charges. The score includes those unanswered cases.</p>
-<p>Nimble v4 Max scored 997/1,136 (87.8%) at a calculated tariff cost of $0.03365973 and a 236 ms median. Its run cost was almost the same as Super VL's reported charge, with 287 more correct first answers and roughly half the median response time. Both were tested on October 16, through different providers and interfaces.</p>
-<p>This is a different, larger Nemotron configuration from Lightning. It returned 1,134 valid first answers, all without a reported hidden reasoning trace. One upstream failure arrived as HTTP 502; another arrived inside an HTTP-200 error envelope without a model answer. The second response initially triggered an identity guard. Its recorded attempt was preserved as unsuccessful, and only unattempted questions were resumed. No existing question was replayed or replaced. The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/nemotron35supervl">continuation receipt and frozen helper</a> document the handling.</p>
-<p>Super VL was perfect on sampled lookup and transitive comparisons, and scored 43/46 on rule verification and 40/43 on set relations. Necessary conditions were only 11/46, exact truth counting 17/65 and procedures 8/42. It returned decisions consistently under the short-output instruction; the weak family scores mostly reflect wrong valid choices rather than format failures.</p>
-<h2 id="nemotron-lightning-was-fast-but-scored-333-percent">Nemotron Lightning was fast but scored 33.3 percent</h2>
-<p>Nemotron 3.5 Lightning answered <strong>378/1,136</strong> questions correctly with a <strong>280 ms median</strong> and <strong>533 ms p95</strong>. Its reported cost was <strong>$0.02323863</strong>, including eligible retries; 82 failed attempts omitted charges. Its first attempts included 67 upstream rate limits and one DNS failure. Recoveries brought the eventual score to 395/1,136, with 14 cases still unanswered. Valid first answers were correct on 378/1,068 cases (35.4%), so transport failures do not account for the low score. Every valid first answer was a complete numeric choice using two output tokens, without reported reasoning tokens.</p>
-<p>Lightning's strongest sampled family was transitive comparison, at 27/34: for example, using A before B and B before C to compare A with C. It scored 25/37 on lookup and filtering, but only 5/44 on causal intervention, 7/46 on necessary conditions and 7/43 on verbal spatial tracking. These are results for the tested short-output, reasoning-off configuration.</p>
-<p>An earlier, separate 25-question pilot used temperature 0 and scored 15/25. The full run omitted temperature to preserve the original eight-LLM request protocol; it scored 9/25 on those same pilot items, with 24 valid first answers. The two samples used different sampling configurations and are not pooled. The full result does not establish performance under a greedy or reasoning-enabled configuration.</p>
-<h2 id="glm-followed-the-output-instruction-but-scored-294-percent">GLM followed the output instruction but scored 29.4 percent</h2>
-<p>GLM 4.7 Flash returned <strong>1,134 usable first decisions</strong>, all complete two-token numeric choices with zero reported reasoning tokens. Only <strong>334/1,136 (29.4%)</strong> were correct; 800 were wrong valid choices. The remaining two responses were provider-error envelopes, not model explanations or truncation. GLM stays in the main ranking because it complied with the output contract. Its low accuracy is a different result from Haiku's high unanswered rate.</p>
-<p>Transitive comparisons were its strongest sampled family at 30/34. Necessary conditions were 4/46, Boolean scope 6/48, rule verification 8/46 and source authority 8/37. It preserved the same semantic choice across all rotations in only 2/25 complete rotation panels. Returning a valid option ID did not establish consistent interpretation of the choices.</p>
-<p>Its median full response was <strong>560 ms</strong>, but p95 was <strong>17,056 ms</strong>. The run cost <strong>$0.02005890</strong> in reported charges, with two unknown error charges. The tested route was OpenRouter/Cloudflare; this is an end-to-end service measurement. The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/glm47flash/continuation_receipt.json">continuation receipt</a> preserves both upstream failures and documents resuming only unattempted questions after the original identity guard paused the run.</p>
-<h2 id="regular-luna-and-luna-decisions-differ-in-ways-the-total-score-conceals">Regular Luna and Luna Decisions differ in ways the total score conceals</h2>
-<p>Regular Luna answered <strong>727/1,136</strong> correctly, compared with <strong>677/1,136</strong> for Luna Decisions. Its core score was 431/640, compared with 390/640. They agreed on 683 of the 1102 questions both answered (62.0%). Similar aggregate scores do not mean they made the same decisions.</p>
-<p>The speed trade-off matters. The full-bank median was <strong>261 ms for Luna Decisions</strong>, compared with 942 ms for regular Luna and 534 ms for Mercury. All three were tested on October 15 with the same response-body timing method, although Decisions was measured in a later session and uses a different request interface. Regular Luna also cost less in reported charges: $0.03431990 versus $0.03941610 for Decisions, whose 61 failed attempts omitted charges. Mercury scored 25 more questions correctly than Decisions, with roughly twice its median response time in this short-output test, but about one-third of its known reported cost.</p>
-<p>The direction of the difference depends on the function. Regular Luna versus Luna Decisions scored 32/39 versus 21/39 on forward implications, 40/48 versus 33/48 on Boolean scope, 44/46 versus 39/46 on rule verification, 37/37 versus 31/37 on source authority. On belief tracking, Luna Decisions scored 30/44 versus regular Luna's 16/44; on supplied-candidate checks, 33/80 versus 17/80. These services expose different identities and request interfaces, so differences cannot be attributed to the interface alone.</p>
-<h2 id="mercury-remains-a-useful-regular-llm-cost-comparison">Mercury remains a useful regular LLM cost comparison</h2>
-<p>Mercury came within 25 correct answers of regular Luna while costing $0.01321493 for the actual 1,136-question run, compared with Luna's $0.03431990. Its median complete response was 0.534 seconds, compared with 0.942 seconds for Luna. Mercury's captured tariff included an 80% promotional discount; its cost advantage reflects that price. This short-output test does not validate a general throughput or architecture claim.</p>
-<p>Mercury answered every sampled transitive-comparison question (34/34) and preference-ordering question (45/45), and nearly every lookup and source-authority question (36/37 in each family). It was much less dependable on exact truth counting (18/65), repeated object swaps (20/46), causal intervention (16/44), and sequential procedures (6/42). Its 61.8% total is a useful budget comparison, not a basis for accepting arbitrary decisions without checking.</p>
-<h2 id="the-smaller-open-weight-candidates-expose-a-substantial-quality-cost">The smaller open-weight candidates expose a substantial quality cost</h2>
-<p>Qwen3-30B-A3B Instruct produced a valid numeric answer on all 1,136 questions, but only 564 were correct (49.6%). It did relatively well on preference ordering (40/45), set relations (38/43), transitive comparisons (29/34), and lookup (31/37). Scheduling (24/69), causal intervention (12/44), exact truth counting (16/65), and truth-teller consistency (14/62) remained weak. It did not outperform Mercury on aggregate accuracy, known cost or median response time in this run.</p>
-<p>Granite 4.2 8B was fast and inexpensive, with a 0.324-second median and $0.01555172 in reported cost, but scored 478/1,136 (42.1%). Transitive comparisons (30/34), lookup (31/37), and set relations (35/43) were its better areas. Contraposition (5/46), sequential procedures (5/42), exact truth counting (12/65), and object swaps (10/46) were poor. Its post-hoc leading-ID score is almost unchanged at 479/1,136, so formatting alone does not account for the low total. Five error attempts omitted cost.</p>
-<p>Mistral NeMo was the cheapest regular-LLM run at $0.009235281 reported, with two error attempts missing cost, but answered only 421/1,136 correctly (37.1%). Its stronger areas were transitive comparisons (31/34), lookup (29/37), and preference ordering (33/45). Exact truth counting (8/65), procedural execution (8/42), contraposition (10/46), and truth-teller consistency (14/62) were weak. Its leading-ID score does not improve the total.</p>
-<h2 id="the-two-earlier-budget-llms-are-evaluated-on-the-full-bank">The two earlier budget LLMs are evaluated on the full bank</h2>
-<p>Gemini 2.5 Flash-Lite scored 598/1,136 (52.6%), with a 0.341-second median and a reported cost of $0.03219570. It was strong on lookup (36/37), transitive comparisons (31/34), and preference ordering (38/45), but weak on causal intervention (9/44), scheduling (16/69), exact counting (14/65), and sequential procedures (7/42). It was faster than Mercury on this setup, while Mercury was more accurate and cheaper at its discounted tariff.</p>
-<p>GPT-5.4 nano scored 464/1,136 (40.8%). All answers satisfied the numeric-ID format, so there is no formatting explanation for its low total. It cost $0.07005030, the highest amount among the eight regular-LLM full runs, with a 0.683-second median. Its better areas were transitive comparisons (28/34), lookup (30/37), preference ordering (36/45), and exceptions (35/52). Contraposition (8/46), truth-teller consistency (10/62), scheduling (16/69), and exact truth counting (13/65) were weak. On this workload it offers no observed accuracy, median-latency or cost advantage over Mercury.</p>
-<h2 id="the-common-hard-cases-remain-hard">The common hard cases remain hard</h2>
-<p>No model is dependable on sequential procedure execution: the best strict result is 14/42. The best exact truth-counting result is 38/65. Object tracking through repeated swaps and truth-teller consistency also remain substantial weaknesses. A typed answer, a short response or a low price does not remove the need to check exact state transitions and counts.</p>
-<p>Jev 1.14 scored 56/61 on assignments, 39/44 on belief tracking, and 36/37 on planning with preconditions. It answered every sampled question correctly in 8 families: record lookup and filtering, forward conditional reasoning, quantifiers and set relations, transitive comparisons, directed reachability, deterministic preference ordering, source authority and stale records, deterministic fault diagnosis. Its 45/69 scheduling result and 4/42 procedural result show why its bounded-deduction strengths should not be described as general reliability.</p>
-<p>There are 8 questions that none of the 19 ranked models answered correctly under the strict primary rules. Their IDs remain private for a possible later key and wording audit. This count does not establish that their reference answers are wrong; the original key is unchanged.</p>
-<h2 id="where-jev-114-improved-over-113">Where Jev 1.14 improved over 1.13</h2>
-<p>The overall text difference is <strong>+10 correct answers</strong>, from 80.9% to 81.8%. The clearest gains remain assignments and spatial tracking, but the new run no longer shows a scheduling gain.</p>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th style="text-align: right;">Jev 1.13</th>
-<th style="text-align: right;">Jev 1.14</th>
-<th style="text-align: right;">Change in correct answers</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>One-to-one assignments</td>
-<td style="text-align: right;">50/61</td>
-<td style="text-align: right;">56/61</td>
-<td style="text-align: right;">+6</td>
-</tr>
-<tr>
-<td>Verbal spatial tracking</td>
-<td style="text-align: right;">26/43</td>
-<td style="text-align: right;">30/43</td>
-<td style="text-align: right;">+4</td>
-</tr>
-<tr>
-<td>Scheduling</td>
-<td style="text-align: right;">45/69</td>
-<td style="text-align: right;">45/69</td>
-<td style="text-align: right;">+0</td>
-</tr>
-<tr>
-<td>Exact truth counting</td>
-<td style="text-align: right;">24/65</td>
-<td style="text-align: right;">26/65</td>
-<td style="text-align: right;">+2</td>
-</tr>
-<tr>
-<td>Sequential procedures</td>
-<td style="text-align: right;">6/42</td>
-<td style="text-align: right;">4/42</td>
-<td style="text-align: right;">-2</td>
-</tr>
-<tr>
-<td>Object tracking through swaps</td>
-<td style="text-align: right;">28/46</td>
-<td style="text-align: right;">27/46</td>
-<td style="text-align: right;">-1</td>
-</tr>
-<tr>
-<td>Belief tracking</td>
-<td style="text-align: right;">41/44</td>
-<td style="text-align: right;">39/44</td>
-<td style="text-align: right;">-2</td>
-</tr>
-</tbody>
-</table>
-<p>Across individual questions, 1.14 corrected 44 cases that 1.13 did not answer correctly, and lost 34 cases that 1.13 answered correctly. Improvement is not uniform. Exceptions and priority rules: 47/52 versus 46/52; temporal intervals: 35/36 versus 35/36. On changed-evidence pairs, the counts with both answers correct were 20/25 and 20/25. A version upgrade should therefore be checked against the tasks an application actually uses.</p>
-<p>A one-to-one assignment means giving each person, object or time slot a unique partner while respecting clues. For example: three people need different desks; one cannot use the window desk and another must sit left of the third; which complete assignment satisfies every rule? Spatial tracking means updating a direction or position through described movements, such as following successive turns and then identifying where someone is facing. These illustrations explain the categories; they are not additional scored questions.</p>
-<h2 id="image-decisions-add-another-dimension">Image decisions add another dimension</h2>
-<p>The separate <a href="https://github.com/etsabary/visual-decision-benchmark">image benchmark</a> used 200 questions per configuration, tested on October 15, 2026. Its scores are unchanged. Mercury was not tested on images. On October 16, Microsoft explicitly rejected the native image request. Both Nimble versions accepted its image-shaped JSON and returned choices, but their <a href="https://docs.bespokelabs.ai/api-reference/systemone">API contract</a> explicitly says that a JSON state is read as JSON text. Each probe billed 26,253 input tokens; accepting the encoded image data as text is not evidence of pixel processing. No native-image score is assigned to these three API routes, and the 200-question image bank was not run through a text substitute. The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_2026-10-16/image_capabilities.json">capability record and probe costs</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_2026-10-16/image_compatibility_probes.jsonl">sanitized responses</a> retain the evidence. This concerns the tested APIs, not every possible future endpoint or capability of their underlying base models.</p>
-<table>
-<thead>
-<tr>
-<th>Image configuration</th>
-<th style="text-align: right;">Correct / 200</th>
-<th style="text-align: right;">Accuracy</th>
-<th style="text-align: right;">Median full reply</th>
-<th style="text-align: right;">Known actual 200-question cost</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Jev 1.14</td>
-<td style="text-align: right;">141</td>
-<td style="text-align: right;">70.5%</td>
-<td style="text-align: right;">307 ms</td>
-<td style="text-align: right;">$0.02397688*</td>
-</tr>
-<tr>
-<td>Luna Decisions</td>
-<td style="text-align: right;">121</td>
-<td style="text-align: right;">60.5%</td>
-<td style="text-align: right;">383 ms</td>
-<td style="text-align: right;">$0.02254620*</td>
-</tr>
-<tr>
-<td>Luna regular</td>
-<td style="text-align: right;">117</td>
-<td style="text-align: right;">58.5%</td>
-<td style="text-align: right;">2354 ms</td>
-<td style="text-align: right;">$0.02958170</td>
-</tr>
-<tr>
-<td>GPT-5.4 nano</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">35.0%</td>
-<td style="text-align: right;">1605 ms</td>
-<td style="text-align: right;">$0.05052450</td>
-</tr>
-<tr>
-<td>Gemini 2.5 Flash-Lite</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">37.5%</td>
-<td style="text-align: right;">873 ms</td>
-<td style="text-align: right;">$0.00864040*</td>
-</tr>
-</tbody>
-</table>
-<p>An asterisk marks missing error charges. These are actual 200-question costs; the image repo’s per-1,000 chart remains a separately labelled normalization.</p>
-<p>The image results show where the overall winner loses. Jev scored 9/10 on conditional counting, spatial relationships and flowcharts. Conditional counting means counting only objects meeting a rule, such as red shapes inside a marked region. A flowchart question asks a model to follow pictured branches for a supplied input and select the resulting outcome.</p>
-<p>Luna Decisions was stronger on <strong>rotation and reflection</strong>, at 8/10 versus Jev's 3/10: recognizing which option is the rotated or mirrored version of a pictured shape. Regular Luna was stronger on <strong>visual rule application</strong>, at 6/10 versus Jev's 3/10: applying a pictured transformation or legend to choose the correct result. Both Luna services scored 7/10 on sequential visual state tracking, compared with Jev's 6/10. Each image family has only ten questions, so these are useful leads for further testing rather than broad reliability estimates.</p>
-<p>The text bank also shows why totals do not describe every function: Qwen answered 11/42 procedural questions correctly, versus Jev 1.14's 4/42. Neither result is dependable.</p>
-<p>The release's text gain should be distinguished from its broader features. In the <a href="https://typesafe.ai/blog/jev-1-14">October 14 release announcement</a>, TypeSafe describes incremental model improvements and expects the largest gain in multilingual support. We tested only English. The release also enabled experimental image input, a bounding-box output type and longer context. TypeSafe says 1.13 was already multimodal, and image access was enabled for it too; bounding-box output was specific to 1.14. Our image bank establishes behavior on the tested 1.14 OpenRouter route, not a measured vision improvement over 1.13. Bounding boxes, long-context quality and multilingual gains remain outside these tests.</p>
-<h2 id="accuracy-across-the-25-functions">Accuracy across the 25 functions</h2>
-<p>Cell labels show correct counts; color shows accuracy within each family. The <a href="functions.html">function tables</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_expanded_2026-10-16/family_comparison.csv">family CSV</a> retain all denominators, including the new models.</p>
-<p><img alt="Correct counts and accuracy by family including October 16 additions" src="figures/expanded_family_accuracy.png" /></p>
-<h2 id="matched-diagnostic-tests">Matched diagnostic tests</h2>
-<p>Rotation and evidence-change scores use planned panel denominators, so missing answers cannot improve them. Semantic consistency is shown only among complete rotation panels; a consistent choice can still be wrong. Candidate-check scores include all 80 planned checks.</p>
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th style="text-align: right;">All rotations correct</th>
-<th style="text-align: right;">Consistent / complete panels</th>
-<th style="text-align: right;">Both evidence answers correct</th>
-<th style="text-align: right;">Candidate checks correct</th>
-<th style="text-align: right;">All five checks correct</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nimble v4 Max</td>
-<td style="text-align: right;">20/25</td>
-<td style="text-align: right;">22/25</td>
-<td style="text-align: right;">21/25</td>
-<td style="text-align: right;">60/80</td>
-<td style="text-align: right;">7/16</td>
-</tr>
-<tr>
-<td>Jev 1.14</td>
-<td style="text-align: right;">21/25</td>
-<td style="text-align: right;">23/25</td>
-<td style="text-align: right;">20/25</td>
-<td style="text-align: right;">42/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Jev 1.13</td>
-<td style="text-align: right;">22/25</td>
-<td style="text-align: right;">24/25</td>
-<td style="text-align: right;">20/25</td>
-<td style="text-align: right;">37/80</td>
-<td style="text-align: right;">1/16</td>
-</tr>
-<tr>
-<td>Nimble v4</td>
-<td style="text-align: right;">20/25</td>
-<td style="text-align: right;">22/25</td>
-<td style="text-align: right;">17/25</td>
-<td style="text-align: right;">42/80</td>
-<td style="text-align: right;">2/16</td>
-</tr>
-<tr>
-<td>Microsoft-Decision-1</td>
-<td style="text-align: right;">19/25</td>
-<td style="text-align: right;">22/25</td>
-<td style="text-align: right;">19/25</td>
-<td style="text-align: right;">49/80</td>
-<td style="text-align: right;">2/16</td>
-</tr>
-<tr>
-<td>Tencent Hy3</td>
-<td style="text-align: right;">17/25</td>
-<td style="text-align: right;">17/23</td>
-<td style="text-align: right;">15/25</td>
-<td style="text-align: right;">28/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Qwen3.8 Flash</td>
-<td style="text-align: right;">16/25</td>
-<td style="text-align: right;">16/22</td>
-<td style="text-align: right;">15/25</td>
-<td style="text-align: right;">33/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Luna 6 regular</td>
-<td style="text-align: right;">16/25</td>
-<td style="text-align: right;">17/25</td>
-<td style="text-align: right;">11/25</td>
-<td style="text-align: right;">17/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Super VL</td>
-<td style="text-align: right;">15/25</td>
-<td style="text-align: right;">15/24</td>
-<td style="text-align: right;">11/25</td>
-<td style="text-align: right;">26/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Mercury 2.5</td>
-<td style="text-align: right;">14/25</td>
-<td style="text-align: right;">14/24</td>
-<td style="text-align: right;">13/25</td>
-<td style="text-align: right;">28/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>MiMo V2.6 Flash</td>
-<td style="text-align: right;">12/25</td>
-<td style="text-align: right;">13/21</td>
-<td style="text-align: right;">13/25</td>
-<td style="text-align: right;">31/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Luna 6 Decisions</td>
-<td style="text-align: right;">13/25</td>
-<td style="text-align: right;">14/20</td>
-<td style="text-align: right;">13/25</td>
-<td style="text-align: right;">33/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Gemini 2.5 Flash-Lite</td>
-<td style="text-align: right;">12/25</td>
-<td style="text-align: right;">12/25</td>
-<td style="text-align: right;">9/25</td>
-<td style="text-align: right;">24/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Qwen3-30B-A3B Instruct 2507</td>
-<td style="text-align: right;">11/25</td>
-<td style="text-align: right;">11/25</td>
-<td style="text-align: right;">9/25</td>
-<td style="text-align: right;">21/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Granite 4.2 8B</td>
-<td style="text-align: right;">7/25</td>
-<td style="text-align: right;">7/23</td>
-<td style="text-align: right;">7/25</td>
-<td style="text-align: right;">25/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>GPT-5.4 nano</td>
-<td style="text-align: right;">6/25</td>
-<td style="text-align: right;">7/25</td>
-<td style="text-align: right;">7/25</td>
-<td style="text-align: right;">17/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Mistral NeMo 12B</td>
-<td style="text-align: right;">5/25</td>
-<td style="text-align: right;">5/24</td>
-<td style="text-align: right;">5/25</td>
-<td style="text-align: right;">19/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Lightning</td>
-<td style="text-align: right;">1/25</td>
-<td style="text-align: right;">1/19</td>
-<td style="text-align: right;">2/25</td>
-<td style="text-align: right;">9/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-<tr>
-<td>GLM 4.7 Flash</td>
-<td style="text-align: right;">2/25</td>
-<td style="text-align: right;">2/25</td>
-<td style="text-align: right;">5/25</td>
-<td style="text-align: right;">16/80</td>
-<td style="text-align: right;">0/16</td>
-</tr>
-</tbody>
-</table>
-<h2 id="output-format-and-recovery">Output format and recovery</h2>
-<p>The leading-ID column is a <strong>post-hoc sensitivity check</strong>, applied uniformly to the saved regular-LLM runs. It reads a numeric answer ID at the start even if an explanation follows or later output is truncated. It adds no calls and does not replace the strict primary score. A larger output budget or reasoning-enabled evaluation would be a different experiment. Explanatory text without a leading answer ID is not converted into a guessed choice.</p>
-<p>The three models above the output-failure cutoff appear only in the <a href="output_compliance.html">diagnostics</a>, not in this table. “Invalid first output” counts model-output failures; provider errors and incomplete response bodies appear in the separate failure column.</p>
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th style="text-align: right;">Strict correct</th>
-<th style="text-align: right;">Leading-ID correct</th>
-<th style="text-align: right;">Invalid first output</th>
-<th style="text-align: right;">First provider/transport failures</th>
-<th style="text-align: right;">Recovery attempts</th>
-<th style="text-align: right;">Eventual correct</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tencent Hy3</td>
-<td style="text-align: right;">790</td>
-<td style="text-align: right;">791</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">791</td>
-</tr>
-<tr>
-<td>Qwen3.8 Flash</td>
-<td style="text-align: right;">763</td>
-<td style="text-align: right;">763</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">779</td>
-</tr>
-<tr>
-<td>Luna 6 regular</td>
-<td style="text-align: right;">727</td>
-<td style="text-align: right;">727</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">727</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Super VL</td>
-<td style="text-align: right;">710</td>
-<td style="text-align: right;">710</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">710</td>
-</tr>
-<tr>
-<td>Mercury 2.5</td>
-<td style="text-align: right;">702</td>
-<td style="text-align: right;">703</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">702</td>
-</tr>
-<tr>
-<td>MiMo V2.6 Flash</td>
-<td style="text-align: right;">684</td>
-<td style="text-align: right;">684</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">687</td>
-</tr>
-<tr>
-<td>Gemini 2.5 Flash-Lite</td>
-<td style="text-align: right;">598</td>
-<td style="text-align: right;">599</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">598</td>
-</tr>
-<tr>
-<td>Qwen3-30B-A3B Instruct 2507</td>
-<td style="text-align: right;">564</td>
-<td style="text-align: right;">564</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">564</td>
-</tr>
-<tr>
-<td>Granite 4.2 8B</td>
-<td style="text-align: right;">478</td>
-<td style="text-align: right;">479</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">478</td>
-</tr>
-<tr>
-<td>GPT-5.4 nano</td>
-<td style="text-align: right;">464</td>
-<td style="text-align: right;">464</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">464</td>
-</tr>
-<tr>
-<td>Mistral NeMo 12B</td>
-<td style="text-align: right;">421</td>
-<td style="text-align: right;">421</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">421</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Lightning</td>
-<td style="text-align: right;">378</td>
-<td style="text-align: right;">378</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">395</td>
-</tr>
-<tr>
-<td>GLM 4.7 Flash</td>
-<td style="text-align: right;">334</td>
-<td style="text-align: right;">334</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">334</td>
-</tr>
-</tbody>
-</table>
-<p>The native services return typed choices rather than generated answer IDs. A usable choice is scored even when its probability distribution has a rounding or normalization warning. Provider failures are unsuccessful first attempts, not demonstrated logical mistakes. The eventual scores below include the permitted recovery attempt and do not replace the main results.</p>
-<table>
-<thead>
-<tr>
-<th>Decisions service</th>
-<th style="text-align: right;">Usable first choices</th>
-<th style="text-align: right;">First transport/HTTP failures</th>
-<th style="text-align: right;">Probability warnings</th>
-<th style="text-align: right;">Recovery attempts</th>
-<th style="text-align: right;">Eventual correct</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Jev 1.13</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">919</td>
-</tr>
-<tr>
-<td>Jev 1.14</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">929</td>
-</tr>
-<tr>
-<td>Luna 6 Decisions</td>
-<td style="text-align: right;">1103</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">680</td>
-</tr>
-<tr>
-<td>Microsoft-Decision-1</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">841</td>
-</tr>
-<tr>
-<td>Nimble v4</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">902</td>
-</tr>
-<tr>
-<td>Nimble v4 Max</td>
-<td style="text-align: right;">1136</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">997</td>
-</tr>
-</tbody>
-</table>
-<h2 id="confidence-and-coverage">Confidence and coverage</h2>
-<p>Native Decisions services returned confidence and option probabilities. Their confidence values need not share a scale: Nimble defines confidence as concentration of the answer distribution, not the probability of being correct. Regular LLMs were asked only for an answer ID, so an equivalent confidence-filter comparison is unavailable. These thresholds use the selected native responses and remain exploratory because they were examined on the same bank.</p>
-<table>
-<thead>
-<tr>
-<th>Confidence cutoff</th>
-<th style="text-align: right;">Jev 1.13</th>
-<th style="text-align: right;">Jev 1.14</th>
-<th style="text-align: right;">Luna 6 Decisions</th>
-<th style="text-align: right;">Microsoft-Decision-1</th>
-<th style="text-align: right;">Nimble v4</th>
-<th style="text-align: right;">Nimble v4 Max</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>≥0.8</td>
-<td style="text-align: right;">690/703 (61.9% coverage)</td>
-<td style="text-align: right;">717/726 (63.9% coverage)</td>
-<td style="text-align: right;">215/218 (19.2% coverage)</td>
-<td style="text-align: right;">637/692 (60.9% coverage)</td>
-<td style="text-align: right;">539/540 (47.5% coverage)</td>
-<td style="text-align: right;">814/815 (71.7% coverage)</td>
-</tr>
-<tr>
-<td>≥0.9</td>
-<td style="text-align: right;">619/622 (54.8% coverage)</td>
-<td style="text-align: right;">654/658 (57.9% coverage)</td>
-<td style="text-align: right;">143/143 (12.6% coverage)</td>
-<td style="text-align: right;">502/518 (45.6% coverage)</td>
-<td style="text-align: right;">428/429 (37.8% coverage)</td>
-<td style="text-align: right;">742/742 (65.3% coverage)</td>
-</tr>
-<tr>
-<td>≥0.95</td>
-<td style="text-align: right;">552/553 (48.7% coverage)</td>
-<td style="text-align: right;">603/604 (53.2% coverage)</td>
-<td style="text-align: right;">90/90 (7.9% coverage)</td>
-<td style="text-align: right;">383/383 (33.7% coverage)</td>
-<td style="text-align: right;">320/320 (28.2% coverage)</td>
-<td style="text-align: right;">672/672 (59.2% coverage)</td>
-</tr>
-</tbody>
-</table>
-<p>An observed error-free retained subset does not guarantee zero future error. Confidence should be validated on the caller's own tasks before it controls an automation decision.</p>
-<h2 id="what-changed-in-the-rerun">What changed in the rerun</h2>
-<p>The fresh three-model run replaced both scores and timings in the current comparison. The previous results remain archived, rather than being combined with new response times. The table separates gains and losses across individual questions; a small net change can conceal changes in both directions.</p>
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th style="text-align: right;">Previous correct / 1,136</th>
-<th style="text-align: right;">Fresh correct / 1,136</th>
-<th style="text-align: right;">Previously unsuccessful now correct</th>
-<th style="text-align: right;">Previously correct now unsuccessful</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Jev 1.13</td>
-<td style="text-align: right;">910</td>
-<td style="text-align: right;">919</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">14</td>
-</tr>
-<tr>
-<td>Jev 1.14</td>
-<td style="text-align: right;">932</td>
-<td style="text-align: right;">929</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr>
-<td>Luna 6 Decisions</td>
-<td style="text-align: right;">687</td>
-<td style="text-align: right;">677</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">54</td>
-</tr>
-</tbody>
-</table>
-<p>The ranking is unchanged, but Jev 1.14's margin over 1.13 narrowed from 22 to 10 correct answers (about 0.9 percentage points in the fresh run). The version improvement is therefore smaller than the first comparison suggested. Assignments and spatial tracking still improve; scheduling is now tied, while sequential procedure execution is worse.</p>
-<p>Luna Decisions fell from 687 to 677 correct, with 33 first-attempt HTTP failures versus 23 unanswered cases in the previous selected results. Both views contain 426 wrong valid choices, but individual answers changed in both directions. Earlier retry rules also differed, so the lower total is not an isolated measurement of model intelligence. Five of the 33 failed first attempts recovered on the permitted retry; the eventual score was 680/1,136. The main comparison keeps the stricter 677/1,136 first-attempt result, as it does for every ranked model.</p>
-<p>These repeats measure observed service variation as well as possible model behavior. The original Jev 1.13 run used several routes, and earlier runs had different retry rules. A changed answer alone does not establish a change in model weights.</p>
-<h2 id="measurement-conditions-and-model-identities">Measurement conditions and model identities</h2>
-<table>
-<thead>
-<tr>
-<th>Session</th>
-<th style="text-align: right;">Toronto start</th>
-<th style="text-align: right;">Toronto finish</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Eight regular LLMs</td>
-<td style="text-align: right;">2026-10-15 12:02:00</td>
-<td style="text-align: right;">2026-10-15 12:20:06</td>
-</tr>
-<tr>
-<td>Original three Decisions services</td>
-<td style="text-align: right;">2026-10-15 13:12:02</td>
-<td style="text-align: right;">2026-10-15 13:18:31</td>
-</tr>
-<tr>
-<td>Microsoft-Decision-1</td>
-<td style="text-align: right;">2026-10-16 13:44:04</td>
-<td style="text-align: right;">2026-10-16 13:48:14</td>
-</tr>
-<tr>
-<td>Nimble v4</td>
-<td style="text-align: right;">2026-10-16 13:48:52</td>
-<td style="text-align: right;">2026-10-16 13:51:42</td>
-</tr>
-<tr>
-<td>Nimble v4 Max</td>
-<td style="text-align: right;">2026-10-16 13:49:02</td>
-<td style="text-align: right;">2026-10-16 13:52:04</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Lightning</td>
-<td style="text-align: right;">2026-10-16 14:27:43</td>
-<td style="text-align: right;">2026-10-16 14:33:18</td>
-</tr>
-<tr>
-<td>GLM 4.7 Flash</td>
-<td style="text-align: right;">2026-10-16 14:44:48</td>
-<td style="text-align: right;">2026-10-16 15:54:08</td>
-</tr>
-<tr>
-<td>MiMo V2.6 Flash</td>
-<td style="text-align: right;">2026-10-16 14:42:15</td>
-<td style="text-align: right;">2026-10-16 15:17:23</td>
-</tr>
-<tr>
-<td>Qwen3.8 Flash</td>
-<td style="text-align: right;">2026-10-16 14:42:15</td>
-<td style="text-align: right;">2026-10-16 15:01:32</td>
-</tr>
-<tr>
-<td>Tencent Hy3</td>
-<td style="text-align: right;">2026-10-16 14:42:15</td>
-<td style="text-align: right;">2026-10-16 14:57:33</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Super VL</td>
-<td style="text-align: right;">2026-10-16 14:42:15</td>
-<td style="text-align: right;">2026-10-16 14:50:52</td>
-</tr>
-</tbody>
-</table>
-<p>All sessions used a new HTTPS connection for every attempt, a monotonic connection-to-full-body timer, and at most two concurrent requests per model in each two-question wave. Local preparation, queueing and retry waits were outside the response timer. The eight-LLM session allowed 16 requests globally; the three-model refresh allowed six. The seven October 16 regular-LLM processes ran independent waves, allowing up to 14 concurrent requests in total; GLM continued after the others had finished. The native-addition runner also allowed two per model, and both Nimble models together stayed within the documented four-request free-credit concurrency limit. The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/added_decisions.py">addition transport</a> retains the same timer operations as the <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/decision_refresh.py">October 15 transport</a>, with configurable host and endpoint path.</p>
-<p>Ordinary LLMs used <code>/api/v1/chat/completions</code>, a 16-token cap, a numeric-ID-only instruction, and switchable reasoning disabled. Temperature was omitted in the original eight-LLM session and in the October 16 regular-LLM additions. This preserves that request protocol but does not establish equal provider-default sampling settings. Hidden reasoning was disabled; a model could still generate an explanation as its visible output, which was unusable under the answer-ID contract if it was not a complete numeric answer. OpenRouter native services used <code>/api/alpha/decisions</code> with backend selection and fallback disabled. Nimble used Bespoke's <code>/v1/systemone</code> directly, with the same original state, instructions and five answer options. No agentic iteration was requested. Backend hardware, routes, quantization and service interfaces differ. These are end-to-end service measurements, not isolated inference-speed measurements.</p>
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th style="text-align: right;">Returned identities and counts</th>
-<th style="text-align: right;">Backend tag</th>
-<th style="text-align: right;">Toronto dates</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nimble v4 Max</td>
-<td style="text-align: right;"><code>nimble-v4-max</code> (1136)</td>
-<td style="text-align: right;">bespoke-direct</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Jev 1.14</td>
-<td style="text-align: right;"><code>typesafe/jev-1.14-20261014</code> (1136)</td>
-<td style="text-align: right;">typesafe</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Jev 1.13</td>
-<td style="text-align: right;"><code>typesafe/jev-1.13-20260917</code> (1136)</td>
-<td style="text-align: right;">typesafe</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Nimble v4</td>
-<td style="text-align: right;"><code>nimble-v4</code> (1136)</td>
-<td style="text-align: right;">bespoke-direct</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Microsoft-Decision-1</td>
-<td style="text-align: right;"><code>microsoft/microsoft-decision-1-20261009</code> (1136)</td>
-<td style="text-align: right;">azure</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Tencent Hy3</td>
-<td style="text-align: right;"><code>tencent/hy3</code> (1135); <code>unreported (error)</code> (1)</td>
-<td style="text-align: right;">tencent/fp8</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Qwen3.8 Flash</td>
-<td style="text-align: right;"><code>qwen/qwen3.8-flash</code> (1106); <code>unreported (error)</code> (30)</td>
-<td style="text-align: right;">alibaba/us-east-1</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Luna 6 regular</td>
-<td style="text-align: right;"><code>openai/gpt-6-luna</code> (1136)</td>
-<td style="text-align: right;">openai</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Super VL</td>
-<td style="text-align: right;"><code>nvidia/nemotron-3.5-super-vl</code> (1134); <code>unreported (error)</code> (2)</td>
-<td style="text-align: right;">crusoe/bf16</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Mercury 2.5</td>
-<td style="text-align: right;"><code>inception/mercury-2.5</code> (1136)</td>
-<td style="text-align: right;">inception</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>MiMo V2.6 Flash</td>
-<td style="text-align: right;"><code>xiaomi/mimo-v2.6-flash</code> (1131); <code>unreported (error)</code> (5)</td>
-<td style="text-align: right;">xiaomi/fp8</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>Luna 6 Decisions</td>
-<td style="text-align: right;"><code>openai/gpt-6-luna-decisions-20261006</code> (1103); <code>unreported (error)</code> (33)</td>
-<td style="text-align: right;">openai</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Gemini 2.5 Flash-Lite</td>
-<td style="text-align: right;"><code>google/gemini-2.5-flash-lite</code> (1136)</td>
-<td style="text-align: right;">google-ai-studio</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Qwen3-30B-A3B Instruct 2507</td>
-<td style="text-align: right;"><code>qwen/qwen3-30b-a3b-instruct-2507</code> (1136)</td>
-<td style="text-align: right;">siliconflow/fp8</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Granite 4.2 8B</td>
-<td style="text-align: right;"><code>ibm-granite/granite-4.2-8b</code> (1132); <code>unreported (error)</code> (4)</td>
-<td style="text-align: right;">deepinfra/bf16</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>GPT-5.4 nano</td>
-<td style="text-align: right;"><code>openai/gpt-5.4-nano</code> (1136)</td>
-<td style="text-align: right;">openai</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Mistral NeMo 12B</td>
-<td style="text-align: right;"><code>mistralai/mistral-nemo</code> (1134); <code>unreported (error)</code> (2)</td>
-<td style="text-align: right;">deepinfra/fp8</td>
-<td style="text-align: right;">2026-10-15</td>
-</tr>
-<tr>
-<td>Nemotron 3.5 Lightning</td>
-<td style="text-align: right;"><code>nvidia/nemotron-3.5-lightning</code> (1068); <code>unreported (error)</code> (68)</td>
-<td style="text-align: right;">coreweave/bf16</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-<tr>
-<td>GLM 4.7 Flash</td>
-<td style="text-align: right;"><code>z-ai/glm-4.7-flash</code> (1134); <code>unreported (error)</code> (2)</td>
-<td style="text-align: right;">cloudflare</td>
-<td style="text-align: right;">2026-10-16</td>
-</tr>
-</tbody>
-</table>
-<p>The refresh required the listed dated Jev and Luna Decisions checkpoints on every successful response. Microsoft likewise returned the required October 9 identity. Nimble was requested by its explicit v4 and v4 Max names, not <code>nimble-latest</code>; its API documentation says the response repeats the requested name, so this is not independent checkpoint attestation. Ordinary LLMs generally returned aliases, not dated checkpoints. Captured endpoint metadata is retained for <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/model_metadata.json">the eight LLMs</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/decision_refresh_2026-10-15/model_metadata.json">the original three native services</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/additions_2026-10-16">the October 16 native additions</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16">the October 16 regular LLM additions</a>.</p>
-<p>GLM 5.3 Flash rejected the request to disable reasoning and was excluded before scoring. GLM 4.7 Flash replaced it with the author's approval. The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/compatibility_probes.json">compatibility probes</a> are separate from the 1,136-question runs and their costs.</p>
-<h2 id="evidence-reproduction-and-limits">Evidence reproduction and limits</h2>
-<p>The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/questions_1136.csv">questions</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_expanded_2026-10-16/summary.json">current overall summary</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_2026-10-16/summary.json">unchanged fourteen-model summary</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16">regular-LLM addition ledgers</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/additions_2026-10-16">native October 16 ledgers</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/matched_2026-10-15/summary.json">unchanged eleven-model summary</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/decision_refresh_2026-10-15/attempts.jsonl">October 15 native attempt ledger</a>, and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15">unchanged eight-LLM evidence</a> preserve the comparison. Account metadata and credentials are excluded. Recorded model outputs are public; the answer key and individual correctness records remain private.</p>
-<p>All new primary scores use first attempts; retries are limited to one recovery for transport failures or HTTP 408, 429 and 5xx responses. Valid wrong answers and format failures are never retried. Cost includes eligible recoveries; missing charges remain unknown, not zero. Nimble documents HTTP errors as uncharged, while transport timeouts with no response remain unknown.</p>
-<p>The bank mixes 25 generated task families and dependent variants. It is not a standardized intelligence or deployment-safety test. The fixed key is unchanged, and this rerun does not add an independent audit of every printed question. Later key corrections should be versioned and applied to every saved response.</p>
-<pre><code class="language-bash"># Offline checks. No credentials, answer key or paid API calls.
-python3 validate.py
-python3 text_models.py
-python3 matched_analysis.py
-python3 overall_analysis.py
-python3 text_additions.py
-python3 -m unittest discover -p 'test_*.py'
-
-# Reproduce scores using the external original key.
-python3 matched_analysis.py --answer-key /path/to/answer_key.csv
-python3 overall_analysis.py --answer-key /path/to/answer_key.csv
-python3 text_additions.py --answer-key /path/to/answer_key.csv
-
-# Rebuild current figures, README and Pages.
-python3 -m pip install -r requirements-reports.txt
-python3 plot_overall.py
-python3 build_report.py
-python3 freeze_expansion_checksums.py
+<p>The four complete additions reported <strong>$0.102959605</strong>, with 40 unknown charges. Stopped samples reported <strong>$0.03269781064</strong>, with 147 unknown charges. Eleven compatibility probes reported <strong>$0.000176189</strong>, with two charges unknown. The entire new generative-route experiment therefore reported <strong>$0.13583360464</strong>, with 189 unknown attempt charges. None of the partial or probe costs is silently assigned to a completed model's normalized score.</p>
+<p>The five stopped LLM samples are listed with their actual denominators in the <a href="output_compliance.html#october-18-stopped-samples">separate diagnostics</a>, outside the main ranking, cost scale and function charts. Their small, selected prefixes cannot establish a full-bank model ranking.</p>
+<p>Mistral Small 4's 18/100 reflects 68 first-attempt provider failures; among its 32 usable first decisions, 18 were correct. That is a route-availability problem as well as a low delivered score, not evidence that an available Mistral model would score 18% overall. Solar Pro4 passed earlier screens and reached exactly 40 output failures in 800 questions, the 5% stopping threshold. DeepSeek's October 17 checkpoint returned 62 correct answers in 100 but seven unusable model outputs. Ling failed all three screens. Laguna failed the accuracy and format screens.</p>
+<p>Xing4's free route returned HTTP 429 in its unscored compatibility probe. It has no measured benchmark accuracy. Tev's rejected chat route was replaced only by a separately bound native-adapter run; its full result is reported above.</p>
+<p>The other stopped configuration, <strong>Solar Decide</strong>, returned 311/347 correct completed decisions (89.6%) but had a <strong>4.58-second median and 12.95-second p95</strong>. It was stopped at the author's request. On exactly those same 347 items, Span scored 316, Perplexity 310 and Nimble Max 309. One of 348 dispatches has no recorded response, so its result and charge remain unknown. It is not replayed and it receives no full-bank score. Its 347 recorded responses reported $0.01015205, separate from the generative experiment totals above.</p>
+<h2 id="what-the-scores-support">What the scores support</h2>
+<p>The top full-bank routes have different profiles. Span improves sequential execution and scheduling, while Perplexity and Nimble are stronger on some direct rule and belief questions. Jev remains substantially above both Luna configurations, and its 182 ms median remains among the shortest tested. Gemma narrows the regular-LLM accuracy gap, at a higher known cost and with some unusable outputs. Very cheap regular LLMs can be useful for simple families without matching the best specialized routes overall.</p>
+<p>Regular Luna still outscored Luna Decisions, 727 versus 677, while taking a longer median, 942 versus 261 ms. Jev 1.14's ten-answer total improvement over 1.13 is modest, not a general intelligence jump. One-to-one assignments improved from 50/61 to 56/61, while other families changed little or moved in the other direction. Feature claims such as languages or image support are not established by these English text scores; the separate visual benchmark measures actual image decisions.</p>
+<p><img alt="Family-level correct counts and accuracy" src="figures/october18/generative_family_accuracy.png" /></p>
+<p>The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_llm_expanded_2026-10-18/family_comparison.csv">37-model family CSV</a> and <a href="functions.html">function tables</a> show the complete profile. A perfect sampled family is not a reliability guarantee. The dependent variants help expose option-position sensitivity and inconsistency, but do not create extra independent scenarios. The overall score alone does not establish safe deployment on an unfamiliar workload.</p>
+<h2 id="measurement-conditions-and-reproducible-evidence">Measurement conditions and reproducible evidence</h2>
+<p>All additions receive the unchanged question facts, instructions and five options in the original order. Ordinary LLMs use the original numeric-only suffix, a 16-token output cap and reasoning disabled, or a natively nonthinking checkpoint. Native APIs serialize the same content as state and five criteria; Tev uses that native wire format. Providers are pinned and fallback is disabled. Captured <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/tree/main/llm_additions_2026-10-18">model and endpoint snapshots</a> retain the requested model, returned identities, tariff, promotion and settings. Aliases alone do not independently attest fixed model weights.</p>
+<p>There are two concurrent requests per model, with a barrier after each pair. Each attempt opens a fresh HTTPS connection; the monotonic timer starts before connecting and stops after reading the complete body. Local queueing and retry waits are outside that response timer. Up to five native models or four regular LLMs were active in their respective batches, with Tev controlled separately. Dates, providers and aggregate load differ, so these are end-to-end hosted-route measurements, not isolated architecture or local-hardware comparisons.</p>
+<p>Only transport failures and actual HTTP 408, 429 or 5xx allow one recovery. Wrong valid answers, malformed model outputs and HTTP-200 provider-error envelopes are not retried. The ranking never substitutes a recovered answer for the first attempt. Reported absence of a reasoning trace is not an independent audit of hidden internal computation.</p>
+<p>The <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_llm_expanded_2026-10-18/summary.json">40-model aggregate</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/tree/main/llm_additions_2026-10-18">new generative ledgers</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/tree/main/native_additions_2026-10-18">native addition ledgers</a>, <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/overall_expanded_2026-10-16/summary.json">prior 22-model snapshot</a> and <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data/questions_1136.csv">unchanged question bank</a> preserve the evidence. The answer key, credentials, account metadata and individual correctness records are not published. The inference executors never read the key. A separate offline controller reads it only to release or stop subsequent unchanged batches; no correct answer or item-level feedback is sent to the models.</p>
+<p>Offline integrity checks send no requests:</p>
+<pre><code class="language-sh">python3 native_expansion_analysis.py
+python3 llm_expansion_analysis_2026_10_18.py
 </code></pre>
-<p>The <a href="three_model_reference.html">original three-model report</a>, its <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/data">frozen evidence</a>, and the <a href="https://github.com/etsabary/jev-1.14-comparison-benchmark/tree/b9c7b1f3abb0e1728c7b4f8585d027b3c3a82921">earlier eleven-model publication</a> remain available. The earlier eight-LLM summary stays unchanged in its own directory. The <a href="https://github.com/etsabary/jev-deterministic-benchmark">original Jev benchmark</a> and <a href="https://github.com/etsabary/luna-decisions-benchmark/tree/0f10c51/extension_136">two-model extension</a> also remain reference points.</p></main></body></html>
+<p>With the frozen private key supplied externally, all complete scores, stopped-sample scores, family scores and screening decisions can be independently reproduced offline:</p>
+<pre><code class="language-sh">python3 llm_expansion_analysis_2026_10_18.py --answer-key /path/to/answer_key_PRIVATE.csv
+</code></pre>
+<p>The <a href="three_model_reference.html">original three-model reference</a> remains available, with its saved inputs and measurements intact.</p>
+<h2 id="reading-the-speed-and-cost-colors">Reading the speed and cost colors</h2>
+<p>The squares and labels use fixed descriptive bands, not relative ranks or statistical significance. Speed uses the full-bank first-attempt median. Cost uses known or accounted dollars per 1,000 questions, normalized from each actual 1,136-question run including permitted recoveries.</p>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Median response time</th>
+<th>Known/accounted cost per 1,000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td class="metric-cell band-1 metric-speed">🟩 Fastest: ≤250 ms</td>
+<td class="metric-cell band-1 metric-cost">🟩 Lowest: ≤$0.010</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td class="metric-cell band-2 metric-speed">🟨 Fast: &gt;250 to ≤500 ms</td>
+<td class="metric-cell band-2 metric-cost">🟨 Low: &gt;$0.010 to ≤$0.025</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td class="metric-cell band-3 metric-speed">🟧 Moderate: &gt;500 to ≤1,000 ms</td>
+<td class="metric-cell band-3 metric-cost">🟧 Mid: &gt;$0.025 to ≤$0.050</td>
+</tr>
+<tr>
+<td>Red</td>
+<td class="metric-cell band-4 metric-speed">🟥 Slow: &gt;1,000 ms</td>
+<td class="metric-cell band-4 metric-cost">🟥 Highest: &gt;$0.050</td>
+</tr>
+<tr>
+<td>Gray</td>
+<td class="metric-cell metric-unknown">⬜ Unknown: unavailable</td>
+<td class="metric-cell metric-unknown">⬜ Unknown: unavailable</td>
+</tr>
+</tbody>
+</table>
+<p>Bands use unrounded measurements; displayed numbers can round to a boundary. <code>+ ?</code> means additional charges were not reported. In those cells, the cost band describes only the known lower bound, not a complete cost or a guaranteed price advantage. The website also underlines these incomplete costs in amber. Text labels remain visible without color.</p></main></body></html>

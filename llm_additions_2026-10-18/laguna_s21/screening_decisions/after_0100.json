@@ -1,0 +1,70 @@
+{
+  "model_id": "laguna_s21",
+  "decision": "stop",
+  "gate_result": "fail",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "manifest_sha256": "24836f2995a6a321681220e4d9e012c0e72c525d6d6f6caa5f392ab169bddbb4",
+  "screen_sha256": "c535182e62ee0cf1f1d28caead412adace6c70ff9454b50996841fbf9cab997d",
+  "evaluated_first_attempts": 100,
+  "primary": {
+    "attempted": 100,
+    "answered": 66,
+    "correct": 42,
+    "wrong": 24,
+    "unanswered": 34,
+    "accuracy_attempted": 0.42,
+    "accuracy_answered": 0.6363636363636364,
+    "probability_warnings": 0
+  },
+  "eventual": {
+    "attempted": 100,
+    "answered": 75,
+    "correct": 45,
+    "wrong": 30,
+    "unanswered": 25,
+    "accuracy_attempted": 0.45,
+    "accuracy_answered": 0.6,
+    "probability_warnings": 0
+  },
+  "compliance": {
+    "planned": 100,
+    "recorded_first_attempts": 100,
+    "usable_first_answers": 66,
+    "model_output_failures": 23,
+    "provider_transport_failures": 11,
+    "model_output_failure_fraction": 0.23,
+    "passes_output_format_screen": false
+  },
+  "first_latency": {
+    "n": 100,
+    "median_ms": 259.77743742987514,
+    "p95_ms": 441.8130794656462
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.00238887,
+    "exact_usd": "0.002388870",
+    "reported_attempts": 99,
+    "missing_attempts": 12
+  },
+  "cutoffs": {
+    "accuracy_below": 0.5,
+    "model_output_failures_fraction_at_least": 0.05,
+    "median_ms_above": 2000,
+    "minimum_cases": 100,
+    "recheck_every_cases": 100,
+    "maximum_active_models": 4,
+    "approved_by": "Benchmark author, October 18, 2026"
+  },
+  "reasons": [
+    "accuracy_below_50_percent",
+    "model_output_failures_at_least_5_percent"
+  ],
+  "authorized_by": "Benchmark author, October 18, 2026",
+  "reason": "accuracy_below_50_percent; model_output_failures_at_least_5_percent",
+  "controller_sha256": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a",
+  "attempts_prefix": {
+    "bytes": 228507,
+    "sha256": "868e2ded235754fc54dba1fa6661d7aab675c91d8df4de3276b205edd6e1b59c"
+  },
+  "selection_limit": "Sequential prefix includes related variants and uneven family coverage; operational selection, not a representative accuracy estimate"
+}

@@ -1,0 +1,76 @@
+{
+  "retrieved": {
+    "utc": "2026-10-18T16:21:10.863252+00:00",
+    "toronto": "2026-10-18T12:21:10.863252-04:00"
+  },
+  "model_id": "nex25_mini",
+  "url": "https://openrouter.ai/api/v1/models/nex-agi/nex-n2.5-mini/endpoints",
+  "data": {
+    "id": "nex-agi/nex-n2.5-mini",
+    "name": "Nex AGI: Nex-N2.5-Mini",
+    "created": 1788890061,
+    "description": "Nex-N2.5 is an agentic model built to turn goals into working, verified outcomes. Its core strength is agentic coding within a visual feedback loop: it can explore codebases, implement multi-file...",
+    "architecture": {
+      "tokenizer": "Qwen3",
+      "instruct_type": null,
+      "modality": "text+image->text",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "endpoints": [
+      {
+        "name": "Nex AGI | nex-agi/nex-n2.5-mini-20260908",
+        "model_id": "nex-agi/nex-n2.5-mini",
+        "model_name": "Nex AGI: Nex-N2.5-Mini",
+        "context_length": 262144,
+        "pricing": {
+          "prompt": "0.000000025",
+          "completion": "0.0000001",
+          "input_cache_read": "0.0000000025",
+          "discount": 0
+        },
+        "provider_name": "Nex AGI",
+        "tag": "nex-agi/bf16",
+        "service_tier": null,
+        "quantization": "bf16",
+        "max_completion_tokens": 235929,
+        "max_prompt_tokens": null,
+        "supported_parameters": [
+          "reasoning",
+          "include_reasoning",
+          "max_tokens",
+          "temperature",
+          "top_k",
+          "top_p",
+          "structured_outputs",
+          "logprobs",
+          "top_logprobs",
+          "reasoning_effort"
+        ],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 98.97476340694006,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      }
+    ]
+  }
+}

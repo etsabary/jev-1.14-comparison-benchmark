@@ -1,0 +1,81 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "tev1_4b_native",
+  "model_requested": "togethercomputer/tev1-4b-experimental",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "2c1c981287f478ee82a4d7610a5749a578884bb631b174f499717517cdfc4497",
+  "request_body_bytes": 912,
+  "stage": "compatibility_probe",
+  "attempt": 1,
+  "http_status": 200,
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 16:28:08 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 281.5527910133824,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T16:28:08.658536+00:00",
+    "toronto": "2026-10-18T12:28:08.658536-04:00"
+  },
+  "completed": {
+    "utc": "2026-10-18T16:28:08.940219+00:00",
+    "toronto": "2026-10-18T12:28:08.940219-04:00"
+  },
+  "latency_ms": 281.66800003964454,
+  "raw_response": {
+    "id": "gen-dec-1792340888-9lGkadqSMCKPt8c1Jdzs",
+    "model": "togethercomputer/tev1-4b-experimental-20260923",
+    "provider": "Together",
+    "usage": {
+      "cost": 1.1466e-05,
+      "input_tokens": 273,
+      "output_tokens": 2
+    },
+    "answers": {
+      "decision": {
+        "choice": "5",
+        "confidence": 0.9998631777793501,
+        "probabilities": {
+          "1": 2.144246757768164e-05,
+          "2": 2.753267336624606e-05,
+          "3": 7.484156570036498e-05,
+          "4": 1.3005514005757999e-05,
+          "5": 0.9998631777793501
+        }
+      }
+    }
+  },
+  "status": "ok",
+  "choice": "5",
+  "probabilities": {
+    "1": 2.144246757768164e-05,
+    "2": 2.753267336624606e-05,
+    "3": 7.484156570036498e-05,
+    "4": 1.3005514005757999e-05,
+    "5": 0.9998631777793501
+  },
+  "probabilities_valid": true,
+  "confidence": 0.9998631777793501,
+  "confidence_valid": true,
+  "model_returned": "togethercomputer/tev1-4b-experimental-20260923",
+  "provider": "Together",
+  "request_id": "gen-dec-1792340888-9lGkadqSMCKPt8c1Jdzs",
+  "usage": {
+    "cost": 1.1466e-05,
+    "input_tokens": 273,
+    "output_tokens": 2
+  },
+  "reported_cost_usd": 1.1466e-05,
+  "accounted_cost_usd": 1.1466e-05,
+  "cost_source": "api_reported",
+  "finish_reason": null,
+  "output_text": null,
+  "reasoning_text_present": false,
+  "reported_reasoning_tokens": null,
+  "model_output_failure": false
+}

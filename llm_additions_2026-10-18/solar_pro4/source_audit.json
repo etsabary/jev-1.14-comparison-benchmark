@@ -1,0 +1,33 @@
+{
+  "model_id": "solar_pro4",
+  "export_state": "STOPPED_SCREEN",
+  "previous_36_model_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "source_evidence_sha256": {
+    "manifest.json": "60c7841392aa0dcb8be36986b267cac0d23f1f275a3cc47e9efdde2d3212f701",
+    "software.json": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b",
+    "model_metadata.json": "d14157c4ccdb42ccb068575773112205c81f8966221c251599e3131694e78c45",
+    "compatibility_probe.json": "035709c0bc5713ef89989b61a031fb7fef7bc8e9e4ca6a124b0578652fb22f55",
+    "probe_dispatches.jsonl": "b1962f02381972394af10e9f3c6a853a231848f8b92dd31b3871c96997286647",
+    "probe_attempts.jsonl": "a5b776018d88d6828ababf76a51d35b6007043d3a0e5aca9cd36233b0cf39207",
+    "dispatches.jsonl": "bc6ade262ab4832cd9201a972af1eb51d6f9e2c593edc12fb8fefd906e777ab5",
+    "attempts.jsonl": "d4e78b21639bffa4b818f4975966a374255de9c4064c6ce0be2d8ee0db7d1049",
+    "results.jsonl": "d10cf85eefb813f8cf60f7ec48fee80741d3af55fb58bc76419c9e486da196b6",
+    "screen_100.json": "5174bda1bd04f6b31f367533dc85b40966366658792177dc50fc352969f7a2e4",
+    "continuation_receipt.json": "03844f611f8e5b76d482a22d631d7b22f443f8335994f40a234862710aa2946e",
+    "progress.jsonl": "1d528a6b324c846ba4f7ddd93b50f8a00b50f4afa7cae53d60081c9d836d0995",
+    "STOPPED_SCREEN.json": "86a9c56471ad5551f443403acd16916366d66a1de83936f65f87826d6ba5d706",
+    "screening_decisions/after_0100.json": "03844f611f8e5b76d482a22d631d7b22f443f8335994f40a234862710aa2946e",
+    "screening_decisions/after_0200.json": "b080366453492221ccb341b97d187eece239bf922d6eed0e301cf85dfa969b5e",
+    "screening_decisions/after_0300.json": "c7fc3ee94c9b1637a26398d066a392a51e129353e9ca615fc4338e3cc503e6d2",
+    "screening_decisions/after_0400.json": "8e4a5b9968d4d850b07b628fa77fd8d1f9c3ea8bf6603f8bddff866f7c6bd891",
+    "screening_decisions/after_0500.json": "4566da3fcfa2c47f4b257bedbecfa6221c9a48e79d24f7cffb4b7ff0a82e7236",
+    "screening_decisions/after_0600.json": "bfabd636ef406bd4be71b30f8844c43e5f9a3b91158554807550d16230245017",
+    "screening_decisions/after_0700.json": "e91e7968a4dca08ce3fc8cc0fc38c421e1e905a54ac1afaa9280cd494c6145b6",
+    "screening_decisions/after_0800.json": "86a9c56471ad5551f443403acd16916366d66a1de83936f65f87826d6ba5d706"
+  },
+  "controllers_sha256": {
+    "llm_screening_2026_10_18.py": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a"
+  },
+  "byte_preservation": "Original sanitized capture bytes and filenames retained, including full manifest and prefix-bound ledgers",
+  "privacy": "No owner paths, account metadata, credentials, gold key or per-item correctness; reject instead of rewriting any unsafe bound evidence"
+}

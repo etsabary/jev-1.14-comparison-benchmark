@@ -1,0 +1,162 @@
+{
+  "status": "SCREEN_100_COMPLETE",
+  "model_id": "nex25_mini",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "screened_cases": 100,
+  "request_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ],
+  "first_status_counts": {
+    "ok": 100
+  },
+  "model_output_failures": 0,
+  "first_latency": {
+    "n": 100,
+    "median_ms": 535.1352494908497,
+    "p95_ms": 1394.6494149044152
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.0007493,
+    "exact_usd": "0.000749300",
+    "reported_attempts": 100,
+    "missing_attempts": 0
+  },
+  "accuracy": "Not computed here; requires a separate offline scorer",
+  "files_prefix_binding": {
+    "manifest.json": {
+      "bytes": 554590,
+      "sha256": "946601177dd633b95683c1cbdae6ade36e22576c8dc746739202b886e21bf2b9"
+    },
+    "software.json": {
+      "bytes": 565,
+      "sha256": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b"
+    },
+    "model_metadata.json": {
+      "bytes": 2309,
+      "sha256": "bd7cd655ba8013b1287f7cb7e85a9839c6c8a4c84c19b36362ac5d08ca3c61c5"
+    },
+    "compatibility_probe.json": {
+      "bytes": 2509,
+      "sha256": "a0fec3a810078200aa6f504882510e530672cbd657a9523b74004749fdc033d1"
+    },
+    "probe_dispatches.jsonl": {
+      "bytes": 567,
+      "sha256": "13fd2b7a03e80f0d44180d65e4cf5a158c270aa36edfd901d93fdabc0d436e15"
+    },
+    "probe_attempts.jsonl": {
+      "bytes": 2115,
+      "sha256": "289858156e777d6797740352a4b2a0d1772f9afe0ebbfe681ae3a75d2948e4a8"
+    },
+    "dispatches.jsonl": {
+      "bytes": 53668,
+      "sha256": "a82273fbcd797c56c154e24c58b5fcf5cebfd6263f935ee234d47591e9378782"
+    },
+    "attempts.jsonl": {
+      "bytes": 208607,
+      "sha256": "c44645334570af2350d40139cbc23f4148d21aa7ee85f51b31d09d8cca8f6ab6"
+    },
+    "results.jsonl": {
+      "bytes": 51884,
+      "sha256": "992854d535d90f562779695f5f16872760485d21b43a28d2a36280733508e53d"
+    }
+  }
+}

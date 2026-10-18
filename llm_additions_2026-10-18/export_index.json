@@ -1,0 +1,30 @@
+{
+  "states": {
+    "gemma4_31b": "COMPLETE_1136",
+    "mistral_small4": "STOPPED_SCREEN",
+    "solar_pro4": "STOPPED_SCREEN",
+    "ling31_flash": "STOPPED_SCREEN",
+    "nex25_mini": "COMPLETE_1136",
+    "laguna_s21": "STOPPED_SCREEN",
+    "qwen3_235b": "COMPLETE_1136",
+    "deepseek41_flash1017": "STOPPED_SCREEN",
+    "xing4_free": "COMPATIBILITY_BLOCKED",
+    "tev1_4b": "COMPATIBILITY_BLOCKED",
+    "tev1_4b_native": "COMPLETE_1136"
+  },
+  "active_ledger_exports": false,
+  "compatibility_probes_are_scored": false,
+  "exported_model_ids": [
+    "gemma4_31b",
+    "mistral_small4",
+    "solar_pro4",
+    "ling31_flash",
+    "nex25_mini",
+    "laguna_s21",
+    "qwen3_235b",
+    "deepseek41_flash1017",
+    "xing4_free",
+    "tev1_4b",
+    "tev1_4b_native"
+  ]
+}

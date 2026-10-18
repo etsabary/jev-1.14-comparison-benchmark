@@ -1,0 +1,67 @@
+{
+  "model_id": "nex25_mini",
+  "decision": "continue",
+  "gate_result": "pass",
+  "screen_policy": "october-18-first100-accuracy50-format5-median2000-v1",
+  "manifest_sha256": "946601177dd633b95683c1cbdae6ade36e22576c8dc746739202b886e21bf2b9",
+  "screen_sha256": "b810d0a69e467515e30d46e7c56b6410d50ef51f26e072e19a822ca3c1eac37c",
+  "evaluated_first_attempts": 800,
+  "primary": {
+    "attempted": 800,
+    "answered": 800,
+    "correct": 447,
+    "wrong": 353,
+    "unanswered": 0,
+    "accuracy_attempted": 0.55875,
+    "accuracy_answered": 0.55875,
+    "probability_warnings": 0
+  },
+  "eventual": {
+    "attempted": 800,
+    "answered": 800,
+    "correct": 447,
+    "wrong": 353,
+    "unanswered": 0,
+    "accuracy_attempted": 0.55875,
+    "accuracy_answered": 0.55875,
+    "probability_warnings": 0
+  },
+  "compliance": {
+    "planned": 800,
+    "recorded_first_attempts": 800,
+    "usable_first_answers": 800,
+    "model_output_failures": 0,
+    "provider_transport_failures": 0,
+    "model_output_failure_fraction": 0.0,
+    "passes_output_format_screen": true
+  },
+  "first_latency": {
+    "n": 800,
+    "median_ms": 494.5814789971337,
+    "p95_ms": 1217.3705481924105
+  },
+  "cost_all_attempts": {
+    "known_usd": 0.006076895,
+    "exact_usd": "0.006076895",
+    "reported_attempts": 800,
+    "missing_attempts": 0
+  },
+  "cutoffs": {
+    "accuracy_below": 0.5,
+    "model_output_failures_fraction_at_least": 0.05,
+    "median_ms_above": 2000,
+    "minimum_cases": 100,
+    "recheck_every_cases": 100,
+    "maximum_active_models": 4,
+    "approved_by": "Benchmark author, October 18, 2026"
+  },
+  "reasons": [],
+  "authorized_by": "Benchmark author, October 18, 2026",
+  "reason": "Passes all three author-approved operational cutoffs on the recorded first-attempt prefix",
+  "controller_sha256": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a",
+  "attempts_prefix": {
+    "bytes": 1671241,
+    "sha256": "ef599df48c9780f1ec091f8cd60fa8b43f86f1c79ee95219de0fdc02f1a56459"
+  },
+  "selection_limit": "Sequential prefix includes related variants and uneven family coverage; operational selection, not a representative accuracy estimate"
+}

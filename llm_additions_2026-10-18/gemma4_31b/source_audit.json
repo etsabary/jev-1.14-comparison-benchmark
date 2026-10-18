@@ -1,0 +1,38 @@
+{
+  "model_id": "gemma4_31b",
+  "export_state": "COMPLETE_1136",
+  "previous_36_model_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "source_evidence_sha256": {
+    "manifest.json": "a03082ffea7404845b903c2ac9f8d9351bceed939c96c3dc4ce15ccdd9b34694",
+    "software.json": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b",
+    "model_metadata.json": "4b51039d17162545862a8797ef8bf1683b8126141a8ea8000d93e4c94a3725ef",
+    "compatibility_probe.json": "5fa02c5637e0bfa66e5b49f277da06ad888006e9e2812801b8f77e32514df450",
+    "probe_dispatches.jsonl": "9d15dce0e8750fca1f3561f6913d82ff5a1c53d93fa4dda6325f05cfe6d7a5af",
+    "probe_attempts.jsonl": "26d04f7e899b44acf66815074aac66f6ec33b975ec231b99e3154a853adf7ab4",
+    "dispatches.jsonl": "c3b165f9160ec484b7eb5dbbfb03cd3fe678e6820449e73ff5575337141743b6",
+    "attempts.jsonl": "ddc57eb1b772d8af3e00fc5400dfcf31c61aa53e15a9355e718f3030e244dad2",
+    "results.jsonl": "31abb8763ed37aa084011e949547afeae0261321975f92e1a8a6a9007de151c2",
+    "screen_100.json": "8af6ab8f50eee0b015b4d29d57d8bd588f7a9d88a79bde82b48fadf42303aca6",
+    "continuation_receipt.json": "bf3e2c8efb03c26611530f80d07cfce3665d6adc39a10e13be37d885df6174ea",
+    "progress.jsonl": "562c93fc62f772915958ffd7557d75f9b6beb8bc6b6d7305157c0661736b8087",
+    "retry_waits.jsonl": "a7d5a9abe5c9b6b72bf60da4df9954cd8d0e738bb3396ba511a80f69af52ad1d",
+    "completion.json": "a8f59753843b0debc94185133fd98daf8633535d458959686bc4e8a44b5e80d6",
+    "screening_decisions/after_0100.json": "bf3e2c8efb03c26611530f80d07cfce3665d6adc39a10e13be37d885df6174ea",
+    "screening_decisions/after_0200.json": "f2d94143ce719f0ddb8958d2791179b4559e3992a43a15dee9775be9ac38246a",
+    "screening_decisions/after_0300.json": "7b518d10433c7c5418c4c3c8e9f2645f7cac72edafd921362a03de55ec1e1a95",
+    "screening_decisions/after_0400.json": "60206aa6f6b99c6a55a8b7388e25a1e3fc24d5def84798ac6302afad1f13880a",
+    "screening_decisions/after_0500.json": "77ee7e295902febf0069798a8106f980e95648e6ce04ad446ff12a5c343f9862",
+    "screening_decisions/after_0600.json": "932cd77886d4ea2a41706bfd4aaa7adcc30d75b3c2fa266bb91ed8bc29609e16",
+    "screening_decisions/after_0700.json": "a4052d347b4f9fda7a559821dd09da30935edb7654c4b1366288afe28bd7bc09",
+    "screening_decisions/after_0800.json": "51ed80a42d1e272ec584f34819f26e7174a9b2c342751e5bd7c3f3689b33cbe5",
+    "screening_decisions/after_0900.json": "32f8c95f8607f8e61e97699dc36dbcc4dc315f1899d7a86c24d3d903677415ac",
+    "screening_decisions/after_1000.json": "000751ab54cc5b67679ffcb9fefe193827ae14806f88e4401a36ef5c5a2c04cb",
+    "screening_decisions/after_1100.json": "40d2b58c1452889b1510019f7008aa4cbe479b6b3479275a318889eaeeb7ee13",
+    "screening_decisions/after_1136.json": "f891dcca5348850415d84de5a6b997a581dc8bea54fec6e1f4848bd9ea7ccd80"
+  },
+  "controllers_sha256": {
+    "llm_screening_2026_10_18.py": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a"
+  },
+  "byte_preservation": "Original sanitized capture bytes and filenames retained, including full manifest and prefix-bound ledgers",
+  "privacy": "No owner paths, account metadata, credentials, gold key or per-item correctness; reject instead of rewriting any unsafe bound evidence"
+}

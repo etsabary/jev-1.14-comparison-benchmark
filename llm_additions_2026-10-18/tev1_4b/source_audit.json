@@ -1,0 +1,18 @@
+{
+  "model_id": "tev1_4b",
+  "export_state": "COMPATIBILITY_BLOCKED",
+  "previous_36_model_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "source_evidence_sha256": {
+    "manifest.json": "de33bd01870591d87bc72d58639300fe4af86f92a8448e671c03bd7ac7e81601",
+    "software.json": "5d439e586c1f7d8defab71e20b082a7106eede586b753751732d408ba0dda92b",
+    "model_metadata.json": "68563e38fa9e0bf7916c19a7d05c08f9eb17cde48b1e16257bf735881858c838",
+    "compatibility_probe.json": "d43293ca1686487e4435662d5e4e2567431a099382b383e50a32c6b787b18149",
+    "probe_dispatches.jsonl": "f8e21de7f15292e94992d99307160fb9d5640736997f19bf727beba818637887",
+    "probe_attempts.jsonl": "ca22ce1d165b9606a04b9bee57a32a73bb967a466b61edc8f9c4366c2ff1d5d2"
+  },
+  "controllers_sha256": {
+    "llm_screening_2026_10_18.py": "acba3a3b454b982946f9c121ab40770bcc522aee94e36a1b7f2771b062beb30a"
+  },
+  "byte_preservation": "Original sanitized capture bytes and filenames retained, including full manifest and prefix-bound ledgers",
+  "privacy": "No owner paths, account metadata, credentials, gold key or per-item correctness; reject instead of rewriting any unsafe bound evidence"
+}
