@@ -159,7 +159,7 @@ Only transport failures and actual HTTP 408, 429 or 5xx allow one recovery. Wron
 
 The [40-model aggregate](overall_llm_expanded_2026-10-18/summary.json), [new generative ledgers](llm_additions_2026-10-18), [native addition ledgers](native_additions_2026-10-18), [prior 22-model snapshot](overall_expanded_2026-10-16/summary.json) and [unchanged question bank](data/questions_1136.csv) preserve the evidence. The answer key, credentials, account metadata and individual correctness records are not published. The inference executors never read the key. A separate offline controller reads it only to release or stop subsequent unchanged batches; no correct answer or item-level feedback is sent to the models.
 
-Offline integrity checks send no requests:
+Offline integrity checks send no requests. Use Python 3.10, matching the capture runtime, to reproduce the frozen probability-validity checks:
 
 ```sh
 python3 native_expansion_analysis.py
