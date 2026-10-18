@@ -1,0 +1,101 @@
+{
+  "retrieved": {
+    "utc": "2026-10-18T15:40:26.556774+00:00",
+    "toronto": "2026-10-18T11:40:26.556774-04:00"
+  },
+  "source": "https://openrouter.ai/api/v1/models/liquid/d1-ultra/endpoints",
+  "selected_endpoint": {
+    "name": "Liquid | liquid/d1-ultra-20261015",
+    "model_id": "liquid/d1-ultra",
+    "model_name": "LiquidAI: d1-ultra",
+    "context_length": 32768,
+    "pricing": {
+      "prompt": "0.000000042",
+      "completion": "0",
+      "input_cache_read": "0.000000042",
+      "discount": 0
+    },
+    "provider_name": "Liquid",
+    "tag": "liquid",
+    "service_tier": null,
+    "quantization": "unknown",
+    "max_completion_tokens": 29491,
+    "max_prompt_tokens": null,
+    "supported_parameters": [],
+    "supports_tool_choice": {
+      "none": true,
+      "auto": true,
+      "required": true,
+      "function": true
+    },
+    "status": 0,
+    "uptime_last_30m": 100,
+    "uptime_last_5m": 100,
+    "uptime_last_1d": 100,
+    "supports_implicit_caching": true,
+    "native_tools": {},
+    "supports_voice_cloning": false,
+    "supports_multiple_audio_references": false,
+    "supports_image_reference": false,
+    "supports_diarization": false,
+    "latency_last_30m": null,
+    "throughput_last_30m": null
+  },
+  "data": {
+    "id": "liquid/d1-ultra",
+    "name": "LiquidAI: d1-ultra",
+    "created": 1792108354,
+    "description": "d1-ultra is Liquid AI's largest decision model, served as a System One endpoint. Send a state of text and images along with typed questions, and it returns a choice, a...",
+    "architecture": {
+      "tokenizer": "Other",
+      "instruct_type": null,
+      "modality": "text+image->decisions",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "endpoints": [
+      {
+        "name": "Liquid | liquid/d1-ultra-20261015",
+        "model_id": "liquid/d1-ultra",
+        "model_name": "LiquidAI: d1-ultra",
+        "context_length": 32768,
+        "pricing": {
+          "prompt": "0.000000042",
+          "completion": "0",
+          "input_cache_read": "0.000000042",
+          "discount": 0
+        },
+        "provider_name": "Liquid",
+        "tag": "liquid",
+        "service_tier": null,
+        "quantization": "unknown",
+        "max_completion_tokens": 29491,
+        "max_prompt_tokens": null,
+        "supported_parameters": [],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": 100,
+        "uptime_last_1d": 100,
+        "supports_implicit_caching": true,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      }
+    ]
+  }
+}

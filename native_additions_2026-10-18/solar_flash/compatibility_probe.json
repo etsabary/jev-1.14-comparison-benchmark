@@ -1,0 +1,76 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "solar_flash",
+  "model_requested": "upstage/solar-decide-flash",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "00dd8542091eb52e424b370d2e12b3c8795c7ef233f51fe79b7f35f1be295d61",
+  "request_body_bytes": 900,
+  "stage": "compatibility_not_scored",
+  "http_status": 200,
+  "raw_response": {
+    "id": "gen-dec-1792338027-QZqYa56P2F0eiFRzY2Jg",
+    "model": "upstage/solar-decide-flash-20261008",
+    "provider": "Upstage",
+    "answers": {
+      "decision": {
+        "type": "choice",
+        "choice": "5",
+        "confidence": 0.848642,
+        "probabilities": {
+          "1": 0.053142,
+          "2": 0.002061,
+          "3": 0.001416,
+          "4": 0.001416,
+          "5": 0.941965
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 507,
+      "output_tokens": 1,
+      "cost": 2.535e-05
+    }
+  },
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 15:40:28 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 889.0069590415806,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T15:40:27.874983+00:00",
+    "toronto": "2026-10-18T11:40:27.874983-04:00"
+  },
+  "latency_ms": 889.2699590651318,
+  "completed": {
+    "utc": "2026-10-18T15:40:28.764285+00:00",
+    "toronto": "2026-10-18T11:40:28.764285-04:00"
+  },
+  "status": "ok",
+  "choice": "5",
+  "probabilities": {
+    "1": 0.053142,
+    "2": 0.002061,
+    "3": 0.001416,
+    "4": 0.001416,
+    "5": 0.941965
+  },
+  "probabilities_valid": true,
+  "confidence": 0.848642,
+  "confidence_valid": true,
+  "model_returned": "upstage/solar-decide-flash-20261008",
+  "provider": "Upstage",
+  "request_id": "gen-dec-1792338027-QZqYa56P2F0eiFRzY2Jg",
+  "usage": {
+    "input_tokens": 507,
+    "output_tokens": 1,
+    "cost": 2.535e-05
+  },
+  "reported_cost_usd": 2.535e-05,
+  "accounted_cost_usd": 2.535e-05,
+  "cost_source": "api_reported"
+}

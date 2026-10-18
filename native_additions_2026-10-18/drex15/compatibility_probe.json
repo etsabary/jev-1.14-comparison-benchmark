@@ -1,0 +1,70 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "drex15",
+  "model_requested": "nace-ai/drex-v1.5",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "e4f9becd04a73114823b392388cbe81133536b556ad78c206a7dc19060da8cff",
+  "request_body_bytes": 896,
+  "stage": "compatibility_not_scored",
+  "http_status": 200,
+  "raw_response": {
+    "id": "gen-dec-1792338027-2otqH3XXsEUUylv7X7kG",
+    "model": "nace-ai/drex-v1.5-20261009",
+    "provider": "DeepInfra",
+    "answers": {
+      "decision": {
+        "type": "choice",
+        "choice": "5",
+        "confidence": 0.9998,
+        "probabilities": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0.9999
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 180,
+      "output_tokens": 73,
+      "cost": 7.2e-06
+    }
+  },
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 15:40:28 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 690.6922080088407,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T15:40:27.923611+00:00",
+    "toronto": "2026-10-18T11:40:27.923611-04:00"
+  },
+  "latency_ms": 690.7696250127628,
+  "completed": {
+    "utc": "2026-10-18T15:40:28.614399+00:00",
+    "toronto": "2026-10-18T11:40:28.614399-04:00"
+  },
+  "status": "ok",
+  "choice": "5",
+  "probabilities": null,
+  "probabilities_valid": false,
+  "confidence": 0.9998,
+  "confidence_valid": true,
+  "model_returned": "nace-ai/drex-v1.5-20261009",
+  "provider": "DeepInfra",
+  "request_id": "gen-dec-1792338027-2otqH3XXsEUUylv7X7kG",
+  "usage": {
+    "input_tokens": 180,
+    "output_tokens": 73,
+    "cost": 7.2e-06
+  },
+  "reported_cost_usd": 7.2e-06,
+  "accounted_cost_usd": 7.2e-06,
+  "cost_source": "api_reported"
+}

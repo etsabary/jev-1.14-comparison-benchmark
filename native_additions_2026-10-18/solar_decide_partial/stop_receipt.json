@@ -1,0 +1,33 @@
+{
+  "status": "STOPPED_BY_USER_LATENCY",
+  "recorded": {
+    "utc": "2026-10-18T16:12:55.679805+00:00",
+    "toronto": "2026-10-18T12:12:55.679805-04:00"
+  },
+  "model_id": "solar_decide",
+  "planned_questions": 1136,
+  "completed_first_attempts": 347,
+  "dispatched_attempts": 348,
+  "reason": "Benchmark author requested stopping this route because measured multi-second latency was impractical for the intended fast decisions.",
+  "process_exit_code": 143,
+  "interruption": "SIGTERM after fourteen other models completed; one response remained unrecorded",
+  "unresolved_dispatches": [
+    {
+      "request_index": 347,
+      "attempt": 1
+    }
+  ],
+  "unresolved_charge_attempts": 1,
+  "do_not_replay_unresolved_dispatches": true,
+  "source_files_sha256": {
+    "manifest.json": "3527e915020493b4e36128bbdf62cfd08da4701441189ab8d31c4cf698e976ba",
+    "software.json": "89815944103866cb56217298dd6328575c190e8729f6fcaeb52c64b62a1f058e",
+    "model_metadata.json": "4da4dcea69d160116988f6e8f5f747acc035c2c4b408478e1d7c35a6e2399c6a",
+    "compatibility_probe.json": "3490adf30ff4d2365933a2450493b7f12670b09a9126cb71c2c90350cf709142",
+    "probe_dispatch.json": "67def994637fa9f3df94605cec9ec77d41a52cc2612e93dc74a0a1b47906859c",
+    "attempts.jsonl": "a4e20dfb23f7267d901ac0608b7250620bbd96a81b91c273cda0f2cd666be258",
+    "dispatches.jsonl": "3013b5263d9a706ec0f15a2c3be00c35dca0e50bc27d02dfc51ea0c009b703d1",
+    "results.jsonl": "c0064fdc05c224c7d8e6d87640d8e228f537de04a997082893012e6ac96c6164",
+    "progress.jsonl": "0b10c5377e578b34e0f13c54042f12a11e15a313032178182bf45bf81890947a"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "pplx_decider12",
+  "model_requested": "perplexity/pplx-decider-v1.2",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "1d794bc7d750ba06625e1db9e29c8a6aa574d637db874d2dec3911ed8a77c2f8",
+  "request_body_bytes": 905,
+  "stage": "compatibility_not_scored",
+  "http_status": 200,
+  "raw_response": {
+    "id": "gen-dec-1792338026-SDSXWXWVAuDns3N6J0uT",
+    "model": "perplexity/pplx-decider-v1.2-20261016",
+    "provider": "Perplexity",
+    "answers": {
+      "decision": {
+        "type": "choice",
+        "choice": "5",
+        "confidence": 0.9992875254941765,
+        "probabilities": {
+          "1": 0.00017134876482296607,
+          "2": 0.00015087652883600337,
+          "3": 0.00012413558300974526,
+          "4": 0.0001236187279900871,
+          "5": 0.9994300203953412
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 251,
+      "output_tokens": 1,
+      "cost": 5.02e-06
+    }
+  },
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 15:40:26 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 372.45945900212973,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T15:40:26.541562+00:00",
+    "toronto": "2026-10-18T11:40:26.541562-04:00"
+  },
+  "latency_ms": 397.09791692439467,
+  "completed": {
+    "utc": "2026-10-18T15:40:26.938674+00:00",
+    "toronto": "2026-10-18T11:40:26.938674-04:00"
+  },
+  "status": "ok",
+  "choice": "5",
+  "probabilities": {
+    "1": 0.00017134876482296607,
+    "2": 0.00015087652883600337,
+    "3": 0.00012413558300974526,
+    "4": 0.0001236187279900871,
+    "5": 0.9994300203953412
+  },
+  "probabilities_valid": true,
+  "confidence": 0.9992875254941765,
+  "confidence_valid": true,
+  "model_returned": "perplexity/pplx-decider-v1.2-20261016",
+  "provider": "Perplexity",
+  "request_id": "gen-dec-1792338026-SDSXWXWVAuDns3N6J0uT",
+  "usage": {
+    "input_tokens": 251,
+    "output_tokens": 1,
+    "cost": 5.02e-06
+  },
+  "reported_cost_usd": 5.02e-06,
+  "accounted_cost_usd": 5.02e-06,
+  "cost_source": "api_reported"
+}

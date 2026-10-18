@@ -1,0 +1,18 @@
+{
+  "completed": {
+    "utc": "2026-10-18T15:46:11.443821+00:00",
+    "toronto": "2026-10-18T11:46:11.443821-04:00"
+  },
+  "source_run_files_sha256": {
+    "manifest.json": "d6e1b02e52a7bacbce02d527d1266bb31d962c855622b252aea9726567a33bbd",
+    "software.json": "89815944103866cb56217298dd6328575c190e8729f6fcaeb52c64b62a1f058e",
+    "model_metadata.json": "b5cd1d0c0830dcd58beb0f855c9e3120a12649d298c4ede6b308594eca33fe5d",
+    "compatibility_probe.json": "a9ae324383280557a9d6164da2fee025b5eaffb818b92a5392771b614c128406",
+    "probe_dispatch.json": "e9232aa21eb1776069dcf9a8f7a90f3293d3b2b59c5882b33a9b61dcfdd153d2",
+    "attempts.jsonl": "e1cd79031581a1cdcebb3a5dc36f230f22436700667d0a7df82ece675784f8b6",
+    "dispatches.jsonl": "c9cc94346c7f953cd958400c69bc4203e4a0d0330ca7db9585e75c145f3d6c43",
+    "results.jsonl": "b2802fa5c54f04f10d61d9bef757bfdd25f898922ffd8ff70f4d7795bf942dcb"
+  },
+  "previous_22_model_summary_sha256": "9fe7343222039752b142caee29900114cfa39fd7530e80222b990946294fa8ff",
+  "sanitization": "Allowlisted identity, typed answer, usage and basic errors. No account metadata, credentials, owner paths, gold key or per-item correctness."
+}

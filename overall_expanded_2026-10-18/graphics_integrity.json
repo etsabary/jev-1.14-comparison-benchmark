@@ -1,0 +1,13 @@
+{
+  "plotter_sha256": "c676af16f85116ec1af99e505beb2f3a6a178a3367bcd49c1f0ddf509cef5c56",
+  "matplotlib_version": "3.10.9",
+  "source_summary_sha256": "d977fbddad9f2570e45769700decc48f00a8d635ab89c8b93a2975c92f6e3c93",
+  "files_sha256": {
+    "overall_expanded_2026-10-18/figures/native_accuracy_cost_speed.png": "083e82cef198fcbb94ba566d6efcf36d75e1fac01faeeb4c5f970bda742e2bf4",
+    "overall_expanded_2026-10-18/figures/native_accuracy_cost_speed.svg": "9f9d248bbf7a1ebf729f6bf0e559fde94cc39d87e0db26f010081635005ff7ee",
+    "overall_expanded_2026-10-18/figures/native_family_accuracy.png": "812a4fef27e5bb542abd811a5a389f6db6e9851783928bf915f183bfdc411ab1",
+    "overall_expanded_2026-10-18/figures/native_family_accuracy.svg": "ab79b9bf231fddee549a0de41992ed3475497370cd9459a0135a72c751f29407",
+    "overall_expanded_2026-10-18/figures/overall_accuracy.png": "e2cb43943258904814e47128c399eea9e34be187416351f57935eb79f612c39a",
+    "overall_expanded_2026-10-18/figures/overall_accuracy.svg": "07734e5d004d3d221d8f38c4c11d43cbb0f546d93d5f10a151a8f799c6cd8ac0"
+  }
+}

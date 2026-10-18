@@ -1,0 +1,13 @@
+{
+  "checked_date_toronto": "2026-10-18",
+  "source": "https://docs.bespokelabs.ai/nimble/pricing.md",
+  "model": "nimble-v4-max",
+  "current_input_usd_per_million": "0.04",
+  "current_output_usd_per_million": "0",
+  "historical_october_16_captured_input_usd_per_million": "0.09",
+  "historical_benchmark_cost_preserved_usd": "0.03365973",
+  "same_saved_usage_at_current_tariff_usd": "0.01495988",
+  "counterfactual_not_new_measurement": true,
+  "deprecated_nimble_v4_now_points_to_max": true,
+  "interpretation": "The October 16 runs and their captured tariffs remain unchanged. Applying the October 18 tariff to the saved Max input usage is a price-only calculation, not a new run or a statement about current weights. The deprecated v4 alias is no longer an independent current model."
+}

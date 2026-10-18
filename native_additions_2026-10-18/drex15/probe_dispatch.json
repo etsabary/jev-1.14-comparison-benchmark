@@ -1,0 +1,15 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "drex15",
+  "model_requested": "nace-ai/drex-v1.5",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "e4f9becd04a73114823b392388cbe81133536b556ad78c206a7dc19060da8cff",
+  "request_body_bytes": 896,
+  "dispatch": {
+    "utc": "2026-10-18T15:40:27.919373+00:00",
+    "toronto": "2026-10-18T11:40:27.919373-04:00"
+  }
+}

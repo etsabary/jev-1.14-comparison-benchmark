@@ -1,0 +1,100 @@
+{
+  "retrieved": {
+    "utc": "2026-10-18T15:40:27.925204+00:00",
+    "toronto": "2026-10-18T11:40:27.925204-04:00"
+  },
+  "source": "https://openrouter.ai/api/v1/models/scaledown/classify-1/endpoints",
+  "selected_endpoint": {
+    "name": "ScaleDown | scaledown/classify-1-20260928",
+    "model_id": "scaledown/classify-1",
+    "model_name": "ScaleDown: Classify-1",
+    "context_length": 1000000,
+    "pricing": {
+      "prompt": "0.00000004",
+      "completion": "0",
+      "discount": 0.2
+    },
+    "provider_name": "ScaleDown",
+    "tag": "scaledown",
+    "service_tier": null,
+    "quantization": "unknown",
+    "max_completion_tokens": 900000,
+    "max_prompt_tokens": null,
+    "supported_parameters": [],
+    "supports_tool_choice": {
+      "none": true,
+      "auto": true,
+      "required": true,
+      "function": true
+    },
+    "status": 0,
+    "uptime_last_30m": 100,
+    "uptime_last_5m": null,
+    "uptime_last_1d": 96.73590504451039,
+    "supports_implicit_caching": false,
+    "native_tools": {},
+    "supports_voice_cloning": false,
+    "supports_multiple_audio_references": false,
+    "supports_image_reference": false,
+    "supports_diarization": false,
+    "latency_last_30m": null,
+    "throughput_last_30m": null
+  },
+  "data": {
+    "id": "scaledown/classify-1",
+    "name": "ScaleDown: Classify-1",
+    "created": 1791893334,
+    "description": "Classify-1 is a structured decision model from ScaleDown, served through OpenRouter's Decisions API. It scores text or a document against caller-defined choice, yes/no, and ordered-scale questions and returns calibrated probabilities...",
+    "architecture": {
+      "tokenizer": "Other",
+      "instruct_type": null,
+      "modality": "text+image+file->decisions",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "endpoints": [
+      {
+        "name": "ScaleDown | scaledown/classify-1-20260928",
+        "model_id": "scaledown/classify-1",
+        "model_name": "ScaleDown: Classify-1",
+        "context_length": 1000000,
+        "pricing": {
+          "prompt": "0.00000004",
+          "completion": "0",
+          "discount": 0.2
+        },
+        "provider_name": "ScaleDown",
+        "tag": "scaledown",
+        "service_tier": null,
+        "quantization": "unknown",
+        "max_completion_tokens": 900000,
+        "max_prompt_tokens": null,
+        "supported_parameters": [],
+        "supports_tool_choice": {
+          "none": true,
+          "auto": true,
+          "required": true,
+          "function": true
+        },
+        "status": 0,
+        "uptime_last_30m": 100,
+        "uptime_last_5m": null,
+        "uptime_last_1d": 96.73590504451039,
+        "supports_implicit_caching": false,
+        "native_tools": {},
+        "supports_voice_cloning": false,
+        "supports_multiple_audio_references": false,
+        "supports_image_reference": false,
+        "supports_diarization": false,
+        "latency_last_30m": null,
+        "throughput_last_30m": null
+      }
+    ]
+  }
+}

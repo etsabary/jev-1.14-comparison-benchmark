@@ -1,0 +1,76 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "mercury_decide",
+  "model_requested": "inception/mercury-decide",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "b545b3d6956806cdf36d995208a25c2dc9744fea3e177a0020c9be4168dab583",
+  "request_body_bytes": 900,
+  "stage": "compatibility_not_scored",
+  "http_status": 200,
+  "raw_response": {
+    "id": "gen-dec-1792338027-WMRkCay4giPlobcS3v21",
+    "model": "inception/mercury-decide-20260930",
+    "provider": "Inception",
+    "answers": {
+      "decision": {
+        "type": "choice",
+        "choice": "5",
+        "confidence": 0.9999147216462553,
+        "probabilities": {
+          "1": 1.5688731239468116e-05,
+          "2": 1.6700567471865328e-05,
+          "3": 1.300641502482555e-05,
+          "4": 2.282696925967848e-05,
+          "5": 0.9999317773170042
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 253,
+      "output_tokens": 1,
+      "cost": 5.06e-06
+    }
+  },
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 15:40:27 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 301.78616603370756,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T15:40:27.230927+00:00",
+    "toronto": "2026-10-18T11:40:27.230927-04:00"
+  },
+  "latency_ms": 302.5511249434203,
+  "completed": {
+    "utc": "2026-10-18T15:40:27.533491+00:00",
+    "toronto": "2026-10-18T11:40:27.533491-04:00"
+  },
+  "status": "ok",
+  "choice": "5",
+  "probabilities": {
+    "1": 1.5688731239468116e-05,
+    "2": 1.6700567471865328e-05,
+    "3": 1.300641502482555e-05,
+    "4": 2.282696925967848e-05,
+    "5": 0.9999317773170042
+  },
+  "probabilities_valid": true,
+  "confidence": 0.9999147216462553,
+  "confidence_valid": true,
+  "model_returned": "inception/mercury-decide-20260930",
+  "provider": "Inception",
+  "request_id": "gen-dec-1792338027-WMRkCay4giPlobcS3v21",
+  "usage": {
+    "input_tokens": 253,
+    "output_tokens": 1,
+    "cost": 5.06e-06
+  },
+  "reported_cost_usd": 5.06e-06,
+  "accounted_cost_usd": 5.06e-06,
+  "cost_source": "api_reported"
+}

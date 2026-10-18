@@ -1,0 +1,33 @@
+{
+  "version": "native-field-2026-10-18-v1",
+  "model_id": "liquid_ultra",
+  "model": {
+    "label": "Liquid d1-ultra",
+    "model": "liquid/d1-ultra",
+    "provider_tag": "liquid",
+    "provider_name": "Liquid",
+    "identities": [
+      "liquid/d1-ultra-20261015"
+    ],
+    "input_usd_per_million": ".042",
+    "host": "openrouter.ai",
+    "path": "/api/alpha/decisions"
+  },
+  "questions_sha256": "c34e9faed791d426fa5dd76a4d7eaca56de258c692628ae309773d08b8f88319",
+  "planned_cases": 1136,
+  "endpoint": "https://openrouter.ai/api/alpha/decisions",
+  "timing": "New HTTPS connection per attempt; monotonic connect through complete response body; excludes local queue/preparation; retry waits recorded separately",
+  "concurrency": {
+    "maximum_per_model": 2,
+    "questions_per_wave": 2,
+    "maximum_active_models": 5,
+    "barrier": "Both cases settle before next wave"
+  },
+  "primary": "First attempt / 1136; no correctness-dependent retries or exclusions",
+  "retry": "At most one recovery for transport failure or HTTP 408/429/5xx only; HTTP-200 provider error envelopes are recorded, not retried",
+  "cost": "API-reported charges; absent charges remain unknown; compatibility probes excluded",
+  "soft_known_spend_guard_usd": "0.50",
+  "identity_limit": "Returned names and pinned backend are checked, not independent proof of immutable weights; Clef names have no dated checkpoint",
+  "input": "Unchanged native state, instructions, question and five criteria",
+  "images_tested": false
+}

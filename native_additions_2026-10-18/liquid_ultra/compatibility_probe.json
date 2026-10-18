@@ -1,0 +1,76 @@
+{
+  "request_index": 1,
+  "wave": 1,
+  "item_id": "J000023",
+  "model_id": "liquid_ultra",
+  "model_requested": "liquid/d1-ultra",
+  "prompt_sha256": "fa43bedcc78b4bc2e3f603a5ff5efd6b751d4a9d7bc642d1e7f7d3f54b28d651",
+  "native_input_sha256": "58aed4802a08404695cca31289bc995e3421fa31b8a63868d7000e86f17d9fcd",
+  "request_payload_sha256": "60cca2f270b2f9442d1d77e056880f4df5a7bffa735ac6e51567d4a06b1a4782",
+  "request_body_bytes": 888,
+  "stage": "compatibility_not_scored",
+  "http_status": 200,
+  "raw_response": {
+    "id": "gen-dec-1792338026-Xs1RMPnvfHfSIG2e1krd",
+    "model": "liquid/d1-ultra-20261015",
+    "provider": "Liquid",
+    "answers": {
+      "decision": {
+        "type": "choice",
+        "choice": "5",
+        "confidence": 0.9997592916098417,
+        "probabilities": {
+          "1": 5.688939038729777e-05,
+          "2": 3.648227878250193e-05,
+          "3": 5.688939038729777e-05,
+          "4": 4.230565256950533e-05,
+          "5": 0.9998074332878732
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 190,
+      "output_tokens": 0,
+      "cost": 7.98e-06
+    }
+  },
+  "error": "",
+  "response_headers": {
+    "date": "Sun, 18 Oct 2026 15:40:26 GMT",
+    "content-type": "application/json"
+  },
+  "headers_latency_ms": 248.57041705399752,
+  "transport_failure": false,
+  "started": {
+    "utc": "2026-10-18T15:40:26.562157+00:00",
+    "toronto": "2026-10-18T11:40:26.562157-04:00"
+  },
+  "latency_ms": 260.80283406190574,
+  "completed": {
+    "utc": "2026-10-18T15:40:26.822978+00:00",
+    "toronto": "2026-10-18T11:40:26.822978-04:00"
+  },
+  "status": "ok",
+  "choice": "5",
+  "probabilities": {
+    "1": 5.688939038729777e-05,
+    "2": 3.648227878250193e-05,
+    "3": 5.688939038729777e-05,
+    "4": 4.230565256950533e-05,
+    "5": 0.9998074332878732
+  },
+  "probabilities_valid": true,
+  "confidence": 0.9997592916098417,
+  "confidence_valid": true,
+  "model_returned": "liquid/d1-ultra-20261015",
+  "provider": "Liquid",
+  "request_id": "gen-dec-1792338026-Xs1RMPnvfHfSIG2e1krd",
+  "usage": {
+    "input_tokens": 190,
+    "output_tokens": 0,
+    "cost": 7.98e-06
+  },
+  "reported_cost_usd": 7.98e-06,
+  "accounted_cost_usd": 7.98e-06,
+  "cost_source": "api_reported"
+}
