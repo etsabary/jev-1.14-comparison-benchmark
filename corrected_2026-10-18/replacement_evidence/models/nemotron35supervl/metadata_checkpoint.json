@@ -1,0 +1,39 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/nvidia/nemotron-3.5-super-vl/endpoints",
+  "selected_endpoint": {
+    "name": "Together | nvidia/nemotron-3.5-super-vl-20261015",
+    "provider_name": "Together",
+    "tag": "together",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000015",
+      "completion": "0.0000005",
+      "input_cache_read": "0.00000002"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "stop",
+      "frequency_penalty",
+      "presence_penalty",
+      "top_k",
+      "repetition_penalty",
+      "logit_bias",
+      "min_p",
+      "response_format",
+      "structured_outputs",
+      "tools",
+      "tool_choice",
+      "logprobs",
+      "top_logprobs"
+    ],
+    "max_completion_tokens": 235929
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

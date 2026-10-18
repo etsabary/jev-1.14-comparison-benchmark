@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "openai/gpt-6-luna",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "362d571de54757f3a7d99c3d36495dbcde6a020315587e9e4a3f829dd249b3a2",
+    "dispatches.jsonl": "94261ef4ed5b886fb46a8936c12e6e0a90931ee471ccae48d0f954bd4e80ea71",
+    "results.jsonl": "9071816ed969d2bbeca65f2fd60eccea8bdb0a8ccfe98569311db0b9788efbf5",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "778dba4659274217fc52b028301b550bb5fc87d59297e4520486411aeda8619c"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

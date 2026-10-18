@@ -1,0 +1,28 @@
+[
+  {
+    "item_id": "J001641-R1-cb2bba8d367c",
+    "instructions": "Use only the information in this problem. Apply its stated rules exactly. Choose exactly one of the five numbered options. Choose a final answer, not an explanation. Do not assume an unstated fact.",
+    "context": "Five name cards start in this left-to-right order: Omar, Ravi, Uma, Noel, Jia. Carry out the numbered steps in numerical order. Positions always refer to the current order, not the initial order.\n\nStep 1: Reverse the whole left-to-right order.\nStep 2: Swap the first and last cards; leave the others in place.\nStep 3: Move the last card to the first position, keeping the order of the others.\nStep 4: Swap the second and fourth cards; leave the others in place.\nStep 5: Swap the first and last cards; leave the others in place.\nStep 6: Reverse the whole left-to-right order.",
+    "question": "After all the operations have been completed, whose card occupies position two from the left?",
+    "option_1": "Omar",
+    "option_2": "Uma",
+    "option_3": "Noel",
+    "option_4": "Ravi",
+    "option_5": "Jia",
+    "prompt_text": "Use only the information in this problem. Apply its stated rules exactly. Choose exactly one of the five numbered options. Choose a final answer, not an explanation. Do not assume an unstated fact.\n\nFive name cards start in this left-to-right order: Omar, Ravi, Uma, Noel, Jia. Carry out the numbered steps in numerical order. Positions always refer to the current order, not the initial order.\n\nStep 1: Reverse the whole left-to-right order.\nStep 2: Swap the first and last cards; leave the others in place.\nStep 3: Move the last card to the first position, keeping the order of the others.\nStep 4: Swap the second and fourth cards; leave the others in place.\nStep 5: Swap the first and last cards; leave the others in place.\nStep 6: Reverse the whole left-to-right order.\n\nAfter all the operations have been completed, whose card occupies position two from the left?\n\n1. Omar\n2. Uma\n3. Noel\n4. Ravi\n5. Jia",
+    "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5"
+  },
+  {
+    "item_id": "J001610-R1-f23f98b3cb80",
+    "instructions": "Use only the information in this problem. Apply its stated rules exactly. Choose exactly one of the five numbered options. Choose a final answer, not an explanation. Do not assume an unstated fact.",
+    "context": "Five name cards start in this left-to-right order: Quin, Ivo, Noel, Ben, Ravi. Carry out the numbered steps in numerical order. Positions always refer to the current order, not the initial order.\n\nStep 1: Move the first card to the last position, keeping the order of the others.\nStep 2: Swap the second and fourth cards; leave the others in place.\nStep 3: Swap the first and last cards; leave the others in place.\nStep 4: Reverse the whole left-to-right order.",
+    "question": "After all the operations have been completed, whose card occupies position one from the left?",
+    "option_1": "Quin",
+    "option_2": "Ravi",
+    "option_3": "Noel",
+    "option_4": "Ben",
+    "option_5": "Ivo",
+    "prompt_text": "Use only the information in this problem. Apply its stated rules exactly. Choose exactly one of the five numbered options. Choose a final answer, not an explanation. Do not assume an unstated fact.\n\nFive name cards start in this left-to-right order: Quin, Ivo, Noel, Ben, Ravi. Carry out the numbered steps in numerical order. Positions always refer to the current order, not the initial order.\n\nStep 1: Move the first card to the last position, keeping the order of the others.\nStep 2: Swap the second and fourth cards; leave the others in place.\nStep 3: Swap the first and last cards; leave the others in place.\nStep 4: Reverse the whole left-to-right order.\n\nAfter all the operations have been completed, whose card occupies position one from the left?\n\n1. Quin\n2. Ravi\n3. Noel\n4. Ben\n5. Ivo",
+    "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "pplx_decider12",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "48d30b46ee2bbeefcc640024d661301b77b58f82f560d39762601871c9ba134f",
+    "dispatches.jsonl": "99786ed5439363aff834ce78d0a2b3e8f7ad795afb6d1b5116ba887bcba318ab",
+    "results.jsonl": "7947d09d61e82eeeb73536304d15e43912cf23962096ba7ab81b7289caef14df",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "ab49bfe8741495516635839220773179de0e1e23d56ed00ca9df298bd6598e06"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

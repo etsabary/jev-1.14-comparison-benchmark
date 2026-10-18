@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "clef_flash",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "e94b2a5079e526b55718515a6629ef92c1d4ba55c50976cd72ca8b37b7fbf876",
+    "dispatches.jsonl": "e1e33abf8f066b57053c0a082e7955145a0d6c0e5dc24c6e2a7e1524301255c5",
+    "results.jsonl": "465757fc7e7b9f41f3b6e98dd07af6ca558e3187cd58abfef690a0317bac5c07",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "c9bba22bbafcad54e4e8c385057be8839a8fc22570c4476f9af7b793991ca5ab"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

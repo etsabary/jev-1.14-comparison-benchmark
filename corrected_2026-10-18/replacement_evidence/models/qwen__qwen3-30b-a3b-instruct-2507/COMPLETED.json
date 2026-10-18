@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "qwen/qwen3-30b-a3b-instruct-2507",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "0e4a758c7b97cee5196c49c6704a2c6ec23af17df5e322c96b770ceeb94d22bf",
+    "dispatches.jsonl": "2a9e2ef0e95372d4282b8dea5b724e0d375ba1f0009fcee8157ebc056265d29c",
+    "results.jsonl": "e6b3e9a51ebc9225db68472ad58a9537be0b36c143be681653f8c5cdd25bea8a",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "a6b34cc38b0e19033039b7ec212eab85ca074b648ae3df869077aaad4d490821"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

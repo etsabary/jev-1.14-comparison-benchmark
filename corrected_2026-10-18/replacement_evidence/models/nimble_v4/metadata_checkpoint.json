@@ -1,0 +1,5 @@
+{
+  "status": "UNAVAILABLE",
+  "reason": "Original Nimble v4 is known to redirect to Max; do not fill the old v4 row with Max responses",
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

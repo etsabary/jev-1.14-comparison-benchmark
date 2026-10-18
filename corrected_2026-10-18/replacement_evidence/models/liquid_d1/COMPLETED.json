@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "liquid_d1",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "b735b16a47c979b8e2f5ac13b791ff5e2517765c10fe91fc846c2509eda6a264",
+    "dispatches.jsonl": "fca1f120f39b7b7494799b704678366ad1780a326f56fd72613fa2126f657e4f",
+    "results.jsonl": "2ae07af6c16934f6fd8fc64fec5bcbc4b2d0cc2ab4cdb4ebc2e2f960340e573e",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "b6b445d8e5c18489695df08123393977a35511a7d3777786d4ada66dd0292ea6"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

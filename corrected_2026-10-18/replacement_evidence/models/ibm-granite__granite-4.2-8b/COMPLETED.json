@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "ibm-granite/granite-4.2-8b",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "58d041c96346218cc7755c07683336bc95f50b8d4974bff0cae1092593362fec",
+    "dispatches.jsonl": "ff6e86c6ebb798cedb9cf2cf3d53ee5edef30df296c9bd2b432b9f5529890eab",
+    "results.jsonl": "588aa618440a9fe6189fe63f428a093677788f9eac72a8aeba69b6cf8066d06b",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "62b62fab736fadd87b94384199c645c4c1fdc97e4f7b45de1be43f4bdd18c8a7"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

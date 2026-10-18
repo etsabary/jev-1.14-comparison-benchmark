@@ -1,0 +1,38 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/nvidia/nemotron-3.5-lightning/endpoints",
+  "selected_endpoint": {
+    "name": "CoreWeave | nvidia/nemotron-3.5-lightning-20260807",
+    "provider_name": "CoreWeave",
+    "tag": "coreweave/bf16",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000007",
+      "completion": "0.0000002",
+      "input_cache_read": "0.00000004"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "repetition_penalty",
+      "frequency_penalty",
+      "presence_penalty",
+      "stop",
+      "seed",
+      "response_format",
+      "structured_outputs",
+      "logprobs",
+      "top_logprobs",
+      "tools",
+      "tool_choice"
+    ],
+    "max_completion_tokens": 235929
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

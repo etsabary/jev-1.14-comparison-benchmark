@@ -1,0 +1,37 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/qwen/qwen3.8-flash/endpoints",
+  "selected_endpoint": {
+    "name": "Alibaba | qwen/qwen3.8-flash-20260826",
+    "provider_name": "Alibaba",
+    "tag": "alibaba/us-east-1",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000015",
+      "completion": "0.00000047",
+      "input_cache_read": "0.000000016"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "seed",
+      "presence_penalty",
+      "response_format",
+      "tools",
+      "structured_outputs",
+      "top_k",
+      "frequency_penalty",
+      "stop",
+      "logprobs",
+      "top_logprobs",
+      "tool_choice"
+    ],
+    "max_completion_tokens": 131072
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

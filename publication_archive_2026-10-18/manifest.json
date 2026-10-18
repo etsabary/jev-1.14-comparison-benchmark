@@ -1,0 +1,47 @@
+{
+  "source_commit": "0ec4bd0caaea6048dc2f3366ae7b49cfffe9eb2c",
+  "files": {
+    "README.md": {
+      "archive_path": "README.md.snapshot",
+      "sha256": "5eb8077fd21a2443ca07041a53b47eaf82e5808f91bc3f1ab124f29ad10c9a2a"
+    },
+    "FUNCTIONS.md": {
+      "archive_path": "FUNCTIONS.md.snapshot",
+      "sha256": "2165265ac5f9aedfcc9ad4e1855eb10a96e07980b072c377b3b111b27974f69a"
+    },
+    "OUTPUT_COMPLIANCE.md": {
+      "archive_path": "OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "5b6c122be1ff70094ab727c83223bd83e1a12c0fe693d753015ec76fd328dac2"
+    },
+    "LLM_EXPANSION.md": {
+      "archive_path": "LLM_EXPANSION.md.snapshot",
+      "sha256": "ab8c0fcc463af8b8db675c7c9bb861a458ff230dc5498704a1b4a4c58018f1bc"
+    },
+    "docs/index.html": {
+      "archive_path": "docs/index.html.snapshot",
+      "sha256": "08b96238b18a09db35f0e42fe4756c4f7d359f9b58629185afdea9739a6a5b2d"
+    },
+    "docs/functions.html": {
+      "archive_path": "docs/functions.html.snapshot",
+      "sha256": "ac49f006325aca39a5847c97b85f9cf6b50790a68cb4164de3cf1f52f7997af7"
+    },
+    "docs/output_compliance.html": {
+      "archive_path": "docs/output_compliance.html.snapshot",
+      "sha256": "5518cc584f6e3880f534f4e7d7151a993fae839464afdf5831b0c4ba73b0a0b0"
+    },
+    "freeze_october18_release.py": {
+      "archive_path": "freeze_october18_release.py.snapshot",
+      "sha256": "f6dc014432feefde070b77eeeff0d53743100c9bfe3d836e56943b1aabcadd77"
+    },
+    "test_publication.py": {
+      "archive_path": "test_publication.py.snapshot",
+      "sha256": "9255883b727ece6cf702f1c1d9579d2f061491c969643355f61e6d772358d1c8"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "archive_path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "8638cc978c1ed745d3b826c6735105af73f0fceeb0cfbe7882529a7ea8839572"
+    }
+  },
+  "purpose": "Superseded presentation and validation-source bytes only. The active bank and scores use the corrected release; original measurement captures retain their original seals.",
+  "snapshot_note": "Logical source paths retain exact bytes without presenting the snapshots as a second active site."
+}

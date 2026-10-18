@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "kev4b",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "f60b8574c12ddbbe1b4af561d6a46b963d660d2a1189d41d42aed62ea790c134",
+    "dispatches.jsonl": "12442ecb62c7945c54228aeebbd3aa724ca1e2360497e2ad1fffd258f85c3cbe",
+    "results.jsonl": "ae1434bf650835c15a35a4d83093009c9cdaed87bc6d01528300a5e1886e1d51",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "ebb51cd447c1275f2e3a3db3b6557d1079a190186b027cd73211bd0ebb970ef2"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

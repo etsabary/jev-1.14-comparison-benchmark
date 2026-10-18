@@ -1,0 +1,33 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/google/gemini-2.5-flash-lite/endpoints",
+  "selected_endpoint": {
+    "name": "Google AI Studio | google/gemini-2.5-flash-lite",
+    "provider_name": "Google AI Studio",
+    "tag": "google-ai-studio",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.0000001",
+      "completion": "0.0000004",
+      "input_cache_read": "0.00000001",
+      "input_cache_write": "0.0000000833333333333333"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "structured_outputs",
+      "response_format",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "seed",
+      "tools",
+      "tool_choice",
+      "stop"
+    ],
+    "max_completion_tokens": 65535
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

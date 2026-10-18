@@ -1,0 +1,41 @@
+"""Seal current correction files without replacing any earlier measurement seal."""
+import argparse
+from hashlib import sha256
+import json
+from pathlib import Path
+import subprocess
+
+ROOT = Path(__file__).resolve().parent
+DEST = ROOT / 'corrected_2026-10-18/release_checksums.json'
+SOURCES = ['README.md', 'FUNCTIONS.md', 'LLM_EXPANSION.md', 'OUTPUT_COMPLIANCE.md',
+           'docs/index.html', 'docs/functions.html', 'docs/output_compliance.html',
+           'archive_october18_publication.py', 'freeze_october18_release.py',
+           'freeze_corrected_release.py', 'import_corrected_bundle.py',
+           'validate_corrected_release.py', 'test_corrected_release.py',
+           'build_corrected_report.py', 'plot_corrected_release.py', 'test_publication.py',
+           '.github/workflows/october18-validate.yml']
+FOLDERS = ['corrected_2026-10-18', 'publication_archive_2026-10-18', 'docs/figures/corrected']
+
+
+def hashes():
+    paths = {ROOT / name for name in SOURCES}
+    paths.update(p for folder in FOLDERS for p in (ROOT / folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)
+    paths.discard(DEST)
+    assert all(p.is_file() for p in paths)
+    return {str(p.relative_to(ROOT)): sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true')
+    parser.add_argument('--refresh-unpublished', action='store_true', help='Only before this seal exists in HEAD; never modifies a committed seal')
+    args = parser.parse_args()
+    value = hashes()
+    if args.check:
+        assert value == json.loads(DEST.read_text()), 'Corrected release files changed'
+    else:
+        if DEST.exists():
+            committed = subprocess.run(['git','cat-file','-e','HEAD:'+str(DEST.relative_to(ROOT))],cwd=ROOT,capture_output=True).returncode == 0
+            assert args.refresh_unpublished and not committed, 'A committed seal is immutable; create a later version instead'
+        DEST.write_text(json.dumps(value, indent=2)+'\n')
+    print('PASS:', len(value), 'current correction files; original measurement seals unchanged')

@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "nemotron35lightning",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "0a8ff140e5f570ad8026906abac0f330bf31cfc8d19d2b66119a331138d79006",
+    "dispatches.jsonl": "f783507ca5e316b801da2243824c4c4611c49af933335be80472a52327c905e6",
+    "results.jsonl": "63ac3a7d92d9ce86c3ba544b394ad6f8a5bfabc768891782eb37fa8e1e7e8dbc",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "4b48ea1b4903534b5fdfbb5f7eb19b12634354d2b24c6a47ff95eeb1e5bb0d47"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

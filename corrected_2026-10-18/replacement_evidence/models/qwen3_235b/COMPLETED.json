@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "qwen3_235b",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "314374f42cdd7c2da83412f0090382b8647e894bb0c9baff5357386842488c81",
+    "dispatches.jsonl": "39f998923fb12d6377b62518a4aa9c631e0cac1ad958a1309b340fedc40ae35a",
+    "results.jsonl": "22eaf02e08603f54817bd8fa8583ddec038429dd794af188e4aa1e363c900b99",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "a5d0be68f65949c6aa64cc2083f5c1844431a23bb9af6cdb129a1a7a84b2ecd0"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

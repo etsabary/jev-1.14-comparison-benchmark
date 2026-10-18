@@ -1,0 +1,12 @@
+{
+  "plotter_sha256": "ef7a9834861d532d09f20ac27d45f8ef35c7f3e367cf4fb736590ae64d988269",
+  "source_summary_sha256": "4cd7c58fe4be67dadb3644fc54d46d8e4a40aaa8ed73c2005b6dbe52a4341a36",
+  "files_sha256": {
+    "accuracy_cost_speed.png": "d9191dc5585e9a44084e609a22484400fbeaa5cc88ef7cb14377ed507cf9fe6d",
+    "accuracy_cost_speed.svg": "db975d7b47997676bc36eb0a3a8cd231839ec5b68d731a1523764d679b23c923",
+    "family_accuracy.png": "cfa25e002a4330896e018b0147c74819da50860d814a07583464c092c6d5874f",
+    "family_accuracy.svg": "88d1bd26e37e550790bc19755e611346bc6922dd7e4531ad182b7423c412d66f",
+    "overall_accuracy.png": "9f364828a83a7ef051c2bcff6752f61a9b1e97738b329c749f5d723aeb280ac0",
+    "overall_accuracy.svg": "e8bbeaa95b311c494805eeafb9da6b54b77b8bad0e9f4de4dff78d0b8e1125ef"
+  }
+}

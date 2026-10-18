@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "luna_decisions",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "2111cd5dec9801e0d6dd55d71f968523b58caa0594058962ea14183206bb9257",
+    "dispatches.jsonl": "5ff23b4bf654194d16414bba4b4fe5f450bfd7a83ffaa89834fabac35cc48157",
+    "results.jsonl": "68b0eb83df2c8162e3c824d029f4a823d60fc449fd238e7e339cda5ce79e350d",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "d87752981cea993cb3bc96a59645c70f9bd295e7382f57de8fc4dd48c8747f12"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

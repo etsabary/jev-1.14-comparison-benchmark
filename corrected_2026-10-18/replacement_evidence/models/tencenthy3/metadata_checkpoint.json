@@ -1,0 +1,32 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/tencent/hy3/endpoints",
+  "selected_endpoint": {
+    "name": "Tencent | tencent/hy3-20260706",
+    "provider_name": "Tencent",
+    "tag": "tencent/fp8",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.0000000825",
+      "completion": "0.00000033",
+      "input_cache_read": "0.000000020625"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "temperature",
+      "stop",
+      "max_completion_tokens",
+      "max_tokens",
+      "response_format",
+      "tools",
+      "tool_choice",
+      "structured_outputs",
+      "reasoning_effort"
+    ],
+    "max_completion_tokens": 128000
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

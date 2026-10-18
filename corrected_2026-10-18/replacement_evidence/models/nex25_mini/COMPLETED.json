@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "nex25_mini",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "213151f65d87fb19ad902a4ed13acd68970ac51951e36d082e0d6232376ebeb3",
+    "dispatches.jsonl": "06170f543929741f5ece73a4d9def239ae917f38bad4b4cfc4cebb93a51b55c6",
+    "results.jsonl": "1cc2c95b9c3cd43e0df9a942b16547386bed08dc1526938b9f9f3a90751157fd",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "d5838c225b8a1fd64eab577987d40aca40c45588f74cc524ea1d44bf9fe18a8f"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

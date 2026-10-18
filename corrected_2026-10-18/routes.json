@@ -1,0 +1,39 @@
+{
+  "scope": "Only the two corrected-question calls changed provider for these models. The other1134 results per model retain their original route.",
+  "changes": {
+    "glm47flash": {
+      "original_unchanged_cases": 1134,
+      "fresh_replacement_cases": 2,
+      "latency_pooling": "Pooled1134 original first-attempt latencies plus2 new first-attempt latencies; medians are not averaged",
+      "route_changed_for_replacements": true,
+      "original_route": {
+        "provider_tag": "cloudflare",
+        "provider_name": "Cloudflare",
+        "endpoint_name": "Cloudflare | z-ai/glm-4.7-flash-20260119"
+      },
+      "new_route": {
+        "provider_tag": "venice/fp8",
+        "provider_name": "Venice",
+        "endpoint_name": "Venice | z-ai/glm-4.7-flash-20260119"
+      },
+      "required_unchanged_dated_checkpoint": "z-ai/glm-4.7-flash-20260119"
+    },
+    "nemotron35supervl": {
+      "original_unchanged_cases": 1134,
+      "fresh_replacement_cases": 2,
+      "latency_pooling": "Pooled1134 original first-attempt latencies plus2 new first-attempt latencies; medians are not averaged",
+      "route_changed_for_replacements": true,
+      "original_route": {
+        "provider_tag": "crusoe/bf16",
+        "provider_name": "Crusoe",
+        "endpoint_name": "Crusoe | nvidia/nemotron-3.5-super-vl-20261015"
+      },
+      "new_route": {
+        "provider_tag": "together",
+        "provider_name": "Together",
+        "endpoint_name": "Together | nvidia/nemotron-3.5-super-vl-20261015"
+      },
+      "required_unchanged_dated_checkpoint": "nvidia/nemotron-3.5-super-vl-20261015"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "tev1_4b_native",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "4495c417671377c4e965bf737b310d8bb6be67637f955c2a178a0f6e2425f3a9",
+    "dispatches.jsonl": "a2ee949ea6f812cd3e95d5799b29bc4f6688309ea95ab3e7aa680cf38b1dd16d",
+    "results.jsonl": "c5982e2c8a5e4a83cc4bcad682486d7afe30c786a8f4ba602afa9709c7345b12",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "7a2276fdb6df798b60a60a61d3c37a4c106efe7fd6c376f27136c481f156271b"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

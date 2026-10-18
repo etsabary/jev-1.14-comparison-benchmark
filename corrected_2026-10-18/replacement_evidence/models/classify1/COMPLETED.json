@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "classify1",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "6804b6f495a44636db2dcd7cdb091bc37780ee4b78023f51cd2d51b51cfa48f7",
+    "dispatches.jsonl": "1c002d650aac631c99bd681aba1a5b8bd5ce2861b2b5fb53579f0072f803d2ea",
+    "results.jsonl": "14fa1f7b31c53720dfec397bba77e2639047acb9f7ca060416d151f3db093013",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "8c2015f9bbfa2678b4c6aed560f8af4395b0cc99701ca1a39937991f666023b6"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

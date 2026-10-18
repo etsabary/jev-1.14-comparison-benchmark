@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "qwen38flash",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "19494db598d4aa37e464953a9715d3511d79e84d797814f2831a2570179978f7",
+    "dispatches.jsonl": "b1f984e7054dbdc00fe9e60ffabcee656f365cbd21e06305477bbf7d5deb80f0",
+    "results.jsonl": "56931a2d3a03289b6920a62102e952b076b3efe654bc1b8825fa1b1cea8342c9",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "be57a1d222ed8086b3944afe9ec576830d4969bc5375ba449203fd1fbb7e0896"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

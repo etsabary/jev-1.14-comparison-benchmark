@@ -1,0 +1,20 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/upstage/solar-decide-flash/endpoints",
+  "selected_endpoint": {
+    "name": "Upstage | upstage/solar-decide-flash-20261008",
+    "provider_name": "Upstage",
+    "tag": "upstage",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000005",
+      "completion": "0",
+      "input_cache_read": "0.00000005"
+    },
+    "supported_parameters": [],
+    "max_completion_tokens": 471859
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

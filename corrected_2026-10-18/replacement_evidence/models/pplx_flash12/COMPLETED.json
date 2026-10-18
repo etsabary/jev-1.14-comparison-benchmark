@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "pplx_flash12",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "c20a9e64f3529a1e326cfbb33a358d57c21c48cbe0227f384223034abf42e716",
+    "dispatches.jsonl": "f0b665b37db481d209f37077a1103b4cd7b0378a3aa8168eab5e935c4b7a7b7c",
+    "results.jsonl": "b146264fa43dfaa01751cd2f85a513cc0cb12379e4264f4254665c9504b9040b",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "927d00dbdc6a29f15f453dfbb6f140d40da8f31d8f8ca6a31997bac279489ed0"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

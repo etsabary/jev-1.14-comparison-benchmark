@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "drex15",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "f6a7ddd9c45379d928b12bfe7354acef1b3dc492aeba8b53790743df4b10c23a",
+    "dispatches.jsonl": "8230409d61f92d9e13276107e0c1a7576411de7688c821100352116813ebe0c6",
+    "results.jsonl": "3484d27e149f765b18a76e3bde0c64c5bf8f5bb486aa43c856bfac7ea636d1e1",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "e6c23eb45ef7f9e90168a57b34198f8e7d62ecf98de08a79c4f653796f647226"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

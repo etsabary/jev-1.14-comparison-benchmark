@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "solar_flash",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "dbeb67d0aeee628bff1dc3066c5610a1a288f3978e2607b4190208cd6d269d42",
+    "dispatches.jsonl": "ea4207651a0a4177afd1abbc9fcda907e4f7fb6f7f49b004bf67ace1490a326b",
+    "results.jsonl": "1f4827a4ea106dcca8e2a3b3a22886c2f0065989e9328c3222df7b4bd38aa262",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "fd4a0efd0a56b35871a878288fa070037ccb75766395e9073792fc15ab8ed5f6"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

@@ -1,0 +1,335 @@
+{
+  "status": "PUBLIC_SAFE_CORRECTED_EVIDENCE_INDEX",
+  "original_sources_sha256": {
+    "expansion_2026-10-15/attempts.jsonl": "393269ea2e0c4511746c57824e9b53217f3fd4bd4af440cd9341a40b10467048",
+    "decision_refresh_2026-10-15/attempts.jsonl": "36d4ea10a00825731bc3b0056e6bfb4ff0ec1971b222a1475f1ae1e1d6e20186",
+    "additions_2026-10-16/microsoft_decision/attempts.jsonl": "f228399c82dfc8e6d0e7cb859d986a8863ad4c89944face185482a453e60016f",
+    "additions_2026-10-16/nimble_v4_max/attempts.jsonl": "06671292719136a738dda7c88cc41f735a03e8fcf11b80bd84d97389ee64b063",
+    "llm_additions_2026-10-16/nemotron35lightning/attempts.jsonl": "8595054f36bb644eafa041ae5b2af55cef449b834f650f470b28651698f9eb20",
+    "llm_additions_2026-10-16/glm47flash/attempts.jsonl": "04ae6b6f06f079424a2737e895753c11cad69f5de04836d3a7493ee40fb8e46d",
+    "llm_additions_2026-10-16/mimo26flash/attempts.jsonl": "83bd6229507a715c8d2bb9bb9627a96b74b30c44fe81a70ba8ab9b2c801170ad",
+    "llm_additions_2026-10-16/qwen38flash/attempts.jsonl": "9a9998163e0e684b85366bf04c59c4ea399933e91b95875776cb05829514a8bd",
+    "llm_additions_2026-10-16/tencenthy3/attempts.jsonl": "e2e32f3c7bcd4c7f368275210fde3e45e12b0e15d46b2f6949b40c89406f9572",
+    "llm_additions_2026-10-16/nemotron35supervl/attempts.jsonl": "77b05aed9bcb7246910e7da78e4c881f2cb41b1098acdcf522202c712cf6c7b7",
+    "native_additions_2026-10-18/liquid_ultra/attempts.jsonl": "98a1d2e80086e799203aac6b5a54669ce78c8708433cbdffad64c430aea5cf29",
+    "native_additions_2026-10-18/liquid_d1/attempts.jsonl": "a9ccf1d58386c44f6dddc9d3ee037da50d6d03d30ba3e3cf82f3f6327a8c5bbd",
+    "native_additions_2026-10-18/pplx_decider12/attempts.jsonl": "339dc14cdc5a8d61d80ae475ca6d10560a2e5d666604d3101801d0fccc6d539e",
+    "native_additions_2026-10-18/pplx_flash12/attempts.jsonl": "295d60d81567a9fea2639230669498cc8196d084010b707f3a385ce3ad2569b3",
+    "native_additions_2026-10-18/respan02/attempts.jsonl": "29536a8419df87c70fc45737989041119b73864a21ede1770917b7291f429c03",
+    "native_additions_2026-10-18/clef/attempts.jsonl": "5b38a9acce506606672b81a26afa1864a296406180720306474dc3a158c43714",
+    "native_additions_2026-10-18/clef_flash/attempts.jsonl": "20b097614dbec42e848384ddcd692bd467918775dafd0b7f52987ce89fa33b57",
+    "native_additions_2026-10-18/clef_omni/attempts.jsonl": "b5a0ac0b8e7084a23d5520234a59f39c3ed968057bacc52432a018fc45105cc7",
+    "native_additions_2026-10-18/mercury_decide/attempts.jsonl": "83a1ec1b13b30923b0600374c6b3987aeec43b015ef643066d72a13864eab1c7",
+    "native_additions_2026-10-18/solar_flash/attempts.jsonl": "0d91af3e73876e2cf5352fc7b41aa7d439d0920fe7077b084ee84e786511f430",
+    "native_additions_2026-10-18/drex20/attempts.jsonl": "29d7279bba7fbed8e7750b2a91219c18ce936f4eb5c2ccc43affbe3c1d53bdab",
+    "native_additions_2026-10-18/drex15/attempts.jsonl": "7200fa4fe19de5013e0a4f195d1acea79f7d8595853826f9e5ff35cb74bd9613",
+    "native_additions_2026-10-18/classify1/attempts.jsonl": "3e755ebf8d4e5ededb29775aa35cc3b70459c4bfee9782a16cb1c154e6553831",
+    "native_additions_2026-10-18/kev4b/attempts.jsonl": "9ffaf8680092d886b9911aff50b3702cedf85d7e353e0b386e150bebef4cb596",
+    "llm_additions_2026-10-18/gemma4_31b/attempts.jsonl": "ddc57eb1b772d8af3e00fc5400dfcf31c61aa53e15a9355e718f3030e244dad2",
+    "llm_additions_2026-10-18/nex25_mini/attempts.jsonl": "032b1cae844344cfb8b5bfadeeca627f92230d4db94d980092ec1a359b2b3476",
+    "llm_additions_2026-10-18/qwen3_235b/attempts.jsonl": "d7c04e6d1ffc40e6247b99b7c635292f824a6d283e67239ee37ad339a8a3ef9a",
+    "llm_additions_2026-10-18/tev1_4b_native/attempts.jsonl": "d1743a539dc9af32f2771b861395fbf42163097a25d6f15689dddd3fe1d90882"
+  },
+  "models": {
+    "openai/gpt-6-luna": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "openai/gpt-6-luna",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "openai/gpt-5.4-nano": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "openai/gpt-5.4-nano",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "google/gemini-2.5-flash-lite": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "google/gemini-2.5-flash-lite",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "ibm-granite/granite-4.2-8b": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "ibm-granite/granite-4.2-8b",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "qwen/qwen3-30b-a3b-instruct-2507",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "mistralai/mistral-nemo": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "mistralai/mistral-nemo",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "inception/mercury-2.5": {
+      "original_attempts": "expansion_2026-10-15/attempts.jsonl",
+      "model_requested": "inception/mercury-2.5",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/expansion_2026-10-15/attempts.jsonl"
+    },
+    "jev113": {
+      "original_attempts": "decision_refresh_2026-10-15/attempts.jsonl",
+      "model_requested": "typesafe/jev-1.13",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/decision_refresh_2026-10-15/attempts.jsonl"
+    },
+    "jev114": {
+      "original_attempts": "decision_refresh_2026-10-15/attempts.jsonl",
+      "model_requested": "typesafe/jev-1.14",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/decision_refresh_2026-10-15/attempts.jsonl"
+    },
+    "luna_decisions": {
+      "original_attempts": "decision_refresh_2026-10-15/attempts.jsonl",
+      "model_requested": "openai/gpt-6-luna-decisions",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/decision_refresh_2026-10-15/attempts.jsonl"
+    },
+    "microsoft_decision": {
+      "original_attempts": "additions_2026-10-16/microsoft_decision/attempts.jsonl",
+      "model_requested": "microsoft/microsoft-decision-1",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/additions_2026-10-16/microsoft_decision/attempts.jsonl"
+    },
+    "nimble_v4_max": {
+      "original_attempts": "additions_2026-10-16/nimble_v4_max/attempts.jsonl",
+      "model_requested": "nimble-v4-max",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/additions_2026-10-16/nimble_v4_max/attempts.jsonl"
+    },
+    "nemotron35lightning": {
+      "original_attempts": "llm_additions_2026-10-16/nemotron35lightning/attempts.jsonl",
+      "model_requested": "nvidia/nemotron-3.5-lightning",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/nemotron35lightning/attempts.jsonl"
+    },
+    "glm47flash": {
+      "original_attempts": "llm_additions_2026-10-16/glm47flash/attempts.jsonl",
+      "model_requested": "z-ai/glm-4.7-flash",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/glm47flash/attempts.jsonl"
+    },
+    "mimo26flash": {
+      "original_attempts": "llm_additions_2026-10-16/mimo26flash/attempts.jsonl",
+      "model_requested": "xiaomi/mimo-v2.6-flash",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/mimo26flash/attempts.jsonl"
+    },
+    "qwen38flash": {
+      "original_attempts": "llm_additions_2026-10-16/qwen38flash/attempts.jsonl",
+      "model_requested": "qwen/qwen3.8-flash",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/qwen38flash/attempts.jsonl"
+    },
+    "tencenthy3": {
+      "original_attempts": "llm_additions_2026-10-16/tencenthy3/attempts.jsonl",
+      "model_requested": "tencent/hy3",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/tencenthy3/attempts.jsonl"
+    },
+    "nemotron35supervl": {
+      "original_attempts": "llm_additions_2026-10-16/nemotron35supervl/attempts.jsonl",
+      "model_requested": "nvidia/nemotron-3.5-super-vl",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-16/nemotron35supervl/attempts.jsonl"
+    },
+    "liquid_ultra": {
+      "original_attempts": "native_additions_2026-10-18/liquid_ultra/attempts.jsonl",
+      "model_requested": "liquid/d1-ultra",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/liquid_ultra/attempts.jsonl"
+    },
+    "liquid_d1": {
+      "original_attempts": "native_additions_2026-10-18/liquid_d1/attempts.jsonl",
+      "model_requested": "liquid/d1",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/liquid_d1/attempts.jsonl"
+    },
+    "pplx_decider12": {
+      "original_attempts": "native_additions_2026-10-18/pplx_decider12/attempts.jsonl",
+      "model_requested": "perplexity/pplx-decider-v1.2",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/pplx_decider12/attempts.jsonl"
+    },
+    "pplx_flash12": {
+      "original_attempts": "native_additions_2026-10-18/pplx_flash12/attempts.jsonl",
+      "model_requested": "perplexity/pplx-decider-flash-v1.2",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/pplx_flash12/attempts.jsonl"
+    },
+    "respan02": {
+      "original_attempts": "native_additions_2026-10-18/respan02/attempts.jsonl",
+      "model_requested": "respan/span-02",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/respan02/attempts.jsonl"
+    },
+    "clef": {
+      "original_attempts": "native_additions_2026-10-18/clef/attempts.jsonl",
+      "model_requested": "cloudflare/clef",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/clef/attempts.jsonl"
+    },
+    "clef_flash": {
+      "original_attempts": "native_additions_2026-10-18/clef_flash/attempts.jsonl",
+      "model_requested": "cloudflare/clef-flash",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/clef_flash/attempts.jsonl"
+    },
+    "clef_omni": {
+      "original_attempts": "native_additions_2026-10-18/clef_omni/attempts.jsonl",
+      "model_requested": "cloudflare/clef-omni",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/clef_omni/attempts.jsonl"
+    },
+    "mercury_decide": {
+      "original_attempts": "native_additions_2026-10-18/mercury_decide/attempts.jsonl",
+      "model_requested": "inception/mercury-decide",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/mercury_decide/attempts.jsonl"
+    },
+    "solar_flash": {
+      "original_attempts": "native_additions_2026-10-18/solar_flash/attempts.jsonl",
+      "model_requested": "upstage/solar-decide-flash",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/solar_flash/attempts.jsonl"
+    },
+    "drex20": {
+      "original_attempts": "native_additions_2026-10-18/drex20/attempts.jsonl",
+      "model_requested": "nace-ai/drex-v2.0",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/drex20/attempts.jsonl"
+    },
+    "drex15": {
+      "original_attempts": "native_additions_2026-10-18/drex15/attempts.jsonl",
+      "model_requested": "nace-ai/drex-v1.5",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/drex15/attempts.jsonl"
+    },
+    "classify1": {
+      "original_attempts": "native_additions_2026-10-18/classify1/attempts.jsonl",
+      "model_requested": "scaledown/classify-1",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/classify1/attempts.jsonl"
+    },
+    "kev4b": {
+      "original_attempts": "native_additions_2026-10-18/kev4b/attempts.jsonl",
+      "model_requested": "jaredpalmer/kev-4b",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/native_additions_2026-10-18/kev4b/attempts.jsonl"
+    },
+    "gemma4_31b": {
+      "original_attempts": "llm_additions_2026-10-18/gemma4_31b/attempts.jsonl",
+      "model_requested": "google/gemma-4-31b-it",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-18/gemma4_31b/attempts.jsonl"
+    },
+    "nex25_mini": {
+      "original_attempts": "llm_additions_2026-10-18/nex25_mini/attempts.jsonl",
+      "model_requested": "nex-agi/nex-n2.5-mini",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-18/nex25_mini/attempts.jsonl"
+    },
+    "qwen3_235b": {
+      "original_attempts": "llm_additions_2026-10-18/qwen3_235b/attempts.jsonl",
+      "model_requested": "qwen/qwen3-235b-a22b-2507",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-18/qwen3_235b/attempts.jsonl"
+    },
+    "tev1_4b_native": {
+      "original_attempts": "llm_additions_2026-10-18/tev1_4b_native/attempts.jsonl",
+      "model_requested": "togethercomputer/tev1-4b-experimental",
+      "original_unchanged_cases": 1134,
+      "replacement_cases": 2,
+      "source_url": "https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/llm_additions_2026-10-18/tev1_4b_native/attempts.jsonl"
+    }
+  },
+  "retired_item_ids": [
+    "J001641",
+    "J001610"
+  ],
+  "replacement_item_ids": [
+    "J001641-R1-cb2bba8d367c",
+    "J001610-R1-f23f98b3cb80"
+  ],
+  "original_summary_sha256": "2a15764924623a7f5f07bd157d820554c6e6bddcda47febb564a07b26d7361f4",
+  "private_key_policy": "No key or individual correctness exported; original40 primary/eventual scores were reproduced offline with the external frozen key",
+  "accuracy_limit": "Public validator checks evidence/timing/cost/coverage and aggregate consistency; exact correctness requires the private key",
+  "unavailable_original_model": "Nimble v4 has1134 unchanged cases only and is excluded from active full-bank ranking",
+  "route_changes": {
+    "glm47flash": {
+      "original_unchanged_cases": 1134,
+      "fresh_replacement_cases": 2,
+      "latency_pooling": "Pooled1134 original first-attempt latencies plus2 new first-attempt latencies; medians are not averaged",
+      "route_changed_for_replacements": true,
+      "original_route": {
+        "provider_tag": "cloudflare",
+        "provider_name": "Cloudflare",
+        "endpoint_name": "Cloudflare | z-ai/glm-4.7-flash-20260119"
+      },
+      "new_route": {
+        "provider_tag": "venice/fp8",
+        "provider_name": "Venice",
+        "endpoint_name": "Venice | z-ai/glm-4.7-flash-20260119"
+      },
+      "required_unchanged_dated_checkpoint": "z-ai/glm-4.7-flash-20260119"
+    },
+    "nemotron35supervl": {
+      "original_unchanged_cases": 1134,
+      "fresh_replacement_cases": 2,
+      "latency_pooling": "Pooled1134 original first-attempt latencies plus2 new first-attempt latencies; medians are not averaged",
+      "route_changed_for_replacements": true,
+      "original_route": {
+        "provider_tag": "crusoe/bf16",
+        "provider_name": "Crusoe",
+        "endpoint_name": "Crusoe | nvidia/nemotron-3.5-super-vl-20261015"
+      },
+      "new_route": {
+        "provider_tag": "together",
+        "provider_name": "Together",
+        "endpoint_name": "Together | nvidia/nemotron-3.5-super-vl-20261015"
+      },
+      "required_unchanged_dated_checkpoint": "nvidia/nemotron-3.5-super-vl-20261015"
+    }
+  }
+}

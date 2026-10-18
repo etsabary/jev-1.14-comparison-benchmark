@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "clef_omni",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "9b178d1626edcfba7a5ba21295411d1605bc5563ad8674e47b3a92dd605f453f",
+    "dispatches.jsonl": "b42a46757458c87bca3d45bced9a7e95d489ae54fedb6a4a9bbf05695f344fd4",
+    "results.jsonl": "3540c307c8da13cc3021bd2ff799c262fc7ad95cb359a8ed05dadad879618a14",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "36cf49db6e5cbe6872769c90e741b6597e7c9d72c2748e5e5b41403c72443a30"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

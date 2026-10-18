@@ -1,0 +1,19 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/nace-ai/drex-v1.5/endpoints",
+  "selected_endpoint": {
+    "name": "DeepInfra | nace-ai/drex-v1.5-20261009",
+    "provider_name": "DeepInfra",
+    "tag": "deepinfra/us",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000004",
+      "completion": "0"
+    },
+    "supported_parameters": [],
+    "max_completion_tokens": 117964
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

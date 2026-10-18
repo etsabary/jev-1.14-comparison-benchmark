@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "openai/gpt-5.4-nano",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "003d47f05c0c68148fae719c33ee80209a05f15c8a6b4c7787ca1de84c3d5502",
+    "dispatches.jsonl": "0332ef463c0fe080065ae684fa21be86d6dc6aa28af52bf3c0c5e085068992a8",
+    "results.jsonl": "0bf9e0f40ed3c6f27aae9ffbc82dcc976463a2010e8190a06127e2795a9283a6",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "72f0aaf2b6aa76a1b0fbffa0520d66721b7e3aa1c8be58ff46dbada202a9cb6b"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

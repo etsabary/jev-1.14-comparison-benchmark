@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "gemma4_31b",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "2a24f93635d32ea2c065009b7cbd201e7edc1df479462d6be8d85f2bfc6efad0",
+    "dispatches.jsonl": "7cf57ac8f9122819c1ba4ac4747b9b112ffa309143e52c34e5f5ea8c341e4448",
+    "results.jsonl": "60f725e8105c3dfb873e6e33d4ab1066e167b71d58fe5f9badc5e32a7b7fb37f",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "e162c025074f8d619f659981906a4b5eded05a0f1407ae025504cd186274b482"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "liquid_ultra",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "77e1a32cc2cfeff3f2740585127a4beeaca36afa995efff83fc84a4f77436e23",
+    "dispatches.jsonl": "69eb997b183b1b934ef5e1c0f535c26a18ff4b2f9ca5f244a0111123be4e7145",
+    "results.jsonl": "637cd0709ae36b8bbee92d8958e6abd277926563db4245690e186811031ccb9c",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "2737e8f5bf666c06bab3da282884368fda2f0c19208ec73a0428b90c5416fe42"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

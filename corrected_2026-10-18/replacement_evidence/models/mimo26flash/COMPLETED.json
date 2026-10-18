@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "mimo26flash",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "eb1e5cf28b29f73c8f9caf84b4d1b57cf0f26b379372b01e34ad0af26c15cbad",
+    "dispatches.jsonl": "6091a9dc61c12bee5d6f7e655c52dbdd4fcc5cbd3acabbf75cc51934e370d8af",
+    "results.jsonl": "cbaa767946104dac0204ee2a0875ed95e57fa03156990ae652f99226b1e66eb7",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "ed43604430698491a0a9af0ced99adc3390a6c07700cd8380a0e27815f923ff5"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

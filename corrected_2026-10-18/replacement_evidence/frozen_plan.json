@@ -1,0 +1,1397 @@
+{
+  "version": "private-two-replacement-retests-20261018-v1",
+  "models": {
+    "openai/gpt-6-luna": {
+      "model": "openai/gpt-6-luna",
+      "label": "Luna 6 regular",
+      "provider_tag": "openai",
+      "provider_name": "OpenAI",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "OpenAI | openai/gpt-6-luna-20260922",
+      "captured_returned_identities": [
+        "openai/gpt-6-luna"
+      ],
+      "blocked_reason": null
+    },
+    "openai/gpt-5.4-nano": {
+      "model": "openai/gpt-5.4-nano",
+      "label": "GPT-5.4 nano",
+      "provider_tag": "openai",
+      "provider_name": "OpenAI",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "OpenAI | openai/gpt-5.4-nano-20260317",
+      "captured_returned_identities": [
+        "openai/gpt-5.4-nano"
+      ],
+      "blocked_reason": null
+    },
+    "google/gemini-2.5-flash-lite": {
+      "model": "google/gemini-2.5-flash-lite",
+      "label": "Gemini 2.5 Flash-Lite",
+      "provider_tag": "google-ai-studio",
+      "provider_name": "Google AI Studio",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "Google AI Studio | google/gemini-2.5-flash-lite",
+      "captured_returned_identities": [
+        "google/gemini-2.5-flash-lite"
+      ],
+      "blocked_reason": null
+    },
+    "ibm-granite/granite-4.2-8b": {
+      "model": "ibm-granite/granite-4.2-8b",
+      "label": "Granite 4.2 8B",
+      "provider_tag": "deepinfra/bf16",
+      "provider_name": "DeepInfra",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "DeepInfra | ibm-granite/granite-4.2-8b-20260831",
+      "captured_returned_identities": [
+        "ibm-granite/granite-4.2-8b"
+      ],
+      "blocked_reason": null
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "model": "qwen/qwen3-30b-a3b-instruct-2507",
+      "label": "Qwen3-30B-A3B Instruct 2507",
+      "provider_tag": "siliconflow/fp8",
+      "provider_name": "SiliconFlow",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "SiliconFlow | qwen/qwen3-30b-a3b-instruct-2507",
+      "captured_returned_identities": [
+        "qwen/qwen3-30b-a3b-instruct-2507"
+      ],
+      "blocked_reason": null
+    },
+    "mistralai/mistral-nemo": {
+      "model": "mistralai/mistral-nemo",
+      "label": "Mistral NeMo 12B",
+      "provider_tag": "deepinfra/fp8",
+      "provider_name": "DeepInfra",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "DeepInfra | mistralai/mistral-nemo",
+      "captured_returned_identities": [
+        "mistralai/mistral-nemo"
+      ],
+      "blocked_reason": null
+    },
+    "inception/mercury-2.5": {
+      "model": "inception/mercury-2.5",
+      "label": "Mercury 2.5",
+      "provider_tag": "inception",
+      "provider_name": "Inception",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat15",
+      "endpoint_name": "Inception | inception/mercury-2.5-20260908",
+      "captured_returned_identities": [
+        "inception/mercury-2.5"
+      ],
+      "blocked_reason": null
+    },
+    "jev113": {
+      "model": "typesafe/jev-1.13",
+      "label": "Jev 1.13",
+      "provider_tag": "typesafe",
+      "provider_name": "TypeSafe",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "native15",
+      "endpoint_name": "TypeSafe | typesafe/jev-1.13-20260917",
+      "captured_returned_identities": [
+        "typesafe/jev-1.13-20260917"
+      ],
+      "blocked_reason": null
+    },
+    "jev114": {
+      "model": "typesafe/jev-1.14",
+      "label": "Jev 1.14",
+      "provider_tag": "typesafe",
+      "provider_name": "TypeSafe",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "native15",
+      "endpoint_name": "TypeSafe | typesafe/jev-1.14-20261014",
+      "captured_returned_identities": [
+        "typesafe/jev-1.14-20261014"
+      ],
+      "blocked_reason": null
+    },
+    "luna_decisions": {
+      "model": "openai/gpt-6-luna-decisions",
+      "label": "Luna 6 Decisions",
+      "provider_tag": "openai",
+      "provider_name": "OpenAI",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "native15",
+      "endpoint_name": "OpenAI | openai/gpt-6-luna-decisions-20261006",
+      "captured_returned_identities": [
+        "openai/gpt-6-luna-decisions-20261006"
+      ],
+      "blocked_reason": null
+    },
+    "microsoft_decision": {
+      "label": "Microsoft-Decision-1",
+      "model": "microsoft/microsoft-decision-1",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "provider_tag": "azure",
+      "provider_name": "Azure",
+      "identities": [
+        "microsoft/microsoft-decision-1-20261009"
+      ],
+      "key_name": "OPENROUTER_API_KEY",
+      "input_usd_per_million": "0.042",
+      "pricing_source": "https://openrouter.ai/microsoft/microsoft-decision-1",
+      "serializer": "native16",
+      "endpoint_name": "Azure | microsoft/microsoft-decision-1-20261009",
+      "captured_returned_identities": [
+        "microsoft/microsoft-decision-1-20261009"
+      ],
+      "blocked_reason": null
+    },
+    "nimble_v4": {
+      "label": "Nimble v4",
+      "model": "nimble-v4",
+      "host": "api.bespokelabs.ai",
+      "path": "/v1/systemone",
+      "provider_tag": "bespoke-direct",
+      "provider_name": "Bespoke Labs",
+      "identities": [
+        "nimble-v4",
+        "bespokelabs/nimble-v4"
+      ],
+      "key_name": "BESPOKE_API_KEY",
+      "input_usd_per_million": "0.04",
+      "pricing_source": "https://docs.bespokelabs.ai/nimble/pricing",
+      "serializer": "native16",
+      "captured_returned_identities": [
+        "nimble-v4"
+      ],
+      "blocked_reason": "Original Nimble v4 is known to redirect to Max; do not fill the old v4 row with Max responses"
+    },
+    "nimble_v4_max": {
+      "label": "Nimble v4 Max",
+      "model": "nimble-v4-max",
+      "host": "api.bespokelabs.ai",
+      "path": "/v1/systemone",
+      "provider_tag": "bespoke-direct",
+      "provider_name": "Bespoke Labs",
+      "identities": [
+        "nimble-v4-max",
+        "bespokelabs/nimble-v4-max"
+      ],
+      "key_name": "BESPOKE_API_KEY",
+      "input_usd_per_million": "0.09",
+      "pricing_source": "https://docs.bespokelabs.ai/nimble/pricing",
+      "serializer": "native16",
+      "captured_returned_identities": [
+        "nimble-v4-max"
+      ],
+      "blocked_reason": null
+    },
+    "nemotron35lightning": {
+      "model": "nvidia/nemotron-3.5-lightning",
+      "label": "Nemotron 3.5 Lightning",
+      "provider_tag": "coreweave/bf16",
+      "provider_name": "CoreWeave",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat16",
+      "endpoint_name": "CoreWeave | nvidia/nemotron-3.5-lightning-20260807",
+      "captured_returned_identities": [
+        "nvidia/nemotron-3.5-lightning"
+      ],
+      "blocked_reason": null
+    },
+    "glm47flash": {
+      "model": "z-ai/glm-4.7-flash",
+      "label": "GLM 4.7 Flash",
+      "provider_tag": "venice/fp8",
+      "provider_name": "Venice",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat16",
+      "endpoint_name": "Venice | z-ai/glm-4.7-flash-20260119",
+      "captured_returned_identities": [
+        "z-ai/glm-4.7-flash"
+      ],
+      "blocked_reason": null,
+      "route_override": true,
+      "original_route": {
+        "provider_tag": "cloudflare",
+        "provider_name": "Cloudflare",
+        "endpoint_name": "Cloudflare | z-ai/glm-4.7-flash-20260119"
+      },
+      "original_model_spec": {
+        "model": "z-ai/glm-4.7-flash",
+        "label": "GLM 4.7 Flash",
+        "provider_tag": "cloudflare",
+        "provider_name": "Cloudflare",
+        "host": "openrouter.ai",
+        "path": "/api/v1/chat/completions",
+        "key_name": "OPENROUTER_API_KEY",
+        "serializer": "chat16",
+        "endpoint_name": "Cloudflare | z-ai/glm-4.7-flash-20260119",
+        "captured_returned_identities": [
+          "z-ai/glm-4.7-flash"
+        ],
+        "blocked_reason": null
+      },
+      "required_unchanged_dated_checkpoint": "z-ai/glm-4.7-flash-20260119",
+      "route_comparison_limit": "Only the two repaired cases use this explicitly approved new provider; the other1134 original responses retain their original route/date"
+    },
+    "mimo26flash": {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "label": "MiMo V2.6 Flash",
+      "provider_tag": "xiaomi/fp8",
+      "provider_name": "Xiaomi",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat16",
+      "endpoint_name": "Xiaomi | xiaomi/mimo-v2.6-flash-20260921",
+      "captured_returned_identities": [
+        "xiaomi/mimo-v2.6-flash"
+      ],
+      "blocked_reason": null
+    },
+    "qwen38flash": {
+      "model": "qwen/qwen3.8-flash",
+      "label": "Qwen3.8 Flash",
+      "provider_tag": "alibaba/us-east-1",
+      "provider_name": "Alibaba",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat16",
+      "endpoint_name": "Alibaba | qwen/qwen3.8-flash-20260826",
+      "captured_returned_identities": [
+        "qwen/qwen3.8-flash"
+      ],
+      "blocked_reason": null
+    },
+    "tencenthy3": {
+      "model": "tencent/hy3",
+      "label": "Tencent Hy3",
+      "provider_tag": "tencent/fp8",
+      "provider_name": "Tencent",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat16",
+      "endpoint_name": "Tencent | tencent/hy3-20260706",
+      "captured_returned_identities": [
+        "tencent/hy3"
+      ],
+      "blocked_reason": null
+    },
+    "nemotron35supervl": {
+      "model": "nvidia/nemotron-3.5-super-vl",
+      "label": "Nemotron 3.5 Super VL",
+      "provider_tag": "together",
+      "provider_name": "Together",
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat16",
+      "endpoint_name": "Together | nvidia/nemotron-3.5-super-vl-20261015",
+      "captured_returned_identities": [
+        "nvidia/nemotron-3.5-super-vl"
+      ],
+      "blocked_reason": null,
+      "route_override": true,
+      "original_route": {
+        "provider_tag": "crusoe/bf16",
+        "provider_name": "Crusoe",
+        "endpoint_name": "Crusoe | nvidia/nemotron-3.5-super-vl-20261015"
+      },
+      "original_model_spec": {
+        "model": "nvidia/nemotron-3.5-super-vl",
+        "label": "Nemotron 3.5 Super VL",
+        "provider_tag": "crusoe/bf16",
+        "provider_name": "Crusoe",
+        "host": "openrouter.ai",
+        "path": "/api/v1/chat/completions",
+        "key_name": "OPENROUTER_API_KEY",
+        "serializer": "chat16",
+        "endpoint_name": "Crusoe | nvidia/nemotron-3.5-super-vl-20261015",
+        "captured_returned_identities": [
+          "nvidia/nemotron-3.5-super-vl"
+        ],
+        "blocked_reason": null
+      },
+      "required_unchanged_dated_checkpoint": "nvidia/nemotron-3.5-super-vl-20261015",
+      "route_comparison_limit": "Only the two repaired cases use this explicitly approved new provider; the other1134 original responses retain their original route/date"
+    },
+    "liquid_ultra": {
+      "label": "Liquid d1-ultra",
+      "model": "liquid/d1-ultra",
+      "provider_tag": "liquid",
+      "provider_name": "Liquid",
+      "identities": [
+        "liquid/d1-ultra-20261015"
+      ],
+      "input_usd_per_million": ".042",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Liquid | liquid/d1-ultra-20261015",
+      "captured_returned_identities": [
+        "liquid/d1-ultra-20261015"
+      ],
+      "blocked_reason": null
+    },
+    "liquid_d1": {
+      "label": "Liquid d1",
+      "model": "liquid/d1",
+      "provider_tag": "liquid",
+      "provider_name": "Liquid",
+      "identities": [
+        "liquid/d1-20260930"
+      ],
+      "input_usd_per_million": ".020",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Liquid | liquid/d1-20260930",
+      "captured_returned_identities": [
+        "liquid/d1-20260930"
+      ],
+      "blocked_reason": null
+    },
+    "pplx_decider12": {
+      "label": "Perplexity Decider v1.2",
+      "model": "perplexity/pplx-decider-v1.2",
+      "provider_tag": "perplexity",
+      "provider_name": "Perplexity",
+      "identities": [
+        "perplexity/pplx-decider-v1.2-20261016"
+      ],
+      "input_usd_per_million": ".020",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Perplexity | perplexity/pplx-decider-v1.2-20261016",
+      "captured_returned_identities": [
+        "perplexity/pplx-decider-v1.2-20261016"
+      ],
+      "blocked_reason": null
+    },
+    "pplx_flash12": {
+      "label": "Perplexity Decider Flash v1.2",
+      "model": "perplexity/pplx-decider-flash-v1.2",
+      "provider_tag": "perplexity",
+      "provider_name": "Perplexity",
+      "identities": [
+        "perplexity/pplx-decider-flash-v1.2-20261016"
+      ],
+      "input_usd_per_million": ".010",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Perplexity | perplexity/pplx-decider-flash-v1.2-20261016",
+      "captured_returned_identities": [
+        "perplexity/pplx-decider-flash-v1.2-20261016"
+      ],
+      "blocked_reason": null
+    },
+    "respan02": {
+      "label": "Respan Span-02",
+      "model": "respan/span-02",
+      "provider_tag": "respan",
+      "provider_name": "Respan",
+      "identities": [
+        "respan/span-02-20261015"
+      ],
+      "input_usd_per_million": ".010",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Respan | respan/span-02-20261015",
+      "captured_returned_identities": [
+        "respan/span-02-20261015"
+      ],
+      "blocked_reason": null
+    },
+    "clef": {
+      "label": "Cloudflare Clef",
+      "model": "cloudflare/clef",
+      "provider_tag": "primeintellect",
+      "provider_name": "PrimeIntellect",
+      "identities": [
+        "cloudflare/clef"
+      ],
+      "input_usd_per_million": ".042",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "PrimeIntellect | cloudflare/clef",
+      "captured_returned_identities": [
+        "cloudflare/clef"
+      ],
+      "blocked_reason": null
+    },
+    "clef_flash": {
+      "label": "Cloudflare Clef Flash",
+      "model": "cloudflare/clef-flash",
+      "provider_tag": "primeintellect",
+      "provider_name": "PrimeIntellect",
+      "identities": [
+        "cloudflare/clef-flash"
+      ],
+      "input_usd_per_million": ".021",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "PrimeIntellect | cloudflare/clef-flash",
+      "captured_returned_identities": [
+        "cloudflare/clef-flash"
+      ],
+      "blocked_reason": null
+    },
+    "clef_omni": {
+      "label": "Cloudflare Clef Omni",
+      "model": "cloudflare/clef-omni",
+      "provider_tag": "cloudflare",
+      "provider_name": "Cloudflare",
+      "identities": [
+        "cloudflare/clef-omni-20261009"
+      ],
+      "input_usd_per_million": ".150",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Cloudflare | cloudflare/clef-omni-20261009",
+      "captured_returned_identities": [
+        "cloudflare/clef-omni-20261009"
+      ],
+      "blocked_reason": null
+    },
+    "mercury_decide": {
+      "label": "Mercury Decide",
+      "model": "inception/mercury-decide",
+      "provider_tag": "inception",
+      "provider_name": "Inception",
+      "identities": [
+        "inception/mercury-decide-20260930"
+      ],
+      "input_usd_per_million": ".020",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Inception | inception/mercury-decide-20260930",
+      "captured_returned_identities": [
+        "inception/mercury-decide-20260930"
+      ],
+      "blocked_reason": null
+    },
+    "solar_flash": {
+      "label": "Solar Decide Flash",
+      "model": "upstage/solar-decide-flash",
+      "provider_tag": "upstage",
+      "provider_name": "Upstage",
+      "identities": [
+        "upstage/solar-decide-flash-20261008"
+      ],
+      "input_usd_per_million": ".050",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Upstage | upstage/solar-decide-flash-20261008",
+      "captured_returned_identities": [
+        "upstage/solar-decide-flash-20261008"
+      ],
+      "blocked_reason": null
+    },
+    "drex20": {
+      "label": "Drex v2.0",
+      "model": "nace-ai/drex-v2.0",
+      "provider_tag": "deepinfra/us",
+      "provider_name": "DeepInfra",
+      "identities": [
+        "nace-ai/drex-v2.0-20261009"
+      ],
+      "input_usd_per_million": ".060",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "DeepInfra | nace-ai/drex-v2.0-20261009",
+      "captured_returned_identities": [
+        "nace-ai/drex-v2.0-20261009"
+      ],
+      "blocked_reason": null
+    },
+    "drex15": {
+      "label": "Drex v1.5",
+      "model": "nace-ai/drex-v1.5",
+      "provider_tag": "deepinfra/us",
+      "provider_name": "DeepInfra",
+      "identities": [
+        "nace-ai/drex-v1.5-20261009"
+      ],
+      "input_usd_per_million": ".040",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "DeepInfra | nace-ai/drex-v1.5-20261009",
+      "captured_returned_identities": [
+        "nace-ai/drex-v1.5-20261009"
+      ],
+      "blocked_reason": null
+    },
+    "classify1": {
+      "label": "ScaleDown Classify-1",
+      "model": "scaledown/classify-1",
+      "provider_tag": "scaledown",
+      "provider_name": "ScaleDown",
+      "identities": [
+        "scaledown/classify-1-20260928"
+      ],
+      "input_usd_per_million": ".040",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "ScaleDown | scaledown/classify-1-20260928",
+      "captured_returned_identities": [
+        "scaledown/classify-1-20260928"
+      ],
+      "blocked_reason": null
+    },
+    "kev4b": {
+      "label": "Kev 4B",
+      "model": "jaredpalmer/kev-4b",
+      "provider_tag": "phala",
+      "provider_name": "Phala",
+      "identities": [
+        "jaredpalmer/kev-4b-20260924"
+      ],
+      "input_usd_per_million": ".042",
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "serializer": "native18",
+      "key_name": "OPENROUTER_API_KEY",
+      "endpoint_name": "Phala | jaredpalmer/kev-4b-20260924",
+      "captured_returned_identities": [
+        "jaredpalmer/kev-4b-20260924"
+      ],
+      "blocked_reason": null
+    },
+    "gemma4_31b": {
+      "label": "Gemma 4 31B",
+      "model": "google/gemma-4-31b-it",
+      "provider_tag": "crusoe/bf16",
+      "provider_name": "Crusoe",
+      "snapshot": "google/gemma-4-31b-it-20260402",
+      "input_usd_per_million": "0.14",
+      "output_usd_per_million": "0.40",
+      "kind": "switchable_chat",
+      "max_tokens": 16,
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat18",
+      "endpoint_name": "Crusoe | google/gemma-4-31b-it-20260402",
+      "captured_returned_identities": [
+        "google/gemma-4-31b-it"
+      ],
+      "blocked_reason": null
+    },
+    "nex25_mini": {
+      "label": "Nex N2.5 Mini",
+      "model": "nex-agi/nex-n2.5-mini",
+      "provider_tag": "nex-agi/bf16",
+      "provider_name": "Nex AGI",
+      "snapshot": "nex-agi/nex-n2.5-mini-20260908",
+      "input_usd_per_million": "0.025",
+      "output_usd_per_million": "0.10",
+      "kind": "switchable_chat",
+      "max_tokens": 16,
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat18",
+      "endpoint_name": "Nex AGI | nex-agi/nex-n2.5-mini-20260908",
+      "captured_returned_identities": [
+        "nex-agi/nex-n2.5-mini"
+      ],
+      "blocked_reason": null
+    },
+    "qwen3_235b": {
+      "label": "Qwen3 235B A22B Instruct 2507",
+      "model": "qwen/qwen3-235b-a22b-2507",
+      "provider_tag": "deepinfra/fp8",
+      "provider_name": "DeepInfra",
+      "snapshot": "qwen/qwen3-235b-a22b-07-25",
+      "input_usd_per_million": "0.09",
+      "output_usd_per_million": "0.55",
+      "kind": "nonthinking_checkpoint",
+      "max_tokens": 16,
+      "host": "openrouter.ai",
+      "path": "/api/v1/chat/completions",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "chat18",
+      "endpoint_name": "DeepInfra | qwen/qwen3-235b-a22b-07-25",
+      "captured_returned_identities": [
+        "qwen/qwen3-235b-a22b-2507"
+      ],
+      "blocked_reason": null
+    },
+    "tev1_4b_native": {
+      "label": "Tev1 4B experimental (OpenRouter native adapter)",
+      "model": "togethercomputer/tev1-4b-experimental",
+      "provider_tag": "together",
+      "provider_name": "Together",
+      "snapshot": "togethercomputer/tev1-4b-experimental-20260923",
+      "input_usd_per_million": "0.042",
+      "output_usd_per_million": "0",
+      "kind": "decision_specialized_generative_native_adapter",
+      "max_tokens": null,
+      "host": "openrouter.ai",
+      "path": "/api/alpha/decisions",
+      "compatibility_limit": "Native adapter selected after OpenRouter explicitly rejected chat endpoint",
+      "documentation": "https://huggingface.co/togethercomputer/Tev1-4B-experimental/raw/main/README.md",
+      "architecture": "Decision-specialized generative model with next-token label head",
+      "key_name": "OPENROUTER_API_KEY",
+      "serializer": "tev18",
+      "endpoint_name": "Together | togethercomputer/tev1-4b-experimental-20260923",
+      "captured_returned_identities": [
+        "togethercomputer/tev1-4b-experimental-20260923"
+      ],
+      "blocked_reason": null
+    }
+  },
+  "model_count": 37,
+  "item_count": 2,
+  "request_count_including_blocked": 74,
+  "callable_models_before_metadata": 36,
+  "candidate_rows_sha256": "876505bf01227ecf4b58fe9f74781ad362d99390c34fafacf64aa5ee95855449",
+  "software_sha256": {
+    "local": {
+      "retest_replacements.py": "46d5729054f699e6d6a8dea4760454155750dc8b54a2a87b6771809d69b06ba9",
+      "test_retest_replacements.py": "a7cd6658063bc5977000186f9780af969f016028a7cfc5dfd7188ec63ad312e0"
+    },
+    "benchmark": {
+      "run_benchmark.py": "2a646ce1b634995f14031c3feb2acbfaad8952c352b34855c1c693d9e69c24bb",
+      "decision_refresh.py": "371bea46b32627118d38841681d683f9f403197a63f2f979624c43af065b3bc4",
+      "added_decisions.py": "da430d51335f342a2ab2e0f5f6cbf563db4d04831ff738e3f88b563ae6be22fd",
+      "text_models.py": "45d73041c95c3417a49426c6c8ab4230b4c2399e16594bad2e30f68f9235850f",
+      "text_additions.py": "a33a0ed31d6179226649f4e3c33a95bba3f7d814ce391f92cdb363f518c0eac0",
+      "native_field_2026_10_18.py": "982da9cb139cffe2c8db24c73d1ae10a009a43dcdff43abb264ba8ac41def44a",
+      "llm_field_2026_10_18.py": "eae396f449965a1a0e29c3a3f53e18922bd5c5847ef40291949e2af86590f3c7",
+      "tev_native_adapter_2026_10_18.py": "050efcbd0b293e2f09974a671ba85ad4a7ac8a40add82d71ece03ce9cb40f201"
+    }
+  },
+  "baseline_summary_sha256": "2a15764924623a7f5f07bd157d820554c6e6bddcda47febb564a07b26d7361f4",
+  "original_evidence_sha256": {
+    "expansion_2026-10-15/model_metadata.json": "10d299b3250f2ef9bad5697fc4cbbf899cebcdafc92f9fedad68fa3933cb1d72",
+    "expansion_2026-10-15/attempts.jsonl": "393269ea2e0c4511746c57824e9b53217f3fd4bd4af440cd9341a40b10467048",
+    "decision_refresh_2026-10-15/model_metadata.json": "92862c41bd4bfb4637a99c4585becc5fe77971c0595e664b7c1f4f92d5dae3f8",
+    "decision_refresh_2026-10-15/attempts.jsonl": "36d4ea10a00825731bc3b0056e6bfb4ff0ec1971b222a1475f1ae1e1d6e20186",
+    "additions_2026-10-16/microsoft_decision/model_metadata.json": "7708228f494750b45f3384e034663b44007ad4e7799c8574ccfbdd55d0047505",
+    "additions_2026-10-16/microsoft_decision/attempts.jsonl": "f228399c82dfc8e6d0e7cb859d986a8863ad4c89944face185482a453e60016f",
+    "additions_2026-10-16/nimble_v4/model_metadata.json": "20118e32cbd89976403ed7970a35bdb7bba6a3f37f60ffd2ea5ddbfc4dd8d5b5",
+    "additions_2026-10-16/nimble_v4/attempts.jsonl": "5308054159cc52d22debda935b15f11aec092735c3083f1412dc88d5417b3a18",
+    "additions_2026-10-16/nimble_v4_max/model_metadata.json": "376870a29534261c366104d9f7b236be0fb6ed8fc088c00d6570601662d682f4",
+    "additions_2026-10-16/nimble_v4_max/attempts.jsonl": "06671292719136a738dda7c88cc41f735a03e8fcf11b80bd84d97389ee64b063",
+    "llm_additions_2026-10-16/nemotron35lightning/model_metadata.json": "af967b3a67127055a9b239a6901591837487bfad1f9db8b42d367cdd79a66752",
+    "llm_additions_2026-10-16/nemotron35lightning/attempts.jsonl": "8595054f36bb644eafa041ae5b2af55cef449b834f650f470b28651698f9eb20",
+    "llm_additions_2026-10-16/glm47flash/model_metadata.json": "89339c814ba6cafd5012e8eccf11cc64a8e367f595c9d5856d5979faf6e78637",
+    "llm_additions_2026-10-16/glm47flash/attempts.jsonl": "04ae6b6f06f079424a2737e895753c11cad69f5de04836d3a7493ee40fb8e46d",
+    "llm_additions_2026-10-16/mimo26flash/model_metadata.json": "b2e36a770d107cad10f7e309ce7e0d6090792411a673d9a28c8f99b4a4f392fa",
+    "llm_additions_2026-10-16/mimo26flash/attempts.jsonl": "83bd6229507a715c8d2bb9bb9627a96b74b30c44fe81a70ba8ab9b2c801170ad",
+    "llm_additions_2026-10-16/qwen38flash/model_metadata.json": "5dd8680d0d6834cabe21fba58cd7368c282a4347e910798bd616c6300f320e7a",
+    "llm_additions_2026-10-16/qwen38flash/attempts.jsonl": "9a9998163e0e684b85366bf04c59c4ea399933e91b95875776cb05829514a8bd",
+    "llm_additions_2026-10-16/tencenthy3/model_metadata.json": "ab5822466546a548946ef30dfec27fbddfa11e99d0fae33eccca3ecae014b99c",
+    "llm_additions_2026-10-16/tencenthy3/attempts.jsonl": "e2e32f3c7bcd4c7f368275210fde3e45e12b0e15d46b2f6949b40c89406f9572",
+    "llm_additions_2026-10-16/nemotron35supervl/model_metadata.json": "c4b043c12427b23e11c65c12358e84b8a90e49ce56c09e293a460b8c40b346d1",
+    "llm_additions_2026-10-16/nemotron35supervl/attempts.jsonl": "77b05aed9bcb7246910e7da78e4c881f2cb41b1098acdcf522202c712cf6c7b7",
+    "native_additions_2026-10-18/liquid_ultra/model_metadata.json": "27280d990ace0c51a58e1f01dc53ad2e8a1078ad717545cebe6af4645ca0c461",
+    "native_additions_2026-10-18/liquid_ultra/attempts.jsonl": "98a1d2e80086e799203aac6b5a54669ce78c8708433cbdffad64c430aea5cf29",
+    "native_additions_2026-10-18/liquid_d1/model_metadata.json": "31e57b465b55c159d071eb01b89f3208b79bc00ff35cbe8748e0137c59ac00d5",
+    "native_additions_2026-10-18/liquid_d1/attempts.jsonl": "a9ccf1d58386c44f6dddc9d3ee037da50d6d03d30ba3e3cf82f3f6327a8c5bbd",
+    "native_additions_2026-10-18/pplx_decider12/model_metadata.json": "ed858ccf5eca198c4295c9b0fee1e55404155f92c1fa4ec56019f79da5b5c9ae",
+    "native_additions_2026-10-18/pplx_decider12/attempts.jsonl": "339dc14cdc5a8d61d80ae475ca6d10560a2e5d666604d3101801d0fccc6d539e",
+    "native_additions_2026-10-18/pplx_flash12/model_metadata.json": "33d34ee3ccb3e7a00613a89c8778ed17ccdcc5d12de639998c3f344170cd159b",
+    "native_additions_2026-10-18/pplx_flash12/attempts.jsonl": "295d60d81567a9fea2639230669498cc8196d084010b707f3a385ce3ad2569b3",
+    "native_additions_2026-10-18/respan02/model_metadata.json": "b5cd1d0c0830dcd58beb0f855c9e3120a12649d298c4ede6b308594eca33fe5d",
+    "native_additions_2026-10-18/respan02/attempts.jsonl": "29536a8419df87c70fc45737989041119b73864a21ede1770917b7291f429c03",
+    "native_additions_2026-10-18/clef/model_metadata.json": "711321d74330cf06871021f1bda81584c65de562dfc58b179eae666b23198cda",
+    "native_additions_2026-10-18/clef/attempts.jsonl": "5b38a9acce506606672b81a26afa1864a296406180720306474dc3a158c43714",
+    "native_additions_2026-10-18/clef_flash/model_metadata.json": "4b171b966c9cb0b24d19ea94e47a7f7adccfa9fe4728c1b264c3a9b5de0c903e",
+    "native_additions_2026-10-18/clef_flash/attempts.jsonl": "20b097614dbec42e848384ddcd692bd467918775dafd0b7f52987ce89fa33b57",
+    "native_additions_2026-10-18/clef_omni/model_metadata.json": "9f5dfefaad81340726d36bbd9cc5686c19058681763bf6c9079f42427aa42d40",
+    "native_additions_2026-10-18/clef_omni/attempts.jsonl": "b5a0ac0b8e7084a23d5520234a59f39c3ed968057bacc52432a018fc45105cc7",
+    "native_additions_2026-10-18/mercury_decide/model_metadata.json": "e3e51f6c791bcd0005cb0d24a67596662678440d76c8c9af17ac3cc8da1c61d9",
+    "native_additions_2026-10-18/mercury_decide/attempts.jsonl": "83a1ec1b13b30923b0600374c6b3987aeec43b015ef643066d72a13864eab1c7",
+    "native_additions_2026-10-18/solar_flash/model_metadata.json": "ab74926be6b64f15e1218a945ee9ce8366ac8a9b7b83a99964a173b98f97935f",
+    "native_additions_2026-10-18/solar_flash/attempts.jsonl": "0d91af3e73876e2cf5352fc7b41aa7d439d0920fe7077b084ee84e786511f430",
+    "native_additions_2026-10-18/drex20/model_metadata.json": "b2ec2194ffb148bfb9f9e01c1b65c05ddc8681e5519f405767cf316e9cbc9d79",
+    "native_additions_2026-10-18/drex20/attempts.jsonl": "29d7279bba7fbed8e7750b2a91219c18ce936f4eb5c2ccc43affbe3c1d53bdab",
+    "native_additions_2026-10-18/drex15/model_metadata.json": "eff7980855374af8e78f1fcd3714bcd8bb82fd8dcdf7b5bb0d7d0c7a44a6d623",
+    "native_additions_2026-10-18/drex15/attempts.jsonl": "7200fa4fe19de5013e0a4f195d1acea79f7d8595853826f9e5ff35cb74bd9613",
+    "native_additions_2026-10-18/classify1/model_metadata.json": "cb6fe7d573413383eef29eca4f8fdc3e284aee04fb013962c4c58364927978d5",
+    "native_additions_2026-10-18/classify1/attempts.jsonl": "3e755ebf8d4e5ededb29775aa35cc3b70459c4bfee9782a16cb1c154e6553831",
+    "native_additions_2026-10-18/kev4b/model_metadata.json": "b540b37042e74abc4039cc44957fab641388feb47b8d705479bdac6a3b7ad17f",
+    "native_additions_2026-10-18/kev4b/attempts.jsonl": "9ffaf8680092d886b9911aff50b3702cedf85d7e353e0b386e150bebef4cb596",
+    "llm_additions_2026-10-18/gemma4_31b/model_metadata.json": "4b51039d17162545862a8797ef8bf1683b8126141a8ea8000d93e4c94a3725ef",
+    "llm_additions_2026-10-18/gemma4_31b/attempts.jsonl": "ddc57eb1b772d8af3e00fc5400dfcf31c61aa53e15a9355e718f3030e244dad2",
+    "llm_additions_2026-10-18/nex25_mini/model_metadata.json": "bd7cd655ba8013b1287f7cb7e85a9839c6c8a4c84c19b36362ac5d08ca3c61c5",
+    "llm_additions_2026-10-18/nex25_mini/attempts.jsonl": "032b1cae844344cfb8b5bfadeeca627f92230d4db94d980092ec1a359b2b3476",
+    "llm_additions_2026-10-18/qwen3_235b/model_metadata.json": "b05e4567984b2d973de8f050343402d4289d12927be1e6ec416b01acaead2781",
+    "llm_additions_2026-10-18/qwen3_235b/attempts.jsonl": "d7c04e6d1ffc40e6247b99b7c635292f824a6d283e67239ee37ad339a8a3ef9a",
+    "llm_additions_2026-10-18/tev1_4b_native/model_metadata.json": "08a3718d96372ee0df953c16694b43ec8c21224794cec0c0ef0ff32ab8124792",
+    "llm_additions_2026-10-18/tev1_4b_native/attempts.jsonl": "d1743a539dc9af32f2771b861395fbf42163097a25d6f15689dddd3fe1d90882"
+  },
+  "route_overrides": {
+    "glm47flash": {
+      "provider_tag": "venice/fp8",
+      "provider_name": "Venice"
+    },
+    "nemotron35supervl": {
+      "provider_tag": "together",
+      "provider_name": "Together"
+    }
+  },
+  "route_overrides_source_sha256": "60e009fb57648d5c63f30a89bba5b5aaf8f50148a5547c3bb49e118bef1dabb3",
+  "requests": [
+    {
+      "model_id": "openai/gpt-6-luna",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "5c6a99d87bf2a2cf24c9e4cf26cc8a1857c8daf8a7b1ee26e0de168db88d7910",
+      "request_body_bytes": 1255
+    },
+    {
+      "model_id": "openai/gpt-6-luna",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "451ef590a0c355eeda193f3cbdfebd67540a24b8e6f955b21786375c930a0fca",
+      "request_body_bytes": 1140
+    },
+    {
+      "model_id": "openai/gpt-5.4-nano",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "6aae9566b3b872239e480342f810ced9ffc96437d00b908e6472f9e34db801be",
+      "request_body_bytes": 1257
+    },
+    {
+      "model_id": "openai/gpt-5.4-nano",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "5193293d0cc582911b58ef3c1ba76b55cb720a9db8f644b1b81880b6219283b0",
+      "request_body_bytes": 1142
+    },
+    {
+      "model_id": "google/gemini-2.5-flash-lite",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "700a72f9c2076e256455d0eaaed9e6628587226ee3e8fca82cb58d8702fe7b97",
+      "request_body_bytes": 1260
+    },
+    {
+      "model_id": "google/gemini-2.5-flash-lite",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "9b78e4d8b5245bcacd79b4d29541dc2c13435821190b56a6d8005b7648f998f5",
+      "request_body_bytes": 1145
+    },
+    {
+      "model_id": "ibm-granite/granite-4.2-8b",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "302acbcce77839afb4439205f63e225839eaee0a8559269c1c987cbe3d06b3d2",
+      "request_body_bytes": 1272
+    },
+    {
+      "model_id": "ibm-granite/granite-4.2-8b",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "1e2bf27f54abaac6e0de8b6d40ad27f72dac63bb466dc96cc758a789011072b2",
+      "request_body_bytes": 1157
+    },
+    {
+      "model_id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "a9b4ea9e2742703dfd4835370812910b2a619ec7debc059408d08285b6675326",
+      "request_body_bytes": 1233
+    },
+    {
+      "model_id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "63857ab32391d54cc338027c9eda95d2edcba1baffa963ca8e537af5ee61bdbf",
+      "request_body_bytes": 1118
+    },
+    {
+      "model_id": "mistralai/mistral-nemo",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "1930f969a3cbc3c2abe1cdfb0166b5cc0097623684c9055d0df2454c2f9b987f",
+      "request_body_bytes": 1221
+    },
+    {
+      "model_id": "mistralai/mistral-nemo",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "421474d42fd7cbb29de99500230f9b86be6e2ad731ce171cabc6bdd4307e4e96",
+      "request_body_bytes": 1106
+    },
+    {
+      "model_id": "inception/mercury-2.5",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "6dc1e4793d7239897fe9377eea6501924fd47bbea201cbf2300e6ffe29c2c038",
+      "request_body_bytes": 1262
+    },
+    {
+      "model_id": "inception/mercury-2.5",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "d2f76903365673c89a00878a28ef99d03812823136a4d9abf10833c13f05d2b7",
+      "request_body_bytes": 1147
+    },
+    {
+      "model_id": "jev113",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "f6e4f4f44883b04bd8e06b9ef96dbb97b25d25ca9366f70c8f89d6c5a7e5c769",
+      "request_body_bytes": 1125
+    },
+    {
+      "model_id": "jev113",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "c18bf809268068b8a8d18fad5972902d506c23d14f66990511dba293cdc58c5b",
+      "request_body_bytes": 1010
+    },
+    {
+      "model_id": "jev114",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "5373eb649fe8c0102996e5b37adf771eae5799f6a5510bebe6a07b85e66dae1a",
+      "request_body_bytes": 1125
+    },
+    {
+      "model_id": "jev114",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "27795c1429ddf8e4cb6e7111b0d6f67ff7aafe642d66b6e2e0c7604ebb77953d",
+      "request_body_bytes": 1010
+    },
+    {
+      "model_id": "luna_decisions",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "c143b5188c66a99bb96fb69e98cdb076c3f731633aeeb6937db2c5716289a0ba",
+      "request_body_bytes": 1133
+    },
+    {
+      "model_id": "luna_decisions",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "845ccdbee45a6f4b67f6aaeddcfe16f3516d0c8cc1c10d266dfa00c6c1ca5e45",
+      "request_body_bytes": 1018
+    },
+    {
+      "model_id": "microsoft_decision",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "f8868c7af31d35ce06fec71d275fb4d84af69641a350748bc2bad577d2bb4838",
+      "request_body_bytes": 1135
+    },
+    {
+      "model_id": "microsoft_decision",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "6966d94b5654e3dd3610eb373fb9ad9285dd518812c3b766892168ad7af6d508",
+      "request_body_bytes": 1020
+    },
+    {
+      "model_id": "nimble_v4",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "31d63713d30446d43e62dc3a1ad31ec4a557a36e4a645d2e77def05110cb1c74",
+      "request_body_bytes": 1034
+    },
+    {
+      "model_id": "nimble_v4",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "e7ae2f44557cab80652a4d1c2abb69eecbfe08e406b2e8506bec9a93ea8a4511",
+      "request_body_bytes": 919
+    },
+    {
+      "model_id": "nimble_v4_max",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "8433bbcf8a25f4b75ad25a6d5e17d22c4e14c9c48e912e701084150cb8501e10",
+      "request_body_bytes": 1038
+    },
+    {
+      "model_id": "nimble_v4_max",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "675ce30e890eb7480994872ac67026868677a407af9fda3c5de20dd89f33f7f8",
+      "request_body_bytes": 923
+    },
+    {
+      "model_id": "nemotron35lightning",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "1190473349419ca28a3c7aae91b17019293029ca51f8bea85321b52160c320ed",
+      "request_body_bytes": 1259
+    },
+    {
+      "model_id": "nemotron35lightning",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "cd59b2a5156b8888482794b4065e893c0ea249daacf8ce5c3aaad0e662a488b7",
+      "request_body_bytes": 1144
+    },
+    {
+      "model_id": "glm47flash",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "3d7dc1e765f9b7c10de820d046e7a31aa291d1923e8d4a6b09f14a4d076a0d89",
+      "request_body_bytes": 1244
+    },
+    {
+      "model_id": "glm47flash",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "2afee88abb00735cbc27f93805231e6986d5a6afac9da43196458f8d0ec406e8",
+      "request_body_bytes": 1129
+    },
+    {
+      "model_id": "mimo26flash",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "7fbcc3800a120ba1c5c795a67254a1842f68e1c57143dc8920a29541621b0f02",
+      "request_body_bytes": 1248
+    },
+    {
+      "model_id": "mimo26flash",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "dca68c2f9561a192b2dde08fec5ac435765dc7b5d9f5d27bcaf2fdd0f8a5d92b",
+      "request_body_bytes": 1133
+    },
+    {
+      "model_id": "qwen38flash",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "3d3624e08e6a6336c0241c3f13aba542aca01c2f5e6464734fb9841f951590b5",
+      "request_body_bytes": 1251
+    },
+    {
+      "model_id": "qwen38flash",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "27f5febebb4beb6505c55b5436a6280364d5ba140b20387a7415ce73aa35a03c",
+      "request_body_bytes": 1136
+    },
+    {
+      "model_id": "tencenthy3",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "81cc1235a069c7ed37334206ccc23912716acbfe640dcd21bce59528ccbd8506",
+      "request_body_bytes": 1238
+    },
+    {
+      "model_id": "tencenthy3",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "27a917de5fda2e407a8afcdd53446af283dc85b4cb137b906cc93e6a9193ab51",
+      "request_body_bytes": 1123
+    },
+    {
+      "model_id": "nemotron35supervl",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "14bb7ade302768058a51b1095f5e9c62870799f51627e46354389ec7c3d6be30",
+      "request_body_bytes": 1252
+    },
+    {
+      "model_id": "nemotron35supervl",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "64ce4813c6cf732860ffe669e5ee7de4f1faca0c3efd9d7323c15aef917eee46",
+      "request_body_bytes": 1137
+    },
+    {
+      "model_id": "liquid_ultra",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "1b852b7d81ba45aa92dbb7adfd51de18ae7ab0a6864447c48f3032bce7b0b7c4",
+      "request_body_bytes": 1121
+    },
+    {
+      "model_id": "liquid_ultra",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "147faf64a627b08dad135e0c070730c0f2d7f6fb15fabb9636c549e2a3ea0dae",
+      "request_body_bytes": 1006
+    },
+    {
+      "model_id": "liquid_d1",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "3abd1037c260ed0a0b72c233ff658d5cfb6679a12d16893b78cb7372b7e0f959",
+      "request_body_bytes": 1115
+    },
+    {
+      "model_id": "liquid_d1",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "c89270935b6393a6ffc37ddee08b1d513a1c82ad0ab6551abff1d1cacea6d2fc",
+      "request_body_bytes": 1000
+    },
+    {
+      "model_id": "pplx_decider12",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "151d0b595a3a2ce61ecf7dd24be87f491edf41570838cccc84b437f51de22586",
+      "request_body_bytes": 1138
+    },
+    {
+      "model_id": "pplx_decider12",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "97bb054fb59361a16ee38821080005fd2c1c89dc6d5f908d626f2f8f7fe7f006",
+      "request_body_bytes": 1023
+    },
+    {
+      "model_id": "pplx_flash12",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "2bf4836646b6856fa9d39faa10fb9bf18b7cc9ce3805c79997b11e8aafafe85a",
+      "request_body_bytes": 1144
+    },
+    {
+      "model_id": "pplx_flash12",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "3ae7e80a79fdcdc817d34aab8c3b65e14a191547a42df0fbf7e79cefff79df86",
+      "request_body_bytes": 1029
+    },
+    {
+      "model_id": "respan02",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "43a15dba9c520ce2b7571c7527655c96b982a10d3090e52f8152906905a73506",
+      "request_body_bytes": 1120
+    },
+    {
+      "model_id": "respan02",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "f632df8a0c41691f780995dd908fc7457f8732e600428476ebb152885dd2645f",
+      "request_body_bytes": 1005
+    },
+    {
+      "model_id": "clef",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "09e6bd4b01c51ce4eb622ee9830e1177ed8edf269b2f13530ee86d5a42b3d1a5",
+      "request_body_bytes": 1129
+    },
+    {
+      "model_id": "clef",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "c7694bdfd07fa89632670972f3ef25025cb36989edc283f7bfcb3d60012bf21b",
+      "request_body_bytes": 1014
+    },
+    {
+      "model_id": "clef_flash",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "29bbdadc464fabd5073b474c7b5cfb926071c1cff89c85b3c2327a20c1666a08",
+      "request_body_bytes": 1135
+    },
+    {
+      "model_id": "clef_flash",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "f0beeddedffdd8356f3147be0e3608a831511b024d03f7bd8216ebaedcdcbfa3",
+      "request_body_bytes": 1020
+    },
+    {
+      "model_id": "clef_omni",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "db1195878dd20a7ba6eaa63a3c9ce40db2fac775ca272a1c84d820c80751fe91",
+      "request_body_bytes": 1130
+    },
+    {
+      "model_id": "clef_omni",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "f8fe1be3e6379f499924aa88e0c6ef4c86cf3aabbd1894e74b828beec23b86d0",
+      "request_body_bytes": 1015
+    },
+    {
+      "model_id": "mercury_decide",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "a98edd8bd96523c49e3c6205d33a162c652d6bde55771570062b802385f6b138",
+      "request_body_bytes": 1133
+    },
+    {
+      "model_id": "mercury_decide",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "b5a66aced2e4125ef74bffb83469e4fe2493dc76814888133813a81bd5308e69",
+      "request_body_bytes": 1018
+    },
+    {
+      "model_id": "solar_flash",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "96d0b48038b1172d8687b79139a63860b2ba11350de8fe2ac1da885ff805d055",
+      "request_body_bytes": 1133
+    },
+    {
+      "model_id": "solar_flash",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "d0b0910e4a91292c253bea7b723cb5c8079ce27450a718a34b56eba756abee8c",
+      "request_body_bytes": 1018
+    },
+    {
+      "model_id": "drex20",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "4b1be95b71e79617dda68c8846f7d1d4b211916c0ffdb45ba830ba175c8676f7",
+      "request_body_bytes": 1129
+    },
+    {
+      "model_id": "drex20",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "9ad47c874a45aec6811c1cc2a141d9d7e7c0b5e79330a21f1e275bfff4ad55f2",
+      "request_body_bytes": 1014
+    },
+    {
+      "model_id": "drex15",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "b9a42d7ede839a8de30d7d34b7b299c16b3bfe849b9290c9b0c6d5e7c3b009c8",
+      "request_body_bytes": 1129
+    },
+    {
+      "model_id": "drex15",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "55fd48496ef7d150523ef152f6de7e033521ade2e645b3d938c13667037786c4",
+      "request_body_bytes": 1014
+    },
+    {
+      "model_id": "classify1",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "f49d3b17ca4f08b4e083688d12547167331e100384e2f0f4a5bf40852d4c7b11",
+      "request_body_bytes": 1129
+    },
+    {
+      "model_id": "classify1",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "cd0fd662ca46a8b89d5713366152c21d65918ce661f26fe992aba117180e5213",
+      "request_body_bytes": 1014
+    },
+    {
+      "model_id": "kev4b",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "c384bdb1703902543f7f53d4cfe25197510787f2c4ab94de1f9959bf376adf0c",
+      "request_body_bytes": 1123
+    },
+    {
+      "model_id": "kev4b",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "645414badb1b7a1dda6697fc21f4886355aa8ee5c864cabae562be81fcde925c",
+      "request_body_bytes": 1008
+    },
+    {
+      "model_id": "gemma4_31b",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "a279caa173b17c553802995f793fb9a6415bca410669f2a959dda2a656409f2f",
+      "request_body_bytes": 1248
+    },
+    {
+      "model_id": "gemma4_31b",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "3eca212293442442d9cb425a9ada0a18a898aec8ac2f25e3226f570c9490a00b",
+      "request_body_bytes": 1133
+    },
+    {
+      "model_id": "nex25_mini",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "c90456b3d33be43c943eab5ce64dae0ee64f392ff3e67a69094a5162fe214cdc",
+      "request_body_bytes": 1249
+    },
+    {
+      "model_id": "nex25_mini",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "c9c018f50447b6a6b069094a010755105cbeb546729bf850c9cca363868fb695",
+      "request_body_bytes": 1134
+    },
+    {
+      "model_id": "qwen3_235b",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "9357ec30359274273fafd13c43047fb566af933589608eed464f7cbaa6e69064",
+      "request_body_bytes": 1224
+    },
+    {
+      "model_id": "qwen3_235b",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "e6005d2e38b3dabdbdd07a0c5cb6d621d39e35a440050e54f23237d9d878d0c5",
+      "request_body_bytes": 1109
+    },
+    {
+      "model_id": "tev1_4b_native",
+      "request_index": 1,
+      "item_id": "J001641-R1-cb2bba8d367c",
+      "prompt_sha256": "cb2bba8d367c75a08c8402b9b87b7a04a02d26ecc4194eb519f51c66ba38f5e5",
+      "request_payload_sha256": "02068b74c2e3ae98fcc50ae7119f78bda556a49967fe3b18c7eff70edfdd9175",
+      "request_body_bytes": 1145
+    },
+    {
+      "model_id": "tev1_4b_native",
+      "request_index": 2,
+      "item_id": "J001610-R1-f23f98b3cb80",
+      "prompt_sha256": "f23f98b3cb80699c13194475db489b052f3db56f6ede7d90f84560414c38178b",
+      "request_payload_sha256": "f1aa640e95e8f5f83f14d26a3c36b98a901e41630e2894ea9661c4d2020eb724",
+      "request_body_bytes": 1030
+    }
+  ],
+  "primary": "First attempts only; recoveries remain separate",
+  "retry": "At most one recovery for transport failure or actual HTTP408/429/5xx; never format, wrong valid answers, or HTTP200 error envelopes",
+  "timing": "Unmodified added_decisions.send, fresh HTTPS, connect through complete body, 90sec deadline",
+  "concurrency": {
+    "maximum_per_model": 2,
+    "items_per_wave": 2
+  },
+  "metadata_maximum_age_seconds": 86400,
+  "no_gold_read": true,
+  "old_evidence_unchanged": true
+}

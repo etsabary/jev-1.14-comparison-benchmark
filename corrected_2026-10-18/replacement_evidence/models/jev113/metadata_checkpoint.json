@@ -1,0 +1,19 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints",
+  "selected_endpoint": {
+    "name": "TypeSafe | typesafe/jev-1.13-20260917",
+    "provider_name": "TypeSafe",
+    "tag": "typesafe",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.000000042",
+      "completion": "0"
+    },
+    "supported_parameters": [],
+    "max_completion_tokens": 235929
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

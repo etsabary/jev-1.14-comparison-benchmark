@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "nemotron35supervl",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "da510bd19f94951d8005b9ea7b511d44eb155cff6a96017331dc953d662d33b9",
+    "dispatches.jsonl": "44f68f3c44927ab425f98dd6965545fd2c2c23ec64c04aed21710fda741a1c79",
+    "results.jsonl": "2a583559d3e7b7b935ca683239e30abfc3c38a5e03c6ba5d2b75229315e14ed0",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "19ef7fbf9f97387591837a7fcb828fabae4026b6632df19d2543a6246f0853db"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

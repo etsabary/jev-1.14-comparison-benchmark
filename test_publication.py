@@ -81,7 +81,9 @@ class Publication(unittest.TestCase):
         for m,d in s['models'].items():
             q=d['latency_first_all']
             self.assertEqual(q['n'],1136)
-        text=(ROOT/'README.md').read_text()
+        # This regression describes the captured October15/16 measurements.
+        # The corrected release separately checks all pooled1134+2 latencies.
+        text=(ROOT/'publication_archive_2026-10-16/README.md.snapshot').read_text()
         self.assertNotIn('{{',text)
         self.assertNotIn('historical',text.lower())
         current=json.loads((ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
@@ -89,7 +91,7 @@ class Publication(unittest.TestCase):
             if m not in current['publication']['eligible_model_ids']:continue
             self.assertIn(f"{d['latency_first_all']['median_ms']:.0f} ms",text)
         self.assertIn('System 1-style',text)
-        self.assertIn('327 first responses',(ROOT/'OUTPUT_COMPLIANCE.md').read_text())
+        self.assertIn('327 first responses',(ROOT/'publication_archive_2026-10-16/OUTPUT_COMPLIANCE.md.snapshot').read_text())
 
     def test_output_exclusions_applied_to_every_current_table(self):
         s=json.loads((ROOT/'overall_expanded_2026-10-16/summary.json').read_text())

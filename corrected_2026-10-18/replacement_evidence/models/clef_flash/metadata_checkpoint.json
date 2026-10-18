@@ -1,0 +1,19 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/cloudflare/clef-flash/endpoints",
+  "selected_endpoint": {
+    "name": "PrimeIntellect | cloudflare/clef-flash",
+    "provider_name": "PrimeIntellect",
+    "tag": "primeintellect",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.000000021",
+      "completion": "0"
+    },
+    "supported_parameters": [],
+    "max_completion_tokens": 14745
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

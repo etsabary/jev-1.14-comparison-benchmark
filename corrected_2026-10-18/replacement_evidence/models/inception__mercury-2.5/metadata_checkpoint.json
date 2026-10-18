@@ -1,0 +1,31 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/inception/mercury-2.5/endpoints",
+  "selected_endpoint": {
+    "name": "Inception | inception/mercury-2.5-20260908",
+    "provider_name": "Inception",
+    "tag": "inception",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000004",
+      "completion": "0.00000015",
+      "input_cache_read": "0.000000004"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "stop",
+      "temperature",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "structured_outputs",
+      "reasoning_effort"
+    ],
+    "max_completion_tokens": 65536
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

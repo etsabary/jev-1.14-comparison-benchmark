@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "clef",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "9d2a647298bc9c771a102ac8e370e428628579e9726f51f0b5818166d45261f9",
+    "dispatches.jsonl": "1320519022634b90aa3e32d14882fee4b2b2320e62920f703f6dc3eaa562c069",
+    "results.jsonl": "ab2da4b499082eff64b34b2b770cb6f7f76c5a667f86d74c5d0598b2f97fba4c",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "07364a02d77323b8d44c0fb9c508d73ff1c833d44b067012af70f86b52e2e783"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

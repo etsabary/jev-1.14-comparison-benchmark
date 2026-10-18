@@ -1,0 +1,34 @@
+{
+  "status": "AVAILABLE",
+  "retrieved_utc": "2026-10-18T17:47:05.350354+00:00",
+  "source_url": "https://openrouter.ai/api/v1/models/z-ai/glm-4.7-flash/endpoints",
+  "selected_endpoint": {
+    "name": "Venice | z-ai/glm-4.7-flash-20260119",
+    "provider_name": "Venice",
+    "tag": "venice/fp8",
+    "status": 0,
+    "service_tier": null,
+    "pricing": {
+      "prompt": "0.00000006",
+      "completion": "0.0000004",
+      "input_cache_read": "0.00000001"
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "stop",
+      "frequency_penalty",
+      "presence_penalty",
+      "top_k",
+      "response_format",
+      "structured_outputs",
+      "tools",
+      "tool_choice"
+    ],
+    "max_completion_tokens": 16384
+  },
+  "source_capture_sha256": "49fcd8597fa51003f935ac7455461b77ff8591c27bbaf0fe69a0c809fb8a1f3a"
+}

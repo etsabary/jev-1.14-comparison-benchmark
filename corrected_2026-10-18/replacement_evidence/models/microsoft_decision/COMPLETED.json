@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "microsoft_decision",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "c730e69b73d009506a95839bc26b09bdf4c1e8b1aadcbd30e01980fb0e688e9b",
+    "dispatches.jsonl": "c29c58a1eaf7628272a3ea2b5a292ec2578b93bc1c856250f53eda7b730b22e2",
+    "results.jsonl": "f56fe0f306bf586512a8e85f31761ace0112a12282a140de05769ec22987b630",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "e2585a2c0cb7e0891d4e9c7fca00c3280e7090ef97a1da201f8dec5b3c2858a6"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

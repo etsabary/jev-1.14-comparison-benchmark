@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "respan02",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "ee6e84116744dbadfd7530ec5a0e9b75f0eb203b99d988f5119072f12cdfcb4d",
+    "dispatches.jsonl": "bae93765629a6bdeefdad424a6febdb744e9ce46e823bcc2ca06ba6d4e8ef4b5",
+    "results.jsonl": "f0eb6d750a24efa885354a87eee5c7c500763987396471b1e6a89eeeeff11773",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "fc7ef47c6334dd4fce9a6ce75bbd532ec2a8dc79a001a6c423b4cd5b00f14150"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

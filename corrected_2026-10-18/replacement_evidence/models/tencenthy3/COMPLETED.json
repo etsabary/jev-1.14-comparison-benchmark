@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "tencenthy3",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "7941d302ca8c9085921bb1a6680b8f7998875b961463b5e0d5736cacba0ad517",
+    "dispatches.jsonl": "cdbc7bb128de16fb0cabc84df219189ced8c74b3b2dd9a9c3820cba4c8b413ab",
+    "results.jsonl": "bc396cdfb4c79e0cc6d55eed47e27e608b67e477e354d5bbcf8a5ccad39fb66e",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "666e4c002aa983cd5e9cdd097cd549b2ab6719cf750555c75e0e3a9361427c46"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

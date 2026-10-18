@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "google/gemini-2.5-flash-lite",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "487140c1edbba0d59a729f816c29f4d7d76f8ff7fe981964553bc11cea5e0ebd",
+    "dispatches.jsonl": "1072c69d201a9b58f3985891fe555ef9b36e488a7673be9d9161fc958b2a3ee5",
+    "results.jsonl": "dd7a89c2507a226353e02bbb379f1ba3a3bf432bb6b8324ea60a31cbf859b4cf",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "3d4d057bd219713594618a7d77b1f642f226b14a829178d0c96910b8270cbb5c"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

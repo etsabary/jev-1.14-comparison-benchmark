@@ -28,7 +28,18 @@ def hashes():
     paths.discard(DEST)
     assert all(path.exists() for path in paths)
     assert all('runs' not in p.relative_to(ROOT).parts and 'hardening_2026-10-18' not in p.relative_to(ROOT).parts for p in paths)
-    return {str(path.relative_to(ROOT)): sha256(path.read_bytes()).hexdigest() for path in sorted(paths)}
+    # Publication bytes changed only after the two-item correction. Resolve
+    # those logical paths to their exact archived blobs, not a replacement seal.
+    archive = ROOT / 'publication_archive_2026-10-18'
+    manifest = json.loads((archive / 'manifest.json').read_text())['files'] if archive.exists() else {}
+    result = {}
+    for path in sorted(paths):
+        name = str(path.relative_to(ROOT))
+        selected = archive / manifest[name]['archive_path'] if name in manifest else path
+        result[name] = sha256(selected.read_bytes()).hexdigest()
+        if name in manifest:
+            assert result[name] == manifest[name]['sha256']
+    return result
 
 
 if __name__ == '__main__':

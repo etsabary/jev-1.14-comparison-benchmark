@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "inception/mercury-2.5",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "b359ad08083a541a666b79976ffed36ad40dbb1f0de5e2e85c9ad4fcbbebcc5b",
+    "dispatches.jsonl": "3447716a7c09f24b2ffb9a28c7805168db272ffef45bd85f6d9fc510362cbcb9",
+    "results.jsonl": "ca4ab3b222cefb6c5181f973c73e0cf0ee72681c27524e180de42a0e0b5a9bc6",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "efe113bb2cfddf1dbbcedf44904f30605a3ac6f058418817e5e6c1b0e0db8e8d"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

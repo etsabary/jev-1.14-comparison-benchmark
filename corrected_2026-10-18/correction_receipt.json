@@ -1,0 +1,75 @@
+{
+  "date_toronto": "2026-10-18",
+  "status": "COMPLETE_CORRECTED_ACTIVE_BANK",
+  "active_models": 36,
+  "questions_each": 1136,
+  "core_questions_each": 640,
+  "retained_original_primary_cases": 40824,
+  "fresh_primary_cases": 72,
+  "fresh_recoveries": 0,
+  "repair_scope": "Two dependent procedure variants changed only ambiguous final-state wording; all facts, operations, options and intended keys retained. New prompt IDs/hashes identify the replacements. Original prompts and results are excluded from active scores/timing/cost.",
+  "audit": {
+    "selected_difficult_items": 182,
+    "selection": "At most30% of37 previously ranked configurations correct",
+    "two_independent_verifiers_support_original_answer": 181,
+    "wording_ambiguities_in_selected_set": 1,
+    "additional_matching_wording_defects_found_by_full_bank_search": 1,
+    "blind_verification_pool": [
+      "Opus5.5 through Claude Code bridge",
+      "Argon through Antigravity bridge",
+      "GPT6.1 Sol xhigh through Codex bridge"
+    ],
+    "replacement_verification": "Both corrected questions freshly solved independently by Opus and Argon, plus exact step-by-step simulation",
+    "scope_limit": "Targeted difficult-item audit, not independent external verification of all1136 items"
+  },
+  "deltas_histogram": {
+    "1": 4,
+    "0": 25,
+    "-1": 7
+  },
+  "retired_original_attempts_overhead": {
+    "scope": "Retired two-item original attempts for previous37 ranked models, including unavailable old Nimble v4; not in active score, latency or cost",
+    "attempts": 74,
+    "accounted_cost": {
+      "known_usd": 0.001357365,
+      "exact_usd": "0.0013573650",
+      "reported_attempts": 74,
+      "missing_attempts": 0
+    },
+    "reported_api_cost": {
+      "known_usd": 0.001284695,
+      "exact_usd": "0.0012846950",
+      "reported_attempts": 70,
+      "missing_attempts": 4
+    }
+  },
+  "unavailable_original_model": {
+    "status": "ORIGINAL_MODEL_UNAVAILABLE",
+    "label": "Nimble v4",
+    "reason": "Original Nimble v4 is known to redirect to Max; do not fill the old v4 row with Max responses",
+    "main_ranking_included": false,
+    "full_bank_extrapolation": false,
+    "planned": 1136,
+    "retained_unchanged_cases": 1134,
+    "missing_replacement_cases": 2,
+    "primary_on_retained_only": {
+      "attempted": 1134,
+      "answered": 1134,
+      "correct": 902,
+      "wrong": 232,
+      "unanswered": 0,
+      "accuracy_attempted": 0.7954144620811288,
+      "accuracy_answered": 0.7954144620811288,
+      "probability_warnings": 0
+    },
+    "cost_recorded_retained_attempts": {
+      "known_usd": 0.01493752,
+      "exact_usd": "0.01493752",
+      "reported_attempts": 1134,
+      "missing_attempts": 0
+    }
+  },
+  "key_policy": "External frozen answer key used offline only; no key or item-level correctness published",
+  "input_export_checksums_sha256": "5dc4b22dde8abb6884b9864215e1acca03cfe0bcb186ba9daa12339cbbe48cde",
+  "corrected_question_bank_sha256": "fbe6f2b49ad7c99416fb45dc05b8b9db37a3850017d7bfef81644d09afe9bcd4"
+}

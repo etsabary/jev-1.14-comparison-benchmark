@@ -1,0 +1,10 @@
+{
+  "glm47flash": {
+    "provider_tag": "venice/fp8",
+    "provider_name": "Venice"
+  },
+  "nemotron35supervl": {
+    "provider_tag": "together",
+    "provider_name": "Together"
+  }
+}

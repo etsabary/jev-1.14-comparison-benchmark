@@ -1,3 +1,9 @@
+# Scope of the current diagnostics
+
+The [active corrected-bank comparison](README.md) includes 36 complete configurations. The three excluded full-run diagnostics below describe the earlier uncorrected bank and were not retested. Stopped samples and interface probes retain their original denominators. They are outside the active ranking.
+
+Original Nimble v4 has 902 correct answers on its 1,134 retained unchanged questions. The original checkpoint is unavailable: its alias now redirects to Max. The two corrected questions remain untested for original v4. It is a partial diagnostic, not a 1,136-question score, and Max responses were not substituted.
+
 # Output compliance diagnostics
 
 Haiku 5.5, DeepSeek V4.1 Flash and Phi-4 had substantial difficulty returning only a numeric decision within the 16-token output limit. Their saved runs remain public, but they are excluded from the [main benchmark](README.md), function tables and comparative charts.

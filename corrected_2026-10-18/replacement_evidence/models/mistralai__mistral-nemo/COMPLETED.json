@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "mistralai/mistral-nemo",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "82e649b07b124a04ebfcdc7a75ca314e06d683e2115b30fcf1d03f5bed2e8acd",
+    "dispatches.jsonl": "b00b0d0461c2d7e1c9eedb19b03e62d77454055a78cb4974a4fb8f0667bd97b8",
+    "results.jsonl": "6677414eb0c7dc32a376d30bdbe716a0a53d48abefd32a23e255ca8119130f42",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "f56df076e0372b13a164f34518762ee61a58c4719d24561eb8999f82cd325ee3"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

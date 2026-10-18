@@ -14,4 +14,5 @@ jobs:
       - run: python3 native_expansion_analysis.py
       - run: python3 llm_expansion_analysis_2026_10_18.py
       - run: python3 freeze_october18_release.py --check
+      - run: python3 validate_corrected_release.py
       - run: python3 -m unittest discover -p 'test_*.py'

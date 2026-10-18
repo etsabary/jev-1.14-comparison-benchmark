@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "nimble_v4_max",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "fae087adda64c2ff50218cd69c360b962dbbd434e17041d22c98da08f55eb805",
+    "dispatches.jsonl": "a09e8ede2b871a922c2fefdbd08d4e3cb4152abf516403e897fad1f6fd0ea2a2",
+    "results.jsonl": "96676b2571532f42fe9ed77cadd003cb4cbc293239ba3589e7db229aa1034c9c",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "7187889a3e1afdd87b1c7149801c6e9fde14dde8a0a90def6246c166382d96aa"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}

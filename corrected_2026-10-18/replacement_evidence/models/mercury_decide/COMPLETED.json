@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE_TWO_CASES",
+  "model_id": "mercury_decide",
+  "cases": 2,
+  "files_sha256": {
+    "attempts.jsonl": "3f3131508b4ed9c3771845b94d7f066727987d89d3c134b7831178904dbf3432",
+    "dispatches.jsonl": "e3c6374227d450bb9b3bb89718bc02139c993c8afeac403090fd99246983845a",
+    "results.jsonl": "9a49e1ed1d01a251ad6b97edfb9964e63cf441a79033aa10cdc7be517f7247c9",
+    "retry_waits.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "metadata_checkpoint.json": "5a345dcf98a77db48cc7edb23e3e518281bea78452dce1bc37a6c599426af893"
+  },
+  "no_gold_read": true,
+  "automatic_replay_permitted": false,
+  "first_attempts_are_primary": true
+}
