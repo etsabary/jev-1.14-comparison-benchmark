@@ -1,0 +1,621 @@
+family_id,function,questions,model,correct,usable,failed,accuracy
+F01,Lookup and filtering,43,Respan Span-02,39,43,0,0.9069767441860465
+F01,Lookup and filtering,43,Perplexity Decider v1.2,40,43,0,0.9302325581395349
+F01,Lookup and filtering,43,Nimble v4 Max,41,43,0,0.9534883720930233
+F01,Lookup and filtering,43,Liquid d1-ultra,41,43,0,0.9534883720930233
+F01,Lookup and filtering,43,Jev 1.14,39,43,0,0.9069767441860465
+F01,Lookup and filtering,43,Jev 1.13,41,43,0,0.9534883720930233
+F01,Lookup and filtering,43,Mercury Decide,38,43,0,0.8837209302325582
+F01,Lookup and filtering,43,Liquid d1,40,43,0,0.9302325581395349
+F01,Lookup and filtering,43,Cloudflare Clef,40,43,0,0.9302325581395349
+F01,Lookup and filtering,43,Perplexity Decider Flash v1.2,36,40,3,0.8372093023255814
+F01,Lookup and filtering,43,Microsoft-Decision-1,38,43,0,0.8837209302325582
+F01,Lookup and filtering,43,Drex v2.0,39,43,0,0.9069767441860465
+F01,Lookup and filtering,43,Cloudflare Clef Flash,38,43,0,0.8837209302325582
+F01,Lookup and filtering,43,Cloudflare Clef Omni,40,43,0,0.9302325581395349
+F01,Lookup and filtering,43,Drex v1.5,38,43,0,0.8837209302325582
+F01,Lookup and filtering,43,Kev 4B,39,43,0,0.9069767441860465
+F01,Lookup and filtering,43,Luna 6 Decisions,39,42,1,0.9069767441860465
+F01,Lookup and filtering,43,Tev1 4B experimental (OpenRouter native adapter),38,43,0,0.8837209302325582
+F01,Lookup and filtering,43,ScaleDown Classify-1,31,43,0,0.7209302325581395
+F01,Lookup and filtering,43,Solar Decide Flash,27,43,0,0.627906976744186
+F02,Forward conditionals,46,Respan Span-02,32,46,0,0.6956521739130435
+F02,Forward conditionals,46,Perplexity Decider v1.2,45,46,0,0.9782608695652174
+F02,Forward conditionals,46,Nimble v4 Max,45,46,0,0.9782608695652174
+F02,Forward conditionals,46,Liquid d1-ultra,44,46,0,0.9565217391304348
+F02,Forward conditionals,46,Jev 1.14,46,46,0,1.0
+F02,Forward conditionals,46,Jev 1.13,45,46,0,0.9782608695652174
+F02,Forward conditionals,46,Mercury Decide,43,46,0,0.9347826086956522
+F02,Forward conditionals,46,Liquid d1,41,46,0,0.8913043478260869
+F02,Forward conditionals,46,Cloudflare Clef,39,46,0,0.8478260869565217
+F02,Forward conditionals,46,Perplexity Decider Flash v1.2,43,46,0,0.9347826086956522
+F02,Forward conditionals,46,Microsoft-Decision-1,38,46,0,0.8260869565217391
+F02,Forward conditionals,46,Drex v2.0,33,43,3,0.717391304347826
+F02,Forward conditionals,46,Cloudflare Clef Flash,34,46,0,0.7391304347826086
+F02,Forward conditionals,46,Cloudflare Clef Omni,26,46,0,0.5652173913043478
+F02,Forward conditionals,46,Drex v1.5,26,46,0,0.5652173913043478
+F02,Forward conditionals,46,Kev 4B,36,46,0,0.782608695652174
+F02,Forward conditionals,46,Luna 6 Decisions,27,42,4,0.5869565217391305
+F02,Forward conditionals,46,Tev1 4B experimental (OpenRouter native adapter),25,46,0,0.5434782608695652
+F02,Forward conditionals,46,ScaleDown Classify-1,18,46,0,0.391304347826087
+F02,Forward conditionals,46,Solar Decide Flash,22,46,0,0.4782608695652174
+F03,Necessary conditions,52,Respan Span-02,44,52,0,0.8461538461538461
+F03,Necessary conditions,52,Perplexity Decider v1.2,50,52,0,0.9615384615384616
+F03,Necessary conditions,52,Nimble v4 Max,49,52,0,0.9423076923076923
+F03,Necessary conditions,52,Liquid d1-ultra,50,52,0,0.9615384615384616
+F03,Necessary conditions,52,Jev 1.14,48,52,0,0.9230769230769231
+F03,Necessary conditions,52,Jev 1.13,49,52,0,0.9423076923076923
+F03,Necessary conditions,52,Mercury Decide,28,52,0,0.5384615384615384
+F03,Necessary conditions,52,Liquid d1,35,52,0,0.6730769230769231
+F03,Necessary conditions,52,Cloudflare Clef,39,52,0,0.75
+F03,Necessary conditions,52,Perplexity Decider Flash v1.2,41,51,1,0.7884615384615384
+F03,Necessary conditions,52,Microsoft-Decision-1,25,52,0,0.4807692307692308
+F03,Necessary conditions,52,Drex v2.0,27,50,2,0.5192307692307693
+F03,Necessary conditions,52,Cloudflare Clef Flash,35,52,0,0.6730769230769231
+F03,Necessary conditions,52,Cloudflare Clef Omni,41,52,0,0.7884615384615384
+F03,Necessary conditions,52,Drex v1.5,26,52,0,0.5
+F03,Necessary conditions,52,Kev 4B,33,52,0,0.6346153846153846
+F03,Necessary conditions,52,Luna 6 Decisions,15,52,0,0.28846153846153844
+F03,Necessary conditions,52,Tev1 4B experimental (OpenRouter native adapter),29,52,0,0.5576923076923077
+F03,Necessary conditions,52,ScaleDown Classify-1,13,52,0,0.25
+F03,Necessary conditions,52,Solar Decide Flash,15,52,0,0.28846153846153844
+F04,Boolean scope,54,Respan Span-02,50,54,0,0.9259259259259259
+F04,Boolean scope,54,Perplexity Decider v1.2,48,54,0,0.8888888888888888
+F04,Boolean scope,54,Nimble v4 Max,50,54,0,0.9259259259259259
+F04,Boolean scope,54,Liquid d1-ultra,51,54,0,0.9444444444444444
+F04,Boolean scope,54,Jev 1.14,49,54,0,0.9074074074074074
+F04,Boolean scope,54,Jev 1.13,51,54,0,0.9444444444444444
+F04,Boolean scope,54,Mercury Decide,49,54,0,0.9074074074074074
+F04,Boolean scope,54,Liquid d1,50,54,0,0.9259259259259259
+F04,Boolean scope,54,Cloudflare Clef,46,54,0,0.8518518518518519
+F04,Boolean scope,54,Perplexity Decider Flash v1.2,38,51,3,0.7037037037037037
+F04,Boolean scope,54,Microsoft-Decision-1,37,54,0,0.6851851851851852
+F04,Boolean scope,54,Drex v2.0,44,52,2,0.8148148148148148
+F04,Boolean scope,54,Cloudflare Clef Flash,37,54,0,0.6851851851851852
+F04,Boolean scope,54,Cloudflare Clef Omni,41,54,0,0.7592592592592593
+F04,Boolean scope,54,Drex v1.5,36,54,0,0.6666666666666666
+F04,Boolean scope,54,Kev 4B,34,54,0,0.6296296296296297
+F04,Boolean scope,54,Luna 6 Decisions,34,53,1,0.6296296296296297
+F04,Boolean scope,54,Tev1 4B experimental (OpenRouter native adapter),33,54,0,0.6111111111111112
+F04,Boolean scope,54,ScaleDown Classify-1,17,54,0,0.3148148148148148
+F04,Boolean scope,54,Solar Decide Flash,14,54,0,0.25925925925925924
+F05,Quantifiers and sets,49,Respan Span-02,43,49,0,0.8775510204081632
+F05,Quantifiers and sets,49,Perplexity Decider v1.2,44,49,0,0.8979591836734694
+F05,Quantifiers and sets,49,Nimble v4 Max,45,49,0,0.9183673469387755
+F05,Quantifiers and sets,49,Liquid d1-ultra,45,49,0,0.9183673469387755
+F05,Quantifiers and sets,49,Jev 1.14,46,49,0,0.9387755102040817
+F05,Quantifiers and sets,49,Jev 1.13,44,49,0,0.8979591836734694
+F05,Quantifiers and sets,49,Mercury Decide,46,49,0,0.9387755102040817
+F05,Quantifiers and sets,49,Liquid d1,42,49,0,0.8571428571428571
+F05,Quantifiers and sets,49,Cloudflare Clef,44,49,0,0.8979591836734694
+F05,Quantifiers and sets,49,Perplexity Decider Flash v1.2,38,45,4,0.7755102040816326
+F05,Quantifiers and sets,49,Microsoft-Decision-1,41,49,0,0.8367346938775511
+F05,Quantifiers and sets,49,Drex v2.0,43,48,1,0.8775510204081632
+F05,Quantifiers and sets,49,Cloudflare Clef Flash,42,49,0,0.8571428571428571
+F05,Quantifiers and sets,49,Cloudflare Clef Omni,41,49,0,0.8367346938775511
+F05,Quantifiers and sets,49,Drex v1.5,41,49,0,0.8367346938775511
+F05,Quantifiers and sets,49,Kev 4B,42,49,0,0.8571428571428571
+F05,Quantifiers and sets,49,Luna 6 Decisions,38,48,1,0.7755102040816326
+F05,Quantifiers and sets,49,Tev1 4B experimental (OpenRouter native adapter),37,49,0,0.7551020408163265
+F05,Quantifiers and sets,49,ScaleDown Classify-1,28,49,0,0.5714285714285714
+F05,Quantifiers and sets,49,Solar Decide Flash,36,49,0,0.7346938775510204
+F06,Comparisons,40,Respan Span-02,38,40,0,0.95
+F06,Comparisons,40,Perplexity Decider v1.2,38,40,0,0.95
+F06,Comparisons,40,Nimble v4 Max,38,40,0,0.95
+F06,Comparisons,40,Liquid d1-ultra,39,40,0,0.975
+F06,Comparisons,40,Jev 1.14,38,40,0,0.95
+F06,Comparisons,40,Jev 1.13,40,40,0,1.0
+F06,Comparisons,40,Mercury Decide,37,40,0,0.925
+F06,Comparisons,40,Liquid d1,38,40,0,0.95
+F06,Comparisons,40,Cloudflare Clef,37,40,0,0.925
+F06,Comparisons,40,Perplexity Decider Flash v1.2,37,39,1,0.925
+F06,Comparisons,40,Microsoft-Decision-1,39,40,0,0.975
+F06,Comparisons,40,Drex v2.0,37,38,2,0.925
+F06,Comparisons,40,Cloudflare Clef Flash,32,40,0,0.8
+F06,Comparisons,40,Cloudflare Clef Omni,33,40,0,0.825
+F06,Comparisons,40,Drex v1.5,37,40,0,0.925
+F06,Comparisons,40,Kev 4B,35,40,0,0.875
+F06,Comparisons,40,Luna 6 Decisions,35,39,1,0.875
+F06,Comparisons,40,Tev1 4B experimental (OpenRouter native adapter),32,40,0,0.8
+F06,Comparisons,40,ScaleDown Classify-1,34,40,0,0.85
+F06,Comparisons,40,Solar Decide Flash,34,40,0,0.85
+F07,Scheduling,76,Respan Span-02,58,76,0,0.7631578947368421
+F07,Scheduling,76,Perplexity Decider v1.2,54,76,0,0.7105263157894737
+F07,Scheduling,76,Nimble v4 Max,51,76,0,0.6710526315789473
+F07,Scheduling,76,Liquid d1-ultra,57,76,0,0.75
+F07,Scheduling,76,Jev 1.14,48,76,0,0.631578947368421
+F07,Scheduling,76,Jev 1.13,50,76,0,0.6578947368421053
+F07,Scheduling,76,Mercury Decide,50,76,0,0.6578947368421053
+F07,Scheduling,76,Liquid d1,47,76,0,0.618421052631579
+F07,Scheduling,76,Cloudflare Clef,43,76,0,0.5657894736842105
+F07,Scheduling,76,Perplexity Decider Flash v1.2,40,73,3,0.5263157894736842
+F07,Scheduling,76,Microsoft-Decision-1,41,76,0,0.5394736842105263
+F07,Scheduling,76,Drex v2.0,50,75,1,0.6578947368421053
+F07,Scheduling,76,Cloudflare Clef Flash,35,76,0,0.4605263157894737
+F07,Scheduling,76,Cloudflare Clef Omni,36,76,0,0.47368421052631576
+F07,Scheduling,76,Drex v1.5,51,76,0,0.6710526315789473
+F07,Scheduling,76,Kev 4B,37,76,0,0.4868421052631579
+F07,Scheduling,76,Luna 6 Decisions,28,73,3,0.3684210526315789
+F07,Scheduling,76,Tev1 4B experimental (OpenRouter native adapter),28,76,0,0.3684210526315789
+F07,Scheduling,76,ScaleDown Classify-1,26,76,0,0.34210526315789475
+F07,Scheduling,76,Solar Decide Flash,19,75,1,0.25
+F08,One-to-one assignments,67,Respan Span-02,63,67,0,0.9402985074626866
+F08,One-to-one assignments,67,Perplexity Decider v1.2,65,67,0,0.9701492537313433
+F08,One-to-one assignments,67,Nimble v4 Max,60,67,0,0.8955223880597015
+F08,One-to-one assignments,67,Liquid d1-ultra,55,67,0,0.8208955223880597
+F08,One-to-one assignments,67,Jev 1.14,57,67,0,0.8507462686567164
+F08,One-to-one assignments,67,Jev 1.13,54,67,0,0.8059701492537313
+F08,One-to-one assignments,67,Mercury Decide,52,67,0,0.7761194029850746
+F08,One-to-one assignments,67,Liquid d1,48,67,0,0.7164179104477612
+F08,One-to-one assignments,67,Cloudflare Clef,42,67,0,0.6268656716417911
+F08,One-to-one assignments,67,Perplexity Decider Flash v1.2,47,65,2,0.7014925373134329
+F08,One-to-one assignments,67,Microsoft-Decision-1,44,67,0,0.6567164179104478
+F08,One-to-one assignments,67,Drex v2.0,43,64,3,0.6417910447761194
+F08,One-to-one assignments,67,Cloudflare Clef Flash,48,67,0,0.7164179104477612
+F08,One-to-one assignments,67,Cloudflare Clef Omni,41,66,1,0.6119402985074627
+F08,One-to-one assignments,67,Drex v1.5,48,67,0,0.7164179104477612
+F08,One-to-one assignments,67,Kev 4B,45,67,0,0.6716417910447762
+F08,One-to-one assignments,67,Luna 6 Decisions,36,54,13,0.5373134328358209
+F08,One-to-one assignments,67,Tev1 4B experimental (OpenRouter native adapter),40,67,0,0.5970149253731343
+F08,One-to-one assignments,67,ScaleDown Classify-1,29,67,0,0.43283582089552236
+F08,One-to-one assignments,67,Solar Decide Flash,26,67,0,0.3880597014925373
+F09,Exact truth counting,71,Respan Span-02,46,71,0,0.647887323943662
+F09,Exact truth counting,71,Perplexity Decider v1.2,43,71,0,0.6056338028169014
+F09,Exact truth counting,71,Nimble v4 Max,39,71,0,0.5492957746478874
+F09,Exact truth counting,71,Liquid d1-ultra,42,71,0,0.5915492957746479
+F09,Exact truth counting,71,Jev 1.14,28,71,0,0.39436619718309857
+F09,Exact truth counting,71,Jev 1.13,25,71,0,0.352112676056338
+F09,Exact truth counting,71,Mercury Decide,37,71,0,0.5211267605633803
+F09,Exact truth counting,71,Liquid d1,23,71,0,0.323943661971831
+F09,Exact truth counting,71,Cloudflare Clef,27,71,0,0.38028169014084506
+F09,Exact truth counting,71,Perplexity Decider Flash v1.2,38,69,2,0.5352112676056338
+F09,Exact truth counting,71,Microsoft-Decision-1,40,71,0,0.5633802816901409
+F09,Exact truth counting,71,Drex v2.0,27,68,3,0.38028169014084506
+F09,Exact truth counting,71,Cloudflare Clef Flash,28,71,0,0.39436619718309857
+F09,Exact truth counting,71,Cloudflare Clef Omni,20,71,0,0.28169014084507044
+F09,Exact truth counting,71,Drex v1.5,33,71,0,0.4647887323943662
+F09,Exact truth counting,71,Kev 4B,21,71,0,0.29577464788732394
+F09,Exact truth counting,71,Luna 6 Decisions,19,70,1,0.2676056338028169
+F09,Exact truth counting,71,Tev1 4B experimental (OpenRouter native adapter),16,71,0,0.22535211267605634
+F09,Exact truth counting,71,ScaleDown Classify-1,22,71,0,0.30985915492957744
+F09,Exact truth counting,71,Solar Decide Flash,8,71,0,0.11267605633802817
+F10,Truth-teller consistency,74,Respan Span-02,55,74,0,0.7432432432432432
+F10,Truth-teller consistency,74,Perplexity Decider v1.2,58,74,0,0.7837837837837838
+F10,Truth-teller consistency,74,Nimble v4 Max,53,74,0,0.7162162162162162
+F10,Truth-teller consistency,74,Liquid d1-ultra,46,73,1,0.6216216216216216
+F10,Truth-teller consistency,74,Jev 1.14,39,74,0,0.527027027027027
+F10,Truth-teller consistency,74,Jev 1.13,38,74,0,0.5135135135135135
+F10,Truth-teller consistency,74,Mercury Decide,39,74,0,0.527027027027027
+F10,Truth-teller consistency,74,Liquid d1,40,74,0,0.5405405405405406
+F10,Truth-teller consistency,74,Cloudflare Clef,33,74,0,0.44594594594594594
+F10,Truth-teller consistency,74,Perplexity Decider Flash v1.2,30,67,7,0.40540540540540543
+F10,Truth-teller consistency,74,Microsoft-Decision-1,36,74,0,0.4864864864864865
+F10,Truth-teller consistency,74,Drex v2.0,37,69,5,0.5
+F10,Truth-teller consistency,74,Cloudflare Clef Flash,34,74,0,0.4594594594594595
+F10,Truth-teller consistency,74,Cloudflare Clef Omni,37,74,0,0.5
+F10,Truth-teller consistency,74,Drex v1.5,30,74,0,0.40540540540540543
+F10,Truth-teller consistency,74,Kev 4B,33,74,0,0.44594594594594594
+F10,Truth-teller consistency,74,Luna 6 Decisions,23,72,2,0.3108108108108108
+F10,Truth-teller consistency,74,Tev1 4B experimental (OpenRouter native adapter),25,74,0,0.33783783783783783
+F10,Truth-teller consistency,74,ScaleDown Classify-1,15,74,0,0.20270270270270271
+F10,Truth-teller consistency,74,Solar Decide Flash,23,74,0,0.3108108108108108
+F11,Sufficiency and inconsistency,41,Respan Span-02,36,41,0,0.8780487804878049
+F11,Sufficiency and inconsistency,41,Perplexity Decider v1.2,37,41,0,0.9024390243902439
+F11,Sufficiency and inconsistency,41,Nimble v4 Max,32,41,0,0.7804878048780488
+F11,Sufficiency and inconsistency,41,Liquid d1-ultra,35,41,0,0.8536585365853658
+F11,Sufficiency and inconsistency,41,Jev 1.14,32,41,0,0.7804878048780488
+F11,Sufficiency and inconsistency,41,Jev 1.13,29,41,0,0.7073170731707317
+F11,Sufficiency and inconsistency,41,Mercury Decide,30,41,0,0.7317073170731707
+F11,Sufficiency and inconsistency,41,Liquid d1,32,41,0,0.7804878048780488
+F11,Sufficiency and inconsistency,41,Cloudflare Clef,29,41,0,0.7073170731707317
+F11,Sufficiency and inconsistency,41,Perplexity Decider Flash v1.2,30,40,1,0.7317073170731707
+F11,Sufficiency and inconsistency,41,Microsoft-Decision-1,28,41,0,0.6829268292682927
+F11,Sufficiency and inconsistency,41,Drex v2.0,33,41,0,0.8048780487804879
+F11,Sufficiency and inconsistency,41,Cloudflare Clef Flash,27,41,0,0.6585365853658537
+F11,Sufficiency and inconsistency,41,Cloudflare Clef Omni,26,41,0,0.6341463414634146
+F11,Sufficiency and inconsistency,41,Drex v1.5,21,41,0,0.5121951219512195
+F11,Sufficiency and inconsistency,41,Kev 4B,30,41,0,0.7317073170731707
+F11,Sufficiency and inconsistency,41,Luna 6 Decisions,22,41,0,0.5365853658536586
+F11,Sufficiency and inconsistency,41,Tev1 4B experimental (OpenRouter native adapter),23,41,0,0.5609756097560976
+F11,Sufficiency and inconsistency,41,ScaleDown Classify-1,17,41,0,0.4146341463414634
+F11,Sufficiency and inconsistency,41,Solar Decide Flash,8,41,0,0.1951219512195122
+F12,Object swaps,52,Respan Span-02,28,52,0,0.5384615384615384
+F12,Object swaps,52,Perplexity Decider v1.2,33,52,0,0.6346153846153846
+F12,Object swaps,52,Nimble v4 Max,35,52,0,0.6730769230769231
+F12,Object swaps,52,Liquid d1-ultra,27,52,0,0.5192307692307693
+F12,Object swaps,52,Jev 1.14,30,52,0,0.5769230769230769
+F12,Object swaps,52,Jev 1.13,29,52,0,0.5576923076923077
+F12,Object swaps,52,Mercury Decide,34,52,0,0.6538461538461539
+F12,Object swaps,52,Liquid d1,33,52,0,0.6346153846153846
+F12,Object swaps,52,Cloudflare Clef,27,52,0,0.5192307692307693
+F12,Object swaps,52,Perplexity Decider Flash v1.2,23,50,2,0.4423076923076923
+F12,Object swaps,52,Microsoft-Decision-1,24,52,0,0.46153846153846156
+F12,Object swaps,52,Drex v2.0,28,50,2,0.5384615384615384
+F12,Object swaps,52,Cloudflare Clef Flash,28,52,0,0.5384615384615384
+F12,Object swaps,52,Cloudflare Clef Omni,30,52,0,0.5769230769230769
+F12,Object swaps,52,Drex v1.5,23,52,0,0.4423076923076923
+F12,Object swaps,52,Kev 4B,25,52,0,0.4807692307692308
+F12,Object swaps,52,Luna 6 Decisions,23,50,2,0.4423076923076923
+F12,Object swaps,52,Tev1 4B experimental (OpenRouter native adapter),20,52,0,0.38461538461538464
+F12,Object swaps,52,ScaleDown Classify-1,8,52,0,0.15384615384615385
+F12,Object swaps,52,Solar Decide Flash,14,52,0,0.2692307692307692
+F13,Sequential procedures,48,Respan Span-02,33,48,0,0.6875
+F13,Sequential procedures,48,Perplexity Decider v1.2,14,48,0,0.2916666666666667
+F13,Sequential procedures,48,Nimble v4 Max,19,48,0,0.3958333333333333
+F13,Sequential procedures,48,Liquid d1-ultra,11,48,0,0.22916666666666666
+F13,Sequential procedures,48,Jev 1.14,7,48,0,0.14583333333333334
+F13,Sequential procedures,48,Jev 1.13,10,48,0,0.20833333333333334
+F13,Sequential procedures,48,Mercury Decide,12,48,0,0.25
+F13,Sequential procedures,48,Liquid d1,9,48,0,0.1875
+F13,Sequential procedures,48,Cloudflare Clef,11,48,0,0.22916666666666666
+F13,Sequential procedures,48,Perplexity Decider Flash v1.2,12,45,3,0.25
+F13,Sequential procedures,48,Microsoft-Decision-1,7,48,0,0.14583333333333334
+F13,Sequential procedures,48,Drex v2.0,12,46,2,0.25
+F13,Sequential procedures,48,Cloudflare Clef Flash,9,48,0,0.1875
+F13,Sequential procedures,48,Cloudflare Clef Omni,11,48,0,0.22916666666666666
+F13,Sequential procedures,48,Drex v1.5,13,48,0,0.2708333333333333
+F13,Sequential procedures,48,Kev 4B,11,48,0,0.22916666666666666
+F13,Sequential procedures,48,Luna 6 Decisions,11,48,0,0.22916666666666666
+F13,Sequential procedures,48,Tev1 4B experimental (OpenRouter native adapter),15,48,0,0.3125
+F13,Sequential procedures,48,ScaleDown Classify-1,11,48,0,0.22916666666666666
+F13,Sequential procedures,48,Solar Decide Flash,10,48,0,0.20833333333333334
+F14,Temporal intervals,42,Respan Span-02,40,42,0,0.9523809523809523
+F14,Temporal intervals,42,Perplexity Decider v1.2,39,42,0,0.9285714285714286
+F14,Temporal intervals,42,Nimble v4 Max,41,42,0,0.9761904761904762
+F14,Temporal intervals,42,Liquid d1-ultra,38,42,0,0.9047619047619048
+F14,Temporal intervals,42,Jev 1.14,40,42,0,0.9523809523809523
+F14,Temporal intervals,42,Jev 1.13,41,42,0,0.9761904761904762
+F14,Temporal intervals,42,Mercury Decide,35,42,0,0.8333333333333334
+F14,Temporal intervals,42,Liquid d1,37,42,0,0.8809523809523809
+F14,Temporal intervals,42,Cloudflare Clef,31,42,0,0.7380952380952381
+F14,Temporal intervals,42,Perplexity Decider Flash v1.2,28,41,1,0.6666666666666666
+F14,Temporal intervals,42,Microsoft-Decision-1,33,42,0,0.7857142857142857
+F14,Temporal intervals,42,Drex v2.0,33,41,1,0.7857142857142857
+F14,Temporal intervals,42,Cloudflare Clef Flash,22,42,0,0.5238095238095238
+F14,Temporal intervals,42,Cloudflare Clef Omni,32,42,0,0.7619047619047619
+F14,Temporal intervals,42,Drex v1.5,28,42,0,0.6666666666666666
+F14,Temporal intervals,42,Kev 4B,31,42,0,0.7380952380952381
+F14,Temporal intervals,42,Luna 6 Decisions,25,41,1,0.5952380952380952
+F14,Temporal intervals,42,Tev1 4B experimental (OpenRouter native adapter),27,42,0,0.6428571428571429
+F14,Temporal intervals,42,ScaleDown Classify-1,13,42,0,0.30952380952380953
+F14,Temporal intervals,42,Solar Decide Flash,17,42,0,0.40476190476190477
+F15,Spatial tracking,49,Respan Span-02,42,49,0,0.8571428571428571
+F15,Spatial tracking,49,Perplexity Decider v1.2,35,49,0,0.7142857142857143
+F15,Spatial tracking,49,Nimble v4 Max,36,49,0,0.7346938775510204
+F15,Spatial tracking,49,Liquid d1-ultra,38,49,0,0.7755102040816326
+F15,Spatial tracking,49,Jev 1.14,34,49,0,0.6938775510204082
+F15,Spatial tracking,49,Jev 1.13,30,49,0,0.6122448979591837
+F15,Spatial tracking,49,Mercury Decide,31,49,0,0.6326530612244898
+F15,Spatial tracking,49,Liquid d1,24,49,0,0.4897959183673469
+F15,Spatial tracking,49,Cloudflare Clef,23,49,0,0.46938775510204084
+F15,Spatial tracking,49,Perplexity Decider Flash v1.2,25,47,2,0.5102040816326531
+F15,Spatial tracking,49,Microsoft-Decision-1,24,49,0,0.4897959183673469
+F15,Spatial tracking,49,Drex v2.0,26,48,1,0.5306122448979592
+F15,Spatial tracking,49,Cloudflare Clef Flash,16,49,0,0.32653061224489793
+F15,Spatial tracking,49,Cloudflare Clef Omni,20,49,0,0.40816326530612246
+F15,Spatial tracking,49,Drex v1.5,26,49,0,0.5306122448979592
+F15,Spatial tracking,49,Kev 4B,26,49,0,0.5306122448979592
+F15,Spatial tracking,49,Luna 6 Decisions,22,45,4,0.4489795918367347
+F15,Spatial tracking,49,Tev1 4B experimental (OpenRouter native adapter),19,49,0,0.3877551020408163
+F15,Spatial tracking,49,ScaleDown Classify-1,17,49,0,0.3469387755102041
+F15,Spatial tracking,49,Solar Decide Flash,13,49,0,0.2653061224489796
+F16,Reference binding,50,Respan Span-02,42,50,0,0.84
+F16,Reference binding,50,Perplexity Decider v1.2,36,50,0,0.72
+F16,Reference binding,50,Nimble v4 Max,38,50,0,0.76
+F16,Reference binding,50,Liquid d1-ultra,34,50,0,0.68
+F16,Reference binding,50,Jev 1.14,34,50,0,0.68
+F16,Reference binding,50,Jev 1.13,33,50,0,0.66
+F16,Reference binding,50,Mercury Decide,35,50,0,0.7
+F16,Reference binding,50,Liquid d1,29,50,0,0.58
+F16,Reference binding,50,Cloudflare Clef,31,50,0,0.62
+F16,Reference binding,50,Perplexity Decider Flash v1.2,34,49,1,0.68
+F16,Reference binding,50,Microsoft-Decision-1,32,50,0,0.64
+F16,Reference binding,50,Drex v2.0,26,49,1,0.52
+F16,Reference binding,50,Cloudflare Clef Flash,25,50,0,0.5
+F16,Reference binding,50,Cloudflare Clef Omni,21,50,0,0.42
+F16,Reference binding,50,Drex v1.5,23,50,0,0.46
+F16,Reference binding,50,Kev 4B,19,50,0,0.38
+F16,Reference binding,50,Luna 6 Decisions,17,50,0,0.34
+F16,Reference binding,50,Tev1 4B experimental (OpenRouter native adapter),19,50,0,0.38
+F16,Reference binding,50,ScaleDown Classify-1,19,50,0,0.38
+F16,Reference binding,50,Solar Decide Flash,21,50,0,0.42
+F17,Beliefs and perspectives,50,Respan Span-02,41,50,0,0.82
+F17,Beliefs and perspectives,50,Perplexity Decider v1.2,46,50,0,0.92
+F17,Beliefs and perspectives,50,Nimble v4 Max,46,50,0,0.92
+F17,Beliefs and perspectives,50,Liquid d1-ultra,45,50,0,0.9
+F17,Beliefs and perspectives,50,Jev 1.14,44,50,0,0.88
+F17,Beliefs and perspectives,50,Jev 1.13,47,50,0,0.94
+F17,Beliefs and perspectives,50,Mercury Decide,43,50,0,0.86
+F17,Beliefs and perspectives,50,Liquid d1,41,50,0,0.82
+F17,Beliefs and perspectives,50,Cloudflare Clef,42,50,0,0.84
+F17,Beliefs and perspectives,50,Perplexity Decider Flash v1.2,42,48,2,0.84
+F17,Beliefs and perspectives,50,Microsoft-Decision-1,42,50,0,0.84
+F17,Beliefs and perspectives,50,Drex v2.0,25,48,2,0.5
+F17,Beliefs and perspectives,50,Cloudflare Clef Flash,41,50,0,0.82
+F17,Beliefs and perspectives,50,Cloudflare Clef Omni,38,50,0,0.76
+F17,Beliefs and perspectives,50,Drex v1.5,29,50,0,0.58
+F17,Beliefs and perspectives,50,Kev 4B,34,50,0,0.68
+F17,Beliefs and perspectives,50,Luna 6 Decisions,32,48,2,0.64
+F17,Beliefs and perspectives,50,Tev1 4B experimental (OpenRouter native adapter),31,50,0,0.62
+F17,Beliefs and perspectives,50,ScaleDown Classify-1,21,50,0,0.42
+F17,Beliefs and perspectives,50,Solar Decide Flash,19,50,0,0.38
+F18,Causal intervention,50,Respan Span-02,47,50,0,0.94
+F18,Causal intervention,50,Perplexity Decider v1.2,46,50,0,0.92
+F18,Causal intervention,50,Nimble v4 Max,45,50,0,0.9
+F18,Causal intervention,50,Liquid d1-ultra,40,50,0,0.8
+F18,Causal intervention,50,Jev 1.14,38,50,0,0.76
+F18,Causal intervention,50,Jev 1.13,42,50,0,0.84
+F18,Causal intervention,50,Mercury Decide,35,50,0,0.7
+F18,Causal intervention,50,Liquid d1,28,50,0,0.56
+F18,Causal intervention,50,Cloudflare Clef,27,50,0,0.54
+F18,Causal intervention,50,Perplexity Decider Flash v1.2,29,47,3,0.58
+F18,Causal intervention,50,Microsoft-Decision-1,24,50,0,0.48
+F18,Causal intervention,50,Drex v2.0,36,50,0,0.72
+F18,Causal intervention,50,Cloudflare Clef Flash,29,50,0,0.58
+F18,Causal intervention,50,Cloudflare Clef Omni,20,50,0,0.4
+F18,Causal intervention,50,Drex v1.5,22,50,0,0.44
+F18,Causal intervention,50,Kev 4B,29,50,0,0.58
+F18,Causal intervention,50,Luna 6 Decisions,21,48,2,0.42
+F18,Causal intervention,50,Tev1 4B experimental (OpenRouter native adapter),20,50,0,0.4
+F18,Causal intervention,50,ScaleDown Classify-1,12,50,0,0.24
+F18,Causal intervention,50,Solar Decide Flash,10,50,0,0.2
+F19,Exceptions and priorities,58,Respan Span-02,53,58,0,0.9137931034482759
+F19,Exceptions and priorities,58,Perplexity Decider v1.2,54,58,0,0.9310344827586207
+F19,Exceptions and priorities,58,Nimble v4 Max,57,58,0,0.9827586206896551
+F19,Exceptions and priorities,58,Liquid d1-ultra,57,58,0,0.9827586206896551
+F19,Exceptions and priorities,58,Jev 1.14,48,58,0,0.8275862068965517
+F19,Exceptions and priorities,58,Jev 1.13,51,58,0,0.8793103448275862
+F19,Exceptions and priorities,58,Mercury Decide,55,58,0,0.9482758620689655
+F19,Exceptions and priorities,58,Liquid d1,51,58,0,0.8793103448275862
+F19,Exceptions and priorities,58,Cloudflare Clef,51,58,0,0.8793103448275862
+F19,Exceptions and priorities,58,Perplexity Decider Flash v1.2,47,52,6,0.8103448275862069
+F19,Exceptions and priorities,58,Microsoft-Decision-1,52,58,0,0.896551724137931
+F19,Exceptions and priorities,58,Drex v2.0,48,58,0,0.8275862068965517
+F19,Exceptions and priorities,58,Cloudflare Clef Flash,43,58,0,0.7413793103448276
+F19,Exceptions and priorities,58,Cloudflare Clef Omni,50,58,0,0.8620689655172413
+F19,Exceptions and priorities,58,Drex v1.5,48,58,0,0.8275862068965517
+F19,Exceptions and priorities,58,Kev 4B,39,58,0,0.6724137931034483
+F19,Exceptions and priorities,58,Luna 6 Decisions,47,57,1,0.8103448275862069
+F19,Exceptions and priorities,58,Tev1 4B experimental (OpenRouter native adapter),42,58,0,0.7241379310344828
+F19,Exceptions and priorities,58,ScaleDown Classify-1,28,58,0,0.4827586206896552
+F19,Exceptions and priorities,58,Solar Decide Flash,28,58,0,0.4827586206896552
+F20,Planning,43,Respan Span-02,39,43,0,0.9069767441860465
+F20,Planning,43,Perplexity Decider v1.2,38,43,0,0.8837209302325582
+F20,Planning,43,Nimble v4 Max,40,43,0,0.9302325581395349
+F20,Planning,43,Liquid d1-ultra,39,43,0,0.9069767441860465
+F20,Planning,43,Jev 1.14,38,43,0,0.8837209302325582
+F20,Planning,43,Jev 1.13,38,43,0,0.8837209302325582
+F20,Planning,43,Mercury Decide,38,43,0,0.8837209302325582
+F20,Planning,43,Liquid d1,39,43,0,0.9069767441860465
+F20,Planning,43,Cloudflare Clef,38,43,0,0.8837209302325582
+F20,Planning,43,Perplexity Decider Flash v1.2,37,42,1,0.8604651162790697
+F20,Planning,43,Microsoft-Decision-1,37,43,0,0.8604651162790697
+F20,Planning,43,Drex v2.0,33,43,0,0.7674418604651163
+F20,Planning,43,Cloudflare Clef Flash,33,43,0,0.7674418604651163
+F20,Planning,43,Cloudflare Clef Omni,30,43,0,0.6976744186046512
+F20,Planning,43,Drex v1.5,27,43,0,0.627906976744186
+F20,Planning,43,Kev 4B,24,43,0,0.5581395348837209
+F20,Planning,43,Luna 6 Decisions,25,42,1,0.5813953488372093
+F20,Planning,43,Tev1 4B experimental (OpenRouter native adapter),28,43,0,0.6511627906976745
+F20,Planning,43,ScaleDown Classify-1,14,43,0,0.32558139534883723
+F20,Planning,43,Solar Decide Flash,16,43,0,0.37209302325581395
+F21,Directed reachability,43,Respan Span-02,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Perplexity Decider v1.2,42,43,0,0.9767441860465116
+F21,Directed reachability,43,Nimble v4 Max,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Liquid d1-ultra,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Jev 1.14,42,43,0,0.9767441860465116
+F21,Directed reachability,43,Jev 1.13,41,43,0,0.9534883720930233
+F21,Directed reachability,43,Mercury Decide,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Liquid d1,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Cloudflare Clef,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Perplexity Decider Flash v1.2,40,42,1,0.9302325581395349
+F21,Directed reachability,43,Microsoft-Decision-1,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Drex v2.0,42,43,0,0.9767441860465116
+F21,Directed reachability,43,Cloudflare Clef Flash,36,43,0,0.8372093023255814
+F21,Directed reachability,43,Cloudflare Clef Omni,37,43,0,0.8604651162790697
+F21,Directed reachability,43,Drex v1.5,39,43,0,0.9069767441860465
+F21,Directed reachability,43,Kev 4B,40,43,0,0.9302325581395349
+F21,Directed reachability,43,Luna 6 Decisions,39,42,1,0.9069767441860465
+F21,Directed reachability,43,Tev1 4B experimental (OpenRouter native adapter),35,43,0,0.813953488372093
+F21,Directed reachability,43,ScaleDown Classify-1,31,43,0,0.7209302325581395
+F21,Directed reachability,43,Solar Decide Flash,33,43,0,0.7674418604651163
+F22,Preference ordering,51,Respan Span-02,49,51,0,0.9607843137254902
+F22,Preference ordering,51,Perplexity Decider v1.2,47,50,1,0.9215686274509803
+F22,Preference ordering,51,Nimble v4 Max,49,51,0,0.9607843137254902
+F22,Preference ordering,51,Liquid d1-ultra,47,51,0,0.9215686274509803
+F22,Preference ordering,51,Jev 1.14,48,51,0,0.9411764705882353
+F22,Preference ordering,51,Jev 1.13,46,51,0,0.9019607843137255
+F22,Preference ordering,51,Mercury Decide,47,51,0,0.9215686274509803
+F22,Preference ordering,51,Liquid d1,46,51,0,0.9019607843137255
+F22,Preference ordering,51,Cloudflare Clef,45,51,0,0.8823529411764706
+F22,Preference ordering,51,Perplexity Decider Flash v1.2,45,49,2,0.8823529411764706
+F22,Preference ordering,51,Microsoft-Decision-1,44,51,0,0.8627450980392157
+F22,Preference ordering,51,Drex v2.0,42,47,4,0.8235294117647058
+F22,Preference ordering,51,Cloudflare Clef Flash,45,51,0,0.8823529411764706
+F22,Preference ordering,51,Cloudflare Clef Omni,43,51,0,0.8431372549019608
+F22,Preference ordering,51,Drex v1.5,44,51,0,0.8627450980392157
+F22,Preference ordering,51,Kev 4B,48,51,0,0.9411764705882353
+F22,Preference ordering,51,Luna 6 Decisions,44,51,0,0.8627450980392157
+F22,Preference ordering,51,Tev1 4B experimental (OpenRouter native adapter),47,51,0,0.9215686274509803
+F22,Preference ordering,51,ScaleDown Classify-1,29,51,0,0.5686274509803921
+F22,Preference ordering,51,Solar Decide Flash,32,51,0,0.6274509803921569
+F23,Rule counterexamples,52,Respan Span-02,51,52,0,0.9807692307692307
+F23,Rule counterexamples,52,Perplexity Decider v1.2,52,52,0,1.0
+F23,Rule counterexamples,52,Nimble v4 Max,52,52,0,1.0
+F23,Rule counterexamples,52,Liquid d1-ultra,51,52,0,0.9807692307692307
+F23,Rule counterexamples,52,Jev 1.14,49,52,0,0.9423076923076923
+F23,Rule counterexamples,52,Jev 1.13,48,52,0,0.9230769230769231
+F23,Rule counterexamples,52,Mercury Decide,51,52,0,0.9807692307692307
+F23,Rule counterexamples,52,Liquid d1,49,52,0,0.9423076923076923
+F23,Rule counterexamples,52,Cloudflare Clef,49,52,0,0.9423076923076923
+F23,Rule counterexamples,52,Perplexity Decider Flash v1.2,47,50,2,0.9038461538461539
+F23,Rule counterexamples,52,Microsoft-Decision-1,47,52,0,0.9038461538461539
+F23,Rule counterexamples,52,Drex v2.0,47,50,2,0.9038461538461539
+F23,Rule counterexamples,52,Cloudflare Clef Flash,44,52,0,0.8461538461538461
+F23,Rule counterexamples,52,Cloudflare Clef Omni,46,52,0,0.8846153846153846
+F23,Rule counterexamples,52,Drex v1.5,46,52,0,0.8846153846153846
+F23,Rule counterexamples,52,Kev 4B,37,52,0,0.7115384615384616
+F23,Rule counterexamples,52,Luna 6 Decisions,44,51,1,0.8461538461538461
+F23,Rule counterexamples,52,Tev1 4B experimental (OpenRouter native adapter),39,52,0,0.75
+F23,Rule counterexamples,52,ScaleDown Classify-1,30,52,0,0.5769230769230769
+F23,Rule counterexamples,52,Solar Decide Flash,29,52,0,0.5576923076923077
+F24,Authority and stale records,43,Respan Span-02,38,43,0,0.8837209302325582
+F24,Authority and stale records,43,Perplexity Decider v1.2,42,43,0,0.9767441860465116
+F24,Authority and stale records,43,Nimble v4 Max,42,43,0,0.9767441860465116
+F24,Authority and stale records,43,Liquid d1-ultra,42,43,0,0.9767441860465116
+F24,Authority and stale records,43,Jev 1.14,37,43,0,0.8604651162790697
+F24,Authority and stale records,43,Jev 1.13,39,43,0,0.9069767441860465
+F24,Authority and stale records,43,Mercury Decide,40,43,0,0.9302325581395349
+F24,Authority and stale records,43,Liquid d1,38,43,0,0.8837209302325582
+F24,Authority and stale records,43,Cloudflare Clef,39,43,0,0.9069767441860465
+F24,Authority and stale records,43,Perplexity Decider Flash v1.2,39,42,1,0.9069767441860465
+F24,Authority and stale records,43,Microsoft-Decision-1,39,43,0,0.9069767441860465
+F24,Authority and stale records,43,Drex v2.0,37,42,1,0.8604651162790697
+F24,Authority and stale records,43,Cloudflare Clef Flash,38,43,0,0.8837209302325582
+F24,Authority and stale records,43,Cloudflare Clef Omni,38,43,0,0.8837209302325582
+F24,Authority and stale records,43,Drex v1.5,39,43,0,0.9069767441860465
+F24,Authority and stale records,43,Kev 4B,20,43,0,0.46511627906976744
+F24,Authority and stale records,43,Luna 6 Decisions,36,43,0,0.8372093023255814
+F24,Authority and stale records,43,Tev1 4B experimental (OpenRouter native adapter),29,43,0,0.6744186046511628
+F24,Authority and stale records,43,ScaleDown Classify-1,33,43,0,0.7674418604651163
+F24,Authority and stale records,43,Solar Decide Flash,23,42,1,0.5348837209302325
+F25,Fault diagnosis,50,Respan Span-02,46,50,0,0.92
+F25,Fault diagnosis,50,Perplexity Decider v1.2,48,50,0,0.96
+F25,Fault diagnosis,50,Nimble v4 Max,47,50,0,0.94
+F25,Fault diagnosis,50,Liquid d1-ultra,45,50,0,0.9
+F25,Fault diagnosis,50,Jev 1.14,45,50,0,0.9
+F25,Fault diagnosis,50,Jev 1.13,44,50,0,0.88
+F25,Fault diagnosis,50,Mercury Decide,46,50,0,0.92
+F25,Fault diagnosis,50,Liquid d1,46,50,0,0.92
+F25,Fault diagnosis,50,Cloudflare Clef,41,50,0,0.82
+F25,Fault diagnosis,50,Perplexity Decider Flash v1.2,39,48,2,0.78
+F25,Fault diagnosis,50,Microsoft-Decision-1,46,50,0,0.92
+F25,Fault diagnosis,50,Drex v2.0,44,48,2,0.88
+F25,Fault diagnosis,50,Cloudflare Clef Flash,40,50,0,0.8
+F25,Fault diagnosis,50,Cloudflare Clef Omni,42,50,0,0.84
+F25,Fault diagnosis,50,Drex v1.5,41,50,0,0.82
+F25,Fault diagnosis,50,Kev 4B,36,50,0,0.72
+F25,Fault diagnosis,50,Luna 6 Decisions,34,50,0,0.68
+F25,Fault diagnosis,50,Tev1 4B experimental (OpenRouter native adapter),39,50,0,0.78
+F25,Fault diagnosis,50,ScaleDown Classify-1,25,50,0,0.5
+F25,Fault diagnosis,50,Solar Decide Flash,28,50,0,0.56
+F26,Probabilistic risk,8,Respan Span-02,6,8,0,0.75
+F26,Probabilistic risk,8,Perplexity Decider v1.2,5,8,0,0.625
+F26,Probabilistic risk,8,Nimble v4 Max,4,8,0,0.5
+F26,Probabilistic risk,8,Liquid d1-ultra,5,8,0,0.625
+F26,Probabilistic risk,8,Jev 1.14,5,8,0,0.625
+F26,Probabilistic risk,8,Jev 1.13,5,8,0,0.625
+F26,Probabilistic risk,8,Mercury Decide,5,8,0,0.625
+F26,Probabilistic risk,8,Liquid d1,3,8,0,0.375
+F26,Probabilistic risk,8,Cloudflare Clef,2,8,0,0.25
+F26,Probabilistic risk,8,Perplexity Decider Flash v1.2,2,8,0,0.25
+F26,Probabilistic risk,8,Microsoft-Decision-1,4,8,0,0.5
+F26,Probabilistic risk,8,Drex v2.0,5,8,0,0.625
+F26,Probabilistic risk,8,Cloudflare Clef Flash,3,8,0,0.375
+F26,Probabilistic risk,8,Cloudflare Clef Omni,5,8,0,0.625
+F26,Probabilistic risk,8,Drex v1.5,1,8,0,0.125
+F26,Probabilistic risk,8,Kev 4B,3,8,0,0.375
+F26,Probabilistic risk,8,Luna 6 Decisions,5,8,0,0.625
+F26,Probabilistic risk,8,Tev1 4B experimental (OpenRouter native adapter),3,8,0,0.375
+F26,Probabilistic risk,8,ScaleDown Classify-1,1,8,0,0.125
+F26,Probabilistic risk,8,Solar Decide Flash,1,8,0,0.125
+F27,Value of information,8,Respan Span-02,5,8,0,0.625
+F27,Value of information,8,Perplexity Decider v1.2,4,8,0,0.5
+F27,Value of information,8,Nimble v4 Max,3,8,0,0.375
+F27,Value of information,8,Liquid d1-ultra,5,8,0,0.625
+F27,Value of information,8,Jev 1.14,4,8,0,0.5
+F27,Value of information,8,Jev 1.13,3,8,0,0.375
+F27,Value of information,8,Mercury Decide,3,8,0,0.375
+F27,Value of information,8,Liquid d1,3,8,0,0.375
+F27,Value of information,8,Cloudflare Clef,3,8,0,0.375
+F27,Value of information,8,Perplexity Decider Flash v1.2,4,8,0,0.5
+F27,Value of information,8,Microsoft-Decision-1,4,8,0,0.5
+F27,Value of information,8,Drex v2.0,4,8,0,0.5
+F27,Value of information,8,Cloudflare Clef Flash,4,8,0,0.5
+F27,Value of information,8,Cloudflare Clef Omni,3,8,0,0.375
+F27,Value of information,8,Drex v1.5,5,8,0,0.625
+F27,Value of information,8,Kev 4B,1,8,0,0.125
+F27,Value of information,8,Luna 6 Decisions,4,8,0,0.5
+F27,Value of information,8,Tev1 4B experimental (OpenRouter native adapter),0,8,0,0.0
+F27,Value of information,8,ScaleDown Classify-1,2,8,0,0.25
+F27,Value of information,8,Solar Decide Flash,2,8,0,0.25
+F28,Robust decisions without a prior,8,Respan Span-02,8,8,0,1.0
+F28,Robust decisions without a prior,8,Perplexity Decider v1.2,3,8,0,0.375
+F28,Robust decisions without a prior,8,Nimble v4 Max,4,8,0,0.5
+F28,Robust decisions without a prior,8,Liquid d1-ultra,4,8,0,0.5
+F28,Robust decisions without a prior,8,Jev 1.14,2,8,0,0.25
+F28,Robust decisions without a prior,8,Jev 1.13,2,8,0,0.25
+F28,Robust decisions without a prior,8,Mercury Decide,3,8,0,0.375
+F28,Robust decisions without a prior,8,Liquid d1,2,8,0,0.25
+F28,Robust decisions without a prior,8,Cloudflare Clef,3,8,0,0.375
+F28,Robust decisions without a prior,8,Perplexity Decider Flash v1.2,2,8,0,0.25
+F28,Robust decisions without a prior,8,Microsoft-Decision-1,2,8,0,0.25
+F28,Robust decisions without a prior,8,Drex v2.0,3,8,0,0.375
+F28,Robust decisions without a prior,8,Cloudflare Clef Flash,5,8,0,0.625
+F28,Robust decisions without a prior,8,Cloudflare Clef Omni,3,8,0,0.375
+F28,Robust decisions without a prior,8,Drex v1.5,2,8,0,0.25
+F28,Robust decisions without a prior,8,Kev 4B,4,8,0,0.5
+F28,Robust decisions without a prior,8,Luna 6 Decisions,4,8,0,0.5
+F28,Robust decisions without a prior,8,Tev1 4B experimental (OpenRouter native adapter),2,8,0,0.25
+F28,Robust decisions without a prior,8,ScaleDown Classify-1,1,8,0,0.125
+F28,Robust decisions without a prior,8,Solar Decide Flash,0,8,0,0.0
+F29,Strategic decisions,8,Respan Span-02,5,8,0,0.625
+F29,Strategic decisions,8,Perplexity Decider v1.2,4,8,0,0.5
+F29,Strategic decisions,8,Nimble v4 Max,5,8,0,0.625
+F29,Strategic decisions,8,Liquid d1-ultra,3,8,0,0.375
+F29,Strategic decisions,8,Jev 1.14,5,8,0,0.625
+F29,Strategic decisions,8,Jev 1.13,3,8,0,0.375
+F29,Strategic decisions,8,Mercury Decide,5,8,0,0.625
+F29,Strategic decisions,8,Liquid d1,3,8,0,0.375
+F29,Strategic decisions,8,Cloudflare Clef,3,8,0,0.375
+F29,Strategic decisions,8,Perplexity Decider Flash v1.2,3,8,0,0.375
+F29,Strategic decisions,8,Microsoft-Decision-1,3,8,0,0.375
+F29,Strategic decisions,8,Drex v2.0,3,8,0,0.375
+F29,Strategic decisions,8,Cloudflare Clef Flash,3,8,0,0.375
+F29,Strategic decisions,8,Cloudflare Clef Omni,3,8,0,0.375
+F29,Strategic decisions,8,Drex v1.5,2,8,0,0.25
+F29,Strategic decisions,8,Kev 4B,3,8,0,0.375
+F29,Strategic decisions,8,Luna 6 Decisions,2,8,0,0.25
+F29,Strategic decisions,8,Tev1 4B experimental (OpenRouter native adapter),3,8,0,0.375
+F29,Strategic decisions,8,ScaleDown Classify-1,1,8,0,0.125
+F29,Strategic decisions,8,Solar Decide Flash,2,8,0,0.25
+F30,Concurrent-history consistency,8,Respan Span-02,5,8,0,0.625
+F30,Concurrent-history consistency,8,Perplexity Decider v1.2,4,8,0,0.5
+F30,Concurrent-history consistency,8,Nimble v4 Max,3,8,0,0.375
+F30,Concurrent-history consistency,8,Liquid d1-ultra,3,8,0,0.375
+F30,Concurrent-history consistency,8,Jev 1.14,4,8,0,0.5
+F30,Concurrent-history consistency,8,Jev 1.13,4,8,0,0.5
+F30,Concurrent-history consistency,8,Mercury Decide,5,8,0,0.625
+F30,Concurrent-history consistency,8,Liquid d1,3,8,0,0.375
+F30,Concurrent-history consistency,8,Cloudflare Clef,5,8,0,0.625
+F30,Concurrent-history consistency,8,Perplexity Decider Flash v1.2,3,8,0,0.375
+F30,Concurrent-history consistency,8,Microsoft-Decision-1,4,8,0,0.5
+F30,Concurrent-history consistency,8,Drex v2.0,4,8,0,0.5
+F30,Concurrent-history consistency,8,Cloudflare Clef Flash,2,8,0,0.25
+F30,Concurrent-history consistency,8,Cloudflare Clef Omni,2,8,0,0.25
+F30,Concurrent-history consistency,8,Drex v1.5,4,8,0,0.5
+F30,Concurrent-history consistency,8,Kev 4B,3,8,0,0.375
+F30,Concurrent-history consistency,8,Luna 6 Decisions,3,8,0,0.375
+F30,Concurrent-history consistency,8,Tev1 4B experimental (OpenRouter native adapter),3,8,0,0.375
+F30,Concurrent-history consistency,8,ScaleDown Classify-1,1,8,0,0.125
+F30,Concurrent-history consistency,8,Solar Decide Flash,4,8,0,0.5
+F31,Information-flow security,8,Respan Span-02,5,8,0,0.625
+F31,Information-flow security,8,Perplexity Decider v1.2,6,8,0,0.75
+F31,Information-flow security,8,Nimble v4 Max,6,8,0,0.75
+F31,Information-flow security,8,Liquid d1-ultra,5,8,0,0.625
+F31,Information-flow security,8,Jev 1.14,6,8,0,0.75
+F31,Information-flow security,8,Jev 1.13,4,8,0,0.5
+F31,Information-flow security,8,Mercury Decide,5,8,0,0.625
+F31,Information-flow security,8,Liquid d1,5,8,0,0.625
+F31,Information-flow security,8,Cloudflare Clef,6,8,0,0.75
+F31,Information-flow security,8,Perplexity Decider Flash v1.2,4,8,0,0.5
+F31,Information-flow security,8,Microsoft-Decision-1,6,8,0,0.75
+F31,Information-flow security,8,Drex v2.0,4,8,0,0.5
+F31,Information-flow security,8,Cloudflare Clef Flash,4,8,0,0.5
+F31,Information-flow security,8,Cloudflare Clef Omni,4,8,0,0.5
+F31,Information-flow security,8,Drex v1.5,4,8,0,0.5
+F31,Information-flow security,8,Kev 4B,4,8,0,0.5
+F31,Information-flow security,8,Luna 6 Decisions,4,8,0,0.5
+F31,Information-flow security,8,Tev1 4B experimental (OpenRouter native adapter),4,8,0,0.5
+F31,Information-flow security,8,ScaleDown Classify-1,3,8,0,0.375
+F31,Information-flow security,8,Solar Decide Flash,4,8,0,0.5

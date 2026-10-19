@@ -1,0 +1,74 @@
+{
+  "source_commit": "089c4326cfebf42d91402bb8abfa267a4236929a",
+  "files": {
+    "README.md": {
+      "archive_path": "README.md.snapshot",
+      "sha256": "e3fe00a15d5db23211671ed9397b8621d45b012aada18fffbf9b2d4d7e9b6628"
+    },
+    "FUNCTIONS.md": {
+      "archive_path": "FUNCTIONS.md.snapshot",
+      "sha256": "5991ff004c968a077ba5e0207b327a9d80bb5a1d5cacd7c39655c0ea1f4b39b9"
+    },
+    "LLM_EXPANSION.md": {
+      "archive_path": "LLM_EXPANSION.md.snapshot",
+      "sha256": "e3fe00a15d5db23211671ed9397b8621d45b012aada18fffbf9b2d4d7e9b6628"
+    },
+    "OUTPUT_COMPLIANCE.md": {
+      "archive_path": "OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "383bfb638d82a8a8c4cb15e8f827df4acc389b159d2db2be812fb09534755bf7"
+    },
+    "docs/index.html": {
+      "archive_path": "docs/index.html.snapshot",
+      "sha256": "71b72a8954866a3dbfd72403697a95a5b8d758a547e76c722cab92f2689290b7"
+    },
+    "docs/functions.html": {
+      "archive_path": "docs/functions.html.snapshot",
+      "sha256": "d3fe17f2ee13a616c73e80e7f6faee18773818473fde16c56acc185f0be8252a"
+    },
+    "docs/output_compliance.html": {
+      "archive_path": "docs/output_compliance.html.snapshot",
+      "sha256": "6007610fff1603bddf881f4513101ecbdc56cb3f2b230d6875a76915ff725ff7"
+    },
+    "archive_october18_publication.py": {
+      "archive_path": "archive_october18_publication.py.snapshot",
+      "sha256": "cb787adafef2286e6f53c06d21c4a78b29bc4040e2c7286b09891a44712c4b41"
+    },
+    "freeze_october18_release.py": {
+      "archive_path": "freeze_october18_release.py.snapshot",
+      "sha256": "06eb1f90c74d0cec39114fcd22faf9f3a88a1c7e95a64832949d6f3973e8f835"
+    },
+    "freeze_corrected_release.py": {
+      "archive_path": "freeze_corrected_release.py.snapshot",
+      "sha256": "1d35158f69f3200a9b1cc14cc1b6bd2fb0229cf030c86bb80f176ed3234185e1"
+    },
+    "import_corrected_bundle.py": {
+      "archive_path": "import_corrected_bundle.py.snapshot",
+      "sha256": "0c2e0a7488de93ecd9efd63db0a7df4d019abe88ec1e1d0c4a73bbae14b99511"
+    },
+    "validate_corrected_release.py": {
+      "archive_path": "validate_corrected_release.py.snapshot",
+      "sha256": "20b54bbb4833bf0a4faed47941004b81c6586819ebd9916bf78b7794e3dee6bf"
+    },
+    "test_corrected_release.py": {
+      "archive_path": "test_corrected_release.py.snapshot",
+      "sha256": "266ba6a8b5deb1d2b415395cace01ebaedd79d3e367fc259fe1c2fdc8f8a6303"
+    },
+    "build_corrected_report.py": {
+      "archive_path": "build_corrected_report.py.snapshot",
+      "sha256": "299eb14370afe8a63aa1a9c1f54c7a5f29a174709dd4a513d62d74b7a08b017f"
+    },
+    "plot_corrected_release.py": {
+      "archive_path": "plot_corrected_release.py.snapshot",
+      "sha256": "ef7a9834861d532d09f20ac27d45f8ef35c7f3e367cf4fb736590ae64d988269"
+    },
+    "test_publication.py": {
+      "archive_path": "test_publication.py.snapshot",
+      "sha256": "85957a7cad6ea08f79dbcd6cd804ee989653879be0c65c3e9d9222162074f282"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "archive_path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "9b8ff43ee30bef2a1f2bf766c0676a0f5fcbf8a119b7cf3470ee630828ac1945"
+    }
+  },
+  "purpose": "Exact superseded 1136-question presentation and validation sources. Measurement evidence and its committed seals remain unchanged."
+}

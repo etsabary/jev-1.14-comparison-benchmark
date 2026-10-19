@@ -1,0 +1,1609 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october18-corrected-two-items"><title>Decision results by function and load</title><style>body{max-width:1260px;margin:auto;padding:32px 24px 80px;background:#f8fafc;color:#193047;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.35rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{max-width:100%;height:auto;background:white;border-radius:10px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.86rem;margin:20px 0}th,td{border-bottom:1px solid #d5dfe9;padding:9px 11px;text-align:left;vertical-align:top}th{background:#e6eef5}code{font-size:.85em;overflow-wrap:anywhere}pre{overflow:auto;background:#e6eef5;padding:16px}nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #d5dfe9;padding-bottom:16px;font-size:.9rem}p{max-width:100ch}
+.metric-cell{font-weight:600;white-space:nowrap;color:#193047}
+.band-1{background:#d8f1e8}.band-2{background:#fff4c2}
+.band-3{background:#ffe4ca}.band-4{background:#fbdedd}
+.metric-unknown{background:#e7eaee;color:#193047}
+.cost-incomplete{text-decoration-line:underline;text-decoration-style:dotted;text-decoration-color:#9a6700;text-underline-offset:.25em;border-bottom:2px solid #bd820c}
+.legend-note{font-size:.9rem}main{min-width:0}table{overscroll-behavior-x:contain}
+@media(max-width:640px){body{padding:18px 12px 56px}h1{font-size:1.8rem}th,td{padding:8px}table{font-size:.8rem}nav{gap:10px}}
+</style></head><body><nav><a href="index.html">Overall comparison</a><a href="functions.html">Functions and load</a><a href="output_compliance.html">Output diagnostics</a><a href="three_model_reference.html">Original three-model reference</a><a href="https://github.com/etsabary/jev-1.14-comparison-benchmark">Repository and evidence</a></nav><main><h1 id="results-by-function-and-load-level">Results by function and load level</h1>
+<p>The <a href="index.html">main report</a> compares 36 eligible configurations on the corrected 1,136-question bank, tested October 15, 16 and 18, 2026. Each configuration combines 1,134 retained cases and two freshly tested corrected questions; all core scores are unchanged. Every cell uses strict first-attempt results. Unranked full runs, stopped samples and failed interfaces remain in the <a href="output_compliance.html">output diagnostics</a>, not these tables. The 640 core scenarios and 496 dependent variants are not 1,136 independent observations.</p>
+<h2 id="what-the-question-types-mean">What the question types mean</h2>
+<p>These short illustrations explain the task families. They are not additional scored questions or answer-key entries. Every actual item supplies its own rules, facts and five choices.</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>What the model has to do</th>
+<th>Simple illustration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F01 Record lookup and filtering</td>
+<td>Select records that meet stated conditions</td>
+<td>Which listed request is both signed and marked urgent?</td>
+</tr>
+<tr>
+<td>F02 Forward conditional reasoning</td>
+<td>Apply an implication from its trigger</td>
+<td>If an active badge grants entry and this badge is active, what follows?</td>
+</tr>
+<tr>
+<td>F03 Necessary conditions and contraposition</td>
+<td>Reason backward from a missing required condition</td>
+<td>Every approved request needs a valid ticket; can one without a ticket be approved?</td>
+</tr>
+<tr>
+<td>F04 Boolean scope and exclusivity</td>
+<td>Track combinations such as both, either and exactly one</td>
+<td>Which choice satisfies exactly one of two stated conditions?</td>
+</tr>
+<tr>
+<td>F05 Quantifiers and set relations</td>
+<td>Track all, some, none and overlapping groups</td>
+<td>All teal tokens are marked; no marked token is blank; which relation follows?</td>
+</tr>
+<tr>
+<td>F06 Transitive comparisons</td>
+<td>Combine ordered comparisons</td>
+<td>A is taller than B and B than C; how do A and C compare?</td>
+</tr>
+<tr>
+<td>F07 Scheduling constraints</td>
+<td>Fit events around order and exclusion rules</td>
+<td>Which timetable puts one meeting before another without overlapping a break?</td>
+</tr>
+<tr>
+<td>F08 One-to-one assignments</td>
+<td>Give each item a unique partner while satisfying clues</td>
+<td>Assign three people different desks using location restrictions.</td>
+</tr>
+<tr>
+<td>F09 Exact truth counting</td>
+<td>Count precisely how many statements hold</td>
+<td>Under the supplied facts, how many of six claims are true?</td>
+</tr>
+<tr>
+<td>F10 Truth-teller consistency</td>
+<td>Find a consistent pattern of truthful and false statements</td>
+<td>Which assignment of honest and dishonest speakers fits their claims?</td>
+</tr>
+<tr>
+<td>F11 Sufficiency and inconsistency</td>
+<td>Determine whether facts force an answer or contradict one another</td>
+<td>Is a proposed arrangement determined, impossible or still underdetermined?</td>
+</tr>
+<tr>
+<td>F12 Object tracking through swaps</td>
+<td>Update locations after repeated exchanges</td>
+<td>A red token starts in box A; several box contents are swapped; where does it end?</td>
+</tr>
+<tr>
+<td>F13 Sequential procedure execution</td>
+<td>Apply each ordered edit to the current state</td>
+<td>Toggle one flag, swap two values, then conditionally reset another flag.</td>
+</tr>
+<tr>
+<td>F14 Temporal interval relations</td>
+<td>Compare starts, ends and overlapping periods</td>
+<td>Which interval overlaps a specified event without containing it?</td>
+</tr>
+<tr>
+<td>F15 Verbal spatial tracking</td>
+<td>Update position or direction from described movement</td>
+<td>Follow successive turns and moves, then identify the final direction.</td>
+</tr>
+<tr>
+<td>F16 Nested role and reference binding</td>
+<td>Resolve chains of names, roles and references</td>
+<td>Identify the mentor of the colleague named in a nested description.</td>
+</tr>
+<tr>
+<td>F17 Perspective and belief tracking</td>
+<td>Distinguish what different observers witnessed</td>
+<td>An object moves while one observer is absent; where will that observer look?</td>
+</tr>
+<tr>
+<td>F18 Deterministic causal intervention</td>
+<td>Recompute consequences of changing a specified input</td>
+<td>Force a switch off while holding other inputs fixed; which lamp now lights?</td>
+</tr>
+<tr>
+<td>F19 Exceptions and priority rules</td>
+<td>Apply a rule, its exception and stated precedence</td>
+<td>A badge permits entry unless a higher-priority suspension applies.</td>
+</tr>
+<tr>
+<td>F20 Planning with preconditions</td>
+<td>Choose an action sequence whose requirements are met</td>
+<td>Obtain a key before opening a locked door, with limited moves available.</td>
+</tr>
+<tr>
+<td>F21 Directed reachability</td>
+<td>Follow arrows in their permitted direction</td>
+<td>Can node A reach node D through the listed directed links?</td>
+</tr>
+<tr>
+<td>F22 Deterministic preference ordering</td>
+<td>Rank candidates using explicit tie-break rules</td>
+<td>Rank by priority first, then age when priorities tie.</td>
+</tr>
+<tr>
+<td>F23 Rule verification and counterexamples</td>
+<td>Find a case that violates a stated rule</td>
+<td>Which listed record disproves the claim that every approved item is signed?</td>
+</tr>
+<tr>
+<td>F24 Source authority and stale records</td>
+<td>Select the valid source rather than an outdated conflicting one</td>
+<td>Two records disagree; which controls under the stated authority and date policy?</td>
+</tr>
+<tr>
+<td>F25 Deterministic fault diagnosis</td>
+<td>Match observed symptoms to explicit fault rules</td>
+<td>Which fault is consistent with the supplied test results?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="all-25-functions">All 25 functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Respan Span-02</th>
+<th style="text-align: right;">Perplexity Decider v1.2</th>
+<th style="text-align: right;">Nimble v4 Max</th>
+<th style="text-align: right;">Liquid d1-ultra</th>
+<th style="text-align: right;">Jev 1.14</th>
+<th style="text-align: right;">Mercury Decide</th>
+<th style="text-align: right;">Jev 1.13</th>
+<th style="text-align: right;">Gemma 4 31B</th>
+<th style="text-align: right;">Liquid d1</th>
+<th style="text-align: right;">Cloudflare Clef</th>
+<th style="text-align: right;">Perplexity Decider Flash v1.2</th>
+<th style="text-align: right;">Microsoft-Decision-1</th>
+<th style="text-align: right;">Drex v2.0</th>
+<th style="text-align: right;">Cloudflare Clef Flash</th>
+<th style="text-align: right;">Drex v1.5</th>
+<th style="text-align: right;">Cloudflare Clef Omni</th>
+<th style="text-align: right;">Tencent Hy3</th>
+<th style="text-align: right;">Qwen3.8 Flash</th>
+<th style="text-align: right;">Kev 4B</th>
+<th style="text-align: right;">Luna 6 regular</th>
+<th style="text-align: right;">Nemotron 3.5 Super VL</th>
+<th style="text-align: right;">Qwen3 235B A22B Instruct 2507</th>
+<th style="text-align: right;">Mercury 2.5</th>
+<th style="text-align: right;">MiMo V2.6 Flash</th>
+<th style="text-align: right;">Luna 6 Decisions</th>
+<th style="text-align: right;">Tev1 4B experimental (OpenRouter native adapter)</th>
+<th style="text-align: right;">Nex N2.5 Mini</th>
+<th style="text-align: right;">Gemini 2.5 Flash-Lite</th>
+<th style="text-align: right;">Qwen3-30B-A3B Instruct 2507</th>
+<th style="text-align: right;">ScaleDown Classify-1</th>
+<th style="text-align: right;">Granite 4.2 8B</th>
+<th style="text-align: right;">Solar Decide Flash</th>
+<th style="text-align: right;">GPT-5.4 nano</th>
+<th style="text-align: right;">Mistral NeMo 12B</th>
+<th style="text-align: right;">Nemotron 3.5 Lightning</th>
+<th style="text-align: right;">GLM 4.7 Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record lookup and filtering</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">34 (91.9%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">35 (94.6%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">26 (70.3%)</td>
+<td style="text-align: right;">30 (81.1%)</td>
+<td style="text-align: right;">29 (78.4%)</td>
+<td style="text-align: right;">25 (67.6%)</td>
+<td style="text-align: right;">18 (48.6%)</td>
+</tr>
+<tr>
+<td>Forward conditional reasoning</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">28 (71.8%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">35 (89.7%)</td>
+<td style="text-align: right;">36 (92.3%)</td>
+<td style="text-align: right;">36 (92.3%)</td>
+<td style="text-align: right;">39 (100.0%)</td>
+<td style="text-align: right;">35 (89.7%)</td>
+<td style="text-align: right;">31 (79.5%)</td>
+<td style="text-align: right;">31 (79.5%)</td>
+<td style="text-align: right;">24 (61.5%)</td>
+<td style="text-align: right;">22 (56.4%)</td>
+<td style="text-align: right;">26 (66.7%)</td>
+<td style="text-align: right;">33 (84.6%)</td>
+<td style="text-align: right;">31 (79.5%)</td>
+<td style="text-align: right;">32 (82.1%)</td>
+<td style="text-align: right;">28 (71.8%)</td>
+<td style="text-align: right;">14 (35.9%)</td>
+<td style="text-align: right;">25 (64.1%)</td>
+<td style="text-align: right;">25 (64.1%)</td>
+<td style="text-align: right;">21 (53.8%)</td>
+<td style="text-align: right;">21 (53.8%)</td>
+<td style="text-align: right;">20 (51.3%)</td>
+<td style="text-align: right;">31 (79.5%)</td>
+<td style="text-align: right;">23 (59.0%)</td>
+<td style="text-align: right;">15 (38.5%)</td>
+<td style="text-align: right;">19 (48.7%)</td>
+<td style="text-align: right;">18 (46.2%)</td>
+<td style="text-align: right;">16 (41.0%)</td>
+<td style="text-align: right;">13 (33.3%)</td>
+<td style="text-align: right;">13 (33.3%)</td>
+<td style="text-align: right;">11 (28.2%)</td>
+</tr>
+<tr>
+<td>Necessary conditions and contraposition</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">42 (91.3%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">45 (97.8%)</td>
+<td style="text-align: right;">26 (56.5%)</td>
+<td style="text-align: right;">45 (97.8%)</td>
+<td style="text-align: right;">44 (95.7%)</td>
+<td style="text-align: right;">29 (63.0%)</td>
+<td style="text-align: right;">37 (80.4%)</td>
+<td style="text-align: right;">38 (82.6%)</td>
+<td style="text-align: right;">22 (47.8%)</td>
+<td style="text-align: right;">26 (56.5%)</td>
+<td style="text-align: right;">32 (69.6%)</td>
+<td style="text-align: right;">25 (54.3%)</td>
+<td style="text-align: right;">39 (84.8%)</td>
+<td style="text-align: right;">31 (67.4%)</td>
+<td style="text-align: right;">33 (71.7%)</td>
+<td style="text-align: right;">31 (67.4%)</td>
+<td style="text-align: right;">13 (28.3%)</td>
+<td style="text-align: right;">11 (23.9%)</td>
+<td style="text-align: right;">33 (71.7%)</td>
+<td style="text-align: right;">24 (52.2%)</td>
+<td style="text-align: right;">18 (39.1%)</td>
+<td style="text-align: right;">14 (30.4%)</td>
+<td style="text-align: right;">27 (58.7%)</td>
+<td style="text-align: right;">23 (50.0%)</td>
+<td style="text-align: right;">25 (54.3%)</td>
+<td style="text-align: right;">17 (37.0%)</td>
+<td style="text-align: right;">13 (28.3%)</td>
+<td style="text-align: right;">5 (10.9%)</td>
+<td style="text-align: right;">13 (28.3%)</td>
+<td style="text-align: right;">8 (17.4%)</td>
+<td style="text-align: right;">10 (21.7%)</td>
+<td style="text-align: right;">7 (15.2%)</td>
+<td style="text-align: right;">4 (8.7%)</td>
+</tr>
+<tr>
+<td>Boolean scope and exclusivity</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">48 (100.0%)</td>
+<td style="text-align: right;">48 (100.0%)</td>
+<td style="text-align: right;">48 (100.0%)</td>
+<td style="text-align: right;">48 (100.0%)</td>
+<td style="text-align: right;">47 (97.9%)</td>
+<td style="text-align: right;">46 (95.8%)</td>
+<td style="text-align: right;">48 (100.0%)</td>
+<td style="text-align: right;">44 (91.7%)</td>
+<td style="text-align: right;">46 (95.8%)</td>
+<td style="text-align: right;">44 (91.7%)</td>
+<td style="text-align: right;">37 (77.1%)</td>
+<td style="text-align: right;">37 (77.1%)</td>
+<td style="text-align: right;">42 (87.5%)</td>
+<td style="text-align: right;">34 (70.8%)</td>
+<td style="text-align: right;">35 (72.9%)</td>
+<td style="text-align: right;">39 (81.2%)</td>
+<td style="text-align: right;">38 (79.2%)</td>
+<td style="text-align: right;">41 (85.4%)</td>
+<td style="text-align: right;">32 (66.7%)</td>
+<td style="text-align: right;">40 (83.3%)</td>
+<td style="text-align: right;">40 (83.3%)</td>
+<td style="text-align: right;">37 (77.1%)</td>
+<td style="text-align: right;">37 (77.1%)</td>
+<td style="text-align: right;">31 (64.6%)</td>
+<td style="text-align: right;">33 (68.8%)</td>
+<td style="text-align: right;">31 (64.6%)</td>
+<td style="text-align: right;">27 (56.2%)</td>
+<td style="text-align: right;">22 (45.8%)</td>
+<td style="text-align: right;">24 (50.0%)</td>
+<td style="text-align: right;">15 (31.2%)</td>
+<td style="text-align: right;">14 (29.2%)</td>
+<td style="text-align: right;">13 (27.1%)</td>
+<td style="text-align: right;">13 (27.1%)</td>
+<td style="text-align: right;">17 (35.4%)</td>
+<td style="text-align: right;">12 (25.0%)</td>
+<td style="text-align: right;">6 (12.5%)</td>
+</tr>
+<tr>
+<td>Quantifiers and set relations</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">41 (95.3%)</td>
+<td style="text-align: right;">43 (100.0%)</td>
+<td style="text-align: right;">43 (100.0%)</td>
+<td style="text-align: right;">42 (97.7%)</td>
+<td style="text-align: right;">43 (100.0%)</td>
+<td style="text-align: right;">42 (97.7%)</td>
+<td style="text-align: right;">42 (97.7%)</td>
+<td style="text-align: right;">39 (90.7%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">42 (97.7%)</td>
+<td style="text-align: right;">37 (86.0%)</td>
+<td style="text-align: right;">39 (90.7%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">39 (90.7%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">39 (90.7%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">38 (88.4%)</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">37 (86.0%)</td>
+<td style="text-align: right;">39 (90.7%)</td>
+<td style="text-align: right;">33 (76.7%)</td>
+<td style="text-align: right;">37 (86.0%)</td>
+<td style="text-align: right;">36 (83.7%)</td>
+<td style="text-align: right;">38 (88.4%)</td>
+<td style="text-align: right;">32 (74.4%)</td>
+<td style="text-align: right;">38 (88.4%)</td>
+<td style="text-align: right;">27 (62.8%)</td>
+<td style="text-align: right;">35 (81.4%)</td>
+<td style="text-align: right;">35 (81.4%)</td>
+<td style="text-align: right;">24 (55.8%)</td>
+<td style="text-align: right;">21 (48.8%)</td>
+<td style="text-align: right;">25 (58.1%)</td>
+<td style="text-align: right;">24 (55.8%)</td>
+</tr>
+<tr>
+<td>Transitive comparisons</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">33 (97.1%)</td>
+<td style="text-align: right;">33 (97.1%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">33 (97.1%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">32 (94.1%)</td>
+<td style="text-align: right;">29 (85.3%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">30 (88.2%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">33 (97.1%)</td>
+<td style="text-align: right;">31 (91.2%)</td>
+<td style="text-align: right;">31 (91.2%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">31 (91.2%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">32 (94.1%)</td>
+<td style="text-align: right;">32 (94.1%)</td>
+<td style="text-align: right;">30 (88.2%)</td>
+<td style="text-align: right;">34 (100.0%)</td>
+<td style="text-align: right;">31 (91.2%)</td>
+<td style="text-align: right;">29 (85.3%)</td>
+<td style="text-align: right;">31 (91.2%)</td>
+<td style="text-align: right;">30 (88.2%)</td>
+<td style="text-align: right;">32 (94.1%)</td>
+<td style="text-align: right;">28 (82.4%)</td>
+<td style="text-align: right;">31 (91.2%)</td>
+<td style="text-align: right;">27 (79.4%)</td>
+<td style="text-align: right;">30 (88.2%)</td>
+</tr>
+<tr>
+<td>Scheduling constraints</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">55 (79.7%)</td>
+<td style="text-align: right;">53 (76.8%)</td>
+<td style="text-align: right;">47 (68.1%)</td>
+<td style="text-align: right;">52 (75.4%)</td>
+<td style="text-align: right;">45 (65.2%)</td>
+<td style="text-align: right;">48 (69.6%)</td>
+<td style="text-align: right;">45 (65.2%)</td>
+<td style="text-align: right;">41 (59.4%)</td>
+<td style="text-align: right;">41 (59.4%)</td>
+<td style="text-align: right;">41 (59.4%)</td>
+<td style="text-align: right;">37 (53.6%)</td>
+<td style="text-align: right;">38 (55.1%)</td>
+<td style="text-align: right;">45 (65.2%)</td>
+<td style="text-align: right;">34 (49.3%)</td>
+<td style="text-align: right;">49 (71.0%)</td>
+<td style="text-align: right;">35 (50.7%)</td>
+<td style="text-align: right;">37 (53.6%)</td>
+<td style="text-align: right;">34 (49.3%)</td>
+<td style="text-align: right;">34 (49.3%)</td>
+<td style="text-align: right;">27 (39.1%)</td>
+<td style="text-align: right;">30 (43.5%)</td>
+<td style="text-align: right;">28 (40.6%)</td>
+<td style="text-align: right;">36 (52.2%)</td>
+<td style="text-align: right;">35 (50.7%)</td>
+<td style="text-align: right;">25 (36.2%)</td>
+<td style="text-align: right;">25 (36.2%)</td>
+<td style="text-align: right;">41 (59.4%)</td>
+<td style="text-align: right;">16 (23.2%)</td>
+<td style="text-align: right;">24 (34.8%)</td>
+<td style="text-align: right;">23 (33.3%)</td>
+<td style="text-align: right;">25 (36.2%)</td>
+<td style="text-align: right;">19 (27.5%)</td>
+<td style="text-align: right;">16 (23.2%)</td>
+<td style="text-align: right;">19 (27.5%)</td>
+<td style="text-align: right;">22 (31.9%)</td>
+<td style="text-align: right;">11 (15.9%)</td>
+</tr>
+<tr>
+<td>One-to-one assignments</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">60 (98.4%)</td>
+<td style="text-align: right;">60 (98.4%)</td>
+<td style="text-align: right;">57 (93.4%)</td>
+<td style="text-align: right;">52 (85.2%)</td>
+<td style="text-align: right;">56 (91.8%)</td>
+<td style="text-align: right;">49 (80.3%)</td>
+<td style="text-align: right;">50 (82.0%)</td>
+<td style="text-align: right;">54 (88.5%)</td>
+<td style="text-align: right;">46 (75.4%)</td>
+<td style="text-align: right;">41 (67.2%)</td>
+<td style="text-align: right;">46 (75.4%)</td>
+<td style="text-align: right;">42 (68.9%)</td>
+<td style="text-align: right;">41 (67.2%)</td>
+<td style="text-align: right;">46 (75.4%)</td>
+<td style="text-align: right;">46 (75.4%)</td>
+<td style="text-align: right;">39 (63.9%)</td>
+<td style="text-align: right;">36 (59.0%)</td>
+<td style="text-align: right;">36 (59.0%)</td>
+<td style="text-align: right;">44 (72.1%)</td>
+<td style="text-align: right;">35 (57.4%)</td>
+<td style="text-align: right;">33 (54.1%)</td>
+<td style="text-align: right;">35 (57.4%)</td>
+<td style="text-align: right;">36 (59.0%)</td>
+<td style="text-align: right;">35 (57.4%)</td>
+<td style="text-align: right;">33 (54.1%)</td>
+<td style="text-align: right;">39 (63.9%)</td>
+<td style="text-align: right;">32 (52.5%)</td>
+<td style="text-align: right;">32 (52.5%)</td>
+<td style="text-align: right;">30 (49.2%)</td>
+<td style="text-align: right;">27 (44.3%)</td>
+<td style="text-align: right;">31 (50.8%)</td>
+<td style="text-align: right;">25 (41.0%)</td>
+<td style="text-align: right;">25 (41.0%)</td>
+<td style="text-align: right;">24 (39.3%)</td>
+<td style="text-align: right;">15 (24.6%)</td>
+<td style="text-align: right;">21 (34.4%)</td>
+</tr>
+<tr>
+<td>Exact truth counting</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">41 (63.1%)</td>
+<td style="text-align: right;">39 (60.0%)</td>
+<td style="text-align: right;">37 (56.9%)</td>
+<td style="text-align: right;">41 (63.1%)</td>
+<td style="text-align: right;">26 (40.0%)</td>
+<td style="text-align: right;">34 (52.3%)</td>
+<td style="text-align: right;">24 (36.9%)</td>
+<td style="text-align: right;">27 (41.5%)</td>
+<td style="text-align: right;">20 (30.8%)</td>
+<td style="text-align: right;">25 (38.5%)</td>
+<td style="text-align: right;">37 (56.9%)</td>
+<td style="text-align: right;">37 (56.9%)</td>
+<td style="text-align: right;">25 (38.5%)</td>
+<td style="text-align: right;">26 (40.0%)</td>
+<td style="text-align: right;">31 (47.7%)</td>
+<td style="text-align: right;">17 (26.2%)</td>
+<td style="text-align: right;">15 (23.1%)</td>
+<td style="text-align: right;">20 (30.8%)</td>
+<td style="text-align: right;">19 (29.2%)</td>
+<td style="text-align: right;">18 (27.7%)</td>
+<td style="text-align: right;">17 (26.2%)</td>
+<td style="text-align: right;">10 (15.4%)</td>
+<td style="text-align: right;">18 (27.7%)</td>
+<td style="text-align: right;">14 (21.5%)</td>
+<td style="text-align: right;">19 (29.2%)</td>
+<td style="text-align: right;">14 (21.5%)</td>
+<td style="text-align: right;">16 (24.6%)</td>
+<td style="text-align: right;">14 (21.5%)</td>
+<td style="text-align: right;">16 (24.6%)</td>
+<td style="text-align: right;">19 (29.2%)</td>
+<td style="text-align: right;">12 (18.5%)</td>
+<td style="text-align: right;">8 (12.3%)</td>
+<td style="text-align: right;">13 (20.0%)</td>
+<td style="text-align: right;">8 (12.3%)</td>
+<td style="text-align: right;">17 (26.2%)</td>
+<td style="text-align: right;">12 (18.5%)</td>
+</tr>
+<tr>
+<td>Truth-teller consistency</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">48 (77.4%)</td>
+<td style="text-align: right;">48 (77.4%)</td>
+<td style="text-align: right;">46 (74.2%)</td>
+<td style="text-align: right;">38 (61.3%)</td>
+<td style="text-align: right;">31 (50.0%)</td>
+<td style="text-align: right;">32 (51.6%)</td>
+<td style="text-align: right;">30 (48.4%)</td>
+<td style="text-align: right;">27 (43.5%)</td>
+<td style="text-align: right;">32 (51.6%)</td>
+<td style="text-align: right;">28 (45.2%)</td>
+<td style="text-align: right;">27 (43.5%)</td>
+<td style="text-align: right;">31 (50.0%)</td>
+<td style="text-align: right;">33 (53.2%)</td>
+<td style="text-align: right;">30 (48.4%)</td>
+<td style="text-align: right;">27 (43.5%)</td>
+<td style="text-align: right;">33 (53.2%)</td>
+<td style="text-align: right;">28 (45.2%)</td>
+<td style="text-align: right;">25 (40.3%)</td>
+<td style="text-align: right;">26 (41.9%)</td>
+<td style="text-align: right;">19 (30.6%)</td>
+<td style="text-align: right;">19 (30.6%)</td>
+<td style="text-align: right;">17 (27.4%)</td>
+<td style="text-align: right;">21 (33.9%)</td>
+<td style="text-align: right;">20 (32.3%)</td>
+<td style="text-align: right;">19 (30.6%)</td>
+<td style="text-align: right;">20 (32.3%)</td>
+<td style="text-align: right;">19 (30.6%)</td>
+<td style="text-align: right;">18 (29.0%)</td>
+<td style="text-align: right;">14 (22.6%)</td>
+<td style="text-align: right;">12 (19.4%)</td>
+<td style="text-align: right;">14 (22.6%)</td>
+<td style="text-align: right;">18 (29.0%)</td>
+<td style="text-align: right;">10 (16.1%)</td>
+<td style="text-align: right;">14 (22.6%)</td>
+<td style="text-align: right;">13 (21.0%)</td>
+<td style="text-align: right;">11 (17.7%)</td>
+</tr>
+<tr>
+<td>Sufficiency and inconsistency</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">32 (91.4%)</td>
+<td style="text-align: right;">33 (94.3%)</td>
+<td style="text-align: right;">29 (82.9%)</td>
+<td style="text-align: right;">32 (91.4%)</td>
+<td style="text-align: right;">30 (85.7%)</td>
+<td style="text-align: right;">30 (85.7%)</td>
+<td style="text-align: right;">28 (80.0%)</td>
+<td style="text-align: right;">31 (88.6%)</td>
+<td style="text-align: right;">28 (80.0%)</td>
+<td style="text-align: right;">28 (80.0%)</td>
+<td style="text-align: right;">28 (80.0%)</td>
+<td style="text-align: right;">26 (74.3%)</td>
+<td style="text-align: right;">31 (88.6%)</td>
+<td style="text-align: right;">27 (77.1%)</td>
+<td style="text-align: right;">21 (60.0%)</td>
+<td style="text-align: right;">26 (74.3%)</td>
+<td style="text-align: right;">24 (68.6%)</td>
+<td style="text-align: right;">25 (71.4%)</td>
+<td style="text-align: right;">27 (77.1%)</td>
+<td style="text-align: right;">22 (62.9%)</td>
+<td style="text-align: right;">26 (74.3%)</td>
+<td style="text-align: right;">24 (68.6%)</td>
+<td style="text-align: right;">18 (51.4%)</td>
+<td style="text-align: right;">23 (65.7%)</td>
+<td style="text-align: right;">18 (51.4%)</td>
+<td style="text-align: right;">20 (57.1%)</td>
+<td style="text-align: right;">20 (57.1%)</td>
+<td style="text-align: right;">14 (40.0%)</td>
+<td style="text-align: right;">14 (40.0%)</td>
+<td style="text-align: right;">13 (37.1%)</td>
+<td style="text-align: right;">21 (60.0%)</td>
+<td style="text-align: right;">6 (17.1%)</td>
+<td style="text-align: right;">14 (40.0%)</td>
+<td style="text-align: right;">15 (42.9%)</td>
+<td style="text-align: right;">10 (28.6%)</td>
+<td style="text-align: right;">14 (40.0%)</td>
+</tr>
+<tr>
+<td>Object tracking through swaps</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">25 (54.3%)</td>
+<td style="text-align: right;">32 (69.6%)</td>
+<td style="text-align: right;">32 (69.6%)</td>
+<td style="text-align: right;">25 (54.3%)</td>
+<td style="text-align: right;">27 (58.7%)</td>
+<td style="text-align: right;">33 (71.7%)</td>
+<td style="text-align: right;">28 (60.9%)</td>
+<td style="text-align: right;">24 (52.2%)</td>
+<td style="text-align: right;">31 (67.4%)</td>
+<td style="text-align: right;">27 (58.7%)</td>
+<td style="text-align: right;">23 (50.0%)</td>
+<td style="text-align: right;">24 (52.2%)</td>
+<td style="text-align: right;">28 (60.9%)</td>
+<td style="text-align: right;">28 (60.9%)</td>
+<td style="text-align: right;">22 (47.8%)</td>
+<td style="text-align: right;">28 (60.9%)</td>
+<td style="text-align: right;">22 (47.8%)</td>
+<td style="text-align: right;">24 (52.2%)</td>
+<td style="text-align: right;">23 (50.0%)</td>
+<td style="text-align: right;">17 (37.0%)</td>
+<td style="text-align: right;">19 (41.3%)</td>
+<td style="text-align: right;">27 (58.7%)</td>
+<td style="text-align: right;">20 (43.5%)</td>
+<td style="text-align: right;">23 (50.0%)</td>
+<td style="text-align: right;">20 (43.5%)</td>
+<td style="text-align: right;">18 (39.1%)</td>
+<td style="text-align: right;">14 (30.4%)</td>
+<td style="text-align: right;">16 (34.8%)</td>
+<td style="text-align: right;">21 (45.7%)</td>
+<td style="text-align: right;">7 (15.2%)</td>
+<td style="text-align: right;">10 (21.7%)</td>
+<td style="text-align: right;">13 (28.3%)</td>
+<td style="text-align: right;">14 (30.4%)</td>
+<td style="text-align: right;">14 (30.4%)</td>
+<td style="text-align: right;">12 (26.1%)</td>
+<td style="text-align: right;">7 (15.2%)</td>
+</tr>
+<tr>
+<td>Sequential procedure execution</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">29 (69.0%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">14 (33.3%)</td>
+<td style="text-align: right;">7 (16.7%)</td>
+<td style="text-align: right;">4 (9.5%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">6 (14.3%)</td>
+<td style="text-align: right;">9 (21.4%)</td>
+<td style="text-align: right;">5 (11.9%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">9 (21.4%)</td>
+<td style="text-align: right;">5 (11.9%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">7 (16.7%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">8 (19.0%)</td>
+<td style="text-align: right;">11 (26.2%)</td>
+<td style="text-align: right;">5 (11.9%)</td>
+<td style="text-align: right;">7 (16.7%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">9 (21.4%)</td>
+<td style="text-align: right;">8 (19.0%)</td>
+<td style="text-align: right;">6 (14.3%)</td>
+<td style="text-align: right;">5 (11.9%)</td>
+<td style="text-align: right;">9 (21.4%)</td>
+<td style="text-align: right;">12 (28.6%)</td>
+<td style="text-align: right;">9 (21.4%)</td>
+<td style="text-align: right;">7 (16.7%)</td>
+<td style="text-align: right;">11 (26.2%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">5 (11.9%)</td>
+<td style="text-align: right;">8 (19.0%)</td>
+<td style="text-align: right;">9 (21.4%)</td>
+<td style="text-align: right;">8 (19.0%)</td>
+<td style="text-align: right;">10 (23.8%)</td>
+<td style="text-align: right;">12 (28.6%)</td>
+</tr>
+<tr>
+<td>Temporal interval relations</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">35 (97.2%)</td>
+<td style="text-align: right;">36 (100.0%)</td>
+<td style="text-align: right;">36 (100.0%)</td>
+<td style="text-align: right;">34 (94.4%)</td>
+<td style="text-align: right;">35 (97.2%)</td>
+<td style="text-align: right;">32 (88.9%)</td>
+<td style="text-align: right;">35 (97.2%)</td>
+<td style="text-align: right;">34 (94.4%)</td>
+<td style="text-align: right;">31 (86.1%)</td>
+<td style="text-align: right;">27 (75.0%)</td>
+<td style="text-align: right;">25 (69.4%)</td>
+<td style="text-align: right;">28 (77.8%)</td>
+<td style="text-align: right;">29 (80.6%)</td>
+<td style="text-align: right;">19 (52.8%)</td>
+<td style="text-align: right;">26 (72.2%)</td>
+<td style="text-align: right;">29 (80.6%)</td>
+<td style="text-align: right;">31 (86.1%)</td>
+<td style="text-align: right;">19 (52.8%)</td>
+<td style="text-align: right;">28 (77.8%)</td>
+<td style="text-align: right;">24 (66.7%)</td>
+<td style="text-align: right;">27 (75.0%)</td>
+<td style="text-align: right;">24 (66.7%)</td>
+<td style="text-align: right;">28 (77.8%)</td>
+<td style="text-align: right;">29 (80.6%)</td>
+<td style="text-align: right;">23 (63.9%)</td>
+<td style="text-align: right;">22 (61.1%)</td>
+<td style="text-align: right;">19 (52.8%)</td>
+<td style="text-align: right;">17 (47.2%)</td>
+<td style="text-align: right;">14 (38.9%)</td>
+<td style="text-align: right;">12 (33.3%)</td>
+<td style="text-align: right;">16 (44.4%)</td>
+<td style="text-align: right;">14 (38.9%)</td>
+<td style="text-align: right;">9 (25.0%)</td>
+<td style="text-align: right;">11 (30.6%)</td>
+<td style="text-align: right;">14 (38.9%)</td>
+<td style="text-align: right;">11 (30.6%)</td>
+</tr>
+<tr>
+<td>Verbal spatial tracking</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">40 (93.0%)</td>
+<td style="text-align: right;">33 (76.7%)</td>
+<td style="text-align: right;">33 (76.7%)</td>
+<td style="text-align: right;">34 (79.1%)</td>
+<td style="text-align: right;">30 (69.8%)</td>
+<td style="text-align: right;">30 (69.8%)</td>
+<td style="text-align: right;">26 (60.5%)</td>
+<td style="text-align: right;">32 (74.4%)</td>
+<td style="text-align: right;">21 (48.8%)</td>
+<td style="text-align: right;">21 (48.8%)</td>
+<td style="text-align: right;">24 (55.8%)</td>
+<td style="text-align: right;">22 (51.2%)</td>
+<td style="text-align: right;">26 (60.5%)</td>
+<td style="text-align: right;">16 (37.2%)</td>
+<td style="text-align: right;">24 (55.8%)</td>
+<td style="text-align: right;">18 (41.9%)</td>
+<td style="text-align: right;">22 (51.2%)</td>
+<td style="text-align: right;">25 (58.1%)</td>
+<td style="text-align: right;">24 (55.8%)</td>
+<td style="text-align: right;">27 (62.8%)</td>
+<td style="text-align: right;">24 (55.8%)</td>
+<td style="text-align: right;">18 (41.9%)</td>
+<td style="text-align: right;">19 (44.2%)</td>
+<td style="text-align: right;">21 (48.8%)</td>
+<td style="text-align: right;">19 (44.2%)</td>
+<td style="text-align: right;">17 (39.5%)</td>
+<td style="text-align: right;">15 (34.9%)</td>
+<td style="text-align: right;">23 (53.5%)</td>
+<td style="text-align: right;">16 (37.2%)</td>
+<td style="text-align: right;">16 (37.2%)</td>
+<td style="text-align: right;">12 (27.9%)</td>
+<td style="text-align: right;">11 (25.6%)</td>
+<td style="text-align: right;">20 (46.5%)</td>
+<td style="text-align: right;">14 (32.6%)</td>
+<td style="text-align: right;">7 (16.3%)</td>
+<td style="text-align: right;">11 (25.6%)</td>
+</tr>
+<tr>
+<td>Nested role and reference binding</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">40 (90.9%)</td>
+<td style="text-align: right;">36 (81.8%)</td>
+<td style="text-align: right;">35 (79.5%)</td>
+<td style="text-align: right;">31 (70.5%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">33 (75.0%)</td>
+<td style="text-align: right;">28 (63.6%)</td>
+<td style="text-align: right;">29 (65.9%)</td>
+<td style="text-align: right;">30 (68.2%)</td>
+<td style="text-align: right;">33 (75.0%)</td>
+<td style="text-align: right;">31 (70.5%)</td>
+<td style="text-align: right;">26 (59.1%)</td>
+<td style="text-align: right;">24 (54.5%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">20 (45.5%)</td>
+<td style="text-align: right;">29 (65.9%)</td>
+<td style="text-align: right;">23 (52.3%)</td>
+<td style="text-align: right;">17 (38.6%)</td>
+<td style="text-align: right;">24 (54.5%)</td>
+<td style="text-align: right;">25 (56.8%)</td>
+<td style="text-align: right;">19 (43.2%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">23 (52.3%)</td>
+<td style="text-align: right;">17 (38.6%)</td>
+<td style="text-align: right;">17 (38.6%)</td>
+<td style="text-align: right;">19 (43.2%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">19 (43.2%)</td>
+<td style="text-align: right;">17 (38.6%)</td>
+<td style="text-align: right;">14 (31.8%)</td>
+<td style="text-align: right;">18 (40.9%)</td>
+<td style="text-align: right;">14 (31.8%)</td>
+<td style="text-align: right;">12 (27.3%)</td>
+<td style="text-align: right;">14 (31.8%)</td>
+<td style="text-align: right;">16 (36.4%)</td>
+</tr>
+<tr>
+<td>Perspective and belief tracking</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">41 (93.2%)</td>
+<td style="text-align: right;">39 (88.6%)</td>
+<td style="text-align: right;">42 (95.5%)</td>
+<td style="text-align: right;">41 (93.2%)</td>
+<td style="text-align: right;">42 (95.5%)</td>
+<td style="text-align: right;">40 (90.9%)</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">42 (95.5%)</td>
+<td style="text-align: right;">40 (90.9%)</td>
+<td style="text-align: right;">23 (52.3%)</td>
+<td style="text-align: right;">41 (93.2%)</td>
+<td style="text-align: right;">28 (63.6%)</td>
+<td style="text-align: right;">36 (81.8%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">25 (56.8%)</td>
+<td style="text-align: right;">32 (72.7%)</td>
+<td style="text-align: right;">16 (36.4%)</td>
+<td style="text-align: right;">22 (50.0%)</td>
+<td style="text-align: right;">31 (70.5%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">23 (52.3%)</td>
+<td style="text-align: right;">30 (68.2%)</td>
+<td style="text-align: right;">31 (70.5%)</td>
+<td style="text-align: right;">24 (54.5%)</td>
+<td style="text-align: right;">26 (59.1%)</td>
+<td style="text-align: right;">20 (45.5%)</td>
+<td style="text-align: right;">19 (43.2%)</td>
+<td style="text-align: right;">20 (45.5%)</td>
+<td style="text-align: right;">17 (38.6%)</td>
+<td style="text-align: right;">22 (50.0%)</td>
+<td style="text-align: right;">19 (43.2%)</td>
+<td style="text-align: right;">20 (45.5%)</td>
+<td style="text-align: right;">16 (36.4%)</td>
+</tr>
+<tr>
+<td>Deterministic causal intervention</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">43 (97.7%)</td>
+<td style="text-align: right;">42 (95.5%)</td>
+<td style="text-align: right;">39 (88.6%)</td>
+<td style="text-align: right;">37 (84.1%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">26 (59.1%)</td>
+<td style="text-align: right;">26 (59.1%)</td>
+<td style="text-align: right;">29 (65.9%)</td>
+<td style="text-align: right;">24 (54.5%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">26 (59.1%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">20 (45.5%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">16 (36.4%)</td>
+<td style="text-align: right;">27 (61.4%)</td>
+<td style="text-align: right;">25 (56.8%)</td>
+<td style="text-align: right;">22 (50.0%)</td>
+<td style="text-align: right;">22 (50.0%)</td>
+<td style="text-align: right;">16 (36.4%)</td>
+<td style="text-align: right;">18 (40.9%)</td>
+<td style="text-align: right;">21 (47.7%)</td>
+<td style="text-align: right;">18 (40.9%)</td>
+<td style="text-align: right;">15 (34.1%)</td>
+<td style="text-align: right;">9 (20.5%)</td>
+<td style="text-align: right;">12 (27.3%)</td>
+<td style="text-align: right;">12 (27.3%)</td>
+<td style="text-align: right;">9 (20.5%)</td>
+<td style="text-align: right;">9 (20.5%)</td>
+<td style="text-align: right;">13 (29.5%)</td>
+<td style="text-align: right;">11 (25.0%)</td>
+<td style="text-align: right;">5 (11.4%)</td>
+<td style="text-align: right;">10 (22.7%)</td>
+</tr>
+<tr>
+<td>Exceptions and priority rules</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">49 (94.2%)</td>
+<td style="text-align: right;">50 (96.2%)</td>
+<td style="text-align: right;">52 (100.0%)</td>
+<td style="text-align: right;">52 (100.0%)</td>
+<td style="text-align: right;">46 (88.5%)</td>
+<td style="text-align: right;">51 (98.1%)</td>
+<td style="text-align: right;">47 (90.4%)</td>
+<td style="text-align: right;">48 (92.3%)</td>
+<td style="text-align: right;">48 (92.3%)</td>
+<td style="text-align: right;">48 (92.3%)</td>
+<td style="text-align: right;">44 (84.6%)</td>
+<td style="text-align: right;">48 (92.3%)</td>
+<td style="text-align: right;">44 (84.6%)</td>
+<td style="text-align: right;">42 (80.8%)</td>
+<td style="text-align: right;">46 (88.5%)</td>
+<td style="text-align: right;">48 (92.3%)</td>
+<td style="text-align: right;">46 (88.5%)</td>
+<td style="text-align: right;">46 (88.5%)</td>
+<td style="text-align: right;">36 (69.2%)</td>
+<td style="text-align: right;">45 (86.5%)</td>
+<td style="text-align: right;">41 (78.8%)</td>
+<td style="text-align: right;">40 (76.9%)</td>
+<td style="text-align: right;">41 (78.8%)</td>
+<td style="text-align: right;">41 (78.8%)</td>
+<td style="text-align: right;">44 (84.6%)</td>
+<td style="text-align: right;">39 (75.0%)</td>
+<td style="text-align: right;">34 (65.4%)</td>
+<td style="text-align: right;">32 (61.5%)</td>
+<td style="text-align: right;">37 (71.2%)</td>
+<td style="text-align: right;">26 (50.0%)</td>
+<td style="text-align: right;">24 (46.2%)</td>
+<td style="text-align: right;">25 (48.1%)</td>
+<td style="text-align: right;">35 (67.3%)</td>
+<td style="text-align: right;">14 (26.9%)</td>
+<td style="text-align: right;">27 (51.9%)</td>
+<td style="text-align: right;">15 (28.8%)</td>
+</tr>
+<tr>
+<td>Planning with preconditions</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">33 (89.2%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">35 (94.6%)</td>
+<td style="text-align: right;">32 (86.5%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">24 (64.9%)</td>
+<td style="text-align: right;">29 (78.4%)</td>
+<td style="text-align: right;">24 (64.9%)</td>
+<td style="text-align: right;">28 (75.7%)</td>
+<td style="text-align: right;">21 (56.8%)</td>
+<td style="text-align: right;">27 (73.0%)</td>
+<td style="text-align: right;">21 (56.8%)</td>
+<td style="text-align: right;">23 (62.2%)</td>
+<td style="text-align: right;">21 (56.8%)</td>
+<td style="text-align: right;">19 (51.4%)</td>
+<td style="text-align: right;">24 (64.9%)</td>
+<td style="text-align: right;">26 (70.3%)</td>
+<td style="text-align: right;">15 (40.5%)</td>
+<td style="text-align: right;">13 (35.1%)</td>
+<td style="text-align: right;">19 (51.4%)</td>
+<td style="text-align: right;">13 (35.1%)</td>
+<td style="text-align: right;">10 (27.0%)</td>
+<td style="text-align: right;">14 (37.8%)</td>
+<td style="text-align: right;">10 (27.0%)</td>
+<td style="text-align: right;">11 (29.7%)</td>
+<td style="text-align: right;">8 (21.6%)</td>
+<td style="text-align: right;">6 (16.2%)</td>
+</tr>
+<tr>
+<td>Directed reachability</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">35 (94.6%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">33 (89.2%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">35 (94.6%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">35 (94.6%)</td>
+<td style="text-align: right;">35 (94.6%)</td>
+<td style="text-align: right;">33 (89.2%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">33 (89.2%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">30 (81.1%)</td>
+<td style="text-align: right;">17 (45.9%)</td>
+<td style="text-align: right;">30 (81.1%)</td>
+<td style="text-align: right;">17 (45.9%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">21 (56.8%)</td>
+<td style="text-align: right;">11 (29.7%)</td>
+<td style="text-align: right;">10 (27.0%)</td>
+<td style="text-align: right;">14 (37.8%)</td>
+</tr>
+<tr>
+<td>Deterministic preference ordering</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">43 (95.6%)</td>
+<td style="text-align: right;">43 (95.6%)</td>
+<td style="text-align: right;">41 (91.1%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">42 (93.3%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">40 (88.9%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">45 (100.0%)</td>
+<td style="text-align: right;">42 (93.3%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">44 (97.8%)</td>
+<td style="text-align: right;">42 (93.3%)</td>
+<td style="text-align: right;">38 (84.4%)</td>
+<td style="text-align: right;">40 (88.9%)</td>
+<td style="text-align: right;">28 (62.2%)</td>
+<td style="text-align: right;">35 (77.8%)</td>
+<td style="text-align: right;">31 (68.9%)</td>
+<td style="text-align: right;">36 (80.0%)</td>
+<td style="text-align: right;">33 (73.3%)</td>
+<td style="text-align: right;">19 (42.2%)</td>
+<td style="text-align: right;">19 (42.2%)</td>
+</tr>
+<tr>
+<td>Rule verification and counterexamples</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">45 (97.8%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+<td style="text-align: right;">45 (97.8%)</td>
+<td style="text-align: right;">44 (95.7%)</td>
+<td style="text-align: right;">45 (97.8%)</td>
+<td style="text-align: right;">45 (97.8%)</td>
+<td style="text-align: right;">44 (95.7%)</td>
+<td style="text-align: right;">44 (95.7%)</td>
+<td style="text-align: right;">43 (93.5%)</td>
+<td style="text-align: right;">41 (89.1%)</td>
+<td style="text-align: right;">44 (95.7%)</td>
+<td style="text-align: right;">42 (91.3%)</td>
+<td style="text-align: right;">42 (91.3%)</td>
+<td style="text-align: right;">40 (87.0%)</td>
+<td style="text-align: right;">36 (78.3%)</td>
+<td style="text-align: right;">44 (95.7%)</td>
+<td style="text-align: right;">43 (93.5%)</td>
+<td style="text-align: right;">42 (91.3%)</td>
+<td style="text-align: right;">36 (78.3%)</td>
+<td style="text-align: right;">40 (87.0%)</td>
+<td style="text-align: right;">39 (84.8%)</td>
+<td style="text-align: right;">37 (80.4%)</td>
+<td style="text-align: right;">35 (76.1%)</td>
+<td style="text-align: right;">29 (63.0%)</td>
+<td style="text-align: right;">31 (67.4%)</td>
+<td style="text-align: right;">27 (58.7%)</td>
+<td style="text-align: right;">27 (58.7%)</td>
+<td style="text-align: right;">28 (60.9%)</td>
+<td style="text-align: right;">22 (47.8%)</td>
+<td style="text-align: right;">17 (37.0%)</td>
+<td style="text-align: right;">14 (30.4%)</td>
+<td style="text-align: right;">8 (17.4%)</td>
+</tr>
+<tr>
+<td>Source authority and stale records</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">33 (89.2%)</td>
+<td style="text-align: right;">17 (45.9%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">30 (81.1%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">36 (97.3%)</td>
+<td style="text-align: right;">27 (73.0%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">26 (70.3%)</td>
+<td style="text-align: right;">37 (100.0%)</td>
+<td style="text-align: right;">31 (83.8%)</td>
+<td style="text-align: right;">25 (67.6%)</td>
+<td style="text-align: right;">32 (86.5%)</td>
+<td style="text-align: right;">25 (67.6%)</td>
+<td style="text-align: right;">21 (56.8%)</td>
+<td style="text-align: right;">17 (45.9%)</td>
+<td style="text-align: right;">25 (67.6%)</td>
+<td style="text-align: right;">14 (37.8%)</td>
+<td style="text-align: right;">8 (21.6%)</td>
+</tr>
+<tr>
+<td>Deterministic fault diagnosis</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">43 (97.7%)</td>
+<td style="text-align: right;">42 (95.5%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">40 (90.9%)</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">44 (100.0%)</td>
+<td style="text-align: right;">42 (95.5%)</td>
+<td style="text-align: right;">39 (88.6%)</td>
+<td style="text-align: right;">39 (88.6%)</td>
+<td style="text-align: right;">41 (93.2%)</td>
+<td style="text-align: right;">43 (97.7%)</td>
+<td style="text-align: right;">43 (97.7%)</td>
+<td style="text-align: right;">35 (79.5%)</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">38 (86.4%)</td>
+<td style="text-align: right;">33 (75.0%)</td>
+<td style="text-align: right;">35 (79.5%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">33 (75.0%)</td>
+<td style="text-align: right;">37 (84.1%)</td>
+<td style="text-align: right;">34 (77.3%)</td>
+<td style="text-align: right;">35 (79.5%)</td>
+<td style="text-align: right;">22 (50.0%)</td>
+<td style="text-align: right;">24 (54.5%)</td>
+<td style="text-align: right;">17 (38.6%)</td>
+<td style="text-align: right;">24 (54.5%)</td>
+<td style="text-align: right;">25 (56.8%)</td>
+<td style="text-align: right;">20 (45.5%)</td>
+<td style="text-align: right;">18 (40.9%)</td>
+<td style="text-align: right;">19 (43.2%)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="core-and-related-item-types">Core and related item types</h2>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Respan Span-02</th>
+<th style="text-align: right;">Perplexity Decider v1.2</th>
+<th style="text-align: right;">Nimble v4 Max</th>
+<th style="text-align: right;">Liquid d1-ultra</th>
+<th style="text-align: right;">Jev 1.14</th>
+<th style="text-align: right;">Mercury Decide</th>
+<th style="text-align: right;">Jev 1.13</th>
+<th style="text-align: right;">Gemma 4 31B</th>
+<th style="text-align: right;">Liquid d1</th>
+<th style="text-align: right;">Cloudflare Clef</th>
+<th style="text-align: right;">Perplexity Decider Flash v1.2</th>
+<th style="text-align: right;">Microsoft-Decision-1</th>
+<th style="text-align: right;">Drex v2.0</th>
+<th style="text-align: right;">Cloudflare Clef Flash</th>
+<th style="text-align: right;">Drex v1.5</th>
+<th style="text-align: right;">Cloudflare Clef Omni</th>
+<th style="text-align: right;">Tencent Hy3</th>
+<th style="text-align: right;">Qwen3.8 Flash</th>
+<th style="text-align: right;">Kev 4B</th>
+<th style="text-align: right;">Luna 6 regular</th>
+<th style="text-align: right;">Nemotron 3.5 Super VL</th>
+<th style="text-align: right;">Qwen3 235B A22B Instruct 2507</th>
+<th style="text-align: right;">Mercury 2.5</th>
+<th style="text-align: right;">MiMo V2.6 Flash</th>
+<th style="text-align: right;">Luna 6 Decisions</th>
+<th style="text-align: right;">Tev1 4B experimental (OpenRouter native adapter)</th>
+<th style="text-align: right;">Nex N2.5 Mini</th>
+<th style="text-align: right;">Gemini 2.5 Flash-Lite</th>
+<th style="text-align: right;">Qwen3-30B-A3B Instruct 2507</th>
+<th style="text-align: right;">ScaleDown Classify-1</th>
+<th style="text-align: right;">Granite 4.2 8B</th>
+<th style="text-align: right;">Solar Decide Flash</th>
+<th style="text-align: right;">GPT-5.4 nano</th>
+<th style="text-align: right;">Mistral NeMo 12B</th>
+<th style="text-align: right;">Nemotron 3.5 Lightning</th>
+<th style="text-align: right;">GLM 4.7 Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contrast</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">39 (92.9%)</td>
+<td style="text-align: right;">38 (90.5%)</td>
+<td style="text-align: right;">38 (90.5%)</td>
+<td style="text-align: right;">35 (83.3%)</td>
+<td style="text-align: right;">37 (88.1%)</td>
+<td style="text-align: right;">36 (85.7%)</td>
+<td style="text-align: right;">36 (85.7%)</td>
+<td style="text-align: right;">35 (83.3%)</td>
+<td style="text-align: right;">37 (88.1%)</td>
+<td style="text-align: right;">36 (85.7%)</td>
+<td style="text-align: right;">35 (83.3%)</td>
+<td style="text-align: right;">32 (76.2%)</td>
+<td style="text-align: right;">32 (76.2%)</td>
+<td style="text-align: right;">31 (73.8%)</td>
+<td style="text-align: right;">34 (81.0%)</td>
+<td style="text-align: right;">32 (76.2%)</td>
+<td style="text-align: right;">32 (76.2%)</td>
+<td style="text-align: right;">31 (73.8%)</td>
+<td style="text-align: right;">32 (76.2%)</td>
+<td style="text-align: right;">32 (76.2%)</td>
+<td style="text-align: right;">21 (50.0%)</td>
+<td style="text-align: right;">27 (64.3%)</td>
+<td style="text-align: right;">26 (61.9%)</td>
+<td style="text-align: right;">29 (69.0%)</td>
+<td style="text-align: right;">26 (61.9%)</td>
+<td style="text-align: right;">28 (66.7%)</td>
+<td style="text-align: right;">23 (54.8%)</td>
+<td style="text-align: right;">19 (45.2%)</td>
+<td style="text-align: right;">21 (50.0%)</td>
+<td style="text-align: right;">18 (42.9%)</td>
+<td style="text-align: right;">17 (40.5%)</td>
+<td style="text-align: right;">21 (50.0%)</td>
+<td style="text-align: right;">21 (50.0%)</td>
+<td style="text-align: right;">17 (40.5%)</td>
+<td style="text-align: right;">11 (26.2%)</td>
+<td style="text-align: right;">16 (38.1%)</td>
+</tr>
+<tr>
+<td>core</td>
+<td style="text-align: right;">640</td>
+<td style="text-align: right;">568 (88.8%)</td>
+<td style="text-align: right;">573 (89.5%)</td>
+<td style="text-align: right;">573 (89.5%)</td>
+<td style="text-align: right;">556 (86.9%)</td>
+<td style="text-align: right;">538 (84.1%)</td>
+<td style="text-align: right;">531 (83.0%)</td>
+<td style="text-align: right;">533 (83.3%)</td>
+<td style="text-align: right;">522 (81.6%)</td>
+<td style="text-align: right;">505 (78.9%)</td>
+<td style="text-align: right;">494 (77.2%)</td>
+<td style="text-align: right;">499 (78.0%)</td>
+<td style="text-align: right;">476 (74.4%)</td>
+<td style="text-align: right;">485 (75.8%)</td>
+<td style="text-align: right;">465 (72.7%)</td>
+<td style="text-align: right;">460 (71.9%)</td>
+<td style="text-align: right;">466 (72.8%)</td>
+<td style="text-align: right;">446 (69.7%)</td>
+<td style="text-align: right;">438 (68.4%)</td>
+<td style="text-align: right;">418 (65.3%)</td>
+<td style="text-align: right;">431 (67.3%)</td>
+<td style="text-align: right;">414 (64.7%)</td>
+<td style="text-align: right;">417 (65.2%)</td>
+<td style="text-align: right;">404 (63.1%)</td>
+<td style="text-align: right;">399 (62.3%)</td>
+<td style="text-align: right;">390 (60.9%)</td>
+<td style="text-align: right;">393 (61.4%)</td>
+<td style="text-align: right;">374 (58.4%)</td>
+<td style="text-align: right;">352 (55.0%)</td>
+<td style="text-align: right;">334 (52.2%)</td>
+<td style="text-align: right;">294 (45.9%)</td>
+<td style="text-align: right;">279 (43.6%)</td>
+<td style="text-align: right;">277 (43.3%)</td>
+<td style="text-align: right;">276 (43.1%)</td>
+<td style="text-align: right;">240 (37.5%)</td>
+<td style="text-align: right;">233 (36.4%)</td>
+<td style="text-align: right;">188 (29.4%)</td>
+</tr>
+<tr>
+<td>probe</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">70 (87.5%)</td>
+<td style="text-align: right;">65 (81.2%)</td>
+<td style="text-align: right;">60 (75.0%)</td>
+<td style="text-align: right;">54 (67.5%)</td>
+<td style="text-align: right;">42 (52.5%)</td>
+<td style="text-align: right;">51 (63.8%)</td>
+<td style="text-align: right;">37 (46.2%)</td>
+<td style="text-align: right;">35 (43.8%)</td>
+<td style="text-align: right;">33 (41.2%)</td>
+<td style="text-align: right;">32 (40.0%)</td>
+<td style="text-align: right;">41 (51.2%)</td>
+<td style="text-align: right;">49 (61.2%)</td>
+<td style="text-align: right;">35 (43.8%)</td>
+<td style="text-align: right;">30 (37.5%)</td>
+<td style="text-align: right;">40 (50.0%)</td>
+<td style="text-align: right;">28 (35.0%)</td>
+<td style="text-align: right;">28 (35.0%)</td>
+<td style="text-align: right;">33 (41.2%)</td>
+<td style="text-align: right;">35 (43.8%)</td>
+<td style="text-align: right;">17 (21.2%)</td>
+<td style="text-align: right;">26 (32.5%)</td>
+<td style="text-align: right;">25 (31.2%)</td>
+<td style="text-align: right;">28 (35.0%)</td>
+<td style="text-align: right;">31 (38.8%)</td>
+<td style="text-align: right;">33 (41.2%)</td>
+<td style="text-align: right;">24 (30.0%)</td>
+<td style="text-align: right;">35 (43.8%)</td>
+<td style="text-align: right;">24 (30.0%)</td>
+<td style="text-align: right;">21 (26.2%)</td>
+<td style="text-align: right;">20 (25.0%)</td>
+<td style="text-align: right;">25 (31.2%)</td>
+<td style="text-align: right;">19 (23.8%)</td>
+<td style="text-align: right;">17 (21.2%)</td>
+<td style="text-align: right;">19 (23.8%)</td>
+<td style="text-align: right;">9 (11.2%)</td>
+<td style="text-align: right;">16 (20.0%)</td>
+</tr>
+<tr>
+<td>robustness</td>
+<td style="text-align: right;">374</td>
+<td style="text-align: right;">334 (89.3%)</td>
+<td style="text-align: right;">333 (89.0%)</td>
+<td style="text-align: right;">326 (87.2%)</td>
+<td style="text-align: right;">325 (86.9%)</td>
+<td style="text-align: right;">312 (83.4%)</td>
+<td style="text-align: right;">311 (83.2%)</td>
+<td style="text-align: right;">313 (83.7%)</td>
+<td style="text-align: right;">310 (82.9%)</td>
+<td style="text-align: right;">289 (77.3%)</td>
+<td style="text-align: right;">297 (79.4%)</td>
+<td style="text-align: right;">280 (74.9%)</td>
+<td style="text-align: right;">283 (75.7%)</td>
+<td style="text-align: right;">282 (75.4%)</td>
+<td style="text-align: right;">267 (71.4%)</td>
+<td style="text-align: right;">257 (68.7%)</td>
+<td style="text-align: right;">264 (70.6%)</td>
+<td style="text-align: right;">283 (75.7%)</td>
+<td style="text-align: right;">260 (69.5%)</td>
+<td style="text-align: right;">252 (67.4%)</td>
+<td style="text-align: right;">248 (66.3%)</td>
+<td style="text-align: right;">250 (66.8%)</td>
+<td style="text-align: right;">237 (63.4%)</td>
+<td style="text-align: right;">244 (65.2%)</td>
+<td style="text-align: right;">225 (60.2%)</td>
+<td style="text-align: right;">228 (61.0%)</td>
+<td style="text-align: right;">232 (62.0%)</td>
+<td style="text-align: right;">218 (58.3%)</td>
+<td style="text-align: right;">203 (54.3%)</td>
+<td style="text-align: right;">188 (50.3%)</td>
+<td style="text-align: right;">167 (44.7%)</td>
+<td style="text-align: right;">157 (42.0%)</td>
+<td style="text-align: right;">160 (42.8%)</td>
+<td style="text-align: right;">150 (40.1%)</td>
+<td style="text-align: right;">145 (38.8%)</td>
+<td style="text-align: right;">125 (33.4%)</td>
+<td style="text-align: right;">114 (30.5%)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="engineered-load-levels">Engineered load levels</h2>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Respan Span-02</th>
+<th style="text-align: right;">Perplexity Decider v1.2</th>
+<th style="text-align: right;">Nimble v4 Max</th>
+<th style="text-align: right;">Liquid d1-ultra</th>
+<th style="text-align: right;">Jev 1.14</th>
+<th style="text-align: right;">Mercury Decide</th>
+<th style="text-align: right;">Jev 1.13</th>
+<th style="text-align: right;">Gemma 4 31B</th>
+<th style="text-align: right;">Liquid d1</th>
+<th style="text-align: right;">Cloudflare Clef</th>
+<th style="text-align: right;">Perplexity Decider Flash v1.2</th>
+<th style="text-align: right;">Microsoft-Decision-1</th>
+<th style="text-align: right;">Drex v2.0</th>
+<th style="text-align: right;">Cloudflare Clef Flash</th>
+<th style="text-align: right;">Drex v1.5</th>
+<th style="text-align: right;">Cloudflare Clef Omni</th>
+<th style="text-align: right;">Tencent Hy3</th>
+<th style="text-align: right;">Qwen3.8 Flash</th>
+<th style="text-align: right;">Kev 4B</th>
+<th style="text-align: right;">Luna 6 regular</th>
+<th style="text-align: right;">Nemotron 3.5 Super VL</th>
+<th style="text-align: right;">Qwen3 235B A22B Instruct 2507</th>
+<th style="text-align: right;">Mercury 2.5</th>
+<th style="text-align: right;">MiMo V2.6 Flash</th>
+<th style="text-align: right;">Luna 6 Decisions</th>
+<th style="text-align: right;">Tev1 4B experimental (OpenRouter native adapter)</th>
+<th style="text-align: right;">Nex N2.5 Mini</th>
+<th style="text-align: right;">Gemini 2.5 Flash-Lite</th>
+<th style="text-align: right;">Qwen3-30B-A3B Instruct 2507</th>
+<th style="text-align: right;">ScaleDown Classify-1</th>
+<th style="text-align: right;">Granite 4.2 8B</th>
+<th style="text-align: right;">Solar Decide Flash</th>
+<th style="text-align: right;">GPT-5.4 nano</th>
+<th style="text-align: right;">Mistral NeMo 12B</th>
+<th style="text-align: right;">Nemotron 3.5 Lightning</th>
+<th style="text-align: right;">GLM 4.7 Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;">306</td>
+<td style="text-align: right;">291 (95.1%)</td>
+<td style="text-align: right;">304 (99.3%)</td>
+<td style="text-align: right;">294 (96.1%)</td>
+<td style="text-align: right;">289 (94.4%)</td>
+<td style="text-align: right;">284 (92.8%)</td>
+<td style="text-align: right;">281 (91.8%)</td>
+<td style="text-align: right;">287 (93.8%)</td>
+<td style="text-align: right;">278 (90.8%)</td>
+<td style="text-align: right;">271 (88.6%)</td>
+<td style="text-align: right;">269 (87.9%)</td>
+<td style="text-align: right;">264 (86.3%)</td>
+<td style="text-align: right;">273 (89.2%)</td>
+<td style="text-align: right;">273 (89.2%)</td>
+<td style="text-align: right;">256 (83.7%)</td>
+<td style="text-align: right;">270 (88.2%)</td>
+<td style="text-align: right;">261 (85.3%)</td>
+<td style="text-align: right;">259 (84.6%)</td>
+<td style="text-align: right;">241 (78.8%)</td>
+<td style="text-align: right;">246 (80.4%)</td>
+<td style="text-align: right;">246 (80.4%)</td>
+<td style="text-align: right;">241 (78.8%)</td>
+<td style="text-align: right;">240 (78.4%)</td>
+<td style="text-align: right;">238 (77.8%)</td>
+<td style="text-align: right;">232 (75.8%)</td>
+<td style="text-align: right;">234 (76.5%)</td>
+<td style="text-align: right;">234 (76.5%)</td>
+<td style="text-align: right;">225 (73.5%)</td>
+<td style="text-align: right;">206 (67.3%)</td>
+<td style="text-align: right;">209 (68.3%)</td>
+<td style="text-align: right;">181 (59.2%)</td>
+<td style="text-align: right;">169 (55.2%)</td>
+<td style="text-align: right;">163 (53.3%)</td>
+<td style="text-align: right;">172 (56.2%)</td>
+<td style="text-align: right;">157 (51.3%)</td>
+<td style="text-align: right;">118 (38.6%)</td>
+<td style="text-align: right;">119 (38.9%)</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">269 (94.1%)</td>
+<td style="text-align: right;">258 (90.2%)</td>
+<td style="text-align: right;">260 (90.9%)</td>
+<td style="text-align: right;">250 (87.4%)</td>
+<td style="text-align: right;">236 (82.5%)</td>
+<td style="text-align: right;">245 (85.7%)</td>
+<td style="text-align: right;">239 (83.6%)</td>
+<td style="text-align: right;">230 (80.4%)</td>
+<td style="text-align: right;">224 (78.3%)</td>
+<td style="text-align: right;">221 (77.3%)</td>
+<td style="text-align: right;">222 (77.6%)</td>
+<td style="text-align: right;">223 (78.0%)</td>
+<td style="text-align: right;">213 (74.5%)</td>
+<td style="text-align: right;">199 (69.6%)</td>
+<td style="text-align: right;">208 (72.7%)</td>
+<td style="text-align: right;">204 (71.3%)</td>
+<td style="text-align: right;">194 (67.8%)</td>
+<td style="text-align: right;">199 (69.6%)</td>
+<td style="text-align: right;">185 (64.7%)</td>
+<td style="text-align: right;">178 (62.2%)</td>
+<td style="text-align: right;">175 (61.2%)</td>
+<td style="text-align: right;">167 (58.4%)</td>
+<td style="text-align: right;">157 (54.9%)</td>
+<td style="text-align: right;">162 (56.6%)</td>
+<td style="text-align: right;">172 (60.1%)</td>
+<td style="text-align: right;">183 (64.0%)</td>
+<td style="text-align: right;">155 (54.2%)</td>
+<td style="text-align: right;">145 (50.7%)</td>
+<td style="text-align: right;">142 (49.7%)</td>
+<td style="text-align: right;">124 (43.4%)</td>
+<td style="text-align: right;">122 (42.7%)</td>
+<td style="text-align: right;">120 (42.0%)</td>
+<td style="text-align: right;">99 (34.6%)</td>
+<td style="text-align: right;">114 (39.9%)</td>
+<td style="text-align: right;">102 (35.7%)</td>
+<td style="text-align: right;">76 (26.6%)</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;">265</td>
+<td style="text-align: right;">232 (87.5%)</td>
+<td style="text-align: right;">227 (85.7%)</td>
+<td style="text-align: right;">221 (83.4%)</td>
+<td style="text-align: right;">218 (82.3%)</td>
+<td style="text-align: right;">204 (77.0%)</td>
+<td style="text-align: right;">198 (74.7%)</td>
+<td style="text-align: right;">197 (74.3%)</td>
+<td style="text-align: right;">202 (76.2%)</td>
+<td style="text-align: right;">188 (70.9%)</td>
+<td style="text-align: right;">196 (74.0%)</td>
+<td style="text-align: right;">192 (72.5%)</td>
+<td style="text-align: right;">178 (67.2%)</td>
+<td style="text-align: right;">184 (69.4%)</td>
+<td style="text-align: right;">182 (68.7%)</td>
+<td style="text-align: right;">163 (61.5%)</td>
+<td style="text-align: right;">172 (64.9%)</td>
+<td style="text-align: right;">175 (66.0%)</td>
+<td style="text-align: right;">165 (62.3%)</td>
+<td style="text-align: right;">169 (63.8%)</td>
+<td style="text-align: right;">144 (54.3%)</td>
+<td style="text-align: right;">141 (53.2%)</td>
+<td style="text-align: right;">158 (59.6%)</td>
+<td style="text-align: right;">154 (58.1%)</td>
+<td style="text-align: right;">141 (53.2%)</td>
+<td style="text-align: right;">134 (50.6%)</td>
+<td style="text-align: right;">134 (50.6%)</td>
+<td style="text-align: right;">133 (50.2%)</td>
+<td style="text-align: right;">123 (46.4%)</td>
+<td style="text-align: right;">113 (42.6%)</td>
+<td style="text-align: right;">84 (31.7%)</td>
+<td style="text-align: right;">96 (36.2%)</td>
+<td style="text-align: right;">89 (33.6%)</td>
+<td style="text-align: right;">97 (36.6%)</td>
+<td style="text-align: right;">77 (29.1%)</td>
+<td style="text-align: right;">73 (27.5%)</td>
+<td style="text-align: right;">68 (25.7%)</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;">279</td>
+<td style="text-align: right;">219 (78.5%)</td>
+<td style="text-align: right;">220 (78.9%)</td>
+<td style="text-align: right;">222 (79.6%)</td>
+<td style="text-align: right;">213 (76.3%)</td>
+<td style="text-align: right;">205 (73.5%)</td>
+<td style="text-align: right;">205 (73.5%)</td>
+<td style="text-align: right;">196 (70.3%)</td>
+<td style="text-align: right;">192 (68.8%)</td>
+<td style="text-align: right;">181 (64.9%)</td>
+<td style="text-align: right;">173 (62.0%)</td>
+<td style="text-align: right;">177 (63.4%)</td>
+<td style="text-align: right;">166 (59.5%)</td>
+<td style="text-align: right;">164 (58.8%)</td>
+<td style="text-align: right;">156 (55.9%)</td>
+<td style="text-align: right;">150 (53.8%)</td>
+<td style="text-align: right;">153 (54.8%)</td>
+<td style="text-align: right;">161 (57.7%)</td>
+<td style="text-align: right;">157 (56.3%)</td>
+<td style="text-align: right;">137 (49.1%)</td>
+<td style="text-align: right;">160 (57.3%)</td>
+<td style="text-align: right;">154 (55.2%)</td>
+<td style="text-align: right;">141 (50.5%)</td>
+<td style="text-align: right;">153 (54.8%)</td>
+<td style="text-align: right;">149 (53.4%)</td>
+<td style="text-align: right;">137 (49.1%)</td>
+<td style="text-align: right;">126 (45.2%)</td>
+<td style="text-align: right;">137 (49.1%)</td>
+<td style="text-align: right;">124 (44.4%)</td>
+<td style="text-align: right;">100 (35.8%)</td>
+<td style="text-align: right;">110 (39.4%)</td>
+<td style="text-align: right;">91 (32.6%)</td>
+<td style="text-align: right;">105 (37.6%)</td>
+<td style="text-align: right;">96 (34.4%)</td>
+<td style="text-align: right;">73 (26.2%)</td>
+<td style="text-align: right;">85 (30.5%)</td>
+<td style="text-align: right;">71 (25.4%)</td>
+</tr>
+</tbody>
+</table></main></body></html>

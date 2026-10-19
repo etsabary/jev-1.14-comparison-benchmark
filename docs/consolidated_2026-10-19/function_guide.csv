@@ -1,0 +1,32 @@
+family_id,function,what_it_tests,illustration,questions
+F01,Lookup and filtering,Select records that meet stated conditions,Which listed request is both signed and marked urgent?,43
+F02,Forward conditionals,Apply an implication from its trigger,"If an active badge grants entry and this badge is active, what follows?",46
+F03,Necessary conditions,Reason backward from a missing required condition,Every approved request needs a valid ticket; can one without a ticket be approved?,52
+F04,Boolean scope,"Track combinations such as both, either and exactly one",Which choice satisfies exactly one of two stated conditions?,54
+F05,Quantifiers and sets,"Track all, some, none and overlapping groups",All teal tokens are marked; no marked token is blank; which relation follows?,49
+F06,Comparisons,Combine ordered comparisons,A is taller than B and B than C; how do A and C compare?,40
+F07,Scheduling,Fit events around order and exclusion rules,Which timetable puts one meeting before another without overlapping a break?,76
+F08,One-to-one assignments,Give each item a unique partner while satisfying clues,Assign three people different desks using location restrictions.,67
+F09,Exact truth counting,Count precisely how many statements hold,"Under the supplied facts, how many of six claims are true?",71
+F10,Truth-teller consistency,Find a consistent pattern of truthful and false statements,Which assignment of honest and dishonest speakers fits their claims?,74
+F11,Sufficiency and inconsistency,Determine whether facts force an answer or contradict one another,"Is a proposed arrangement determined, impossible or still underdetermined?",41
+F12,Object swaps,Update locations after repeated exchanges,A red token starts in box A; several box contents are swapped; where does it end?,52
+F13,Sequential procedures,Apply each ordered edit to the current state,"Toggle one flag, swap two values, then conditionally reset another flag.",48
+F14,Temporal intervals,"Compare starts, ends and overlapping periods",Which interval overlaps a specified event without containing it?,42
+F15,Spatial tracking,Update position or direction from described movement,"Follow successive turns and moves, then identify the final direction.",49
+F16,Reference binding,"Resolve chains of names, roles and references",Identify the mentor of the colleague named in a nested description.,50
+F17,Beliefs and perspectives,Distinguish what different observers witnessed,An object moves while one observer is absent; where will that observer look?,50
+F18,Causal intervention,Recompute consequences of changing a specified input,Force a switch off while holding other inputs fixed; which lamp now lights?,50
+F19,Exceptions and priorities,"Apply a rule, its exception and stated precedence",A badge permits entry unless a higher-priority suspension applies.,58
+F20,Planning,Choose an action sequence whose requirements are met,"Obtain a key before opening a locked door, with limited moves available.",43
+F21,Directed reachability,Follow arrows in their permitted direction,Can node A reach node D through the listed directed links?,43
+F22,Preference ordering,Rank candidates using explicit tie-break rules,"Rank by priority first, then age when priorities tie.",51
+F23,Rule counterexamples,Find a case that violates a stated rule,Which listed record disproves the claim that every approved item is signed?,52
+F24,Authority and stale records,Select the valid source rather than an outdated conflicting one,Two records disagree; which controls under the stated authority and date policy?,43
+F25,Fault diagnosis,Match observed symptoms to explicit fault rules,Which fault is consistent with the supplied test results?,50
+F26,Probabilistic risk,Choose an action by expected loss from supplied probabilities and costs.,Which action minimizes the expected cost of a possible delay?,8
+F27,Value of information,Choose whether a test is worth buying before a later decision.,Will the information change the action enough to justify its price?,8
+F28,Robust decisions without a prior,Minimize worst-case loss or regret without inventing probabilities.,Which policy has the smallest worst-case loss across permitted worlds?,8
+F29,Strategic decisions,Choose while anticipating another actor maximizing their own payoff.,Which first move is best after accounting for the other player’s response?,8
+F30,Concurrent-history consistency,Check whether overlapping operations fit a valid atomic order.,Can these read and write replies belong to one order consistent with their timing?,8
+F31,Information-flow security,Check whether observable behavior reveals a forbidden secret distinction.,Could two permitted secret states be distinguished from the public output?,8

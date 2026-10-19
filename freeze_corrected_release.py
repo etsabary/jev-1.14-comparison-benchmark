@@ -22,7 +22,18 @@ def hashes():
     paths.update(p for folder in FOLDERS for p in (ROOT / folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)
     paths.discard(DEST)
     assert all(p.is_file() for p in paths)
-    return {str(p.relative_to(ROOT)): sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
+    # A later presentation may supersede these logical paths. Check the exact
+    # archived bytes against the original seal, never regenerate that seal.
+    archive = ROOT / 'publication_archive_2026-10-19'
+    manifest = json.loads((archive / 'manifest.json').read_text())['files'] if archive.exists() else {}
+    result = {}
+    for path in sorted(paths):
+        name = str(path.relative_to(ROOT))
+        selected = archive / manifest[name]['archive_path'] if name in manifest else path
+        result[name] = sha256(selected.read_bytes()).hexdigest()
+        if name in manifest:
+            assert result[name] == manifest[name]['sha256'], name
+    return result
 
 
 if __name__ == '__main__':

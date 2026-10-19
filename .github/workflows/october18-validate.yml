@@ -1,4 +1,4 @@
-name: Validate October 18 expanded benchmark
+name: Validate consolidated and preserved benchmark releases
 on: [push, pull_request, workflow_dispatch]
 jobs:
   expanded-offline-validation:
@@ -15,4 +15,5 @@ jobs:
       - run: python3 llm_expansion_analysis_2026_10_18.py
       - run: python3 freeze_october18_release.py --check
       - run: python3 validate_corrected_release.py
+      - run: python3 validate_consolidated_release.py
       - run: python3 -m unittest discover -p 'test_*.py'

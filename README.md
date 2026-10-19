@@ -1,66 +1,43 @@
-# 36 models on the same 1136 text decisions
+# 20 decision models on 1,342 text questions
 
-I started this benchmark because Jev interested me, but I could not place its intelligence relative to the LLMs I use. Could a service that returns a typed decision rather than a paragraph make better quick decisions than Luna? On this bank, Jev was substantially stronger. Expanding the comparison has since found models that exceed Jev, and a regular LLM that comes close.
+Updated October 19, 2026. Tests October 15 to 19, 2026.
 
-**Respan Span-02 scored 1,011/1,136 (89.0%), Perplexity Decider v1.2 scored 1,009 (88.8%), and Nimble Max scored 997 (87.8%).** Jev 1.14 scored 929 (81.8%), Jev 1.13 scored 919 (80.9%), regular Luna scored 728 (64.1%) and Luna Decisions scored 677 (59.6%). **Gemma 4 31B is the strongest regular LLM tested under this short-output contract: 902/1,136 (79.4%).**
+**Respan Span-02 leads with 1,127/1,342 (84.0%), followed by Perplexity Decider v1.2 at 1,120 (83.5%) and Nimble Max at 1,115 (83.1%).**
 
-These are **System 1-style decisions**: one answer from supplied information, without an explicit thinking budget, tools or an agentic feedback loop. They matter for systems routing many requests under time and cost constraints. This does not compare unrestricted reasoning, writing or agentic ability.
+One combined bank across 31 categories, with five choices per question. [Interactive report](https://etsabary.github.io/jev-1.14-comparison-benchmark/) · [Full plain-text analysis](consolidated_2026-10-19/report.txt) · [All function scores](FUNCTIONS.md).
 
-**Updated October 18, 2026, after the question audit.** The active comparison contains **36 complete configurations × 1,136 questions = 40,896 model-question cases**. Two ambiguous procedure questions have been replaced by clarified versions and tested across all 36 available configurations. Every model retains its other 1,134 responses. The leading order is unchanged. The original Nimble v4 is unavailable as a distinct checkpoint, so its 1,134 retained cases remain a partial diagnostic outside the full-bank ranking. Three earlier output-noncompliant runs, five stopped LLM samples, the stopped Solar Decide sample and two failed interface probes also remain outside the ranking.
+![Combined accuracy, median/p95 and cost](consolidated_2026-10-19/accuracy_speed_cost.png)
 
-The [active question bank](corrected_2026-10-18/questions_1136.csv) contains **640 core questions plus 496 related variants, contrasts and candidate checks across 25 families**. Each question has five options, giving a 20% uniform-random baseline. Related items are not independent observations. The [function tables and examples](FUNCTIONS.md) explain the abilities. The [image benchmark](https://github.com/etsabary/visual-decision-benchmark) remains separate. The harder future benchmark is a separate project.
+## Results, speed and cost
 
-![Overall and core accuracy across all 36 complete corrected-bank configurations](corrected_2026-10-18/figures/overall_accuracy.png)
+Every row covers all 1,342 first attempts. Provider failures remain unsuccessful. Median and p95 pool the individual first-attempt times, not stage medians. Costs include permitted recoveries and retain their captured tariffs. `+ ?` means unreported additional charges; `~` marks tariff-based accounting. Costs per 1,000 are normalized, not the actual number of questions tested.
 
-## Full bank results with cost and speed scales
-
-Every score uses the first attempt on all 1,136 active questions. Failed requests, refusals, invalid output and truncations remain unsuccessful. Median and p95 pool **all 1,136 timed first attempts**, including failures: 1,134 retained measurements plus the two new measurements. Medians are not averaged. This correction is not a fresh full-bank speed rerun. p95 is the response time at or below which roughly 95% of requests completed.
-
-Costs per 1,000 normalize the selected 1,136-question evidence, including permitted recoveries: selected cost ÷ 1,136 × 1,000. **`+ ?` means additional charges are unknown**, so its cost band describes the known lower bound. `~` marks usage multiplied by a captured tariff rather than an API-returned dollar amount. Original charges retain their captured prices; the new Nimble Max calls use the October 18 tariff. Dates are Toronto dates. * identifies a configuration first added on October 18.
-
-| Model | Correct / 1,136 | Accuracy | Core correct | Median | p95 | Cost per 1,000 | Test dates |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Respan Span-02 * | 1011 | 89.0% | 568/640 | 202 ms 🟩 Fastest | 1644 ms | $0.00338 🟩 Lowest | 2026-10-18 |
-| Perplexity Decider v1.2 * | 1009 | 88.8% | 573/640 | 250 ms 🟩 Fastest | 328 ms | $0.00672 🟩 Lowest + ? | 2026-10-18 |
-| Nimble v4 Max | 997 | 87.8% | 573/640 | 236 ms 🟩 Fastest | 328 ms | ~$0.02961 🟧 Mid | 2026-10-16, 2026-10-18 |
-| Liquid d1-ultra * | 970 | 85.4% | 556/640 | 196 ms 🟩 Fastest | 261 ms | $0.01157 🟨 Low + ? | 2026-10-18 |
-| Jev 1.14 | 929 | 81.8% | 538/640 | 182 ms 🟩 Fastest | 275 ms | $0.02397 🟨 Low | 2026-10-15, 2026-10-18 |
-| Mercury Decide * | 929 | 81.8% | 531/640 | 240 ms 🟩 Fastest | 387 ms | $0.00670 🟩 Lowest | 2026-10-18 |
-| Jev 1.13 | 919 | 80.9% | 533/640 | 196 ms 🟩 Fastest | 340 ms | $0.02397 🟨 Low | 2026-10-15, 2026-10-18 |
-| Gemma 4 31B * | 902 | 79.4% | 522/640 | 491 ms 🟨 Fast | 1154 ms | $0.04131 🟧 Mid + ? | 2026-10-18 |
-| Liquid d1 * | 864 | 76.1% | 505/640 | 214 ms 🟩 Fastest | 894 ms | $0.00551 🟩 Lowest | 2026-10-18 |
-| Cloudflare Clef * | 859 | 75.6% | 494/640 | 284 ms 🟨 Fast | 417 ms | $0.01704 🟨 Low | 2026-10-18 |
-| Perplexity Decider Flash v1.2 * | 855 | 75.3% | 499/640 | 161 ms 🟩 Fastest | 236 ms | $0.00327 🟩 Lowest + ? | 2026-10-18 |
-| Microsoft-Decision-1 | 840 | 73.9% | 476/640 | 289 ms 🟨 Fast | 591 ms | $0.01169 🟨 Low | 2026-10-16, 2026-10-18 |
-| Drex v2.0 * | 834 | 73.4% | 485/640 | 233 ms 🟩 Fastest | 724 ms | $0.01588 🟨 Low + ? | 2026-10-18 |
-| Cloudflare Clef Flash * | 793 | 69.8% | 465/640 | 262 ms 🟨 Fast | 358 ms | $0.00852 🟩 Lowest | 2026-10-18 |
-| Drex v1.5 * | 791 | 69.6% | 460/640 | 197 ms 🟩 Fastest | 607 ms | $0.01061 🟨 Low | 2026-10-18 |
-| Cloudflare Clef Omni * | 790 | 69.5% | 466/640 | 248 ms 🟩 Fastest | 415 ms | $0.05945 🟥 Highest + ? | 2026-10-18 |
-| Tencent Hy3 | 789 | 69.5% | 446/640 | 1423 ms 🟥 Slow | 1928 ms | $0.02443 🟨 Low + ? | 2026-10-16, 2026-10-18 |
-| Qwen3.8 Flash | 762 | 67.1% | 438/640 | 862 ms 🟧 Moderate | 5717 ms | $0.04404 🟧 Mid + ? | 2026-10-16, 2026-10-18 |
-| Kev 4B * | 737 | 64.9% | 418/640 | 229 ms 🟩 Fastest | 374 ms | $0.01114 🟨 Low | 2026-10-18 |
-| Luna 6 regular | 728 | 64.1% | 431/640 | 942 ms 🟧 Moderate | 1971 ms | $0.03021 🟧 Mid | 2026-10-15, 2026-10-18 |
-| Nemotron 3.5 Super VL | 711 | 62.6% | 414/640 | 465 ms 🟨 Fast | 835 ms | $0.02979 🟧 Mid + ? | 2026-10-16, 2026-10-18 |
-| Qwen3 235B A22B Instruct 2507 * | 706 | 62.1% | 417/640 | 556 ms 🟧 Moderate | 1667 ms | $0.02653 🟧 Mid | 2026-10-18 |
-| Mercury 2.5 | 702 | 61.8% | 404/640 | 534 ms 🟧 Moderate | 1077 ms | $0.01163 🟨 Low | 2026-10-15, 2026-10-18 |
-| MiMo V2.6 Flash | 684 | 60.2% | 399/640 | 1428 ms 🟥 Slow | 6032 ms | $0.03796 🟧 Mid + ? | 2026-10-16, 2026-10-18 |
-| Luna 6 Decisions | 677 | 59.6% | 390/640 | 261 ms 🟨 Fast | 535 ms | $0.03470 🟧 Mid + ? | 2026-10-15, 2026-10-18 |
-| Tev1 4B experimental (OpenRouter native adapter) * | 677 | 59.6% | 393/640 | 202 ms 🟩 Fastest | 256 ms | $0.01510 🟨 Low | 2026-10-18 |
-| Nex N2.5 Mini * | 650 | 57.2% | 374/640 | 500 ms 🟧 Moderate | 1221 ms | $0.00770 🟩 Lowest | 2026-10-18 |
-| Gemini 2.5 Flash-Lite | 598 | 52.6% | 352/640 | 341 ms 🟨 Fast | 523 ms | $0.02834 🟧 Mid | 2026-10-15, 2026-10-18 |
-| Qwen3-30B-A3B Instruct 2507 | 564 | 49.6% | 334/640 | 1034 ms 🟥 Slow | 1823 ms | $0.02573 🟧 Mid | 2026-10-15, 2026-10-18 |
-| ScaleDown Classify-1 * | 499 | 43.9% | 294/640 | 268 ms 🟨 Fast | 354 ms | $0.02066 🟨 Low | 2026-10-18 |
-| Granite 4.2 8B | 478 | 42.1% | 279/640 | 324 ms 🟨 Fast | 871 ms | $0.01370 🟨 Low + ? | 2026-10-15, 2026-10-18 |
-| Solar Decide Flash * | 477 | 42.0% | 277/640 | 542 ms 🟧 Moderate | 742 ms | $0.02952 🟧 Mid + ? | 2026-10-18 |
-| GPT-5.4 nano | 464 | 40.8% | 276/640 | 683 ms 🟧 Moderate | 1136 ms | $0.06167 🟥 Highest | 2026-10-15, 2026-10-18 |
-| Mistral NeMo 12B | 421 | 37.1% | 240/640 | 490 ms 🟨 Fast | 1523 ms | $0.00813 🟩 Lowest + ? | 2026-10-15, 2026-10-18 |
-| Nemotron 3.5 Lightning | 378 | 33.3% | 233/640 | 280 ms 🟨 Fast | 533 ms | $0.02046 🟨 Low + ? | 2026-10-16, 2026-10-18 |
-| GLM 4.7 Flash | 334 | 29.4% | 188/640 | 560 ms 🟧 Moderate | 17056 ms | $0.01766 🟨 Low + ? | 2026-10-16, 2026-10-18 |
-
+| Model | Correct / 1,342 | Accuracy | Median | p95 | Cost per 1,000 | Test dates |
+| --- | --- | --- | --- | --- | --- | --- |
+| Respan Span-02 | 1127 | 84.0% | 206 ms 🟩 Fastest | 2157 ms | $0.00354 🟩 Lowest | 2026-10-18, 2026-10-19 |
+| Perplexity Decider v1.2 | 1120 | 83.5% | 249 ms 🟩 Fastest | 332 ms | $0.00700 🟩 Lowest + ? | 2026-10-18, 2026-10-19 |
+| Nimble v4 Max | 1115 | 83.1% | 235 ms 🟩 Fastest | 329 ms | ~$0.02763 🟧 Mid | 2026-10-16, 2026-10-18, 2026-10-19 |
+| Liquid d1-ultra | 1084 | 80.8% | 200 ms 🟩 Fastest | 393 ms | $0.01212 🟨 Low + ? | 2026-10-18, 2026-10-19 |
+| Jev 1.14 | 1030 | 76.8% | 179 ms 🟩 Fastest | 269 ms | $0.02457 🟨 Low | 2026-10-15, 2026-10-18, 2026-10-19 |
+| Jev 1.13 | 1026 | 76.5% | 189 ms 🟩 Fastest | 323 ms | $0.02457 🟨 Low | 2026-10-15, 2026-10-18, 2026-10-19 |
+| Mercury Decide | 1017 | 75.8% | 238 ms 🟩 Fastest | 388 ms | $0.00696 🟩 Lowest | 2026-10-18, 2026-10-19 |
+| Liquid d1 | 965 | 71.9% | 206 ms 🟩 Fastest | 827 ms | $0.00577 🟩 Lowest | 2026-10-18, 2026-10-19 |
+| Cloudflare Clef | 936 | 69.7% | 268 ms 🟨 Fast | 417 ms | $0.01759 🟨 Low | 2026-10-18, 2026-10-19 |
+| Perplexity Decider Flash v1.2 | 923 | 68.8% | 159 ms 🟩 Fastest | 231 ms | $0.00341 🟩 Lowest + ? | 2026-10-18, 2026-10-19 |
+| Microsoft-Decision-1 | 921 | 68.6% | 283 ms 🟨 Fast | 566 ms | $0.01224 🟨 Low | 2026-10-16, 2026-10-18, 2026-10-19 |
+| Drex v2.0 | 915 | 68.2% | 232 ms 🟩 Fastest | 755 ms | $0.01666 🟨 Low + ? | 2026-10-18, 2026-10-19 |
+| Cloudflare Clef Flash | 860 | 64.1% | 245 ms 🟩 Fastest | 353 ms | $0.00880 🟩 Lowest | 2026-10-18, 2026-10-19 |
+| Cloudflare Clef Omni | 860 | 64.1% | 241 ms 🟩 Fastest | 400 ms | $0.06151 🟥 Highest + ? | 2026-10-18, 2026-10-19 |
+| Drex v1.5 | 853 | 63.6% | 203 ms 🟩 Fastest | 649 ms | $0.01116 🟨 Low | 2026-10-18, 2026-10-19 |
+| Kev 4B | 822 | 61.3% | 225 ms 🟩 Fastest | 377 ms | $0.01172 🟨 Low | 2026-10-18, 2026-10-19 |
+| Luna 6 Decisions | 758 | 56.5% | 254 ms 🟨 Fast | 527 ms | $0.03584 🟧 Mid + ? | 2026-10-15, 2026-10-18, 2026-10-19 |
+| Tev1 4B experimental (OpenRouter native adapter) | 751 | 56.0% | 198 ms 🟩 Fastest | 253 ms | $0.01566 🟨 Low | 2026-10-18, 2026-10-19 |
+| ScaleDown Classify-1 | 550 | 41.0% | 268 ms 🟨 Fast | 362 ms | $0.02139 🟨 Low | 2026-10-18, 2026-10-19 |
+| Solar Decide Flash | 538 | 40.1% | 540 ms 🟧 Moderate | 747 ms | $0.03020 🟧 Mid + ? | 2026-10-18, 2026-10-19 |
 
 ## Reading the speed and cost colors
 
-The squares and labels use fixed descriptive bands, not relative ranks or statistical significance. Speed uses the full-bank first-attempt median. Cost uses known or accounted dollars per 1,000 questions, normalized from each actual 1,136-question run including permitted recoveries.
+The squares and labels use fixed descriptive bands, not relative ranks or statistical significance. Speed uses the full-bank first-attempt median. Cost uses known or accounted dollars per 1,000 questions, normalized from each actual 1,342-question run including permitted recoveries.
 
 | Band | Median response time | Known/accounted cost per 1,000 |
 |---|---|---|
@@ -72,97 +49,83 @@ The squares and labels use fixed descriptive bands, not relative ranks or statis
 
 Bands use unrounded measurements; displayed numbers can round to a boundary. `+ ?` means additional charges were not reported. In those cells, the cost band describes only the known lower bound, not a complete cost or a guaranteed price advantage. The website also underlines these incomplete costs in amber. Text labels remain visible without color.
 
-The active complete configurations account for **$0.88414152** in known charges or tariff calculations, with **352 attempt charges still unknown**. These are selected-evidence costs, not independently reconciled invoices. Removed original-question attempts, partial runs and compatibility probes are outside these totals. The [correction receipt](corrected_2026-10-18/correction_receipt.json) accounts for removed calls separately.
+## What this measures
 
-For **GLM 4.7 Flash**, only the two replacement calls moved from inactive Cloudflare to **Venice**, using the same dated model. For **Nemotron 3.5 Super VL**, those two calls moved from inactive Crusoe to **Together**, again using the same dated model. Each retains 1,134 original-provider results. These are explicitly mixed-provider rows, not 1,136 new calls on the replacement provider. The [route records](corrected_2026-10-18/routes.json) identify both changes.
+One decision from supplied information, with five choices. No requested thinking budget, tools, explanation or iterative repair. This is System 1-style decision performance, not a comparison of unrestricted reasoning, writing or agentic work. The ranking uses every first attempt; provider failures count as unsuccessful delivered decisions and are not called wrong reasoning answers.
 
-Nimble Max's retained 1,134 responses use its October 16 tariff of $0.09 per million input tokens. The two fresh calls use the [October 18 tariff of $0.04](https://docs.bespokelabs.ai/nimble/pricing.md). Its active cost therefore combines captured prices rather than repricing the earlier run. The deprecated `nimble-v4` alias now redirects to Max and cannot supply the missing original-v4 measurements.
+## Span leads the combined bank
 
-## Span leads the full bank while Perplexity and Nimble lead the core subset
+Span scored 1,127/1,342 (84.0%), Perplexity 1,120 (83.5%) and Nimble Max 1,115 (83.1%). The gaps are 7 and 12 answers. They are too small to establish a general intelligence ordering. Equal weighting of the 31 category percentages also puts Span first: 82.4%, versus Perplexity’s 79.4% and Nimble’s 79.0%. The main score remains question-weighted, so large categories contribute more questions.
 
-Span scored **1,011/1,136**, Perplexity **1,009** and Nimble Max **997**. Perplexity and Nimble both scored **573/640 (89.5%)** on the core questions; Span scored **568/640 (88.8%)**. Span's higher total comes from the related variants and checks.
+## Typical speed and tail speed tell different stories
 
-The two-answer gap between Span and Perplexity is too small to establish a general intelligence ordering. Span was correct on 72 questions Perplexity missed; Perplexity was correct on 70 Span missed. One Perplexity first attempt failed at the transport level. Its permitted recovery was correct, bringing its eventual score to 1,010; the primary table retains 1,009.
+Span’s median was 206 ms, with a 2.16-second p95. Perplexity’s median was 249 ms and p95 332 ms; Nimble’s were 235 and 329 ms. Span combines a short typical response with a much longer response-time tail. Its recorded cost is $0.00354 per 1,000 questions, versus $0.00700 plus one unreported attempt cost for Perplexity and approximately $0.02763 for Nimble. Span has the lowest cost among routes with complete cost reporting. All pooled medians are below two seconds. The exclusion policy uses median, not p95.
 
-Span's median was **202 ms**, with **$0.00384490** reported for the selected full bank, or **$0.00338 per 1,000 questions**. Every first answer was usable. Perplexity's median was **250 ms**, with **$0.00763914** reported and one unknown charge. Its **328 ms p95** was much shorter than Span's **1644 ms**. Span combined high accuracy, a short typical response and the lower reported cost; Perplexity had a more consistent response-time tail.
+## Sequential state updates and truth counting remain discriminating
 
-The function profile explains more than the aggregate gap. A sequential procedure can ask you to reverse five cards, swap two positions, move a card, and identify the final occupant of a position. Span scored **29/42**, versus Perplexity's **10/42**, Nimble's **14/42** and Jev 1.14's **4/42**. Span also led these references on scheduling, **55/69**, versus Perplexity's 53, Nimble's 47 and Jev's 45. These are substantial improvements over Jev in maintaining and updating a state, with many errors remaining.
+Sequential procedures require applying ordered edits to the current state, such as reversing a row, swapping positions and moving an item. Span scored 33/48, Nimble 19/48, Perplexity 14/48 and Jev 1.14 7/48. For exact truth counting, which asks how many claims are true under the supplied facts, the same routes scored 46/71, 39/71, 43/71 and 28/71. Strong performance here still includes many wrong answers.
 
-Exact truth counting asks which candidate makes precisely a specified number of statements true. Span scored **41/65**, Perplexity **39/65**, Nimble **37/65** and Jev **26/65**. This family is improving among the strongest tested routes, while the best score still misses 24 of 65 items.
+## The overall leader is not strongest in every function
 
-Span was weaker on forward conditionals, **28/39**, where Perplexity, Nimble and both Jev versions scored 39/39. These ask what follows when facts activate a chain of rules. On belief tracking, which asks what a person knows given what they witnessed, Span scored **38/44**, versus Perplexity and Nimble at **44/44**. Its swap tracking was **25/46**, below Perplexity and Nimble's 32. The overall leader is not the strongest route for every function.
+Forward conditionals ask what follows when facts activate chains of rules. Jev 1.14 scored 46/46, Perplexity and Nimble each 45/46, and Span 32/46. On truth-teller consistency, where whole statements must match each speaker’s type, Perplexity scored 58/74, Span 55/74 and Nimble 53/74. On one-to-one assignments, Perplexity scored 65/67 and Span 63/67; on belief tracking, Jev 1.13 scored 47/50 and Span 41/50. Belief tracking distinguishes what observers know from what actually happened.
 
-## Jev remains stronger than both Luna configurations
+## Uncertainty and system constraints change the functional picture
 
-Jev 1.14 scored **929/1,136 (81.8%)**, versus regular Luna's **728 (64.1%)** and Luna Decisions' **677 (59.6%)**. Its **182 ms median** was among the shortest tested. Regular Luna answered 51 more questions correctly than Luna Decisions, while taking a longer median, **942 versus 261 ms**.
+Across the six uncertainty, strategy and system categories, Span scored 34/48, Perplexity 26/48, Nimble 25/48 and Jev 1.14 26/48. Span’s largest visible advantage is robust decision-making without a prior: 8/8, versus Perplexity 3/8, Nimble 4/8 and Jev 1.14 2/8. These require a worst-case action or policy, not an invented average. In information-flow security, Perplexity, Nimble and Jev 1.14 each scored 6/8, versus Span’s 5/8. Each category has eight questions. One answer changes its score by 12.5 percentage points; these are diagnostic profiles, not reliability guarantees.
 
-Jev 1.14 improved by ten correct answers over Jev 1.13, **929 versus 919**. One-to-one assignments rose from **50/61 to 56/61**. Such a question might assign five people to five rooms while satisfying several exclusions and one-use constraints. This is a meaningful family improvement within a modest overall gain. Procedures were **4/42 versus 6/42**, and swaps **27/46 versus 28/46**. The new version did not improve every function. Language and image feature claims are not established by these English text scores; actual image decisions have their own benchmark.
+## Jev, Luna and a lower-cost native alternative
 
-Mercury Decide tied Jev 1.14 at **929**, with a **240 ms median** and **$0.00760908** reported cost, or **$0.00670 per 1,000** at the captured promotion. It scored **33/46** on swaps, **42/44** on belief tracking and **51/52** on priority rules, versus Jev's 27, 39 and 46. Necessary conditions were weaker at **26/46**, versus Jev's **45/46**. Procedures were **10/42**. These profiles support choosing routes by the decisions a system actually needs to make.
+Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 758 (56.5%). The Jev versions differ by 4 correct decisions overall. Assignments favor 1.14, 57/67 versus 54/67; causal intervention favors 1.13, 42/50 versus 38/50. The update is not a uniform improvement across functions. Mercury Decide scored 1,017 (75.8%), with a 238 ms median and $0.00696 per 1,000 at the captured prices. It scored 34/52 on swaps and 55/58 on priority rules, but 28/52 on necessary conditions, versus Jev 1.14’s 48/52. This is the native Mercury Decide route, not regular Mercury 2.5. Regular LLMs lack the complete expanded coverage and are not ranked here.
 
-Regular Mercury 2.5 is a separate configuration: **702/1,136 (61.8%)**, a **534 ms median** and **$0.01321471** reported cost. The native route performed substantially better under this contract. Different hosted configurations and dates do not isolate the architectural cause of that difference.
+![All 31 function profiles](consolidated_2026-10-19/family_profile.png)
 
-## Gemma narrows the regular LLM gap
+![Uncertainty, strategy and system decisions](consolidated_2026-10-19/decision_domains.png)
 
-Gemma 4 31B scored **902/1,136 (79.4%)**, 27 answers behind Jev 1.14 and 174 above regular Luna. Its core result was **522/640 (81.6%)**, versus Jev's 538 and Luna's 431. Its **491 ms median** was shorter than regular Luna's 942 ms, but longer than Jev's 182 ms. Known selected cost was **$0.04693288**, plus 40 unreported attempt charges.
+## Questions and statistics
 
-Gemma had **47 model-output failures (4.1%)** and **28 first-attempt provider failures**. All 75 unusable first attempts remain unsuccessful. Recovery raised its eventual score to 915; the primary table retains 902. Its output-failure rate remains below the agreed 5% exclusion threshold.
+All **1,342 questions**, facts and five choices retain their tested order. The JSONL also preserves exact model-independent native input packets and hashes. No answer keys, item-level correctness, certificates, verifier responses or private author metadata are published.
 
-Gemma scored **44/46** on necessary conditions, **54/61** on assignments, **42/44** on belief tracking, **48/52** on priority rules and **38/44** on causal interventions. It exceeded Jev on the latter three sampled families. A causal intervention changes a variable by instruction and asks which downstream effects follow. Its harder families included scheduling **41/69**, exact truth counting **27/65**, truth-teller consistency **27/62**, swaps **24/46** and procedures **9/42**.
+- Questions: [CSV](consolidated_2026-10-19/questions_1342.csv), [JSONL](consolidated_2026-10-19/questions_1342.jsonl), [readable text](consolidated_2026-10-19/questions_1342.txt).
+- Statistics: [model CSV](consolidated_2026-10-19/model_statistics.csv), [function CSV](consolidated_2026-10-19/family_statistics.csv), [aggregate JSON](consolidated_2026-10-19/statistics.json), [plot data](consolidated_2026-10-19/plot_data.json).
+- [Request failures and output compliance](OUTPUT_COMPLIANCE.md), [release manifest](consolidated_2026-10-19/manifest.json), [sanitized audit receipt](consolidated_2026-10-19/audit_receipt.json).
 
-Qwen3 235B A22B Instruct 2507 scored **706/1,136 (62.1%)**, with all first answers usable, a **556 ms median** and **$0.03013330** reported cost. Its score is only four above regular Mercury 2.5 despite a higher captured cost. Qwen scored 37/37 on lookup and source authority, 44/45 on preference ordering and 42/46 on counterexamples, but only 14/39 on forward conditionals, 10/65 on truth counting and 8/42 on procedures.
+## Method and construction note
 
-Nex N2.5 Mini scored **650/1,136 (57.2%)**, with all first answers usable, a **500 ms median** and **$0.00874708** reported cost. It was the cheapest completed new regular LLM. Span's native route was cheaper and more accurate overall in the captured runs.
+There are 1,342 questions and five choices per question. The uniform random-guess baseline is 20%. The questions include dependent variants and uneven category sizes; they are not 1,342 independent observations.
 
-Tev1 4B experimental now ties Luna Decisions at **677/1,136 (59.6%)**, with all first answers usable, a **202 ms median**, **256 ms p95** and **$0.01714936** reported cost. It is a [decision-specialized generative model](https://huggingface.co/togethercomputer/Tev1-4B-experimental) served through OpenRouter's native adapter, not a claimed non-generative architecture. Its chat interface was rejected; that probe is separate from its full native-adapter result.
+The full comparison is 20 routes × 1,342 questions = 26,840 first attempts. Actual selected HTTP attempts total 26,983, including 143 permitted recoveries. Only transport failures or actual HTTP 408/429/5xx permit one recovery. Recovered responses do not replace first attempts in the ranking or timing distribution.
 
-![Accuracy response time and cost for the leading routes and selected LLMs](corrected_2026-10-18/figures/accuracy_cost_speed.png)
+Median and p95 are recomputed from all 1,342 individual first-attempt durations per route. Each attempt uses a fresh HTTPS connection and a monotonic timer from connection through the complete body. Queue time, retry waiting and recovery durations are excluded from these quantiles. p95 is the interpolated 95th percentile, not the mean of the slowest 5%.
 
-## Direct decision output does not guarantee accurate decisions
+The tests retain their captured dates, routes and loads; combining their raw measurements is not a synchronized rerun. No new calls were made for this consolidation. Returned dated identities and pins match across the selected banks; missing identities on failed calls are not silently inferred.
 
-Liquid d1-ultra scored **970/1,136 (85.4%)**, with a **196 ms median** and **261 ms p95**. The cheaper Liquid d1 scored **864 (76.1%)**. Clef scored **859**, Clef Flash **793** and Clef Omni **790**. Omni's higher captured text cost did not produce a gain over the cheaper Clef routes. Its non-text capabilities were not tested here.
+Nimble uses Bespoke directly; the other routes use OpenRouter with pinned providers and no fallback. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
 
-Drex v2.0 scored **834**, versus v1.5's **791**. v2.0 encountered 31 first-attempt HTTP 429 provider failures. Kev 4B scored **737**, near regular Luna's 728 with a shorter median, **229 versus 942 ms**. Its core score, 418/640, was below Luna's 431.
+Costs include selected primary and permitted recovery attempts, normalized as cost ÷ 1,342 × 1,000. They are recorded charges or input usage times captured tariffs, not current-price quotes or independently reconciled invoices. Nimble retains 1,134 older $0.09/million-input records and 208 records at the captured $0.04 tariff. Missing costs remain unknown; no zero is substituted.
 
-Classify-1 scored **499/1,136 (43.9%)** and Solar Decide Flash **477 (42.0%)**. These low scores mostly reflect wrong valid choices. Perplexity Flash scored **855 (75.3%)**, including 50 first-attempt token-rate-limit failures. Accuracy among only usable responses is diagnostic; the full-denominator score measures delivered decisions.
+Known cost across the cohort is $0.480883745, with 218 attempt costs unreported. Verification subscription usage is outside this native-inference accounting.
 
-## The audit and the two replacements
+The two retired ambiguous procedure prompts are absent. Their verified replacements are included exactly once. Provider failures and invalid outputs are unsuccessful delivered decisions, but only valid wrong choices are called wrong answers. Latency on a failed request may measure time to rejection.
 
-The audit selected **182 difficult questions** that at most 30% of the 37 previously included configurations answered correctly. Each received two independent blind verifications through the Village bridges, using Opus 5.5, Argon and GPT 6.1 Sol (extra-high effort). **181 had two independent verifiers supporting the supplied answer.** One procedure question had ambiguous wording: “after every operation” could ask for the intermediate states, while its options and supplied answer described the final state. A full-bank wording search found one additional instance outside the difficult-item queue.
+This remains a developing benchmark. Thirty-seven author-development cases are included in this exploratory overview and retain their permanent exclusion from a future held-out scored release. The JSON preserves that policy; no new release acceptance is implied.
 
-Both now ask for the position **after all operations have been completed**. Their facts, operations and options are unchanged. Fresh independent Opus and Argon checks, plus exact step-by-step simulation, confirmed each clarified question has one valid supplied answer. The two original prompts and their results are absent from the active bank, accuracy totals, timing pools and selected costs. This targeted audit does not establish independent verification of every one of the 1,136 questions.
+All 206 expansion questions have current-revision blind Sol xhigh and different-model Opus or Argon checks. Exact computational evidence supplements model review. The original bank received a targeted difficult-item audit, not independent external verification of every original question.
 
-There were **72 fresh first attempts: two corrected questions × 36 available configurations**, with no recovery needed. Twenty-five configurations kept their total; seven lost one correct answer and four gained one. Fresh responses can vary, so those changes do not isolate the effect of the wording. The two corrected items are dependent variants, so all 640-question core scores are unchanged. The leading order is unchanged. Span's margin over Perplexity increased from one answer to two; Tev now ties Luna Decisions. The [aggregate correction deltas](corrected_2026-10-18/summary.json) document the changes without publishing the private answer key.
+Construction history: the corrected 1,136-question bank, 200 verified expansion questions and six additional truth-teller questions are now pooled into one view. The six domains each contain two foundation questions and six more demanding candidates. The charts do not split scores by construction stage.
 
-## Output compliance and unfinished routes
+Sixteen regular-LLM configurations have only the earlier 1,136-question coverage. They remain in that reference report and are not assigned an expanded score, extrapolated, or ranked here. Solar Decide remains excluded for latency; the distinct Solar Decide Flash route remains included. No existing published row was removed.
 
-Complete runs with at least 5% model-output failures remain outside the main comparison. Earlier Haiku, DeepSeek and Phi-4 runs are previous-version diagnostics, not corrected full-bank results. Provider failures are counted separately from explanations, refusals and malformed model output.
+The full question bank is downloadable without answers, grouped by category in CSV, JSONL and plain text. JSONL preserves the exact model-independent native input packets and hashes. Corrected prompts appear once; retired ambiguous prompts are absent. No answer keys, certificates, verifier responses, private author metadata or credentials are included.
 
-The newer LLM screen paused a model after 100 questions, and at subsequent cumulative 100-question checks, for accuracy below 50%, model-output failures at least 5%, or median response time above 2,000 ms. These are practical outcome-based selection rules for useful additions, not a representative survey. The uneven prefixes include related variants. The five stopped samples retain their actual denominators in the [output diagnostics](OUTPUT_COMPLIANCE.md); no partial score is extrapolated to the full bank. This stopping rule is not retroactively used to delete older completed low-scoring configurations.
+The public bundle contains the consolidated graphics, aggregate statistics and all answer-free question inputs. The separate image benchmark is unchanged. No new inference was performed for this consolidation.
 
-The separate Solar Decide route returned **311/347 correct completed responses**, with a **4.58-second median and 12.95-second p95**, and was stopped for latency. One additional dispatch has no recorded response or known charge. It receives no full-bank score and was not replayed. Original Nimble v4 now has **902/1,134 retained correct answers**, with two replacement questions untested because the original checkpoint is unavailable. It also receives no full-bank rank.
 
-![All function scores for selected complete configurations](corrected_2026-10-18/figures/family_accuracy.png)
+The 37 author-development cases remain permanently excluded from a future held-out scored release. This public developmental overview does not claim a held-out score. Publication checks validate exported consistency and privacy; the sanitized audit receipt records a separate private raw-evidence check. The public aggregates alone cannot reproduce answer-key scoring or raw-latency quantiles.
 
-The [36-model family CSV](corrected_2026-10-18/family_comparison.csv) and [complete function tables](FUNCTIONS.md) show where individual routes are stronger. Perfect scores on a sampled family are not reliability guarantees. Dependent variants expose sensitivity and inconsistency without creating extra independent scenarios.
+## Earlier LLM comparison and image benchmark
 
-## Measurement conditions and evidence
+The [36-model, 1,136-question reference](REFERENCE_1136.md) remains available with its measurements, analysis, raw evidence and unchanged release seals. Sixteen regular LLM configurations have no complete expanded coverage, so they are not assigned a 1,342-question score or mixed into this ranking. The [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is unchanged.
 
-Ordinary LLMs receive the same question facts, instructions and five options in the same order, with the original numeric-only suffix, a 16-token output cap and reasoning disabled or a natively nonthinking checkpoint. Native APIs serialize the same content as state and five criteria. Tev uses the native wire format. Providers are pinned and fallback is disabled. Captured metadata records requested and returned model identities. Aliases alone do not independently attest fixed model weights.
+## Offline publication checks
 
-Each model runs two requests concurrently with a barrier after each pair. Every attempt opens a fresh HTTPS connection. A monotonic timer starts before connecting and ends after the complete response body is read. Local queueing and retry waits are outside this timer. Original batches had different aggregate loads and dates. The two-question correction ran up to three models concurrently. These are end-to-end hosted-route measurements, not local-hardware speed estimates.
-
-Only transport failures and actual HTTP 408, 429 or 5xx allow one recovery. Wrong valid choices, invalid output and HTTP-200 provider-error envelopes are not retried. Recovered answers never replace first attempts in the primary ranking. Reported absence of reasoning tokens is not an independent audit of hidden internal computation.
-
-The [active aggregate](corrected_2026-10-18/summary.json), [active question bank](corrected_2026-10-18/questions_1136.csv), [replacement attempt evidence](corrected_2026-10-18/replacement_attempts.jsonl), [route records](corrected_2026-10-18/routes.json) and [correction receipt](corrected_2026-10-18/correction_receipt.json) define this version. The selected record is 1,134 retained cases plus two new cases per included configuration. Earlier captures keep their exact seals for provenance and are not the active bank. The answer key, account metadata, credentials and item-level correctness are not published. Inference executors never read the key; scoring occurs offline.
-
-Offline validation sends no model requests:
-
-```sh
-python3 -m pip install -r requirements-reports.txt
-python3 freeze_october18_release.py --check
-python3 validate_corrected_release.py
-python3 -m unittest discover -p 'test_*.py'
-```
-
-Python 3.10 matches the capture runtime and its frozen floating-point probability checks. [Earlier measurement captures](overall_llm_expanded_2026-10-18) and [output diagnostics](OUTPUT_COMPLIANCE.md) preserve the different denominators and settings.
+Run `python3 validate_consolidated_release.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `publish_consolidated_report.py` rebuilds the presentation from the imported key-free bundle. Earlier report builders describe superseded releases and must not overwrite the current presentation.

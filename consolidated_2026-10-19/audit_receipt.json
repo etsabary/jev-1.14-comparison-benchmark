@@ -1,0 +1,15 @@
+{
+  "status": "PASS_FINAL_CONSOLIDATED_REPORT",
+  "models": 20,
+  "questions_each": 1342,
+  "category_cells": 620,
+  "independent_comparison_sha256": "ea354ee52d3d5c5f80982923a701ba461fb54374aa34b01be5f3e7826491c771",
+  "active_summary_sha256": "6cb31d4192e256c5b6fa56d480025634bfbdca9ce8b2b68558ed44fe6bfa6c69",
+  "report_manifest_sha256": "4464ba6dd2592a6f9fe57db91a7249cf6c0cd4fa254936bdf4b3a170c75d04e2",
+  "independently_audited_statistical_payload_unchanged": true,
+  "csv_and_plot_payloads_match_summary": true,
+  "answer_free_questions_exported": 1342,
+  "answer_key_or_item_correctness_exported": false,
+  "new_inference_calls": 0,
+  "scope": "Sanitized receipt of the private independent raw-evidence audit; public aggregate checks do not reproduce answer-key scoring or raw-latency pooling."
+}

@@ -1,4 +1,4 @@
-"""Current corrected-bank publication regressions. No inference or answer key."""
+"""Captured 1136-question publication regressions. No inference or answer key."""
 from collections import Counter
 import csv
 from hashlib import sha256
@@ -16,11 +16,21 @@ ROOT = Path(__file__).resolve().parent
 FOLDER = ROOT / 'corrected_2026-10-18'
 
 
+def presentation(name):
+    """Preserve regressions on the exact superseded publication, not new rows."""
+    archive = ROOT / 'publication_archive_2026-10-19'
+    if archive.exists():
+        entries = json.loads((archive / 'manifest.json').read_text())['files']
+        if name in entries:
+            return (archive / entries[name]['archive_path']).read_text()
+    return (ROOT / name).read_text()
+
+
 class CorrectedRelease(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.s = json.loads((FOLDER / 'summary.json').read_text())
-        cls.readme = (ROOT / 'README.md').read_text()
+        cls.readme = presentation('README.md')
 
     def test_selected_evidence_checks_without_gold(self):
         result = validator().validate(FOLDER, ROOT)
@@ -68,7 +78,7 @@ class CorrectedRelease(unittest.TestCase):
             self.assertEqual(v['latency_first_all']['n'],1136)
 
     def test_current_function_table_has36_complete_rows_and_corrected_f13(self):
-        text=(ROOT/'FUNCTIONS.md').read_text()
+        text=presentation('FUNCTIONS.md')
         for mid,v in self.s['models'].items(): self.assertIn(v['label'],text)
         row=next(line for line in text.splitlines() if line.startswith('| Sequential procedure execution |'))
         self.assertEqual(row.count('|'),39)
@@ -83,12 +93,12 @@ class CorrectedRelease(unittest.TestCase):
             def __init__(self):super().__init__();self.targets=[]
             def handle_starttag(self,tag,attrs):self.targets += [v for k,v in attrs if k in ('href','src')]
         for name in ('index.html','functions.html','output_compliance.html'):
-            path=ROOT/'docs'/name;text=path.read_text();self.assertIn(report.MARKER,text)
+            path=ROOT/'docs'/name;text=presentation('docs/'+name);self.assertIn(report.MARKER,text)
             parser=Links();parser.feed(text)
             for target in parser.targets:
                 if re.match(r'^(https?:|mailto:|#|data:)',target):continue
                 self.assertTrue((path.parent/target.split('#')[0]).exists(),target)
-        html=(ROOT/'docs/index.html').read_text()
+        html=presentation('docs/index.html')
         ranking=re.search(r'<table>.*?</table>',html,re.S).group()
         self.assertEqual(len(re.findall(r'class="[^"]*metric-speed',ranking)),36)
         self.assertEqual(len(re.findall(r'class="[^"]*metric-cost',ranking)),36)
