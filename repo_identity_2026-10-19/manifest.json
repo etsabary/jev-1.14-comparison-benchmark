@@ -1,0 +1,30 @@
+{
+  "name": "system-1-decision-benchmark",
+  "old_name": "jev-1.14-comparison-benchmark",
+  "site": "https://etsabary.github.io/system-1-decision-benchmark/report.html",
+  "scope": "Repository identity, current links and presentation entry point only; no new inference or changed measurements.",
+  "prior_release_seal_sha256": "69cb64b8f43d0fd0be023140e6f0b111c76ee14527835790c9ab7478f13cefaf",
+  "statistics_sha256": "cff708651203a54f3ddb7e17782f8c2abdbc8900a92f81d7492afa6e8a90b435",
+  "files": {
+    "README.md": "6362b6e48b7847ed2e5d818d8ad64525696af7e41aedabfb37cd0a769e8d6a34",
+    "FUNCTIONS.md": "9ace899c4be9fa845e125b50f1132304535cb1fbcbb507a06cca67e0d07d88dc",
+    "LLM_REFERENCES.md": "e4a595827cdb8da30b604006a7197139d602dbcb8aae91b0ccb6cd7b8748621c",
+    "docs/index.html": "9adc5900294e765ca7b9278b89e4b96770b0b881c2aed2137086a3f222cf6f8e",
+    "docs/functions.html": "d2b0c6631924aa04e4d3b0cbb52335858af96349e45654f8f2ad5b611111fc19",
+    "docs/output_compliance.html": "e1f308a8a4d6be2476c12e06c3edb8656127ac2649e808bd4730a4bf91fe41bd",
+    "publish_frontier_references.py": "0efd82a52c141681a679edfb5655cad9b9d59b06b07b8adfe538fff654ce1b22",
+    ".github/workflows/october18-validate.yml": "09a287dcc8b9416080d86e53c4e996d76201c2d041e9e42da2d02ea13c450b5e",
+    "docs/report.html": "703e81e5e52597c1f1eadac179bcc65d62d37acee661fc14e08bc1345ac3c826",
+    "repo_identity.py": "0e49bab834733e7aeaa6b91160cc6415568159920e75f72406036c0d6342c795",
+    "test_repo_identity.py": "7879344971ac7cfd90399703105c488c5a6e15e8ccb3c32f6604b807c015d037",
+    "repo_identity_2026-10-19/archive/LLM_REFERENCES.md.snapshot": "f63c491cd5c9c2a27a1679337df051945d1c3b5d2184e61280068f32c3b32a71",
+    "repo_identity_2026-10-19/archive/README.md.snapshot": "773474f930193e988da7a4d1a84d315451b601a04acfb48e4ff6ce53e42c0ccb",
+    "repo_identity_2026-10-19/archive/FUNCTIONS.md.snapshot": "b7697b3e2279b755de8e0847e00d6b426f3a26853abc08a368408ca3fc084518",
+    "repo_identity_2026-10-19/archive/manifest.json": "339e86b92e0c976702e46c405dd5a6ad525a156767974d142bf028ed54ecf19b",
+    "repo_identity_2026-10-19/archive/publish_frontier_references.py.snapshot": "0c6483d64b07dd37e4a63609fae093f7b96bb8b304f5aee426446197622eb626",
+    "repo_identity_2026-10-19/archive/docs/index.html.snapshot": "6afc3b442dbf299504269bacf5f24bc8e47528e6164c2af3f84fd9a62385b7d1",
+    "repo_identity_2026-10-19/archive/docs/functions.html.snapshot": "2160ad63acb191a1e55e36d8523b9d328798fba4ff9f38c7d49965a2f4e24aba",
+    "repo_identity_2026-10-19/archive/docs/output_compliance.html.snapshot": "51105d8b769601d710df48ab2aee73f35a6fcede0758191aaccc0102c9fa14d5",
+    "repo_identity_2026-10-19/archive/.github/workflows/october18-validate.yml.snapshot": "5d02ecdda01c7627c8448e95a1f0d9be3e4dd0dc33a47a9685313835ac4fbd25"
+  }
+}

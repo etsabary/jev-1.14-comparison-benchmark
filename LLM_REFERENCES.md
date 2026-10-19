@@ -24,4 +24,4 @@ Qwen3.8-Max delivered 967/1342 (72.1%); 1317 first attempts returned usable deci
 
 Span’s 84.0% sits between Sol’s 85.2% and Sonnet’s 79.7% on these immediate decisions, with much lower recorded cost and a shorter median response. The Qwen row adds a further reference point. Scores and error profiles differ by category. This is a selected reference group, not an exhaustive ranking of every LLM that can disable reasoning. Models that require thinking are outside this comparison. New eight-question categories remain coarse diagnostic samples, not reliability guarantees.
 
-[Interactive methods and category results](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#llm-references).
+[Interactive methods and category results](https://etsabary.github.io/system-1-decision-benchmark/report.html#llm-references).

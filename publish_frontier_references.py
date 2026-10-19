@@ -252,9 +252,10 @@ def quality(s):
 
 
 def hashes():
+    from repo_identity import historical_path
     paths={ROOT/n for n in ACTIVE_FILES}
     for folder in (DEST,ROOT/'docs'/NAME,archive.ARCHIVE):paths.update(p for p in folder.rglob('*') if p.is_file() and p.name!='release_checksums.json')
-    return {str(p.relative_to(ROOT)):digest(p) for p in sorted(paths)}
+    return {str(p.relative_to(ROOT)):digest(historical_path(p)) for p in sorted(paths)}
 
 
 def build(reports):

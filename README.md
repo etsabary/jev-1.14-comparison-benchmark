@@ -1,10 +1,12 @@
-# 20 decision models and 3 high-end LLM references on 1,342 text questions
+# System 1 Decision Benchmark
+
+20 specialized decision models and 3 high-end LLM references on 1,342 text questions.
 
 Updated October 19, 2026. Three LLM configurations were tested October 19; decision-model measurements are unchanged.
 
 **Respan Span-02 leads the specialized decision models with 1127/1342 (84.0%). The LLM reference scores, speed and cost below use the same complete bank with reasoning disabled.**
 
-[Interactive report](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html) · [LLM reference findings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#llm-references) · [Named, color-coded categories](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#functions).
+[Interactive report](https://etsabary.github.io/system-1-decision-benchmark/report.html) · [LLM reference findings](https://etsabary.github.io/system-1-decision-benchmark/report.html#llm-references) · [Named, color-coded categories](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
 
 ![All 23 routes: accuracy, speed and cost](llm_references_2026-10-19/accuracy_speed_cost.png)
 
@@ -109,7 +111,7 @@ Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 
 
 The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 23 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
 
-[Open the color-coded, selectable tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#functions), with a pinned model-name column and individual category rankings.
+[Open the color-coded, selectable tables](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions), with a pinned model-name column and individual category rankings.
 
 ### Rules and evidence
 
@@ -126,7 +128,7 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 
 ![Rules and evidence: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/rules.png)
 
-[Full-size SVG](llm_references_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-rules)
+[Full-size SVG](llm_references_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
 
 ### Ordering, schedules and assignments
 
@@ -142,7 +144,7 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 
 ![Ordering, schedules and assignments: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/ordering.png)
 
-[Full-size SVG](llm_references_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-ordering)
+[Full-size SVG](llm_references_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
 
 ### Claims, changing state and perspectives
 
@@ -160,7 +162,7 @@ Can the model count true statements, update a changing situation and separate wh
 
 ![Claims, changing state and perspectives: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/state.png)
 
-[Full-size SVG](llm_references_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-state)
+[Full-size SVG](llm_references_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
 
 ### Causes, plans and exceptions
 
@@ -178,7 +180,7 @@ Which actions work, which consequences change, and which rule or source controls
 
 ![Causes, plans and exceptions: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/causes.png)
 
-[Full-size SVG](llm_references_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-causes)
+[Full-size SVG](llm_references_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
 
 ### Risk, strategy and system behavior
 
@@ -197,7 +199,7 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 
 ![Risk, strategy and system behavior: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/uncertainty.png)
 
-[Full-size SVG](llm_references_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-uncertainty)
+[Full-size SVG](llm_references_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
 
 Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](llm_references_2026-10-19/category_scores.csv).
 
