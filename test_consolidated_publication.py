@@ -8,13 +8,22 @@ import publish_consolidated_report as b
 import validate_consolidated_release as v
 
 
+def publication_text(name):
+    archive = b.ROOT / 'presentation_archive_2026-10-19'
+    if archive.exists():
+        manifest = json.loads((archive / 'manifest.json').read_text())['files']
+        if name in manifest:
+            return (archive / manifest[name]['archive_path']).read_text()
+    return (b.ROOT / name).read_text()
+
+
 class ConsolidatedPublication(unittest.TestCase):
     def test_exported_bundle_consistency_and_privacy(self):
         v.validate()
 
     def test_all20_readme_rows_match_full_bank_statistics(self):
         s = json.loads((b.DEST / 'statistics.json').read_text())
-        text = (b.ROOT / 'README.md').read_text()
+        text = publication_text('README.md')
         lines = text.splitlines()
         begin = next(i for i, line in enumerate(lines) if line.startswith('| Model | Correct /'))
         rows = []
@@ -40,7 +49,7 @@ class ConsolidatedPublication(unittest.TestCase):
 
     def test_function_table_and_quality_rows(self):
         s = json.loads((b.DEST / 'statistics.json').read_text())
-        functions = (b.ROOT / 'FUNCTIONS.md').read_text()
+        functions = publication_text('FUNCTIONS.md')
         rows = [line for line in functions.splitlines() if re.match(r'^\| F\d\d[ |]', line)]
         self.assertEqual(len(rows), 62)  # 31 definitions and 31 score rows
         for f in s['families']:

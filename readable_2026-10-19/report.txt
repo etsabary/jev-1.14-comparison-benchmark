@@ -1,0 +1,860 @@
+TEXT DECISION BENCHMARK: 1,342 QUESTIONS, 20 ROUTES
+Tests October 15 to 19, 2026. One combined bank; first attempts, failures included.
+
+WHAT THIS MEASURES
+One decision from supplied information, with five choices. No requested thinking budget, tools, explanation or iterative repair. This is System 1-style decision performance, not a comparison of unrestricted reasoning, writing or agentic work. The ranking uses every first attempt; provider failures count as unsuccessful delivered decisions and are not called wrong reasoning answers.
+
+SPAN LEADS THE COMBINED BANK
+Span scored 1,127/1,342 (84.0%), Perplexity 1,120 (83.5%) and Nimble Max 1,115 (83.1%). The gaps are 7 and 12 answers. They are too small to establish a general intelligence ordering. Equal weighting of the 31 category percentages also puts Span first: 82.4%, versus Perplexity’s 79.4% and Nimble’s 79.0%. The main score remains question-weighted, so large categories contribute more questions.
+
+TYPICAL SPEED AND TAIL SPEED TELL DIFFERENT STORIES
+Span’s median was 206 ms, with a 2.16-second p95. Perplexity’s median was 249 ms and p95 332 ms; Nimble’s were 235 and 329 ms. Span combines a short typical response with a much longer response-time tail. Its recorded cost is $0.00354 per 1,000 questions, versus $0.00700 plus one unreported attempt cost for Perplexity and approximately $0.02763 for Nimble. Span has the lowest cost among routes with complete cost reporting. All pooled medians are below two seconds. The exclusion policy uses median, not p95.
+
+SEQUENTIAL STATE UPDATES AND TRUTH COUNTING REMAIN DISCRIMINATING
+Sequential procedures require applying ordered edits to the current state, such as reversing a row, swapping positions and moving an item. Span scored 33/48, Nimble 19/48, Perplexity 14/48 and Jev 1.14 7/48. For exact truth counting, which asks how many claims are true under the supplied facts, the same routes scored 46/71, 39/71, 43/71 and 28/71. Strong performance here still includes many wrong answers.
+
+THE OVERALL LEADER IS NOT STRONGEST IN EVERY FUNCTION
+Forward conditionals ask what follows when facts activate chains of rules. Jev 1.14 scored 46/46, Perplexity and Nimble each 45/46, and Span 32/46. On truth-teller consistency, where whole statements must match each speaker’s type, Perplexity scored 58/74, Span 55/74 and Nimble 53/74. On one-to-one assignments, Perplexity scored 65/67 and Span 63/67; on belief tracking, Jev 1.13 scored 47/50 and Span 41/50. Belief tracking distinguishes what observers know from what actually happened.
+
+UNCERTAINTY AND SYSTEM CONSTRAINTS CHANGE THE FUNCTIONAL PICTURE
+Across the six uncertainty, strategy and system categories, Span scored 34/48, Perplexity 26/48, Nimble 25/48 and Jev 1.14 26/48. Span’s largest visible advantage is worst-case choices without supplied probabilities: 8/8, versus Perplexity 3/8, Nimble 4/8 and Jev 1.14 2/8. These require a worst-case action or policy, not an invented average. In information-flow security, Perplexity, Nimble and Jev 1.14 each scored 6/8, versus Span’s 5/8. Each category has eight questions. One answer changes its score by 12.5 percentage points; these are diagnostic profiles, not reliability guarantees.
+
+JEV, LUNA AND A LOWER-COST NATIVE ALTERNATIVE
+Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 758 (56.5%). The Jev versions differ by 4 correct decisions overall. Assignments favor 1.14, 57/67 versus 54/67; causal intervention favors 1.13, 42/50 versus 38/50. The update is not a uniform improvement across functions. Mercury Decide scored 1,017 (75.8%), with a 238 ms median and $0.00696 per 1,000 at the captured prices. It scored 34/52 on swaps and 55/58 on priority rules, but 28/52 on necessary conditions, versus Jev 1.14’s 48/52. This is the native Mercury Decide route, not regular Mercury 2.5. Regular LLMs lack the complete expanded coverage and are not ranked here.
+
+COMPLETE STATISTICS
+Model | Correct/1342 | Accuracy | Median ms | p95 ms | Known actual USD | Known USD/1000 | Unknown attempt costs
+Respan Span-02 | 1127 | 84.0% | 206 | 2157 | $0.004746 | $0.003537 | 0
+Perplexity Decider v1.2 | 1120 | 83.5% | 249 | 332 | $0.009394 + ? | $0.007000 + ? | 1
+Nimble v4 Max | 1115 | 83.1% | 235 | 329 | ~$0.037084 | ~$0.027633 | 0
+Liquid d1-ultra | 1084 | 80.8% | 200 | 393 | $0.016270 + ? | $0.012124 + ? | 1
+Jev 1.14 | 1030 | 76.8% | 179 | 269 | $0.032974 | $0.024571 | 0
+Jev 1.13 | 1026 | 76.5% | 189 | 323 | $0.032974 | $0.024571 | 0
+Mercury Decide | 1017 | 75.8% | 238 | 388 | $0.009334 | $0.006956 | 0
+Liquid d1 | 965 | 71.9% | 206 | 827 | $0.007748 | $0.005773 | 0
+Cloudflare Clef | 936 | 69.7% | 268 | 417 | $0.023611 | $0.017594 | 0
+Perplexity Decider Flash v1.2 | 923 | 68.8% | 159 | 231 | $0.004570 + ? | $0.003406 + ? | 90
+Microsoft-Decision-1 | 921 | 68.6% | 283 | 566 | $0.016422 | $0.012237 | 0
+Drex v2.0 | 915 | 68.2% | 232 | 755 | $0.022359 + ? | $0.016661 + ? | 45
+Cloudflare Clef Flash | 860 | 64.1% | 245 | 353 | $0.011806 | $0.008797 | 0
+Cloudflare Clef Omni | 860 | 64.1% | 241 | 400 | $0.082547 + ? | $0.061511 + ? | 1
+Drex v1.5 | 853 | 63.6% | 203 | 649 | $0.014976 | $0.011160 | 0
+Kev 4B | 822 | 61.3% | 225 | 377 | $0.015725 | $0.011718 | 0
+Luna 6 Decisions | 758 | 56.5% | 254 | 527 | $0.048097 + ? | $0.035840 + ? | 78
+Tev1 4B experimental (OpenRouter native adapter) | 751 | 56.0% | 198 | 253 | $0.021011 | $0.015657 | 0
+ScaleDown Classify-1 | 550 | 41.0% | 268 | 362 | $0.028703 | $0.021388 | 0
+Solar Decide Flash | 538 | 40.1% | 540 | 747 | $0.040532 + ? | $0.030203 + ? | 2
+
+ALL FUNCTION SCORES
+Function | n | Respan Span-02 | Perplexity Decider v1.2 | Nimble v4 Max | Liquid d1-ultra | Jev 1.14 | Jev 1.13 | Mercury Decide | Liquid d1 | Cloudflare Clef | Perplexity Flash v1.2 | Microsoft-Decision-1 | Drex v2.0 | Cloudflare Clef Flash | Cloudflare Clef Omni | Drex v1.5 | Kev 4B | Luna 6 Decisions | Tev1 4B (native adapter) | ScaleDown Classify-1 | Solar Decide Flash
+F01 Lookup and filtering | 43 | 39 | 40 | 41 | 41 | 39 | 41 | 38 | 40 | 40 | 36 | 38 | 39 | 38 | 40 | 38 | 39 | 39 | 38 | 31 | 27
+F02 Forward conditionals | 46 | 32 | 45 | 45 | 44 | 46 | 45 | 43 | 41 | 39 | 43 | 38 | 33 | 34 | 26 | 26 | 36 | 27 | 25 | 18 | 22
+F03 Necessary conditions | 52 | 44 | 50 | 49 | 50 | 48 | 49 | 28 | 35 | 39 | 41 | 25 | 27 | 35 | 41 | 26 | 33 | 15 | 29 | 13 | 15
+F04 Boolean scope | 54 | 50 | 48 | 50 | 51 | 49 | 51 | 49 | 50 | 46 | 38 | 37 | 44 | 37 | 41 | 36 | 34 | 34 | 33 | 17 | 14
+F05 Quantifiers and sets | 49 | 43 | 44 | 45 | 45 | 46 | 44 | 46 | 42 | 44 | 38 | 41 | 43 | 42 | 41 | 41 | 42 | 38 | 37 | 28 | 36
+F06 Comparisons | 40 | 38 | 38 | 38 | 39 | 38 | 40 | 37 | 38 | 37 | 37 | 39 | 37 | 32 | 33 | 37 | 35 | 35 | 32 | 34 | 34
+F07 Scheduling | 76 | 58 | 54 | 51 | 57 | 48 | 50 | 50 | 47 | 43 | 40 | 41 | 50 | 35 | 36 | 51 | 37 | 28 | 28 | 26 | 19
+F08 One-to-one assignments | 67 | 63 | 65 | 60 | 55 | 57 | 54 | 52 | 48 | 42 | 47 | 44 | 43 | 48 | 41 | 48 | 45 | 36 | 40 | 29 | 26
+F09 Exact truth counting | 71 | 46 | 43 | 39 | 42 | 28 | 25 | 37 | 23 | 27 | 38 | 40 | 27 | 28 | 20 | 33 | 21 | 19 | 16 | 22 | 8
+F10 Truth-teller consistency | 74 | 55 | 58 | 53 | 46 | 39 | 38 | 39 | 40 | 33 | 30 | 36 | 37 | 34 | 37 | 30 | 33 | 23 | 25 | 15 | 23
+F11 Sufficiency and inconsistency | 41 | 36 | 37 | 32 | 35 | 32 | 29 | 30 | 32 | 29 | 30 | 28 | 33 | 27 | 26 | 21 | 30 | 22 | 23 | 17 | 8
+F12 Object swaps | 52 | 28 | 33 | 35 | 27 | 30 | 29 | 34 | 33 | 27 | 23 | 24 | 28 | 28 | 30 | 23 | 25 | 23 | 20 | 8 | 14
+F13 Sequential procedures | 48 | 33 | 14 | 19 | 11 | 7 | 10 | 12 | 9 | 11 | 12 | 7 | 12 | 9 | 11 | 13 | 11 | 11 | 15 | 11 | 10
+F14 Temporal intervals | 42 | 40 | 39 | 41 | 38 | 40 | 41 | 35 | 37 | 31 | 28 | 33 | 33 | 22 | 32 | 28 | 31 | 25 | 27 | 13 | 17
+F15 Spatial tracking | 49 | 42 | 35 | 36 | 38 | 34 | 30 | 31 | 24 | 23 | 25 | 24 | 26 | 16 | 20 | 26 | 26 | 22 | 19 | 17 | 13
+F16 Reference binding | 50 | 42 | 36 | 38 | 34 | 34 | 33 | 35 | 29 | 31 | 34 | 32 | 26 | 25 | 21 | 23 | 19 | 17 | 19 | 19 | 21
+F17 Beliefs and perspectives | 50 | 41 | 46 | 46 | 45 | 44 | 47 | 43 | 41 | 42 | 42 | 42 | 25 | 41 | 38 | 29 | 34 | 32 | 31 | 21 | 19
+F18 Causal intervention | 50 | 47 | 46 | 45 | 40 | 38 | 42 | 35 | 28 | 27 | 29 | 24 | 36 | 29 | 20 | 22 | 29 | 21 | 20 | 12 | 10
+F19 Exceptions and priorities | 58 | 53 | 54 | 57 | 57 | 48 | 51 | 55 | 51 | 51 | 47 | 52 | 48 | 43 | 50 | 48 | 39 | 47 | 42 | 28 | 28
+F20 Planning | 43 | 39 | 38 | 40 | 39 | 38 | 38 | 38 | 39 | 38 | 37 | 37 | 33 | 33 | 30 | 27 | 24 | 25 | 28 | 14 | 16
+F21 Directed reachability | 43 | 40 | 42 | 40 | 40 | 42 | 41 | 40 | 40 | 40 | 40 | 40 | 42 | 36 | 37 | 39 | 40 | 39 | 35 | 31 | 33
+F22 Preference ordering | 51 | 49 | 47 | 49 | 47 | 48 | 46 | 47 | 46 | 45 | 45 | 44 | 42 | 45 | 43 | 44 | 48 | 44 | 47 | 29 | 32
+F23 Rule counterexamples | 52 | 51 | 52 | 52 | 51 | 49 | 48 | 51 | 49 | 49 | 47 | 47 | 47 | 44 | 46 | 46 | 37 | 44 | 39 | 30 | 29
+F24 Authority and stale records | 43 | 38 | 42 | 42 | 42 | 37 | 39 | 40 | 38 | 39 | 39 | 39 | 37 | 38 | 38 | 39 | 20 | 36 | 29 | 33 | 23
+F25 Fault diagnosis | 50 | 46 | 48 | 47 | 45 | 45 | 44 | 46 | 46 | 41 | 39 | 46 | 44 | 40 | 42 | 41 | 36 | 34 | 39 | 25 | 28
+F26 Probabilistic risk | 8 | 6 | 5 | 4 | 5 | 5 | 5 | 5 | 3 | 2 | 2 | 4 | 5 | 3 | 5 | 1 | 3 | 5 | 3 | 1 | 1
+F27 Value of information | 8 | 5 | 4 | 3 | 5 | 4 | 3 | 3 | 3 | 3 | 4 | 4 | 4 | 4 | 3 | 5 | 1 | 4 | 0 | 2 | 2
+F28 Worst-case choices without probabilities | 8 | 8 | 3 | 4 | 4 | 2 | 2 | 3 | 2 | 3 | 2 | 2 | 3 | 5 | 3 | 2 | 4 | 4 | 2 | 1 | 0
+F29 Strategic decisions | 8 | 5 | 4 | 5 | 3 | 5 | 3 | 5 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 2 | 3 | 2 | 3 | 1 | 2
+F30 Concurrent-history consistency | 8 | 5 | 4 | 3 | 3 | 4 | 4 | 5 | 3 | 5 | 3 | 4 | 4 | 2 | 2 | 4 | 3 | 3 | 3 | 1 | 4
+F31 Information-flow security | 8 | 5 | 6 | 6 | 5 | 6 | 4 | 5 | 5 | 6 | 4 | 6 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 3 | 4
+
+METHOD AND CONSTRUCTION NOTES
+There are 1,342 questions and five choices per question. The uniform random-guess baseline is 20%. The questions include dependent variants and uneven category sizes; they are not 1,342 independent observations.
+The full comparison is 20 routes × 1,342 questions = 26,840 first attempts. Actual selected HTTP attempts total 26,983, including 143 permitted recoveries. Only transport failures or actual HTTP 408/429/5xx permit one recovery. Recovered responses do not replace first attempts in the ranking or timing distribution.
+Median and p95 are recomputed from all 1,342 individual first-attempt durations per route. Each attempt uses a fresh HTTPS connection and a monotonic timer from connection through the complete body. Queue time, retry waiting and recovery durations are excluded from these quantiles. p95 is the interpolated 95th percentile, not the mean of the slowest 5%.
+The tests retain their captured dates, routes and loads; combining their raw measurements is not a synchronized rerun. No new calls were made for this consolidation. Returned dated identities and pins match across the selected banks; missing identities on failed calls are not silently inferred.
+Nimble uses Bespoke directly; the other routes use OpenRouter with pinned providers and no fallback. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
+Costs include selected primary and permitted recovery attempts, normalized as cost ÷ 1,342 × 1,000. They are recorded charges or input usage times captured tariffs, not current-price quotes or independently reconciled invoices. Nimble retains 1,134 older $0.09/million-input records and 208 records at the captured $0.04 tariff. Missing costs remain unknown; no zero is substituted.
+Known cost across the cohort is $0.480883745, with 218 attempt costs unreported. Verification subscription usage is outside this native-inference accounting.
+The two retired ambiguous procedure prompts are absent. Their verified replacements are included exactly once. Provider failures and invalid outputs are unsuccessful delivered decisions, but only valid wrong choices are called wrong answers. Latency on a failed request may measure time to rejection.
+This remains a developing benchmark. Thirty-seven author-development cases are included in this exploratory overview and retain their permanent exclusion from a future held-out scored release. The JSON preserves that policy; no new release acceptance is implied.
+All 206 expansion questions have current-revision blind Sol xhigh and different-model Opus or Argon checks. Exact computational evidence supplements model review. The original bank received a targeted difficult-item audit, not independent external verification of every original question.
+Construction history: the corrected 1,136-question bank, 200 verified expansion questions and six additional truth-teller questions are now pooled into one view. The six domains each contain two foundation questions and six more demanding candidates. The charts do not split scores by construction stage.
+Sixteen regular-LLM configurations have only the earlier 1,136-question coverage. They remain in that reference report and are not assigned an expanded score, extrapolated, or ranked here. Solar Decide remains excluded for latency; the distinct Solar Decide Flash route remains included. No existing published row was removed.
+The full question bank is downloadable without answers, grouped by category in CSV, JSONL and plain text. JSONL preserves the exact model-independent native input packets and hashes. Corrected prompts appear once; retired ambiguous prompts are absent. No answer keys, certificates, verifier responses, private author metadata or credentials are included.
+The public bundle contains the consolidated graphics, aggregate statistics and all answer-free question inputs. The separate image benchmark is unchanged. No new inference was performed for this consolidation.
+
+
+CATEGORY EXPLANATIONS AND EXACT VALUES
+
+RULES AND EVIDENCE
+Which facts meet a rule, which conclusions follow, and when is the evidence insufficient?
+
+Lookup and filtering (F01, 43 questions)
+Select records that meet stated conditions
+Illustration: Which listed request is both signed and marked urgent?
+Respan Span-02: 39/43 (90.7%)
+Perplexity Decider v1.2: 40/43 (93.0%)
+Nimble v4 Max: 41/43 (95.3%)
+Liquid d1-ultra: 41/43 (95.3%)
+Jev 1.14: 39/43 (90.7%)
+Jev 1.13: 41/43 (95.3%)
+Mercury Decide: 38/43 (88.4%)
+Liquid d1: 40/43 (93.0%)
+Cloudflare Clef: 40/43 (93.0%)
+Perplexity Decider Flash v1.2: 36/43 (83.7%)
+Microsoft-Decision-1: 38/43 (88.4%)
+Drex v2.0: 39/43 (90.7%)
+Cloudflare Clef Flash: 38/43 (88.4%)
+Cloudflare Clef Omni: 40/43 (93.0%)
+Drex v1.5: 38/43 (88.4%)
+Kev 4B: 39/43 (90.7%)
+Luna 6 Decisions: 39/43 (90.7%)
+Tev1 4B experimental (OpenRouter native adapter): 38/43 (88.4%)
+ScaleDown Classify-1: 31/43 (72.1%)
+Solar Decide Flash: 27/43 (62.8%)
+
+Following if-then rules (F02, 46 questions)
+Apply an implication from its trigger
+Illustration: If an active badge grants entry and this badge is active, what follows?
+Respan Span-02: 32/46 (69.6%)
+Perplexity Decider v1.2: 45/46 (97.8%)
+Nimble v4 Max: 45/46 (97.8%)
+Liquid d1-ultra: 44/46 (95.7%)
+Jev 1.14: 46/46 (100.0%)
+Jev 1.13: 45/46 (97.8%)
+Mercury Decide: 43/46 (93.5%)
+Liquid d1: 41/46 (89.1%)
+Cloudflare Clef: 39/46 (84.8%)
+Perplexity Decider Flash v1.2: 43/46 (93.5%)
+Microsoft-Decision-1: 38/46 (82.6%)
+Drex v2.0: 33/46 (71.7%)
+Cloudflare Clef Flash: 34/46 (73.9%)
+Cloudflare Clef Omni: 26/46 (56.5%)
+Drex v1.5: 26/46 (56.5%)
+Kev 4B: 36/46 (78.3%)
+Luna 6 Decisions: 27/46 (58.7%)
+Tev1 4B experimental (OpenRouter native adapter): 25/46 (54.3%)
+ScaleDown Classify-1: 18/46 (39.1%)
+Solar Decide Flash: 22/46 (47.8%)
+
+Checking required conditions (F03, 52 questions)
+Reason backward from a missing required condition
+Illustration: Every approved request needs a valid ticket; can one without a ticket be approved?
+Respan Span-02: 44/52 (84.6%)
+Perplexity Decider v1.2: 50/52 (96.2%)
+Nimble v4 Max: 49/52 (94.2%)
+Liquid d1-ultra: 50/52 (96.2%)
+Jev 1.14: 48/52 (92.3%)
+Jev 1.13: 49/52 (94.2%)
+Mercury Decide: 28/52 (53.8%)
+Liquid d1: 35/52 (67.3%)
+Cloudflare Clef: 39/52 (75.0%)
+Perplexity Decider Flash v1.2: 41/52 (78.8%)
+Microsoft-Decision-1: 25/52 (48.1%)
+Drex v2.0: 27/52 (51.9%)
+Cloudflare Clef Flash: 35/52 (67.3%)
+Cloudflare Clef Omni: 41/52 (78.8%)
+Drex v1.5: 26/52 (50.0%)
+Kev 4B: 33/52 (63.5%)
+Luna 6 Decisions: 15/52 (28.8%)
+Tev1 4B experimental (OpenRouter native adapter): 29/52 (55.8%)
+ScaleDown Classify-1: 13/52 (25.0%)
+Solar Decide Flash: 15/52 (28.8%)
+
+Combining AND, OR and NOT (F04, 54 questions)
+Track combinations such as both, either and exactly one
+Illustration: Which choice satisfies exactly one of two stated conditions?
+Respan Span-02: 50/54 (92.6%)
+Perplexity Decider v1.2: 48/54 (88.9%)
+Nimble v4 Max: 50/54 (92.6%)
+Liquid d1-ultra: 51/54 (94.4%)
+Jev 1.14: 49/54 (90.7%)
+Jev 1.13: 51/54 (94.4%)
+Mercury Decide: 49/54 (90.7%)
+Liquid d1: 50/54 (92.6%)
+Cloudflare Clef: 46/54 (85.2%)
+Perplexity Decider Flash v1.2: 38/54 (70.4%)
+Microsoft-Decision-1: 37/54 (68.5%)
+Drex v2.0: 44/54 (81.5%)
+Cloudflare Clef Flash: 37/54 (68.5%)
+Cloudflare Clef Omni: 41/54 (75.9%)
+Drex v1.5: 36/54 (66.7%)
+Kev 4B: 34/54 (63.0%)
+Luna 6 Decisions: 34/54 (63.0%)
+Tev1 4B experimental (OpenRouter native adapter): 33/54 (61.1%)
+ScaleDown Classify-1: 17/54 (31.5%)
+Solar Decide Flash: 14/54 (25.9%)
+
+All, some, none and sets (F05, 49 questions)
+Track all, some, none and overlapping groups
+Illustration: All teal tokens are marked; no marked token is blank; which relation follows?
+Respan Span-02: 43/49 (87.8%)
+Perplexity Decider v1.2: 44/49 (89.8%)
+Nimble v4 Max: 45/49 (91.8%)
+Liquid d1-ultra: 45/49 (91.8%)
+Jev 1.14: 46/49 (93.9%)
+Jev 1.13: 44/49 (89.8%)
+Mercury Decide: 46/49 (93.9%)
+Liquid d1: 42/49 (85.7%)
+Cloudflare Clef: 44/49 (89.8%)
+Perplexity Decider Flash v1.2: 38/49 (77.6%)
+Microsoft-Decision-1: 41/49 (83.7%)
+Drex v2.0: 43/49 (87.8%)
+Cloudflare Clef Flash: 42/49 (85.7%)
+Cloudflare Clef Omni: 41/49 (83.7%)
+Drex v1.5: 41/49 (83.7%)
+Kev 4B: 42/49 (85.7%)
+Luna 6 Decisions: 38/49 (77.6%)
+Tev1 4B experimental (OpenRouter native adapter): 37/49 (75.5%)
+ScaleDown Classify-1: 28/49 (57.1%)
+Solar Decide Flash: 36/49 (73.5%)
+
+Enough evidence or a conflict? (F11, 41 questions)
+Determine whether facts force an answer or contradict one another
+Illustration: Is a proposed arrangement determined, impossible or still underdetermined?
+Respan Span-02: 36/41 (87.8%)
+Perplexity Decider v1.2: 37/41 (90.2%)
+Nimble v4 Max: 32/41 (78.0%)
+Liquid d1-ultra: 35/41 (85.4%)
+Jev 1.14: 32/41 (78.0%)
+Jev 1.13: 29/41 (70.7%)
+Mercury Decide: 30/41 (73.2%)
+Liquid d1: 32/41 (78.0%)
+Cloudflare Clef: 29/41 (70.7%)
+Perplexity Decider Flash v1.2: 30/41 (73.2%)
+Microsoft-Decision-1: 28/41 (68.3%)
+Drex v2.0: 33/41 (80.5%)
+Cloudflare Clef Flash: 27/41 (65.9%)
+Cloudflare Clef Omni: 26/41 (63.4%)
+Drex v1.5: 21/41 (51.2%)
+Kev 4B: 30/41 (73.2%)
+Luna 6 Decisions: 22/41 (53.7%)
+Tev1 4B experimental (OpenRouter native adapter): 23/41 (56.1%)
+ScaleDown Classify-1: 17/41 (41.5%)
+Solar Decide Flash: 8/41 (19.5%)
+
+ORDERING, SCHEDULES AND ASSIGNMENTS
+Can the model combine comparisons, fit a schedule, assign unique partners and apply tie-break rules?
+
+Ordering by comparisons (F06, 40 questions)
+Combine ordered comparisons
+Illustration: A is taller than B and B than C; how do A and C compare?
+Respan Span-02: 38/40 (95.0%)
+Perplexity Decider v1.2: 38/40 (95.0%)
+Nimble v4 Max: 38/40 (95.0%)
+Liquid d1-ultra: 39/40 (97.5%)
+Jev 1.14: 38/40 (95.0%)
+Jev 1.13: 40/40 (100.0%)
+Mercury Decide: 37/40 (92.5%)
+Liquid d1: 38/40 (95.0%)
+Cloudflare Clef: 37/40 (92.5%)
+Perplexity Decider Flash v1.2: 37/40 (92.5%)
+Microsoft-Decision-1: 39/40 (97.5%)
+Drex v2.0: 37/40 (92.5%)
+Cloudflare Clef Flash: 32/40 (80.0%)
+Cloudflare Clef Omni: 33/40 (82.5%)
+Drex v1.5: 37/40 (92.5%)
+Kev 4B: 35/40 (87.5%)
+Luna 6 Decisions: 35/40 (87.5%)
+Tev1 4B experimental (OpenRouter native adapter): 32/40 (80.0%)
+ScaleDown Classify-1: 34/40 (85.0%)
+Solar Decide Flash: 34/40 (85.0%)
+
+Scheduling under constraints (F07, 76 questions)
+Fit events around order and exclusion rules
+Illustration: Which timetable puts one meeting before another without overlapping a break?
+Respan Span-02: 58/76 (76.3%)
+Perplexity Decider v1.2: 54/76 (71.1%)
+Nimble v4 Max: 51/76 (67.1%)
+Liquid d1-ultra: 57/76 (75.0%)
+Jev 1.14: 48/76 (63.2%)
+Jev 1.13: 50/76 (65.8%)
+Mercury Decide: 50/76 (65.8%)
+Liquid d1: 47/76 (61.8%)
+Cloudflare Clef: 43/76 (56.6%)
+Perplexity Decider Flash v1.2: 40/76 (52.6%)
+Microsoft-Decision-1: 41/76 (53.9%)
+Drex v2.0: 50/76 (65.8%)
+Cloudflare Clef Flash: 35/76 (46.1%)
+Cloudflare Clef Omni: 36/76 (47.4%)
+Drex v1.5: 51/76 (67.1%)
+Kev 4B: 37/76 (48.7%)
+Luna 6 Decisions: 28/76 (36.8%)
+Tev1 4B experimental (OpenRouter native adapter): 28/76 (36.8%)
+ScaleDown Classify-1: 26/76 (34.2%)
+Solar Decide Flash: 19/76 (25.0%)
+
+One-to-one assignments (F08, 67 questions)
+Give each item a unique partner while satisfying clues
+Illustration: Assign three people different desks using location restrictions.
+Respan Span-02: 63/67 (94.0%)
+Perplexity Decider v1.2: 65/67 (97.0%)
+Nimble v4 Max: 60/67 (89.6%)
+Liquid d1-ultra: 55/67 (82.1%)
+Jev 1.14: 57/67 (85.1%)
+Jev 1.13: 54/67 (80.6%)
+Mercury Decide: 52/67 (77.6%)
+Liquid d1: 48/67 (71.6%)
+Cloudflare Clef: 42/67 (62.7%)
+Perplexity Decider Flash v1.2: 47/67 (70.1%)
+Microsoft-Decision-1: 44/67 (65.7%)
+Drex v2.0: 43/67 (64.2%)
+Cloudflare Clef Flash: 48/67 (71.6%)
+Cloudflare Clef Omni: 41/67 (61.2%)
+Drex v1.5: 48/67 (71.6%)
+Kev 4B: 45/67 (67.2%)
+Luna 6 Decisions: 36/67 (53.7%)
+Tev1 4B experimental (OpenRouter native adapter): 40/67 (59.7%)
+ScaleDown Classify-1: 29/67 (43.3%)
+Solar Decide Flash: 26/67 (38.8%)
+
+Comparing time intervals (F14, 42 questions)
+Compare starts, ends and overlapping periods
+Illustration: Which interval overlaps a specified event without containing it?
+Respan Span-02: 40/42 (95.2%)
+Perplexity Decider v1.2: 39/42 (92.9%)
+Nimble v4 Max: 41/42 (97.6%)
+Liquid d1-ultra: 38/42 (90.5%)
+Jev 1.14: 40/42 (95.2%)
+Jev 1.13: 41/42 (97.6%)
+Mercury Decide: 35/42 (83.3%)
+Liquid d1: 37/42 (88.1%)
+Cloudflare Clef: 31/42 (73.8%)
+Perplexity Decider Flash v1.2: 28/42 (66.7%)
+Microsoft-Decision-1: 33/42 (78.6%)
+Drex v2.0: 33/42 (78.6%)
+Cloudflare Clef Flash: 22/42 (52.4%)
+Cloudflare Clef Omni: 32/42 (76.2%)
+Drex v1.5: 28/42 (66.7%)
+Kev 4B: 31/42 (73.8%)
+Luna 6 Decisions: 25/42 (59.5%)
+Tev1 4B experimental (OpenRouter native adapter): 27/42 (64.3%)
+ScaleDown Classify-1: 13/42 (31.0%)
+Solar Decide Flash: 17/42 (40.5%)
+
+Ranking with tie-break rules (F22, 51 questions)
+Rank candidates using explicit tie-break rules
+Illustration: Rank by priority first, then age when priorities tie.
+Respan Span-02: 49/51 (96.1%)
+Perplexity Decider v1.2: 47/51 (92.2%)
+Nimble v4 Max: 49/51 (96.1%)
+Liquid d1-ultra: 47/51 (92.2%)
+Jev 1.14: 48/51 (94.1%)
+Jev 1.13: 46/51 (90.2%)
+Mercury Decide: 47/51 (92.2%)
+Liquid d1: 46/51 (90.2%)
+Cloudflare Clef: 45/51 (88.2%)
+Perplexity Decider Flash v1.2: 45/51 (88.2%)
+Microsoft-Decision-1: 44/51 (86.3%)
+Drex v2.0: 42/51 (82.4%)
+Cloudflare Clef Flash: 45/51 (88.2%)
+Cloudflare Clef Omni: 43/51 (84.3%)
+Drex v1.5: 44/51 (86.3%)
+Kev 4B: 48/51 (94.1%)
+Luna 6 Decisions: 44/51 (86.3%)
+Tev1 4B experimental (OpenRouter native adapter): 47/51 (92.2%)
+ScaleDown Classify-1: 29/51 (56.9%)
+Solar Decide Flash: 32/51 (62.7%)
+
+CLAIMS, CHANGING STATE AND PERSPECTIVES
+Can the model count true statements, update a changing situation and separate what different observers know?
+
+Counting exactly true claims (F09, 71 questions)
+Count precisely how many statements hold
+Illustration: Under the supplied facts, how many of six claims are true?
+Respan Span-02: 46/71 (64.8%)
+Perplexity Decider v1.2: 43/71 (60.6%)
+Nimble v4 Max: 39/71 (54.9%)
+Liquid d1-ultra: 42/71 (59.2%)
+Jev 1.14: 28/71 (39.4%)
+Jev 1.13: 25/71 (35.2%)
+Mercury Decide: 37/71 (52.1%)
+Liquid d1: 23/71 (32.4%)
+Cloudflare Clef: 27/71 (38.0%)
+Perplexity Decider Flash v1.2: 38/71 (53.5%)
+Microsoft-Decision-1: 40/71 (56.3%)
+Drex v2.0: 27/71 (38.0%)
+Cloudflare Clef Flash: 28/71 (39.4%)
+Cloudflare Clef Omni: 20/71 (28.2%)
+Drex v1.5: 33/71 (46.5%)
+Kev 4B: 21/71 (29.6%)
+Luna 6 Decisions: 19/71 (26.8%)
+Tev1 4B experimental (OpenRouter native adapter): 16/71 (22.5%)
+ScaleDown Classify-1: 22/71 (31.0%)
+Solar Decide Flash: 8/71 (11.3%)
+
+Truth-tellers and liars (F10, 74 questions)
+Find a consistent pattern of truthful and false statements
+Illustration: Which assignment of honest and dishonest speakers fits their claims?
+Respan Span-02: 55/74 (74.3%)
+Perplexity Decider v1.2: 58/74 (78.4%)
+Nimble v4 Max: 53/74 (71.6%)
+Liquid d1-ultra: 46/74 (62.2%)
+Jev 1.14: 39/74 (52.7%)
+Jev 1.13: 38/74 (51.4%)
+Mercury Decide: 39/74 (52.7%)
+Liquid d1: 40/74 (54.1%)
+Cloudflare Clef: 33/74 (44.6%)
+Perplexity Decider Flash v1.2: 30/74 (40.5%)
+Microsoft-Decision-1: 36/74 (48.6%)
+Drex v2.0: 37/74 (50.0%)
+Cloudflare Clef Flash: 34/74 (45.9%)
+Cloudflare Clef Omni: 37/74 (50.0%)
+Drex v1.5: 30/74 (40.5%)
+Kev 4B: 33/74 (44.6%)
+Luna 6 Decisions: 23/74 (31.1%)
+Tev1 4B experimental (OpenRouter native adapter): 25/74 (33.8%)
+ScaleDown Classify-1: 15/74 (20.3%)
+Solar Decide Flash: 23/74 (31.1%)
+
+Tracking swaps (F12, 52 questions)
+Update locations after repeated exchanges
+Illustration: A red token starts in box A; several box contents are swapped; where does it end?
+Respan Span-02: 28/52 (53.8%)
+Perplexity Decider v1.2: 33/52 (63.5%)
+Nimble v4 Max: 35/52 (67.3%)
+Liquid d1-ultra: 27/52 (51.9%)
+Jev 1.14: 30/52 (57.7%)
+Jev 1.13: 29/52 (55.8%)
+Mercury Decide: 34/52 (65.4%)
+Liquid d1: 33/52 (63.5%)
+Cloudflare Clef: 27/52 (51.9%)
+Perplexity Decider Flash v1.2: 23/52 (44.2%)
+Microsoft-Decision-1: 24/52 (46.2%)
+Drex v2.0: 28/52 (53.8%)
+Cloudflare Clef Flash: 28/52 (53.8%)
+Cloudflare Clef Omni: 30/52 (57.7%)
+Drex v1.5: 23/52 (44.2%)
+Kev 4B: 25/52 (48.1%)
+Luna 6 Decisions: 23/52 (44.2%)
+Tev1 4B experimental (OpenRouter native adapter): 20/52 (38.5%)
+ScaleDown Classify-1: 8/52 (15.4%)
+Solar Decide Flash: 14/52 (26.9%)
+
+Following step-by-step procedures (F13, 48 questions)
+Apply each ordered edit to the current state
+Illustration: Toggle one flag, swap two values, then conditionally reset another flag.
+Respan Span-02: 33/48 (68.8%)
+Perplexity Decider v1.2: 14/48 (29.2%)
+Nimble v4 Max: 19/48 (39.6%)
+Liquid d1-ultra: 11/48 (22.9%)
+Jev 1.14: 7/48 (14.6%)
+Jev 1.13: 10/48 (20.8%)
+Mercury Decide: 12/48 (25.0%)
+Liquid d1: 9/48 (18.8%)
+Cloudflare Clef: 11/48 (22.9%)
+Perplexity Decider Flash v1.2: 12/48 (25.0%)
+Microsoft-Decision-1: 7/48 (14.6%)
+Drex v2.0: 12/48 (25.0%)
+Cloudflare Clef Flash: 9/48 (18.8%)
+Cloudflare Clef Omni: 11/48 (22.9%)
+Drex v1.5: 13/48 (27.1%)
+Kev 4B: 11/48 (22.9%)
+Luna 6 Decisions: 11/48 (22.9%)
+Tev1 4B experimental (OpenRouter native adapter): 15/48 (31.2%)
+ScaleDown Classify-1: 11/48 (22.9%)
+Solar Decide Flash: 10/48 (20.8%)
+
+Tracking position and direction (F15, 49 questions)
+Update position or direction from described movement
+Illustration: Follow successive turns and moves, then identify the final direction.
+Respan Span-02: 42/49 (85.7%)
+Perplexity Decider v1.2: 35/49 (71.4%)
+Nimble v4 Max: 36/49 (73.5%)
+Liquid d1-ultra: 38/49 (77.6%)
+Jev 1.14: 34/49 (69.4%)
+Jev 1.13: 30/49 (61.2%)
+Mercury Decide: 31/49 (63.3%)
+Liquid d1: 24/49 (49.0%)
+Cloudflare Clef: 23/49 (46.9%)
+Perplexity Decider Flash v1.2: 25/49 (51.0%)
+Microsoft-Decision-1: 24/49 (49.0%)
+Drex v2.0: 26/49 (53.1%)
+Cloudflare Clef Flash: 16/49 (32.7%)
+Cloudflare Clef Omni: 20/49 (40.8%)
+Drex v1.5: 26/49 (53.1%)
+Kev 4B: 26/49 (53.1%)
+Luna 6 Decisions: 22/49 (44.9%)
+Tev1 4B experimental (OpenRouter native adapter): 19/49 (38.8%)
+ScaleDown Classify-1: 17/49 (34.7%)
+Solar Decide Flash: 13/49 (26.5%)
+
+Resolving names and references (F16, 50 questions)
+Resolve chains of names, roles and references
+Illustration: Identify the mentor of the colleague named in a nested description.
+Respan Span-02: 42/50 (84.0%)
+Perplexity Decider v1.2: 36/50 (72.0%)
+Nimble v4 Max: 38/50 (76.0%)
+Liquid d1-ultra: 34/50 (68.0%)
+Jev 1.14: 34/50 (68.0%)
+Jev 1.13: 33/50 (66.0%)
+Mercury Decide: 35/50 (70.0%)
+Liquid d1: 29/50 (58.0%)
+Cloudflare Clef: 31/50 (62.0%)
+Perplexity Decider Flash v1.2: 34/50 (68.0%)
+Microsoft-Decision-1: 32/50 (64.0%)
+Drex v2.0: 26/50 (52.0%)
+Cloudflare Clef Flash: 25/50 (50.0%)
+Cloudflare Clef Omni: 21/50 (42.0%)
+Drex v1.5: 23/50 (46.0%)
+Kev 4B: 19/50 (38.0%)
+Luna 6 Decisions: 17/50 (34.0%)
+Tev1 4B experimental (OpenRouter native adapter): 19/50 (38.0%)
+ScaleDown Classify-1: 19/50 (38.0%)
+Solar Decide Flash: 21/50 (42.0%)
+
+Tracking what others know (F17, 50 questions)
+Distinguish what different observers witnessed
+Illustration: An object moves while one observer is absent; where will that observer look?
+Respan Span-02: 41/50 (82.0%)
+Perplexity Decider v1.2: 46/50 (92.0%)
+Nimble v4 Max: 46/50 (92.0%)
+Liquid d1-ultra: 45/50 (90.0%)
+Jev 1.14: 44/50 (88.0%)
+Jev 1.13: 47/50 (94.0%)
+Mercury Decide: 43/50 (86.0%)
+Liquid d1: 41/50 (82.0%)
+Cloudflare Clef: 42/50 (84.0%)
+Perplexity Decider Flash v1.2: 42/50 (84.0%)
+Microsoft-Decision-1: 42/50 (84.0%)
+Drex v2.0: 25/50 (50.0%)
+Cloudflare Clef Flash: 41/50 (82.0%)
+Cloudflare Clef Omni: 38/50 (76.0%)
+Drex v1.5: 29/50 (58.0%)
+Kev 4B: 34/50 (68.0%)
+Luna 6 Decisions: 32/50 (64.0%)
+Tev1 4B experimental (OpenRouter native adapter): 31/50 (62.0%)
+ScaleDown Classify-1: 21/50 (42.0%)
+Solar Decide Flash: 19/50 (38.0%)
+
+CAUSES, PLANS AND EXCEPTIONS
+Which actions work, which consequences change, and which rule or source controls when information conflicts?
+
+Changing a cause (F18, 50 questions)
+Recompute consequences of changing a specified input
+Illustration: Force a switch off while holding other inputs fixed; which lamp now lights?
+Respan Span-02: 47/50 (94.0%)
+Perplexity Decider v1.2: 46/50 (92.0%)
+Nimble v4 Max: 45/50 (90.0%)
+Liquid d1-ultra: 40/50 (80.0%)
+Jev 1.14: 38/50 (76.0%)
+Jev 1.13: 42/50 (84.0%)
+Mercury Decide: 35/50 (70.0%)
+Liquid d1: 28/50 (56.0%)
+Cloudflare Clef: 27/50 (54.0%)
+Perplexity Decider Flash v1.2: 29/50 (58.0%)
+Microsoft-Decision-1: 24/50 (48.0%)
+Drex v2.0: 36/50 (72.0%)
+Cloudflare Clef Flash: 29/50 (58.0%)
+Cloudflare Clef Omni: 20/50 (40.0%)
+Drex v1.5: 22/50 (44.0%)
+Kev 4B: 29/50 (58.0%)
+Luna 6 Decisions: 21/50 (42.0%)
+Tev1 4B experimental (OpenRouter native adapter): 20/50 (40.0%)
+ScaleDown Classify-1: 12/50 (24.0%)
+Solar Decide Flash: 10/50 (20.0%)
+
+Exceptions and priority rules (F19, 58 questions)
+Apply a rule, its exception and stated precedence
+Illustration: A badge permits entry unless a higher-priority suspension applies.
+Respan Span-02: 53/58 (91.4%)
+Perplexity Decider v1.2: 54/58 (93.1%)
+Nimble v4 Max: 57/58 (98.3%)
+Liquid d1-ultra: 57/58 (98.3%)
+Jev 1.14: 48/58 (82.8%)
+Jev 1.13: 51/58 (87.9%)
+Mercury Decide: 55/58 (94.8%)
+Liquid d1: 51/58 (87.9%)
+Cloudflare Clef: 51/58 (87.9%)
+Perplexity Decider Flash v1.2: 47/58 (81.0%)
+Microsoft-Decision-1: 52/58 (89.7%)
+Drex v2.0: 48/58 (82.8%)
+Cloudflare Clef Flash: 43/58 (74.1%)
+Cloudflare Clef Omni: 50/58 (86.2%)
+Drex v1.5: 48/58 (82.8%)
+Kev 4B: 39/58 (67.2%)
+Luna 6 Decisions: 47/58 (81.0%)
+Tev1 4B experimental (OpenRouter native adapter): 42/58 (72.4%)
+ScaleDown Classify-1: 28/58 (48.3%)
+Solar Decide Flash: 28/58 (48.3%)
+
+Planning valid action sequences (F20, 43 questions)
+Choose an action sequence whose requirements are met
+Illustration: Obtain a key before opening a locked door, with limited moves available.
+Respan Span-02: 39/43 (90.7%)
+Perplexity Decider v1.2: 38/43 (88.4%)
+Nimble v4 Max: 40/43 (93.0%)
+Liquid d1-ultra: 39/43 (90.7%)
+Jev 1.14: 38/43 (88.4%)
+Jev 1.13: 38/43 (88.4%)
+Mercury Decide: 38/43 (88.4%)
+Liquid d1: 39/43 (90.7%)
+Cloudflare Clef: 38/43 (88.4%)
+Perplexity Decider Flash v1.2: 37/43 (86.0%)
+Microsoft-Decision-1: 37/43 (86.0%)
+Drex v2.0: 33/43 (76.7%)
+Cloudflare Clef Flash: 33/43 (76.7%)
+Cloudflare Clef Omni: 30/43 (69.8%)
+Drex v1.5: 27/43 (62.8%)
+Kev 4B: 24/43 (55.8%)
+Luna 6 Decisions: 25/43 (58.1%)
+Tev1 4B experimental (OpenRouter native adapter): 28/43 (65.1%)
+ScaleDown Classify-1: 14/43 (32.6%)
+Solar Decide Flash: 16/43 (37.2%)
+
+Following directed connections (F21, 43 questions)
+Follow arrows in their permitted direction
+Illustration: Can node A reach node D through the listed directed links?
+Respan Span-02: 40/43 (93.0%)
+Perplexity Decider v1.2: 42/43 (97.7%)
+Nimble v4 Max: 40/43 (93.0%)
+Liquid d1-ultra: 40/43 (93.0%)
+Jev 1.14: 42/43 (97.7%)
+Jev 1.13: 41/43 (95.3%)
+Mercury Decide: 40/43 (93.0%)
+Liquid d1: 40/43 (93.0%)
+Cloudflare Clef: 40/43 (93.0%)
+Perplexity Decider Flash v1.2: 40/43 (93.0%)
+Microsoft-Decision-1: 40/43 (93.0%)
+Drex v2.0: 42/43 (97.7%)
+Cloudflare Clef Flash: 36/43 (83.7%)
+Cloudflare Clef Omni: 37/43 (86.0%)
+Drex v1.5: 39/43 (90.7%)
+Kev 4B: 40/43 (93.0%)
+Luna 6 Decisions: 39/43 (90.7%)
+Tev1 4B experimental (OpenRouter native adapter): 35/43 (81.4%)
+ScaleDown Classify-1: 31/43 (72.1%)
+Solar Decide Flash: 33/43 (76.7%)
+
+Finding rule violations (F23, 52 questions)
+Find a case that violates a stated rule
+Illustration: Which listed record disproves the claim that every approved item is signed?
+Respan Span-02: 51/52 (98.1%)
+Perplexity Decider v1.2: 52/52 (100.0%)
+Nimble v4 Max: 52/52 (100.0%)
+Liquid d1-ultra: 51/52 (98.1%)
+Jev 1.14: 49/52 (94.2%)
+Jev 1.13: 48/52 (92.3%)
+Mercury Decide: 51/52 (98.1%)
+Liquid d1: 49/52 (94.2%)
+Cloudflare Clef: 49/52 (94.2%)
+Perplexity Decider Flash v1.2: 47/52 (90.4%)
+Microsoft-Decision-1: 47/52 (90.4%)
+Drex v2.0: 47/52 (90.4%)
+Cloudflare Clef Flash: 44/52 (84.6%)
+Cloudflare Clef Omni: 46/52 (88.5%)
+Drex v1.5: 46/52 (88.5%)
+Kev 4B: 37/52 (71.2%)
+Luna 6 Decisions: 44/52 (84.6%)
+Tev1 4B experimental (OpenRouter native adapter): 39/52 (75.0%)
+ScaleDown Classify-1: 30/52 (57.7%)
+Solar Decide Flash: 29/52 (55.8%)
+
+Choosing authoritative current records (F24, 43 questions)
+Select the valid source rather than an outdated conflicting one
+Illustration: Two records disagree; which controls under the stated authority and date policy?
+Respan Span-02: 38/43 (88.4%)
+Perplexity Decider v1.2: 42/43 (97.7%)
+Nimble v4 Max: 42/43 (97.7%)
+Liquid d1-ultra: 42/43 (97.7%)
+Jev 1.14: 37/43 (86.0%)
+Jev 1.13: 39/43 (90.7%)
+Mercury Decide: 40/43 (93.0%)
+Liquid d1: 38/43 (88.4%)
+Cloudflare Clef: 39/43 (90.7%)
+Perplexity Decider Flash v1.2: 39/43 (90.7%)
+Microsoft-Decision-1: 39/43 (90.7%)
+Drex v2.0: 37/43 (86.0%)
+Cloudflare Clef Flash: 38/43 (88.4%)
+Cloudflare Clef Omni: 38/43 (88.4%)
+Drex v1.5: 39/43 (90.7%)
+Kev 4B: 20/43 (46.5%)
+Luna 6 Decisions: 36/43 (83.7%)
+Tev1 4B experimental (OpenRouter native adapter): 29/43 (67.4%)
+ScaleDown Classify-1: 33/43 (76.7%)
+Solar Decide Flash: 23/43 (53.5%)
+
+Diagnosing faults from evidence (F25, 50 questions)
+Match observed symptoms to explicit fault rules
+Illustration: Which fault is consistent with the supplied test results?
+Respan Span-02: 46/50 (92.0%)
+Perplexity Decider v1.2: 48/50 (96.0%)
+Nimble v4 Max: 47/50 (94.0%)
+Liquid d1-ultra: 45/50 (90.0%)
+Jev 1.14: 45/50 (90.0%)
+Jev 1.13: 44/50 (88.0%)
+Mercury Decide: 46/50 (92.0%)
+Liquid d1: 46/50 (92.0%)
+Cloudflare Clef: 41/50 (82.0%)
+Perplexity Decider Flash v1.2: 39/50 (78.0%)
+Microsoft-Decision-1: 46/50 (92.0%)
+Drex v2.0: 44/50 (88.0%)
+Cloudflare Clef Flash: 40/50 (80.0%)
+Cloudflare Clef Omni: 42/50 (84.0%)
+Drex v1.5: 41/50 (82.0%)
+Kev 4B: 36/50 (72.0%)
+Luna 6 Decisions: 34/50 (68.0%)
+Tev1 4B experimental (OpenRouter native adapter): 39/50 (78.0%)
+ScaleDown Classify-1: 25/50 (50.0%)
+Solar Decide Flash: 28/50 (56.0%)
+
+RISK, STRATEGY AND SYSTEM BEHAVIOR
+These decisions involve uncertain outcomes, another actor, overlapping operations or possible information leaks.
+
+Risk with supplied probabilities (F26, 8 questions)
+Choose the action with the lowest probability-weighted cost, using the supplied likelihoods and costs.
+Illustration: Which action minimizes the expected cost of a possible delay?
+Respan Span-02: 6/8 (75.0%)
+Perplexity Decider v1.2: 5/8 (62.5%)
+Nimble v4 Max: 4/8 (50.0%)
+Liquid d1-ultra: 5/8 (62.5%)
+Jev 1.14: 5/8 (62.5%)
+Jev 1.13: 5/8 (62.5%)
+Mercury Decide: 5/8 (62.5%)
+Liquid d1: 3/8 (37.5%)
+Cloudflare Clef: 2/8 (25.0%)
+Perplexity Decider Flash v1.2: 2/8 (25.0%)
+Microsoft-Decision-1: 4/8 (50.0%)
+Drex v2.0: 5/8 (62.5%)
+Cloudflare Clef Flash: 3/8 (37.5%)
+Cloudflare Clef Omni: 5/8 (62.5%)
+Drex v1.5: 1/8 (12.5%)
+Kev 4B: 3/8 (37.5%)
+Luna 6 Decisions: 5/8 (62.5%)
+Tev1 4B experimental (OpenRouter native adapter): 3/8 (37.5%)
+ScaleDown Classify-1: 1/8 (12.5%)
+Solar Decide Flash: 1/8 (12.5%)
+
+Is extra information worth its cost? (F27, 8 questions)
+Decide whether paying for a test before choosing an action reduces the probability-weighted cost enough to cover the test price.
+Illustration: Should you buy a sensor reading before choosing an action, or is acting without the extra information cheaper overall?
+Respan Span-02: 5/8 (62.5%)
+Perplexity Decider v1.2: 4/8 (50.0%)
+Nimble v4 Max: 3/8 (37.5%)
+Liquid d1-ultra: 5/8 (62.5%)
+Jev 1.14: 4/8 (50.0%)
+Jev 1.13: 3/8 (37.5%)
+Mercury Decide: 3/8 (37.5%)
+Liquid d1: 3/8 (37.5%)
+Cloudflare Clef: 3/8 (37.5%)
+Perplexity Decider Flash v1.2: 4/8 (50.0%)
+Microsoft-Decision-1: 4/8 (50.0%)
+Drex v2.0: 4/8 (50.0%)
+Cloudflare Clef Flash: 4/8 (50.0%)
+Cloudflare Clef Omni: 3/8 (37.5%)
+Drex v1.5: 5/8 (62.5%)
+Kev 4B: 1/8 (12.5%)
+Luna 6 Decisions: 4/8 (50.0%)
+Tev1 4B experimental (OpenRouter native adapter): 0/8 (0.0%)
+ScaleDown Classify-1: 2/8 (25.0%)
+Solar Decide Flash: 2/8 (25.0%)
+
+Worst-case choices without probabilities (F28, 8 questions)
+Follow the stated worst-case rule when likelihoods are not supplied. Minimize either the largest possible loss or the largest regret (extra loss compared with the best action for each situation), as the question specifies. Do not invent probabilities.
+Illustration: A route costs 4 in either situation; another costs 1 or 9. With no probabilities and a smallest-worst-case-cost rule, which route should be chosen?
+Respan Span-02: 8/8 (100.0%)
+Perplexity Decider v1.2: 3/8 (37.5%)
+Nimble v4 Max: 4/8 (50.0%)
+Liquid d1-ultra: 4/8 (50.0%)
+Jev 1.14: 2/8 (25.0%)
+Jev 1.13: 2/8 (25.0%)
+Mercury Decide: 3/8 (37.5%)
+Liquid d1: 2/8 (25.0%)
+Cloudflare Clef: 3/8 (37.5%)
+Perplexity Decider Flash v1.2: 2/8 (25.0%)
+Microsoft-Decision-1: 2/8 (25.0%)
+Drex v2.0: 3/8 (37.5%)
+Cloudflare Clef Flash: 5/8 (62.5%)
+Cloudflare Clef Omni: 3/8 (37.5%)
+Drex v1.5: 2/8 (25.0%)
+Kev 4B: 4/8 (50.0%)
+Luna 6 Decisions: 4/8 (50.0%)
+Tev1 4B experimental (OpenRouter native adapter): 2/8 (25.0%)
+ScaleDown Classify-1: 1/8 (12.5%)
+Solar Decide Flash: 0/8 (0.0%)
+
+Anticipating another decision-maker (F29, 8 questions)
+Choose an action while accounting for the specified choices or payoff-maximizing response of another decision-maker.
+Illustration: Which first move gives the best result after the other player chooses their own best reply?
+Respan Span-02: 5/8 (62.5%)
+Perplexity Decider v1.2: 4/8 (50.0%)
+Nimble v4 Max: 5/8 (62.5%)
+Liquid d1-ultra: 3/8 (37.5%)
+Jev 1.14: 5/8 (62.5%)
+Jev 1.13: 3/8 (37.5%)
+Mercury Decide: 5/8 (62.5%)
+Liquid d1: 3/8 (37.5%)
+Cloudflare Clef: 3/8 (37.5%)
+Perplexity Decider Flash v1.2: 3/8 (37.5%)
+Microsoft-Decision-1: 3/8 (37.5%)
+Drex v2.0: 3/8 (37.5%)
+Cloudflare Clef Flash: 3/8 (37.5%)
+Cloudflare Clef Omni: 3/8 (37.5%)
+Drex v1.5: 2/8 (25.0%)
+Kev 4B: 3/8 (37.5%)
+Luna 6 Decisions: 2/8 (25.0%)
+Tev1 4B experimental (OpenRouter native adapter): 3/8 (37.5%)
+ScaleDown Classify-1: 1/8 (12.5%)
+Solar Decide Flash: 2/8 (25.0%)
+
+Checking overlapping operations (F30, 8 questions)
+Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules.
+Illustration: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order?
+Respan Span-02: 5/8 (62.5%)
+Perplexity Decider v1.2: 4/8 (50.0%)
+Nimble v4 Max: 3/8 (37.5%)
+Liquid d1-ultra: 3/8 (37.5%)
+Jev 1.14: 4/8 (50.0%)
+Jev 1.13: 4/8 (50.0%)
+Mercury Decide: 5/8 (62.5%)
+Liquid d1: 3/8 (37.5%)
+Cloudflare Clef: 5/8 (62.5%)
+Perplexity Decider Flash v1.2: 3/8 (37.5%)
+Microsoft-Decision-1: 4/8 (50.0%)
+Drex v2.0: 4/8 (50.0%)
+Cloudflare Clef Flash: 2/8 (25.0%)
+Cloudflare Clef Omni: 2/8 (25.0%)
+Drex v1.5: 4/8 (50.0%)
+Kev 4B: 3/8 (37.5%)
+Luna 6 Decisions: 3/8 (37.5%)
+Tev1 4B experimental (OpenRouter native adapter): 3/8 (37.5%)
+ScaleDown Classify-1: 1/8 (12.5%)
+Solar Decide Flash: 4/8 (50.0%)
+
+Detecting secret-information leaks (F31, 8 questions)
+Check whether changing a protected secret can change an observable result in a way the stated policy forbids.
+Illustration: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable?
+Respan Span-02: 5/8 (62.5%)
+Perplexity Decider v1.2: 6/8 (75.0%)
+Nimble v4 Max: 6/8 (75.0%)
+Liquid d1-ultra: 5/8 (62.5%)
+Jev 1.14: 6/8 (75.0%)
+Jev 1.13: 4/8 (50.0%)
+Mercury Decide: 5/8 (62.5%)
+Liquid d1: 5/8 (62.5%)
+Cloudflare Clef: 6/8 (75.0%)
+Perplexity Decider Flash v1.2: 4/8 (50.0%)
+Microsoft-Decision-1: 6/8 (75.0%)
+Drex v2.0: 4/8 (50.0%)
+Cloudflare Clef Flash: 4/8 (50.0%)
+Cloudflare Clef Omni: 4/8 (50.0%)
+Drex v1.5: 4/8 (50.0%)
+Kev 4B: 4/8 (50.0%)
+Luna 6 Decisions: 4/8 (50.0%)
+Tev1 4B experimental (OpenRouter native adapter): 4/8 (50.0%)
+ScaleDown Classify-1: 3/8 (37.5%)
+Solar Decide Flash: 4/8 (50.0%)
+
+Illustrations explain task types; they are not additional scored questions. Display labels and grouping changed; all measurements and tested question inputs are unchanged.

@@ -4,7 +4,7 @@ Updated October 19, 2026. Tests October 15 to 19, 2026.
 
 **Respan Span-02 leads with 1,127/1,342 (84.0%), followed by Perplexity Decider v1.2 at 1,120 (83.5%) and Nimble Max at 1,115 (83.1%).**
 
-One combined bank across 31 categories, with five choices per question. [Interactive report](https://etsabary.github.io/jev-1.14-comparison-benchmark/) · [Full plain-text analysis](consolidated_2026-10-19/report.txt) · [All function scores](FUNCTIONS.md).
+One combined bank across 31 categories, with five choices per question. [Interactive report](https://etsabary.github.io/jev-1.14-comparison-benchmark/) · [Full plain-text analysis](readable_2026-10-19/report.txt) · [All function scores](FUNCTIONS.md).
 
 ![Combined accuracy, median/p95 and cost](consolidated_2026-10-19/accuracy_speed_cost.png)
 
@@ -71,15 +71,107 @@ Forward conditionals ask what follows when facts activate chains of rules. Jev 1
 
 ## Uncertainty and system constraints change the functional picture
 
-Across the six uncertainty, strategy and system categories, Span scored 34/48, Perplexity 26/48, Nimble 25/48 and Jev 1.14 26/48. Span’s largest visible advantage is robust decision-making without a prior: 8/8, versus Perplexity 3/8, Nimble 4/8 and Jev 1.14 2/8. These require a worst-case action or policy, not an invented average. In information-flow security, Perplexity, Nimble and Jev 1.14 each scored 6/8, versus Span’s 5/8. Each category has eight questions. One answer changes its score by 12.5 percentage points; these are diagnostic profiles, not reliability guarantees.
+Across the six uncertainty, strategy and system categories, Span scored 34/48, Perplexity 26/48, Nimble 25/48 and Jev 1.14 26/48. Span’s largest visible advantage is worst-case choices without supplied probabilities: 8/8, versus Perplexity 3/8, Nimble 4/8 and Jev 1.14 2/8. These require a worst-case action or policy, not an invented average. In information-flow security, Perplexity, Nimble and Jev 1.14 each scored 6/8, versus Span’s 5/8. Each category has eight questions. One answer changes its score by 12.5 percentage points; these are diagnostic profiles, not reliability guarantees.
 
 ## Jev, Luna and a lower-cost native alternative
 
 Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 758 (56.5%). The Jev versions differ by 4 correct decisions overall. Assignments favor 1.14, 57/67 versus 54/67; causal intervention favors 1.13, 42/50 versus 38/50. The update is not a uniform improvement across functions. Mercury Decide scored 1,017 (75.8%), with a 238 ms median and $0.00696 per 1,000 at the captured prices. It scored 34/52 on swaps and 55/58 on priority rules, but 28/52 on necessary conditions, versus Jev 1.14’s 48/52. This is the native Mercury Decide route, not regular Mercury 2.5. Regular LLMs lack the complete expanded coverage and are not ranked here.
 
-![All 31 function profiles](consolidated_2026-10-19/family_profile.png)
+## Category scores and explanations
 
-![Uncertainty, strategy and system decisions](consolidated_2026-10-19/decision_domains.png)
+The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 20 models remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
+
+[Open the color-coded, selectable tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#functions), with a pinned model-name column and individual category rankings.
+
+### Rules and evidence
+
+Which facts meet a rule, which conclusions follow, and when is the evidence insufficient?
+
+| Category | Questions | What it tests and a simple example |
+| --- | --- | --- |
+| Lookup and filtering (F01) | 43 | Select records that meet stated conditions Example: Which listed request is both signed and marked urgent? |
+| Following if-then rules (F02) | 46 | Apply an implication from its trigger Example: If an active badge grants entry and this badge is active, what follows? |
+| Checking required conditions (F03) | 52 | Reason backward from a missing required condition Example: Every approved request needs a valid ticket; can one without a ticket be approved? |
+| Combining AND, OR and NOT (F04) | 54 | Track combinations such as both, either and exactly one Example: Which choice satisfies exactly one of two stated conditions? |
+| All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
+| Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
+
+![Rules and evidence: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/rules.png)
+
+[Full-size SVG](readable_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-rules)
+
+### Ordering, schedules and assignments
+
+Can the model combine comparisons, fit a schedule, assign unique partners and apply tie-break rules?
+
+| Category | Questions | What it tests and a simple example |
+| --- | --- | --- |
+| Ordering by comparisons (F06) | 40 | Combine ordered comparisons Example: A is taller than B and B than C; how do A and C compare? |
+| Scheduling under constraints (F07) | 76 | Fit events around order and exclusion rules Example: Which timetable puts one meeting before another without overlapping a break? |
+| One-to-one assignments (F08) | 67 | Give each item a unique partner while satisfying clues Example: Assign three people different desks using location restrictions. |
+| Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
+| Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
+
+![Ordering, schedules and assignments: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/ordering.png)
+
+[Full-size SVG](readable_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-ordering)
+
+### Claims, changing state and perspectives
+
+Can the model count true statements, update a changing situation and separate what different observers know?
+
+| Category | Questions | What it tests and a simple example |
+| --- | --- | --- |
+| Counting exactly true claims (F09) | 71 | Count precisely how many statements hold Example: Under the supplied facts, how many of six claims are true? |
+| Truth-tellers and liars (F10) | 74 | Find a consistent pattern of truthful and false statements Example: Which assignment of honest and dishonest speakers fits their claims? |
+| Tracking swaps (F12) | 52 | Update locations after repeated exchanges Example: A red token starts in box A; several box contents are swapped; where does it end? |
+| Following step-by-step procedures (F13) | 48 | Apply each ordered edit to the current state Example: Toggle one flag, swap two values, then conditionally reset another flag. |
+| Tracking position and direction (F15) | 49 | Update position or direction from described movement Example: Follow successive turns and moves, then identify the final direction. |
+| Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
+| Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
+
+![Claims, changing state and perspectives: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/state.png)
+
+[Full-size SVG](readable_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-state)
+
+### Causes, plans and exceptions
+
+Which actions work, which consequences change, and which rule or source controls when information conflicts?
+
+| Category | Questions | What it tests and a simple example |
+| --- | --- | --- |
+| Changing a cause (F18) | 50 | Recompute consequences of changing a specified input Example: Force a switch off while holding other inputs fixed; which lamp now lights? |
+| Exceptions and priority rules (F19) | 58 | Apply a rule, its exception and stated precedence Example: A badge permits entry unless a higher-priority suspension applies. |
+| Planning valid action sequences (F20) | 43 | Choose an action sequence whose requirements are met Example: Obtain a key before opening a locked door, with limited moves available. |
+| Following directed connections (F21) | 43 | Follow arrows in their permitted direction Example: Can node A reach node D through the listed directed links? |
+| Finding rule violations (F23) | 52 | Find a case that violates a stated rule Example: Which listed record disproves the claim that every approved item is signed? |
+| Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
+| Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
+
+![Causes, plans and exceptions: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/causes.png)
+
+[Full-size SVG](readable_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-causes)
+
+### Risk, strategy and system behavior
+
+These decisions involve uncertain outcomes, another actor, overlapping operations or possible information leaks.
+
+**Worst-case choices without probabilities** means choosing under a specified worst-case loss or regret rule when the likelihoods of possible situations are not supplied. There is no probability distribution to average over. Each of these six categories has eight questions, so one answer changes its score by 12.5 percentage points.
+
+| Category | Questions | What it tests and a simple example |
+| --- | --- | --- |
+| Risk with supplied probabilities (F26) | 8 | Choose the action with the lowest probability-weighted cost, using the supplied likelihoods and costs. Example: Which action minimizes the expected cost of a possible delay? |
+| Is extra information worth its cost? (F27) | 8 | Decide whether paying for a test before choosing an action reduces the probability-weighted cost enough to cover the test price. Example: Should you buy a sensor reading before choosing an action, or is acting without the extra information cheaper overall? |
+| Worst-case choices without probabilities (F28) | 8 | Follow the stated worst-case rule when likelihoods are not supplied. Minimize either the largest possible loss or the largest regret (extra loss compared with the best action for each situation), as the question specifies. Do not invent probabilities. Example: A route costs 4 in either situation; another costs 1 or 9. With no probabilities and a smallest-worst-case-cost rule, which route should be chosen? |
+| Anticipating another decision-maker (F29) | 8 | Choose an action while accounting for the specified choices or payoff-maximizing response of another decision-maker. Example: Which first move gives the best result after the other player chooses their own best reply? |
+| Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
+| Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
+
+![Risk, strategy and system behavior: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/uncertainty.png)
+
+[Full-size SVG](readable_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-uncertainty)
+
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](readable_2026-10-19/category_scores.csv).
 
 ## Questions and statistics
 
@@ -128,4 +220,4 @@ The [36-model, 1,136-question reference](REFERENCE_1136.md) remains available wi
 
 ## Offline publication checks
 
-Run `python3 validate_consolidated_release.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `publish_consolidated_report.py` rebuilds the presentation from the imported key-free bundle. Earlier report builders describe superseded releases and must not overwrite the current presentation.
+Run `python3 validate_readable_report.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `build_readable_report.py` builds this presentation from the unchanged, sealed key-free statistics. Sealed presentation artifacts are not overwritten. Earlier report builders describe superseded releases and must not overwrite the current presentation.

@@ -27,7 +27,18 @@ def hashes():
     for folder in (DEST, ROOT / 'docs' / FOLDER, ROOT / 'publication_archive_2026-10-19'):
         paths.update(p for p in folder.rglob('*') if p.is_file())
     paths.discard(SEAL)
-    return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
+    # A later layout reuses these same sealed measurements. Resolve only the
+    # superseded presentation/source paths to their exact committed snapshots.
+    archive = ROOT / 'presentation_archive_2026-10-19'
+    manifest = json.loads((archive / 'manifest.json').read_text())['files'] if archive.exists() else {}
+    result = {}
+    for path in sorted(paths):
+        name = str(path.relative_to(ROOT))
+        selected = archive / manifest[name]['archive_path'] if name in manifest else path
+        result[name] = digest(selected)
+        if name in manifest:
+            assert result[name] == manifest[name]['sha256'], name
+    return result
 
 
 def privacy(data):

@@ -1,0 +1,38 @@
+{
+  "source_commit": "629343132e8da1bb4cf9b10c953a2ecdacac3439",
+  "files": {
+    "README.md": {
+      "archive_path": "README.md.snapshot",
+      "sha256": "9cdb18265d5975b27a8867b7481c797184eab77804169d4e11f72cc69f85735b"
+    },
+    "FUNCTIONS.md": {
+      "archive_path": "FUNCTIONS.md.snapshot",
+      "sha256": "5c04b0c6f2130ea7a6553ccae78db4f400c31b111935c1deaf5dc9c1d9882cd3"
+    },
+    "docs/index.html": {
+      "archive_path": "docs/index.html.snapshot",
+      "sha256": "c8a215184b82177d2ae99597d6b1ae66aae5d5dd5b3ffc800c5c1f85c71b8be7"
+    },
+    "docs/functions.html": {
+      "archive_path": "docs/functions.html.snapshot",
+      "sha256": "7ff3fd6ffc14d740c4eae5e7284aab24237dd98e9e5da10b4b016e71bfdf1d46"
+    },
+    "docs/output_compliance.html": {
+      "archive_path": "docs/output_compliance.html.snapshot",
+      "sha256": "286625369d0aa7f60fa505f07cec53c78eebc4e053b380cc39ffab77b7854fee"
+    },
+    "validate_consolidated_release.py": {
+      "archive_path": "validate_consolidated_release.py.snapshot",
+      "sha256": "7a635c6c683eb70932f3e7bf650e47a97e896941bca75827c4ab1d8fd09e6f52"
+    },
+    "test_consolidated_publication.py": {
+      "archive_path": "test_consolidated_publication.py.snapshot",
+      "sha256": "9bb9e48b412d69cd08ae66ae599ae1af1e63a474b8ffd8c1c008806837113f6c"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "archive_path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "944fd12a188cf0d3709aff11198189c0824b590801de9b7e82d61bbefe60f9c8"
+    }
+  },
+  "purpose": "Exact previous presentation and validation sources; numerical exports and questions are unchanged."
+}

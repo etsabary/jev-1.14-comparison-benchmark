@@ -1,0 +1,88 @@
+{
+  "question_count": 1342,
+  "model_count": 20,
+  "category_count": 31,
+  "source_statistics_sha256": "e1348fb78c3b5bdc88874ba4af23681f37aaa972414d8910b7ce401c3a730950",
+  "source_questions_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "numerical_results_changed": false,
+  "new_inference_calls": 0,
+  "groups": [
+    {
+      "id": "rules",
+      "title": "Rules and evidence",
+      "category_ids": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05",
+        "F11"
+      ]
+    },
+    {
+      "id": "ordering",
+      "title": "Ordering, schedules and assignments",
+      "category_ids": [
+        "F06",
+        "F07",
+        "F08",
+        "F14",
+        "F22"
+      ]
+    },
+    {
+      "id": "state",
+      "title": "Claims, changing state and perspectives",
+      "category_ids": [
+        "F09",
+        "F10",
+        "F12",
+        "F13",
+        "F15",
+        "F16",
+        "F17"
+      ]
+    },
+    {
+      "id": "causes",
+      "title": "Causes, plans and exceptions",
+      "category_ids": [
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F23",
+        "F24",
+        "F25"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "title": "Risk, strategy and system behavior",
+      "category_ids": [
+        "F26",
+        "F27",
+        "F28",
+        "F29",
+        "F30",
+        "F31"
+      ]
+    }
+  ],
+  "artifacts": {
+    "category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823",
+    "category_scores.csv": "e0439469c4940765759eb741811612fcb9db0498ab1eecaa834d96e759bc8892",
+    "causes.png": "5bb1181b306b55d6277bd83dd76bd9c5f4dfb991dafa3d39764d7a7c3aeaed9a",
+    "causes.svg": "6a1810bbcfa7d82a5898f4dacf2b63ea63eb6dcfbbc69e9658ab8766c8effb14",
+    "ordering.png": "c7470be5e70ceebdcc9a4f06f5c861943cdb9b08b09bb80eccc129f08eaa7873",
+    "ordering.svg": "fee0e9c15419f01324adc224e3c05e24a793e77a94860466e41cdf5bdb2c62a7",
+    "report.html": "d02985325d17025a0f556fa4fec03ab0bed711e086421def3e9ada5de4246784",
+    "report.txt": "4a1b4615a2f56b5a9f993f9dac1c95aa0aa1a43f8091b70997d9f72009137f66",
+    "rules.png": "ba0748794e0b4ae0a0f6bd3d95454a60096de563fd69d6b048f20f4c05c54372",
+    "rules.svg": "d1912eff9ddd65e3e992f4c7c04172df99b11fc82a0d90456bd9ec4fabf936ce",
+    "state.png": "34298b0e232d869679154768bbcb486371fbd655f4c15dcca7d0fe87037291b8",
+    "state.svg": "8cc8e946f8291b334a6ab315673cfdb2916896936b2b169d041e1ec08b9646e8",
+    "uncertainty.png": "ce4464447b236b9c9c2d886c3e045e91e26535058f47c700467b1b827a9897ee",
+    "uncertainty.svg": "fcea133048a1a5b9468b30ce8bdcefa02c72b00e7ad3db727049dbb047408598"
+  }
+}
