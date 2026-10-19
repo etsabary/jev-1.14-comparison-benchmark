@@ -32,6 +32,7 @@ class Page(HTMLParser):
 
 
 def validate():
+    from archive_frontier_presentation import historical_path
     s, guide = b.load()
     manifest = json.loads((b.DEST / 'manifest.json').read_text())
     assert manifest['source_statistics_sha256'] == b.digest(b.SOURCE / 'statistics.json')
@@ -60,7 +61,7 @@ def validate():
         assert name in page.headings, name
         assert guide[fid]['what_it_tests'] in visible and guide[fid]['illustration'] in visible
     for path in [b.DEST / 'report.html', b.ROOT / 'docs' / b.NAME / 'report.html', *(b.ROOT / 'docs').glob('*.html')]:
-        parsed = Page(); parsed.feed(path.read_text())
+        parsed = Page(); parsed.feed(historical_path(path).read_text())
         for target in parsed.targets:
             if re.match(r'^(https?:|mailto:|data:)', target):
                 continue
@@ -89,8 +90,8 @@ def validate():
             assert not re.search(r'\bsk-(?:or-v1-)?[A-Za-z0-9_-]{24,}', text)
     from validate_consolidated_release import hashes
     assert hashes() == json.loads((b.SOURCE / 'release_checksums.json').read_text()), 'Prior release seal changed'
-    readme = (b.ROOT / 'README.md').read_text()
-    functions = (b.ROOT / 'FUNCTIONS.md').read_text()
+    readme = historical_path(b.ROOT / 'README.md').read_text()
+    functions = historical_path(b.ROOT / 'FUNCTIONS.md').read_text()
     for text in (readme, functions):
         assert 'without a prior' not in text.lower()
         assert '![All 31 function profiles]' not in text

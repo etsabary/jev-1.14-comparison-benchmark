@@ -17,4 +17,5 @@ jobs:
       - run: python3 validate_corrected_release.py
       - run: python3 validate_consolidated_release.py
       - run: python3 validate_readable_report.py
+      - run: python3 validate_frontier_release.py
       - run: python3 -m unittest discover -p 'test_*.py'

@@ -208,6 +208,7 @@ def main():
     original_ids = {r['item_id'] for r in run.d.read_csv(run.ROOT / 'corrected_2026-10-18/questions_1136.csv')}
     stats['matched_original_1136'] = outcomes(records, {i: gold[i] for i in original_ids})
     stats['added_206'] = outcomes(records, {i: g for i, g in gold.items() if i not in original_ids})
+    stats['initial_100'] = outcomes([r for r in records if r['request_index']<=100],gold)
     probe = active.validate_probe(args.out)
     probe_cost = active.probe_cost(args.out) if args.model != 'sol' else Decimal(str(probe['reported_cost_usd']))
     extras = []
@@ -245,7 +246,8 @@ def main():
                          'Cost excludes gateway funding fees; missing charges are unknown, never zero.',
                          'Full-bank frontier reference, not a newly qualified specialized decision model. No public ranking has been changed.']}
     report['operational_evidence'] = {name: run.file_hash(args.out/name)
-        for name in ('operator_events.jsonl','provider_cooldown.json') if (args.out/name).exists()}
+        for name in ('operator_events.jsonl','provider_cooldown.json','provider_cooldown_extension.json',
+                     'pacing_receipt.json','pacing_waits.jsonl') if (args.out/name).exists()}
     route_probes=args.out/'route_selection_probes.json'
     report['compatibility_probe_unknown_attempts'] = (sum(active.parse(v['transport'])['reported_cost_usd'] is None
         for v in json.loads(route_probes.read_text())) if route_probes.exists() else 0)

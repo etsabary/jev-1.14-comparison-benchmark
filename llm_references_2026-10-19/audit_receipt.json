@@ -1,0 +1,90 @@
+{
+  "status": "VERIFIED_PRIVATE_REFERENCE_EVIDENCE",
+  "question_count": 1342,
+  "tested_reference_count": 3,
+  "qualified_reference_count": 3,
+  "category_count": 31,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "reference_bindings": {
+    "reference_sol": {
+      "source_summary_sha256": "fb440bc91730ab5e0c6974d283cf5f73602105f9eb0017a0ffb771a49f637e92",
+      "completion_sha256": "a4906472c00c336c8b0ef312f215abc0ee6610295d3cd36fcea04298eb5db821",
+      "private_source_scoring_bindings": [
+        "33a04e1b7ac8b3a3020423a37781e1ca5a3939081c6d350fd6a532a00bad77c2",
+        "3b41037fba1cb02f42d0044a0dd758f1cc588de86fe0d2a5f90b142a41f353bb",
+        "471b808d20d9be2608ef60fddbf8526bf9015af3d6a4d976b7a2b20843ad46e1",
+        "4ca81b991c4002e70aead0d56b9f53c21f1e70d9b1fef1a4a1f2e32f32d5b56c",
+        "4cd7c58fe4be67dadb3644fc54d46d8e4a40aaa8ed73c2005b6dbe52a4341a36",
+        "6cb31d4192e256c5b6fa56d480025634bfbdca9ce8b2b68558ed44fe6bfa6c69",
+        "8376ddce67cd9bb5f62d685d0309b4de5706f091084fbe72aed7dc91d1bf4dec",
+        "aac4b2c2ece0f6cf37b81794031d93a8c3f53d032da1eb127d14f62be34781a6",
+        "b5dba10a8c9fbcbd0fc79f62e11a9a08594fdc187cf3ead7b5bb872a43bf1b5f",
+        "bb7ff1f81ac1b35bb93c25a5ac7dce48a0d86ff48cda711304b9932864c1bc3a",
+        "c99db093ae3517dcacc03319f00a461acbfd19e0eb22cb0c5a5dd636f1ee9271",
+        "ca5aa924ee10efe60bca09e02bb7fbb68740d12b243ca7bd619ceb5fc952c7bb",
+        "dbac830fe3cad5f469f950fe2c3b1c2e575cb6d00c2bdaec4b82c46f41b0b8ab",
+        "f6f685ea96ebd626804931278e03256bd502f0dc811a8694d9417a4ad5b64c01",
+        "fbe6f2b49ad7c99416fb45dc05b8b9db37a3850017d7bfef81644d09afe9bcd4"
+      ],
+      "operational_evidence": {}
+    },
+    "reference_sonnet": {
+      "source_summary_sha256": "a35287115c5f86a381b8ab420407f52051c2cba6689717406b033e5093bc7f0c",
+      "completion_sha256": "96a498a27d8cb92845a5e867ce89c303e2501081307b7003e7ef65ce088244f2",
+      "private_source_scoring_bindings": [
+        "33a04e1b7ac8b3a3020423a37781e1ca5a3939081c6d350fd6a532a00bad77c2",
+        "3b41037fba1cb02f42d0044a0dd758f1cc588de86fe0d2a5f90b142a41f353bb",
+        "471b808d20d9be2608ef60fddbf8526bf9015af3d6a4d976b7a2b20843ad46e1",
+        "4ca81b991c4002e70aead0d56b9f53c21f1e70d9b1fef1a4a1f2e32f32d5b56c",
+        "4cd7c58fe4be67dadb3644fc54d46d8e4a40aaa8ed73c2005b6dbe52a4341a36",
+        "6cb31d4192e256c5b6fa56d480025634bfbdca9ce8b2b68558ed44fe6bfa6c69",
+        "8376ddce67cd9bb5f62d685d0309b4de5706f091084fbe72aed7dc91d1bf4dec",
+        "aac4b2c2ece0f6cf37b81794031d93a8c3f53d032da1eb127d14f62be34781a6",
+        "b5dba10a8c9fbcbd0fc79f62e11a9a08594fdc187cf3ead7b5bb872a43bf1b5f",
+        "bb7ff1f81ac1b35bb93c25a5ac7dce48a0d86ff48cda711304b9932864c1bc3a",
+        "c99db093ae3517dcacc03319f00a461acbfd19e0eb22cb0c5a5dd636f1ee9271",
+        "ca5aa924ee10efe60bca09e02bb7fbb68740d12b243ca7bd619ceb5fc952c7bb",
+        "dbac830fe3cad5f469f950fe2c3b1c2e575cb6d00c2bdaec4b82c46f41b0b8ab",
+        "f6f685ea96ebd626804931278e03256bd502f0dc811a8694d9417a4ad5b64c01",
+        "fbe6f2b49ad7c99416fb45dc05b8b9db37a3850017d7bfef81644d09afe9bcd4"
+      ],
+      "operational_evidence": {}
+    },
+    "reference_qwen": {
+      "source_summary_sha256": "ce52e97aaec9dff8137852ce917e065cde038f5c370622589b5f0c235d638331",
+      "completion_sha256": "bc5bda846e49c4545ce4e3d00f4b19c6f7a4315f3f46299a5b95435b3019ac38",
+      "private_source_scoring_bindings": [
+        "33a04e1b7ac8b3a3020423a37781e1ca5a3939081c6d350fd6a532a00bad77c2",
+        "3b41037fba1cb02f42d0044a0dd758f1cc588de86fe0d2a5f90b142a41f353bb",
+        "471b808d20d9be2608ef60fddbf8526bf9015af3d6a4d976b7a2b20843ad46e1",
+        "4ca81b991c4002e70aead0d56b9f53c21f1e70d9b1fef1a4a1f2e32f32d5b56c",
+        "4cd7c58fe4be67dadb3644fc54d46d8e4a40aaa8ed73c2005b6dbe52a4341a36",
+        "6cb31d4192e256c5b6fa56d480025634bfbdca9ce8b2b68558ed44fe6bfa6c69",
+        "8376ddce67cd9bb5f62d685d0309b4de5706f091084fbe72aed7dc91d1bf4dec",
+        "aac4b2c2ece0f6cf37b81794031d93a8c3f53d032da1eb127d14f62be34781a6",
+        "b5dba10a8c9fbcbd0fc79f62e11a9a08594fdc187cf3ead7b5bb872a43bf1b5f",
+        "bb7ff1f81ac1b35bb93c25a5ac7dce48a0d86ff48cda711304b9932864c1bc3a",
+        "c99db093ae3517dcacc03319f00a461acbfd19e0eb22cb0c5a5dd636f1ee9271",
+        "ca5aa924ee10efe60bca09e02bb7fbb68740d12b243ca7bd619ceb5fc952c7bb",
+        "dbac830fe3cad5f469f950fe2c3b1c2e575cb6d00c2bdaec4b82c46f41b0b8ab",
+        "f6f685ea96ebd626804931278e03256bd502f0dc811a8694d9417a4ad5b64c01",
+        "fbe6f2b49ad7c99416fb45dc05b8b9db37a3850017d7bfef81644d09afe9bcd4"
+      ],
+      "operational_evidence": {
+        "operator_events.jsonl": "ea476ad58192f6a79368dfd4ea53adb0d48cec347379b70db4e39f45dd365abc",
+        "provider_cooldown.json": "4a659427b0e9833596ddc39b9a18b7b82c109dd63d0d9ba11c93ee44056423b0",
+        "provider_cooldown_extension.json": "333b79894b3662389f76873467cd1c3ed32ceca5bf6b5bc1ab3fc4142b419045",
+        "pacing_receipt.json": "12111cf8279413f890c138902870abeed5f969c3989bf35200a4191a03a416e4",
+        "pacing_waits.jsonl": "d6abe3197024998697a681a14cd2133ccf1a5cc37886adeec5072d97048d12c3"
+      }
+    }
+  },
+  "published_content": "Aggregate counts, latency quantiles, usage and costs only; no answer keys, individual correctness or private verifier material",
+  "primary_policy": "All first attempts, including provider failures; no answer-dependent retries",
+  "limits": [
+    "Exploratory development bank, not pristine held-out evaluation;37 permanent author-development exclusions remain in separate1305 diagnostic.",
+    "Qwen reasoning-token telemetry unavailable; no verified-zero claim.",
+    "Hyper quota valuation is not cash billing. Unknown rejected-request costs are not zero.",
+    "Sonnet constrained JSON-choice run separate from stopped bare-ID trial."
+  ]
+}

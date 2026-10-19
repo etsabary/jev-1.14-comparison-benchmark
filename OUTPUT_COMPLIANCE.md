@@ -1,16 +1,17 @@
 # Delivered decisions and request failures
 
-[Current overall comparison](README.md). All rates retain 1,342 first attempts per route. A failed request is not classified as a wrong reasoning answer. Only transport failures or HTTP 408/429/5xx permit one recovery; a valid wrong choice or explanatory output is not retried. Recoveries do not replace the primary score or timing.
-
 | Model | Usable first | Wrong valid | Provider failures | Output failures | Recoveries | Eventual correct |
 | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | 1342 | 199 | 0 | 0 | 0 | 1143 |
 | Respan Span-02 | 1342 | 215 | 0 | 0 | 0 | 1127 |
 | Perplexity Decider v1.2 | 1341 | 221 | 1 | 0 | 1 | 1121 |
 | Nimble v4 Max | 1342 | 227 | 0 | 0 | 0 | 1115 |
 | Liquid d1-ultra | 1341 | 257 | 1 | 0 | 1 | 1085 |
+| Sonnet 5.5 — no thinking, JSON-choice | 1342 | 272 | 0 | 0 | 0 | 1070 |
 | Jev 1.14 | 1342 | 312 | 0 | 0 | 0 | 1030 |
 | Jev 1.13 | 1342 | 316 | 0 | 0 | 0 | 1026 |
 | Mercury Decide | 1342 | 325 | 0 | 0 | 0 | 1017 |
+| Qwen3.8-Max — none, Hyper Charm | 1317 | 350 | 25 | 0 | 23 | 971 |
 | Liquid d1 | 1342 | 377 | 0 | 0 | 0 | 965 |
 | Cloudflare Clef | 1342 | 406 | 0 | 0 | 0 | 936 |
 | Perplexity Decider Flash v1.2 | 1286 | 363 | 56 | 0 | 56 | 940 |
@@ -25,4 +26,5 @@
 | ScaleDown Classify-1 | 1342 | 792 | 0 | 0 | 0 | 550 |
 | Solar Decide Flash | 1340 | 802 | 2 | 0 | 2 | 539 |
 
-Solar Decide remains excluded for latency. The distinct Solar Decide Flash is included. The [earlier compliance report](REFERENCE_1136_OUTPUT_COMPLIANCE.md) retains noncompliant runs, stopped LLM screens and compatibility probes outside the matched full-bank ranking.
+
+Sonnet’s stopped bare-ID trial:26/110 usable;84 unusable explanatory/truncated outputs. Its separate complete JSON-choice run above has 1342 usable outputs. Hyper Charm hourly-limit rejections remain in Qwen’s primary denominator and are not called wrong model choices.

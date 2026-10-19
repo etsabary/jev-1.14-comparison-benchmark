@@ -118,11 +118,17 @@ def load():
 
 
 def short(label):
+    for prefix,compact in (('GPT-6 Sol —','GPT-6 Sol (LLM, none)'),
+                           ('Sonnet 5.5 —','Sonnet 5.5 (LLM, JSON)'),
+                           ('Qwen3.8-Max —','Qwen3.8-Max (LLM, none)')):
+        if label.startswith(prefix):
+            return compact
     return label.replace('experimental (OpenRouter native adapter)', '(native adapter)').replace('Perplexity Decider Flash v1.2', 'Perplexity Flash v1.2')
 
 
 def color(value):
-    rgba = plt.get_cmap('YlGnBu')(value)
+    # Matplotlib treats integer 1 as palette index 1, not the 100% endpoint.
+    rgba = plt.get_cmap('YlGnBu')(float(value))
     rgb = rgba[:3]
     def linear(x):
         return x / 12.92 if x <= .04045 else ((x + .055) / 1.055) ** 2.4
@@ -147,7 +153,7 @@ def plot(s, group):
     models = [s['models'][mid] for mid in s['ranked_model_ids']]
     values = np.array([[m['families'][fid]['accuracy'] for fid in fids] for m in models])
     with plt.rc_context({'font.family': 'DejaVu Sans', 'svg.fonttype': 'none', 'svg.hashsalt': 'readable-1342-v1'}):
-        fig, ax = plt.subplots(figsize=(11.6, 12.8))
+        fig, ax = plt.subplots(figsize=(11.6, max(12.8, len(models)*.64)))
         im = ax.imshow(values, vmin=0, vmax=1, cmap='YlGnBu', aspect='auto')
         ax.set_yticks(range(len(models)), [short(m['label']) for m in models], fontsize=13)
         headers = ['\n'.join(textwrap.wrap(LABELS[fid], 12, break_long_words=False)) + f"\n{models[0]['families'][fid]['n']} questions" for fid in fids]
@@ -169,7 +175,7 @@ def plot(s, group):
         cb.ax.tick_params(labelsize=11)
         cb.set_label('Correct first decisions', fontsize=12)
         fig.text(.025, .975, title, ha='left', va='top', fontsize=20, weight='bold')
-        fig.text(.025, .938, 'Each cell: correct / questions, then percentage. All 20 models, in overall-score order.', fontsize=11)
+        fig.text(.025, .938, f'Each cell: correct / questions, then percentage. All {len(models)} routes, in overall-score order.', fontsize=11)
         fig.text(.025, .055, 'Darker blue = higher accuracy. Fixed 0-100% scale; random guessing = 20%.\nPercentages are rounded; counts are exact. All first attempts, including failures, remain in the denominator.', fontsize=10.5, linespacing=1.6)
         if slug == 'uncertainty':
             fig.text(.025, .017, 'Eight questions per category: one answer changes the score by 12.5 percentage points.', fontsize=10.5)
@@ -268,10 +274,11 @@ def markdown_groups(s, guide, details=False):
 
 
 def seal_hashes():
+    from archive_frontier_presentation import historical_path
     paths = {ROOT / name for name in SOURCES}
     for folder in (DEST, ROOT / 'docs' / NAME, ARCHIVE):
         paths.update(p for p in folder.rglob('*') if p.is_file() and p.name != 'release_checksums.json')
-    return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
+    return {str(p.relative_to(ROOT)): digest(historical_path(p)) for p in sorted(paths)}
 
 
 def build():

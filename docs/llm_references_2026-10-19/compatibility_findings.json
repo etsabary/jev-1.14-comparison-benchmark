@@ -1,0 +1,22 @@
+{
+  "stopped_trials": [
+    {
+      "trial": "Sonnet5.5 bare-ID",
+      "status": "STOPPED_PARTIAL_NOT_RANKED",
+      "questions_attempted": 110,
+      "attempts": 110,
+      "first_statuses": {
+        "ok": 26,
+        "invalid_output": 84
+      },
+      "cost": {
+        "known_usd": 0.112672,
+        "exact_usd": "0.112672",
+        "reported_attempts": 110,
+        "missing_attempts": 0
+      },
+      "raw_attempts_sha256": "7a84c6235f179e93ed6383a09e309abc8d54ff8452375b7829bdb0f86dbee27e"
+    }
+  ],
+  "policy": "All stopped trials/probes are separate from complete scored runs; unknown charges are not zero. Routes were selected without a benchmark answer key."
+}

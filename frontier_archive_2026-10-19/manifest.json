@@ -1,0 +1,58 @@
+{
+  "source_commit": "c2e82f1930df75af70916d0a21dab833f41ec782",
+  "files": {
+    "README.md": {
+      "archive_path": "README.md.snapshot",
+      "sha256": "5b6d3a1dda8f89dbfc31413e3a546dcef163031ec6e29dff04d93743057ece95"
+    },
+    "FUNCTIONS.md": {
+      "archive_path": "FUNCTIONS.md.snapshot",
+      "sha256": "865df73be234382d6eb7023304f3aeeba240f05d98235d93f0521927d4e24e70"
+    },
+    "OUTPUT_COMPLIANCE.md": {
+      "archive_path": "OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "eacbfd5b7afd024c6b28742699c38fcc0b28f75d7bce3042e6ea5efb69c927ce"
+    },
+    "LLM_EXPANSION.md": {
+      "archive_path": "LLM_EXPANSION.md.snapshot",
+      "sha256": "8d0401a28944112d4ea0df19d15d66d237d180d53edda142e3cfd899b2e216f7"
+    },
+    "docs/index.html": {
+      "archive_path": "docs/index.html.snapshot",
+      "sha256": "7398ac0313b242fa9820603c64bbad790b75dacf3e5bac737502608b79374f9d"
+    },
+    "docs/functions.html": {
+      "archive_path": "docs/functions.html.snapshot",
+      "sha256": "f1eeada580db6adbfd925e25e6dfeaf6cef09b44ffc0a0c29453bc21b1fd5261"
+    },
+    "docs/output_compliance.html": {
+      "archive_path": "docs/output_compliance.html.snapshot",
+      "sha256": "7881f95f5f018fcf6cbff4b99f01f630c867fdaaad5a956937668e99c8dc5037"
+    },
+    "build_readable_report.py": {
+      "archive_path": "build_readable_report.py.snapshot",
+      "sha256": "e7d0a3ff0bab9c9f09bd26aca427a7f03a302b38a0880a7d19ce3d9d21fc34d8"
+    },
+    "validate_readable_report.py": {
+      "archive_path": "validate_readable_report.py.snapshot",
+      "sha256": "bd727811f8f851df3ab4eea60cc7357f7a473a29b3511802cab0ebdba054334b"
+    },
+    "validate_consolidated_release.py": {
+      "archive_path": "validate_consolidated_release.py.snapshot",
+      "sha256": "bf860b969c2daddc2aa348b4071997f122515ae030405355527f5ac2f1e1566f"
+    },
+    "test_consolidated_publication.py": {
+      "archive_path": "test_consolidated_publication.py.snapshot",
+      "sha256": "0f6fd52be7ab6c330fec2201576b944ad889229baabb50e3308abe466aca60c1"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "archive_path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "9d2360337fa25c05738d7005f85e5b3855eb831d336a0fe7e4b8d1ce3e31a321"
+    },
+    "test_readable_report.py": {
+      "archive_path": "test_readable_report.py.snapshot",
+      "sha256": "ae99fef17d9914d2b1ef21901d618d49dc243a90255adee8afcc2d6b9cadcec5"
+    }
+  },
+  "purpose": "Exact committed source/presentation before the separately measured full-bank LLM references; prior numerical evidence is unchanged."
+}

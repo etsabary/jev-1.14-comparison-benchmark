@@ -1,12 +1,12 @@
-# The 31 decision categories: meanings and results
+# All 31 categories: 20 decision models and 3 LLM references
 
-All scores below use the same 1,342 questions and 20 models as the [overall comparison](README.md). This page gives named categories, examples and exact values. [Use the color-coded tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#functions) for comparison without decoding category IDs.
+Same 1342 questions; first-attempt results. [Color-coded tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#functions).
 
 ## Category scores and explanations
 
-The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 20 models remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
+The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 23 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
 
-[Open the color-coded, selectable tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#functions), with a pinned model-name column and individual category rankings.
+[Open the color-coded, selectable tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#functions), with a pinned model-name column and individual category rankings.
 
 ### Rules and evidence
 
@@ -21,19 +21,22 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 | All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
 | Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
 
-![Rules and evidence: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/rules.png)
+![Rules and evidence: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/rules.png)
 
-[Full-size SVG](readable_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-rules)
+[Full-size SVG](llm_references_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-rules)
 
 | Model | Lookup and filtering | Following if-then rules | Checking required conditions | Combining AND, OR and NOT | All, some, none and sets | Enough evidence or a conflict? |
 | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | 42/43 (97.7%) | 45/46 (97.8%) | 52/52 (100.0%) | 53/54 (98.1%) | 46/49 (93.9%) | 37/41 (90.2%) |
 | Respan Span-02 | 39/43 (90.7%) | 32/46 (69.6%) | 44/52 (84.6%) | 50/54 (92.6%) | 43/49 (87.8%) | 36/41 (87.8%) |
 | Perplexity Decider v1.2 | 40/43 (93.0%) | 45/46 (97.8%) | 50/52 (96.2%) | 48/54 (88.9%) | 44/49 (89.8%) | 37/41 (90.2%) |
 | Nimble v4 Max | 41/43 (95.3%) | 45/46 (97.8%) | 49/52 (94.2%) | 50/54 (92.6%) | 45/49 (91.8%) | 32/41 (78.0%) |
 | Liquid d1-ultra | 41/43 (95.3%) | 44/46 (95.7%) | 50/52 (96.2%) | 51/54 (94.4%) | 45/49 (91.8%) | 35/41 (85.4%) |
+| Sonnet 5.5 — no thinking, JSON-choice | 42/43 (97.7%) | 45/46 (97.8%) | 48/52 (92.3%) | 49/54 (90.7%) | 45/49 (91.8%) | 33/41 (80.5%) |
 | Jev 1.14 | 39/43 (90.7%) | 46/46 (100.0%) | 48/52 (92.3%) | 49/54 (90.7%) | 46/49 (93.9%) | 32/41 (78.0%) |
 | Jev 1.13 | 41/43 (95.3%) | 45/46 (97.8%) | 49/52 (94.2%) | 51/54 (94.4%) | 44/49 (89.8%) | 29/41 (70.7%) |
 | Mercury Decide | 38/43 (88.4%) | 43/46 (93.5%) | 28/52 (53.8%) | 49/54 (90.7%) | 46/49 (93.9%) | 30/41 (73.2%) |
+| Qwen3.8-Max — none, Hyper Charm | 37/43 (86.0%) | 38/46 (82.6%) | 44/52 (84.6%) | 45/54 (83.3%) | 44/49 (89.8%) | 25/41 (61.0%) |
 | Liquid d1 | 40/43 (93.0%) | 41/46 (89.1%) | 35/52 (67.3%) | 50/54 (92.6%) | 42/49 (85.7%) | 32/41 (78.0%) |
 | Cloudflare Clef | 40/43 (93.0%) | 39/46 (84.8%) | 39/52 (75.0%) | 46/54 (85.2%) | 44/49 (89.8%) | 29/41 (70.7%) |
 | Perplexity Decider Flash v1.2 | 36/43 (83.7%) | 43/46 (93.5%) | 41/52 (78.8%) | 38/54 (70.4%) | 38/49 (77.6%) | 30/41 (73.2%) |
@@ -60,19 +63,22 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 | Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
 | Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
 
-![Ordering, schedules and assignments: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/ordering.png)
+![Ordering, schedules and assignments: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/ordering.png)
 
-[Full-size SVG](readable_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-ordering)
+[Full-size SVG](llm_references_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-ordering)
 
 | Model | Ordering by comparisons | Scheduling under constraints | One-to-one assignments | Comparing time intervals | Ranking with tie-break rules |
 | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | 38/40 (95.0%) | 56/76 (73.7%) | 61/67 (91.0%) | 40/42 (95.2%) | 48/51 (94.1%) |
 | Respan Span-02 | 38/40 (95.0%) | 58/76 (76.3%) | 63/67 (94.0%) | 40/42 (95.2%) | 49/51 (96.1%) |
 | Perplexity Decider v1.2 | 38/40 (95.0%) | 54/76 (71.1%) | 65/67 (97.0%) | 39/42 (92.9%) | 47/51 (92.2%) |
 | Nimble v4 Max | 38/40 (95.0%) | 51/76 (67.1%) | 60/67 (89.6%) | 41/42 (97.6%) | 49/51 (96.1%) |
 | Liquid d1-ultra | 39/40 (97.5%) | 57/76 (75.0%) | 55/67 (82.1%) | 38/42 (90.5%) | 47/51 (92.2%) |
+| Sonnet 5.5 — no thinking, JSON-choice | 37/40 (92.5%) | 50/76 (65.8%) | 62/67 (92.5%) | 38/42 (90.5%) | 49/51 (96.1%) |
 | Jev 1.14 | 38/40 (95.0%) | 48/76 (63.2%) | 57/67 (85.1%) | 40/42 (95.2%) | 48/51 (94.1%) |
 | Jev 1.13 | 40/40 (100.0%) | 50/76 (65.8%) | 54/67 (80.6%) | 41/42 (97.6%) | 46/51 (90.2%) |
 | Mercury Decide | 37/40 (92.5%) | 50/76 (65.8%) | 52/67 (77.6%) | 35/42 (83.3%) | 47/51 (92.2%) |
+| Qwen3.8-Max — none, Hyper Charm | 40/40 (100.0%) | 42/76 (55.3%) | 58/67 (86.6%) | 34/42 (81.0%) | 47/51 (92.2%) |
 | Liquid d1 | 38/40 (95.0%) | 47/76 (61.8%) | 48/67 (71.6%) | 37/42 (88.1%) | 46/51 (90.2%) |
 | Cloudflare Clef | 37/40 (92.5%) | 43/76 (56.6%) | 42/67 (62.7%) | 31/42 (73.8%) | 45/51 (88.2%) |
 | Perplexity Decider Flash v1.2 | 37/40 (92.5%) | 40/76 (52.6%) | 47/67 (70.1%) | 28/42 (66.7%) | 45/51 (88.2%) |
@@ -101,19 +107,22 @@ Can the model count true statements, update a changing situation and separate wh
 | Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
 | Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
 
-![Claims, changing state and perspectives: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/state.png)
+![Claims, changing state and perspectives: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/state.png)
 
-[Full-size SVG](readable_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-state)
+[Full-size SVG](llm_references_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-state)
 
 | Model | Counting exactly true claims | Truth-tellers and liars | Tracking swaps | Following step-by-step procedures | Tracking position and direction | Resolving names and references | Tracking what others know |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | 51/71 (71.8%) | 38/74 (51.4%) | 32/52 (61.5%) | 18/48 (37.5%) | 43/49 (87.8%) | 38/50 (76.0%) | 45/50 (90.0%) |
 | Respan Span-02 | 46/71 (64.8%) | 55/74 (74.3%) | 28/52 (53.8%) | 33/48 (68.8%) | 42/49 (85.7%) | 42/50 (84.0%) | 41/50 (82.0%) |
 | Perplexity Decider v1.2 | 43/71 (60.6%) | 58/74 (78.4%) | 33/52 (63.5%) | 14/48 (29.2%) | 35/49 (71.4%) | 36/50 (72.0%) | 46/50 (92.0%) |
 | Nimble v4 Max | 39/71 (54.9%) | 53/74 (71.6%) | 35/52 (67.3%) | 19/48 (39.6%) | 36/49 (73.5%) | 38/50 (76.0%) | 46/50 (92.0%) |
 | Liquid d1-ultra | 42/71 (59.2%) | 46/74 (62.2%) | 27/52 (51.9%) | 11/48 (22.9%) | 38/49 (77.6%) | 34/50 (68.0%) | 45/50 (90.0%) |
+| Sonnet 5.5 — no thinking, JSON-choice | 30/71 (42.3%) | 41/74 (55.4%) | 29/52 (55.8%) | 15/48 (31.2%) | 43/49 (87.8%) | 36/50 (72.0%) | 45/50 (90.0%) |
 | Jev 1.14 | 28/71 (39.4%) | 39/74 (52.7%) | 30/52 (57.7%) | 7/48 (14.6%) | 34/49 (69.4%) | 34/50 (68.0%) | 44/50 (88.0%) |
 | Jev 1.13 | 25/71 (35.2%) | 38/74 (51.4%) | 29/52 (55.8%) | 10/48 (20.8%) | 30/49 (61.2%) | 33/50 (66.0%) | 47/50 (94.0%) |
 | Mercury Decide | 37/71 (52.1%) | 39/74 (52.7%) | 34/52 (65.4%) | 12/48 (25.0%) | 31/49 (63.3%) | 35/50 (70.0%) | 43/50 (86.0%) |
+| Qwen3.8-Max — none, Hyper Charm | 24/71 (33.8%) | 30/74 (40.5%) | 27/52 (51.9%) | 11/48 (22.9%) | 28/49 (57.1%) | 30/50 (60.0%) | 38/50 (76.0%) |
 | Liquid d1 | 23/71 (32.4%) | 40/74 (54.1%) | 33/52 (63.5%) | 9/48 (18.8%) | 24/49 (49.0%) | 29/50 (58.0%) | 41/50 (82.0%) |
 | Cloudflare Clef | 27/71 (38.0%) | 33/74 (44.6%) | 27/52 (51.9%) | 11/48 (22.9%) | 23/49 (46.9%) | 31/50 (62.0%) | 42/50 (84.0%) |
 | Perplexity Decider Flash v1.2 | 38/71 (53.5%) | 30/74 (40.5%) | 23/52 (44.2%) | 12/48 (25.0%) | 25/49 (51.0%) | 34/50 (68.0%) | 42/50 (84.0%) |
@@ -142,19 +151,22 @@ Which actions work, which consequences change, and which rule or source controls
 | Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
 | Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
 
-![Causes, plans and exceptions: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/causes.png)
+![Causes, plans and exceptions: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/causes.png)
 
-[Full-size SVG](readable_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-causes)
+[Full-size SVG](llm_references_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-causes)
 
 | Model | Changing a cause | Exceptions and priority rules | Planning valid action sequences | Following directed connections | Finding rule violations | Choosing authoritative current records | Diagnosing faults from evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | 44/50 (88.0%) | 57/58 (98.3%) | 39/43 (90.7%) | 41/43 (95.3%) | 52/52 (100.0%) | 42/43 (97.7%) | 49/50 (98.0%) |
 | Respan Span-02 | 47/50 (94.0%) | 53/58 (91.4%) | 39/43 (90.7%) | 40/43 (93.0%) | 51/52 (98.1%) | 38/43 (88.4%) | 46/50 (92.0%) |
 | Perplexity Decider v1.2 | 46/50 (92.0%) | 54/58 (93.1%) | 38/43 (88.4%) | 42/43 (97.7%) | 52/52 (100.0%) | 42/43 (97.7%) | 48/50 (96.0%) |
 | Nimble v4 Max | 45/50 (90.0%) | 57/58 (98.3%) | 40/43 (93.0%) | 40/43 (93.0%) | 52/52 (100.0%) | 42/43 (97.7%) | 47/50 (94.0%) |
 | Liquid d1-ultra | 40/50 (80.0%) | 57/58 (98.3%) | 39/43 (90.7%) | 40/43 (93.0%) | 51/52 (98.1%) | 42/43 (97.7%) | 45/50 (90.0%) |
+| Sonnet 5.5 — no thinking, JSON-choice | 41/50 (82.0%) | 53/58 (91.4%) | 36/43 (83.7%) | 40/43 (93.0%) | 52/52 (100.0%) | 39/43 (90.7%) | 46/50 (92.0%) |
 | Jev 1.14 | 38/50 (76.0%) | 48/58 (82.8%) | 38/43 (88.4%) | 42/43 (97.7%) | 49/52 (94.2%) | 37/43 (86.0%) | 45/50 (90.0%) |
 | Jev 1.13 | 42/50 (84.0%) | 51/58 (87.9%) | 38/43 (88.4%) | 41/43 (95.3%) | 48/52 (92.3%) | 39/43 (90.7%) | 44/50 (88.0%) |
 | Mercury Decide | 35/50 (70.0%) | 55/58 (94.8%) | 38/43 (88.4%) | 40/43 (93.0%) | 51/52 (98.1%) | 40/43 (93.0%) | 46/50 (92.0%) |
+| Qwen3.8-Max — none, Hyper Charm | 36/50 (72.0%) | 53/58 (91.4%) | 35/43 (81.4%) | 40/43 (93.0%) | 49/52 (94.2%) | 38/43 (88.4%) | 46/50 (92.0%) |
 | Liquid d1 | 28/50 (56.0%) | 51/58 (87.9%) | 39/43 (90.7%) | 40/43 (93.0%) | 49/52 (94.2%) | 38/43 (88.4%) | 46/50 (92.0%) |
 | Cloudflare Clef | 27/50 (54.0%) | 51/58 (87.9%) | 38/43 (88.4%) | 40/43 (93.0%) | 49/52 (94.2%) | 39/43 (90.7%) | 41/50 (82.0%) |
 | Perplexity Decider Flash v1.2 | 29/50 (58.0%) | 47/58 (81.0%) | 37/43 (86.0%) | 40/43 (93.0%) | 47/52 (90.4%) | 39/43 (90.7%) | 39/50 (78.0%) |
@@ -184,19 +196,22 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
 | Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
 
-![Risk, strategy and system behavior: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/uncertainty.png)
+![Risk, strategy and system behavior: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/uncertainty.png)
 
-[Full-size SVG](readable_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-uncertainty)
+[Full-size SVG](llm_references_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-uncertainty)
 
 | Model | Risk with supplied probabilities | Is extra information worth its cost? | Worst-case choices without probabilities | Anticipating another decision-maker | Checking overlapping operations | Detecting secret-information leaks |
 | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | 5/8 (62.5%) | 6/8 (75.0%) | 6/8 (75.0%) | 4/8 (50.0%) | 7/8 (87.5%) | 8/8 (100.0%) |
 | Respan Span-02 | 6/8 (75.0%) | 5/8 (62.5%) | 8/8 (100.0%) | 5/8 (62.5%) | 5/8 (62.5%) | 5/8 (62.5%) |
 | Perplexity Decider v1.2 | 5/8 (62.5%) | 4/8 (50.0%) | 3/8 (37.5%) | 4/8 (50.0%) | 4/8 (50.0%) | 6/8 (75.0%) |
 | Nimble v4 Max | 4/8 (50.0%) | 3/8 (37.5%) | 4/8 (50.0%) | 5/8 (62.5%) | 3/8 (37.5%) | 6/8 (75.0%) |
 | Liquid d1-ultra | 5/8 (62.5%) | 5/8 (62.5%) | 4/8 (50.0%) | 3/8 (37.5%) | 3/8 (37.5%) | 5/8 (62.5%) |
+| Sonnet 5.5 — no thinking, JSON-choice | 5/8 (62.5%) | 4/8 (50.0%) | 4/8 (50.0%) | 1/8 (12.5%) | 5/8 (62.5%) | 7/8 (87.5%) |
 | Jev 1.14 | 5/8 (62.5%) | 4/8 (50.0%) | 2/8 (25.0%) | 5/8 (62.5%) | 4/8 (50.0%) | 6/8 (75.0%) |
 | Jev 1.13 | 5/8 (62.5%) | 3/8 (37.5%) | 2/8 (25.0%) | 3/8 (37.5%) | 4/8 (50.0%) | 4/8 (50.0%) |
 | Mercury Decide | 5/8 (62.5%) | 3/8 (37.5%) | 3/8 (37.5%) | 5/8 (62.5%) | 5/8 (62.5%) | 5/8 (62.5%) |
+| Qwen3.8-Max — none, Hyper Charm | 6/8 (75.0%) | 4/8 (50.0%) | 4/8 (50.0%) | 3/8 (37.5%) | 4/8 (50.0%) | 7/8 (87.5%) |
 | Liquid d1 | 3/8 (37.5%) | 3/8 (37.5%) | 2/8 (25.0%) | 3/8 (37.5%) | 3/8 (37.5%) | 5/8 (62.5%) |
 | Cloudflare Clef | 2/8 (25.0%) | 3/8 (37.5%) | 3/8 (37.5%) | 3/8 (37.5%) | 5/8 (62.5%) | 6/8 (75.0%) |
 | Perplexity Decider Flash v1.2 | 2/8 (25.0%) | 4/8 (50.0%) | 2/8 (25.0%) | 3/8 (37.5%) | 3/8 (37.5%) | 4/8 (50.0%) |
@@ -211,4 +226,4 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | ScaleDown Classify-1 | 1/8 (12.5%) | 2/8 (25.0%) | 1/8 (12.5%) | 1/8 (12.5%) | 1/8 (12.5%) | 3/8 (37.5%) |
 | Solar Decide Flash | 1/8 (12.5%) | 2/8 (25.0%) | 0/8 (0.0%) | 2/8 (25.0%) | 4/8 (50.0%) | 4/8 (50.0%) |
 
-Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](readable_2026-10-19/category_scores.csv).
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](llm_references_2026-10-19/category_scores.csv).

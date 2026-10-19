@@ -1,0 +1,20 @@
+name: Validate consolidated and preserved benchmark releases
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  expanded-offline-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          # Match the capture runtime: newer float summation can change a
+          # probability-validity decision exactly at the stored tolerance.
+          python-version: '3.10'
+      - run: python3 -m pip install -r requirements-reports.txt
+      - run: python3 native_expansion_analysis.py
+      - run: python3 llm_expansion_analysis_2026_10_18.py
+      - run: python3 freeze_october18_release.py --check
+      - run: python3 validate_corrected_release.py
+      - run: python3 validate_consolidated_release.py
+      - run: python3 validate_readable_report.py
+      - run: python3 -m unittest discover -p 'test_*.py'

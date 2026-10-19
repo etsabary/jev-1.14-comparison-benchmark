@@ -57,7 +57,8 @@ class ConsolidatedPublication(unittest.TestCase):
             cells = [c.strip() for c in row.strip('|').split('|')]
             self.assertEqual(cells[1], str(f['n']))
             self.assertEqual(cells[2:], [str(f['models'][mid]['correct']) for mid in s['ranked_model_ids']])
-        quality = (b.ROOT / 'OUTPUT_COMPLIANCE.md').read_text()
+        from archive_frontier_presentation import historical_path
+        quality = historical_path(b.ROOT / 'OUTPUT_COMPLIANCE.md').read_text()
         self.assertEqual(sum(line.startswith('| ') for line in quality.splitlines()), 22)
 
     def test_prior_seals_and_archive_bytes_are_unchanged(self):

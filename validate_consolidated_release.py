@@ -23,6 +23,7 @@ SOURCES = ('README.md', 'FUNCTIONS.md', 'OUTPUT_COMPLIANCE.md', 'LLM_EXPANSION.m
 
 
 def hashes():
+    from archive_frontier_presentation import historical_path
     paths = {ROOT / name for name in SOURCES}
     for folder in (DEST, ROOT / 'docs' / FOLDER, ROOT / 'publication_archive_2026-10-19'):
         paths.update(p for p in folder.rglob('*') if p.is_file())
@@ -34,7 +35,7 @@ def hashes():
     result = {}
     for path in sorted(paths):
         name = str(path.relative_to(ROOT))
-        selected = archive / manifest[name]['archive_path'] if name in manifest else path
+        selected = archive / manifest[name]['archive_path'] if name in manifest else historical_path(path)
         result[name] = digest(selected)
         if name in manifest:
             assert result[name] == manifest[name]['sha256'], name

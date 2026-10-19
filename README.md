@@ -1,39 +1,43 @@
-# 20 decision models on 1,342 text questions
+# 20 decision models and 3 high-end LLM references on 1,342 text questions
 
-Updated October 19, 2026. Tests October 15 to 19, 2026.
+Updated October 19, 2026. Three LLM configurations were tested October 19; decision-model measurements are unchanged.
 
-**Respan Span-02 leads with 1,127/1,342 (84.0%), followed by Perplexity Decider v1.2 at 1,120 (83.5%) and Nimble Max at 1,115 (83.1%).**
+**Respan Span-02 leads the specialized decision models with 1127/1342 (84.0%). The LLM reference scores, speed and cost below use the same complete bank with reasoning disabled.**
 
-One combined bank across 31 categories, with five choices per question. [Interactive report](https://etsabary.github.io/jev-1.14-comparison-benchmark/) · [Full plain-text analysis](readable_2026-10-19/report.txt) · [All function scores](FUNCTIONS.md).
+[Interactive report](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html) · [LLM reference findings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#llm-references) · [Named, color-coded categories](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#functions).
 
-![Combined accuracy, median/p95 and cost](consolidated_2026-10-19/accuracy_speed_cost.png)
+![All 23 routes: accuracy, speed and cost](llm_references_2026-10-19/accuracy_speed_cost.png)
 
 ## Results, speed and cost
 
-Every row covers all 1,342 first attempts. Provider failures remain unsuccessful. Median and p95 pool the individual first-attempt times, not stage medians. Costs include permitted recoveries and retain their captured tariffs. `+ ?` means unreported additional charges; `~` marks tariff-based accounting. Costs per 1,000 are normalized, not the actual number of questions tested.
+Every row covers 1342 first attempts. Costs per 1000 are normalized; actual full-bank totals appear separately. Qwen’s cost is a Hyper Charm quota valuation, not a cash invoice. + ? means additional unreported charges.
 
-| Model | Correct / 1,342 | Accuracy | Median | p95 | Cost per 1,000 | Test dates |
-| --- | --- | --- | --- | --- | --- | --- |
-| Respan Span-02 | 1127 | 84.0% | 206 ms 🟩 Fastest | 2157 ms | $0.00354 🟩 Lowest | 2026-10-18, 2026-10-19 |
-| Perplexity Decider v1.2 | 1120 | 83.5% | 249 ms 🟩 Fastest | 332 ms | $0.00700 🟩 Lowest + ? | 2026-10-18, 2026-10-19 |
-| Nimble v4 Max | 1115 | 83.1% | 235 ms 🟩 Fastest | 329 ms | ~$0.02763 🟧 Mid | 2026-10-16, 2026-10-18, 2026-10-19 |
-| Liquid d1-ultra | 1084 | 80.8% | 200 ms 🟩 Fastest | 393 ms | $0.01212 🟨 Low + ? | 2026-10-18, 2026-10-19 |
-| Jev 1.14 | 1030 | 76.8% | 179 ms 🟩 Fastest | 269 ms | $0.02457 🟨 Low | 2026-10-15, 2026-10-18, 2026-10-19 |
-| Jev 1.13 | 1026 | 76.5% | 189 ms 🟩 Fastest | 323 ms | $0.02457 🟨 Low | 2026-10-15, 2026-10-18, 2026-10-19 |
-| Mercury Decide | 1017 | 75.8% | 238 ms 🟩 Fastest | 388 ms | $0.00696 🟩 Lowest | 2026-10-18, 2026-10-19 |
-| Liquid d1 | 965 | 71.9% | 206 ms 🟩 Fastest | 827 ms | $0.00577 🟩 Lowest | 2026-10-18, 2026-10-19 |
-| Cloudflare Clef | 936 | 69.7% | 268 ms 🟨 Fast | 417 ms | $0.01759 🟨 Low | 2026-10-18, 2026-10-19 |
-| Perplexity Decider Flash v1.2 | 923 | 68.8% | 159 ms 🟩 Fastest | 231 ms | $0.00341 🟩 Lowest + ? | 2026-10-18, 2026-10-19 |
-| Microsoft-Decision-1 | 921 | 68.6% | 283 ms 🟨 Fast | 566 ms | $0.01224 🟨 Low | 2026-10-16, 2026-10-18, 2026-10-19 |
-| Drex v2.0 | 915 | 68.2% | 232 ms 🟩 Fastest | 755 ms | $0.01666 🟨 Low + ? | 2026-10-18, 2026-10-19 |
-| Cloudflare Clef Flash | 860 | 64.1% | 245 ms 🟩 Fastest | 353 ms | $0.00880 🟩 Lowest | 2026-10-18, 2026-10-19 |
-| Cloudflare Clef Omni | 860 | 64.1% | 241 ms 🟩 Fastest | 400 ms | $0.06151 🟥 Highest + ? | 2026-10-18, 2026-10-19 |
-| Drex v1.5 | 853 | 63.6% | 203 ms 🟩 Fastest | 649 ms | $0.01116 🟨 Low | 2026-10-18, 2026-10-19 |
-| Kev 4B | 822 | 61.3% | 225 ms 🟩 Fastest | 377 ms | $0.01172 🟨 Low | 2026-10-18, 2026-10-19 |
-| Luna 6 Decisions | 758 | 56.5% | 254 ms 🟨 Fast | 527 ms | $0.03584 🟧 Mid + ? | 2026-10-15, 2026-10-18, 2026-10-19 |
-| Tev1 4B experimental (OpenRouter native adapter) | 751 | 56.0% | 198 ms 🟩 Fastest | 253 ms | $0.01566 🟨 Low | 2026-10-18, 2026-10-19 |
-| ScaleDown Classify-1 | 550 | 41.0% | 268 ms 🟨 Fast | 362 ms | $0.02139 🟨 Low | 2026-10-18, 2026-10-19 |
-| Solar Decide Flash | 538 | 40.1% | 540 ms 🟧 Moderate | 747 ms | $0.03020 🟧 Mid + ? | 2026-10-18, 2026-10-19 |
+| Model | Type | Correct /1342 | Accuracy | Median | p95 | Cost per 1000 | Actual1342-question cost |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | LLM reference | 1143/1342 | 85.2% | 1023 ms 🟥 Slow | 1546 ms | $0.63211 🟥 Highest | $0.848294 |
+| Respan Span-02 | Decision model | 1127/1342 | 84.0% | 206 ms 🟩 Fastest | 2157 ms | $0.00354 🟩 Lowest | $0.004746 |
+| Perplexity Decider v1.2 | Decision model | 1120/1342 | 83.5% | 249 ms 🟩 Fastest | 332 ms | $0.00700 🟩 Lowest + ? | $0.009394 + ? |
+| Nimble v4 Max | Decision model | 1115/1342 | 83.1% | 235 ms 🟩 Fastest | 329 ms | ~$0.02763 🟧 Mid | $0.037084 |
+| Liquid d1-ultra | Decision model | 1084/1342 | 80.8% | 200 ms 🟩 Fastest | 393 ms | $0.01212 🟨 Low + ? | $0.016270 + ? |
+| Sonnet 5.5 — no thinking, JSON-choice | LLM reference | 1070/1342 | 79.7% | 1506 ms 🟥 Slow | 2424 ms | $1.43361 🟥 Highest | $1.923908 |
+| Jev 1.14 | Decision model | 1030/1342 | 76.8% | 179 ms 🟩 Fastest | 269 ms | $0.02457 🟨 Low | $0.032974 |
+| Jev 1.13 | Decision model | 1026/1342 | 76.5% | 189 ms 🟩 Fastest | 323 ms | $0.02457 🟨 Low | $0.032974 |
+| Mercury Decide | Decision model | 1017/1342 | 75.8% | 238 ms 🟩 Fastest | 388 ms | $0.00696 🟩 Lowest | $0.009334 |
+| Qwen3.8-Max — none, Hyper Charm | LLM reference | 967/1342 | 72.1% | 1191 ms 🟥 Slow | 1731 ms | $0.61482 🟥 Highest + ? | $0.825090 + ? quota |
+| Liquid d1 | Decision model | 965/1342 | 71.9% | 206 ms 🟩 Fastest | 827 ms | $0.00577 🟩 Lowest | $0.007748 |
+| Cloudflare Clef | Decision model | 936/1342 | 69.7% | 268 ms 🟨 Fast | 417 ms | $0.01759 🟨 Low | $0.023611 |
+| Perplexity Decider Flash v1.2 | Decision model | 923/1342 | 68.8% | 159 ms 🟩 Fastest | 231 ms | $0.00341 🟩 Lowest + ? | $0.004570 + ? |
+| Microsoft-Decision-1 | Decision model | 921/1342 | 68.6% | 283 ms 🟨 Fast | 566 ms | $0.01224 🟨 Low | $0.016422 |
+| Drex v2.0 | Decision model | 915/1342 | 68.2% | 232 ms 🟩 Fastest | 755 ms | $0.01666 🟨 Low + ? | $0.022359 + ? |
+| Cloudflare Clef Flash | Decision model | 860/1342 | 64.1% | 245 ms 🟩 Fastest | 353 ms | $0.00880 🟩 Lowest | $0.011806 |
+| Cloudflare Clef Omni | Decision model | 860/1342 | 64.1% | 241 ms 🟩 Fastest | 400 ms | $0.06151 🟥 Highest + ? | $0.082547 + ? |
+| Drex v1.5 | Decision model | 853/1342 | 63.6% | 203 ms 🟩 Fastest | 649 ms | $0.01116 🟨 Low | $0.014976 |
+| Kev 4B | Decision model | 822/1342 | 61.3% | 225 ms 🟩 Fastest | 377 ms | $0.01172 🟨 Low | $0.015725 |
+| Luna 6 Decisions | Decision model | 758/1342 | 56.5% | 254 ms 🟨 Fast | 527 ms | $0.03584 🟧 Mid + ? | $0.048097 + ? |
+| Tev1 4B experimental (OpenRouter native adapter) | Decision model | 751/1342 | 56.0% | 198 ms 🟩 Fastest | 253 ms | $0.01566 🟨 Low | $0.021011 |
+| ScaleDown Classify-1 | Decision model | 550/1342 | 41.0% | 268 ms 🟨 Fast | 362 ms | $0.02139 🟨 Low | $0.028703 |
+| Solar Decide Flash | Decision model | 538/1342 | 40.1% | 540 ms 🟧 Moderate | 747 ms | $0.03020 🟧 Mid + ? | $0.040532 + ? |
+
 
 ## Reading the speed and cost colors
 
@@ -49,11 +53,35 @@ The squares and labels use fixed descriptive bands, not relative ranks or statis
 
 Bands use unrounded measurements; displayed numbers can round to a boundary. `+ ?` means additional charges were not reported. In those cells, the cost band describes only the known lower bound, not a complete cost or a guaranteed price advantage. The website also underlines these incomplete costs in amber. Text labels remain visible without color.
 
+## Decision models alongside high-end LLMs
+
+Respan Span-02 scored 1127/1342 (84.0%). The highest-scoring LLM reference was GPT-6 Sol — no reasoning: 1143/1342 (85.2%), a gap of 16 decisions. These are the same questions, facts and option order, with no tools or iterative repair. This measures System 1-style decision performance, not unrestricted reasoning or general intelligence.
+
+## Sol and Span are close overall, with different strengths
+
+Sol scored 1143/1342 (85.2%), versus Span’s 1127 (84.0%). On the original 1136 questions, Sol scored 1014 and Span 1011; on the added 206, Sol scored 129 and Span 116. Sol answered 45/46 forward conditionals and 52/52 necessary-condition questions; Span answered 32/46 and 44/52. Span answered 33/48 sequential procedures and 55/74 truth-teller questions, versus Sol 18/48 and 38/74.
+
+## Speed and cost separate otherwise nearby scores
+
+Sol’s median was 1023 ms, versus Span’s 206 ms: 5.0 times longer. Their recorded full-bank costs were $0.848294 and $0.00474628, a 179-fold difference. Span’s p95 was 2157 ms, versus Sol’s 1546 ms; the median advantage did not extend to that tail measure. These are route measurements, not controlled hardware comparisons.
+
+## Sonnet needs a constrained decision format
+
+Sonnet’s JSON-choice run scored 1070/1342 (79.7%), at a 1506 ms median and $1.923908 for the bank. All 1342 outputs were valid and reported zero thinking tokens. In the separate bare-ID trial, 84 of 110 outputs were unusable explanations or truncated text. That trial is not pooled into this score. Sonnet scored 45/46 forward conditionals, 15/48 sequential procedures and 30/71 exact truth-counting questions.
+
+## Qwen: decision accuracy and account limits
+
+Qwen3.8-Max delivered 967/1342 (72.1%); 1317 first attempts returned usable decisions, with 73.4% accuracy among those responses. There were 25 first-attempt provider/transport failures, retained in the primary score. It scored 38/46 on following if-then rules, 11/48 on step-by-step procedures and 30/74 on truth-teller consistency. Its median was 1191 ms and p95 1731 ms. Hyper Charm’s hourly limit produced some rejected requests; those are not labelled wrong model choices. Its cost is a prepaid-quota valuation, not additional cash billing. The requested none setting is documented in Hyper’s catalog, but the route does not report reasoning-token counts.
+
+## What the comparison supports
+
+Span’s 84.0% sits between Sol’s 85.2% and Sonnet’s 79.7% on these immediate decisions, with much lower recorded cost and a shorter median response. The Qwen row adds a further reference point. Scores and error profiles differ by category. This is a selected reference group, not an exhaustive ranking of every LLM that can disable reasoning. Models that require thinking are outside this comparison. New eight-question categories remain coarse diagnostic samples, not reliability guarantees.
+
 ## What this measures
 
 One decision from supplied information, with five choices. No requested thinking budget, tools, explanation or iterative repair. This is System 1-style decision performance, not a comparison of unrestricted reasoning, writing or agentic work. The ranking uses every first attempt; provider failures count as unsuccessful delivered decisions and are not called wrong reasoning answers.
 
-## Span leads the combined bank
+## Span leads the decision models
 
 Span scored 1,127/1,342 (84.0%), Perplexity 1,120 (83.5%) and Nimble Max 1,115 (83.1%). The gaps are 7 and 12 answers. They are too small to establish a general intelligence ordering. Equal weighting of the 31 category percentages also puts Span first: 82.4%, versus Perplexity’s 79.4% and Nimble’s 79.0%. The main score remains question-weighted, so large categories contribute more questions.
 
@@ -65,7 +93,7 @@ Span’s median was 206 ms, with a 2.16-second p95. Perplexity’s median was 24
 
 Sequential procedures require applying ordered edits to the current state, such as reversing a row, swapping positions and moving an item. Span scored 33/48, Nimble 19/48, Perplexity 14/48 and Jev 1.14 7/48. For exact truth counting, which asks how many claims are true under the supplied facts, the same routes scored 46/71, 39/71, 43/71 and 28/71. Strong performance here still includes many wrong answers.
 
-## The overall leader is not strongest in every function
+## The decision-model leader is not strongest in every function
 
 Forward conditionals ask what follows when facts activate chains of rules. Jev 1.14 scored 46/46, Perplexity and Nimble each 45/46, and Span 32/46. On truth-teller consistency, where whole statements must match each speaker’s type, Perplexity scored 58/74, Span 55/74 and Nimble 53/74. On one-to-one assignments, Perplexity scored 65/67 and Span 63/67; on belief tracking, Jev 1.13 scored 47/50 and Span 41/50. Belief tracking distinguishes what observers know from what actually happened.
 
@@ -75,13 +103,13 @@ Across the six uncertainty, strategy and system categories, Span scored 34/48, P
 
 ## Jev, Luna and a lower-cost native alternative
 
-Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 758 (56.5%). The Jev versions differ by 4 correct decisions overall. Assignments favor 1.14, 57/67 versus 54/67; causal intervention favors 1.13, 42/50 versus 38/50. The update is not a uniform improvement across functions. Mercury Decide scored 1,017 (75.8%), with a 238 ms median and $0.00696 per 1,000 at the captured prices. It scored 34/52 on swaps and 55/58 on priority rules, but 28/52 on necessary conditions, versus Jev 1.14’s 48/52. This is the native Mercury Decide route, not regular Mercury 2.5. Regular LLMs lack the complete expanded coverage and are not ranked here.
+Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 758 (56.5%). The Jev versions differ by 4 correct decisions overall. Assignments favor 1.14, 57/67 versus 54/67; causal intervention favors 1.13, 42/50 versus 38/50. The update is not a uniform improvement across functions. Mercury Decide scored 1,017 (75.8%), with a 238 ms median and $0.00696 per 1,000 at the captured prices. It scored 34/52 on swaps and 55/58 on priority rules, but 28/52 on necessary conditions, versus Jev 1.14’s 48/52. This is the native Mercury Decide route, not regular Mercury 2.5. The earlier LLM cohort lacks expanded coverage; the new reference group has complete matched coverage.
 
 ## Category scores and explanations
 
-The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 20 models remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
+The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 23 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
 
-[Open the color-coded, selectable tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#functions), with a pinned model-name column and individual category rankings.
+[Open the color-coded, selectable tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#functions), with a pinned model-name column and individual category rankings.
 
 ### Rules and evidence
 
@@ -96,9 +124,9 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 | All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
 | Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
 
-![Rules and evidence: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/rules.png)
+![Rules and evidence: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/rules.png)
 
-[Full-size SVG](readable_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-rules)
+[Full-size SVG](llm_references_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-rules)
 
 ### Ordering, schedules and assignments
 
@@ -112,9 +140,9 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 | Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
 | Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
 
-![Ordering, schedules and assignments: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/ordering.png)
+![Ordering, schedules and assignments: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/ordering.png)
 
-[Full-size SVG](readable_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-ordering)
+[Full-size SVG](llm_references_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-ordering)
 
 ### Claims, changing state and perspectives
 
@@ -130,9 +158,9 @@ Can the model count true statements, update a changing situation and separate wh
 | Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
 | Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
 
-![Claims, changing state and perspectives: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/state.png)
+![Claims, changing state and perspectives: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/state.png)
 
-[Full-size SVG](readable_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-state)
+[Full-size SVG](llm_references_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-state)
 
 ### Causes, plans and exceptions
 
@@ -148,9 +176,9 @@ Which actions work, which consequences change, and which rule or source controls
 | Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
 | Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
 
-![Causes, plans and exceptions: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/causes.png)
+![Causes, plans and exceptions: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/causes.png)
 
-[Full-size SVG](readable_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-causes)
+[Full-size SVG](llm_references_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-causes)
 
 ### Risk, strategy and system behavior
 
@@ -167,35 +195,35 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
 | Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
 
-![Risk, strategy and system behavior: all 20 models, named categories, correct counts and percentages](readable_2026-10-19/uncertainty.png)
+![Risk, strategy and system behavior: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/uncertainty.png)
 
-[Full-size SVG](readable_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#group-uncertainty)
+[Full-size SVG](llm_references_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/jev-1.14-comparison-benchmark/llm_references_2026-10-19/report.html#group-uncertainty)
 
-Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](readable_2026-10-19/category_scores.csv).
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](llm_references_2026-10-19/category_scores.csv).
 
 ## Questions and statistics
 
 All **1,342 questions**, facts and five choices retain their tested order. The JSONL also preserves exact model-independent native input packets and hashes. No answer keys, item-level correctness, certificates, verifier responses or private author metadata are published.
 
 - Questions: [CSV](consolidated_2026-10-19/questions_1342.csv), [JSONL](consolidated_2026-10-19/questions_1342.jsonl), [readable text](consolidated_2026-10-19/questions_1342.txt).
-- Statistics: [model CSV](consolidated_2026-10-19/model_statistics.csv), [function CSV](consolidated_2026-10-19/family_statistics.csv), [aggregate JSON](consolidated_2026-10-19/statistics.json), [plot data](consolidated_2026-10-19/plot_data.json).
-- [Request failures and output compliance](OUTPUT_COMPLIANCE.md), [release manifest](consolidated_2026-10-19/manifest.json), [sanitized audit receipt](consolidated_2026-10-19/audit_receipt.json).
+- Statistics: [model CSV](llm_references_2026-10-19/model_statistics.csv), [function CSV](llm_references_2026-10-19/category_scores.csv), [aggregate JSON](llm_references_2026-10-19/statistics.json), [earlier decision-model plot data](consolidated_2026-10-19/plot_data.json).
+- [Request failures and output compliance](OUTPUT_COMPLIANCE.md), [original decision-model release manifest](consolidated_2026-10-19/manifest.json), [original decision-model audit receipt](consolidated_2026-10-19/audit_receipt.json).
 
 ## Method and construction note
 
 There are 1,342 questions and five choices per question. The uniform random-guess baseline is 20%. The questions include dependent variants and uneven category sizes; they are not 1,342 independent observations.
 
-The full comparison is 20 routes × 1,342 questions = 26,840 first attempts. Actual selected HTTP attempts total 26,983, including 143 permitted recoveries. Only transport failures or actual HTTP 408/429/5xx permit one recovery. Recovered responses do not replace first attempts in the ranking or timing distribution.
+The full comparison is 23 routes × 1,342 questions = 30,866 first attempts. Within the unchanged 20-decision-model cohort, there are 26,840 first attempts. That original cohort has 26,983 selected HTTP attempts, including 143 permitted recoveries. New LLM attempt and recovery totals appear in the aggregate statistics and quality table. Only transport failures or actual HTTP 408/429/5xx permit one recovery. Recovered responses do not replace first attempts in the ranking or timing distribution.
 
 Median and p95 are recomputed from all 1,342 individual first-attempt durations per route. Each attempt uses a fresh HTTPS connection and a monotonic timer from connection through the complete body. Queue time, retry waiting and recovery durations are excluded from these quantiles. p95 is the interpolated 95th percentile, not the mean of the slowest 5%.
 
-The tests retain their captured dates, routes and loads; combining their raw measurements is not a synchronized rerun. No new calls were made for this consolidation. Returned dated identities and pins match across the selected banks; missing identities on failed calls are not silently inferred.
+The tests retain their captured dates, routes and loads; combining their raw measurements is not a synchronized rerun. The 20 decision-model measurements are unchanged; the three complete LLM reference runs were added on October 19. Returned dated identities and pins match across the selected banks; missing identities on failed calls are not silently inferred.
 
-Nimble uses Bespoke directly; the other routes use OpenRouter with pinned providers and no fallback. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
+Among the 20 decision-model routes, Nimble uses Bespoke directly; the others use OpenRouter with pinned providers and no fallback. The new Qwen reference uses Hyper Charm directly. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
 
 Costs include selected primary and permitted recovery attempts, normalized as cost ÷ 1,342 × 1,000. They are recorded charges or input usage times captured tariffs, not current-price quotes or independently reconciled invoices. Nimble retains 1,134 older $0.09/million-input records and 208 records at the captured $0.04 tariff. Missing costs remain unknown; no zero is substituted.
 
-Known cost across the cohort is $0.480883745, with 218 attempt costs unreported. Verification subscription usage is outside this native-inference accounting.
+Known cost across the original 20-decision-model cohort is $0.480883745, with 218 attempt costs unreported. Verification subscription usage is outside this native-inference accounting.
 
 The two retired ambiguous procedure prompts are absent. Their verified replacements are included exactly once. Provider failures and invalid outputs are unsuccessful delivered decisions, but only valid wrong choices are called wrong answers. Latency on a failed request may measure time to rejection.
 
@@ -205,19 +233,21 @@ All 206 expansion questions have current-revision blind Sol xhigh and different-
 
 Construction history: the corrected 1,136-question bank, 200 verified expansion questions and six additional truth-teller questions are now pooled into one view. The six domains each contain two foundation questions and six more demanding candidates. The charts do not split scores by construction stage.
 
-Sixteen regular-LLM configurations have only the earlier 1,136-question coverage. They remain in that reference report and are not assigned an expanded score, extrapolated, or ranked here. Solar Decide remains excluded for latency; the distinct Solar Decide Flash route remains included. No existing published row was removed.
+Sixteen earlier regular-LLM configurations have only 1,136-question coverage and are not extrapolated here. The three separately labelled LLM references above each cover all 1,342 questions. Solar Decide remains excluded for latency; the distinct Solar Decide Flash route remains included. No existing published row was removed.
 
 The full question bank is downloadable without answers, grouped by category in CSV, JSONL and plain text. JSONL preserves the exact model-independent native input packets and hashes. Corrected prompts appear once; retired ambiguous prompts are absent. No answer keys, certificates, verifier responses, private author metadata or credentials are included.
 
-The public bundle contains the consolidated graphics, aggregate statistics and all answer-free question inputs. The separate image benchmark is unchanged. No new inference was performed for this consolidation.
+The public bundle contains the consolidated graphics, aggregate statistics and all answer-free question inputs. The separate image benchmark is unchanged. The decision-model evidence was not rerun; the three new LLM references use fresh inference on the same complete bank.
 
 
 The 37 author-development cases remain permanently excluded from a future held-out scored release. This public developmental overview does not claim a held-out score. Publication checks validate exported consistency and privacy; the sanitized audit receipt records a separate private raw-evidence check. The public aggregates alone cannot reproduce answer-key scoring or raw-latency quantiles.
 
 ## Earlier LLM comparison and image benchmark
 
-The [36-model, 1,136-question reference](REFERENCE_1136.md) remains available with its measurements, analysis, raw evidence and unchanged release seals. Sixteen regular LLM configurations have no complete expanded coverage, so they are not assigned a 1,342-question score or mixed into this ranking. The [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is unchanged.
+The [36-model, 1,136-question reference](REFERENCE_1136.md) remains available with its measurements, analysis, raw evidence and unchanged release seals. Sixteen earlier regular LLM configurations lack complete expanded coverage and are not extrapolated. The 3 new, separately labelled qualified references above cover all 1,342 questions. The [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is unchanged.
 
 ## Offline publication checks
 
-Run `python3 validate_readable_report.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `build_readable_report.py` builds this presentation from the unchanged, sealed key-free statistics. Sealed presentation artifacts are not overwritten. Earlier report builders describe superseded releases and must not overwrite the current presentation.
+Run `python3 validate_frontier_release.py` and `python3 validate_readable_report.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `publish_frontier_references.py` builds the current presentation from sealed summaries, preserving the earlier decision-model evidence and report seals. Sealed presentation artifacts are not overwritten. Earlier report builders describe superseded releases and must not overwrite the current presentation.
+
+[Current 23-route model statistics CSV](llm_references_2026-10-19/model_statistics.csv) · [Current named-category scores CSV](llm_references_2026-10-19/category_scores.csv).

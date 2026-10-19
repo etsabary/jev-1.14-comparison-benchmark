@@ -1,0 +1,33 @@
+{
+  "version": "decision-models-with-llm-reference-publication-v1",
+  "question_count": 1342,
+  "model_count": 23,
+  "decision_model_count": 20,
+  "llm_reference_count": 3,
+  "tested_llm_count": 3,
+  "category_count": 31,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "native_statistics_sha256": "e1348fb78c3b5bdc88874ba4af23681f37aaa972414d8910b7ce401c3a730950",
+  "artifacts": {
+    "accuracy_speed_cost.png": "0cbb64a9334ce4940addda8c505762097ac056dde57bbc5d40bfeb53344d241f",
+    "accuracy_speed_cost.svg": "b8409ed689c6ff464dac87a991c903cb92907f08a7f29445661fea7e0cf30144",
+    "audit_receipt.json": "43c4537a5fdb4d8df077d0d2039a949baf134809a283b42ae985d829d8338537",
+    "category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823",
+    "category_scores.csv": "f1c2836943eaa8a4e7237c3f28d1279caaf3593ec0c0801e729d93c9d278b185",
+    "causes.png": "a304a426275890ccb36d71caccab1b3ed4cd7381268b3b9bdc4bd56e9631eec2",
+    "causes.svg": "6f4548080991e09539c498afa89689326442d1abb904ca7413cad993b55cdf70",
+    "compatibility_findings.json": "7b06391d6e18385794bfbfb2e785af8c7a93e875fd14fa5114dff74a20a3b1d6",
+    "model_statistics.csv": "61cff5d6f29af63f4a1d3e40d20b28a14d67539c2ead94b05b6d50774fbde138",
+    "ordering.png": "c276fb9f43c8b4356fe14d8cce2aefea8298cae74b40407ef0664aea6a08f407",
+    "ordering.svg": "3b7b2c33eb430482383ff7760881aeb88473961e393e0558da523cded33c4aa0",
+    "report.html": "32a50fb80018b9140983ab418263a6fd85390b4197fa36f6a7e17576eeb3ab86",
+    "report.txt": "3a60ad04bb4529f427578bacada4868e561114542820cc4f79c63801219c136e",
+    "rules.png": "d5c3a5c6c03ab70898271858ff86b1944e6399d460ee4ea2941f77a421533032",
+    "rules.svg": "4d8933f4f0a4eb52be96d15a7ee5aa6b1c4247fba14d8c284104910f3e6e23e5",
+    "state.png": "dfe022c73d63580fcc0aca2612dc5ab15c5d657512512722c5d665f16a015093",
+    "state.svg": "09d3e9528cb77ff720d00c2a06ecec2a2fcf653872ac0d2f622ac2feae955143",
+    "statistics.json": "cff708651203a54f3ddb7e17782f8c2abdbc8900a92f81d7492afa6e8a90b435",
+    "uncertainty.png": "08942dad2cfee4d0609b2e4c7827d5df99e7205da208828385853a5ca111aa60",
+    "uncertainty.svg": "a306bcd135ce4d4a4a8d92721f401ae822aa13a3105adf11fa86fae3cd081507"
+  }
+}
