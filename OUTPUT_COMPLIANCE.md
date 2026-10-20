@@ -1,13 +1,18 @@
 # Delivered decisions and request failures
 
+All 26 routes retain the complete 1342 first-attempt denominator. Wrong valid choices are distinct from provider and output failures. No answer-dependent retries.
+
 | Model | Usable first | Wrong valid | Provider failures | Output failures | Recoveries | Eventual correct |
 | --- | --- | --- | --- | --- | --- | --- |
 | GPT-6 Sol — no reasoning | 1342 | 199 | 0 | 0 | 0 | 1143 |
 | Respan Span-02 | 1342 | 215 | 0 | 0 | 0 | 1127 |
 | Perplexity Decider v1.2 | 1341 | 221 | 1 | 0 | 1 | 1121 |
 | Nimble v4 Max | 1342 | 227 | 0 | 0 | 0 | 1115 |
+| d3-turbo | 1342 | 236 | 0 | 0 | 0 | 1106 |
 | Liquid d1-ultra | 1341 | 257 | 1 | 0 | 1 | 1085 |
+| Amos 1 Large | 1342 | 268 | 0 | 0 | 0 | 1074 |
 | Sonnet 5.5 — no thinking, JSON-choice | 1342 | 272 | 0 | 0 | 0 | 1070 |
+| kettei-fat | 1342 | 276 | 0 | 0 | 0 | 1066 |
 | Jev 1.14 | 1342 | 312 | 0 | 0 | 0 | 1030 |
 | Jev 1.13 | 1342 | 316 | 0 | 0 | 0 | 1026 |
 | Mercury Decide | 1342 | 325 | 0 | 0 | 0 | 1017 |
@@ -27,4 +32,4 @@
 | Solar Decide Flash | 1340 | 802 | 2 | 0 | 2 | 539 |
 
 
-Sonnet’s stopped bare-ID trial:26/110 usable;84 unusable explanatory/truncated outputs. Its separate complete JSON-choice run above has 1342 usable outputs. Hyper Charm hourly-limit rejections remain in Qwen’s primary denominator and are not called wrong model choices.
+The October 20 additions returned 4026 usable first decisions with zero recoveries and zero probability-format warnings. Sonnet’s separate bare-ID trial is not pooled into its complete constrained-format score. Qwen’s first-attempt quota/transport failures remain in the ranking.

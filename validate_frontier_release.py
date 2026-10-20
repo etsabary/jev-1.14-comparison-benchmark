@@ -22,6 +22,7 @@ class Page(HTMLParser):
 
 
 def validate():
+    from publication_history import previous_path
     from validate_consolidated_release import privacy
     from validate_readable_report import validate as validate_prior
     s=json.loads((b.DEST/'statistics.json').read_text());manifest=json.loads((b.DEST/'manifest.json').read_text())
@@ -62,13 +63,13 @@ def validate():
         assert int(cell['data-correct'])==value['correct'] and int(cell['data-n'])==value['n']
         assert b.readable.color(value['accuracy'])[0] in cell['style']
     visible=' '.join(page.text)
-    assert 'MiniMax M3' not in visible and 'MiniMax M3' not in (b.ROOT/'LLM_REFERENCES.md').read_text()
+    assert 'MiniMax M3' not in visible and 'MiniMax M3' not in previous_path(b.ROOT/'LLM_REFERENCES.md').read_text()
     for name in b.readable.LABELS.values():assert name in visible
     assert 'without a prior' not in visible.lower()
     assert 'JSON-choice' in visible and 'not additional out-of-pocket billing' in visible
     assert 'not an exhaustive ranking' in visible
     for path in [b.DEST/'report.html',*(b.ROOT/'docs').glob('*.html')]:
-        doc=Page();doc.feed(path.read_text())
+        doc=Page();doc.feed(previous_path(path).read_text())
         for link in doc.targets:
             if re.match(r'^(https?:|mailto:|data:)',link):continue
             local,_,anchor=link.partition('#')
@@ -91,11 +92,11 @@ def validate():
         if path.name=='release_checksums.json':continue
         assert path.read_bytes()==(b.ROOT/'docs'/b.NAME/path.name).read_bytes()
         if path.suffix!='.png':privacy(path.read_text())
-    readme=(b.ROOT/'README.md').read_text();assert all(s['models'][mid]['label'] in readme for mid in s['reference_model_ids'])
+    readme=previous_path(b.ROOT/'README.md').read_text();assert all(s['models'][mid]['label'] in readme for mid in s['reference_model_ids'])
     assert 'The full comparison is 23 routes' in readme and 'The full comparison is 23 routes' in visible
     assert '1342' in readme and 'not an exhaustive ranking' in readme
     for path in (b.ROOT/'README.md',b.ROOT/'FUNCTIONS.md'):
-        for target in re.findall(r'\]\(([^)]+)\)',path.read_text()):
+        for target in re.findall(r'\]\(([^)]+)\)',previous_path(path).read_text()):
             if not re.match(r'^(https?:|mailto:|#)',target):assert (b.ROOT/target.split('#')[0]).exists(),target
     validate_prior()
     seal=b.DEST/'release_checksums.json'

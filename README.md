@@ -1,27 +1,30 @@
 # System 1 Decision Benchmark
 
-20 specialized decision models and 3 high-end LLM references on 1,342 text questions.
+23 specialized decision models and 3 high-end LLM references on 1,342 text questions.
 
-Updated October 19, 2026. Three LLM configurations were tested October 19; decision-model measurements are unchanged.
+Updated October 20, 2026. Added complete d3-turbo, Amos Large and Sqwish kettei-fat runs; all earlier measurements are unchanged.
 
-**Respan Span-02 leads the specialized decision models with 1127/1342 (84.0%). The LLM reference scores, speed and cost below use the same complete bank with reasoning disabled.**
+**Respan Span-02 remains the leading specialized decision model at 1127/1342 (84.0%). Newcomer d3-turbo is fourth at 1106/1342 (82.4%); Amos Large and kettei-fat score 80.0% and 79.4%.**
 
-[Interactive report](https://etsabary.github.io/system-1-decision-benchmark/report.html) · [LLM reference findings](https://etsabary.github.io/system-1-decision-benchmark/report.html#llm-references) · [Named, color-coded categories](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
+[Interactive report](https://etsabary.github.io/system-1-decision-benchmark/report.html) · [New findings](https://etsabary.github.io/system-1-decision-benchmark/report.html#new-additions) · [Named, color-coded categories](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions) · [Which models read images?](IMAGE_CAPABILITIES.md).
 
-![All 23 routes: accuracy, speed and cost](llm_references_2026-10-19/accuracy_speed_cost.png)
+![All 26 routes: accuracy, speed and cost](direct_additions_2026-10-20/accuracy_speed_cost.png)
 
 ## Results, speed and cost
 
-Every row covers 1342 first attempts. Costs per 1000 are normalized; actual full-bank totals appear separately. Qwen’s cost is a Hyper Charm quota valuation, not a cash invoice. + ? means additional unreported charges.
+Every row covers 1342 first attempts. Per-1000 costs are normalized; actual 1342-question totals are separate. Free public access is not a metered production price of zero. Qwen’s amount is a prepaid-quota valuation, not a cash invoice. + ? means additional unreported charges.
 
-| Model | Type | Correct /1342 | Accuracy | Median | p95 | Cost per 1000 | Actual1342-question cost |
+| Model | Type | Correct /1342 | Accuracy | Median | p95 | Cost per 1000 | Actual 1342-question cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | GPT-6 Sol — no reasoning | LLM reference | 1143/1342 | 85.2% | 1023 ms 🟥 Slow | 1546 ms | $0.63211 🟥 Highest | $0.848294 |
 | Respan Span-02 | Decision model | 1127/1342 | 84.0% | 206 ms 🟩 Fastest | 2157 ms | $0.00354 🟩 Lowest | $0.004746 |
 | Perplexity Decider v1.2 | Decision model | 1120/1342 | 83.5% | 249 ms 🟩 Fastest | 332 ms | $0.00700 🟩 Lowest + ? | $0.009394 + ? |
-| Nimble v4 Max | Decision model | 1115/1342 | 83.1% | 235 ms 🟩 Fastest | 329 ms | ~$0.02763 🟧 Mid | $0.037084 |
+| Nimble v4 Max | Decision model | 1115/1342 | 83.1% | 235 ms 🟩 Fastest | 329 ms | ~$0.02763 🟧 Mid | ~$0.037084 |
+| d3-turbo | Decision model | 1106/1342 | 82.4% | 165 ms 🟩 Fastest | 298 ms | Free public access* | Free public access* |
 | Liquid d1-ultra | Decision model | 1084/1342 | 80.8% | 200 ms 🟩 Fastest | 393 ms | $0.01212 🟨 Low + ? | $0.016270 + ? |
+| Amos 1 Large | Decision model | 1074/1342 | 80.0% | 311 ms 🟨 Fast | 360 ms | Free public access* | Free public access* |
 | Sonnet 5.5 — no thinking, JSON-choice | LLM reference | 1070/1342 | 79.7% | 1506 ms 🟥 Slow | 2424 ms | $1.43361 🟥 Highest | $1.923908 |
+| kettei-fat | Decision model | 1066/1342 | 79.4% | 174 ms 🟩 Fastest | 214 ms | $0.01543 🟨 Low | $0.020711 |
 | Jev 1.14 | Decision model | 1030/1342 | 76.8% | 179 ms 🟩 Fastest | 269 ms | $0.02457 🟨 Low | $0.032974 |
 | Jev 1.13 | Decision model | 1026/1342 | 76.5% | 189 ms 🟩 Fastest | 323 ms | $0.02457 🟨 Low | $0.032974 |
 | Mercury Decide | Decision model | 1017/1342 | 75.8% | 238 ms 🟩 Fastest | 388 ms | $0.00696 🟩 Lowest | $0.009334 |
@@ -40,6 +43,7 @@ Every row covers 1342 first attempts. Costs per 1000 are normalized; actual full
 | ScaleDown Classify-1 | Decision model | 550/1342 | 41.0% | 268 ms 🟨 Fast | 362 ms | $0.02139 🟨 Low | $0.028703 |
 | Solar Decide Flash | Decision model | 538/1342 | 40.1% | 540 ms 🟧 Moderate | 747 ms | $0.03020 🟧 Mid + ? | $0.040532 + ? |
 
+*d3-turbo and Amos currently provide free public access. No monetary charge was reported; their metered cost fields are null and no numeric price point is plotted. This is not a guarantee of free production capacity.*
 
 ## Reading the speed and cost colors
 
@@ -54,6 +58,44 @@ The squares and labels use fixed descriptive bands, not relative ranks or statis
 | Gray | ⬜ Unknown: unavailable | ⬜ Unknown: unavailable |
 
 Bands use unrounded measurements; displayed numbers can round to a boundary. `+ ?` means additional charges were not reported. In those cells, the cost band describes only the known lower bound, not a complete cost or a guaranteed price advantage. The website also underlines these incomplete costs in amber. Text labels remain visible without color.
+
+## October 20 additions
+
+| October 20 addition | Correct /1342 | Average (mean) | Median | p95 | Actual 1342-question cost |
+| --- | --- | --- | --- | --- | --- |
+| d3-turbo | 1106/1342 (82.4%) | 182 ms | 165 ms | 298 ms | Free public access* |
+| Amos 1 Large | 1074/1342 (80.0%) | 306 ms | 311 ms | 360 ms | Free public access* |
+| kettei-fat | 1066/1342 (79.4%) | 179 ms | 174 ms | 214 ms | $0.020711 |
+
+All three completed 1342 first attempts, without failures, recoveries or probability warnings. Rate-limit waits are excluded from response times.
+
+## Three additions, the same leading group
+
+d3-turbo scored 1106/1342 (82.4%), fourth among the 23 specialized decision models. Span remains first at 1127, followed by Perplexity Decider at 1120 and Nimble Max at 1115. Amos Large scored 1074 (80.0%), sixth; kettei-fat scored 1066 (79.4%), seventh. These are observed scores on this developing bank, not a general intelligence ordering.
+
+## Strong rule following does not imply strong state tracking
+
+d3-turbo and kettei-fat each answered all 46 if-then questions correctly; Amos answered 44. Checking required conditions produced 51/52, 49/52 and 50/52 respectively. On step-by-step procedures—applying each ordered edit to the current state—the scores were 20/48, 16/48 and 16/48. Span scored 33/48. All three newcomers returned valid decisions; their unsuccessful procedure answers were wrong choices, not formatting failures.
+
+## Knowledge tracking and exact counting separate the newcomers
+
+On tracking what others know, d3-turbo scored 47/50, Amos 46/50 and kettei-fat 43/50, versus Span 41/50. These tasks ask, for example, where an observer will look after an object moved while they were absent. Exact truth counting—how many supplied claims are true—gave d3-turbo 35/71, Amos 37/71 and kettei-fat 19/71, versus Span 46/71. A similar overall score can conceal a large difference on one operation.
+
+## kettei-fat has a different profile from its neighboring scores
+
+kettei-fat scored 45/50 on causal intervention, which asks what changes when a specified cause is forced to a new value; d3-turbo scored 38/50 and Amos 36/50. It also scored 56/58 on exceptions and priority rules and 43/43 on choosing authoritative current records. Its 19/71 exact truth-counting score is 26.8%, against a 20% random-choice baseline. The category profile is more useful than treating its 79.4% overall as one uniform ability.
+
+## Scores near the Sonnet reference, at shorter response times
+
+Sonnet's separately constrained, no-thinking reference scored 1070/1342 (79.7%). d3-turbo answered 36 more correctly, Amos four more and kettei-fat four fewer. Their medians were 165, 311 and 174 ms, versus Sonnet's 1506 ms. These small Amos/Sonnet/kettei score gaps do not establish a reliable ordering. Sol remains the highest-scoring LLM reference at 1143/1342 (85.2%).
+
+## Fast responses, separate public-access and metered prices
+
+The October 20 mean / median / p95 times were d3-turbo 182/165/298 ms, Amos 306/311/360 ms and kettei-fat 179/174/214 ms. All 4026 first attempts returned usable decisions, with no recoveries or probability-format warnings. d3-turbo and Amos used currently free public endpoints; no monetary charge was reported, so they are not plotted as a metered production price of zero. Sqwish reported $0.02071056 for all 1342 questions ($0.01543 per 1000). Its 30-request/minute starter limit stretched batch duration, not the measured response time. Different providers, dates, hardware and admission limits remain confounds.
+
+## New image-capable candidates, not new image scores
+
+Current catalogs or author documentation declare image input for 16 of the 23 decision models, including Span-02, both Perplexity Deciders, both Liquid models and all three newcomers. The separate image benchmark has not changed. Text accuracy and latency do not establish image accuracy or image cost; the capability review records sources and distinguishes declared support from tested performance.
 
 ## Decision models alongside high-end LLMs
 
@@ -89,7 +131,7 @@ Span scored 1,127/1,342 (84.0%), Perplexity 1,120 (83.5%) and Nimble Max 1,115 (
 
 ## Typical speed and tail speed tell different stories
 
-Span’s median was 206 ms, with a 2.16-second p95. Perplexity’s median was 249 ms and p95 332 ms; Nimble’s were 235 and 329 ms. Span combines a short typical response with a much longer response-time tail. Its recorded cost is $0.00354 per 1,000 questions, versus $0.00700 plus one unreported attempt cost for Perplexity and approximately $0.02763 for Nimble. Span has the lowest cost among routes with complete cost reporting. All pooled medians are below two seconds. The exclusion policy uses median, not p95.
+Span’s median was 206 ms, with a 2.16-second p95. Perplexity’s median was 249 ms and p95 332 ms; Nimble’s were 235 and 329 ms. Span combines a short typical response with a much longer response-time tail. Its recorded cost is $0.00354 per 1,000 questions, versus $0.00700 plus one unreported attempt cost for Perplexity and approximately $0.02763 for Nimble. Span has the lowest metered cost among routes with complete charge accounting. The new free public endpoints are a separate access category. All pooled medians are below two seconds. The exclusion policy uses median, not p95.
 
 ## Sequential state updates and truth counting remain discriminating
 
@@ -109,7 +151,7 @@ Jev 1.14 scored 1,030/1,342 (76.8%), Jev 1.13 1,026 (76.5%), and Luna Decisions 
 
 ## Category scores and explanations
 
-The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 23 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
+The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 26 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
 
 [Open the color-coded, selectable tables](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions), with a pinned model-name column and individual category rankings.
 
@@ -126,9 +168,9 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 | All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
 | Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
 
-![Rules and evidence: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/rules.png)
+![Rules and evidence: all 26 routes, named categories, correct counts and percentages](direct_additions_2026-10-20/rules.png)
 
-[Full-size SVG](llm_references_2026-10-19/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
+[Full-size SVG](direct_additions_2026-10-20/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
 
 ### Ordering, schedules and assignments
 
@@ -142,9 +184,9 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 | Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
 | Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
 
-![Ordering, schedules and assignments: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/ordering.png)
+![Ordering, schedules and assignments: all 26 routes, named categories, correct counts and percentages](direct_additions_2026-10-20/ordering.png)
 
-[Full-size SVG](llm_references_2026-10-19/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
+[Full-size SVG](direct_additions_2026-10-20/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
 
 ### Claims, changing state and perspectives
 
@@ -160,9 +202,9 @@ Can the model count true statements, update a changing situation and separate wh
 | Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
 | Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
 
-![Claims, changing state and perspectives: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/state.png)
+![Claims, changing state and perspectives: all 26 routes, named categories, correct counts and percentages](direct_additions_2026-10-20/state.png)
 
-[Full-size SVG](llm_references_2026-10-19/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
+[Full-size SVG](direct_additions_2026-10-20/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
 
 ### Causes, plans and exceptions
 
@@ -178,9 +220,9 @@ Which actions work, which consequences change, and which rule or source controls
 | Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
 | Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
 
-![Causes, plans and exceptions: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/causes.png)
+![Causes, plans and exceptions: all 26 routes, named categories, correct counts and percentages](direct_additions_2026-10-20/causes.png)
 
-[Full-size SVG](llm_references_2026-10-19/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
+[Full-size SVG](direct_additions_2026-10-20/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
 
 ### Risk, strategy and system behavior
 
@@ -197,59 +239,46 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
 | Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
 
-![Risk, strategy and system behavior: all 23 routes, named categories, correct counts and percentages](llm_references_2026-10-19/uncertainty.png)
+![Risk, strategy and system behavior: all 26 routes, named categories, correct counts and percentages](direct_additions_2026-10-20/uncertainty.png)
 
-[Full-size SVG](llm_references_2026-10-19/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
+[Full-size SVG](direct_additions_2026-10-20/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
 
-Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](llm_references_2026-10-19/category_scores.csv).
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](direct_additions_2026-10-20/category_scores.csv).
 
-## Questions and statistics
+## Questions, statistics and method
 
-All **1,342 questions**, facts and five choices retain their tested order. The JSONL also preserves exact model-independent native input packets and hashes. No answer keys, item-level correctness, certificates, verifier responses or private author metadata are published.
+All 1342 question inputs are unchanged and remain available without answers: [CSV](consolidated_2026-10-19/questions_1342.csv), [exact native JSONL](consolidated_2026-10-19/questions_1342.jsonl), [readable text](consolidated_2026-10-19/questions_1342.txt).
 
-- Questions: [CSV](consolidated_2026-10-19/questions_1342.csv), [JSONL](consolidated_2026-10-19/questions_1342.jsonl), [readable text](consolidated_2026-10-19/questions_1342.txt).
-- Statistics: [model CSV](llm_references_2026-10-19/model_statistics.csv), [function CSV](llm_references_2026-10-19/category_scores.csv), [aggregate JSON](llm_references_2026-10-19/statistics.json), [earlier decision-model plot data](consolidated_2026-10-19/plot_data.json).
-- [Request failures and output compliance](OUTPUT_COMPLIANCE.md), [original decision-model release manifest](consolidated_2026-10-19/manifest.json), [original decision-model audit receipt](consolidated_2026-10-19/audit_receipt.json).
+Current exports: [model CSV](direct_additions_2026-10-20/model_statistics.csv), [named-category CSV](direct_additions_2026-10-20/category_scores.csv), [aggregate JSON](direct_additions_2026-10-20/statistics.json), [sanitized audit receipt](direct_additions_2026-10-20/audit_receipt.json), [manifest](direct_additions_2026-10-20/manifest.json), [plain-text findings](direct_additions_2026-10-20/report.txt).
 
-## Method and construction note
+[Request failures and output compliance](OUTPUT_COMPLIANCE.md) · [Image capability review](IMAGE_CAPABILITIES.md) · [Earlier 1136-question comparison](REFERENCE_1136.md) · [Separate image benchmark](https://github.com/etsabary/visual-decision-benchmark).
 
-There are 1,342 questions and five choices per question. The uniform random-guess baseline is 20%. The questions include dependent variants and uneven category sizes; they are not 1,342 independent observations.
+The full comparison covers 26 routes × 1342 questions = 34,892 first attempts: 23 specialized decision models and three separately labelled high-end LLM references. The same 1342 inputs, facts and five choices retain their tested order. No existing model was rerun or removed for this update. There are 35,058 selected HTTP attempts, including 166 permitted recoveries; the three October 20 runs account for 4026 first attempts and zero recoveries.
 
-The full comparison is 23 routes × 1,342 questions = 30,866 first attempts. Within the unchanged 20-decision-model cohort, there are 26,840 first attempts. That original cohort has 26,983 selected HTTP attempts, including 143 permitted recoveries. New LLM attempt and recovery totals appear in the aggregate statistics and quality table. Only transport failures or actual HTTP 408/429/5xx permit one recovery. Recovered responses do not replace first attempts in the ranking or timing distribution.
+Primary scores and latency use all first attempts. A valid wrong choice is never retried. One recovery is permitted only for transport failures or HTTP 408/429/5xx; its cost is included and its response cannot replace the first attempt in the ranking. Provider failures are unsuccessful delivered decisions, not classified as wrong reasoning choices.
 
-Median and p95 are recomputed from all 1,342 individual first-attempt durations per route. Each attempt uses a fresh HTTPS connection and a monotonic timer from connection through the complete body. Queue time, retry waiting and recovery durations are excluded from these quantiles. p95 is the interpolated 95th percentile, not the mean of the slowest 5%.
+Median and p95 are computed from individual first-attempt times, never averages of stage medians. Timing runs from a fresh HTTPS connection through the complete response body, not time to first token. Deliberate admission, rate-limit and retry waits are excluded. The mean is also available for the three new runs. p95 is an interpolated 95th percentile, not the mean of the slowest 5%.
 
-The tests retain their captured dates, routes and loads; combining their raw measurements is not a synchronized rerun. The 20 decision-model measurements are unchanged; the three complete LLM reference runs were added on October 19. Returned dated identities and pins match across the selected banks; missing identities on failed calls are not silently inferred.
+The October 20 additions use direct provider APIs. Amos was paced below its public 60-request/minute cap. Sqwish starter access used one active request and 2.1-second start spacing after an account-limit amendment; the first 54 successful attempts remain included. Its response latency is not batch throughput. d3-turbo used up to two in flight. Previous routes, dates, loads and quantiles are unchanged. Different protocols, hosting hardware and account conditions are not controlled away.
 
-Among the 20 decision-model routes, Nimble uses Bespoke directly; the others use OpenRouter with pinned providers and no fallback. The new Qwen reference uses Hyper Charm directly. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
+Among the earlier 20 decision routes, Nimble uses Bespoke directly and the others use OpenRouter with pinned providers and no fallback. Sol and Sonnet use OpenRouter; Qwen uses Hyper Charm. Sonnet requires the separately labelled JSON-choice grammar; its stopped bare-ID trial remains outside the scored comparison. Qwen requests reasoning_effort=none but has no reasoning-token telemetry. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
 
-Costs include selected primary and permitted recovery attempts, normalized as cost ÷ 1,342 × 1,000. They are recorded charges or input usage times captured tariffs, not current-price quotes or independently reconciled invoices. Nimble retains 1,134 older $0.09/million-input records and 208 records at the captured $0.04 tariff. Missing costs remain unknown; no zero is substituted.
+All three new responses named the requested model and reported zero output tokens. The hosted names do not attest immutable weights or reveal internal implementation. No explanation generation, tool use, agentic iteration or answer-dependent repair was requested. This measures System 1-style choices, not unrestricted reasoning or general intelligence.
 
-Known cost across the original 20-decision-model cohort is $0.480883745, with 218 attempt costs unreported. Verification subscription usage is outside this native-inference accounting.
+Costs per 1000 are actual selected-run costs divided by 1342 and multiplied by 1000. Probe charges are separate. Sqwish charges come from every returned receipt and match the captured $0.06 per million input tokens; its exact full-bank charge is $0.02071056. d3-turbo and Amos used currently free public access, with no API-reported monetary charge; their metered price fields are null, not fabricated zeros. They have no cost-axis numeric point. Starter credit does not make Sqwish free.
 
-The two retired ambiguous procedure prompts are absent. Their verified replacements are included exactly once. Provider failures and invalid outputs are unsuccessful delivered decisions, but only valid wrong choices are called wrong answers. Latency on a failed request may measure time to rejection.
+Earlier captured charges and usage-times-tariff accounting remain unchanged. + ? means additional unreported charges, not zero. Nimble retains its recorded mixed tariffs; Hyper Charm Qwen is a prepaid-quota valuation, not a cash invoice. Verification subscriptions are outside model-inference accounting. The total is not an independently reconciled financial invoice.
 
-This remains a developing benchmark. Thirty-seven author-development cases are included in this exploratory overview and retain their permanent exclusion from a future held-out scored release. The JSON preserves that policy; no new release acceptance is implied.
+This is a developing benchmark with dependent variants and uneven category sizes, not 1342 independent observations or a pristine held-out evaluation. The 37 author-development cases retain their permanent exclusion from a future held-out scored release and their separate 1305-case diagnostic. The complete developmental ranking remains 1342 questions for every route. Small score gaps do not establish a general intelligence ordering.
 
-All 206 expansion questions have current-revision blind Sol xhigh and different-model Opus or Argon checks. Exact computational evidence supplements model review. The original bank received a targeted difficult-item audit, not independent external verification of every original question.
+The construction combines the corrected 1136-question bank, 200 verified expansion questions and six additional truth-teller questions into one score. The 31 categories and their question weights are unchanged. Each of F26–F31 has eight questions, so one answer changes a category score by 12.5 percentage points. Display groups are reading aids, not additional scored categories.
 
-Construction history: the corrected 1,136-question bank, 200 verified expansion questions and six additional truth-teller questions are now pooled into one view. The six domains each contain two foundation questions and six more demanding candidates. The charts do not split scores by construction stage.
+All 206 expansion questions have current-revision blind Sol xhigh and different-model Opus or Argon checks, supplemented by exact computational evidence. The original bank received a targeted difficult-item audit, not independent external verification of every original question. Two retired ambiguous procedure questions are absent; their verified replacements appear once.
 
-Sixteen earlier regular-LLM configurations have only 1,136-question coverage and are not extrapolated here. The three separately labelled LLM references above each cover all 1,342 questions. Solar Decide remains excluded for latency; the distinct Solar Decide Flash route remains included. No existing published row was removed.
+All question inputs remain available without answer keys. Aggregate scores, categories, usage and costs are published; answer keys, item-level correctness, certificates, verifier responses, raw account data and credentials are not. Publication validators check consistency and privacy; public aggregates cannot reproduce private-key scoring or raw-latency pooling. The dated audit receipt binds the private evidence checks.
 
-The full question bank is downloadable without answers, grouped by category in CSV, JSONL and plain text. JSONL preserves the exact model-independent native input packets and hashes. Corrected prompts appear once; retired ambiguous prompts are absent. No answer keys, certificates, verifier responses, private author metadata or credentials are included.
-
-The public bundle contains the consolidated graphics, aggregate statistics and all answer-free question inputs. The separate image benchmark is unchanged. The decision-model evidence was not rerun; the three new LLM references use fresh inference on the same complete bank.
-
-
-The 37 author-development cases remain permanently excluded from a future held-out scored release. This public developmental overview does not claim a held-out score. Publication checks validate exported consistency and privacy; the sanitized audit receipt records a separate private raw-evidence check. The public aggregates alone cannot reproduce answer-key scoring or raw-latency quantiles.
-
-## Earlier LLM comparison and image benchmark
-
-The [36-model, 1,136-question reference](REFERENCE_1136.md) remains available with its measurements, analysis, raw evidence and unchanged release seals. Sixteen earlier regular LLM configurations lack complete expanded coverage and are not extrapolated. The 3 new, separately labelled qualified references above cover all 1,342 questions. The [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is unchanged.
+Sixteen earlier regular-LLM configurations have only 1136-question coverage and are not extrapolated. Solar Decide remains excluded for latency; the distinct Solar Decide Flash remains included. No older published row was removed. The separate image benchmark is unchanged; documented image support is not an image score.
 
 ## Offline publication checks
 
-Run `python3 validate_frontier_release.py` and `python3 validate_readable_report.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `publish_frontier_references.py` builds the current presentation from sealed summaries, preserving the earlier decision-model evidence and report seals. Sealed presentation artifacts are not overwritten. Earlier report builders describe superseded releases and must not overwrite the current presentation.
-
-[Current 23-route model statistics CSV](llm_references_2026-10-19/model_statistics.csv) · [Current named-category scores CSV](llm_references_2026-10-19/category_scores.csv).
+Run `python3 validate_direct_release.py`, `python3 repo_identity.py` and `python3 -m unittest discover -p "test_*.py"` with `requirements-reports.txt` and `python-dotenv` installed. These checks make no inference calls. Earlier dated releases and seals remain available unchanged.

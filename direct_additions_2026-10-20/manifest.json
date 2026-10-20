@@ -1,0 +1,39 @@
+{
+  "version": "october20-direct-decisions-publication-v1",
+  "question_count": 1342,
+  "model_count": 26,
+  "decision_model_count": 23,
+  "llm_reference_count": 3,
+  "category_count": 31,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "prior_statistics_sha256": "cff708651203a54f3ddb7e17782f8c2abdbc8900a92f81d7492afa6e8a90b435",
+  "prior_release_seal_sha256": "69cb64b8f43d0fd0be023140e6f0b111c76ee14527835790c9ab7478f13cefaf",
+  "added_models": [
+    "d3_turbo",
+    "amos_large",
+    "kettei_fat"
+  ],
+  "earlier_models_unchanged": true,
+  "artifacts": {
+    "accuracy_speed_cost.png": "aca1451f31e2f449aa511a1e36773c45958db6392c713e346376c87472225daa",
+    "accuracy_speed_cost.svg": "c74f3a8b6dc78f8c6ed5bf4c6d43743479b96c71c4227b785abb61321a10dd5f",
+    "audit_receipt.json": "990cad47baeed0af64463d8b7602c1c7d58010240d2d19f434b9662e6b21836f",
+    "category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823",
+    "category_scores.csv": "db9a631f2602ed548e808b9e2e4ee45c0308d8c5d546a96290ddbe576b3184a0",
+    "causes.png": "72dcd0430a718c1aed1ffb1434ebe0eb55703f66c14d4a94a5ef56590f47b908",
+    "causes.svg": "4955d03ef1b10cbe52894b81bd965a6f8ac4d33370b942ab7d35555e10d479c0",
+    "image_capabilities.json": "ae4e5ba622aa094aeee94091f11e35993d10f51205e784467e74fe48693eefff",
+    "model_statistics.csv": "782189d5095983ca8ddc125fcb51e2abe8b9fba333ac5a0731d8f46c15f28cb8",
+    "ordering.png": "1832f80e60df930a8c70683ebbd2f4b44d91eda86f5abd23585e1896c5a55730",
+    "ordering.svg": "34771e3be5fa38eb549a04470ab771b61d342df957883bc15487d30379e724da",
+    "report.html": "1e708619abb54e450a0552779e1f58e145c08237f71a05d73cd36cf0fd2686e6",
+    "report.txt": "c26804bf7b2d6fcb9be5d28aefa7a5b234accfb2907d114af039b24b01c77c65",
+    "rules.png": "271d7cc2a51e53724d2936e9f9f1accfb08791ad9f88043bfb98f451a8a33f3b",
+    "rules.svg": "6bbd461246d708d861493b6b0f617cce30141065f2869928ac8e89f5c6419a54",
+    "state.png": "60965fa2a0869f13227f0c822276a97b93e17ad5709825ad8b3756b03acf0e0c",
+    "state.svg": "217e116e224977cf334f20d7f0faa8e29c2317afdf3017d3455b2ad082894511",
+    "statistics.json": "c31683c5e211e301a6389f770b2441e12b66e2f80f9c3a124fdbfc166165a4b0",
+    "uncertainty.png": "0f9126e3598de41a9acfa018189b487c3e88ba40fd74563cd3f38e118830483c",
+    "uncertainty.svg": "068323f4404ccb949ade4a7150681359c520a18bec51a5f011b750a96c2b3c74"
+  }
+}

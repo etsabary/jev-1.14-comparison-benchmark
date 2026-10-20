@@ -1,0 +1,324 @@
+{
+  "review_date_toronto": "2026-10-20",
+  "status": "DOCUMENTED_CAPABILITIES_NOT_IMAGE_SCORES",
+  "image_inference_calls": 0,
+  "models": {
+    "respan02": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/respan/span-02/endpoints",
+      "source_sha256": "a8de1bdda25357e87f93c8282bb9e5c1f8b73d982a6737598d4c2c9f1831a71b",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "pplx_decider12": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/perplexity/pplx-decider-v1.2/endpoints",
+      "source_sha256": "a7bded1d7eedd1c93c262544f8748e6e73b45050d915b682a348046987a75054",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "pplx_flash12": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/perplexity/pplx-decider-flash-v1.2/endpoints",
+      "source_sha256": "fca07b90b10d1b5f0dcd1b18882450b37a19cde27dc1d6f7bfed222e64346a55",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "jev114": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/typesafe/jev-1.14/endpoints",
+      "source_sha256": "e95ee387c4bb60e207c04553675cccf44bdacce35d75d3dfbb7de9eefa7f2705",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "jev113": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints",
+      "source_sha256": "dbfc5c2adb571a5af0bc7ba627683a4d6060683bf568a2e5784e36e332fcfaa5",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "luna_decisions": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/openai/gpt-6-luna-decisions/endpoints",
+      "source_sha256": "6d7a1cf89f776518a0ae7bb300d352c7b9f43f039aa6e5bb2304b578cc41ebf8",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "liquid_ultra": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/liquid/d1-ultra/endpoints",
+      "source_sha256": "ecd175df3eb1121ff66d6adf5a4f1c98679ad46e12a07e8fdf3784f18e4ed42b",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "liquid_d1": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/liquid/d1/endpoints",
+      "source_sha256": "b776dd93347ead275b9100daa0cb943922b77e0bf648a74043df1b63efcfe3b3",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "mercury_decide": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/inception/mercury-decide/endpoints",
+      "source_sha256": "1d08d4675dff4a6ef7cf46b13f2985a3ca11f29e9a51cf6d419f9e7e658750e6",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "microsoft_decision": {
+      "image_input": false,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/microsoft/microsoft-decision-1/endpoints",
+      "source_sha256": "a3748cefb9601f855ed4f42aa385ecfe61cceeb2d58fe24acb65e5d27057e133",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "clef": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/cloudflare/clef/endpoints",
+      "source_sha256": "476d871abd642170791a0bd85b3a9cff52c4ddb5864a74092c991ca1151eeacf",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "clef_flash": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/cloudflare/clef-flash/endpoints",
+      "source_sha256": "4544b66862b3fab5b9874d8e1900003c15c1e2395d0ad0489d5f57b360ee52b4",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "clef_omni": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/cloudflare/clef-omni/endpoints",
+      "source_sha256": "bbd324ced9b73898dc9b7ee191624e75014ab8d328a6a3a307be53bb02a9e5d5",
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "solar_flash": {
+      "image_input": false,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/upstage/solar-decide-flash/endpoints",
+      "source_sha256": "ecc4a2b9eca445d51cd0738808aae23be03202bd1bcbcdb99f883e2ae9d1b31b",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "drex20": {
+      "image_input": false,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/nace-ai/drex-v2.0/endpoints",
+      "source_sha256": "585bd85c33599fe5565adceb3bc649fcbf6e789221507a0d5be3f8dfb99be94a",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "drex15": {
+      "image_input": false,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/nace-ai/drex-v1.5/endpoints",
+      "source_sha256": "cb38e5604a95f4bad645f47629fad79637f9e05837f6c01363913e3de58b4ea4",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "classify1": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/scaledown/classify-1/endpoints",
+      "source_sha256": "5b0721e3d0459948d61ddfd7321315c640c9fd4b6108921ea3103ef63571a886",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "kev4b": {
+      "image_input": false,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/jaredpalmer/kev-4b/endpoints",
+      "source_sha256": "4a2512ab5f0e959eb6897d6b9e6e0b2b1b8921b4caf32ec587f11b33c3a2b8fb",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "tev1_4b_native": {
+      "image_input": false,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/togethercomputer/tev1-4b-experimental/endpoints",
+      "source_sha256": "51ba71a65cf0e7f39e4299dfc61cf7ffd272e7e36274af4a854117ebc8de42c4",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "decisions"
+      ]
+    },
+    "reference_sol": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/openai/gpt-6-sol/endpoints",
+      "source_sha256": "226a27585c4c0ced21e6cfca8e2012bd910de3b97c9e4f7889d4755266d3c433",
+      "input_modalities": [
+        "file",
+        "image",
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "reference_sonnet": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://openrouter.ai/api/v1/models/anthropic/claude-sonnet-5.5/endpoints",
+      "source_sha256": "b5762baa289c50a02a2286de9555dee2fec16a0ddd840bd9152bb53aed9cb985",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "d3_turbo": {
+      "image_input": true,
+      "evidence": "provider_catalog",
+      "source": "https://decision.vllm-sr.ai/api/info",
+      "source_sha256": "153092044b439e4ecfa0b100749fa76aaa3f9e10b7206e0ab72f3d65d3344070",
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ]
+    },
+    "amos_large": {
+      "image_input": true,
+      "evidence": "author_model_card",
+      "source": "https://huggingface.co/mukaddamzaid/amos-1-large/raw/main/README.md",
+      "source_sha256": "9c30ade20b9587638146429eac6be9df592d56dc5dce61729488ce4b41272046",
+      "note": "Author documents photo input and image-region questions; not an image accuracy result from this benchmark."
+    },
+    "kettei_fat": {
+      "image_input": true,
+      "evidence": "provider_documentation",
+      "source": "https://docs.sqwish.ai/guides/models-and-fallback.md",
+      "source_sha256": "3ee09bf8eeef8d1d387c88cf1987d884321efd12a6fa5817c7c8a2e936e18c03",
+      "additional_source": "https://docs.sqwish.ai/guides/images",
+      "note": "fat supports images; core is a different text-only size. The /v1/systemone contract documents native image decoding."
+    },
+    "nimble_v4_max": {
+      "image_input": false,
+      "evidence": "documented_text_json_contract",
+      "source": "https://docs.bespokelabs.ai/api-reference/openapi.yaml",
+      "source_sha256": "69f0952773cda16baed9ee3660837276e6cc19308b4d90bdbf0b6e55b56f8c5e",
+      "note": "An image-shaped JSON object is text, not evidence of decoded vision. Earlier compatibility review is retained in the separate image benchmark."
+    },
+    "reference_qwen": {
+      "image_input": true,
+      "evidence": "tested_provider_catalog",
+      "source": "https://hyper.charm.land/v1/models",
+      "source_sha256": "933bbd724e2c685848d2c9b5103bcfa569ccbf5bb8893b31a8281aac0f608e53",
+      "note": "Hyper Charm catalog explicitly declares vision for this exact model."
+    }
+  },
+  "limits": [
+    "Catalog and documentation claims are not native-image compatibility probes or image accuracy measurements.",
+    "Support can depend on the route and request encoding. No OCR or caption substitution was used.",
+    "Text accuracy, text latency and text costs must not be presented as image measurements."
+  ]
+}

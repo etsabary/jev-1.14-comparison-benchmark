@@ -168,7 +168,8 @@ def validate():
             if re.match(r'^(https?:|mailto:|#|data:)', target):
                 continue
             assert (path.parent / target.split('#')[0]).exists(), (path, target)
-    assert MARKER in (ROOT / 'docs/index.html').read_text()
+    from archive_frontier_presentation import historical_path
+    assert MARKER in historical_path(ROOT / 'docs/index.html').read_text()
     assert MARKER in (DEST / 'report.html').read_text()
     assert 'No publication occurred.' not in (DEST / 'report.html').read_text()
     receipt = json.loads((DEST / 'audit_receipt.json').read_text())

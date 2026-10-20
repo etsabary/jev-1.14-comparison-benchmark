@@ -1,0 +1,77 @@
+THREE ADDITIONS, THE SAME LEADING GROUP
+d3-turbo scored 1106/1342 (82.4%), fourth among the 23 specialized decision models. Span remains first at 1127, followed by Perplexity Decider at 1120 and Nimble Max at 1115. Amos Large scored 1074 (80.0%), sixth; kettei-fat scored 1066 (79.4%), seventh. These are observed scores on this developing bank, not a general intelligence ordering.
+
+STRONG RULE FOLLOWING DOES NOT IMPLY STRONG STATE TRACKING
+d3-turbo and kettei-fat each answered all 46 if-then questions correctly; Amos answered 44. Checking required conditions produced 51/52, 49/52 and 50/52 respectively. On step-by-step procedures—applying each ordered edit to the current state—the scores were 20/48, 16/48 and 16/48. Span scored 33/48. All three newcomers returned valid decisions; their unsuccessful procedure answers were wrong choices, not formatting failures.
+
+KNOWLEDGE TRACKING AND EXACT COUNTING SEPARATE THE NEWCOMERS
+On tracking what others know, d3-turbo scored 47/50, Amos 46/50 and kettei-fat 43/50, versus Span 41/50. These tasks ask, for example, where an observer will look after an object moved while they were absent. Exact truth counting—how many supplied claims are true—gave d3-turbo 35/71, Amos 37/71 and kettei-fat 19/71, versus Span 46/71. A similar overall score can conceal a large difference on one operation.
+
+KETTEI-FAT HAS A DIFFERENT PROFILE FROM ITS NEIGHBORING SCORES
+kettei-fat scored 45/50 on causal intervention, which asks what changes when a specified cause is forced to a new value; d3-turbo scored 38/50 and Amos 36/50. It also scored 56/58 on exceptions and priority rules and 43/43 on choosing authoritative current records. Its 19/71 exact truth-counting score is 26.8%, against a 20% random-choice baseline. The category profile is more useful than treating its 79.4% overall as one uniform ability.
+
+SCORES NEAR THE SONNET REFERENCE, AT SHORTER RESPONSE TIMES
+Sonnet's separately constrained, no-thinking reference scored 1070/1342 (79.7%). d3-turbo answered 36 more correctly, Amos four more and kettei-fat four fewer. Their medians were 165, 311 and 174 ms, versus Sonnet's 1506 ms. These small Amos/Sonnet/kettei score gaps do not establish a reliable ordering. Sol remains the highest-scoring LLM reference at 1143/1342 (85.2%).
+
+FAST RESPONSES, SEPARATE PUBLIC-ACCESS AND METERED PRICES
+The October 20 mean / median / p95 times were d3-turbo 182/165/298 ms, Amos 306/311/360 ms and kettei-fat 179/174/214 ms. All 4026 first attempts returned usable decisions, with no recoveries or probability-format warnings. d3-turbo and Amos used currently free public endpoints; no monetary charge was reported, so they are not plotted as a metered production price of zero. Sqwish reported $0.02071056 for all 1342 questions ($0.01543 per 1000). Its 30-request/minute starter limit stretched batch duration, not the measured response time. Different providers, dates, hardware and admission limits remain confounds.
+
+NEW IMAGE-CAPABLE CANDIDATES, NOT NEW IMAGE SCORES
+Current catalogs or author documentation declare image input for 16 of the 23 decision models, including Span-02, both Perplexity Deciders, both Liquid models and all three newcomers. The separate image benchmark has not changed. Text accuracy and latency do not establish image accuracy or image cost; the capability review records sources and distinguishes declared support from tested performance.
+
+| Model | Type | Correct | Accuracy | Median | p95 | Cost/1000 | Actual run cost |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| GPT-6 Sol — no reasoning | LLM reference | 1143/1342 | 85.2% | 1023 ms 🟥 Slow | 1546 ms | $0.63211 🟥 Highest | $0.848294 |
+| Respan Span-02 | Decision model | 1127/1342 | 84.0% | 206 ms 🟩 Fastest | 2157 ms | $0.00354 🟩 Lowest | $0.004746 |
+| Perplexity Decider v1.2 | Decision model | 1120/1342 | 83.5% | 249 ms 🟩 Fastest | 332 ms | $0.00700 🟩 Lowest + ? | $0.009394 + ? |
+| Nimble v4 Max | Decision model | 1115/1342 | 83.1% | 235 ms 🟩 Fastest | 329 ms | ~$0.02763 🟧 Mid | ~$0.037084 |
+| d3-turbo | Decision model | 1106/1342 | 82.4% | 165 ms 🟩 Fastest | 298 ms | Free public access* | Free public access* |
+| Liquid d1-ultra | Decision model | 1084/1342 | 80.8% | 200 ms 🟩 Fastest | 393 ms | $0.01212 🟨 Low + ? | $0.016270 + ? |
+| Amos 1 Large | Decision model | 1074/1342 | 80.0% | 311 ms 🟨 Fast | 360 ms | Free public access* | Free public access* |
+| Sonnet 5.5 — no thinking, JSON-choice | LLM reference | 1070/1342 | 79.7% | 1506 ms 🟥 Slow | 2424 ms | $1.43361 🟥 Highest | $1.923908 |
+| kettei-fat | Decision model | 1066/1342 | 79.4% | 174 ms 🟩 Fastest | 214 ms | $0.01543 🟨 Low | $0.020711 |
+| Jev 1.14 | Decision model | 1030/1342 | 76.8% | 179 ms 🟩 Fastest | 269 ms | $0.02457 🟨 Low | $0.032974 |
+| Jev 1.13 | Decision model | 1026/1342 | 76.5% | 189 ms 🟩 Fastest | 323 ms | $0.02457 🟨 Low | $0.032974 |
+| Mercury Decide | Decision model | 1017/1342 | 75.8% | 238 ms 🟩 Fastest | 388 ms | $0.00696 🟩 Lowest | $0.009334 |
+| Qwen3.8-Max — none, Hyper Charm | LLM reference | 967/1342 | 72.1% | 1191 ms 🟥 Slow | 1731 ms | $0.61482 🟥 Highest + ? | $0.825090 + ? quota |
+| Liquid d1 | Decision model | 965/1342 | 71.9% | 206 ms 🟩 Fastest | 827 ms | $0.00577 🟩 Lowest | $0.007748 |
+| Cloudflare Clef | Decision model | 936/1342 | 69.7% | 268 ms 🟨 Fast | 417 ms | $0.01759 🟨 Low | $0.023611 |
+| Perplexity Decider Flash v1.2 | Decision model | 923/1342 | 68.8% | 159 ms 🟩 Fastest | 231 ms | $0.00341 🟩 Lowest + ? | $0.004570 + ? |
+| Microsoft-Decision-1 | Decision model | 921/1342 | 68.6% | 283 ms 🟨 Fast | 566 ms | $0.01224 🟨 Low | $0.016422 |
+| Drex v2.0 | Decision model | 915/1342 | 68.2% | 232 ms 🟩 Fastest | 755 ms | $0.01666 🟨 Low + ? | $0.022359 + ? |
+| Cloudflare Clef Flash | Decision model | 860/1342 | 64.1% | 245 ms 🟩 Fastest | 353 ms | $0.00880 🟩 Lowest | $0.011806 |
+| Cloudflare Clef Omni | Decision model | 860/1342 | 64.1% | 241 ms 🟩 Fastest | 400 ms | $0.06151 🟥 Highest + ? | $0.082547 + ? |
+| Drex v1.5 | Decision model | 853/1342 | 63.6% | 203 ms 🟩 Fastest | 649 ms | $0.01116 🟨 Low | $0.014976 |
+| Kev 4B | Decision model | 822/1342 | 61.3% | 225 ms 🟩 Fastest | 377 ms | $0.01172 🟨 Low | $0.015725 |
+| Luna 6 Decisions | Decision model | 758/1342 | 56.5% | 254 ms 🟨 Fast | 527 ms | $0.03584 🟧 Mid + ? | $0.048097 + ? |
+| Tev1 4B experimental (OpenRouter native adapter) | Decision model | 751/1342 | 56.0% | 198 ms 🟩 Fastest | 253 ms | $0.01566 🟨 Low | $0.021011 |
+| ScaleDown Classify-1 | Decision model | 550/1342 | 41.0% | 268 ms 🟨 Fast | 362 ms | $0.02139 🟨 Low | $0.028703 |
+| Solar Decide Flash | Decision model | 538/1342 | 40.1% | 540 ms 🟧 Moderate | 747 ms | $0.03020 🟧 Mid + ? | $0.040532 + ? |
+
+
+METHOD
+The full comparison covers 26 routes × 1342 questions = 34,892 first attempts: 23 specialized decision models and three separately labelled high-end LLM references. The same 1342 inputs, facts and five choices retain their tested order. No existing model was rerun or removed for this update. There are 35,058 selected HTTP attempts, including 166 permitted recoveries; the three October 20 runs account for 4026 first attempts and zero recoveries.
+
+Primary scores and latency use all first attempts. A valid wrong choice is never retried. One recovery is permitted only for transport failures or HTTP 408/429/5xx; its cost is included and its response cannot replace the first attempt in the ranking. Provider failures are unsuccessful delivered decisions, not classified as wrong reasoning choices.
+
+Median and p95 are computed from individual first-attempt times, never averages of stage medians. Timing runs from a fresh HTTPS connection through the complete response body, not time to first token. Deliberate admission, rate-limit and retry waits are excluded. The mean is also available for the three new runs. p95 is an interpolated 95th percentile, not the mean of the slowest 5%.
+
+The October 20 additions use direct provider APIs. Amos was paced below its public 60-request/minute cap. Sqwish starter access used one active request and 2.1-second start spacing after an account-limit amendment; the first 54 successful attempts remain included. Its response latency is not batch throughput. d3-turbo used up to two in flight. Previous routes, dates, loads and quantiles are unchanged. Different protocols, hosting hardware and account conditions are not controlled away.
+
+Among the earlier 20 decision routes, Nimble uses Bespoke directly and the others use OpenRouter with pinned providers and no fallback. Sol and Sonnet use OpenRouter; Qwen uses Hyper Charm. Sonnet requires the separately labelled JSON-choice grammar; its stopped bare-ID trial remains outside the scored comparison. Qwen requests reasoning_effort=none but has no reasoning-token telemetry. Tev1 is a decision-specialized generative model using a native adapter, not a claimed nongenerative architecture.
+
+All three new responses named the requested model and reported zero output tokens. The hosted names do not attest immutable weights or reveal internal implementation. No explanation generation, tool use, agentic iteration or answer-dependent repair was requested. This measures System 1-style choices, not unrestricted reasoning or general intelligence.
+
+Costs per 1000 are actual selected-run costs divided by 1342 and multiplied by 1000. Probe charges are separate. Sqwish charges come from every returned receipt and match the captured $0.06 per million input tokens; its exact full-bank charge is $0.02071056. d3-turbo and Amos used currently free public access, with no API-reported monetary charge; their metered price fields are null, not fabricated zeros. They have no cost-axis numeric point. Starter credit does not make Sqwish free.
+
+Earlier captured charges and usage-times-tariff accounting remain unchanged. + ? means additional unreported charges, not zero. Nimble retains its recorded mixed tariffs; Hyper Charm Qwen is a prepaid-quota valuation, not a cash invoice. Verification subscriptions are outside model-inference accounting. The total is not an independently reconciled financial invoice.
+
+This is a developing benchmark with dependent variants and uneven category sizes, not 1342 independent observations or a pristine held-out evaluation. The 37 author-development cases retain their permanent exclusion from a future held-out scored release and their separate 1305-case diagnostic. The complete developmental ranking remains 1342 questions for every route. Small score gaps do not establish a general intelligence ordering.
+
+The construction combines the corrected 1136-question bank, 200 verified expansion questions and six additional truth-teller questions into one score. The 31 categories and their question weights are unchanged. Each of F26–F31 has eight questions, so one answer changes a category score by 12.5 percentage points. Display groups are reading aids, not additional scored categories.
+
+All 206 expansion questions have current-revision blind Sol xhigh and different-model Opus or Argon checks, supplemented by exact computational evidence. The original bank received a targeted difficult-item audit, not independent external verification of every original question. Two retired ambiguous procedure questions are absent; their verified replacements appear once.
+
+All question inputs remain available without answer keys. Aggregate scores, categories, usage and costs are published; answer keys, item-level correctness, certificates, verifier responses, raw account data and credentials are not. Publication validators check consistency and privacy; public aggregates cannot reproduce private-key scoring or raw-latency pooling. The dated audit receipt binds the private evidence checks.
+
+Sixteen earlier regular-LLM configurations have only 1136-question coverage and are not extrapolated. Solar Decide remains excluded for latency; the distinct Solar Decide Flash remains included. No older published row was removed. The separate image benchmark is unchanged; documented image support is not an image score.

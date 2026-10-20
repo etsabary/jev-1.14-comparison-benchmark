@@ -1,0 +1,50 @@
+{
+  "source_commit": "14d8f615baf54222ef55882e771783eb26d9c1f5",
+  "files": {
+    "README.md": {
+      "path": "README.md.snapshot",
+      "sha256": "6362b6e48b7847ed2e5d818d8ad64525696af7e41aedabfb37cd0a769e8d6a34"
+    },
+    "FUNCTIONS.md": {
+      "path": "FUNCTIONS.md.snapshot",
+      "sha256": "9ace899c4be9fa845e125b50f1132304535cb1fbcbb507a06cca67e0d07d88dc"
+    },
+    "OUTPUT_COMPLIANCE.md": {
+      "path": "OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "920d5770e9f0fada2c5d7f97af02974cd600c09e9fff5310605330196a853c47"
+    },
+    "docs/report.html": {
+      "path": "docs/report.html.snapshot",
+      "sha256": "703e81e5e52597c1f1eadac179bcc65d62d37acee661fc14e08bc1345ac3c826"
+    },
+    "docs/index.html": {
+      "path": "docs/index.html.snapshot",
+      "sha256": "9adc5900294e765ca7b9278b89e4b96770b0b881c2aed2137086a3f222cf6f8e"
+    },
+    "docs/functions.html": {
+      "path": "docs/functions.html.snapshot",
+      "sha256": "d2b0c6631924aa04e4d3b0cbb52335858af96349e45654f8f2ad5b611111fc19"
+    },
+    "docs/output_compliance.html": {
+      "path": "docs/output_compliance.html.snapshot",
+      "sha256": "e1f308a8a4d6be2476c12e06c3edb8656127ac2649e808bd4730a4bf91fe41bd"
+    },
+    "repo_identity.py": {
+      "path": "repo_identity.py.snapshot",
+      "sha256": "0e49bab834733e7aeaa6b91160cc6415568159920e75f72406036c0d6342c795"
+    },
+    "validate_frontier_release.py": {
+      "path": "validate_frontier_release.py.snapshot",
+      "sha256": "286b3e29fa2411d3cd5f1269c872d76272d84c23522db1f6488ad129cc6ff37f"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "09a287dcc8b9416080d86e53c4e996d76201c2d041e9e42da2d02ea13c450b5e"
+    },
+    "validate_consolidated_release.py": {
+      "path": "validate_consolidated_release.py.snapshot",
+      "sha256": "270692ae2cf46bc9b70acc87a06ea229b0b6bd6bb120f1f1bd5da7aa1e9852d5"
+    }
+  },
+  "purpose": "Exact previous 23-route presentation and checks; old measurements, data and release seals stay unchanged."
+}

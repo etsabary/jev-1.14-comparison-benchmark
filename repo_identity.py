@@ -32,7 +32,8 @@ def historical_path(path):
     entries = json.loads(manifest.read_text())['files'] if manifest.exists() else {}
     entry = entries.get(str(path.relative_to(ROOT)))
     if entry is None:
-        return path
+        from publication_history import previous_path
+        return previous_path(path)
     saved = ARCHIVE / entry['path']
     assert digest(saved) == entry['sha256']
     return saved
@@ -114,21 +115,22 @@ class Page(HTMLParser):
 
 
 def validate():
+    from publication_history import previous_path
     from validate_frontier_release import validate as previous
     from validate_consolidated_release import privacy
     manifest = json.loads((DEST / 'manifest.json').read_text())
-    assert all(digest(ROOT / name) == h for name, h in manifest['files'].items())
+    assert all(digest(previous_path(ROOT / name)) == h for name, h in manifest['files'].items())
     assert digest(PRIOR / 'release_checksums.json') == manifest['prior_release_seal_sha256']
     assert digest(PRIOR / 'statistics.json') == manifest['statistics_sha256']
     a = Page(); a.feed((PRIOR / 'report.html').read_text())
-    b = Page(); text = (ROOT / 'docs/report.html').read_text(); b.feed(text)
+    b = Page(); text = previous_path(ROOT / 'docs/report.html').read_text(); b.feed(text)
     assert a.models == b.models and a.cells == b.cells
     assert len(b.models) == 23 and len(b.cells) == 713
     for name in ('README.md', 'FUNCTIONS.md', 'LLM_REFERENCES.md', 'docs/report.html'):
-        text = (ROOT / name).read_text(); privacy(text)
+        text = previous_path(ROOT / name).read_text(); privacy(text)
         assert OLD not in text
     for path in (ROOT / 'docs').glob('*.html'):
-        page = Page(); page.feed(path.read_text())
+        page = Page(); page.feed(previous_path(path).read_text())
         for target in page.links:
             u = urlsplit(target)
             if not u.scheme and not u.netloc and u.path:

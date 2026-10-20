@@ -11,6 +11,7 @@ jobs:
           # probability-validity decision exactly at the stored tolerance.
           python-version: '3.10'
       - run: python3 -m pip install -r requirements-reports.txt
+      - run: python3 -m pip install python-dotenv
       - run: python3 native_expansion_analysis.py
       - run: python3 llm_expansion_analysis_2026_10_18.py
       - run: python3 freeze_october18_release.py --check
@@ -19,4 +20,5 @@ jobs:
       - run: python3 validate_readable_report.py
       - run: python3 validate_frontier_release.py
       - run: python3 repo_identity.py
+      - run: python3 validate_direct_release.py
       - run: python3 -m unittest discover -p 'test_*.py'

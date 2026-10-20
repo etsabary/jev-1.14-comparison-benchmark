@@ -1,0 +1,73 @@
+{
+  "status": "VERIFIED_COMPLETE_DIRECT_1342",
+  "question_count": 1342,
+  "added_model_count": 3,
+  "primary_attempts": 4026,
+  "recoveries": 0,
+  "unusable_responses": 0,
+  "probability_warnings": 0,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "source_summary_sha256": "6bd97c172fb1ba44ed8c9ee731aeaab6b6fd876184f3c45c066468c452f7b573",
+  "evidence_sha256": {
+    "d3_turbo": {
+      "manifest.json": "e2dddd70e2ff6e887751bdc05f50cf01d72068bb9278e77ae923736fdf5163fe",
+      "software.json": "a6a99bb579834587f2dcb5a34452b2ab4632ba4f8fe4ce2bfc0062c18ca27efe",
+      "model_metadata.json": "a32ae0e379f4925c9bf07894b2853ac789ff92f5dc274250ba732c88bad0f7c5",
+      "probe_dispatch.json": "2b4f8c34e467b55807817eeb2c160fdfcdc4dba08b54e9cf95bc06e208c6413b",
+      "compatibility_probe.json": "80eaf0b091526becdfb21ef312f14709231387c37d4343004d685cba59e38e4d",
+      "dispatches.jsonl": "3a23e59f60d2fa643f02c014e56080a452529fcdbcf8f4c91d6429a0564b0a94",
+      "attempts.jsonl": "aabe666145d6a24bbd504c2cf0f2a181d585ff2f8ef8353d2ddfa5e41bc03021",
+      "results.jsonl": "e3ef638cfb6b094fe624a86f3e378d0e5c93fdc9f360744ed7a66052f4b562c6",
+      "completion.json": "26c9687c4031db7d957937cebd5bf5391f2955b4b3574600f324fb86e9c8fc2e"
+    },
+    "amos_large": {
+      "manifest.json": "e0647fdf0743969bf08e668bbdf2896630e51bfe910ae40cc7409350807c2fae",
+      "software.json": "a6a99bb579834587f2dcb5a34452b2ab4632ba4f8fe4ce2bfc0062c18ca27efe",
+      "model_metadata.json": "e2a4e3a59cf87dc708ab25103db2d82bc46bceeeed201f9cac8e409849a88503",
+      "probe_dispatch.json": "ae5045ac0325920cc46d9ccd9d6b91b9e321c8e7846434fd99dc45155bd15d7c",
+      "compatibility_probe.json": "923ec73d8ad96a8367088603ef6d67e7e1e400c468c25dd67ab751c73dc19bcb",
+      "dispatches.jsonl": "a09a139f6f685c488c8fbd6d4eb56700fde8635ec9827360888e5ee50437e29e",
+      "attempts.jsonl": "2ab2ffbb01ec7ab609839b5b3cdcd7d92496a771d76009ae8d9df438bf6fbe37",
+      "results.jsonl": "0189941dd1502ad63ecf55e44879fb63f768c67e1d1204f213d006cc2ece7e68",
+      "completion.json": "8789c3d8969e4e2c111800e16edd5dc74bdf9fda8e81c063c2e9fcec90d6c831"
+    },
+    "kettei_fat": {
+      "manifest.json": "c0fb09c04bba4eb6fcaeaceb643b729f85552291b3805dac7e754ed286d55943",
+      "software.json": "a6a99bb579834587f2dcb5a34452b2ab4632ba4f8fe4ce2bfc0062c18ca27efe",
+      "model_metadata.json": "3842b8979235fea42e52fd867414ec12d89181a777ac7f00646af4cff0f65980",
+      "probe_dispatch.json": "8f632423adcee7d2b1b6022b4caa82c03f9259eac6c82af392e7c1284889f8f4",
+      "compatibility_probe.json": "f115a687b4ef4850105e4eb0beebf419da424e5493cd7c6d40cdf8c4f735190b",
+      "dispatches.jsonl": "32f2d6f80726a98096a5b38832a187c6f1cb9cc6aeae60035e86c6e5d67c47ef",
+      "attempts.jsonl": "7c20266cdad35eeefd2eeeff19e3309f0b328fb4b3980eb7d00091201f946c38",
+      "results.jsonl": "eb4d4e73cabf177a82031d33fe77ce22a6f51748430920d1164a6f4e3ef5b849",
+      "completion.json": "dd1a5b0444b9a841bb142857c5444f0f41c94ec4d4b04aec4d7bce5227cb24f7",
+      "account_rate_amendment.json": "87c84f03393d1072ea99784d59280fdd139e865a897038a658207515375e68ac"
+    }
+  },
+  "scoring_binding_sha256": [
+    "33a04e1b7ac8b3a3020423a37781e1ca5a3939081c6d350fd6a532a00bad77c2",
+    "3b41037fba1cb02f42d0044a0dd758f1cc588de86fe0d2a5f90b142a41f353bb",
+    "471b808d20d9be2608ef60fddbf8526bf9015af3d6a4d976b7a2b20843ad46e1",
+    "4ca81b991c4002e70aead0d56b9f53c21f1e70d9b1fef1a4a1f2e32f32d5b56c",
+    "4cd7c58fe4be67dadb3644fc54d46d8e4a40aaa8ed73c2005b6dbe52a4341a36",
+    "8376ddce67cd9bb5f62d685d0309b4de5706f091084fbe72aed7dc91d1bf4dec",
+    "aac4b2c2ece0f6cf37b81794031d93a8c3f53d032da1eb127d14f62be34781a6",
+    "b5dba10a8c9fbcbd0fc79f62e11a9a08594fdc187cf3ead7b5bb872a43bf1b5f",
+    "bb7ff1f81ac1b35bb93c25a5ac7dce48a0d86ff48cda711304b9932864c1bc3a",
+    "c99db093ae3517dcacc03319f00a461acbfd19e0eb22cb0c5a5dd636f1ee9271",
+    "ca5aa924ee10efe60bca09e02bb7fbb68740d12b243ca7bd619ceb5fc952c7bb",
+    "dbac830fe3cad5f469f950fe2c3b1c2e575cb6d00c2bdaec4b82c46f41b0b8ab",
+    "f6f685ea96ebd626804931278e03256bd502f0dc811a8694d9417a4ad5b64c01",
+    "fbe6f2b49ad7c99416fb45dc05b8b9db37a3850017d7bfef81644d09afe9bcd4"
+  ],
+  "source_analysis_sha256": {
+    "analyze_direct_decisions_2026_10_20.py": "2517c3e6f8d32d2a9e0d403d8fc7a02f883883c42a3e008f7453addd43384916",
+    "test_analyze_direct_decisions_2026_10_20.py": "526ad74fedc0f49e184aa62a246309667ef908bd7d002d7af72788ab792f0497",
+    "llm_references_2026-10-19/statistics.json": "cff708651203a54f3ddb7e17782f8c2abdbc8900a92f81d7492afa6e8a90b435",
+    "llm_references_2026-10-19/category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823"
+  },
+  "private_check": "Reconciled dispatch, attempt and result journals; software seals, returned model IDs, zero output tokens, raw timing quantiles and charge sums match the sealed analysis. Private answer-key scoring is not reproduced by this public export.",
+  "new_input": "Same frozen question bank and five options; no new inference for publication.",
+  "cost_policy": "Free public access is separately labelled; no invented API-reported zero. Sqwish charges are provider-reported.",
+  "privacy": "Aggregate results and hashes only; no answer keys, item-level correctness, raw account data or credentials."
+}
