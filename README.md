@@ -6,6 +6,8 @@
 
 [Interactive report](https://etsabary.github.io/system-1-decision-benchmark/report.html) ·[October 21 findings](https://etsabary.github.io/system-1-decision-benchmark/report.html#new-additions) ·[Named, color-coded categories](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
 
+Benchmark runners, report builders and offline checks are grouped in [scripts/](scripts/README.md).
+
 ![All 29 routes: accuracy, speed and cost](native_additions_2026-10-21/accuracy_speed_cost.png)
 
 ## Results, speed and cost
@@ -206,4 +208,4 @@ This is a developing benchmark with uneven category sizes and dependent variants
 
 Public exports contain unchanged answer-free question inputs, aggregate category scores and sanitized evidence hashes—not answer keys, per-item correctness, private verifier outputs, raw account state or credentials. Public checks verify consistency but cannot reproduce private-key scoring or raw-latency pooling. REAX 1 is not included: a hosted API for that exact fine-tune has not been confirmed.
 
-Offline checks: `python3 validate_october21_release.py` and `python3 -m unittest discover -p "test_*.py"`. Earlier dated releases and their seals remain available unchanged.
+Offline checks: `python3 scripts/validate_october21_release.py`, `python3 scripts/validate_repository_layout.py` and `python3 -m unittest discover -s scripts -p "test_*.py"`. Earlier dated releases and their seals remain available unchanged. The source files were grouped under `scripts/` on October 22; this did not change any benchmark measurements, questions or graphs.
