@@ -1,7 +1,9 @@
 """Regressions for current-source resolution and explicit historical audits."""
 from hashlib import sha256
+import importlib.util
 import json
 from pathlib import Path
+import shlex
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -13,6 +15,26 @@ class RepositoryLayout(unittest.TestCase):
     def test_complete_source_only_migration(self):
         from validate_repository_layout import validate
         validate()
+
+    def test_workflow_unittest_targets_resolve_after_relocation(self):
+        commands = 0
+        for workflow in (layout.ROOT / '.github/workflows').glob('*.yml'):
+            for line in workflow.read_text().splitlines():
+                if '- run: python3 -m unittest ' not in line:
+                    continue
+                arguments = shlex.split(line.split('- run: ', 1)[1])[3:]
+                if 'discover' in arguments:
+                    continue
+                commands += 1
+                for target in arguments:
+                    if target.startswith('-'):
+                        continue
+                    with self.subTest(workflow=workflow.name, target=target):
+                        if target.endswith('.py'):
+                            self.assertTrue((layout.ROOT / target).is_file())
+                        else:
+                            self.assertIsNotNone(importlib.util.find_spec(target))
+        self.assertGreater(commands, 0)
 
     def test_current_sources_are_not_the_archived_implementation(self):
         active = layout.source_file('frontier_reference.py')

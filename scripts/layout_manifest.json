@@ -1923,7 +1923,7 @@
     "scripts/test_publication.py": "a9bb2ddfd6e0cf2452e5cdb97cc190811954f08032fe338bf8c2fd23a681362e",
     "scripts/test_readable_report.py": "4751bdc7019ed7a99eebf859b9f2829d0dad109de038244e0354cc1aecf68d6d",
     "scripts/test_repo_identity.py": "7879344971ac7cfd90399703105c488c5a6e15e8ccb3c32f6604b807c015d037",
-    "scripts/test_repo_layout.py": "eca163aeb7aee1b14d68854981a267a3ee01a223fbc5edb10d2891ae2b75f6e0",
+    "scripts/test_repo_layout.py": "b488cbbaa362e629b0ec5973a256b52032d779fb2f74df605e7340e3eba6a28a",
     "scripts/test_sonnet55_reference.py": "e186f7746b0975d5bc6a8e7bd24d7dbb850415f1c065bcb7ad1fb3dc9e51a6bf",
     "scripts/test_sonnet55_schema_reference.py": "054a8d7dd23b4acc6a290536f9e522602fd8d9327fb7d52d2fa4c15b9abfe75a",
     "scripts/test_tev_native_adapter_2026_10_18.py": "ce558ab44971fb94f12a888f58be42c443a404060577031137f952be5c71837a",
@@ -1943,7 +1943,7 @@
     "scripts/validate_repository_layout.py": "e97321f5d50763a86b10dda1d842b937bc71d1f8a6173768d7b1fcc025c8ec3f",
     "scripts/README.md": "e16ed9b54f2d8b63dac31ff1ffcf41a6919ddb273e23db80abcebc45c12867b1",
     "README.md": "c1c4250bd4ea07d0fad327d952ff33bee08bab85a029613ce336088f9d77739b",
-    ".github/workflows/validate.yml": "7847af8e6d2283fc17a7a154167330264ce1f9c775ad4ae0580ed3ea5f6a09b6",
+    ".github/workflows/validate.yml": "ae90d0b1edc38655788118f221492ab30ad601cb7c4e1c3b89615ae70aaa89d1",
     ".github/workflows/october18-validate.yml": "cc2f825b6dfa4dd088b8e7a8615f309eb6c2c05de1e2c55eca8b55c2b8e2ebbc"
   }
 }
