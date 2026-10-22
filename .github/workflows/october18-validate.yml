@@ -21,4 +21,5 @@ jobs:
       - run: python3 validate_frontier_release.py
       - run: python3 repo_identity.py
       - run: python3 validate_direct_release.py
+      - run: python3 validate_october21_release.py
       - run: python3 -m unittest discover -p 'test_*.py'

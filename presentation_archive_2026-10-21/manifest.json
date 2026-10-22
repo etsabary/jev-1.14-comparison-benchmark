@@ -1,0 +1,78 @@
+{
+  "source_commit": "e4ecaf39e0e383fcda7ebbb18fd007e0f6cc9d02",
+  "files": {
+    "README.md": {
+      "path": "README.md.snapshot",
+      "sha256": "3b5850f910935253cd33e52f25804981e8c51028f65669e79084ed036eab11f4"
+    },
+    "FUNCTIONS.md": {
+      "path": "FUNCTIONS.md.snapshot",
+      "sha256": "3cb336d9c875f9bd7a3fcf71df88640872be39407ca0233c548788b3fc9c673b"
+    },
+    "OUTPUT_COMPLIANCE.md": {
+      "path": "OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "5139c873ff0471228bdcece5b1963e719c593f1873f2c03ad920dfb652af9053"
+    },
+    "IMAGE_CAPABILITIES.md": {
+      "path": "IMAGE_CAPABILITIES.md.snapshot",
+      "sha256": "d50f6321d790d0dffa53d586f17b940ffe85ebe1619809187cada57e5bdbb844"
+    },
+    "docs/report.html": {
+      "path": "docs/report.html.snapshot",
+      "sha256": "1c4b804f44cbd931c6c17b34f84074790c087be51fa4fceb386393c38e965e34"
+    },
+    "docs/index.html": {
+      "path": "docs/index.html.snapshot",
+      "sha256": "33a5740a11885c2c023e18c9c1d15bab6acf66a9d873d098f7ddbf943a9ef64f"
+    },
+    "docs/functions.html": {
+      "path": "docs/functions.html.snapshot",
+      "sha256": "ae8d10dbd8e8e00d847baaf76550d2ebfeb56045e6c9bf6459864cb3103bfa96"
+    },
+    "docs/output_compliance.html": {
+      "path": "docs/output_compliance.html.snapshot",
+      "sha256": "5b87b4aff4e3cfd77338f2cb53f1310a4c98d79057a11fe2f14653bd51a66b83"
+    },
+    "publish_direct_decisions.py": {
+      "path": "publish_direct_decisions.py.snapshot",
+      "sha256": "37699c5ff13961287d60e4bf2ab708611ce4905e7467243c118563c2caf7e615"
+    },
+    "validate_direct_release.py": {
+      "path": "validate_direct_release.py.snapshot",
+      "sha256": "47133cbbaa439ff1df4f26e0999d70baf3ec5d1cc9870390b0eac9b2e4968e3b"
+    },
+    "test_direct_publication.py": {
+      "path": "test_direct_publication.py.snapshot",
+      "sha256": "f683719efb3dbf0d6aff85a50a3f8788bd88598584b7ef73a97ef225ea8c64e2"
+    },
+    "capture_image_capabilities_2026_10_20.py": {
+      "path": "capture_image_capabilities_2026_10_20.py.snapshot",
+      "sha256": "329e505387acc27a023f8ccab17b444f09f246b63e0f4fd8226dea746e9faa53"
+    },
+    "publication_history.py": {
+      "path": "publication_history.py.snapshot",
+      "sha256": "a1a95200a4bf6dfbfe1bc2044bbb642683469e4d18b572660285985ea19dad28"
+    },
+    "archive_direct_presentation.py": {
+      "path": "archive_direct_presentation.py.snapshot",
+      "sha256": "d5ce9e4dd16e6c5ac2ed6cc8ab7da5fa99366e495acfafb147edd978a3b4345e"
+    },
+    "repo_identity.py": {
+      "path": "repo_identity.py.snapshot",
+      "sha256": "0a92f473eb4e7b882a77a36cc62fa5bbdc427d10fc6dcf7bd3fcad36b0dae7e7"
+    },
+    "validate_frontier_release.py": {
+      "path": "validate_frontier_release.py.snapshot",
+      "sha256": "0f6905b4fb461c0c432577277d85f72cc0ad4271dd5fc8e5bb56305022f33193"
+    },
+    "validate_consolidated_release.py": {
+      "path": "validate_consolidated_release.py.snapshot",
+      "sha256": "3fd6d883c9061f6ac6e0d50683788a0fbe7f9ae3d2534ceefe6aa73531b959a0"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "93b3e01c4b862b58a6a2fd763111c1f4c8565d331bdc4f30d1e5b0e4449491ff"
+    }
+  },
+  "purpose": "Exact October20 presentation and checks; measurements and dated release seals remain unchanged"
+}

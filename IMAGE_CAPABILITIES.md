@@ -1,3 +1,11 @@
+# Image input: October 21 additions
+
+Mammoth-1 and Elephant-1 are text-only on the tested Baseten/OpenRouter catalog routes. Drex Max documents text and image input through its [direct Nace API](https://console.nace.ai/docs/drex/guides/drex-max); its tested OpenRouter route currently advertises text only. No new image inference was performed in this update.
+
+These additions bring the specialized text cohort to 26 models, 17 with declared image input on at least one documented route. Declared support does not establish a measured image score. The [separate visual benchmark](https://github.com/etsabary/visual-decision-benchmark) remains a separate comparison.
+
+## Previous dated capability review
+
 # Image input among the text-benchmarked models
 
 Documentation review: October 20, 2026. **16 of 23 specialized decision models declare image input.** This is a capability review, not a new image benchmark. No image inference was performed for this review.

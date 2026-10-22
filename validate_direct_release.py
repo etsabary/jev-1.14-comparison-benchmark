@@ -25,6 +25,7 @@ class Page(HTMLParser):
 
 
 def validate():
+    from archive_october21_presentation import previous
     from validate_consolidated_release import privacy
     old=json.loads((b.BASE/'statistics.json').read_text());s=json.loads((b.DEST/'statistics.json').read_text())
     manifest=json.loads((b.DEST/'manifest.json').read_text())
@@ -68,7 +69,7 @@ def validate():
             if path.suffix=='.json':check(json.loads(path.read_text()))
     pages=[b.DEST/'report.html',b.ROOT/'docs/report.html']
     for path in pages:
-        page=Page();page.feed(path.read_text())
+        page=Page();page.feed(previous(path).read_text())
         assert len(page.ids)==len(set(page.ids))
         assert page.summary==s['ranked_model_ids'] and page.additions==list(b.NEW_IDS)
         assert len(page.cells)==806
@@ -107,11 +108,11 @@ def validate():
     assert all(caps['models'][mid]['image_input'] for mid in b.NEW_IDS)
     assert all(re.fullmatch('[a-f0-9]{64}',v['source_sha256']) for v in caps['models'].values())
     for name in ('README.md','FUNCTIONS.md','IMAGE_CAPABILITIES.md','OUTPUT_COMPLIANCE.md'):
-        text=(b.ROOT/name).read_text();privacy(text)
+        text=previous(b.ROOT/name).read_text();privacy(text)
         assert 'jev-1.14-comparison-benchmark' not in text
         for target in re.findall(r'\]\(([^)]+)\)',text):
             if not re.match(r'^(https?:|mailto:|#)',target):assert (b.ROOT/target.split('#')[0]).exists(),target
-    text=(b.ROOT/'README.md').read_text()
+    text=previous(b.ROOT/'README.md').read_text()
     for m in s['models'].values():assert m['label'] in text
     assert '34,892' in text and 'Free public access' in text and '23 specialized' in text
     from repo_identity import validate as old_release

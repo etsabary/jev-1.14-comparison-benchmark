@@ -1,0 +1,38 @@
+{
+  "version": "october21-native-additions-v1",
+  "question_count": 1342,
+  "model_count": 29,
+  "decision_model_count": 26,
+  "llm_reference_count": 3,
+  "category_count": 31,
+  "primary_attempts": 38918,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "added_models": [
+    "mammoth1",
+    "elephant1",
+    "drex_max"
+  ],
+  "earlier_models_unchanged": true,
+  "prior_statistics_sha256": "c31683c5e211e301a6389f770b2441e12b66e2f80f9c3a124fdbfc166165a4b0",
+  "artifacts": {
+    "accuracy_speed_cost.png": "2fadbaafe9f923bcf112f6da3e071121e2aa7adb7172716fb3de3ee84f305d20",
+    "accuracy_speed_cost.svg": "450b5b2e1ba5c8a64f5b714c297076a5db0fcd884cf996e281f5d368256647ce",
+    "audit_receipt.json": "b53f39f5eb22f6ce48dbd96424dad2f09930bf61310bbb4a1bf1e3fda1a23581",
+    "category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823",
+    "category_scores.csv": "6b4af4aaa8e8bfcdc59ac4f5f519e6eebe49cea537644fbc8c0f9936f8d5de89",
+    "causes.png": "1fcb68b055fb88017c79522c5d282deb4063f633ce11ab3cb4a4dfc17c339563",
+    "causes.svg": "617fb20279ac64c84421c57ace18628cb67c1cc3e97d3ae5f416df9ef4789a1e",
+    "model_statistics.csv": "e67b943a9683f044e122e439824b6f71a91de323d2e74575c0f11ea7ada28c51",
+    "ordering.png": "79e1c0b4124c7f3ed22454fd0bfc44bd7a3a828ef544fdc674981875f8990282",
+    "ordering.svg": "e9e25d901439c35d51f9fc285827172daee05a54a5c9c32e05ed078bac942d24",
+    "report.html": "7719215ba732d9141170b6eac0f9236081adeb2a09eaf23b717233d3045238c1",
+    "report.txt": "1659e4ea49d91f3fa0e0d18951175e082ed25dcb66869b86e4803dd48bb1bfe0",
+    "rules.png": "27258f9d3aeb32025f57cda632490da5163f050892d3f2100cd036e6a5ba48fd",
+    "rules.svg": "eacc482d23e0496a441582ad812d2bf3c26bfe42c368f305057b99333b8080c5",
+    "state.png": "462b6f0805b3ffd3c1d388e360828f66fa4f12cdb32900b7507b6583617c6a47",
+    "state.svg": "ab243582a2a55a71da33d256f43bd15fd120b49157b90a20c8bbefb00c652523",
+    "statistics.json": "04728404d8048e3277a4c237695731cb1ccfbb780080b1067b9bb2364e118e6f",
+    "uncertainty.png": "13a8e89d1bfecce2d87cb3c989f7b9ccd44278332f3c742258667f51e6e86abd",
+    "uncertainty.svg": "4b8c1663a9d84cf2da8421c2b283e228cfb2c2c1a9a2faaa1ba7565fcb7df540"
+  }
+}

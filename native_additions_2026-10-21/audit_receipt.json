@@ -1,0 +1,124 @@
+{
+  "status": "VERIFIED_COMPLETE_THREE_1342",
+  "question_count": 1342,
+  "added_model_count": 3,
+  "primary_attempts": 4026,
+  "recoveries": 0,
+  "unusable_responses": 0,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "source_summary_sha256": "76beb2eeb9e44991e7958eb0dcbaa1bfa645e23ba6d780ed4ee652a73aad563f",
+  "evidence_sha256": {
+    "mammoth1": {
+      "attempts.jsonl": "85d26db189ce9096a1aad886bf5a43c8759e9516d718ee05fd72ade68b0113da",
+      "compatibility_probe.json": "40ffbb0ff792c797b17de0e7d5bdee1ea7bf81e84ac85d4e95edbb3d8c3c61bd",
+      "completion.json": "dd2ace518c16a82cee76ad4a46a9aab5aac9d876c62f7593d3d9cae3792a6bd5",
+      "dispatches.jsonl": "f4872c3590b70d7b4fab209e9c7d398f077391d3625110503f58abd4f7ff8b47",
+      "manifest.json": "ffb87f00523800daec36cbaad4f37ca6967f95b71c8b0b31cba0df3d7d78fa9e",
+      "model_metadata.json": "5cc4938d86520cb95a30f1efea78712e754903b7664567a7f37dae8543044976",
+      "probe_dispatch.json": "75c66b4c40f903244e9df02b25541009da7654ace5ea6492dc86212abeb8bd99",
+      "results.jsonl": "5fd083f6b57b2f22fdeec9502ea5e0d79d82461229f1651fe29dd7a72e75e369",
+      "software.json": "05b7e4270efa627a24b7c94c30526887efb3a71408dc4166074f68dc13716655"
+    },
+    "elephant1": {
+      "attempts.jsonl": "e18e2b43cf3e82c10e4abdac964b6ef2c5baba083ac68e3e53f832da8245e982",
+      "compatibility_probe.json": "8ec896463b98ae132f749daf8beb7843eaa2f277660f41909a16ff73100b74a3",
+      "completion.json": "3ace9a121889bfe4cf05e8be04961ca9bf7f99ade76f5c9dfa0974fe17134ea6",
+      "dispatches.jsonl": "9b943e0585a50f2287d535a513650fac1e5134d0d2282f236bcb7ddd33ecb57d",
+      "manifest.json": "d37530439b32ac0f20948db2396652198a4eb6d95d1e3beaa3410b8d36aff0dc",
+      "model_metadata.json": "083b4cec56c7709d76b28b8ceca6f3acac49061e9e8ad0b2effd7b82f7b53550",
+      "probe_dispatch.json": "13eeeb53ccf15a2a998e1f4a0121b7e7213e8a8d9ac99831d3868c39116ec0e1",
+      "results.jsonl": "cbfda4df0cbde86b21c1dc36d62938e91558eaeef6404f48ff8fa6d207f6a412",
+      "software.json": "05b7e4270efa627a24b7c94c30526887efb3a71408dc4166074f68dc13716655"
+    },
+    "drex_max": {
+      "admission_note.json": "2d96b12d8e62787b94c81a0cca0fd6a202d28a10c54db070999f410d02283adc",
+      "attempts.jsonl": "165a7f64bb7af7f27bb03f5f1fb467c46c8595f68da9cf4f5d37c7aca4da381c",
+      "compatibility_probe.json": "fccd9a0beaeb376a73f121f7583f9088da24c0bacfe8ea1111a2f0f120182194",
+      "completion.json": "b78fa8fcbf54d26e9365e1d7df893066c47165a1e543f050d810e881362bc800",
+      "dispatches.jsonl": "cac2578d1b99c33f2f1486d38aa424f5b42caf5c77f9b277815f10be355f107b",
+      "manifest.json": "40dd57f867e99dcc2c3688a35ec7ee9aff6c5e2d99576d0a9f2977d516db14d7",
+      "model_metadata.json": "2ed475042b0f913ca45febe42aa811875069888f724f4389c6822209de357178",
+      "probe_dispatch.json": "26eeabf5c7dcaa7886c030110f721996a2795e60ed57f7f33e286f0d71f0b84d",
+      "results.jsonl": "cb92d8c1c505cf80b239f8c1f0d499938e522556b98301fa39a1b327a6669c42",
+      "software.json": "a5ef9235c40b0b5c76199172365ed44d9bb938547fbe6e1822cd1c51b5e81faf"
+    }
+  },
+  "scoring_authority_sha256": [
+    "33a04e1b7ac8b3a3020423a37781e1ca5a3939081c6d350fd6a532a00bad77c2",
+    "3b41037fba1cb02f42d0044a0dd758f1cc588de86fe0d2a5f90b142a41f353bb",
+    "471b808d20d9be2608ef60fddbf8526bf9015af3d6a4d976b7a2b20843ad46e1",
+    "4ca81b991c4002e70aead0d56b9f53c21f1e70d9b1fef1a4a1f2e32f32d5b56c",
+    "4cd7c58fe4be67dadb3644fc54d46d8e4a40aaa8ed73c2005b6dbe52a4341a36",
+    "8376ddce67cd9bb5f62d685d0309b4de5706f091084fbe72aed7dc91d1bf4dec",
+    "aac4b2c2ece0f6cf37b81794031d93a8c3f53d032da1eb127d14f62be34781a6",
+    "b5dba10a8c9fbcbd0fc79f62e11a9a08594fdc187cf3ead7b5bb872a43bf1b5f",
+    "bb7ff1f81ac1b35bb93c25a5ac7dce48a0d86ff48cda711304b9932864c1bc3a",
+    "c99db093ae3517dcacc03319f00a461acbfd19e0eb22cb0c5a5dd636f1ee9271",
+    "ca5aa924ee10efe60bca09e02bb7fbb68740d12b243ca7bd619ceb5fc952c7bb",
+    "dbac830fe3cad5f469f950fe2c3b1c2e575cb6d00c2bdaec4b82c46f41b0b8ab",
+    "f6f685ea96ebd626804931278e03256bd502f0dc811a8694d9417a4ad5b64c01",
+    "fbe6f2b49ad7c99416fb45dc05b8b9db37a3850017d7bfef81644d09afe9bcd4"
+  ],
+  "analysis_source_sha256": {
+    "analyze_decision_additions_2026_10_21.py": "b09c3a6ae746acfd6d1dd7faa60a495ec146e7835f7e12d1ef45c38ad8a883b4",
+    "analyze_direct_decisions_2026_10_20.py": "2517c3e6f8d32d2a9e0d403d8fc7a02f883883c42a3e008f7453addd43384916",
+    "analyze_frontier_reference.py": "157c5695d1bc745c1eff6926cea7d138b18b1e4cbe72e20becb03b681628ddad",
+    "test_analyze_decision_additions_2026_10_21.py": "5ffe3aa036d8dc4f0d8494c00979191656b80790658bfc9c167f324334629f7c"
+  },
+  "controls": {
+    "mammoth1": {
+      "n": 20,
+      "scored": {
+        "n": 20,
+        "correct": 17,
+        "answered": 20,
+        "failed": 0,
+        "wrong_valid": 3,
+        "accuracy": 0.85
+      },
+      "direct_scored_same_subset": {
+        "n": 20,
+        "correct": 17,
+        "answered": 20,
+        "failed": 0,
+        "wrong_valid": 3,
+        "accuracy": 0.85
+      },
+      "same_choice": 20,
+      "latency": {
+        "n": 20,
+        "median_ms": 232.29581299528945,
+        "p95_ms": 483.9120098011339
+      },
+      "scope": "Separate20-case route control only; never pooled into full-bank direct results"
+    },
+    "elephant1": {
+      "n": 20,
+      "scored": {
+        "n": 20,
+        "correct": 13,
+        "answered": 20,
+        "failed": 0,
+        "wrong_valid": 7,
+        "accuracy": 0.65
+      },
+      "direct_scored_same_subset": {
+        "n": 20,
+        "correct": 13,
+        "answered": 20,
+        "failed": 0,
+        "wrong_valid": 7,
+        "accuracy": 0.65
+      },
+      "same_choice": 20,
+      "latency": {
+        "n": 20,
+        "median_ms": 173.11102050734917,
+        "p95_ms": 221.31295625076746
+      },
+      "scope": "Separate20-case route control only; never pooled into full-bank direct results"
+    }
+  },
+  "verification": "Reconciled dispatches, attempts, results, software seals and every payload hash; private revision-bound scoring, raw first-attempt latency quantiles and charge sums verified. No route pooling.",
+  "privacy": "Aggregate evidence and hashes only; no correct answer keys, per-item correctness, credentials or account records"
+}

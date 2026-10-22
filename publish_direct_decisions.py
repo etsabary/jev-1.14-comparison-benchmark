@@ -391,10 +391,11 @@ def build():
 
 
 def hashes():
+    from archive_october21_presentation import previous
     paths={ROOT/n for n in ACTIVE}
     for folder in (DEST,ROOT/'docs'/NAME,archive.ARCHIVE):
         paths.update(p for p in folder.rglob('*') if p.is_file() and p.name!='release_checksums.json')
-    return {str(p.relative_to(ROOT)):digest(p) for p in sorted(paths)}
+    return {str(p.relative_to(ROOT)):digest(previous(p)) for p in sorted(paths)}
 
 
 if __name__=='__main__':
