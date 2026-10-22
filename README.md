@@ -8,7 +8,19 @@
 
 Benchmark runners, report builders and offline checks are grouped in [scripts/](scripts/README.md).
 
-![All 29 routes: accuracy, speed and cost](native_additions_2026-10-21/accuracy_speed_cost.png)
+## Repository guide
+
+| Folder | Contents |
+| --- | --- |
+| [documents](documents/README.md) | Category explanations, method notes, model coverage and earlier analyses |
+| [results](results/README.md) | Current statistics and figures, dated releases, sanitized run exports and historical evidence |
+| [data](data/README.md) | Original benchmark inputs and measurements; links to the full 1,342-question bank |
+| [scripts](scripts/README.md) | Runners, analysis, report builders, dependencies and offline checks |
+| [docs](docs/) | Published website files; public report URLs are unchanged |
+
+The latest release is [October 21](results/releases/native_additions_2026-10-21/). Folder organization does not change any score, question, timing or cost.
+
+![All 29 routes: accuracy, speed and cost](results/releases/native_additions_2026-10-21/accuracy_speed_cost.png)
 
 ## Results, speed and cost
 
@@ -111,9 +123,9 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 | All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
 | Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
 
-![Rules and evidence: all 29 routes, named categories, correct counts and percentages](native_additions_2026-10-21/rules.png)
+![Rules and evidence: all 29 routes, named categories, correct counts and percentages](results/releases/native_additions_2026-10-21/rules.png)
 
-[Full-size SVG](native_additions_2026-10-21/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
+[Full-size SVG](results/releases/native_additions_2026-10-21/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
 
 ### Ordering, schedules and assignments
 
@@ -127,9 +139,9 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 | Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
 | Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
 
-![Ordering, schedules and assignments: all 29 routes, named categories, correct counts and percentages](native_additions_2026-10-21/ordering.png)
+![Ordering, schedules and assignments: all 29 routes, named categories, correct counts and percentages](results/releases/native_additions_2026-10-21/ordering.png)
 
-[Full-size SVG](native_additions_2026-10-21/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
+[Full-size SVG](results/releases/native_additions_2026-10-21/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
 
 ### Claims, changing state and perspectives
 
@@ -145,9 +157,9 @@ Can the model count true statements, update a changing situation and separate wh
 | Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
 | Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
 
-![Claims, changing state and perspectives: all 29 routes, named categories, correct counts and percentages](native_additions_2026-10-21/state.png)
+![Claims, changing state and perspectives: all 29 routes, named categories, correct counts and percentages](results/releases/native_additions_2026-10-21/state.png)
 
-[Full-size SVG](native_additions_2026-10-21/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
+[Full-size SVG](results/releases/native_additions_2026-10-21/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
 
 ### Causes, plans and exceptions
 
@@ -163,9 +175,9 @@ Which actions work, which consequences change, and which rule or source controls
 | Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
 | Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
 
-![Causes, plans and exceptions: all 29 routes, named categories, correct counts and percentages](native_additions_2026-10-21/causes.png)
+![Causes, plans and exceptions: all 29 routes, named categories, correct counts and percentages](results/releases/native_additions_2026-10-21/causes.png)
 
-[Full-size SVG](native_additions_2026-10-21/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
+[Full-size SVG](results/releases/native_additions_2026-10-21/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
 
 ### Risk, strategy and system behavior
 
@@ -182,17 +194,17 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
 | Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
 
-![Risk, strategy and system behavior: all 29 routes, named categories, correct counts and percentages](native_additions_2026-10-21/uncertainty.png)
+![Risk, strategy and system behavior: all 29 routes, named categories, correct counts and percentages](results/releases/native_additions_2026-10-21/uncertainty.png)
 
-[Full-size SVG](native_additions_2026-10-21/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
+[Full-size SVG](results/releases/native_additions_2026-10-21/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
 
-Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](native_additions_2026-10-21/category_scores.csv).
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](results/releases/native_additions_2026-10-21/category_scores.csv).
 
 ## Questions, statistics and method
 
-Unchanged answer-free questions: [CSV](consolidated_2026-10-19/questions_1342.csv), [exact native JSONL](consolidated_2026-10-19/questions_1342.jsonl), [readable text](consolidated_2026-10-19/questions_1342.txt).
+Unchanged answer-free questions: [CSV](results/releases/consolidated_2026-10-19/questions_1342.csv), [exact native JSONL](results/releases/consolidated_2026-10-19/questions_1342.jsonl), [readable text](results/releases/consolidated_2026-10-19/questions_1342.txt).
 
-Current exports: [model CSV](native_additions_2026-10-21/model_statistics.csv), [category CSV](native_additions_2026-10-21/category_scores.csv), [aggregate JSON](native_additions_2026-10-21/statistics.json), [audit receipt](native_additions_2026-10-21/audit_receipt.json), [manifest](native_additions_2026-10-21/manifest.json).
+Current exports: [model CSV](results/releases/native_additions_2026-10-21/model_statistics.csv), [category CSV](results/releases/native_additions_2026-10-21/category_scores.csv), [aggregate JSON](results/releases/native_additions_2026-10-21/statistics.json), [audit receipt](results/releases/native_additions_2026-10-21/audit_receipt.json), [manifest](results/releases/native_additions_2026-10-21/manifest.json).
 
 The comparison contains 26 specialized decision models and three no-reasoning LLM reference routes: 29 × 1342 = 38,918 first attempts. All earlier 26 model records are preserved exactly. New full-bank runs: October 21, 2026, America/Toronto; Mammoth and Elephant direct through Baseten, Drex Max through OpenRouter’s pinned DeepInfra endpoint.
 
@@ -208,4 +220,4 @@ This is a developing benchmark with uneven category sizes and dependent variants
 
 Public exports contain unchanged answer-free question inputs, aggregate category scores and sanitized evidence hashes—not answer keys, per-item correctness, private verifier outputs, raw account state or credentials. Public checks verify consistency but cannot reproduce private-key scoring or raw-latency pooling. REAX 1 is not included: a hosted API for that exact fine-tune has not been confirmed.
 
-Offline checks: `python3 scripts/validate_october21_release.py`, `python3 scripts/validate_repository_layout.py` and `python3 -m unittest discover -s scripts -p "test_*.py"`. Earlier dated releases and their seals remain available unchanged. The source files were grouped under `scripts/` on October 22; this did not change any benchmark measurements, questions or graphs.
+Offline checks: `python3 scripts/validate_october21_release.py`, `python3 scripts/validate_repository_layout.py` and `python3 -m unittest discover -s scripts -p "test_*.py"`. Earlier dated releases and their seals remain available unchanged. On October 22, source files were grouped under `scripts/`, Markdown guides under `documents/`, and dated releases, run exports, archives and figures under `results/`. This changed navigation and physical paths, not measurements, questions, graphs or public website URLs.

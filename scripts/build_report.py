@@ -1,4 +1,5 @@
 """Build the current overall comparison, retaining the original selected runs."""
+from repo_layout import repo_file
 import json
 from pathlib import Path
 import re
@@ -38,7 +39,7 @@ def expand(text, parts):
 
 
 def build():
-    source = ROOT/'overall_expanded_2026-10-16/summary.json'
+    source = repo_file('overall_expanded_2026-10-16/summary.json', root=ROOT)
     assert source.exists(), 'Build the combined October 16 analysis first'
     s = json.loads(source.read_text())
     assert not s['pending_model_ids'], 'Do not publish an unfinished model expansion'
@@ -84,7 +85,7 @@ def build():
         f"{cost['missing_attempts']} attempts have unknown charges. API-returned charges and calculations from input-token usage and a published tariff are distinguished; neither is a statement of an independently reconciled invoice. "
         f"All {len(all_models)} tested runs, including the three unranked diagnostics, account for ${s['total_selected_accounted_cost']['known_usd']:.9f} in known charges or tariff calculations. "
         "Mercury's captured tariff had an 80% promotional discount. Its cost advantage is specific to that price.")
-    parts['ADDITIONS_ANALYSIS'] = (ROOT/'addition_analysis.md').read_text()+'\n'+(ROOT/'regular_additions_analysis.md').read_text()
+    parts['ADDITIONS_ANALYSIS'] = (repo_file('addition_analysis.md', root=ROOT)).read_text()+'\n'+(repo_file('regular_additions_analysis.md', root=ROOT)).read_text()
     p = pair('openai/gpt-6-luna', 'luna_decisions')
     parts['LUNA_COMPARISON'] = (f"Regular Luna answered **727/1,136** correctly, compared with **{ld['primary']['correct']}/1,136** for Luna Decisions. "
         f"Its core score was 431/640, compared with {ld['by_role']['core']['correct']}/640. "
@@ -158,33 +159,33 @@ def build():
         for key,label in [('eight_regular_llms','Eight regular LLMs'),('three_decisions','Original three Decisions services')]+[(m,models[m]['label']) for m in added]])
     parts['IDENTITIES'] = table(['Service','Returned identities and counts','Backend tag','Toronto dates'], [
         [models[m]['label'],'; '.join('`'+k+'` ('+str(v)+')' for k,v in models[m]['identities'].items()),models[m]['provider_tag'],', '.join(models[m]['dates_toronto'])] for m in order])
-    companion = json.loads((ROOT/'expansion_2026-10-15/companion_images.json').read_text())
+    companion = json.loads((repo_file('expansion_2026-10-15/companion_images.json', root=ROOT)).read_text())
     names = {'typesafe/jev-1.14':'Jev 1.14','openai/gpt-6-luna-decisions':'Luna Decisions','openai/gpt-6-luna':'Luna regular','openai/gpt-5.4-nano':'GPT-5.4 nano','google/gemini-2.5-flash-lite':'Gemini 2.5 Flash-Lite'}
     parts['IMAGES'] = table(['Image configuration','Correct / 200','Accuracy','Median full reply','Known actual 200-question cost'], [
         [names[m],v['correct_first'],pct(v['correct_first'],200),f"{v['latency_first_all_ms']['median']:.0f} ms",f"${v['core_cost']['reported_usd']:.8f}"+('*' if v['core_cost']['missing_records'] else '')] for m,v in companion['models'].items()])+'\nAn asterisk marks missing error charges. These are actual 200-question costs; the image repo’s per-1,000 chart remains a separately labelled normalization.\n'
-    parts['ANALYSIS'] = (ROOT/'report_sections.md').read_text()
-    text = expand((ROOT/'report_layout.md').read_text(), parts)
+    parts['ANALYSIS'] = (repo_file('report_sections.md', root=ROOT)).read_text()
+    text = expand((repo_file('report_layout.md', root=ROOT)).read_text(), parts)
     assert 'historical' not in text.lower()
-    (ROOT/'README.md').write_text(text)
-    functions = f'# Results by function and load level\n\nThe [main report](README.md) compares {len(models)} eligible services tested October 15 and 16. All cells below use strict first-attempt results. The same output-compliance inclusion rule applies to every table; the three excluded runs remain in the [diagnostics](OUTPUT_COMPLIANCE.md).\n\n'+(ROOT/'task_examples.md').read_text()+'\n## All 25 functions\n\n'
+    (repo_file('README.md', root=ROOT)).write_text(text)
+    functions = f'# Results by function and load level\n\nThe [main report](README.md) compares {len(models)} eligible services tested October 15 and 16. All cells below use strict first-attempt results. The same output-compliance inclusion rule applies to every table; the three excluded runs remain in the [diagnostics](OUTPUT_COMPLIANCE.md).\n\n'+(repo_file('task_examples.md', root=ROOT)).read_text()+'\n## All 25 functions\n\n'
     functions += table(['Function','n']+[models[m]['label'] for m in order], [[f['family'],f['n']]+[f"{f['models'][m]['correct']} ({pct(f['models'][m]['correct'],f['n'])})" for m in order] for f in s['by_family']])
     for field,heading in [('by_role','Core and related item types'),('by_level','Engineered load levels')]:
         functions += '## '+heading+'\n\n'+table(['Group','n']+[models[m]['label'] for m in order], [
             [v,models[order[0]][field][v]['attempted']]+[f"{models[m][field][v]['correct']} ({pct(models[m][field][v]['correct'],models[m][field][v]['attempted'])})" for m in order] for v in models[order[0]][field]])
-    (ROOT/'FUNCTIONS.md').write_text(functions.rstrip()+'\n')
-    diagnostics = expand((ROOT/'output_compliance_layout.md').read_text(),{
+    (repo_file('FUNCTIONS.md', root=ROOT)).write_text(functions.rstrip()+'\n')
+    diagnostics = expand((repo_file('output_compliance_layout.md', root=ROOT)).read_text(),{
         'EXCLUDED_RESULTS':table(['Unranked diagnostic','Usable / 1,136','Model-output failures','Provider failures','Correct among usable','Strict full-bank result','Median','Known run cost'],[
             [all_models[m]['label'],all_models[m]['primary']['answered'],s['output_compliance'][m]['model_output_failures'],
              s['output_compliance'][m]['provider_transport_failures'],
              f"{all_models[m]['primary']['correct']}/{all_models[m]['primary']['answered']} ({pct(all_models[m]['primary']['correct'],all_models[m]['primary']['answered'])})",
              f"{all_models[m]['primary']['correct']}/1,136 ({pct(all_models[m]['primary']['correct'],1136)})",
              f"{all_models[m]['latency_first_all']['median_ms']:.0f} ms",f"${all_models[m]['cost_all_attempts']['known_usd']:.8f}"] for m in publication['excluded_model_ids']])})
-    (ROOT/'OUTPUT_COMPLIANCE.md').write_text(diagnostics)
-    for path in (ROOT/'figures').iterdir():
-        shutil.copyfile(path, ROOT/'docs/figures'/path.name)
-    (ROOT/'docs/index.html').write_text(render(text,f'{len(models)} models on 1136 text decisions'))
-    (ROOT/'docs/functions.html').write_text(render(functions,'Text decision results by function and load'))
-    (ROOT/'docs/output_compliance.html').write_text(render(diagnostics,'Output compliance diagnostics'))
+    (repo_file('OUTPUT_COMPLIANCE.md', root=ROOT)).write_text(diagnostics)
+    for path in (repo_file('figures', root=ROOT)).iterdir():
+        shutil.copyfile(path, repo_file('docs/figures', root=ROOT)/path.name)
+    (repo_file('docs/index.html', root=ROOT)).write_text(render(text,f'{len(models)} models on 1136 text decisions'))
+    (repo_file('docs/functions.html', root=ROOT)).write_text(render(functions,'Text decision results by function and load'))
+    (repo_file('docs/output_compliance.html', root=ROOT)).write_text(render(diagnostics,'Output compliance diagnostics'))
     print('Built overall README, function tables and Pages; original evidence preserved')
 
 

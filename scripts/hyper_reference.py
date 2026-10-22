@@ -4,6 +4,7 @@ No purchases, top-ups, provider changes, tools or answer-dependent retries.
 Reported USD-equivalent usage and Hypercredits are not a cash invoice. Hyper
 does not expose reasoning-token telemetry here: record that as unknown, not0.
 """
+from repo_layout import repo_file
 import argparse
 from collections import Counter
 from decimal import Decimal
@@ -17,7 +18,7 @@ import bounded_reference_runner as controller
 import frontier_reference as base
 
 ROOT, BANK_HASH = base.ROOT, base.BANK_HASH
-OUT = ROOT / 'runs/hyper_qwen38max_none_1342_2026-10-19'
+OUT = repo_file('runs/hyper_qwen38max_none_1342_2026-10-19', root=ROOT)
 MODEL = 'qwen3.8-max'
 SPEC = {'host': 'hyper.charm.land', 'path': '/v1/chat/completions'}
 GUARD = Decimal('3.00')
@@ -102,7 +103,7 @@ def probe_cost(out):
 
 
 def software():
-    return {**base.software(), **{n: file_hash(ROOT / n) for n in ('bounded_reference_runner.py', 'hyper_reference.py', 'test_hyper_reference.py')}}
+    return {**base.software(), **{n: file_hash(repo_file(n, root=ROOT)) for n in ('bounded_reference_runner.py', 'hyper_reference.py', 'test_hyper_reference.py')}}
 
 
 def freeze(out, plan):

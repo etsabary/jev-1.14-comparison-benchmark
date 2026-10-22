@@ -1,4 +1,5 @@
 """Offline fixed-scale accessibility and current-release publication checks."""
+from repo_layout import repo_file
 from hashlib import sha256
 from html.parser import HTMLParser
 import json
@@ -111,10 +112,10 @@ class October18Publication(unittest.TestCase):
         b.reference_hashes()
 
     def test_previous_presentation_and_tests_are_archived_against_original_seal(self):
-        folder=b.ROOT/'publication_archive_2026-10-16'
+        folder=repo_file('publication_archive_2026-10-16', root=b.ROOT)
         manifest=json.loads((folder/'manifest.json').read_text())
         self.assertEqual(manifest['source_commit'],'83dfec83825a39c55a225b9e567c0fc0513597e4')
-        old=json.loads((b.ROOT/'expansion_2026-10-15/release_checksums.json').read_text())
+        old=json.loads((repo_file('expansion_2026-10-15/release_checksums.json', root=b.ROOT)).read_text())
         self.assertEqual(len(manifest['files']),8)
         for name, entry in manifest['files'].items():
             self.assertEqual(entry['archive_path'],name+'.snapshot')
@@ -124,7 +125,7 @@ class October18Publication(unittest.TestCase):
     def test_current_ranking_rows_match_every_full_bank_measurement(self):
         if not self.current_pages(): self.skipTest('Current publication has not been generated yet')
         summary=json.loads(b.SOURCE.read_text())
-        lines=(b.ROOT/'README.md').read_text().splitlines()
+        lines=(repo_file('README.md', root=b.ROOT)).read_text().splitlines()
         begin=next(i for i,line in enumerate(lines) if line.startswith('| Model | Correct / 1,136'))
         rows=[]
         for line in lines[begin+2:]:
@@ -145,37 +146,37 @@ class October18Publication(unittest.TestCase):
             self.assertEqual(cells[7],', '.join(sorted(value['dates_toronto'])))
 
     def current_pages(self):
-        path = b.ROOT / 'docs/index.html'
+        path = repo_file('docs/index.html', root=b.ROOT)
         return path.exists() and b.COHORT_MARKER in path.read_text()
 
     def test_generated_current_pages_links_images_and_37_model_tables(self):
         if not self.current_pages(): self.skipTest('Current publication has not been generated yet')
         summary = json.loads(b.SOURCE.read_text())
-        readme = (b.ROOT / 'README.md').read_text()
+        readme = (repo_file('README.md', root=b.ROOT)).read_text()
         self.assertIn(b.LEGEND_HEADING, readme)
         self.assertNotIn('hardening_2026-10-18', readme)
         for m in summary['publication']['eligible_model_ids']:
             self.assertIn(summary['models'][m]['label'], readme)
             self.assertIn(f"{summary['models'][m]['latency_first_all']['median_ms']:.0f} ms", readme)
         for filename in ('index.html', 'functions.html', 'output_compliance.html'):
-            path = b.ROOT / 'docs' / filename
+            path = repo_file('docs', root=b.ROOT) / filename
             parser = Links()
             parser.feed(path.read_text())
             for target in parser.targets:
                 if re.match(r'^(https?:|mailto:|#|data:)', target): continue
                 self.assertTrue((path.parent / target.split('#')[0]).exists(), target)
-        html = (b.ROOT / 'docs/index.html').read_text()
+        html = (repo_file('docs/index.html', root=b.ROOT)).read_text()
         self.assertIn('metric-speed', html)
         self.assertIn('metric-cost', html)
         self.assertIn('cost-incomplete', html)
 
     def test_old_figure_parity_and_new_scoped_copy(self):
         if not self.current_pages(): self.skipTest('Current publication has not been generated yet')
-        for path in (b.ROOT / 'figures').iterdir():
+        for path in (repo_file('figures', root=b.ROOT)).iterdir():
             self.assertTrue(path.is_file())
-            self.assertEqual(path.read_bytes(), (b.ROOT / 'docs/figures' / path.name).read_bytes())
+            self.assertEqual(path.read_bytes(), (repo_file('docs/figures', root=b.ROOT) / path.name).read_bytes())
         for source, target in b.figure_mapping().items():
-            self.assertEqual((b.ROOT / source).read_bytes(), (b.ROOT / 'docs' / target).read_bytes())
+            self.assertEqual((repo_file(source, root=b.ROOT)).read_bytes(), (repo_file('docs', root=b.ROOT) / target).read_bytes())
 
 
 if __name__ == '__main__': unittest.main()

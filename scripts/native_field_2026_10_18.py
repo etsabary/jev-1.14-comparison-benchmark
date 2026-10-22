@@ -5,6 +5,7 @@ question serializer. Existing runs are never modified. Explicit --execute is
 required for paid calls; compatibility probes are separate from scored runs.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 from repo_layout import source_file
 
 import argparse
@@ -24,7 +25,7 @@ import added_decisions as old
 import decision_refresh as d
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNS = ROOT / 'runs/native_field_2026-10-18'
+RUNS = repo_file('runs/native_field_2026-10-18', root=ROOT)
 SOURCES = [Path(__file__).name, 'test_native_field_2026_10_18.py',
            'added_decisions.py', 'decision_refresh.py', 'run_benchmark.py']
 MODEL_ROWS = [
@@ -59,10 +60,10 @@ def payload(question, model_id):
 
 def prepare(model_id, out):
     spec = MODELS[model_id]
-    baseline = json.loads((ROOT/'data/baseline_reference_manifest.json').read_text())
-    assert sha256((ROOT/'data/questions_1136.csv').read_bytes()).hexdigest() == baseline['questions_sha256']
-    questions = {q['item_id']: q for q in d.read_csv(ROOT/'data/questions_1136.csv')}
-    order = list(dict.fromkeys(r['item_id'] for r in d.rows(ROOT/'expansion_2026-10-15/request_plan.jsonl')))
+    baseline = json.loads((repo_file('data/baseline_reference_manifest.json', root=ROOT)).read_text())
+    assert sha256((repo_file('data/questions_1136.csv', root=ROOT)).read_bytes()).hexdigest() == baseline['questions_sha256']
+    questions = {q['item_id']: q for q in d.read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
+    order = list(dict.fromkeys(r['item_id'] for r in d.rows(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT))))
     assert len(questions) == len(order) == 1136 and set(questions) == set(order)
     plan = []
     for n, item_id in enumerate(order):
@@ -79,7 +80,7 @@ def prepare(model_id, out):
     d.save_bound(out/'manifest.json', dict(version='native-field-2026-10-18-v1', model_id=model_id,
         model=spec, questions_sha256=baseline['questions_sha256'], planned_cases=1136,
         endpoint='https://openrouter.ai/api/alpha/decisions', request_plan=plan,
-        timing=json.loads((ROOT/'decision_refresh_2026-10-15/run_manifest.json').read_text())['timing'],
+        timing=json.loads((repo_file('decision_refresh_2026-10-15/run_manifest.json', root=ROOT)).read_text())['timing'],
         concurrency=dict(maximum_per_model=2, questions_per_wave=2, maximum_active_models=5,
                          barrier='Both cases settle before next wave'),
         primary='First attempt / 1136; no correctness-dependent retries or exclusions',
@@ -88,7 +89,7 @@ def prepare(model_id, out):
         soft_known_spend_guard_usd=str(MAX_KNOWN_COST_PER_MODEL),
         identity_limit='Returned names and pinned backend are checked, not independent proof of immutable weights; Clef names have no dated checkpoint',
         input='Unchanged native state, instructions, question and five criteria', images_tested=False))
-    d.save_bound(out/'software.json', {name: sha256(source_file(ROOT/name).read_bytes()).hexdigest() for name in SOURCES})
+    d.save_bound(out/'software.json', {name: sha256(source_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest() for name in SOURCES})
     return questions, plan
 
 

@@ -1,4 +1,5 @@
 """Install a validated, public-safe offline correction export exactly once."""
+from repo_layout import repo_file
 import argparse
 from collections import Counter
 from hashlib import sha256
@@ -8,7 +9,7 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT / 'corrected_2026-10-18'
+DEST = repo_file('corrected_2026-10-18', root=ROOT)
 
 
 def load_validator(path):

@@ -3,6 +3,7 @@
 Offline only. Scoring requires the external original answer key. No key or
 individual correctness records are written to the public release.
 """
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file, source_file
 import argparse
 from collections import Counter
@@ -21,8 +22,8 @@ from score_expansion import load_key, normalized_llm
 from text_models import EXPANSION, HISTORICAL, MODELS as LLMS, first_and_eventual, money, quantiles, rows, read_csv
 
 ROOT = d.ROOT
-REFRESH = ROOT/'decision_refresh_2026-10-15'
-MATCHED = ROOT/'matched_2026-10-15'
+REFRESH = repo_file('decision_refresh_2026-10-15', root=ROOT)
+MATCHED = repo_file('matched_2026-10-15', root=ROOT)
 
 
 def write(path, value):
@@ -80,9 +81,9 @@ def validate_refresh():
     for name, expected in json.loads((REFRESH/'checksums.json').read_text()).items():
         assert sha256((REFRESH/name).read_bytes()).hexdigest() == expected, name
     software = json.loads((REFRESH/'software.json').read_text())
-    assert sha256(frozen_file(source_file(ROOT/'decision_refresh.py')).read_bytes()).hexdigest() == software['runner_sha256']
-    assert sha256(frozen_file(source_file(ROOT/'test_decision_refresh.py')).read_bytes()).hexdigest() == software['tests_sha256']
-    assert sha256((ROOT/'data/questions_1136.csv').read_bytes()).hexdigest() == manifest['questions_sha256']
+    assert sha256(frozen_file(source_file(repo_file('decision_refresh.py', root=ROOT))).read_bytes()).hexdigest() == software['runner_sha256']
+    assert sha256(frozen_file(source_file(repo_file('test_decision_refresh.py', root=ROOT))).read_bytes()).hexdigest() == software['tests_sha256']
+    assert sha256((repo_file('data/questions_1136.csv', root=ROOT)).read_bytes()).hexdigest() == manifest['questions_sha256']
     assert manifest['timing'] == json.loads((EXPANSION/'run_manifest.json').read_text())['timing']
     plan, attempts, results = (rows(REFRESH/name) for name in ('request_plan.jsonl', 'attempts.jsonl', 'results.jsonl'))
     assert len(plan) == len(results) == 3408
@@ -90,7 +91,7 @@ def validate_refresh():
     assert len({(p['item_id'], p['model_requested']) for p in plan}) == 3408
     done = d.reconcile(rows(REFRESH/'dispatches.jsonl'), attempts, results, plan)
     assert len(done) == 3408
-    questions = {q['item_id']: q for q in read_csv(ROOT/'data/questions_1136.csv')}
+    questions = {q['item_id']: q for q in read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
     indexed = {p['request_index']: p for p in plan}
     original_order = list(dict.fromkeys(p['item_id'] for p in rows(EXPANSION/'request_plan.jsonl')))
     assert list(dict.fromkeys(p['item_id'] for p in plan)) == original_order
@@ -136,9 +137,9 @@ def analyze(key_path, write_output=False):
     old = json.loads((EXPANSION/'summary.json').read_text())
     llm_first, llm_eventual = first_and_eventual(rows(EXPANSION/'attempts.jsonl'))
     llm_attempts = rows(EXPANSION/'attempts.jsonl')
-    questions = read_csv(ROOT/'data/questions_1136.csv')
-    metadata = {r['item_id']: r for r in read_csv(ROOT/'data/item_metadata.csv')}
-    selection = json.loads((ROOT/'data/selection_manifest.json').read_text())
+    questions = read_csv(repo_file('data/questions_1136.csv', root=ROOT))
+    metadata = {r['item_id']: r for r in read_csv(repo_file('data/item_metadata.csv', root=ROOT))}
+    selection = json.loads((repo_file('data/selection_manifest.json', root=ROOT)).read_text())
     model_rows = {m: [normalized_llm(a) for a in llm_first.values() if a['model_requested'] == m] for m in LLMS}
     models = {m: deepcopy(old['models'][m]) for m in LLMS}
     for model, spec in d.MODELS.items():
@@ -191,7 +192,7 @@ def analyze(key_path, write_output=False):
     none = [i for i in metadata if not any(correct(index[m][i], keys) for m in models)]
     repeat = {}
     for m, filename in HISTORICAL.items():
-        previous = [normalize(r) for r in read_csv(ROOT/'data'/filename)]
+        previous = [normalize(r) for r in read_csv(repo_file('data', root=ROOT)/filename)]
         repeat[m] = {'previous_primary': old['models'][m]['primary'],
                      'previous_saved_latency': old['historical_speeds'][m]['full_bank_saved_latency_all_outcomes'],
                      'old_to_new': pairwise(previous, model_rows[m], keys)}
@@ -216,7 +217,7 @@ def analyze(key_path, write_output=False):
                    'Native Decisions expose dated snapshots; ordinary LLM aliases do not guarantee hidden checkpoint immutability',
                    '640 core questions plus 496 dependent variants; one pass, fixed generated bank, no new key audit',
                    'Strict first attempt is primary; recovery and post-hoc LLM leading-ID sensitivity separate'],
-        'source_files_sha256': {str(p.relative_to(ROOT)): sha256(p.read_bytes()).hexdigest() for p in [
+        'source_files_sha256': {str(logical_relative(p, root=ROOT)): sha256(p.read_bytes()).hexdigest() for p in [
             EXPANSION/'attempts.jsonl', EXPANSION/'summary.json', REFRESH/'attempts.jsonl', REFRESH/'request_plan.jsonl', REFRESH/'run_manifest.json']},
     }
     if write_output:

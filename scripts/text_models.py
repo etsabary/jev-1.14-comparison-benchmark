@@ -3,6 +3,7 @@
 No network operations, credentials or answer key are used by this module.
 The original live execution is described by the frozen run manifest.
 """
+from repo_layout import repo_file
 from collections import Counter, defaultdict
 from datetime import datetime
 from decimal import Decimal
@@ -15,7 +16,7 @@ import re
 from run_benchmark import canonical_bytes, digest, read_csv
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPANSION = ROOT/'expansion_2026-10-15'
+EXPANSION = repo_file('expansion_2026-10-15', root=ROOT)
 MODELS = {
     'openai/gpt-6-luna': ('Luna 6 regular', 'openai', 'OpenAI', 'switchable'),
     'openai/gpt-5.4-nano': ('GPT-5.4 nano', 'openai', 'OpenAI', 'switchable'),
@@ -111,10 +112,10 @@ def first_and_eventual(attempts):
 
 
 def historical_speeds():
-    original = json.loads((ROOT/'analysis/summary.json').read_text())
+    original = json.loads((repo_file('analysis/summary.json', root=ROOT)).read_text())
     result = {}
     for model, filename in HISTORICAL.items():
-        records = read_csv(ROOT/'data'/filename)
+        records = read_csv(repo_file('data', root=ROOT)/filename)
         successful = [r for r in records if r['http_status'] == '200']
         group = 'luna' if model == 'luna_decisions' else model
         result[model] = {
@@ -141,13 +142,13 @@ def validate():
     attempts = rows(EXPANSION/'attempts.jsonl')
     dispatches = rows(EXPANSION/'dispatches.jsonl')
     results = rows(EXPANSION/'results.jsonl')
-    questions = {r['item_id']: r for r in read_csv(ROOT/'data/questions_1136.csv')}
+    questions = {r['item_id']: r for r in read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
     assert len(plan) == len(results) == 9088
     assert len(attempts) == len(dispatches) == 9096
     assert len({(p['item_id'], p['model_requested']) for p in plan}) == 9088
     assert Counter(p['model_requested'] for p in plan) == Counter({m: 1136 for m in MODELS})
     for name, expected in manifest['original_files_sha256'].items():
-        assert sha256((ROOT/'data'/name).read_bytes()).hexdigest() == expected
+        assert sha256((repo_file('data', root=ROOT)/name).read_bytes()).hexdigest() == expected
     signatures = lambda rr: [(r['request_index'], r['attempt']) for r in rr]
     assert len(set(signatures(attempts))) == len(attempts)
     assert len(set(signatures(dispatches))) == len(dispatches)

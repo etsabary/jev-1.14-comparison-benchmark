@@ -4,6 +4,7 @@ Only this controller reads the external gold key. It never supplies an answer
 or item-specific feedback to the inference executor. Decisions stop a model or
 release the next unchanged prefix under the author's approved October18 rule.
 """
+from repo_layout import repo_file
 from repo_layout import source_file
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -74,7 +75,7 @@ def assess(model_id, keys):
 
 
 def invoke(model_id, *args):
-    p=subprocess.run([sys.executable,str(source_file(ROOT/'llm_field_2026_10_18.py')),
+    p=subprocess.run([sys.executable,str(source_file(repo_file('llm_field_2026_10_18.py', root=ROOT))),
                       '--model',model_id,*args],capture_output=True,text=True,cwd=ROOT)
     if p.stdout.strip():print(p.stdout.strip(),flush=True)
     if p.returncode:

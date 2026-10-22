@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import shlex
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -44,10 +45,35 @@ class RepositoryLayout(unittest.TestCase):
         self.assertNotEqual(active.read_bytes(), old.read_bytes())
         self.assertEqual(layout.frozen_file(active), old)
 
-    def test_data_paths_are_not_redirected(self):
-        path = layout.ROOT / 'consolidated_2026-10-19/questions_1342.jsonl'
-        self.assertEqual(layout.source_file(path), path)
-        self.assertEqual(layout.frozen_file(path), path)
+    def test_logical_evidence_names_survive_physical_relocation(self):
+        name = 'consolidated_2026-10-19/questions_1342.jsonl'
+        path = layout.ROOT / 'results/releases' / name
+        self.assertEqual(layout.repo_file(name), path)
+        self.assertEqual(layout.source_file(name), path)
+        self.assertEqual(layout.frozen_file(name), path)
+        self.assertEqual(layout.logical_relative(path), Path(name))
+        self.assertEqual(layout.repo_file(path), path)
+
+    def test_external_roots_and_private_runtime_paths_are_not_redirected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            name = 'consolidated_2026-10-19/questions_1342.jsonl'
+            self.assertEqual(layout.repo_file(name, root=root), root / name)
+            self.assertEqual(layout.logical_relative(root / name, root=root), Path(name))
+        self.assertEqual(layout.repo_file('runs/private-run'), layout.ROOT / 'runs/private-run')
+
+    def test_document_paths_round_trip_and_keep_original_sealed_bytes(self):
+        current = layout.repo_file('FUNCTIONS.md')
+        self.assertEqual(current, layout.ROOT / 'documents/FUNCTIONS.md')
+        self.assertEqual(layout.logical_relative(current), Path('FUNCTIONS.md'))
+        self.assertNotEqual(current, layout.frozen_file(current))
+        self.assertIn('../results/releases/', current.read_text())
+
+    def test_committed_seal_guard_uses_the_physical_git_path(self):
+        import freeze_corrected_release as seal
+        with patch.object(seal.subprocess, 'run', return_value=SimpleNamespace(returncode=0)) as run:
+            self.assertTrue(seal.committed_seal())
+        self.assertIn('HEAD:results/releases/corrected_2026-10-18/release_checksums.json', run.call_args.args[0])
 
     def test_report_renderers_still_build_all_current_rows_and_categories(self):
         import publish_october21_additions as report

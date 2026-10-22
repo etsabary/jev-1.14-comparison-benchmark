@@ -1,4 +1,5 @@
 """Offline integration checks for the refreshed eleven-model publication."""
+from repo_layout import repo_file
 from repo_layout import frozen_file
 from copy import deepcopy
 from hashlib import sha256
@@ -33,7 +34,7 @@ class Matched(unittest.TestCase):
 
     def test_selected_sources_frozen(self):
         for name,expected in self.summary['source_files_sha256'].items():
-            self.assertEqual(sha256(frozen_file(a.ROOT/name).read_bytes()).hexdigest(),expected)
+            self.assertEqual(sha256(frozen_file(repo_file(name, root=a.ROOT)).read_bytes()).hexdigest(),expected)
 
     def test_native_refresh_all_attempts(self):
         first,eventual,attempts = a.validate_refresh()

@@ -6,6 +6,7 @@ authored, checksum-bound decision receipt; this executor never loads the gold
 key or computes correctness. A compatibility probe is a separate, unscored call.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 from repo_layout import source_file, verify_software
 
 import argparse
@@ -24,7 +25,7 @@ import decision_refresh as d
 import text_models as chat
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNS = ROOT / 'runs/llm_field_2026-10-18'
+RUNS = repo_file('runs/llm_field_2026-10-18', root=ROOT)
 PATH = '/api/v1/chat/completions'
 SCREEN_SIZE = 100
 GUARD = Decimal('0.25')
@@ -83,7 +84,7 @@ def file_hash(path):
 def source_hashes():
     names = ('llm_field_2026_10_18.py', 'test_llm_field_2026_10_18.py',
              'added_decisions.py', 'decision_refresh.py', 'text_models.py', 'run_benchmark.py')
-    return {name: file_hash(ROOT / name) for name in names}
+    return {name: file_hash(repo_file(name, root=ROOT)) for name in names}
 
 
 def payload(question, model_id):
@@ -112,11 +113,11 @@ def payload(question, model_id):
 def prepare(model_id):
     """Pure local input reconstruction; no outputs, network, credential or gold read."""
     cfg = MODELS[model_id]
-    bank = ROOT / 'data/questions_1136.csv'
-    baseline = json.loads((ROOT / 'data/baseline_reference_manifest.json').read_text())
+    bank = repo_file('data/questions_1136.csv', root=ROOT)
+    baseline = json.loads((repo_file('data/baseline_reference_manifest.json', root=ROOT)).read_text())
     assert file_hash(bank) == baseline['questions_sha256'], 'Frozen bank changed'
     questions = {q['item_id']: q for q in d.read_csv(bank)}
-    order = list(dict.fromkeys(r['item_id'] for r in d.rows(ROOT / 'expansion_2026-10-15/request_plan.jsonl')))
+    order = list(dict.fromkeys(r['item_id'] for r in d.rows(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT))))
     assert len(questions) == len(order) == 1136 and set(order) == set(questions)
     plan = []
     for position, item_id in enumerate(order):
@@ -141,8 +142,8 @@ def freeze(model_id, out, plan):
     d.save_bound(out / 'manifest.json', {
         'version': 'october-18-answer-blind-chat-screen-v1', 'model_id': model_id,
         'model': cfg, 'question_count': 1136, 'screen_question_count': SCREEN_SIZE,
-        'questions_sha256': file_hash(ROOT / 'data/questions_1136.csv'),
-        'reference_order_sha256': file_hash(ROOT / 'expansion_2026-10-15/request_plan.jsonl'),
+        'questions_sha256': file_hash(repo_file('data/questions_1136.csv', root=ROOT)),
+        'reference_order_sha256': file_hash(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT)),
         'endpoint': 'https://' + cfg['host'] + cfg['path'],
         'question_order': 'Exact saved eight-LLM bank order; first100 are the fixed sequential prefix, not a random representative sample',
         'prompt': ('Tev1 documented system+JSON state/question/labelled options; maps A-E to original1-5'

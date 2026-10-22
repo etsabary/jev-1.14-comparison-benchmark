@@ -1,4 +1,5 @@
 """Public consistency/privacy checks; no inference, credentials or correct keys."""
+from repo_layout import repo_file
 from collections import Counter
 import csv
 from decimal import Decimal
@@ -38,7 +39,7 @@ def validate():
     assert s['ranked_model_ids'][0]=='reference_sol'
     assert b.digest(b.BASE/'statistics.json')==s['prior_statistics_sha256']==manifest['prior_statistics_sha256']
     assert b.digest(b.BASE/'release_checksums.json')==manifest['prior_release_seal_sha256']
-    assert b.digest(b.ROOT/'consolidated_2026-10-19/questions_1342.jsonl')==manifest['bank_sha256']==b.prior.BANK_HASH
+    assert b.digest(repo_file('consolidated_2026-10-19/questions_1342.jsonl', root=b.ROOT))==manifest['bank_sha256']==b.prior.BANK_HASH
     for mid,m in s['models'].items():
         assert m['n']==1342 and m['correct']+m['wrong_valid']+m['failed']==1342
         assert m['answered']+m['failed']==1342 and sum(v['n'] for v in m['families'].values())==1342
@@ -63,11 +64,11 @@ def validate():
     assert {p.name for p in b.DEST.iterdir()}==set(manifest['artifacts'])|{'manifest.json'}|({'release_checksums.json'} if (b.DEST/'release_checksums.json').exists() else set())
     for path in b.DEST.iterdir():
         if path.name=='release_checksums.json':continue
-        assert path.read_bytes()==(b.ROOT/'docs'/b.NAME/path.name).read_bytes()
+        assert path.read_bytes()==(repo_file('docs', root=b.ROOT)/b.NAME/path.name).read_bytes()
         if path.suffix!='.png':
             check=privacy(path.read_text())
             if path.suffix=='.json':check(json.loads(path.read_text()))
-    pages=[b.DEST/'report.html',b.ROOT/'docs/report.html']
+    pages=[b.DEST/'report.html',repo_file('docs/report.html', root=b.ROOT)]
     for path in pages:
         page=Page();page.feed(previous(path).read_text())
         assert len(page.ids)==len(set(page.ids))
@@ -108,11 +109,11 @@ def validate():
     assert all(caps['models'][mid]['image_input'] for mid in b.NEW_IDS)
     assert all(re.fullmatch('[a-f0-9]{64}',v['source_sha256']) for v in caps['models'].values())
     for name in ('README.md','FUNCTIONS.md','IMAGE_CAPABILITIES.md','OUTPUT_COMPLIANCE.md'):
-        text=previous(b.ROOT/name).read_text();privacy(text)
+        text=previous(repo_file(name, root=b.ROOT)).read_text();privacy(text)
         assert 'jev-1.14-comparison-benchmark' not in text
         for target in re.findall(r'\]\(([^)]+)\)',text):
-            if not re.match(r'^(https?:|mailto:|#)',target):assert (b.ROOT/target.split('#')[0]).exists(),target
-    text=previous(b.ROOT/'README.md').read_text()
+            if not re.match(r'^(https?:|mailto:|#)',target):assert (repo_file(target.split('#')[0], root=b.ROOT)).exists(),target
+    text=previous(repo_file('README.md', root=b.ROOT)).read_text()
     for m in s['models'].values():assert m['label'] in text
     assert '34,892' in text and 'Free public access' in text and '23 specialized' in text
     from repo_identity import validate as old_release

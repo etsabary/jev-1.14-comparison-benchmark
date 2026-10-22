@@ -1,4 +1,5 @@
 """Plot the eleven selected October 15 runs with matched response timing."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -9,8 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT/'matched_2026-10-15'
-DEST = ROOT/'figures'
+SOURCE = repo_file('matched_2026-10-15', root=ROOT)
+DEST = repo_file('figures', root=ROOT)
 NATIVE = {'jev113', 'jev114', 'luna_decisions'}
 SHORT = {'jev113':'Jev 1.13','jev114':'Jev 1.14','luna_decisions':'Luna Decisions',
          'openai/gpt-6-luna':'Luna regular','openai/gpt-5.4-nano':'GPT-5.4 nano',

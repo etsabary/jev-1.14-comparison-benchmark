@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Public evidence validation. This checks consistency, not the private gold key."""
+from repo_layout import repo_file
 from collections import Counter
 import json
 from pathlib import Path
@@ -9,19 +10,19 @@ from run_benchmark import read_csv,prepare_tasks
 
 
 def validate():
-    tasks=prepare_tasks(ROOT/"data/questions_1136.csv",ROOT/"data/results_jev113.csv","typesafe/jev-1.14")
+    tasks=prepare_tasks(repo_file("data/questions_1136.csv", root=ROOT),repo_file("data/results_jev113.csv", root=ROOT),"typesafe/jev-1.14")
     assert len(tasks)==1136
     indexed={t["item_id"]:t for t in tasks}
-    baseline=json.loads((ROOT/"data/baseline_reference_manifest.json").read_text())
-    assert baseline["questions_sha256"]==file_hash(ROOT/"data/questions_1136.csv")
-    assert baseline["jev_decisions_sha256"]==file_hash(ROOT/"data/results_jev113.csv")
-    assert baseline["luna_decisions_sha256"]==file_hash(ROOT/"data/results_luna.csv")
-    summary=json.loads((ROOT/"analysis/summary.json").read_text())
+    baseline=json.loads((repo_file("data/baseline_reference_manifest.json", root=ROOT)).read_text())
+    assert baseline["questions_sha256"]==file_hash(repo_file("data/questions_1136.csv", root=ROOT))
+    assert baseline["jev_decisions_sha256"]==file_hash(repo_file("data/results_jev113.csv", root=ROOT))
+    assert baseline["luna_decisions_sha256"]==file_hash(repo_file("data/results_luna.csv", root=ROOT))
+    summary=json.loads((repo_file("analysis/summary.json", root=ROOT)).read_text())
     assert summary["key_sha256"]==baseline["key_sha256"]
-    attempts=[json.loads(x) for x in (ROOT/"data/attempts_jev114.jsonl").read_text().splitlines()]
+    attempts=[json.loads(x) for x in (repo_file("data/attempts_jev114.jsonl", root=ROOT)).read_text().splitlines()]
     counts=Counter(a["item_id"] for a in attempts)
     for model in ["jev113","jev114","luna"]:
-        rows=read_csv(ROOT/f"data/results_{model}.csv")
+        rows=read_csv(repo_file(f"data/results_{model}.csv", root=ROOT))
         assert len(rows)==len({r["item_id"] for r in rows})==1136
         assert {r["item_id"] for r in rows}==set(indexed)
         normalized=[normalize(r) for r in rows]
@@ -33,7 +34,7 @@ def validate():
             for metric in ["attempted","answered","correct","wrong","unanswered"]:
                 assert sum(r[model][metric] for r in summary["by_"+field])==m[metric]
         if model=="jev114":
-            saved={r["item_id"]:r for r in read_csv(ROOT/"data/decisions_jev114.csv")}
+            saved={r["item_id"]:r for r in read_csv(repo_file("data/decisions_jev114.csv", root=ROOT))}
             for raw,derived in zip(rows,normalized):
                 i=raw["item_id"]
                 assert raw["model_requested"]=="typesafe/jev-1.14"
@@ -51,9 +52,9 @@ def validate():
     assert u["http_attempts"]==len(attempts)==1136
     assert abs(u["reported_cost_usd"]-sum(a["provider_cost_usd"] or 0 for a in attempts))<1e-12
     forbidden={"gold_option","gold_canonical","gold_text","explanation"}
-    for p in (ROOT/"data").glob("*.csv"):assert not forbidden.intersection(read_csv(p)[0]),p
-    for name,digest in json.loads((ROOT/"data/checksums.json").read_text()).items():assert file_hash(ROOT/name)==digest,name
-    for image in (ROOT/"figures").glob("*"):assert image.read_bytes()==(ROOT/"docs/figures"/image.name).read_bytes()
+    for p in (repo_file("data", root=ROOT)).glob("*.csv"):assert not forbidden.intersection(read_csv(p)[0]),p
+    for name,digest in json.loads((repo_file("data/checksums.json", root=ROOT)).read_text()).items():assert file_hash(repo_file(name, root=ROOT))==digest,name
+    for image in (repo_file("figures", root=ROOT)).glob("*"):assert image.read_bytes()==(repo_file("docs/figures", root=ROOT)/image.name).read_bytes()
     print("PASS: 1,136 identical inputs; unchanged baseline bytes; pinned 1.14 snapshot; all attempts; choice normalization; aggregate arithmetic; figure parity; checksums; no public gold fields")
 
 

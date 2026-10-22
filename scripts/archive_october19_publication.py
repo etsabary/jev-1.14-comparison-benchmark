@@ -1,4 +1,5 @@
 """Preserve the exact October18 presentation against its existing seal."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -6,12 +7,12 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 COMMIT = '089c4326cfebf42d91402bb8abfa267a4236929a'
-DEST = ROOT / 'publication_archive_2026-10-19'
+DEST = repo_file('publication_archive_2026-10-19', root=ROOT)
 
 
 def main():
     from freeze_corrected_release import SOURCES
-    seal = json.loads((ROOT / 'corrected_2026-10-18/release_checksums.json').read_text())
+    seal = json.loads((repo_file('corrected_2026-10-18/release_checksums.json', root=ROOT)).read_text())
     files = {}
     for name in SOURCES:
         data = subprocess.run(['git', 'show', COMMIT + ':' + name], cwd=ROOT,

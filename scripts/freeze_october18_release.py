@@ -1,4 +1,5 @@
 """Seal or check the October 18 public release; exclude the later private audit."""
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file
 import argparse
 from hashlib import sha256
@@ -6,7 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT / 'overall_llm_expanded_2026-10-18/release_checksums.json'
+DEST = repo_file('overall_llm_expanded_2026-10-18/release_checksums.json', root=ROOT)
 SOURCES = ['README.md', 'FUNCTIONS.md', 'OUTPUT_COMPLIANCE.md', 'LLM_EXPANSION.md',
            'docs/index.html', 'docs/functions.html', 'docs/output_compliance.html',
            '.github/workflows/validate.yml', '.github/workflows/october18-validate.yml', 'requirements-reports.txt',
@@ -24,18 +25,18 @@ FOLDERS = ['native_additions_2026-10-18', 'overall_expanded_2026-10-18',
 
 
 def hashes():
-    paths = {ROOT / name for name in SOURCES}
-    paths.update(path for folder in FOLDERS for path in (ROOT / folder).rglob('*') if path.is_file())
+    paths = {repo_file(name, root=ROOT) for name in SOURCES}
+    paths.update(path for folder in FOLDERS for path in (repo_file(folder, root=ROOT)).rglob('*') if path.is_file())
     paths.discard(DEST)
     assert all(frozen_file(path).exists() for path in paths)
-    assert all('runs' not in p.relative_to(ROOT).parts and 'hardening_2026-10-18' not in p.relative_to(ROOT).parts for p in paths)
+    assert all('runs' not in logical_relative(p, root=ROOT).parts and 'hardening_2026-10-18' not in logical_relative(p, root=ROOT).parts for p in paths)
     # Publication bytes changed only after the two-item correction. Resolve
     # those logical paths to their exact archived blobs, not a replacement seal.
-    archive = ROOT / 'publication_archive_2026-10-18'
+    archive = repo_file('publication_archive_2026-10-18', root=ROOT)
     manifest = json.loads((archive / 'manifest.json').read_text())['files'] if archive.exists() else {}
     result = {}
     for path in sorted(paths):
-        name = str(path.relative_to(ROOT))
+        name = str(logical_relative(path, root=ROOT))
         selected = archive / manifest[name]['archive_path'] if name in manifest else frozen_file(path)
         result[name] = sha256(selected.read_bytes()).hexdigest()
         if name in manifest:

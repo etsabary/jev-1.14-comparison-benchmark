@@ -1,4 +1,5 @@
 """Offline, revision-bound scoring of the October 21 native additions."""
+from repo_layout import repo_file
 import argparse
 from collections import Counter
 from copy import deepcopy
@@ -11,8 +12,8 @@ import analyze_direct_decisions_2026_10_20 as scoring
 from analyze_frontier_reference import load_gold, outcomes
 
 ROOT = router.ROOT
-OUT = ROOT/'runs/decision_additions_analysis_2026-10-21'
-BASE = ROOT/'direct_additions_2026-10-20/statistics.json'
+OUT = repo_file('runs/decision_additions_analysis_2026-10-21', root=ROOT)
+BASE = repo_file('direct_additions_2026-10-20/statistics.json', root=ROOT)
 RUNS = {'mammoth1':baseten,'elephant1':baseten,'drex_max':router}
 
 
@@ -47,7 +48,7 @@ def analyze(partial=False):
     gold,meta,names,bindings = load_gold(ROOT.parent/'text-decision-hardening',qs)
     report = dict(status='PARTIAL_NOT_RANKED' if partial else 'COMPLETE_THREE_1342_OCT21',
         bank_sha256=router.bank.BANK_HASH,models={},gold_source_bindings=bindings,
-        analysis_source_sha256={name:router.bank.file_hash(ROOT/name) for name in (
+        analysis_source_sha256={name:router.bank.file_hash(repo_file(name, root=ROOT)) for name in (
             'analyze_decision_additions_2026_10_21.py','analyze_direct_decisions_2026_10_20.py',
             'analyze_frontier_reference.py','test_analyze_decision_additions_2026_10_21.py')})
     records = {}

@@ -1,11 +1,12 @@
 """Build the current overall analysis from the sealed forty-model aggregate."""
+from repo_layout import repo_file
 import json
 from pathlib import Path
 
 from build_october18_report import speed_band, cost_band
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'overall_llm_expanded_2026-10-18'
+SOURCE = repo_file('overall_llm_expanded_2026-10-18', root=ROOT)
 
 
 def table(header, rows):
@@ -54,7 +55,7 @@ def main():
     all_cost = s['publication']['ranked_accounted_cost']
     native_cost = s['native_october_18_cost']
     native_probes = s['native_october_18_compatibility_probes']
-    notes = (ROOT / 'native_expansion_notes.md').read_text().strip()
+    notes = (repo_file('native_expansion_notes.md', root=ROOT)).read_text().strip()
     # Keep the older local-review source untouched while the current published
     # narrative follows the precise saved values and documented error classes.
     notes = notes.replace('**262 ms p95**',
@@ -178,7 +179,7 @@ The [original three-model reference](THREE_MODEL_REFERENCE.md) remains available
     assert 'historical' not in report.lower()
     report = report.replace('>250–500', '>250 to 500').replace('>500–1,000', '>500 to 1,000')
     report = report.replace('>$0.01–$0.025', '>$0.01 to $0.025').replace('>$0.025–$0.05', '>$0.025 to $0.05')
-    (ROOT / 'LLM_EXPANSION.md').write_text(report)
+    (repo_file('LLM_EXPANSION.md', root=ROOT)).write_text(report)
     print('Built current 37-route overall analysis; publication builder can now render it')
 
 

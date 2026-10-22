@@ -3,6 +3,7 @@
 Only aggregate comparisons are returned. This script never publishes a key or
 per-question correctness record, and never sends model requests.
 """
+from repo_layout import repo_file
 import argparse
 from hashlib import sha256
 import json
@@ -18,7 +19,7 @@ def normalized_llm(record):
 
 
 def load_key(path):
-    expected = json.loads((ROOT/'data/baseline_reference_manifest.json').read_text())['key_sha256']
+    expected = json.loads((repo_file('data/baseline_reference_manifest.json', root=ROOT)).read_text())['key_sha256']
     if sha256(Path(path).read_bytes()).hexdigest() != expected:
         raise ValueError('Gold-key version does not match this frozen benchmark')
     records = read_csv(path)
@@ -31,10 +32,10 @@ def load_key(path):
 def score(key_path):
     keys = load_key(key_path)
     saved = json.loads((EXPANSION/'summary.json').read_text())
-    metadata = {r['item_id']: r for r in read_csv(ROOT/'data/item_metadata.csv')}
-    selection = json.loads((ROOT/'data/selection_manifest.json').read_text())
+    metadata = {r['item_id']: r for r in read_csv(repo_file('data/item_metadata.csv', root=ROOT))}
+    selection = json.loads((repo_file('data/selection_manifest.json', root=ROOT)).read_text())
     first, eventual = first_and_eventual(rows(EXPANSION/'attempts.jsonl'))
-    records = {m: [normalize(r) for r in read_csv(ROOT/'data'/name)] for m, name in HISTORICAL.items()}
+    records = {m: [normalize(r) for r in read_csv(repo_file('data', root=ROOT)/name)] for m, name in HISTORICAL.items()}
     records |= {m: [normalized_llm(r) for r in first.values() if r['model_requested'] == m] for m in MODELS}
     for m, rr in records.items():
         assert len(rr) == len({r['item_id'] for r in rr}) == 1136

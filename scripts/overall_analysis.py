@@ -3,6 +3,7 @@
 The external original key is required for scoring. No API calls are made, and
 neither the key nor per-question correctness is exported.
 """
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file, source_file
 from collections import Counter
 from copy import deepcopy
@@ -21,8 +22,8 @@ from score_expansion import load_key, normalized_llm
 from text_models import first_and_eventual, quantiles, rows
 
 ROOT = runner.ROOT
-ADDITIONS = ROOT / 'additions_2026-10-16'
-OVERALL = ROOT / 'overall_2026-10-16'
+ADDITIONS = repo_file('additions_2026-10-16', root=ROOT)
+OVERALL = repo_file('overall_2026-10-16', root=ROOT)
 
 
 def write(path, value):
@@ -73,15 +74,15 @@ def validate_model(model_id):
     for name, expected in json.loads((dest / 'checksums.json').read_text()).items():
         assert sha256((dest / name).read_bytes()).hexdigest() == expected, name
     software = json.loads((dest / 'software.json').read_text())
-    assert sha256(frozen_file(source_file(ROOT / 'added_decisions.py')).read_bytes()).hexdigest() == software['runner_sha256']
-    assert sha256(frozen_file(source_file(ROOT / 'test_added_decisions.py')).read_bytes()).hexdigest() == software['tests_sha256']
+    assert sha256(frozen_file(source_file(repo_file('added_decisions.py', root=ROOT))).read_bytes()).hexdigest() == software['runner_sha256']
+    assert sha256(frozen_file(source_file(repo_file('test_added_decisions.py', root=ROOT))).read_bytes()).hexdigest() == software['tests_sha256']
     manifest = json.loads((dest / 'run_manifest.json').read_text())
-    assert sha256((ROOT / 'data/questions_1136.csv').read_bytes()).hexdigest() == manifest['questions_sha256']
+    assert sha256((repo_file('data/questions_1136.csv', root=ROOT)).read_bytes()).hexdigest() == manifest['questions_sha256']
     plan, attempts, results = (rows(dest / name) for name in ('request_plan.jsonl', 'attempts.jsonl', 'results.jsonl'))
     assert len(plan) == len(results) == 1136
     assert len({p['item_id'] for p in plan}) == 1136
     runner.d.reconcile(rows(dest / 'dispatches.jsonl'), attempts, results, plan)
-    questions = {q['item_id']: q for q in runner.d.read_csv(ROOT / 'data/questions_1136.csv')}
+    questions = {q['item_id']: q for q in runner.d.read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
     assert {p['item_id'] for p in plan} == set(questions)
     indexed = {p['request_index']: p for p in plan}
     for p in plan:
@@ -122,8 +123,8 @@ def analyze(key_path, write_output=False):
     for model, spec in prior.d.MODELS.items():
         model_rows[spec[0]] = [prior.normalized_native(a) for a in native_first.values() if a['model_requested'] == model]
     models = deepcopy(base['models'])
-    metadata = {r['item_id']: r for r in runner.d.read_csv(ROOT / 'data/item_metadata.csv')}
-    selection = json.loads((ROOT / 'data/selection_manifest.json').read_text())
+    metadata = {r['item_id']: r for r in runner.d.read_csv(repo_file('data/item_metadata.csv', root=ROOT))}
+    selection = json.loads((repo_file('data/selection_manifest.json', root=ROOT)).read_text())
     all_added = []
     sessions = deepcopy(base['sessions_utc'])
     tested = [m for m in runner.MODELS if (ADDITIONS / m / 'checksums.json').exists()]
@@ -222,7 +223,7 @@ def analyze(key_path, write_output=False):
         ],
         'source_files_sha256': {**base['source_files_sha256'],
             'matched_2026-10-15/summary.json': sha256((prior.MATCHED / 'summary.json').read_bytes()).hexdigest(),
-            **{str(p.relative_to(ROOT)): sha256(p.read_bytes()).hexdigest() for m in tested for p in (ADDITIONS / m).iterdir() if p.is_file()}},
+            **{str(logical_relative(p, root=ROOT)): sha256(p.read_bytes()).hexdigest() for m in tested for p in (ADDITIONS / m).iterdir() if p.is_file()}},
     }
     if write_output:
         write(OVERALL / 'summary.json', summary)

@@ -4,6 +4,7 @@ No inference or credentials. Frozen fourteen-model evidence remains unchanged.
 Only an external original key may score saved choices; no per-item correctness
 or answer key is exported.
 """
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file
 import argparse
 from collections import Counter
@@ -21,18 +22,18 @@ from score_expansion import load_key, normalized_llm
 import text_models as chat
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC = ROOT/'llm_additions_2026-10-16'
-OVERALL = ROOT/'overall_expanded_2026-10-16'
-BASE_SUMMARY = ROOT/'overall_2026-10-16/summary.json'
+PUBLIC = repo_file('llm_additions_2026-10-16', root=ROOT)
+OVERALL = repo_file('overall_expanded_2026-10-16', root=ROOT)
+BASE_SUMMARY = repo_file('overall_2026-10-16/summary.json', root=ROOT)
 MODELS = {
-    'nemotron35lightning':('Nemotron 3.5 Lightning','nvidia/nemotron-3.5-lightning','coreweave/bf16','CoreWeave',ROOT/'runs/nemotron_2026-10-16'),
-    'haiku55':('Claude Haiku 5.5','anthropic/claude-haiku-5.5','anthropic','Anthropic',ROOT/'runs/text_field_2026-10-16/haiku55'),
-    'glm47flash':('GLM 4.7 Flash','z-ai/glm-4.7-flash','cloudflare','Cloudflare',ROOT/'runs/text_field_2026-10-16/glm47flash'),
-    'deepseek41flash':('DeepSeek V4.1 Flash','deepseek/deepseek-v4.1-flash','deepinfra/fp8','DeepInfra',ROOT/'runs/text_field_2026-10-16/deepseek41flash'),
-    'mimo26flash':('MiMo V2.6 Flash','xiaomi/mimo-v2.6-flash','xiaomi/fp8','Xiaomi',ROOT/'runs/text_field_2026-10-16/mimo26flash'),
-    'qwen38flash':('Qwen3.8 Flash','qwen/qwen3.8-flash','alibaba/us-east-1','Alibaba',ROOT/'runs/text_field_2026-10-16/qwen38flash'),
-    'tencenthy3':('Tencent Hy3','tencent/hy3','tencent/fp8','Tencent',ROOT/'runs/text_field_2026-10-16/tencenthy3'),
-    'nemotron35supervl':('Nemotron 3.5 Super VL','nvidia/nemotron-3.5-super-vl','crusoe/bf16','Crusoe',ROOT/'runs/text_field_2026-10-16/nemotron35supervl'),
+    'nemotron35lightning':('Nemotron 3.5 Lightning','nvidia/nemotron-3.5-lightning','coreweave/bf16','CoreWeave',repo_file('runs/nemotron_2026-10-16', root=ROOT)),
+    'haiku55':('Claude Haiku 5.5','anthropic/claude-haiku-5.5','anthropic','Anthropic',repo_file('runs/text_field_2026-10-16/haiku55', root=ROOT)),
+    'glm47flash':('GLM 4.7 Flash','z-ai/glm-4.7-flash','cloudflare','Cloudflare',repo_file('runs/text_field_2026-10-16/glm47flash', root=ROOT)),
+    'deepseek41flash':('DeepSeek V4.1 Flash','deepseek/deepseek-v4.1-flash','deepinfra/fp8','DeepInfra',repo_file('runs/text_field_2026-10-16/deepseek41flash', root=ROOT)),
+    'mimo26flash':('MiMo V2.6 Flash','xiaomi/mimo-v2.6-flash','xiaomi/fp8','Xiaomi',repo_file('runs/text_field_2026-10-16/mimo26flash', root=ROOT)),
+    'qwen38flash':('Qwen3.8 Flash','qwen/qwen3.8-flash','alibaba/us-east-1','Alibaba',repo_file('runs/text_field_2026-10-16/qwen38flash', root=ROOT)),
+    'tencenthy3':('Tencent Hy3','tencent/hy3','tencent/fp8','Tencent',repo_file('runs/text_field_2026-10-16/tencenthy3', root=ROOT)),
+    'nemotron35supervl':('Nemotron 3.5 Super VL','nvidia/nemotron-3.5-super-vl','crusoe/bf16','Crusoe',repo_file('runs/text_field_2026-10-16/nemotron35supervl', root=ROOT)),
 }
 FORMAT_FAILURE_CUTOFF = Decimal('0.05')
 
@@ -97,7 +98,7 @@ def sanitized(raw):
 
 
 def export_probes():
-    base=ROOT/'runs/text_field_2026-10-16'
+    base=repo_file('runs/text_field_2026-10-16', root=ROOT)
     probes=[]
     for path in sorted(base.glob('*/compatibility_probe*.json')):
         a=json.loads(path.read_text())
@@ -141,7 +142,7 @@ def export(model_id):
     software=json.loads(data['software.json'])
     source_map={}
     for name,expected in software.items():
-        p=ROOT/name
+        p=repo_file(name, root=ROOT)
         assert sha256(p.read_bytes()).hexdigest()==expected,name
         if name.startswith('runs/'):
             exported='source/'+name.removeprefix('runs/')
@@ -152,7 +153,7 @@ def export(model_id):
     continuation=source/'continuation_receipt.json'
     if continuation.exists():
         receipt=json.loads(continuation.read_text())
-        helper=ROOT/receipt['source_path']
+        helper=repo_file(receipt['source_path'], root=ROOT)
         assert sha256(helper.read_bytes()).hexdigest()==receipt['source_sha256']
         prefix=(source/'attempts.jsonl').read_bytes()[:receipt['existing_attempts_prefix_bytes']]
         assert sha256(prefix).hexdigest()==receipt['existing_attempts_prefix_sha256']
@@ -185,7 +186,7 @@ def validate_model(model_id):
     assert audit['original_fourteen_summary_sha256']==sha256(BASE_SUMMARY.read_bytes()).hexdigest()
     for original,expected in json.loads((dest/'software.json').read_text()).items():
         mapped=audit['frozen_source_map'][original]
-        path=frozen_file(ROOT/mapped.removeprefix('repository:')) if mapped.startswith('repository:') else dest/mapped
+        path=frozen_file(repo_file(mapped.removeprefix('repository:'), root=ROOT)) if mapped.startswith('repository:') else dest/mapped
         assert sha256(path.read_bytes()).hexdigest()==expected,original
     receipt_path=dest/'continuation_receipt.json'
     if receipt_path.exists():
@@ -193,8 +194,8 @@ def validate_model(model_id):
         assert not receipt['request_or_timer_or_scoring_changes']
         assert sha256((dest/'source/resume_envelope_errors.py').read_bytes()).hexdigest()==receipt['source_sha256']
     manifest=json.loads((dest/'run_manifest.json').read_text())
-    assert manifest['questions_sha256']==sha256((ROOT/'data/questions_1136.csv').read_bytes()).hexdigest()
-    qs={r['item_id']:r for r in prior.d.read_csv(ROOT/'data/questions_1136.csv')}
+    assert manifest['questions_sha256']==sha256((repo_file('data/questions_1136.csv', root=ROOT)).read_bytes()).hexdigest()
+    qs={r['item_id']:r for r in prior.d.read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
     plan,attempts,results=(chat.rows(dest/name) for name in ('request_plan.jsonl','attempts.jsonl','results.jsonl'))
     assert len(plan)==len(results)==1136
     assert set(p['item_id'] for p in plan)==set(qs)
@@ -247,8 +248,8 @@ def analyze(key_path,write_output=False):
         assert metrics(rr,keys)==base['models'][m]['primary']
     summary=deepcopy(base)
     models=summary['models']
-    metadata={r['item_id']:r for r in prior.d.read_csv(ROOT/'data/item_metadata.csv')}
-    selection=json.loads((ROOT/'data/selection_manifest.json').read_text())
+    metadata={r['item_id']:r for r in prior.d.read_csv(repo_file('data/item_metadata.csv', root=ROOT))}
+    selection=json.loads((repo_file('data/selection_manifest.json', root=ROOT)).read_text())
     added=[m for m in MODELS if (PUBLIC/m/'checksums.json').exists()]
     assert added
     all_new=[]
@@ -338,11 +339,11 @@ def analyze(key_path,write_output=False):
     summary['source_files_sha256']['overall_2026-10-16/summary.json']=sha256(BASE_SUMMARY.read_bytes()).hexdigest()
     probe_path=PUBLIC/'compatibility_probes.json'
     if probe_path.exists():
-        summary['source_files_sha256'][str(probe_path.relative_to(ROOT))]=sha256(probe_path.read_bytes()).hexdigest()
+        summary['source_files_sha256'][str(logical_relative(probe_path, root=ROOT))]=sha256(probe_path.read_bytes()).hexdigest()
     for m in added:
         for p in (PUBLIC/m).rglob('*'):
             if p.is_file():
-                summary['source_files_sha256'][str(p.relative_to(ROOT))]=sha256(p.read_bytes()).hexdigest()
+                summary['source_files_sha256'][str(logical_relative(p, root=ROOT))]=sha256(p.read_bytes()).hexdigest()
     if write_output:
         write(OVERALL/'summary.json',summary)
         with (OVERALL/'family_comparison.csv').open('w',newline='') as f:
@@ -366,7 +367,7 @@ def validate_publication():
     for m,value in old['models'].items():
         assert summary['models'][m]==value,m
     for name,expected in summary['source_files_sha256'].items():
-        assert sha256(frozen_file(ROOT/name).read_bytes()).hexdigest()==expected,name
+        assert sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest()==expected,name
     attempts=chat.rows(prior.EXPANSION/'attempts.jsonl')
     first,_=chat.first_and_eventual(attempts)
     for m in chat.MODELS:

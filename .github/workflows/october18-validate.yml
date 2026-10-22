@@ -10,7 +10,7 @@ jobs:
           # Match the capture runtime: newer float summation can change a
           # probability-validity decision exactly at the stored tolerance.
           python-version: '3.10'
-      - run: python3 -m pip install -r requirements-reports.txt
+      - run: python3 -m pip install -r scripts/requirements-reports.txt
       - run: python3 -m pip install python-dotenv
       - run: python3 scripts/native_expansion_analysis.py
       - run: python3 scripts/llm_expansion_analysis_2026_10_18.py

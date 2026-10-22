@@ -1,18 +1,19 @@
 """Preserve superseded presentation bytes without changing their release seal."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT / 'publication_archive_2026-10-16'
+DEST = repo_file('publication_archive_2026-10-16', root=ROOT)
 COMMIT = '83dfec83825a39c55a225b9e567c0fc0513597e4'
 PATHS = ('README.md', 'FUNCTIONS.md', 'OUTPUT_COMPLIANCE.md', 'docs/index.html',
          'docs/functions.html', 'docs/output_compliance.html', 'test_overall.py', 'test_publication.py')
 
 
 def main():
-    previous = json.loads((ROOT / 'expansion_2026-10-15/release_checksums.json').read_text())
+    previous = json.loads((repo_file('expansion_2026-10-15/release_checksums.json', root=ROOT)).read_text())
     files = {}
     for name in PATHS:
         data = subprocess.run(['git', 'show', COMMIT + ':' + name], cwd=ROOT, check=True, capture_output=True).stdout

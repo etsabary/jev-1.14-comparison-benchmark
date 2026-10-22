@@ -8,6 +8,7 @@ verifiable. Active runs are not exported. Partial samples and failed interface
 probes never receive fabricated full-bank scores or enter the main comparison.
 """
 from __future__ import annotations
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file, source_file
 
 import argparse
@@ -30,9 +31,9 @@ from analysis_core import metrics, correct, valid, panels, panel_summary
 from score_expansion import load_key, normalized_llm
 
 ROOT = ordinary.ROOT
-PUBLIC = ROOT / 'llm_additions_2026-10-18'
-OVERALL = ROOT / 'overall_llm_expanded_2026-10-18'
-BASE = ROOT / 'overall_expanded_2026-10-18/summary.json'
+PUBLIC = repo_file('llm_additions_2026-10-18', root=ROOT)
+OVERALL = repo_file('overall_llm_expanded_2026-10-18', root=ROOT)
+BASE = repo_file('overall_expanded_2026-10-18/summary.json', root=ROOT)
 MODELS = {**ordinary.MODELS, **tev.MODELS}
 COMPAT_ONLY = {'tev1_4b', 'xing4_free'}
 FILES = ('manifest.json', 'software.json', 'model_metadata.json', 'compatibility_probe.json',
@@ -133,7 +134,7 @@ def controller_sources(model_id):
     names = ['llm_screening_2026_10_18.py']
     if model_id in tev.MODELS:
         names.append('tev_screening_2026_10_18.py')
-    return {name: digest_file(frozen_file(ROOT / name)) for name in names}
+    return {name: digest_file(frozen_file(repo_file(name, root=ROOT))) for name in names}
 
 
 def validate_screen_decisions(model_id, out, keys=None):
@@ -373,8 +374,8 @@ def analyze(key_path, write_output=False, require_settled=False):
     assert base['model_count'] == 36 and base['publication']['ranked_model_count'] == 33
     summary = deepcopy(base)
     rr = previous_rows(keys)
-    metadata = {r['item_id']: r for r in ordinary.d.read_csv(ROOT / 'data/item_metadata.csv')}
-    selection = json.loads((ROOT / 'data/selection_manifest.json').read_text())
+    metadata = {r['item_id']: r for r in ordinary.d.read_csv(repo_file('data/item_metadata.csv', root=ROOT))}
+    selection = json.loads((repo_file('data/selection_manifest.json', root=ROOT)).read_text())
     exported = [m for m in MODELS if (PUBLIC / m / 'checksums.json').exists()]
     assert exported, 'No settled exports to analyze'
     checked = {m: validate_export(m, keys) for m in exported}
@@ -482,12 +483,12 @@ def analyze(key_path, write_output=False, require_settled=False):
         'The prior36 full-run rows, their costs, timings and archived evidence remain unchanged. New tests are not contemporaneous reruns of those baselines.'
     ]
     sources = summary['source_files_sha256']
-    sources[str(BASE.relative_to(ROOT))] = digest_file(BASE)
+    sources[str(logical_relative(BASE, root=ROOT))] = digest_file(BASE)
     for name in ANALYSIS_SOURCES:
-        sources[name] = digest_file(ROOT / name)
+        sources[name] = digest_file(repo_file(name, root=ROOT))
     for path in sorted(PUBLIC.rglob('*')):
         if path.is_file():
-            sources[str(path.relative_to(ROOT))] = digest_file(path)
+            sources[str(logical_relative(path, root=ROOT))] = digest_file(path)
     if write_output:
         privacy_guard((json.dumps(summary) + '\n').encode('utf-8'), 'summary.json')
         write(OVERALL / 'summary.json', summary)
@@ -519,7 +520,7 @@ def validate_summary():
     assert value['total_scored_model_questions'] == value['model_count'] * 1136
     assert value['publication']['ranked_model_count'] == 33 + len(value['llm_added_october_18_model_ids'])
     for name, expected in value['source_files_sha256'].items():
-        assert digest_file(frozen_file(ROOT / name)) == expected, 'Aggregate source changed: ' + name
+        assert digest_file(frozen_file(repo_file(name, root=ROOT))) == expected, 'Aggregate source changed: ' + name
     all_new, all_partial, probes = [], [], []
     for m in value['llm_added_october_18_model_ids']:
         first, _, attempts, _ = validate_export(m)

@@ -1,4 +1,5 @@
 """Current expanded-bank publication, separate from retained capture tests."""
+from repo_layout import repo_file
 import json
 from pathlib import Path
 import re
@@ -9,12 +10,12 @@ import validate_consolidated_release as v
 
 
 def publication_text(name):
-    archive = b.ROOT / 'presentation_archive_2026-10-19'
+    archive = repo_file('presentation_archive_2026-10-19', root=b.ROOT)
     if archive.exists():
         manifest = json.loads((archive / 'manifest.json').read_text())['files']
         if name in manifest:
             return (archive / manifest[name]['archive_path']).read_text()
-    return (b.ROOT / name).read_text()
+    return (repo_file(name, root=b.ROOT)).read_text()
 
 
 class ConsolidatedPublication(unittest.TestCase):
@@ -58,17 +59,17 @@ class ConsolidatedPublication(unittest.TestCase):
             self.assertEqual(cells[1], str(f['n']))
             self.assertEqual(cells[2:], [str(f['models'][mid]['correct']) for mid in s['ranked_model_ids']])
         from archive_frontier_presentation import historical_path
-        quality = historical_path(b.ROOT / 'OUTPUT_COMPLIANCE.md').read_text()
+        quality = historical_path(repo_file('OUTPUT_COMPLIANCE.md', root=b.ROOT)).read_text()
         self.assertEqual(sum(line.startswith('| ') for line in quality.splitlines()), 22)
 
     def test_prior_seals_and_archive_bytes_are_unchanged(self):
         from freeze_corrected_release import hashes
-        old = json.loads((b.ROOT / 'corrected_2026-10-18/release_checksums.json').read_text())
+        old = json.loads((repo_file('corrected_2026-10-18/release_checksums.json', root=b.ROOT)).read_text())
         self.assertEqual(hashes(), old)
-        manifest = json.loads((b.ROOT / 'publication_archive_2026-10-19/manifest.json').read_text())
+        manifest = json.loads((repo_file('publication_archive_2026-10-19/manifest.json', root=b.ROOT)).read_text())
         self.assertEqual(len(manifest['files']), 17)
         for name, entry in manifest['files'].items():
-            self.assertEqual(b.digest(b.ROOT / 'publication_archive_2026-10-19' / entry['archive_path']), old[name])
+            self.assertEqual(b.digest(repo_file('publication_archive_2026-10-19', root=b.ROOT) / entry['archive_path']), old[name])
 
 
 if __name__ == '__main__':

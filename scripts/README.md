@@ -2,8 +2,9 @@
 
 All 110 Python files previously in the repository root are grouped here: live
 benchmark runners, analysis and plotting tools, report builders, validators and
-their tests. Results, questions, figures and the published website keep their
-existing locations and URLs. No benchmark measurements changed in this cleanup.
+their tests. Documents are in `documents/`; dated outputs and evidence are in
+`results/`. The published website stays in `docs/`, at the same public URLs.
+No benchmark measurements changed in this cleanup.
 
 Run commands from the repository root. For an earlier command such as
 `python3 validate.py`, use `python3 scripts/validate.py` instead. Imports between
@@ -14,7 +15,7 @@ these scripts remain local to this folder.
 Install the report dependencies in your preferred virtual environment:
 
 ```sh
-python3 -m pip install -r requirements-reports.txt python-dotenv
+python3 -m pip install -r scripts/requirements-reports.txt python-dotenv
 python3 scripts/validate_october21_release.py
 python3 scripts/validate_repository_layout.py
 python3 -m unittest discover -s scripts -p 'test_*.py'
@@ -51,3 +52,10 @@ offline checks resolve those paths to the matching preserved bytes.
 `layout_manifest.json` separately binds the active relocated sources and the
 unchanged published artifacts. This distinguishes a source reorganization from
 a new experiment and detects changes to either current code or archived evidence.
+
+The high-level folder map is recorded in the same manifest. `repo_file()` resolves
+the original logical evidence names to their current physical locations;
+`logical_relative()` retains those names when validating dated checksums. These
+helpers do not weaken live-run software checks or rewrite sealed evidence.
+
+[Repository overview](../README.md) · [Results index](../results/README.md)

@@ -1,3 +1,4 @@
+from repo_layout import repo_file
 from repo_layout import frozen_file
 from hashlib import sha256
 from html.parser import HTMLParser
@@ -10,9 +11,9 @@ from text_models import ROOT,EXPANSION,rows
 
 
 def evidence_files():
-    return [p for folder in (EXPANSION,ROOT/'decision_refresh_2026-10-15',ROOT/'matched_2026-10-15',
-                             ROOT/'additions_2026-10-16',ROOT/'overall_2026-10-16',
-                             ROOT/'llm_additions_2026-10-16',ROOT/'overall_expanded_2026-10-16')
+    return [p for folder in (EXPANSION,repo_file('decision_refresh_2026-10-15', root=ROOT),repo_file('matched_2026-10-15', root=ROOT),
+                             repo_file('additions_2026-10-16', root=ROOT),repo_file('overall_2026-10-16', root=ROOT),
+                             repo_file('llm_additions_2026-10-16', root=ROOT),repo_file('overall_expanded_2026-10-16', root=ROOT))
             for p in folder.rglob('*') if p.is_file()]
 
 
@@ -24,22 +25,22 @@ class Links(HTMLParser):
 
 class Publication(unittest.TestCase):
     def test_original_evidence_unchanged(self):
-        for name,digest in json.loads((ROOT/'data/checksums.json').read_text()).items():
-            self.assertEqual(sha256(frozen_file(ROOT/name).read_bytes()).hexdigest(),digest,name)
+        for name,digest in json.loads((repo_file('data/checksums.json', root=ROOT)).read_text()).items():
+            self.assertEqual(sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest(),digest,name)
 
     def test_reference_report_bytes_preserved(self):
         audit=json.loads((EXPANSION/'source_audit.json').read_text())
         for name,expected in audit['preserved_reference_reports'].items():
-            self.assertEqual(sha256(frozen_file(ROOT/name).read_bytes()).hexdigest(),expected)
+            self.assertEqual(sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest(),expected)
 
     def test_release_file_hashes(self):
-        archive=ROOT/'publication_archive_2026-10-16'
+        archive=repo_file('publication_archive_2026-10-16', root=ROOT)
         archived=json.loads((archive/'manifest.json').read_text())['files']
         self.assertEqual(set(archived),{'README.md','FUNCTIONS.md','OUTPUT_COMPLIANCE.md',
             'docs/index.html','docs/functions.html','docs/output_compliance.html','test_overall.py','test_publication.py'})
         for name, entry in archived.items():self.assertEqual(entry['archive_path'],name+'.snapshot')
         for name,digest in json.loads((EXPANSION/'release_checksums.json').read_text()).items():
-            path=archive/archived[name]['archive_path'] if name in archived else ROOT/name
+            path=archive/archived[name]['archive_path'] if name in archived else repo_file(name, root=ROOT)
             if name in archived:self.assertEqual(archived[name]['sha256'],digest,name)
             self.assertEqual(sha256(frozen_file(path).read_bytes()).hexdigest(),digest,name)
 
@@ -68,41 +69,41 @@ class Publication(unittest.TestCase):
 
     def test_relative_site_links_and_images(self):
         for name in ['index.html','functions.html','three_model_reference.html','output_compliance.html']:
-            p=ROOT/'docs'/name;links=Links();links.feed(p.read_text())
+            p=repo_file('docs', root=ROOT)/name;links=Links();links.feed(p.read_text())
             for target in links.targets:
                 if re.match(r'^(https?:|mailto:|#|data:)',target):continue
                 self.assertTrue((p.parent/target.split('#')[0]).exists(),target)
 
     def test_new_and_old_figure_parity(self):
-        for image in (ROOT/'figures').iterdir():
-            self.assertEqual(image.read_bytes(),(ROOT/'docs/figures'/image.name).read_bytes())
+        for image in (repo_file('figures', root=ROOT)).iterdir():
+            self.assertEqual(image.read_bytes(),(repo_file('docs/figures', root=ROOT)/image.name).read_bytes())
 
     def test_main_table_all_1136_latencies(self):
-        s=json.loads((ROOT/'matched_2026-10-15/summary.json').read_text())
+        s=json.loads((repo_file('matched_2026-10-15/summary.json', root=ROOT)).read_text())
         for m,d in s['models'].items():
             q=d['latency_first_all']
             self.assertEqual(q['n'],1136)
         # This regression describes the captured October15/16 measurements.
         # The corrected release separately checks all pooled1134+2 latencies.
-        text=(ROOT/'publication_archive_2026-10-16/README.md.snapshot').read_text()
+        text=(repo_file('publication_archive_2026-10-16/README.md.snapshot', root=ROOT)).read_text()
         self.assertNotIn('{{',text)
         self.assertNotIn('historical',text.lower())
-        current=json.loads((ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
+        current=json.loads((repo_file('overall_expanded_2026-10-16/summary.json', root=ROOT)).read_text())
         for m,d in s['models'].items():
             if m not in current['publication']['eligible_model_ids']:continue
             self.assertIn(f"{d['latency_first_all']['median_ms']:.0f} ms",text)
         self.assertIn('System 1-style',text)
-        self.assertIn('327 first responses',(ROOT/'publication_archive_2026-10-16/OUTPUT_COMPLIANCE.md.snapshot').read_text())
+        self.assertIn('327 first responses',(repo_file('publication_archive_2026-10-16/OUTPUT_COMPLIANCE.md.snapshot', root=ROOT)).read_text())
 
     def test_output_exclusions_applied_to_every_current_table(self):
-        s=json.loads((ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
+        s=json.loads((repo_file('overall_expanded_2026-10-16/summary.json', root=ROOT)).read_text())
         for name in ('README.md','FUNCTIONS.md'):
-            text=(ROOT/name).read_text()
+            text=(repo_file(name, root=ROOT)).read_text()
             rows=[line for line in text.splitlines() if line.startswith('|')]
             for m in s['publication']['excluded_model_ids']:
                 self.assertFalse(any(s['models'][m]['label'] in row for row in rows),(name,m))
         import csv
-        with (ROOT/'overall_expanded_2026-10-16/family_comparison.csv').open() as f:
+        with (repo_file('overall_expanded_2026-10-16/family_comparison.csv', root=ROOT)).open() as f:
             fields=csv.DictReader(f).fieldnames
         for m in s['publication']['excluded_model_ids']:
             self.assertNotIn(s['models'][m]['label'],fields)

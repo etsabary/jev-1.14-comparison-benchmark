@@ -1,4 +1,5 @@
 """Offline refresh guards. No paid requests."""
+from repo_layout import repo_file
 import ast
 import copy
 from pathlib import Path
@@ -15,7 +16,7 @@ class Refresh(unittest.TestCase):
         self.assertTrue(all('latest' not in v[4] for v in d.MODELS.values()))
 
     def test_exact_native_content(self):
-        q = read_csv(d.ROOT/'data/questions_1136.csv')[0]
+        q = read_csv(repo_file('data/questions_1136.csv', root=d.ROOT))[0]
         for model in d.MODELS:
             body = d.payload(q, model)
             self.assertEqual({k: body[k] for k in ('state', 'questions')}, packet(q))
@@ -34,7 +35,7 @@ class Refresh(unittest.TestCase):
                 self.assertEqual(len({p['native_input_sha256'] for p in pp[start:start+3]}), 1)
 
     def test_timer_identical_to_eight_llms(self):
-        original = d.ROOT/'runs/visual_benchmark_curation_PRIVATE/codex_llm_pilot_2026-10-15/pilot_runner.py'
+        original = repo_file('runs/visual_benchmark_curation_PRIVATE/codex_llm_pilot_2026-10-15/pilot_runner.py', root=d.ROOT)
         if not original.exists():
             self.skipTest('Original private executor absent; public timer remains inspectable')
         functions = []

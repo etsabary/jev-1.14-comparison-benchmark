@@ -1,4 +1,5 @@
 """Check clarity, score-cell fidelity, local links, privacy and presentation hashes."""
+from repo_layout import repo_file
 from collections import Counter
 import csv
 from html.parser import HTMLParser
@@ -60,7 +61,7 @@ def validate():
     for fid, name in b.LABELS.items():
         assert name in page.headings, name
         assert guide[fid]['what_it_tests'] in visible and guide[fid]['illustration'] in visible
-    for path in [b.DEST / 'report.html', b.ROOT / 'docs' / b.NAME / 'report.html', *(b.ROOT / 'docs').glob('*.html')]:
+    for path in [b.DEST / 'report.html', repo_file('docs', root=b.ROOT) / b.NAME / 'report.html', *(repo_file('docs', root=b.ROOT)).glob('*.html')]:
         parsed = Page(); parsed.feed(historical_path(path).read_text())
         for target in parsed.targets:
             if re.match(r'^(https?:|mailto:|data:)', target):
@@ -83,15 +84,15 @@ def validate():
     for path in b.DEST.iterdir():
         if path.name == 'release_checksums.json':
             continue
-        assert path.read_bytes() == (b.ROOT / 'docs' / b.NAME / path.name).read_bytes()
+        assert path.read_bytes() == (repo_file('docs', root=b.ROOT) / b.NAME / path.name).read_bytes()
         if path.suffix != '.png':
             text = path.read_text()
             assert '/Users/' not in text
             assert not re.search(r'\bsk-(?:or-v1-)?[A-Za-z0-9_-]{24,}', text)
     from validate_consolidated_release import hashes
     assert hashes() == json.loads((b.SOURCE / 'release_checksums.json').read_text()), 'Prior release seal changed'
-    readme = historical_path(b.ROOT / 'README.md').read_text()
-    functions = historical_path(b.ROOT / 'FUNCTIONS.md').read_text()
+    readme = historical_path(repo_file('README.md', root=b.ROOT)).read_text()
+    functions = historical_path(repo_file('FUNCTIONS.md', root=b.ROOT)).read_text()
     for text in (readme, functions):
         assert 'without a prior' not in text.lower()
         assert '![All 31 function profiles]' not in text
@@ -101,7 +102,7 @@ def validate():
                 assert b.LABELS[fid] in text
         for target in re.findall(r'\]\(([^)]+)\)', text):
             if not re.match(r'^(https?:|mailto:|#)', target):
-                assert (b.ROOT / target.split('#')[0]).exists(), target
+                assert (repo_file(target.split('#')[0], root=b.ROOT)).exists(), target
     seal = b.DEST / 'release_checksums.json'
     if seal.exists():
         assert b.seal_hashes() == json.loads(seal.read_text()), 'Sealed readable presentation changed'

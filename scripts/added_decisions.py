@@ -4,6 +4,7 @@ Each model has its own resumable ledger. Questions and options are unchanged;
 the answer key is never read by this executor. No image-to-text substitution.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 from repo_layout import source_file
 
 import argparse
@@ -24,7 +25,7 @@ import urllib.request
 import decision_refresh as d
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNS = ROOT / 'runs/additions_2026-10-16'
+RUNS = repo_file('runs/additions_2026-10-16', root=ROOT)
 ENV = ROOT.parent / 'jev/.env'
 MODELS = {
     'microsoft_decision': {
@@ -77,11 +78,11 @@ def payload(question, model_id):
 
 def prepare(model_id, out):
     spec = MODELS[model_id]
-    baseline = json.loads((ROOT / 'data/baseline_reference_manifest.json').read_text())
-    path = ROOT / 'data/questions_1136.csv'
+    baseline = json.loads((repo_file('data/baseline_reference_manifest.json', root=ROOT)).read_text())
+    path = repo_file('data/questions_1136.csv', root=ROOT)
     assert sha256(path.read_bytes()).hexdigest() == baseline['questions_sha256']
     questions = {q['item_id']: q for q in d.read_csv(path)}
-    order = list(dict.fromkeys(r['item_id'] for r in d.rows(ROOT / 'expansion_2026-10-15/request_plan.jsonl')))
+    order = list(dict.fromkeys(r['item_id'] for r in d.rows(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT))))
     assert len(questions) == len(order) == 1136 and set(order) == set(questions)
     plan = []
     for position, item in enumerate(order):
@@ -100,7 +101,7 @@ def prepare(model_id, out):
         'questions_sha256': baseline['questions_sha256'], 'questions_each': 1136,
         'planned_cases': 1136, 'endpoint': 'https://' + spec['host'] + spec['path'],
         'input': 'Exact original native choice state, instructions and five criteria; routing only added for OpenRouter',
-        'timing': json.loads((ROOT / 'decision_refresh_2026-10-15/run_manifest.json').read_text())['timing'],
+        'timing': json.loads((repo_file('decision_refresh_2026-10-15/run_manifest.json', root=ROOT)).read_text())['timing'],
         'concurrency': {'maximum_per_model': 2, 'questions_per_wave': 2,
                         'barrier': 'Both cases settle before next wave'},
         'primary': 'First attempt; errors and invalid answers remain unsuccessful',
@@ -113,7 +114,7 @@ def prepare(model_id, out):
         'request_plan': plan,
     })
     d.save_bound(out / 'software.json', {'runner_sha256': sha256(Path(__file__).read_bytes()).hexdigest(),
-                                       'tests_sha256': sha256((source_file(ROOT / 'test_added_decisions.py')).read_bytes()).hexdigest()})
+                                       'tests_sha256': sha256((source_file(repo_file('test_added_decisions.py', root=ROOT))).read_bytes()).hexdigest()})
     return questions, plan
 
 

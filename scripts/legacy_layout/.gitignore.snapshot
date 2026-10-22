@@ -1,0 +1,11 @@
+.env
+.env.*
+*.key
+*.pem
+*_PRIVATE*
+.venv/
+__pycache__/
+*.py[cod]
+runs/
+*.log
+.DS_Store

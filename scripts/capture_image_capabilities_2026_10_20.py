@@ -1,4 +1,5 @@
 """Public GET-only modality review; no credentials, inference or image scores."""
+from repo_layout import repo_file
 from concurrent.futures import ThreadPoolExecutor
 from hashlib import sha256
 import json
@@ -7,7 +8,7 @@ import ssl
 import urllib.request
 
 ROOT=Path(__file__).resolve().parents[1]
-DEST=ROOT/'direct_additions_2026-10-20'
+DEST=repo_file('direct_additions_2026-10-20', root=ROOT)
 MODELS={
  'respan02':'respan/span-02','pplx_decider12':'perplexity/pplx-decider-v1.2',
  'pplx_flash12':'perplexity/pplx-decider-flash-v1.2','jev114':'typesafe/jev-1.14',
@@ -31,7 +32,7 @@ def get(url):
 def capture():
     target=DEST/'image_capabilities.json'
     assert not target.exists(),'Do not overwrite the dated capability capture'
-    base=json.loads((ROOT/'llm_references_2026-10-19/statistics.json').read_text())
+    base=json.loads((repo_file('llm_references_2026-10-19/statistics.json', root=ROOT)).read_text())
     found={}
     def one(pair):
         mid,model=pair;url='https://openrouter.ai/api/v1/models/'+model+'/endpoints'

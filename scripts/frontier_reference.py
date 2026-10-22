@@ -5,6 +5,7 @@ Uses the existing unmodified HTTPS timer and strict numeric-answer contract.
 Runtime evidence is written only below the ignored runs/ directory.
 """
 from __future__ import annotations
+from repo_layout import logical_relative, repo_file
 from repo_layout import source_file
 
 import argparse
@@ -24,9 +25,9 @@ import llm_field_2026_10_18 as hygiene
 import text_models as chat
 
 ROOT = Path(__file__).resolve().parents[1]
-BANK = ROOT / 'consolidated_2026-10-19/questions_1342.jsonl'
+BANK = repo_file('consolidated_2026-10-19/questions_1342.jsonl', root=ROOT)
 BANK_HASH = '2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076'
-OUT = ROOT / 'runs/gpt6_sol_none_1342_2026-10-19'
+OUT = repo_file('runs/gpt6_sol_none_1342_2026-10-19', root=ROOT)
 MODEL = 'openai/gpt-6-sol'
 SNAPSHOT = 'openai/gpt-6-sol-20260922'
 SPEC = {'host': 'openrouter.ai', 'path': '/api/v1/chat/completions'}
@@ -70,7 +71,7 @@ def prepare():
         assert q['native_input'] == native or (q['context'] == '' and q['native_input'] == expanded)
         assert d.digest(q['native_input']) == q['native_input_sha256']
     # Original prompts remain byte-for-byte identical, including both corrections.
-    old = d.read_csv(ROOT / 'corrected_2026-10-18/questions_1136.csv')
+    old = d.read_csv(repo_file('corrected_2026-10-18/questions_1136.csv', root=ROOT))
     assert len(old) == 1136
     for q in old:
         assert render(questions[q['item_id']]) == q['prompt_text']
@@ -122,7 +123,7 @@ def check_route(record):
 
 
 def software():
-    return {name: file_hash(ROOT / name) for name in (
+    return {name: file_hash(repo_file(name, root=ROOT)) for name in (
         'frontier_reference.py', 'test_frontier_reference.py', 'added_decisions.py',
         'decision_refresh.py', 'llm_field_2026_10_18.py', 'text_models.py', 'run_benchmark.py')}
 
@@ -152,7 +153,7 @@ def freeze(out, plan):
     d.save_bound(out / 'manifest.json', {
         'version': 'frontier-no-reasoning-1342-v1', 'model': MODEL, 'catalog_snapshot': SNAPSHOT,
         'identity_limit': 'Dated endpoint metadata; returned alias alone is not immutable-weight attestation',
-        'question_count': 1342, 'bank': str(BANK.relative_to(ROOT)), 'bank_sha256': BANK_HASH,
+        'question_count': 1342, 'bank': str(logical_relative(BANK, root=ROOT)), 'bank_sha256': BANK_HASH,
         'endpoint': 'https://' + SPEC['host'] + SPEC['path'],
         'settings': {k: v for k, v in payload({'instructions': '', 'context': '', 'question': '', 'options': [''] * 5}).items() if k != 'messages'},
         'prompt': 'Exact original instructions, state, question and five choices, plus the established numeric-ID-only suffix; original corrected1136 prompt_text verified byte-for-byte',

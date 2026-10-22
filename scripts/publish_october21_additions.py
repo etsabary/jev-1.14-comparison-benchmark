@@ -1,4 +1,5 @@
 """Offline 29-route presentation; prior measurements and release seals retained."""
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file
 import argparse
 from copy import deepcopy
@@ -27,7 +28,7 @@ from publish_consolidated_report import table
 
 ROOT = Path(__file__).resolve().parents[1]
 NAME = 'native_additions_2026-10-21'
-DEST = ROOT/NAME
+DEST = repo_file(NAME, root=ROOT)
 PRIVATE = analysis.OUT/'complete'
 NEW = tuple(analysis.RUNS)
 SITE = 'https://etsabary.github.io/system-1-decision-benchmark/report.html'
@@ -253,11 +254,11 @@ def build():
     end = '## Questions, statistics and method\n\nUnchanged answer-free questions: [CSV](consolidated_2026-10-19/questions_1342.csv), [exact native JSONL](consolidated_2026-10-19/questions_1342.jsonl), [readable text](consolidated_2026-10-19/questions_1342.txt).\n\n'
     end += 'Current exports: [model CSV]('+NAME+'/model_statistics.csv), [category CSV]('+NAME+'/category_scores.csv), [aggregate JSON]('+NAME+'/statistics.json), [audit receipt]('+NAME+'/audit_receipt.json), [manifest]('+NAME+'/manifest.json).\n\n'
     end += '\n\n'.join(method(s))+'\n\nOffline checks: `python3 validate_october21_release.py` and `python3 -m unittest discover -p "test_*.py"`. Earlier dated releases and their seals remain available unchanged.\n'
-    write(ROOT/'README.md',intro+narrative+'\n\n'+categories+end)
-    write(ROOT/'FUNCTIONS.md','# All31 categories:26 decision models and3 LLM references\n\nSame1342 questions. [Color-coded tables]('+SITE+'#functions).\n\n'+category_markdown(s,guide,True))
-    write(ROOT/'OUTPUT_COMPLIANCE.md','# Delivered decisions and request failures\n\nAll29 routes retain the full1342-question first-attempt denominator. Wrong valid decisions are separate from unusable outputs or provider failures. All4026 new first attempts were usable, with zero recoveries.\n\n'+prior.prior.quality(s)+'\n\nThe separate stopped Sonnet bare-ID trial is not pooled into its complete constrained JSON-choice reference. Qwen’s original quota and transport failures remain unsuccessful first deliveries.\n')
-    oldcaps = archive.previous(ROOT/'IMAGE_CAPABILITIES.md').read_text()
-    write(ROOT/'IMAGE_CAPABILITIES.md','# Image input: October21 additions\n\nMammoth-1 and Elephant-1 are text-only on the tested Baseten/OpenRouter catalog routes. Drex Max documents text and image input through its [direct Nace API](https://console.nace.ai/docs/drex/guides/drex-max); its tested OpenRouter route currently advertises text only. No new image inference was performed in this update.\n\nThese additions bring the specialized text cohort to26 models,17 with declared image input on at least one documented route. Declared support does not establish a measured image score. The [separate visual benchmark](https://github.com/etsabary/visual-decision-benchmark) remains a separate comparison.\n\n## Previous dated capability review\n\n'+oldcaps)
+    write(repo_file('README.md', root=ROOT),intro+narrative+'\n\n'+categories+end)
+    write(repo_file('FUNCTIONS.md', root=ROOT),'# All31 categories:26 decision models and3 LLM references\n\nSame1342 questions. [Color-coded tables]('+SITE+'#functions).\n\n'+category_markdown(s,guide,True))
+    write(repo_file('OUTPUT_COMPLIANCE.md', root=ROOT),'# Delivered decisions and request failures\n\nAll29 routes retain the full1342-question first-attempt denominator. Wrong valid decisions are separate from unusable outputs or provider failures. All4026 new first attempts were usable, with zero recoveries.\n\n'+prior.prior.quality(s)+'\n\nThe separate stopped Sonnet bare-ID trial is not pooled into its complete constrained JSON-choice reference. Qwen’s original quota and transport failures remain unsuccessful first deliveries.\n')
+    oldcaps = archive.previous(repo_file('IMAGE_CAPABILITIES.md', root=ROOT)).read_text()
+    write(repo_file('IMAGE_CAPABILITIES.md', root=ROOT),'# Image input: October21 additions\n\nMammoth-1 and Elephant-1 are text-only on the tested Baseten/OpenRouter catalog routes. Drex Max documents text and image input through its [direct Nace API](https://console.nace.ai/docs/drex/guides/drex-max); its tested OpenRouter route currently advertises text only. No new image inference was performed in this update.\n\nThese additions bring the specialized text cohort to26 models,17 with declared image input on at least one documented route. Declared support does not establish a measured image score. The [separate visual benchmark](https://github.com/etsabary/visual-decision-benchmark) remains a separate comparison.\n\n## Previous dated capability review\n\n'+oldcaps)
     write(DEST/'report.txt',narrative+'\n\n'+table(['Model','Type','Correct','Accuracy','Median','p95','Cost/1000','Actual cost'],rows(s))+'\n\n'+'\n\n'.join(method(s))+'\n')
     receipt = dict(status='VERIFIED_COMPLETE_THREE_1342',question_count=1342,added_model_count=3,
         primary_attempts=4026,recoveries=0,unusable_responses=0,bank_sha256=analysis.router.bank.BANK_HASH,
@@ -284,7 +285,7 @@ def build():
         'HTTP408':'HTTP 408','produced84':'produced 84','among110':'among 110','repair;16':'repair; 16',
         'Same1342':'Same 1342','actual1342':'actual 1342','seed2026101906':'seed 2026101906',
         'per1,000':'per 1,000','October21,2026':'October 21, 2026','October 21,2026':'October 21, 2026'}
-    paths=[ROOT/n for n in ('README.md','FUNCTIONS.md','OUTPUT_COMPLIANCE.md','IMAGE_CAPABILITIES.md')]+[DEST/'report.html',DEST/'report.txt']
+    paths=[repo_file(n, root=ROOT) for n in ('README.md','FUNCTIONS.md','OUTPUT_COMPLIANCE.md','IMAGE_CAPABILITIES.md')]+[DEST/'report.html',DEST/'report.txt']
     for path in paths:
         text=path.read_text()
         for before,after in replacements.items():text=text.replace(before,after)
@@ -295,21 +296,21 @@ def build():
         prior_statistics_sha256=digest(prior.DEST/'statistics.json'),
         artifacts={p.name:digest(p) for p in sorted(DEST.iterdir()) if p.is_file() and p.name not in ('manifest.json','release_checksums.json')})
     write(DEST/'manifest.json',json.dumps(manifest,indent=2)+'\n')
-    pages = ROOT/'docs'/NAME
+    pages = repo_file('docs', root=ROOT)/NAME
     pages.mkdir(parents=True,exist_ok=True)
     for path in DEST.iterdir():
         if path.is_file() and path.name!='release_checksums.json':shutil.copyfile(path,pages/path.name)
-    write(ROOT/'docs/report.html',prior.rebase((DEST/'report.html').read_text(),NAME))
+    write(repo_file('docs/report.html', root=ROOT),prior.rebase((DEST/'report.html').read_text(),NAME))
     for name,anchor in (('index.html',''),('functions.html','#functions'),('output_compliance.html','#quality')):
-        write(ROOT/'docs'/name,'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="benchmark-cohort" content="october21-additions-1342"><meta http-equiv="refresh" content="0;url=report.html'+anchor+'"><title>System1 Decision Benchmark</title></head><body><a href="report.html'+anchor+'">Current29-route benchmark</a></body></html>\n')
+        write(repo_file('docs', root=ROOT)/name,'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="benchmark-cohort" content="october21-additions-1342"><meta http-equiv="refresh" content="0;url=report.html'+anchor+'"><title>System1 Decision Benchmark</title></head><body><a href="report.html'+anchor+'">Current29-route benchmark</a></body></html>\n')
     print('Built29 complete routes and899 exact category cells. No inference or Git operation.')
 
 
 def hashes():
-    paths={ROOT/name for name in ACTIVE}
-    for folder in (DEST,ROOT/'docs'/NAME,archive.ARCHIVE):
+    paths={repo_file(name, root=ROOT) for name in ACTIVE}
+    for folder in (DEST,repo_file('docs', root=ROOT)/NAME,archive.ARCHIVE):
         paths.update(p for p in folder.rglob('*') if p.is_file() and p.name!='release_checksums.json')
-    return {str(path.relative_to(ROOT)):digest(frozen_file(path)) for path in sorted(paths)}
+    return {str(logical_relative(path, root=ROOT)):digest(frozen_file(path)) for path in sorted(paths)}
 
 
 if __name__=='__main__':

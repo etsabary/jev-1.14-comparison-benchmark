@@ -1,11 +1,12 @@
 """Build the local-review October 18 report without replacing published pages."""
+from repo_layout import repo_file
 from decimal import Decimal
 from hashlib import sha256
 import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-SOURCE=ROOT/'overall_expanded_2026-10-18'
+SOURCE=repo_file('overall_expanded_2026-10-18', root=ROOT)
 
 
 def table(header,rows):
@@ -46,7 +47,7 @@ def main():
     routes=[]
     for m in new:
         v=s['models'][m]
-        data=json.loads((ROOT/'native_additions_2026-10-18'/m/'model_metadata.json').read_text())
+        data=json.loads((repo_file('native_additions_2026-10-18', root=ROOT)/m/'model_metadata.json').read_text())
         endpoint=data['selected_endpoint'];price=Decimal(endpoint['pricing']['prompt'])*10**6
         identities=', '.join(k for k in v['identities'] if not k.startswith('unreported'))
         routes.append([v['label'],v['provider_tag'],identities,f'${price.normalize()}'])
@@ -55,7 +56,7 @@ def main():
     partial=s['partial_runs']['solar_decide'];partscore=partial['primary_on_completed_only'];parttime=partial['latency_completed_first']
     warnings=[(s['models'][m]['label'],s['models'][m]['primary']['probability_warnings']) for m in new if s['models'][m]['primary']['probability_warnings']]
     warning_text='; '.join(f'{name}: {n}' for name,n in warnings) or 'None'
-    notes=(ROOT/'native_expansion_notes.md').read_text().strip()
+    notes=(repo_file('native_expansion_notes.md', root=ROOT)).read_text().strip()
     text=f'''# Native decision models on the full text bank
 
 I tested 15 new native decision routes on October 18, 2026. Fourteen completed the same 1,136 English text questions used for Jev, Nimble and Luna; I stopped Solar Decide because its latency was impractical for fast decisions. The complete runs add 15,904 scored model-question cases. The combined record now contains 36 complete model runs; 33 qualify for the main comparison under the existing output-compliance rule. All 22 earlier results and their original costs and timings are unchanged.
@@ -137,7 +138,7 @@ python3 native_expansion_analysis.py --answer-key /path/to/answer_key_PRIVATE.cs
 
 The bank measures single-shot choice decisions from supplied facts, without an explicit thinking budget, tools or answer feedback. It does not measure unrestricted reasoning, writing, multilingual performance or agentic iteration.
 '''
-    (ROOT/'NATIVE_DECISION_EXPANSION.md').write_text(text)
+    (repo_file('NATIVE_DECISION_EXPANSION.md', root=ROOT)).write_text(text)
     print('Built local-review report; existing README and published HTML unchanged')
 
 

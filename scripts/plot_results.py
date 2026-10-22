@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Publication graphics with shared scales, denominators, snapshots and dates."""
+from repo_layout import repo_file
 import json
 from pathlib import Path
 import matplotlib
@@ -8,7 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
-s=json.loads((ROOT/"analysis/summary.json").read_text())
+s=json.loads((repo_file("analysis/summary.json", root=ROOT)).read_text())
 models=["jev113","jev114","luna"]
 colors={"jev113":"#087f8c","jev114":"#d1731a","luna":"#7353ba"}
 plt.rcParams.update({"font.family":"DejaVu Sans","font.size":10,"svg.fonttype":"none","svg.hashsalt":"jev-three-model-reference"})
@@ -16,7 +17,7 @@ plt.rcParams.update({"font.family":"DejaVu Sans","font.size":10,"svg.fonttype":"
 
 def save(fig,name):
     for suffix in ["png","svg"]:
-        target=ROOT/"figures"/f"{name}.{suffix}"
+        target=repo_file("figures", root=ROOT)/f"{name}.{suffix}"
         kwargs={"metadata":{"Date":None}} if suffix=="svg" else {}
         fig.savefig(target,dpi=180,facecolor=fig.get_facecolor(),**kwargs)
         if suffix=="svg":target.write_text("\n".join(x.rstrip() for x in target.read_text().splitlines())+"\n")

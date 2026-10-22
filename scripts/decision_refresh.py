@@ -4,6 +4,7 @@ The questions, answer key and eight completed LLM runs are unchanged. This
 runner never reads the answer key. Its HTTP timer matches the eight-LLM timer.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 from repo_layout import source_file
 
 import argparse
@@ -27,7 +28,7 @@ from zoneinfo import ZoneInfo
 from run_benchmark import canonical_bytes as canonical, digest, packet, read_csv, api_key
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT/'runs/decision_refresh_2026-10-15/run_01'
+OUT = repo_file('runs/decision_refresh_2026-10-15/run_01', root=ROOT)
 PATH = '/api/alpha/decisions'
 MODELS = {
     'typesafe/jev-1.13': ('jev113', 'Jev 1.13', 'typesafe', 'TypeSafe', 'typesafe/jev-1.13-20260917'),
@@ -70,12 +71,12 @@ def payload(question, model):
 
 
 def prepare(out=OUT):
-    questions = read_csv(ROOT/'data/questions_1136.csv')
-    baseline = json.loads((ROOT/'data/baseline_reference_manifest.json').read_text())
-    assert sha256((ROOT/'data/questions_1136.csv').read_bytes()).hexdigest() == baseline['questions_sha256']
+    questions = read_csv(repo_file('data/questions_1136.csv', root=ROOT))
+    baseline = json.loads((repo_file('data/baseline_reference_manifest.json', root=ROOT)).read_text())
+    assert sha256((repo_file('data/questions_1136.csv', root=ROOT)).read_bytes()).hexdigest() == baseline['questions_sha256']
     assert len(questions) == len({q['item_id'] for q in questions}) == 1136
     indexed = {q['item_id']: q for q in questions}
-    order = list(dict.fromkeys(r['item_id'] for r in rows(ROOT/'expansion_2026-10-15/request_plan.jsonl')))
+    order = list(dict.fromkeys(r['item_id'] for r in rows(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT))))
     assert set(order) == set(indexed) and len(order) == 1136
     rng, plan = random.Random(2026101503), []
     for position, item in enumerate(order):
@@ -99,7 +100,7 @@ def prepare(out=OUT):
         'questions_sha256': baseline['questions_sha256'], 'questions_each': 1136, 'planned_cases': 3408,
         'endpoint': 'https://openrouter.ai'+PATH,
         'input': 'Exact original native choice state, instructions and five criteria; provider routing is the only added request field',
-        'llm_reference_plan_sha256': sha256((ROOT/'expansion_2026-10-15/request_plan.jsonl').read_bytes()).hexdigest(),
+        'llm_reference_plan_sha256': sha256((repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT)).read_bytes()).hexdigest(),
         'order': 'Same question order as eight LLMs; model launch order seed 2026101503',
         'concurrency': {'maximum_global': 6, 'maximum_per_model': 2, 'questions_per_wave': 2,
                         'barrier': 'All six cases settle before next two-question wave'},
@@ -114,7 +115,7 @@ def prepare(out=OUT):
         'request_plan': plan,
     })
     save_bound(out/'software.json', {'runner_sha256': sha256(Path(__file__).read_bytes()).hexdigest(),
-                                   'tests_sha256': sha256((source_file(ROOT/'test_decision_refresh.py')).read_bytes()).hexdigest()})
+                                   'tests_sha256': sha256((source_file(repo_file('test_decision_refresh.py', root=ROOT))).read_bytes()).hexdigest()})
     return indexed, plan
 
 

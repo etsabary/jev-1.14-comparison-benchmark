@@ -4,6 +4,7 @@ The failed bare-ID trial is preserved, never pooled into this run. Questions,
 option order, prompt text,16-token cap and HTTPS timer are unchanged. Only the
 output grammar is constrained to a one-property JSON object with five choices.
 """
+from repo_layout import repo_file
 import argparse
 from decimal import Decimal
 import json
@@ -13,8 +14,8 @@ import sys
 import sonnet55_reference as native
 
 ROOT, MODEL, SNAPSHOT, SPEC, GUARD = native.ROOT, native.MODEL, native.SNAPSHOT, native.SPEC, native.GUARD
-OUT = ROOT / 'runs/sonnet55_schema_none_1342_2026-10-19'
-PROBE = ROOT / 'runs/sonnet55_schema_probe_2026-10-19/probe.json'
+OUT = repo_file('runs/sonnet55_schema_none_1342_2026-10-19', root=ROOT)
+PROBE = repo_file('runs/sonnet55_schema_probe_2026-10-19/probe.json', root=ROOT)
 BANK_HASH = native.BANK_HASH
 d, chat, file_hash, reserve = native.d, native.chat, native.file_hash, native.reserve
 sanitize, check_route = native.sanitize, native.check_route
@@ -67,7 +68,7 @@ def probe_cost(out):
 
 
 def software():
-    return {**native.software(), **{n: file_hash(ROOT / n) for n in ('sonnet55_schema_reference.py', 'test_sonnet55_schema_reference.py')}}
+    return {**native.software(), **{n: file_hash(repo_file(n, root=ROOT)) for n in ('sonnet55_schema_reference.py', 'test_sonnet55_schema_reference.py')}}
 
 
 def freeze(out, plan):

@@ -5,6 +5,7 @@ This analyzer imports the existing revision-bound private scoring authority only
 when explicitly given --hardening-root. All generated evidence stays in runs/.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 
 import argparse
 from collections import Counter
@@ -194,10 +195,10 @@ def main():
     records, _ = active.validate(args.out, complete=True)
     stats = summarize(records, gold, metadata)
     assert stats['n'] == 1342 and sum(v['n'] for v in stats['families'].values()) == 1342
-    published = json.loads((run.ROOT / 'consolidated_2026-10-19/statistics.json').read_text())
+    published = json.loads((repo_file('consolidated_2026-10-19/statistics.json', root=run.ROOT)).read_text())
     # Individual correctness is deliberately absent from the public aggregate.
     # Resolve the exact private source by its already-published checksum.
-    source_hash = json.loads((run.ROOT / 'consolidated_2026-10-19/manifest.json').read_text())['source_summary_sha256']
+    source_hash = json.loads((repo_file('consolidated_2026-10-19/manifest.json', root=run.ROOT)).read_text())['source_summary_sha256']
     candidates = list((args.hardening_root / 'runs/consolidated_1342_2026-10-19/analysis').glob('*/summary.json'))
     matching = [path for path in candidates if run.file_hash(path) == source_hash]
     assert len(matching) == 1, 'Cannot bind private item-level reference evidence'
@@ -205,7 +206,7 @@ def main():
     assert {r['id'] for r in private_reference['items']} == set(gold)
     bindings[str(matching[0].resolve())] = source_hash
     paired_reference = {**published, 'items': private_reference['items']}
-    original_ids = {r['item_id'] for r in run.d.read_csv(run.ROOT / 'corrected_2026-10-18/questions_1136.csv')}
+    original_ids = {r['item_id'] for r in run.d.read_csv(repo_file('corrected_2026-10-18/questions_1136.csv', root=run.ROOT))}
     stats['matched_original_1136'] = outcomes(records, {i: gold[i] for i in original_ids})
     stats['added_206'] = outcomes(records, {i: g for i, g in gold.items() if i not in original_ids})
     stats['initial_100'] = outcomes([r for r in records if r['request_index']<=100],gold)
@@ -221,7 +222,7 @@ def main():
     labels = {'sol': 'GPT-6 Sol (reasoning none)', 'sonnet': 'Sonnet 5.5 (no thinking, bare ID)',
               'sonnet-schema': 'Sonnet 5.5 (no thinking, JSON-choice)', 'hyper': 'Qwen3.8-Max (none, Hyper Charm)',
               'minimax': 'MiniMax M3 (no thinking, SambaNova)'}
-    legacy = json.loads((run.ROOT / 'corrected_2026-10-18/summary.json').read_text())
+    legacy = json.loads((repo_file('corrected_2026-10-18/summary.json', root=run.ROOT)).read_text())
     report = {'status': 'COMPLETE_FRONTIER_REFERENCE_1342', 'model': active.MODEL,
               'label': labels[args.model],
               'route_description': ('Hyper Charm direct, sequential capacity1' if args.model == 'hyper' else
@@ -239,7 +240,7 @@ def main():
               'comparisons': comparison(stats, records, gold, paired_reference),
               'gold_source_bindings': bindings, 'names': names,
               'completion_sha256': run.file_hash(args.out / 'completion.json'),
-              'published_comparison_sha256': run.file_hash(run.ROOT / 'consolidated_2026-10-19/statistics.json'),
+              'published_comparison_sha256': run.file_hash(repo_file('consolidated_2026-10-19/statistics.json', root=run.ROOT)),
               'analysis_source_sha256': run.file_hash(Path(__file__)),
               'limits': ['Exploratory development bank;37 permanently excluded author-development questions are not a held-out release score.',
                          'Same timing boundary, not synchronized inference. Dates, loads, endpoint/protocol and provider implementation can differ.',

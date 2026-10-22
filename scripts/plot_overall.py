@@ -1,4 +1,5 @@
 """Plot the combined comparison, explicitly marking October 16 additions."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -12,8 +13,8 @@ import numpy as np
 from plot_matched import SHORT as ORIGINAL_SHORT
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'overall_expanded_2026-10-16'
-DEST = ROOT / 'figures'
+SOURCE = repo_file('overall_expanded_2026-10-16', root=ROOT)
+DEST = repo_file('figures', root=ROOT)
 SHORT = {**ORIGINAL_SHORT, 'microsoft_decision': 'Microsoft-Decision-1',
          'nimble_v4': 'Nimble v4', 'nimble_v4_max': 'Nimble v4 Max',
          'nemotron35lightning':'Nemotron 3.5 Lightning','haiku55':'Haiku 5.5',

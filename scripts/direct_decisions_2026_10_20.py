@@ -3,6 +3,7 @@
 No gold keys, no provider fallback, no correctness-dependent retries. Runtime
 evidence stays in ignored runs/. Explicit --execute is required for inference.
 """
+from repo_layout import repo_file
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -25,7 +26,7 @@ import frontier_reference as bank
 import text_models as chat
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'runs/direct_decisions_2026-10-20'
+OUT = repo_file('runs/direct_decisions_2026-10-20', root=ROOT)
 ENV = Path('/Users/etsabary/Documents/repos/the village 14947/.env')
 MODELS = {
     'd3_turbo': dict(label='d3-turbo', model='vllm-sr/d3-turbo', host='decision.vllm-sr.ai',
@@ -165,7 +166,7 @@ def prepare(mid, out):
         sources=['https://decision.vllm-sr.ai/api/info','https://huggingface.co/vllm-sr/d3-turbo',
                  'https://amos.scira.ai/docs/','https://docs.sqwish.ai/guides/jev-migration',
                  'https://docs.sqwish.ai/guides/pricing']))
-    d.save_bound(out/'software.json', {n:bank.file_hash(ROOT/n) for n in SOFTWARE})
+    d.save_bound(out/'software.json', {n:bank.file_hash(repo_file(n, root=ROOT)) for n in SOFTWARE})
     return questions, plan
 
 

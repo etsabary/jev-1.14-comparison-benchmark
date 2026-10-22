@@ -1,3 +1,4 @@
+from repo_layout import repo_file
 from copy import deepcopy
 import json
 import unittest
@@ -6,7 +7,7 @@ import publish_frontier_references as b
 
 
 def report(model='openai/gpt-6-sol'):
-    old=json.loads((b.ROOT/'consolidated_2026-10-19/statistics.json').read_text())['models']['respan02']
+    old=json.loads((repo_file('consolidated_2026-10-19/statistics.json', root=b.ROOT)).read_text())['models']['respan02']
     stats=deepcopy(old)
     stats.update(statuses=stats['first_statuses'],latency_first_all={'median_ms':stats['median_ms'],'p95_ms':stats['p95_ms']},
                  cost_all_attempts={'known_usd':.8,'exact_usd':'.8','missing_attempts':0})

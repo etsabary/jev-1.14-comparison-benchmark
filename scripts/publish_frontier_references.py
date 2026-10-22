@@ -4,6 +4,7 @@ Consumes sealed offline summaries, never calls a model or loads correct keys.
 The original twenty decision-model aggregates and earlier release seals stay
 unchanged. A separate publication seal covers this new presentation.
 """
+from repo_layout import logical_relative, repo_file
 import argparse
 from collections import Counter
 from copy import deepcopy
@@ -29,7 +30,7 @@ from publish_consolidated_report import table
 
 ROOT=Path(__file__).resolve().parents[1]
 NAME='llm_references_2026-10-19'
-DEST=ROOT/NAME
+DEST=repo_file(NAME, root=ROOT)
 SITE='https://etsabary.github.io/jev-1.14-comparison-benchmark/'+NAME+'/report.html'
 BANK_HASH='2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076'
 REFERENCE_IDS={'openai/gpt-6-sol':'reference_sol','anthropic/claude-sonnet-5.5':'reference_sonnet',
@@ -98,7 +99,7 @@ def load(reports):
              tested_llm_reference_count=3,all_tested_primary_cases=23*1342,
              decision_model_ids=native['ranked_model_ids'],
              model_kinds={mid:'LLM reference' if mid in refs else 'Decision model' for mid in s['models']},
-             source_native_statistics_sha256=digest(ROOT/'consolidated_2026-10-19/statistics.json'),
+             source_native_statistics_sha256=digest(repo_file('consolidated_2026-10-19/statistics.json', root=ROOT)),
              reference_evidence_bindings=bindings,question_bank_sha256=BANK_HASH)
     # Native-only combined totals/family caches must not masquerade as totals for23.
     for key in ('families','cost','attempts','recoveries'):s.pop(key,None)
@@ -129,7 +130,7 @@ def trial_findings():
     import frontier_reference as capture
     result=[]
     for label,folder in [('Sonnet5.5 bare-ID','sonnet55_no_thinking_2026-10-19')]:
-        out=ROOT/'runs'/folder;rows=capture.d.rows(out/'attempts.jsonl');first=[r for r in rows if r['attempt']==1]
+        out=repo_file('runs', root=ROOT)/folder;rows=capture.d.rows(out/'attempts.jsonl');first=[r for r in rows if r['attempt']==1]
         result.append({'trial':label,'status':'STOPPED_PARTIAL_NOT_RANKED','questions_attempted':len(first),'attempts':len(rows),
              'first_statuses':dict(Counter(r['status'] for r in first)),'cost':capture.chat.money(rows),
              'raw_attempts_sha256':digest(out/'attempts.jsonl')})
@@ -253,9 +254,9 @@ def quality(s):
 
 def hashes():
     from repo_identity import historical_path
-    paths={ROOT/n for n in ACTIVE_FILES}
-    for folder in (DEST,ROOT/'docs'/NAME,archive.ARCHIVE):paths.update(p for p in folder.rglob('*') if p.is_file() and p.name!='release_checksums.json')
-    return {str(p.relative_to(ROOT)):digest(historical_path(p)) for p in sorted(paths)}
+    paths={repo_file(n, root=ROOT) for n in ACTIVE_FILES}
+    for folder in (DEST,repo_file('docs', root=ROOT)/NAME,archive.ARCHIVE):paths.update(p for p in folder.rglob('*') if p.is_file() and p.name!='release_checksums.json')
+    return {str(logical_relative(p, root=ROOT)):digest(historical_path(p)) for p in sorted(paths)}
 
 
 def build(reports):
@@ -284,7 +285,7 @@ def build(reports):
                          m['route'],'; '.join(sorted(m['dates_toronto']))])
     write(DEST/'model_statistics.csv',buf.getvalue())
     overview='<section id="overview"><h2>All 23 routes: accuracy, speed and cost</h2><p>Twenty specialized decision models and three selected high-end LLM reference configurations. Each row covers all1342 first attempts. Provider failures remain unsuccessful; valid wrong answers are not retried.</p><div class="figure"><a href="accuracy_speed_cost.svg"><img src="accuracy_speed_cost.png" alt="Accuracy, median and p95 latency, and cost for all23 routes on the same1342 questions"></a></div>'+summary_html(s)+'<p>Costs /1000 are normalized from each1342-question run; actual run totals are also shown. Qwen’s amount is provider-reported prepaid-quota usage, not additional out-of-pocket billing. + ? retains unreported charges. Permitted recovery charges are included, probes are separate. Green/yellow/orange/red use the existing fixed bands; they are not relative ranks or significance tests.</p></section>'
-    html=(ROOT/'readable_2026-10-19/report.html').read_text()
+    html=(repo_file('readable_2026-10-19/report.html', root=ROOT)).read_text()
     html=re.sub(r'<section id="overview">.*?(?=<section id="analysis">)',overview+reference_section(s),html,flags=re.S)
     html=html.replace(reference_section(s),legend_html()+reference_section(s),1)
     html=html.replace('content="readable-category-tables"','content="decision-models-with-llm-reference-points"',1)
@@ -311,7 +312,7 @@ def build(reports):
     write(DEST/'report.html',html)
     narrative='\n\n'.join(title.upper()+'\n'+text for title,text in analysis_text(s))
     write(DEST/'report.txt',narrative+'\n\n'+table(['Model','Type','Correct','Accuracy','Median','p95','Cost/1000','Actual run cost'],all_rows(s))+'\n')
-    old=archive.historical_path(ROOT/'README.md').read_text();start=old.index('## What this measures');end=old.index('## Category scores and explanations')
+    old=archive.historical_path(repo_file('README.md', root=ROOT)).read_text();start=old.index('## What this measures');end=old.index('## Category scores and explanations')
     native_text=old[start:end].replace('## Span leads the combined bank','## Span leads the decision models').replace('Regular LLMs lack the complete expanded coverage and are not ranked here.','The earlier LLM cohort lacks expanded coverage; the new reference group has complete matched coverage.')
     group_md=readable.markdown_groups(s,guide).replace(readable.NAME,NAME).replace('All 20 models',f'All {count} routes').replace('all 20 models',f'all {count} routes')
     readme=f'# 20 decision models and {reference_count} high-end LLM references on1,342 text questions\n\nUpdated October19,2026. Three LLM configurations were tested October19; decision-model measurements are unchanged.\n\n'
@@ -331,12 +332,12 @@ def build(reports):
     readme=readme.replace('No new inference was performed for this consolidation.','The decision-model evidence was not rerun; three new LLM references use fresh inference on the same complete bank.')
     readme=readme.replace('`build_readable_report.py` builds this presentation from the unchanged, sealed key-free statistics.','`publish_frontier_references.py` builds the current presentation from sealed summaries, preserving the earlier decision-model evidence and report seals.')
     readme=readme.replace('All23',f'All{count}').replace('four new, separately labelled references',f'{reference_count} new, separately labelled qualified references')
-    write(ROOT/'README.md',readme);write(ROOT/'LLM_REFERENCES.md','# High-end LLM reference points\n\n'+refs_md+'[Interactive methods and category results]('+SITE+'#llm-references).\n')
+    write(repo_file('README.md', root=ROOT),readme);write(repo_file('LLM_REFERENCES.md', root=ROOT),'# High-end LLM reference points\n\n'+refs_md+'[Interactive methods and category results]('+SITE+'#llm-references).\n')
     detailed=readable.markdown_groups(s,guide,details=True).replace(readable.NAME,NAME).replace('All 20 models',f'All {count} routes').replace('all 20 models',f'all {count} routes')
-    write(ROOT/'FUNCTIONS.md',f'# All 31 categories: 20 decision models and {reference_count} LLM references\n\nSame1342 questions; first-attempt results. [Color-coded tables]('+SITE+'#functions).\n\n'+detailed)
+    write(repo_file('FUNCTIONS.md', root=ROOT),f'# All 31 categories: 20 decision models and {reference_count} LLM references\n\nSame1342 questions; first-attempt results. [Color-coded tables]('+SITE+'#functions).\n\n'+detailed)
     quality_note=re.search(r'<p>(.*?)</p>',quality_html).group(1)
-    write(ROOT/'OUTPUT_COMPLIANCE.md','# Delivered decisions and request failures\n\n'+quality(s)+'\n\n'+quality_note+'\n')
-    write(ROOT/'LLM_EXPANSION.md',f'# LLM reference coverage\n\n{reference_count} LLM configurations completed all 1342 questions and appear in the reference comparison. [Findings and configuration notes](LLM_REFERENCES.md). Earlier 1136-question LLM runs remain separate and are not extrapolated.\n')
+    write(repo_file('OUTPUT_COMPLIANCE.md', root=ROOT),'# Delivered decisions and request failures\n\n'+quality(s)+'\n\n'+quality_note+'\n')
+    write(repo_file('LLM_EXPANSION.md', root=ROOT),f'# LLM reference coverage\n\n{reference_count} LLM configurations completed all 1342 questions and appear in the reference comparison. [Findings and configuration notes](LLM_REFERENCES.md). Earlier 1136-question LLM runs remain separate and are not extrapolated.\n')
     receipt={'status':'VERIFIED_PRIVATE_REFERENCE_EVIDENCE','question_count':1342,'tested_reference_count':3,'qualified_reference_count':reference_count,'category_count':31,
              'bank_sha256':BANK_HASH,'reference_bindings':s['reference_evidence_bindings'],
              'published_content':'Aggregate counts, latency quantiles, usage and costs only; no answer keys, individual correctness or private verifier material',
@@ -350,12 +351,12 @@ def build(reports):
               'bank_sha256':BANK_HASH,'native_statistics_sha256':s['source_native_statistics_sha256'],
               'artifacts':{p.name:digest(p) for p in sorted(DEST.iterdir()) if p.is_file() and p.name not in ('manifest.json','release_checksums.json')}}
     write(DEST/'manifest.json',json.dumps(manifest,indent=2)+'\n')
-    pages=ROOT/'docs'/NAME;pages.mkdir(parents=True,exist_ok=True)
+    pages=repo_file('docs', root=ROOT)/NAME;pages.mkdir(parents=True,exist_ok=True)
     for p in DEST.iterdir():
         if p.is_file() and p.name!='release_checksums.json':shutil.copyfile(p,pages/p.name)
     for name,anchor in (('index.html',''),('functions.html','#functions'),('output_compliance.html','#quality')):
         target=NAME+'/report.html'+anchor
-        write(ROOT/'docs'/name,'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october19-consolidated-1342"><meta http-equiv="refresh" content="0;url='+target+'"><title>Decision models and reasoning-off LLM references</title></head><body><a href="'+target+'">Open the current benchmark</a></body></html>\n')
+        write(repo_file('docs', root=ROOT)/name,'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october19-consolidated-1342"><meta http-equiv="refresh" content="0;url='+target+'"><title>Decision models and reasoning-off LLM references</title></head><body><a href="'+target+'">Open the current benchmark</a></body></html>\n')
     print(f'Built {count} complete ranked routes,{count*31} exact category cells; twenty decision-model aggregates unchanged. No inference or Git operation.')
 
 

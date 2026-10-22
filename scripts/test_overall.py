@@ -1,4 +1,5 @@
 """Offline integration regressions for the fourteen-model comparison."""
+from repo_layout import repo_file
 from repo_layout import frozen_file, source_file
 from hashlib import sha256
 import json
@@ -42,7 +43,7 @@ class Overall(unittest.TestCase):
 
     def test_sources_and_denominators(self):
         for name, expected in self.summary['source_files_sha256'].items():
-            self.assertEqual(sha256(frozen_file(a.ROOT / name).read_bytes()).hexdigest(), expected)
+            self.assertEqual(sha256(frozen_file(repo_file(name, root=a.ROOT)).read_bytes()).hexdigest(), expected)
         for model, value in self.summary['models'].items():
             self.assertEqual(sum(f['models'][model]['correct'] for f in self.summary['by_family']), value['primary']['correct'])
             p = value['primary']
@@ -75,21 +76,21 @@ class Overall(unittest.TestCase):
     def test_combined_publication(self):
         # The October16 assertions describe that version, not the current leader.
         # Its exact presentation bytes remain bound by the original release seal.
-        archive=a.ROOT/'publication_archive_2026-10-16'
+        archive=repo_file('publication_archive_2026-10-16', root=a.ROOT)
         manifest=json.loads((archive/'manifest.json').read_text())
         text=(archive/manifest['files']['README.md']['archive_path']).read_text()
-        current=json.loads((a.ROOT/'overall_expanded_2026-10-16/summary.json').read_text())
+        current=json.loads((repo_file('overall_expanded_2026-10-16/summary.json', root=a.ROOT)).read_text())
         self.assertIn(str(current['publication']['ranked_model_count'])+' models', text)
         self.assertIn(f"{current['model_count']*1136:,}", text)
         self.assertIn('Added October 16, 2026', text)
         self.assertIn('Nimble v4 Max now leads', text)
         for model in self.summary['added_model_ids']:
             self.assertIn(self.summary['models'][model]['label'], text)
-        graphics = json.loads((a.ROOT/'overall_expanded_2026-10-16/graphics_integrity.json').read_text())
-        self.assertEqual(graphics['source_summary_sha256'], sha256((a.ROOT/'overall_expanded_2026-10-16/summary.json').read_bytes()).hexdigest())
-        self.assertEqual(graphics['plotter_sha256'], sha256(frozen_file(source_file(a.ROOT / 'plot_overall.py')).read_bytes()).hexdigest())
+        graphics = json.loads((repo_file('overall_expanded_2026-10-16/graphics_integrity.json', root=a.ROOT)).read_text())
+        self.assertEqual(graphics['source_summary_sha256'], sha256((repo_file('overall_expanded_2026-10-16/summary.json', root=a.ROOT)).read_bytes()).hexdigest())
+        self.assertEqual(graphics['plotter_sha256'], sha256(frozen_file(source_file(repo_file('plot_overall.py', root=a.ROOT))).read_bytes()).hexdigest())
         for name, expected in graphics['files_sha256'].items():
-            self.assertEqual(sha256((a.ROOT / 'figures' / name).read_bytes()).hexdigest(), expected)
+            self.assertEqual(sha256((repo_file('figures', root=a.ROOT) / name).read_bytes()).hexdigest(), expected)
 
 
 if __name__ == '__main__':

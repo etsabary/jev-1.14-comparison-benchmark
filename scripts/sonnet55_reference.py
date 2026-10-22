@@ -5,6 +5,7 @@ Native Anthropic messages are needed to express the actual no-thinking mode.
 No paid requests occur without --execute; previous compatibility probes remain
 separate from every scored question.
 """
+from repo_layout import repo_file
 import argparse
 from decimal import Decimal
 import json
@@ -15,7 +16,7 @@ import bounded_reference_runner as controller
 import frontier_reference as base
 
 ROOT, BANK_HASH = base.ROOT, base.BANK_HASH
-OUT = ROOT / 'runs/sonnet55_no_thinking_2026-10-19'
+OUT = repo_file('runs/sonnet55_no_thinking_2026-10-19', root=ROOT)
 MODEL = 'anthropic/claude-sonnet-5.5'
 SNAPSHOT = 'anthropic/claude-sonnet-5.5-20260928'
 SPEC = {'host': 'openrouter.ai', 'path': '/api/v1/messages'}
@@ -125,7 +126,7 @@ def probe_cost(out):
 
 
 def software():
-    return {**base.software(), **{n: file_hash(ROOT / n) for n in ('bounded_reference_runner.py', 'sonnet55_reference.py', 'test_sonnet55_reference.py')}}
+    return {**base.software(), **{n: file_hash(repo_file(n, root=ROOT)) for n in ('bounded_reference_runner.py', 'sonnet55_reference.py', 'test_sonnet55_reference.py')}}
 
 
 def freeze(out, plan):

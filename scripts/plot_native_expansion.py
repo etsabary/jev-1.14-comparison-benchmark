@@ -1,4 +1,5 @@
 """Figures for the October 18 native expansion; previous figures stay unchanged."""
+from repo_layout import logical_relative, repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -9,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
-SOURCE=ROOT/'overall_expanded_2026-10-18'
+SOURCE=repo_file('overall_expanded_2026-10-18', root=ROOT)
 DEST=SOURCE/'figures'
 
 
@@ -97,7 +98,7 @@ def main():
     save(fig,'native_family_accuracy')
     write=dict(plotter_sha256=sha256(Path(__file__).read_bytes()).hexdigest(),matplotlib_version=matplotlib.__version__,
                source_summary_sha256=sha256((SOURCE/'summary.json').read_bytes()).hexdigest(),
-               files_sha256={p.relative_to(ROOT).as_posix():sha256(p.read_bytes()).hexdigest() for p in sorted(DEST.iterdir())})
+               files_sha256={logical_relative(p, root=ROOT).as_posix():sha256(p.read_bytes()).hexdigest() for p in sorted(DEST.iterdir())})
     (SOURCE/'graphics_integrity.json').write_text(json.dumps(write,indent=2)+'\n')
     print('Built three October 18 comparison figures; prior figures unchanged')
 

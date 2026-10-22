@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Reproduce the three-model comparison using an external, unpublished gold key."""
+from repo_layout import repo_file
 import argparse
 from collections import Counter
 import csv
@@ -34,19 +35,19 @@ def quantiles(values):
 
 def analyze(key_path):
     keys={r["item_id"]:r for r in read_csv(key_path)}
-    questions=read_csv(ROOT/"data/questions_1136.csv")
+    questions=read_csv(repo_file("data/questions_1136.csv", root=ROOT))
     ids={q["item_id"] for q in questions}
     assert len(ids)==len(questions)==1136 and ids<=set(keys)
-    baseline=json.loads((ROOT/"data/baseline_reference_manifest.json").read_text())
-    assert baseline["questions_sha256"]==file_hash(ROOT/"data/questions_1136.csv")
+    baseline=json.loads((repo_file("data/baseline_reference_manifest.json", root=ROOT)).read_text())
+    assert baseline["questions_sha256"]==file_hash(repo_file("data/questions_1136.csv", root=ROOT))
     assert baseline["key_sha256"]==file_hash(key_path)
-    assert baseline["jev_decisions_sha256"]==file_hash(ROOT/"data/results_jev113.csv")
-    assert baseline["luna_decisions_sha256"]==file_hash(ROOT/"data/results_luna.csv")
-    rows={m:[normalize(r) for r in read_csv(ROOT/f"data/results_{m}.csv")] for m in MODELS}
+    assert baseline["jev_decisions_sha256"]==file_hash(repo_file("data/results_jev113.csv", root=ROOT))
+    assert baseline["luna_decisions_sha256"]==file_hash(repo_file("data/results_luna.csv", root=ROOT))
+    rows={m:[normalize(r) for r in read_csv(repo_file(f"data/results_{m}.csv", root=ROOT))] for m in MODELS}
     for m,rs in rows.items():
         assert len(rs)==len({r["item_id"] for r in rs})==1136
         assert {r["item_id"] for r in rs}==ids
-    selection=json.loads((ROOT/"data/selection_manifest.json").read_text())
+    selection=json.loads((repo_file("data/selection_manifest.json", root=ROOT)).read_text())
     p={m:panels(rs,keys,selection) for m,rs in rows.items()}
     summary={"labels":LABELS,"key_sha256":file_hash(key_path),"questions_sha256":baseline["questions_sha256"],
         "question_count":1136,"primary":{m:metrics(rs,keys) for m,rs in rows.items()},
@@ -76,23 +77,23 @@ def analyze(key_path):
         summary["common_answered_panels"][name]={"n":len(chosen),**{m:panel_summary({n:[p[m][n][i] for i in chosen] if n==name else [] for n in p[m]})[name] for m in MODELS}}
     ext_ids={r["item_id"] for r in selection["selected_items"]}
     summary["same_subset_body_latency"]={m:quantiles(r["latency_ms"] for r in rs if r["item_id"] in ext_ids and valid(r)) for m,rs in rows.items()}
-    attempts=[json.loads(x) for x in (ROOT/"data/attempts_jev114.jsonl").read_text().splitlines()]
+    attempts=[json.loads(x) for x in (repo_file("data/attempts_jev114.jsonl", root=ROOT)).read_text().splitlines()]
     summary["jev114_execution"]={"http_attempts":len(attempts),"attempts_with_cost":sum(a["provider_cost_usd"] is not None for a in attempts),
         "reported_cost_usd":sum(a["provider_cost_usd"] or 0 for a in attempts),
         "input_tokens":sum(int(r["input_tokens"] or 0) for r in rows["jev114"]),"output_tokens":sum(int(r["output_tokens"] or 0) for r in rows["jev114"]),
         "body_latency":quantiles(r["latency_ms"] for r in rows["jev114"] if valid(r)),
         "errors":dict(Counter(r["http_status"] for r in rows["jev114"] if not valid(r)))}
     metadata=[{k:keys[q["item_id"]][k] for k in ["item_id","base_id","family_id","family","role","level","variant","split"]}|{"prompt_sha256":q["prompt_sha256"]} for q in questions]
-    write_csv(ROOT/"data/item_metadata.csv",metadata)
-    write_csv(ROOT/"data/decisions_jev114.csv",rows["jev114"])
-    write_json(ROOT/"analysis/summary.json",summary)
+    write_csv(repo_file("data/item_metadata.csv", root=ROOT),metadata)
+    write_csv(repo_file("data/decisions_jev114.csv", root=ROOT),rows["jev114"])
+    write_json(repo_file("analysis/summary.json", root=ROOT),summary)
     family_rows=[]
     for f in summary["by_family"]:
         family_rows.append({"family_id":f["family_id"],"family":f["family"],"n":f["jev113"]["attempted"],
             **{m+"_correct":f[m]["correct"] for m in MODELS},"jev114_minus_jev113":f["jev114"]["correct"]-f["jev113"]["correct"],
             **{m+"_unanswered":f[m]["unanswered"] for m in MODELS}})
-    write_csv(ROOT/"analysis/family_comparison.csv",family_rows)
-    write_csv(ROOT/"analysis/confidence_comparison.csv",[{"model":m,**r} for m in MODELS for r in summary["confidence"][m]])
+    write_csv(repo_file("analysis/family_comparison.csv", root=ROOT),family_rows)
+    write_csv(repo_file("analysis/confidence_comparison.csv", root=ROOT),[{"model":m,**r} for m in MODELS for r in summary["confidence"][m]])
     changes=[]
     for i in sorted(ids):
         a,b=indexed["jev113"][i],indexed["jev114"][i]
@@ -100,9 +101,9 @@ def analyze(key_path):
             changes.append({"item_id":i,"family":keys[i]["family"],"role":keys[i]["role"],"level":keys[i]["level"],
                 "jev113_choice":a["normalized_choice"],"jev114_choice":b["normalized_choice"],
                 "jev113_confidence":a["normalized_confidence"],"jev114_confidence":b["normalized_confidence"]})
-    write_csv(ROOT/"analysis/changed_choices.csv",changes)
+    write_csv(repo_file("analysis/changed_choices.csv", root=ROOT),changes)
     # Individual gold/correctness labels stay local for a later answer-key audit.
-    private=ROOT/"runs";private.mkdir(exist_ok=True)
+    private=repo_file("runs", root=ROOT);private.mkdir(exist_ok=True)
     review=[{"item_id":i,"family":keys[i]["family"],"gold_option":keys[i]["gold_option"],
         **{m+"_choice":indexed[m][i]["normalized_choice"] for m in MODELS}} for i in sorted(ids) if any(not correct(indexed[m][i],keys) for m in MODELS)]
     write_csv(private/"answers_for_audit_PRIVATE.csv",review)

@@ -1,4 +1,5 @@
 """Readable presentation of sealed statistics. No calls, rescoring or question edits."""
+from repo_layout import logical_relative, repo_file
 import argparse
 import csv
 from hashlib import sha256
@@ -19,10 +20,10 @@ from matplotlib.ticker import PercentFormatter
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'consolidated_2026-10-19'
+SOURCE = repo_file('consolidated_2026-10-19', root=ROOT)
 NAME = 'readable_2026-10-19'
-DEST = ROOT / NAME
-ARCHIVE = ROOT / 'presentation_archive_2026-10-19'
+DEST = repo_file(NAME, root=ROOT)
+ARCHIVE = repo_file('presentation_archive_2026-10-19', root=ROOT)
 COMMIT = '629343132e8da1bb4cf9b10c953a2ecdacac3439'
 CHANGED = ('README.md', 'FUNCTIONS.md', 'docs/index.html', 'docs/functions.html',
            'docs/output_compliance.html', 'validate_consolidated_release.py',
@@ -275,10 +276,10 @@ def markdown_groups(s, guide, details=False):
 
 def seal_hashes():
     from archive_frontier_presentation import historical_path
-    paths = {ROOT / name for name in SOURCES}
-    for folder in (DEST, ROOT / 'docs' / NAME, ARCHIVE):
+    paths = {repo_file(name, root=ROOT) for name in SOURCES}
+    for folder in (DEST, repo_file('docs', root=ROOT) / NAME, ARCHIVE):
         paths.update(p for p in folder.rglob('*') if p.is_file() and p.name != 'release_checksums.json')
-    return {str(p.relative_to(ROOT)): digest(historical_path(p)) for p in sorted(paths)}
+    return {str(logical_relative(p, root=ROOT)): digest(historical_path(p)) for p in sorted(paths)}
 
 
 def build():
@@ -319,12 +320,12 @@ def build():
     readme = readme.replace('Run `python3 validate_consolidated_release.py`', 'Run `python3 validate_readable_report.py`')
     readme = readme.replace('](consolidated_2026-10-19/report.txt)', '](' + NAME + '/report.txt)')
     readme = readme.replace('`publish_consolidated_report.py` rebuilds the presentation from the imported key-free bundle.', '`build_readable_report.py` builds this presentation from the unchanged, sealed key-free statistics. Sealed presentation artifacts are not overwritten.')
-    write(ROOT / 'README.md', readme)
+    write(repo_file('README.md', root=ROOT), readme)
     functions = '# The 31 decision categories: meanings and results\n\nAll scores below use the same 1,342 questions and 20 models as the [overall comparison](README.md). This page gives named categories, examples and exact values. [Use the color-coded tables](https://etsabary.github.io/jev-1.14-comparison-benchmark/readable_2026-10-19/report.html#functions) for comparison without decoding category IDs.\n\n' + markdown_groups(s, guide, details=True)
-    write(ROOT / 'FUNCTIONS.md', functions.rstrip() + '\n')
+    write(repo_file('FUNCTIONS.md', root=ROOT), functions.rstrip() + '\n')
     for name, anchor in (('index.html', ''), ('functions.html', '#functions'), ('output_compliance.html', '#quality')):
         target = NAME + '/report.html' + anchor
-        write(ROOT / 'docs' / name, '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october19-consolidated-1342"><meta http-equiv="refresh" content="0;url=' + target + '"><title>1,342 text decisions: readable category results</title></head><body><a href="' + target + '">Open the current benchmark</a></body></html>\n')
+        write(repo_file('docs', root=ROOT) / name, '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october19-consolidated-1342"><meta http-equiv="refresh" content="0;url=' + target + '"><title>1,342 text decisions: readable category results</title></head><body><a href="' + target + '">Open the current benchmark</a></body></html>\n')
     payload = {'question_count': 1342, 'model_count': 20, 'category_count': 31,
                'source_statistics_sha256': digest(SOURCE / 'statistics.json'),
                'source_questions_sha256': digest(SOURCE / 'questions_1342.jsonl'),
@@ -332,7 +333,7 @@ def build():
                'groups': [{'id': slug, 'title': title, 'category_ids': fids} for slug, title, fids, _ in GROUPS],
                'artifacts': {p.name: digest(p) for p in sorted(DEST.iterdir()) if p.is_file() and p.name != 'manifest.json'}}
     write(DEST / 'manifest.json', json.dumps(payload, indent=2) + '\n')
-    pages = ROOT / 'docs' / NAME
+    pages = repo_file('docs', root=ROOT) / NAME
     pages.mkdir(parents=True, exist_ok=True)
     for path in DEST.iterdir():
         if path.is_file():

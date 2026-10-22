@@ -3,6 +3,7 @@
 Dry run by default. Isolated evidence, pinned backends, first-attempt scoring,
 and a strict cumulative median screen after at least twenty scored cases.
 """
+from repo_layout import logical_relative, repo_file
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -23,8 +24,8 @@ import frontier_reference as bank
 import text_models as stats
 
 ROOT = Path(__file__).resolve().parents[1]
-ADMISSION = ROOT / 'runs/decision_additions_2026-10-21'
-OUT = ROOT / 'runs/decision_additions_2026-10-21_01'
+ADMISSION = repo_file('runs/decision_additions_2026-10-21', root=ROOT)
+OUT = repo_file('runs/decision_additions_2026-10-21_01', root=ROOT)
 ENV = Path('/Users/etsabary/Documents/repos/the village 14947/.env')
 MODELS = {
     'mammoth1': dict(label='Mammoth-1', model='baseten/mammoth-1:free',
@@ -106,7 +107,7 @@ def prepare(mid, out):
         generation_limit='Native decision endpoint, no requested reasoning/explanation. Nonzero output_tokens retained as reported usage, not proof of generation or thinking; undisclosed internals not independently verified',
         sources=['https://openrouter.ai/'+MODELS[mid]['model'],
                  'https://openrouter.ai/docs/api_reference/limits']))
-    d.save_bound(out/'software.json', {name: bank.file_hash(ROOT/name) for name in SOFTWARE})
+    d.save_bound(out/'software.json', {name: bank.file_hash(repo_file(name, root=ROOT)) for name in SOFTWARE})
     return questions, plan
 
 
@@ -146,7 +147,7 @@ def probe(mid, out):
         for name in ('probe_dispatch.json','compatibility_probe.json'):
             d.save_bound(out/name, json.loads((old/name).read_text()))
         d.save_bound(out/'admission_note.json', dict(
-            source=str(old.relative_to(ROOT)), source_sha256={name:bank.file_hash(old/name)
+            source=str(logical_relative(old, root=ROOT)), source_sha256={name:bank.file_hash(old/name)
                 for name in ('probe_dispatch.json','compatibility_probe.json')},
             change='No scored calls preceded this correction. Catalog free suffix is a routing variant; native output token counters are not a reliable reasoning detector.',
             evidence='Baseten technical report describes single-pass option logits; OpenRouter official Jev examples report nonzero output_tokens for native decisions',

@@ -1,4 +1,5 @@
 """Rebuild publication graphics from the eleven-model aggregate evidence."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -10,8 +11,8 @@ import matplotlib.ticker as ticker
 import numpy as np
 
 HERE = Path(__file__).resolve().parents[1]
-SOURCE = HERE/'expansion_2026-10-15'
-DEST = HERE/'figures'
+SOURCE = repo_file('expansion_2026-10-15', root=HERE)
+DEST = repo_file('figures', root=HERE)
 SHORT = {'jev113': 'Jev 1.13', 'jev114': 'Jev 1.14', 'luna_decisions': 'Luna Decisions',
          'openai/gpt-6-luna': 'Luna regular', 'openai/gpt-5.4-nano': 'GPT-5.4 nano',
          'google/gemini-2.5-flash-lite': 'Gemini 2.5 Flash-Lite',

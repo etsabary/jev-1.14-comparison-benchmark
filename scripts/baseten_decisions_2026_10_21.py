@@ -1,4 +1,5 @@
 """Direct Baseten full-bank runs, separate from the OpenRouter free samples."""
+from repo_layout import repo_file
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -19,7 +20,7 @@ import frontier_reference as bank
 import text_models as stats
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT/'runs/baseten_decisions_2026-10-21'
+OUT = repo_file('runs/baseten_decisions_2026-10-21', root=ROOT)
 MODELS = {
     'mammoth1':dict(label='Mammoth-1',model='decision-models/baseten-mammoth-27b-latest',name='mammoth-1'),
     'elephant1':dict(label='Elephant-1',model='decision-models/baseten-elephant-9b-latest',name='elephant-1'),
@@ -124,7 +125,7 @@ def prepare(mid,out):
         generation_limit='Official native single-forward-pass option-logit architecture, no explanation or reasoning requested; internal execution not independently attested',
         sources=['https://www.baseten.co/library/'+MODELS[mid]['name']+'/',
                  'https://labs.baseten.co/articles/mammoth-1-and-elephant-1-frontier-decision-models']))
-    d.save_bound(out/'software.json',{name:bank.file_hash(ROOT/name) for name in SOFTWARE})
+    d.save_bound(out/'software.json',{name:bank.file_hash(repo_file(name, root=ROOT)) for name in SOFTWARE})
     return qs,plan
 
 

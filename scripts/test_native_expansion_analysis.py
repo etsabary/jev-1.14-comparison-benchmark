@@ -1,4 +1,5 @@
 """Offline integrity, privacy and aggregate checks for the October 18 expansion."""
+from repo_layout import repo_file
 from repo_layout import frozen_file
 from hashlib import sha256
 import json
@@ -101,16 +102,16 @@ class NativeExpansionAnalysis(unittest.TestCase):
         self.assertEqual(receipt['unresolved_dispatches'],[{'request_index':347,'attempt':1}])
 
     def test_review_graphics_and_links(self):
-        report=a.ROOT/'NATIVE_DECISION_EXPANSION.md'
+        report=repo_file('NATIVE_DECISION_EXPANSION.md', root=a.ROOT)
         integrity=a.OVERALL/'graphics_integrity.json'
         if not report.exists() or not integrity.exists():self.skipTest('Review figures not generated yet')
         value=json.loads(integrity.read_text())
         self.assertEqual(value['source_summary_sha256'],sha256((a.OVERALL/'summary.json').read_bytes()).hexdigest())
         for name,expected in value['files_sha256'].items():
-            self.assertEqual(sha256(frozen_file(a.ROOT/name).read_bytes()).hexdigest(),expected)
+            self.assertEqual(sha256(frozen_file(repo_file(name, root=a.ROOT)).read_bytes()).hexdigest(),expected)
         text=report.read_text()
         for name in re.findall(r'\]\(([^)]+)\)',text):
-            if not name.startswith('https:'):self.assertTrue((a.ROOT/name).exists(),name)
+            if not name.startswith('https:'):self.assertTrue((report.parent/name).exists(),name)
         self.assertNotIn('{{',text)
         rows=[line for line in text.splitlines() if line.startswith('|')]
         summary=json.loads((a.OVERALL/'summary.json').read_text())
@@ -121,7 +122,7 @@ class NativeExpansionAnalysis(unittest.TestCase):
         p=a.OVERALL/'review_checksums.json'
         if not p.exists():self.skipTest('Review not sealed yet')
         for name,h in json.loads(p.read_text()).items():
-            self.assertEqual(sha256(frozen_file(a.ROOT/name).read_bytes()).hexdigest(),h,name)
+            self.assertEqual(sha256(frozen_file(repo_file(name, root=a.ROOT)).read_bytes()).hexdigest(),h,name)
 
 
 if __name__=='__main__': unittest.main()

@@ -1,11 +1,12 @@
 """Archive exact superseded publication blobs before the two-item correction."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT / 'publication_archive_2026-10-18'
+DEST = repo_file('publication_archive_2026-10-18', root=ROOT)
 COMMIT = '0ec4bd0caaea6048dc2f3366ae7b49cfffe9eb2c'
 PATHS = ('README.md', 'FUNCTIONS.md', 'OUTPUT_COMPLIANCE.md', 'LLM_EXPANSION.md',
          'docs/index.html', 'docs/functions.html', 'docs/output_compliance.html',
@@ -14,7 +15,7 @@ PATHS = ('README.md', 'FUNCTIONS.md', 'OUTPUT_COMPLIANCE.md', 'LLM_EXPANSION.md'
 
 
 def main():
-    seal = json.loads((ROOT / 'overall_llm_expanded_2026-10-18/release_checksums.json').read_text())
+    seal = json.loads((repo_file('overall_llm_expanded_2026-10-18/release_checksums.json', root=ROOT)).read_text())
     files = {}
     for name in PATHS:
         data = subprocess.run(['git', 'show', COMMIT + ':' + name], cwd=ROOT,

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Build the archived three-model report; use build_report.py for the expansion."""
+from repo_layout import repo_file
 import json
 from pathlib import Path
 import re
@@ -7,7 +8,7 @@ import shutil
 import markdown
 
 ROOT=Path(__file__).resolve().parents[1]
-s=json.loads((ROOT/"analysis/summary.json").read_text())
+s=json.loads((repo_file("analysis/summary.json", root=ROOT)).read_text())
 models=["jev113","jev114","luna"]
 labels=s["labels"]
 pct=lambda n,d:f"{100*n/d:.1f}%" if d else "n/a"
@@ -134,17 +135,17 @@ python3 plot_results.py
 python3 build_report.py
 ```
 """
-(ROOT/"THREE_MODEL_REFERENCE.md").write_text(text)
+(repo_file("THREE_MODEL_REFERENCE.md", root=ROOT)).write_text(text)
 body=markdown.markdown(text,extensions=["tables","fenced_code"])
 prefix="https://github.com/etsabary/jev-1.14-comparison-benchmark/blob/main/"
 body=re.sub(r'href="(?!https?://|#)([^"]+)"',lambda m:'href="'+prefix+m.group(1)+'"',body)
-(ROOT/"docs/figures").mkdir(exist_ok=True)
-for image in (ROOT/"figures").glob("*"):
-    shutil.copy2(image,ROOT/"docs/figures"/image.name)
+(repo_file("docs/figures", root=ROOT)).mkdir(exist_ok=True)
+for image in (repo_file("figures", root=ROOT)).glob("*"):
+    shutil.copy2(image,repo_file("docs/figures", root=ROOT)/image.name)
 html="""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Jev 1.14 vs Jev 1.13 and GPT-6 Luna Decisions: 1,136 questions</title>
 <style>body{max-width:1180px;margin:auto;padding:38px 24px 80px;background:#f7f9fc;color:#172c42;font:17px/1.65 system-ui,sans-serif}h1{font-size:2.3rem;line-height:1.2}h2{margin-top:2.3rem;line-height:1.3}a{color:#087f8c}img{width:100%;height:auto;border-radius:12px}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse;font-size:.9rem}td,th{border-bottom:1px solid #d5dfe9;padding:10px 12px;text-align:left}th{background:#e7eef5}code{font-size:.86em;overflow-wrap:anywhere}pre{overflow:auto;padding:18px;background:#e7eef5}nav{border-bottom:1px solid #d5dfe9;padding-bottom:18px;margin-bottom:30px;font-size:.9rem}</style>
 <nav><a href="https://github.com/etsabary/jev-1.14-comparison-benchmark">Repository and raw evidence</a> · <a href="https://etsabary.github.io/jev-deterministic-benchmark/extension_136.html">Frozen two-model reference</a></nav><main>
 """+body+"</main></html>\n"
-(ROOT/"docs/three_model_reference.html").write_text(html)
+(repo_file("docs/three_model_reference.html", root=ROOT)).write_text(html)
 print("Built THREE_MODEL_REFERENCE.md and docs/three_model_reference.html")

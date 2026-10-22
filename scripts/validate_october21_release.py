@@ -1,4 +1,5 @@
 """Offline aggregate, privacy, link and seal checks for the 29-route release."""
+from repo_layout import repo_file
 from collections import Counter
 import csv
 from decimal import Decimal
@@ -48,11 +49,11 @@ def validate():
     assert {p.name for p in b.DEST.iterdir()}==set(manifest['artifacts'])|{'manifest.json'}|({'release_checksums.json'} if (b.DEST/'release_checksums.json').exists() else set())
     for path in b.DEST.iterdir():
         if path.name=='release_checksums.json':continue
-        assert path.read_bytes()==(b.ROOT/'docs'/b.NAME/path.name).read_bytes()
+        assert path.read_bytes()==(repo_file('docs', root=b.ROOT)/b.NAME/path.name).read_bytes()
         if path.suffix!='.png':
             check=privacy(path.read_text())
             if path.suffix=='.json':check(json.loads(path.read_text()))
-    for path in (b.DEST/'report.html',b.ROOT/'docs/report.html'):
+    for path in (b.DEST/'report.html',repo_file('docs/report.html', root=b.ROOT)):
         page=Page();page.feed(path.read_text())
         assert page.summary==s['ranked_model_ids'] and page.additions==list(b.NEW)
         assert len(page.cells)==899 and len(page.ids)==len(set(page.ids))
@@ -87,10 +88,11 @@ def validate():
     for row in rows:
         for m in s['models'].values():assert row[m['label']]==b.readable.score(m['families'][row['category_id']])
     for name in ('README.md','FUNCTIONS.md','OUTPUT_COMPLIANCE.md','IMAGE_CAPABILITIES.md'):
-        text=(b.ROOT/name).read_text();privacy(text)
+        document=repo_file(name, root=b.ROOT)
+        text=document.read_text();privacy(text)
         assert 'jev-1.14-comparison-benchmark' not in text
         for target in re.findall(r'\]\(([^)]+)\)',text):
-            if not re.match(r'^(https?:|mailto:|#)',target):assert (b.ROOT/target.split('#')[0]).exists(),target
+            if not re.match(r'^(https?:|mailto:|#)',target):assert (document.parent/target.split('#')[0]).exists(),target
     receipt=json.loads((b.DEST/'audit_receipt.json').read_text())
     assert receipt['primary_attempts']==4026 and receipt['recoveries']==receipt['unusable_responses']==0
     assert all(v['n']==v['same_choice']==20 for v in receipt['controls'].values())

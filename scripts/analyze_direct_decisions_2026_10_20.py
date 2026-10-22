@@ -1,4 +1,5 @@
 """Offline revision-bound scoring/report; no inference and no credential reads."""
+from repo_layout import repo_file
 from repo_layout import source_file
 import argparse
 from collections import Counter
@@ -59,14 +60,14 @@ def statistics(rows,gold,meta):
         release_exclusion_diagnostic=outcomes(rows,{i:g for i,g in gold.items()
             if not meta[i]['permanently_unscored_native_development']}),
         new_domains=outcomes(rows,{i:g for i,g in gold.items() if meta[i]['family_id']>='F26'}))
-    original={q['item_id'] for q in run.d.read_csv(run.ROOT/'corrected_2026-10-18/questions_1136.csv')}
+    original={q['item_id'] for q in run.d.read_csv(repo_file('corrected_2026-10-18/questions_1136.csv', root=run.ROOT))}
     s['original_1136']=outcomes(rows,{i:g for i,g in gold.items() if i in original})
     s['added_206']=outcomes(rows,{i:g for i,g in gold.items() if i not in original})
     return s
 
 
 def html(report,published,names):
-    guide=json.loads((run.ROOT/'llm_references_2026-10-19/category_guide.json').read_text())
+    guide=json.loads((repo_file('llm_references_2026-10-19/category_guide.json', root=run.ROOT)).read_text())
     new=report['models'];rows=[]
     for mid,m in published['models'].items():
         rows.append(dict(model_id=mid,label=m['label'],accuracy=m['accuracy'],correct=m['correct'],n=m['n'],
@@ -165,14 +166,14 @@ def html(report,published,names):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--partial',action='store_true');args=p.parse_args()
     q,_=run.bank.prepare();gold,meta,names,bindings=load_gold(HARDENING,q)
-    published=json.loads((run.ROOT/'llm_references_2026-10-19/statistics.json').read_text())
-    guide=json.loads((run.ROOT/'llm_references_2026-10-19/category_guide.json').read_text())
+    published=json.loads((repo_file('llm_references_2026-10-19/statistics.json', root=run.ROOT)).read_text())
+    guide=json.loads((repo_file('llm_references_2026-10-19/category_guide.json', root=run.ROOT)).read_text())
     generated=run.d.timestamps() if args.partial else max(
         (json.loads((run.OUT/mid/'completion.json').read_text())['completed'] for mid in run.MODELS),
         key=lambda value:value['utc'])
     report=dict(status='PARTIAL_NOT_RELEASE' if args.partial else 'COMPLETE_THREE_DIRECT_1342',
         bank_sha256=run.bank.BANK_HASH,generated=generated,gold_source_bindings=bindings,models={},
-        analysis_source_sha256={name:run.bank.file_hash(run.ROOT/name) for name in
+        analysis_source_sha256={name:run.bank.file_hash(repo_file(name, root=run.ROOT)) for name in
             ('analyze_direct_decisions_2026_10_20.py','test_analyze_direct_decisions_2026_10_20.py',
              'llm_references_2026-10-19/statistics.json','llm_references_2026-10-19/category_guide.json')})
     for mid,cfg in run.MODELS.items():
@@ -196,7 +197,7 @@ def main():
                 if (out/name).exists()},compatibility=parse_probe(mid,out))
         if mid=='kettei_fat':
             amendment=json.loads((out/'account_rate_amendment.json').read_text())
-            assert amendment['controller_sha256']==run.bank.file_hash(source_file(run.ROOT/'continue_sqwish_2026_10_20.py'))
+            assert amendment['controller_sha256']==run.bank.file_hash(source_file(repo_file('continue_sqwish_2026_10_20.py', root=run.ROOT)))
             report['models'][mid]['account_rate_amendment']=amendment
     dest=run.OUT/('analysis_partial' if args.partial else 'analysis')
     stream=io.StringIO(newline='');writer=csv.writer(stream)

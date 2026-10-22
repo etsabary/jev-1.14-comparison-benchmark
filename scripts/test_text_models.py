@@ -1,3 +1,4 @@
+from repo_layout import repo_file
 from decimal import Decimal
 import tempfile
 from pathlib import Path
@@ -12,7 +13,7 @@ class TextModels(unittest.TestCase):
         self.assertEqual(sum(m.startswith('ibm-granite/') for m in t.MODELS), 1)
 
     def test_same_prompt_and_five_options(self):
-        q = t.read_csv(t.ROOT/'data/questions_1136.csv')[0]
+        q = t.read_csv(repo_file('data/questions_1136.csv', root=t.ROOT))[0]
         messages = [t.payload(q, m)['messages'] for m in t.MODELS]
         self.assertTrue(all(message == messages[0] for message in messages))
         self.assertEqual(messages[0][0]['content'], q['prompt_text']+t.SUFFIX)

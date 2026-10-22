@@ -1,4 +1,5 @@
 """Offline consistency, privacy and preservation checks for the LLM addition."""
+from repo_layout import repo_file
 from collections import Counter
 import csv
 from html.parser import HTMLParser
@@ -26,15 +27,15 @@ def validate():
     from validate_consolidated_release import privacy
     from validate_readable_report import validate as validate_prior
     s=json.loads((b.DEST/'statistics.json').read_text());manifest=json.loads((b.DEST/'manifest.json').read_text())
-    native=json.loads((b.ROOT/'consolidated_2026-10-19/statistics.json').read_text())
+    native=json.loads((repo_file('consolidated_2026-10-19/statistics.json', root=b.ROOT)).read_text())
     count=20+len(s['reference_model_ids'])
     assert (s['question_count'],s['model_count'],s['family_count'],s['primary_cases'])==(1342,count,31,count*1342)
     assert set(s['reference_model_ids'])==set(b.LABELS)
     assert len(s['ranked_model_ids'])==count and s['all_tested_primary_cases']==30866
     assert manifest['tested_llm_count']==s['tested_llm_reference_count']==3
     assert s['decision_model_ids']==native['ranked_model_ids']
-    assert s['source_native_statistics_sha256']==b.digest(b.ROOT/'consolidated_2026-10-19/statistics.json')
-    assert b.digest(b.ROOT/'consolidated_2026-10-19/questions_1342.jsonl')==b.BANK_HASH==manifest['bank_sha256']
+    assert s['source_native_statistics_sha256']==b.digest(repo_file('consolidated_2026-10-19/statistics.json', root=b.ROOT))
+    assert b.digest(repo_file('consolidated_2026-10-19/questions_1342.jsonl', root=b.ROOT))==b.BANK_HASH==manifest['bank_sha256']
     assert all(s['models'][mid]==value for mid,value in native['models'].items()),'A decision-model measurement changed'
     assert s['ranked_model_ids']==sorted(s['models'],key=lambda mid:(-s['models'][mid]['correct'],mid))
     for mid,m in s['models'].items():
@@ -63,12 +64,12 @@ def validate():
         assert int(cell['data-correct'])==value['correct'] and int(cell['data-n'])==value['n']
         assert b.readable.color(value['accuracy'])[0] in cell['style']
     visible=' '.join(page.text)
-    assert 'MiniMax M3' not in visible and 'MiniMax M3' not in previous_path(b.ROOT/'LLM_REFERENCES.md').read_text()
+    assert 'MiniMax M3' not in visible and 'MiniMax M3' not in previous_path(repo_file('LLM_REFERENCES.md', root=b.ROOT)).read_text()
     for name in b.readable.LABELS.values():assert name in visible
     assert 'without a prior' not in visible.lower()
     assert 'JSON-choice' in visible and 'not additional out-of-pocket billing' in visible
     assert 'not an exhaustive ranking' in visible
-    for path in [b.DEST/'report.html',*(b.ROOT/'docs').glob('*.html')]:
+    for path in [b.DEST/'report.html',*(repo_file('docs', root=b.ROOT)).glob('*.html')]:
         doc=Page();doc.feed(previous_path(path).read_text())
         for link in doc.targets:
             if re.match(r'^(https?:|mailto:|data:)',link):continue
@@ -90,14 +91,14 @@ def validate():
     for name,h in manifest['artifacts'].items():assert b.digest(b.DEST/name)==h,name
     for path in b.DEST.iterdir():
         if path.name=='release_checksums.json':continue
-        assert path.read_bytes()==(b.ROOT/'docs'/b.NAME/path.name).read_bytes()
+        assert path.read_bytes()==(repo_file('docs', root=b.ROOT)/b.NAME/path.name).read_bytes()
         if path.suffix!='.png':privacy(path.read_text())
-    readme=previous_path(b.ROOT/'README.md').read_text();assert all(s['models'][mid]['label'] in readme for mid in s['reference_model_ids'])
+    readme=previous_path(repo_file('README.md', root=b.ROOT)).read_text();assert all(s['models'][mid]['label'] in readme for mid in s['reference_model_ids'])
     assert 'The full comparison is 23 routes' in readme and 'The full comparison is 23 routes' in visible
     assert '1342' in readme and 'not an exhaustive ranking' in readme
-    for path in (b.ROOT/'README.md',b.ROOT/'FUNCTIONS.md'):
+    for path in (repo_file('README.md', root=b.ROOT),repo_file('FUNCTIONS.md', root=b.ROOT)):
         for target in re.findall(r'\]\(([^)]+)\)',previous_path(path).read_text()):
-            if not re.match(r'^(https?:|mailto:|#)',target):assert (b.ROOT/target.split('#')[0]).exists(),target
+            if not re.match(r'^(https?:|mailto:|#)',target):assert (repo_file(target.split('#')[0], root=b.ROOT)).exists(),target
     validate_prior()
     seal=b.DEST/'release_checksums.json'
     if seal.exists():assert b.hashes()==json.loads(seal.read_text()),'New publication seal changed'

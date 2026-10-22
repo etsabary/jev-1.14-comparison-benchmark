@@ -1,4 +1,5 @@
 """Plot only complete configurations on the corrected active question bank."""
+from repo_layout import repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -9,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'corrected_2026-10-18'
+SOURCE = repo_file('corrected_2026-10-18', root=ROOT)
 DEST = SOURCE / 'figures'
 ALIASES = {'tev1_4b_native': 'Tev1 4B (native adapter)', 'qwen3_235b': 'Qwen3 235B A22B Instruct'}
 NAVY, TEAL, PURPLE = '#214b70', '#22836f', '#995080'

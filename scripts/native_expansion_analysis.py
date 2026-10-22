@@ -3,6 +3,7 @@
 The original external key is required only for aggregate scoring. No key or
 per-item correctness is written. The complete October 16 summary is preserved.
 """
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file
 import argparse
 from collections import Counter
@@ -23,9 +24,9 @@ from analysis_core import metrics, correct, valid, panels, panel_summary
 from score_expansion import load_key, normalized_llm
 
 ROOT = runner.ROOT
-PUBLIC = ROOT/'native_additions_2026-10-18'
-OVERALL = ROOT/'overall_expanded_2026-10-18'
-BASE = ROOT/'overall_expanded_2026-10-16/summary.json'
+PUBLIC = repo_file('native_additions_2026-10-18', root=ROOT)
+OVERALL = repo_file('overall_expanded_2026-10-18', root=ROOT)
+BASE = repo_file('overall_expanded_2026-10-16/summary.json', root=ROOT)
 STOPPED = 'solar_decide'
 
 
@@ -90,7 +91,7 @@ def validate_partial():
     for name,h in json.loads((dest/'checksums.json').read_text()).items():
         assert sha256((dest/name).read_bytes()).hexdigest()==h,name
     for name,h in json.loads((dest/'software.json').read_text()).items():
-        assert sha256(frozen_file(ROOT/name).read_bytes()).hexdigest()==h,name
+        assert sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest()==h,name
     attempts=chat.rows(dest/'attempts.jsonl');dispatches=chat.rows(dest/'dispatches.jsonl');results=chat.rows(dest/'results.jsonl')
     receipt=json.loads((dest/'stop_receipt.json').read_text())
     assert len(attempts)==len(results)==receipt['completed_first_attempts']==347
@@ -102,7 +103,7 @@ def validate_partial():
     assert unresolved=={(r['request_index'],r['attempt']) for r in receipt['unresolved_dispatches']}=={(347,1)}
     assert {r['request_index'] for r in results}=={r['request_index'] for r in attempts}
     plan=chat.rows(dest/'request_plan.jsonl');index={p['request_index']:p for p in plan}
-    qs={q['item_id']:q for q in runner.d.read_csv(ROOT/'data/questions_1136.csv')}
+    qs={q['item_id']:q for q in runner.d.read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
     assert len(plan)==1136
     for r in attempts:
         assert r['attempt']==1 and all(r[k]==v for k,v in index[r['request_index']].items())
@@ -167,15 +168,15 @@ def validate_model(model_id):
     audit = json.loads((dest/'source_audit.json').read_text())
     assert audit['previous_22_model_summary_sha256'] == sha256(BASE.read_bytes()).hexdigest()
     for name, expected in json.loads((dest/'software.json').read_text()).items():
-        assert sha256(frozen_file(ROOT/name).read_bytes()).hexdigest() == expected, name
+        assert sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest() == expected, name
     manifest = json.loads((dest/'run_manifest.json').read_text())
     assert manifest['model'] == runner.MODELS[model_id]
-    assert manifest['questions_sha256'] == sha256((ROOT/'data/questions_1136.csv').read_bytes()).hexdigest()
+    assert manifest['questions_sha256'] == sha256((repo_file('data/questions_1136.csv', root=ROOT)).read_bytes()).hexdigest()
     plan, attempts, results = (chat.rows(dest/n) for n in ('request_plan.jsonl', 'attempts.jsonl', 'results.jsonl'))
     assert len(plan) == len(results) == len({r['item_id'] for r in plan}) == 1136
     d = runner.d
     d.reconcile(chat.rows(dest/'dispatches.jsonl'), attempts, results, plan)
-    qs = {q['item_id']: q for q in d.read_csv(ROOT/'data/questions_1136.csv')}
+    qs = {q['item_id']: q for q in d.read_csv(repo_file('data/questions_1136.csv', root=ROOT))}
     assert set(qs) == {p['item_id'] for p in plan}
     index = {p['request_index']: p for p in plan}
     assert Counter(p['wave'] for p in plan) == Counter({i:2 for i in range(1,569)})
@@ -234,8 +235,8 @@ def analyze(key_path, write_output=False):
     rr = previous_rows()
     for m, rows in rr.items():
         assert metrics(rows,keys) == base['models'][m]['primary'], m
-    metadata = {r['item_id']:r for r in runner.d.read_csv(ROOT/'data/item_metadata.csv')}
-    selection = json.loads((ROOT/'data/selection_manifest.json').read_text())
+    metadata = {r['item_id']:r for r in runner.d.read_csv(repo_file('data/item_metadata.csv', root=ROOT))}
+    selection = json.loads((repo_file('data/selection_manifest.json', root=ROOT)).read_text())
     tested = [m for m in runner.MODELS if (PUBLIC/m/'checksums.json').exists()]
     assert len(tested) == 14 and STOPPED not in tested, 'Fourteen complete runs plus the explicitly stopped Solar diagnostic are required'
     partial_attempts,stop_receipt=validate_partial()
@@ -332,12 +333,12 @@ def analyze(key_path, write_output=False):
         'Tev1 is a decision-specialized generative model using a documented chat-letter interface, separate from these fifteen native API candidates. No Tev1 or additional regular LLM run is included.',
         'The question bank contains dependent rotations, contrasts and candidate checks. Overall accuracy is a descriptive result on this bank, not 1136 independent trials.'
     ]
-    summary['source_files_sha256'][str(BASE.relative_to(ROOT))] = sha256(BASE.read_bytes()).hexdigest()
+    summary['source_files_sha256'][str(logical_relative(BASE, root=ROOT))] = sha256(BASE.read_bytes()).hexdigest()
     note = OVERALL/'current_pricing_note.json'
     if note.exists():
-        summary['source_files_sha256'][str(note.relative_to(ROOT))] = sha256(note.read_bytes()).hexdigest()
+        summary['source_files_sha256'][str(logical_relative(note, root=ROOT))] = sha256(note.read_bytes()).hexdigest()
     for p in PUBLIC.rglob('*'):
-        if p.is_file(): summary['source_files_sha256'][str(p.relative_to(ROOT))] = sha256(p.read_bytes()).hexdigest()
+        if p.is_file(): summary['source_files_sha256'][str(logical_relative(p, root=ROOT))] = sha256(p.read_bytes()).hexdigest()
     if write_output:
         write(OVERALL/'summary.json',summary)
         with (OVERALL/'family_comparison.csv').open('w',newline='') as stream:
@@ -360,7 +361,7 @@ def validate_summary():
     assert summary['model_count'] == 36 and not summary['pending_model_ids']
     for m,value in base['models'].items(): assert summary['models'][m] == value,m
     for name,expected in summary['source_files_sha256'].items():
-        assert sha256(frozen_file(ROOT/name).read_bytes()).hexdigest() == expected,name
+        assert sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest() == expected,name
     for m in summary['native_added_october_18_model_ids']:
         first,eventual,attempts = validate_model(m)
         value = summary['models'][m]

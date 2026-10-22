@@ -3,6 +3,7 @@
 Offline only: no inference, credentials, answer keys or item-level correctness.
 Earlier releases and their seals are retained; this presentation gets a new seal.
 """
+from repo_layout import logical_relative, repo_file
 from repo_layout import source_file
 import argparse
 from collections import Counter
@@ -34,9 +35,9 @@ from publish_consolidated_report import table
 
 ROOT=Path(__file__).resolve().parents[1]
 NAME='direct_additions_2026-10-20'
-DEST=ROOT/NAME
-BASE=ROOT/'llm_references_2026-10-19'
-PRIVATE=ROOT/'runs/direct_decisions_2026-10-20'
+DEST=repo_file(NAME, root=ROOT)
+BASE=repo_file('llm_references_2026-10-19', root=ROOT)
+PRIVATE=repo_file('runs/direct_decisions_2026-10-20', root=ROOT)
 SITE='https://etsabary.github.io/system-1-decision-benchmark/report.html'
 NEW_IDS=('d3_turbo','amos_large','kettei_fat')
 ACTIVE=('README.md','FUNCTIONS.md','OUTPUT_COMPLIANCE.md','IMAGE_CAPABILITIES.md',
@@ -91,7 +92,7 @@ def verify_private(source):
     assert source['status']=='COMPLETE_THREE_DIRECT_1342' and source['bank_sha256']==prior.BANK_HASH
     seal=json.loads((PRIVATE/'analysis/checksums.json').read_text())
     for name,h in seal.items():assert digest(PRIVATE/'analysis'/name)==h,name
-    for name,h in source['analysis_source_sha256'].items():assert digest(ROOT/name)==h,name
+    for name,h in source['analysis_source_sha256'].items():assert digest(repo_file(name, root=ROOT))==h,name
     for mid in NEW_IDS:
         rows,results,_=run.validate(mid,PRIVATE/mid,True);v=source['models'][mid]['statistics']
         assert len(rows)==len(results)==1342 and all(r['status']=='ok' for r in rows)
@@ -101,7 +102,7 @@ def verify_private(source):
         for name,h in source['models'][mid]['evidence_sha256'].items():assert digest(PRIVATE/mid/name)==h,name
     amendment=source['models']['kettei_fat']['account_rate_amendment']
     assert amendment['observed_limits']==dict(rpm=30,concurrency=1)
-    assert amendment['controller_sha256']==digest(source_file(ROOT/'continue_sqwish_2026_10_20.py'))
+    assert amendment['controller_sha256']==digest(source_file(repo_file('continue_sqwish_2026_10_20.py', root=ROOT)))
 
 
 def load():
@@ -343,9 +344,9 @@ def build():
     assert set(capabilities['models'])==set(s['models'])
     assert sum(capabilities['models'][mid]['image_input'] for mid in s['decision_model_ids'])==16
     exports(s,guide);overview_chart(s)
-    write(ROOT/'IMAGE_CAPABILITIES.md',capability_markdown(s))
+    write(repo_file('IMAGE_CAPABILITIES.md', root=ROOT),capability_markdown(s))
     write(DEST/'report.html',build_html(s,guide))
-    native=previous_path(ROOT/'README.md').read_text()
+    native=previous_path(repo_file('README.md', root=ROOT)).read_text()
     native=native[native.index('## What this measures'):native.index('## Category scores and explanations')]
     native=native.replace('Span has the lowest cost among routes with complete cost reporting.','Span has the lowest metered cost among routes with complete charge accounting. The new free public endpoints are a separate access category.')
     intro='# System 1 Decision Benchmark\n\n23 specialized decision models and 3 high-end LLM references on 1,342 text questions.\n\nUpdated October 20, 2026. Added complete d3-turbo, Amos Large and Sqwish kettei-fat runs; all earlier measurements are unchanged.\n\n'
@@ -362,9 +363,9 @@ def build():
     end+='Current exports: [model CSV]('+NAME+'/model_statistics.csv), [named-category CSV]('+NAME+'/category_scores.csv), [aggregate JSON]('+NAME+'/statistics.json), [sanitized audit receipt]('+NAME+'/audit_receipt.json), [manifest]('+NAME+'/manifest.json), [plain-text findings]('+NAME+'/report.txt).\n\n'
     end+='[Request failures and output compliance](OUTPUT_COMPLIANCE.md) · [Image capability review](IMAGE_CAPABILITIES.md) · [Earlier 1136-question comparison](REFERENCE_1136.md) · [Separate image benchmark](https://github.com/etsabary/visual-decision-benchmark).\n\n'
     end+='\n\n'.join(method(s))+'\n\n## Offline publication checks\n\nRun `python3 validate_direct_release.py`, `python3 repo_identity.py` and `python3 -m unittest discover -p "test_*.py"` with `requirements-reports.txt` and `python-dotenv` installed. These checks make no inference calls. Earlier dated releases and seals remain available unchanged.\n'
-    write(ROOT/'README.md',intro+narrative+refs+native+categories_markdown(s,guide)+end)
-    write(ROOT/'FUNCTIONS.md','# All 31 categories: 23 decision models and 3 LLM references\n\nSame 1342 questions, first-attempt scores. [Color-coded tables]('+SITE+'#functions).\n\n'+categories_markdown(s,guide,True))
-    write(ROOT/'OUTPUT_COMPLIANCE.md','# Delivered decisions and request failures\n\nAll 26 routes retain the complete 1342 first-attempt denominator. Wrong valid choices are distinct from provider and output failures. No answer-dependent retries.\n\n'+prior.quality(s)+'\n\nThe October 20 additions returned 4026 usable first decisions with zero recoveries and zero probability-format warnings. Sonnet’s separate bare-ID trial is not pooled into its complete constrained-format score. Qwen’s first-attempt quota/transport failures remain in the ranking.\n')
+    write(repo_file('README.md', root=ROOT),intro+narrative+refs+native+categories_markdown(s,guide)+end)
+    write(repo_file('FUNCTIONS.md', root=ROOT),'# All 31 categories: 23 decision models and 3 LLM references\n\nSame 1342 questions, first-attempt scores. [Color-coded tables]('+SITE+'#functions).\n\n'+categories_markdown(s,guide,True))
+    write(repo_file('OUTPUT_COMPLIANCE.md', root=ROOT),'# Delivered decisions and request failures\n\nAll 26 routes retain the complete 1342 first-attempt denominator. Wrong valid choices are distinct from provider and output failures. No answer-dependent retries.\n\n'+prior.quality(s)+'\n\nThe October 20 additions returned 4026 usable first decisions with zero recoveries and zero probability-format warnings. Sonnet’s separate bare-ID trial is not pooled into its complete constrained-format score. Qwen’s first-attempt quota/transport failures remain in the ranking.\n')
     write(DEST/'report.txt','\n\n'.join(t.upper()+'\n'+v for t,v in findings(s))+'\n\n'+table(['Model','Type','Correct','Accuracy','Median','p95','Cost/1000','Actual run cost'],all_rows(s))+'\n\nMETHOD\n'+'\n\n'.join(method(s))+'\n')
     receipt=dict(status='VERIFIED_COMPLETE_DIRECT_1342',question_count=1342,added_model_count=3,
         primary_attempts=4026,recoveries=0,unusable_responses=0,probability_warnings=0,
@@ -382,21 +383,21 @@ def build():
         added_models=list(NEW_IDS),earlier_models_unchanged=True,
         artifacts={p.name:digest(p) for p in sorted(DEST.iterdir()) if p.is_file() and p.name not in ('manifest.json','release_checksums.json')})
     write(DEST/'manifest.json',json.dumps(manifest,indent=2)+'\n')
-    pages=ROOT/'docs'/NAME;pages.mkdir(parents=True,exist_ok=True)
+    pages=repo_file('docs', root=ROOT)/NAME;pages.mkdir(parents=True,exist_ok=True)
     for p in DEST.iterdir():
         if p.is_file() and p.name!='release_checksums.json':shutil.copyfile(p,pages/p.name)
-    write(ROOT/'docs/report.html',rebase((DEST/'report.html').read_text(),NAME))
+    write(repo_file('docs/report.html', root=ROOT),rebase((DEST/'report.html').read_text(),NAME))
     for name,anchor in (('index.html',''),('functions.html','#functions'),('output_compliance.html','#quality')):
-        write(ROOT/'docs'/name,'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october20-direct-additions-1342"><meta http-equiv="refresh" content="0;url=report.html'+anchor+'"><title>System 1 Decision Benchmark</title></head><body><a href="report.html'+anchor+'">Current 26-route benchmark</a></body></html>\n')
+        write(repo_file('docs', root=ROOT)/name,'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="benchmark-cohort" content="october20-direct-additions-1342"><meta http-equiv="refresh" content="0;url=report.html'+anchor+'"><title>System 1 Decision Benchmark</title></head><body><a href="report.html'+anchor+'">Current 26-route benchmark</a></body></html>\n')
     print('Built 26 full-bank rows and 806 category cells; earlier 23 measurements unchanged; no inference or Git operation.')
 
 
 def hashes():
     from archive_october21_presentation import previous
-    paths={ROOT/n for n in ACTIVE}
-    for folder in (DEST,ROOT/'docs'/NAME,archive.ARCHIVE):
+    paths={repo_file(n, root=ROOT) for n in ACTIVE}
+    for folder in (DEST,repo_file('docs', root=ROOT)/NAME,archive.ARCHIVE):
         paths.update(p for p in folder.rglob('*') if p.is_file() and p.name!='release_checksums.json')
-    return {str(p.relative_to(ROOT)):digest(previous(p)) for p in sorted(paths)}
+    return {str(logical_relative(p, root=ROOT)):digest(previous(p)) for p in sorted(paths)}
 
 
 if __name__=='__main__':

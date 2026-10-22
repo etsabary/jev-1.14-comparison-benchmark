@@ -1,4 +1,5 @@
 """Publish neutral repository links without rewriting frozen benchmark evidence."""
+from repo_layout import logical_relative, repo_file
 import argparse
 from hashlib import sha256
 from html.parser import HTMLParser
@@ -10,12 +11,12 @@ import subprocess
 from urllib.parse import urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT / 'repo_identity_2026-10-19'
+DEST = repo_file('repo_identity_2026-10-19', root=ROOT)
 ARCHIVE = DEST / 'archive'
 OLD = 'jev-1.14-comparison-benchmark'
 NEW = 'system-1-decision-benchmark'
 SITE = 'https://etsabary.github.io/' + NEW
-PRIOR = ROOT / 'llm_references_2026-10-19'
+PRIOR = repo_file('llm_references_2026-10-19', root=ROOT)
 SAVED = ('README.md', 'FUNCTIONS.md', 'LLM_REFERENCES.md',
          'docs/index.html', 'docs/functions.html', 'docs/output_compliance.html',
          'publish_frontier_references.py', '.github/workflows/october18-validate.yml')
@@ -30,7 +31,7 @@ def historical_path(path):
     path = Path(path)
     manifest = ARCHIVE / 'manifest.json'
     entries = json.loads(manifest.read_text())['files'] if manifest.exists() else {}
-    entry = entries.get(str(path.relative_to(ROOT)))
+    entry = entries.get(str(logical_relative(path, root=ROOT)))
     if entry is None:
         from publication_history import previous_path
         return previous_path(path)
@@ -43,13 +44,13 @@ def archive():
     manifest = ARCHIVE / 'manifest.json'
     if manifest.exists():
         for name in SAVED:
-            historical_path(ROOT / name)
+            historical_path(repo_file(name, root=ROOT))
         return
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     entries = {}
     for name in SAVED:
         data = subprocess.check_output(['git', 'show', commit + ':' + name], cwd=ROOT)
-        assert data == (ROOT / name).read_bytes(), 'Overlapping changes: ' + name
+        assert data == (repo_file(name, root=ROOT)).read_bytes(), 'Overlapping changes: ' + name
         path = ARCHIVE / (name + '.snapshot')
         assert not path.exists()
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -83,17 +84,17 @@ def build():
     assert not (DEST / 'manifest.json').exists(), 'Do not overwrite a sealed identity migration'
     archive()
     for name in ('README.md', 'FUNCTIONS.md', 'LLM_REFERENCES.md'):
-        text = neutral_links(historical_path(ROOT / name).read_text())
+        text = neutral_links(historical_path(repo_file(name, root=ROOT)).read_text())
         if name == 'README.md':
             text = re.sub(r'^# .+\n', '# System 1 Decision Benchmark\n\n20 specialized decision models and 3 high-end LLM references on 1,342 text questions.\n', text, count=1)
-        (ROOT / name).write_text(text)
-    (ROOT / 'docs/report.html').write_text(root_report((PRIOR / 'report.html').read_text()))
+        (repo_file(name, root=ROOT)).write_text(text)
+    (repo_file('docs/report.html', root=ROOT)).write_text(root_report((PRIOR / 'report.html').read_text()))
     for name in ('index.html', 'functions.html', 'output_compliance.html'):
-        text = historical_path(ROOT / 'docs' / name).read_text()
+        text = historical_path(repo_file('docs', root=ROOT) / name).read_text()
         text = neutral_links(text).replace('llm_references_2026-10-19/report.html', 'report.html')
-        (ROOT / 'docs' / name).write_text(text)
-    files = {name: digest(ROOT / name) for name in CURRENT}
-    files.update({str(p.relative_to(ROOT)): digest(p) for p in ARCHIVE.rglob('*') if p.is_file()})
+        (repo_file('docs', root=ROOT) / name).write_text(text)
+    files = {name: digest(repo_file(name, root=ROOT)) for name in CURRENT}
+    files.update({str(logical_relative(p, root=ROOT)): digest(p) for p in ARCHIVE.rglob('*') if p.is_file()})
     (DEST / 'manifest.json').write_text(json.dumps({
         'name': NEW, 'old_name': OLD, 'site': SITE + '/report.html',
         'scope': 'Repository identity, current links and presentation entry point only; no new inference or changed measurements.',
@@ -119,17 +120,17 @@ def validate():
     from validate_frontier_release import validate as previous
     from validate_consolidated_release import privacy
     manifest = json.loads((DEST / 'manifest.json').read_text())
-    assert all(digest(previous_path(ROOT / name)) == h for name, h in manifest['files'].items())
+    assert all(digest(previous_path(repo_file(name, root=ROOT))) == h for name, h in manifest['files'].items())
     assert digest(PRIOR / 'release_checksums.json') == manifest['prior_release_seal_sha256']
     assert digest(PRIOR / 'statistics.json') == manifest['statistics_sha256']
     a = Page(); a.feed((PRIOR / 'report.html').read_text())
-    b = Page(); text = previous_path(ROOT / 'docs/report.html').read_text(); b.feed(text)
+    b = Page(); text = previous_path(repo_file('docs/report.html', root=ROOT)).read_text(); b.feed(text)
     assert a.models == b.models and a.cells == b.cells
     assert len(b.models) == 23 and len(b.cells) == 713
     for name in ('README.md', 'FUNCTIONS.md', 'LLM_REFERENCES.md', 'docs/report.html'):
-        text = previous_path(ROOT / name).read_text(); privacy(text)
+        text = previous_path(repo_file(name, root=ROOT)).read_text(); privacy(text)
         assert OLD not in text
-    for path in (ROOT / 'docs').glob('*.html'):
+    for path in (repo_file('docs', root=ROOT)).glob('*.html'):
         page = Page(); page.feed(previous_path(path).read_text())
         for target in page.links:
             u = urlsplit(target)

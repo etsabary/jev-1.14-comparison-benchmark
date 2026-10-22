@@ -12,6 +12,7 @@ or the module state of any independently running ordinary-LLM process. No paid
 call occurs without --probe or --execute; the answer key is never loaded here.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 from repo_layout import source_file
 
 from hashlib import sha256
@@ -21,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 _spec = importlib.util.spec_from_file_location('_tev_native_screen_engine_20261018',
-                                              source_file(ROOT / 'llm_field_2026_10_18.py'))
+                                              source_file(repo_file('llm_field_2026_10_18.py', root=ROOT)))
 engine = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(engine)
 _base_source_hashes = engine.source_hashes
@@ -29,7 +30,7 @@ _base_sanitize = engine.sanitize_response
 _base_validate_probe = engine.validate_probe
 
 MODEL_ID = 'tev1_4b_native'
-RUNS = ROOT / 'runs/tev_native_adapter_2026-10-18'
+RUNS = repo_file('runs/tev_native_adapter_2026-10-18', root=ROOT)
 MODELS = {MODEL_ID: {**engine.MODELS['tev1_4b'],
                     'label': 'Tev1 4B experimental (OpenRouter native adapter)',
                     'kind': 'decision_specialized_generative_native_adapter',
@@ -49,7 +50,7 @@ verify_prefixes = engine.verify_prefixes
 def source_hashes():
     return {**_base_source_hashes(),
             Path(__file__).name: file_hash(Path(__file__)),
-            'test_tev_native_adapter_2026_10_18.py': file_hash(source_file(ROOT / 'test_tev_native_adapter_2026_10_18.py'))}
+            'test_tev_native_adapter_2026_10_18.py': file_hash(source_file(repo_file('test_tev_native_adapter_2026_10_18.py', root=ROOT)))}
 
 
 def payload(question, model_id=MODEL_ID):
@@ -61,11 +62,11 @@ def payload(question, model_id=MODEL_ID):
 
 def prepare(model_id=MODEL_ID):
     cfg = MODELS[model_id]
-    bank = ROOT / 'data/questions_1136.csv'
-    baseline = json.loads((ROOT / 'data/baseline_reference_manifest.json').read_text())
+    bank = repo_file('data/questions_1136.csv', root=ROOT)
+    baseline = json.loads((repo_file('data/baseline_reference_manifest.json', root=ROOT)).read_text())
     assert file_hash(bank) == baseline['questions_sha256'], 'Frozen bank changed'
     questions = {q['item_id']: q for q in d.read_csv(bank)}
-    order = list(dict.fromkeys(r['item_id'] for r in d.rows(ROOT / 'expansion_2026-10-15/request_plan.jsonl')))
+    order = list(dict.fromkeys(r['item_id'] for r in d.rows(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT))))
     assert len(questions) == len(order) == 1136 and set(order) == set(questions)
     plan = []
     for position, item_id in enumerate(order):
@@ -90,8 +91,8 @@ def freeze(model_id, out, plan):
         'version': 'october-18-tev-generative-native-adapter-screen-v1',
         'model_id': model_id, 'model': cfg, 'question_count': 1136,
         'screen_question_count': SCREEN_SIZE,
-        'questions_sha256': file_hash(ROOT / 'data/questions_1136.csv'),
-        'reference_order_sha256': file_hash(ROOT / 'expansion_2026-10-15/request_plan.jsonl'),
+        'questions_sha256': file_hash(repo_file('data/questions_1136.csv', root=ROOT)),
+        'reference_order_sha256': file_hash(repo_file('expansion_2026-10-15/request_plan.jsonl', root=ROOT)),
         'endpoint': 'https://openrouter.ai/api/alpha/decisions',
         'classification': 'Decision-specialized generative model via OpenRouter native adapter',
         'architecture_limit': 'A typed native response does not prove a non-generative underlying model or audit hidden internal processing',

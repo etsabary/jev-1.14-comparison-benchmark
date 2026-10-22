@@ -3,6 +3,7 @@
 Usage: python3 publish_consolidated_report.py --bundle PATH --audit-receipt PATH
 Repeat builds with no arguments use the imported public bundle.
 """
+from repo_layout import repo_file
 import argparse
 import csv
 from hashlib import sha256
@@ -12,7 +13,7 @@ import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 FOLDER = 'consolidated_2026-10-19'
-DEST = ROOT / FOLDER
+DEST = repo_file(FOLDER, root=ROOT)
 ARTIFACTS = ('report.html', 'report.txt', 'model_statistics.csv', 'family_statistics.csv',
              'function_guide.csv', 'statistics.json', 'plot_data.json',
              'questions_1342.csv', 'questions_1342.jsonl', 'questions_1342.txt',
@@ -39,23 +40,23 @@ def table(headers, rows):
 
 
 def archive_references():
-    manifest = json.loads((ROOT / 'publication_archive_2026-10-19/manifest.json').read_text())
+    manifest = json.loads((repo_file('publication_archive_2026-10-19/manifest.json', root=ROOT)).read_text())
     targets = {'README.md': 'REFERENCE_1136.md', 'FUNCTIONS.md': 'REFERENCE_1136_FUNCTIONS.md',
                'OUTPUT_COMPLIANCE.md': 'REFERENCE_1136_OUTPUT_COMPLIANCE.md',
                'LLM_EXPANSION.md': 'REFERENCE_1136_LLM_EXPANSION.md'}
     for original, target in targets.items():
-        text = (ROOT / 'publication_archive_2026-10-19' / manifest['files'][original]['archive_path']).read_text()
+        text = (repo_file('publication_archive_2026-10-19', root=ROOT) / manifest['files'][original]['archive_path']).read_text()
         for old, new in targets.items():
             text = text.replace('](' + old, '](' + new)
-        write(ROOT / target, '> Earlier 1,136-question reference, not the current 1,342-question ranking. [Current report](README.md).\n\n' + text)
+        write(repo_file(target, root=ROOT), '> Earlier 1,136-question reference, not the current 1,342-question ranking. [Current report](README.md).\n\n' + text)
     pages = {'index.html': 'reference_1136.html', 'functions.html': 'reference_1136_functions.html',
              'output_compliance.html': 'reference_1136_output_compliance.html'}
     for original, target in pages.items():
-        text = (ROOT / 'publication_archive_2026-10-19' / manifest['files']['docs/' + original]['archive_path']).read_text()
+        text = (repo_file('publication_archive_2026-10-19', root=ROOT) / manifest['files']['docs/' + original]['archive_path']).read_text()
         for old, new in pages.items():
             text = text.replace('href="' + old, 'href="' + new)
         text = text.replace('<body>', '<body><p style="padding:16px;background:#fff5df">Earlier 1,136-question reference. These scores are not the expanded ranking. <a href="index.html">Current 1,342-question report</a>.</p>', 1)
-        write(ROOT / 'docs' / target, text)
+        write(repo_file('docs', root=ROOT) / target, text)
 
 
 def import_bundle(bundle, receipt):
@@ -139,7 +140,7 @@ def build():
     readme += 'The 37 author-development cases remain permanently excluded from a future held-out scored release. This public developmental overview does not claim a held-out score. Publication checks validate exported consistency and privacy; the sanitized audit receipt records a separate private raw-evidence check. The public aggregates alone cannot reproduce answer-key scoring or raw-latency quantiles.\n\n'
     readme += '## Earlier LLM comparison and image benchmark\n\nThe [36-model, 1,136-question reference](REFERENCE_1136.md) remains available with its measurements, analysis, raw evidence and unchanged release seals. Sixteen regular LLM configurations have no complete expanded coverage, so they are not assigned a 1,342-question score or mixed into this ranking. The [image benchmark](https://github.com/etsabary/visual-decision-benchmark) is unchanged.\n\n'
     readme += '## Offline publication checks\n\nRun `python3 validate_consolidated_release.py` and `python3 -m unittest test_consolidated_publication test_corrected_release`. These make no model calls. `publish_consolidated_report.py` rebuilds the presentation from the imported key-free bundle. Earlier report builders describe superseded releases and must not overwrite the current presentation.\n'
-    write(ROOT / 'README.md', readme)
+    write(repo_file('README.md', root=ROOT), readme)
     with (DEST / 'function_guide.csv').open(newline='') as f:
         guide = list(csv.DictReader(f))
     definitions = [list(r.values()) for r in guide]
@@ -148,21 +149,21 @@ def build():
     funcs += table(['Function', 'Questions'] + [s['models'][m]['label'] for m in order],
                    [[f['family_id'] + ' ' + f['family'], f['n']] + [f['models'][m]['correct'] for m in order] for f in s['families']])
     funcs += '\nCells are correct decisions, not percentages. [Machine-readable function statistics](' + FOLDER + '/family_statistics.csv). [Earlier 1,136-question LLM function comparison](REFERENCE_1136_FUNCTIONS.md).\n'
-    write(ROOT / 'FUNCTIONS.md', funcs)
+    write(repo_file('FUNCTIONS.md', root=ROOT), funcs)
     quality = '# Delivered decisions and request failures\n\n[Current overall comparison](README.md). All rates retain 1,342 first attempts per route. A failed request is not classified as a wrong reasoning answer. Only transport failures or HTTP 408/429/5xx permit one recovery; a valid wrong choice or explanatory output is not retried. Recoveries do not replace the primary score or timing.\n\n'
     quality += table(['Model', 'Usable first', 'Wrong valid', 'Provider failures', 'Output failures', 'Recoveries', 'Eventual correct'],
                      [[v['label'], v['answered'], v['wrong_valid'], v['provider_failures'], v['model_output_failures'], v['recoveries'], v['eventual']['correct']] for m in order for v in [s['models'][m]]])
     quality += '\nSolar Decide remains excluded for latency. The distinct Solar Decide Flash is included. The [earlier compliance report](REFERENCE_1136_OUTPUT_COMPLIANCE.md) retains noncompliant runs, stopped LLM screens and compatibility probes outside the matched full-bank ranking.\n'
-    write(ROOT / 'OUTPUT_COMPLIANCE.md', quality)
-    write(ROOT / 'LLM_EXPANSION.md', '# Regular LLM coverage\n\nThe current [1,342-question comparison](README.md) covers 20 complete decision configurations. Sixteen regular LLM configurations have only the earlier 1,136 questions and are not extrapolated. Read the [earlier complete LLM comparison](REFERENCE_1136.md) and [earlier LLM expansion analysis](REFERENCE_1136_LLM_EXPANSION.md).\n')
-    pages = ROOT / 'docs' / FOLDER
+    write(repo_file('OUTPUT_COMPLIANCE.md', root=ROOT), quality)
+    write(repo_file('LLM_EXPANSION.md', root=ROOT), '# Regular LLM coverage\n\nThe current [1,342-question comparison](README.md) covers 20 complete decision configurations. Sixteen regular LLM configurations have only the earlier 1,136 questions and are not extrapolated. Read the [earlier complete LLM comparison](REFERENCE_1136.md) and [earlier LLM expansion analysis](REFERENCE_1136_LLM_EXPANSION.md).\n')
+    pages = repo_file('docs', root=ROOT) / FOLDER
     pages.mkdir(parents=True, exist_ok=True)
     for path in DEST.iterdir():
         if path.is_file() and path.name != 'release_checksums.json':
             shutil.copyfile(path, pages / path.name)
     for name, anchor in (('index.html', ''), ('functions.html', '#functions'), ('output_compliance.html', '#quality')):
         target = FOLDER + '/report.html' + anchor
-        write(ROOT / 'docs' / name, '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' + MARKER + '<meta http-equiv="refresh" content="0;url=' + target + '"><title>Text decision benchmark: 1,342 questions</title></head><body><p><a href="' + target + '">Open the current 1,342-question benchmark</a></p><p><a href="reference_1136.html">Earlier 1,136-question LLM reference</a></p></body></html>\n')
+        write(repo_file('docs', root=ROOT) / name, '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' + MARKER + '<meta http-equiv="refresh" content="0;url=' + target + '"><title>Text decision benchmark: 1,342 questions</title></head><body><p><a href="' + target + '">Open the current 1,342-question benchmark</a></p><p><a href="reference_1136.html">Earlier 1,136-question LLM reference</a></p></body></html>\n')
 
 
 if __name__ == '__main__':

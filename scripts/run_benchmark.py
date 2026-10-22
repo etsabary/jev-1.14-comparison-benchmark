@@ -5,6 +5,7 @@ Standard library only. Dry-run by default; --execute makes paid API calls.
 The private answer key is used by analyze_comparison.py, never by this runner.
 """
 from __future__ import annotations
+from repo_layout import repo_file
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -312,12 +313,12 @@ def run(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--questions", type=Path, default=ROOT / "data/questions_1136.csv")
-    parser.add_argument("--baseline", type=Path, default=ROOT / "data/results_jev113.csv")
+    parser.add_argument("--questions", type=Path, default=repo_file("data/questions_1136.csv", root=ROOT))
+    parser.add_argument("--baseline", type=Path, default=repo_file("data/results_jev113.csv", root=ROOT))
     parser.add_argument("--model", default=MODEL)
     parser.add_argument("--expected-returned-model", default="typesafe/jev-1.14-20261014", help="Stop if a successful response identifies another snapshot")
     parser.add_argument("--run-id", default="jev114_new_replay")
-    parser.add_argument("--out", type=Path, default=ROOT / "runs/jev114_new_replay")
+    parser.add_argument("--out", type=Path, default=repo_file("runs/jev114_new_replay", root=ROOT))
     parser.add_argument("--env-file", type=Path)
     parser.add_argument("--only-items", type=Path, help="CSV of item_id values for a separately recorded follow-up run")
     parser.add_argument("--execute", action="store_true")

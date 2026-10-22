@@ -1,17 +1,23 @@
 """Validate current corrected evidence, presentation and independent source seals."""
+from repo_layout import repo_file
 from hashlib import sha256
+from functools import partial
 import importlib.util
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FOLDER = ROOT / 'corrected_2026-10-18'
+FOLDER = repo_file('corrected_2026-10-18', root=ROOT)
 
 
 def validator():
     spec = importlib.util.spec_from_file_location('corrected_public_validator', FOLDER / 'source/validate_corrected_public.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    # Use the sealed validator's declared source-map interface; do not edit it.
+    from repo_layout import evidence_source_map
+    names = json.loads((FOLDER / 'source_manifest.json').read_text())['original_sources_sha256']
+    module.validate = partial(module.validate, source_map=evidence_source_map(names))
     return module
 
 

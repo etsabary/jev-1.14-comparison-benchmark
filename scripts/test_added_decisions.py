@@ -1,4 +1,5 @@
 """Offline regression checks for the October 16 additions. No API calls."""
+from repo_layout import repo_file
 import ast
 import copy
 from pathlib import Path
@@ -11,7 +12,7 @@ import decision_refresh as d
 
 class AddedDecisions(unittest.TestCase):
     def test_frozen_content_and_pinned_names(self):
-        q = d.read_csv(a.ROOT / 'data/questions_1136.csv')[0]
+        q = d.read_csv(repo_file('data/questions_1136.csv', root=a.ROOT))[0]
         for model_id, spec in a.MODELS.items():
             self.assertNotIn('latest', spec['model'])
             body = a.payload(q, model_id)

@@ -2,6 +2,7 @@
 
 No calls or answer-key access. Superseded captures and seals remain unchanged.
 """
+from repo_layout import repo_file
 from pathlib import Path
 import json
 import shutil
@@ -11,7 +12,7 @@ import build_report as tables
 
 ROOT = Path(__file__).resolve().parents[1]
 FOLDER = 'corrected_2026-10-18'
-SOURCE = ROOT / FOLDER
+SOURCE = repo_file(FOLDER, root=ROOT)
 MARKER = '<meta name="benchmark-cohort" content="october18-corrected-two-items">'
 
 
@@ -60,7 +61,7 @@ Every score uses the first attempt on all 1,136 active questions. Failed request
 Costs per 1,000 normalize the selected 1,136-question evidence, including permitted recoveries: selected cost ÷ 1,136 × 1,000. **`+ ?` means additional charges are unknown**, so its cost band describes the known lower bound. `~` marks usage multiplied by a captured tariff rather than an API-returned dollar amount. Original charges retain their captured prices; the new Nimble Max calls use the October 18 tariff. Dates are Toronto dates. * identifies a configuration first added on October 18.
 
 '''
-    old = json.loads((ROOT / 'overall_llm_expanded_2026-10-18/summary.json').read_text())
+    old = json.loads((repo_file('overall_llm_expanded_2026-10-18/summary.json', root=ROOT)).read_text())
     added = set(old['native_added_october_18_model_ids'] + old['llm_added_october_18_model_ids'])
     text += tables.table(['Model', 'Correct / 1,136', 'Accuracy', 'Core correct', 'Median', 'p95', 'Cost per 1,000', 'Test dates'], [
         [v['label'] + (' *' if mid in added else ''), v['primary']['correct'], acc(mid),
@@ -175,12 +176,12 @@ def main():
     from collections import Counter
     assert Counter(v['correct_delta'] for v in s['deltas'].values()) == {0:25, -1:7, 1:4}
     for name in ('README.md', 'LLM_EXPANSION.md'):
-        (ROOT / name).write_text(text)
+        (repo_file(name, root=ROOT)).write_text(text)
     functions = web.functions_markdown(s).replace('unchanged 1,136-question bank', 'corrected 1,136-question bank')
     functions = functions.replace('tested October 15, 16 and 18, 2026.',
         'tested October 15, 16 and 18, 2026. Each configuration combines 1,134 retained cases and two freshly tested corrected questions; all core scores are unchanged.')
-    (ROOT / 'FUNCTIONS.md').write_text(functions)
-    old = json.loads((ROOT / 'overall_llm_expanded_2026-10-18/summary.json').read_text())
+    (repo_file('FUNCTIONS.md', root=ROOT)).write_text(functions)
+    old = json.loads((repo_file('overall_llm_expanded_2026-10-18/summary.json', root=ROOT)).read_text())
     diagnostics = web.diagnostics_markdown(old)
     diagnostics = diagnostics.replace('# Output compliance and stopped routes', '# Output compliance and stopped routes')
     prefix = '''# Scope of the current diagnostics
@@ -191,16 +192,16 @@ Original Nimble v4 has 902 correct answers on its 1,134 retained unchanged quest
 
 '''
     diagnostics = prefix + diagnostics
-    (ROOT / 'OUTPUT_COMPLIANCE.md').write_text(diagnostics)
+    (repo_file('OUTPUT_COMPLIANCE.md', root=ROOT)).write_text(diagnostics)
     mapping = {f'{FOLDER}/figures/{p.name}': f'figures/corrected/{p.name}' for p in (SOURCE / 'figures').iterdir() if p.is_file()}
-    dest = ROOT / 'docs/figures/corrected'
+    dest = repo_file('docs/figures/corrected', root=ROOT)
     dest.mkdir(parents=True, exist_ok=True)
     for p in (SOURCE / 'figures').iterdir():
         if p.is_file(): shutil.copyfile(p, dest / p.name)
     for name, content, title in [('index.html', text, '36 text decision models after the question audit'),
                                   ('functions.html', functions, 'Decision results by function and load'),
                                   ('output_compliance.html', diagnostics, 'Output compliance and partial diagnostics')]:
-        (ROOT / 'docs' / name).write_text(web.render(content, title, mapping).replace(web.COHORT_MARKER, MARKER))
+        (repo_file('docs', root=ROOT) / name).write_text(web.render(content, title, mapping).replace(web.COHORT_MARKER, MARKER))
     print('Built36-model corrected-bank report, function tables and three current HTML pages')
 
 

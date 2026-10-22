@@ -1,10 +1,11 @@
 """Seal only the reviewed public expansion, without changing original hashes."""
+from repo_layout import logical_relative, repo_file
 from hashlib import sha256
 import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-EXPANSION=ROOT/'expansion_2026-10-15'
+EXPANSION=repo_file('expansion_2026-10-15', root=ROOT)
 SOURCES=['README.md','FUNCTIONS.md','THREE_MODEL_REFERENCE.md','report_layout.md','report_sections.md',
          'task_examples.md','text_models.py','score_expansion.py','plot_expansion.py','build_report.py',
          'build_reference_report.py','test_text_models.py','test_publication.py','freeze_expansion_checksums.py',
@@ -17,21 +18,21 @@ SOURCES=['README.md','FUNCTIONS.md','THREE_MODEL_REFERENCE.md','report_layout.md
 
 
 def paths():
-    return sorted({*(ROOT/name for name in SOURCES),
+    return sorted({*(repo_file(name, root=ROOT) for name in SOURCES),
                    *(p for p in EXPANSION.iterdir() if p.is_file() and p.name!='release_checksums.json'),
-                   *(ROOT/'decision_refresh_2026-10-15').iterdir(),*(ROOT/'matched_2026-10-15').iterdir(),
-                   *(ROOT/'figures').glob('eleven_*'),*(ROOT/'docs/figures').glob('eleven_*'),
-                   *(ROOT/'figures').glob('matched_*'),*(ROOT/'docs/figures').glob('matched_*'),
-                   *(p for p in (ROOT/'additions_2026-10-16').rglob('*') if p.is_file()),
-                   *(p for p in (ROOT/'overall_2026-10-16').rglob('*') if p.is_file()),
-                   *(p for p in (ROOT/'llm_additions_2026-10-16').rglob('*') if p.is_file()),
-                   *(p for p in (ROOT/'overall_expanded_2026-10-16').rglob('*') if p.is_file()),
-                   *(ROOT/'figures').glob('overall_*'),*(ROOT/'docs/figures').glob('overall_*'),
-                   *(ROOT/'figures').glob('expanded_*'),*(ROOT/'docs/figures').glob('expanded_*')})
+                   *(repo_file('decision_refresh_2026-10-15', root=ROOT)).iterdir(),*(repo_file('matched_2026-10-15', root=ROOT)).iterdir(),
+                   *(repo_file('figures', root=ROOT)).glob('eleven_*'),*(repo_file('docs/figures', root=ROOT)).glob('eleven_*'),
+                   *(repo_file('figures', root=ROOT)).glob('matched_*'),*(repo_file('docs/figures', root=ROOT)).glob('matched_*'),
+                   *(p for p in (repo_file('additions_2026-10-16', root=ROOT)).rglob('*') if p.is_file()),
+                   *(p for p in (repo_file('overall_2026-10-16', root=ROOT)).rglob('*') if p.is_file()),
+                   *(p for p in (repo_file('llm_additions_2026-10-16', root=ROOT)).rglob('*') if p.is_file()),
+                   *(p for p in (repo_file('overall_expanded_2026-10-16', root=ROOT)).rglob('*') if p.is_file()),
+                   *(repo_file('figures', root=ROOT)).glob('overall_*'),*(repo_file('docs/figures', root=ROOT)).glob('overall_*'),
+                   *(repo_file('figures', root=ROOT)).glob('expanded_*'),*(repo_file('docs/figures', root=ROOT)).glob('expanded_*')})
 
 
 def freeze():
-    manifest={p.relative_to(ROOT).as_posix():sha256(p.read_bytes()).hexdigest() for p in paths()}
+    manifest={logical_relative(p, root=ROOT).as_posix():sha256(p.read_bytes()).hexdigest() for p in paths()}
     (EXPANSION/'release_checksums.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print('Recorded',len(manifest),'public expansion file hashes; original checksums unchanged')
 

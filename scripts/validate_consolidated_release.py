@@ -1,4 +1,5 @@
 """Offline public-export checks, not a substitute for the private scoring audit."""
+from repo_layout import logical_relative, repo_file
 from collections import Counter
 import csv
 from decimal import Decimal
@@ -24,17 +25,17 @@ SOURCES = ('README.md', 'FUNCTIONS.md', 'OUTPUT_COMPLIANCE.md', 'LLM_EXPANSION.m
 
 def hashes():
     from archive_frontier_presentation import historical_path
-    paths = {ROOT / name for name in SOURCES}
-    for folder in (DEST, ROOT / 'docs' / FOLDER, ROOT / 'publication_archive_2026-10-19'):
+    paths = {repo_file(name, root=ROOT) for name in SOURCES}
+    for folder in (DEST, repo_file('docs', root=ROOT) / FOLDER, repo_file('publication_archive_2026-10-19', root=ROOT)):
         paths.update(p for p in folder.rglob('*') if p.is_file())
     paths.discard(SEAL)
     # A later layout reuses these same sealed measurements. Resolve only the
     # superseded presentation/source paths to their exact committed snapshots.
-    archive = ROOT / 'presentation_archive_2026-10-19'
+    archive = repo_file('presentation_archive_2026-10-19', root=ROOT)
     manifest = json.loads((archive / 'manifest.json').read_text())['files'] if archive.exists() else {}
     result = {}
     for path in sorted(paths):
-        name = str(path.relative_to(ROOT))
+        name = str(logical_relative(path, root=ROOT))
         selected = archive / manifest[name]['archive_path'] if name in manifest else historical_path(path)
         result[name] = digest(selected)
         if name in manifest:
@@ -77,7 +78,7 @@ def validate():
     assert set(manifest['artifacts']) == set(ARTIFACTS) | {'audit_receipt.json'}
     expected_files = set(ARTIFACTS) | {'audit_receipt.json', 'manifest.json'}
     assert {p.name for p in DEST.iterdir()} == expected_files | ({SEAL.name} if SEAL.exists() else set())
-    assert {p.name for p in (ROOT / 'docs' / FOLDER).iterdir()} == expected_files
+    assert {p.name for p in (repo_file('docs', root=ROOT) / FOLDER).iterdir()} == expected_files
     assert manifest['question_export_without_key_access'] is True
     assert manifest['stage_comparison_in_graphs'] is False
     for name, expected in manifest['artifacts'].items():
@@ -161,15 +162,15 @@ def validate():
             assert digest(DEST / name) == source[name], name
     for path in DEST.iterdir():
         if path.name != 'release_checksums.json':
-            assert path.read_bytes() == (ROOT / 'docs' / FOLDER / path.name).read_bytes(), path.name
-    for path in [*(ROOT / 'docs').glob('*.html'), ROOT / 'docs' / FOLDER / 'report.html']:
+            assert path.read_bytes() == (repo_file('docs', root=ROOT) / FOLDER / path.name).read_bytes(), path.name
+    for path in [*(repo_file('docs', root=ROOT)).glob('*.html'), repo_file('docs', root=ROOT) / FOLDER / 'report.html']:
         links = Links(); links.feed(path.read_text())
         for target in links.targets:
             if re.match(r'^(https?:|mailto:|#|data:)', target):
                 continue
             assert (path.parent / target.split('#')[0]).exists(), (path, target)
     from archive_frontier_presentation import historical_path
-    assert MARKER in historical_path(ROOT / 'docs/index.html').read_text()
+    assert MARKER in historical_path(repo_file('docs/index.html', root=ROOT)).read_text()
     assert MARKER in (DEST / 'report.html').read_text()
     assert 'No publication occurred.' not in (DEST / 'report.html').read_text()
     receipt = json.loads((DEST / 'audit_receipt.json').read_text())

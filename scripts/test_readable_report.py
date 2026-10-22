@@ -1,3 +1,4 @@
+from repo_layout import repo_file
 import json
 import re
 import unittest
@@ -38,7 +39,7 @@ class ReadableReport(unittest.TestCase):
     def test_readme_and_functions_have_exact_current_stats(self):
         from archive_frontier_presentation import historical_path
         s,_ = b.load()
-        text = historical_path(b.ROOT / 'README.md').read_text()
+        text = historical_path(repo_file('README.md', root=b.ROOT)).read_text()
         lines = text.splitlines()
         start = next(i for i,line in enumerate(lines) if line.startswith('| Model | Correct /'))
         rows = []
@@ -52,7 +53,7 @@ class ReadableReport(unittest.TestCase):
             self.assertEqual(row[0],value['label'])
             self.assertEqual(row[1],str(value['correct']))
             self.assertEqual(row[2],f"{value['accuracy']:.1%}")
-        functions = historical_path(b.ROOT / 'FUNCTIONS.md').read_text()
+        functions = historical_path(repo_file('FUNCTIONS.md', root=b.ROOT)).read_text()
         for mid in s['ranked_model_ids']:
             m=s['models'][mid]
             for fid in b.LABELS:

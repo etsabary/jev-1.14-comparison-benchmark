@@ -1,4 +1,5 @@
 """Captured 1136-question publication regressions. No inference or answer key."""
+from repo_layout import repo_file
 from collections import Counter
 import csv
 from hashlib import sha256
@@ -13,17 +14,17 @@ import build_october18_report as web
 from validate_corrected_release import validator
 
 ROOT = Path(__file__).resolve().parents[1]
-FOLDER = ROOT / 'corrected_2026-10-18'
+FOLDER = repo_file('corrected_2026-10-18', root=ROOT)
 
 
 def presentation(name):
     """Preserve regressions on the exact superseded publication, not new rows."""
-    archive = ROOT / 'publication_archive_2026-10-19'
+    archive = repo_file('publication_archive_2026-10-19', root=ROOT)
     if archive.exists():
         entries = json.loads((archive / 'manifest.json').read_text())['files']
         if name in entries:
             return (archive / entries[name]['archive_path']).read_text()
-    return (ROOT / name).read_text()
+    return (repo_file(name, root=ROOT)).read_text()
 
 
 class CorrectedRelease(unittest.TestCase):
@@ -40,7 +41,7 @@ class CorrectedRelease(unittest.TestCase):
     def test_exact_two_prompt_replacements_and_1134_identical_rows(self):
         def read(path):
             with path.open(newline='') as stream: return {r['item_id']:r for r in csv.DictReader(stream)}
-        original = read(ROOT / 'data/questions_1136.csv')
+        original = read(repo_file('data/questions_1136.csv', root=ROOT))
         current = read(FOLDER / 'questions_1136.csv')
         retired = set(self.s['retired_parent_ids']); fresh = set(self.s['replacement_ids'])
         self.assertEqual(set(original)-set(current), retired)
@@ -69,7 +70,7 @@ class CorrectedRelease(unittest.TestCase):
             self.assertEqual(cells[7],report.dates(v))
 
     def test_order_and_ties_and_unchanged_core(self):
-        old=json.loads((ROOT/'overall_llm_expanded_2026-10-18/summary.json').read_text())
+        old=json.loads((repo_file('overall_llm_expanded_2026-10-18/summary.json', root=ROOT)).read_text())
         self.assertEqual(report.order(self.s)[:4],['respan02','pplx_decider12','nimble_v4_max','liquid_ultra'])
         self.assertEqual(self.s['models']['tev1_4b_native']['primary']['correct'], self.s['models']['luna_decisions']['primary']['correct'])
         self.assertEqual(Counter(v['correct_delta'] for v in self.s['deltas'].values()),{0:25,-1:7,1:4})
@@ -93,7 +94,7 @@ class CorrectedRelease(unittest.TestCase):
             def __init__(self):super().__init__();self.targets=[]
             def handle_starttag(self,tag,attrs):self.targets += [v for k,v in attrs if k in ('href','src')]
         for name in ('index.html','functions.html','output_compliance.html'):
-            path=ROOT/'docs'/name;text=presentation('docs/'+name);self.assertIn(report.MARKER,text)
+            path=repo_file('docs', root=ROOT)/name;text=presentation('docs/'+name);self.assertIn(report.MARKER,text)
             parser=Links();parser.feed(text)
             for target in parser.targets:
                 if re.match(r'^(https?:|mailto:|#|data:)',target):continue
@@ -102,15 +103,15 @@ class CorrectedRelease(unittest.TestCase):
         ranking=re.search(r'<table>.*?</table>',html,re.S).group()
         self.assertEqual(len(re.findall(r'class="[^"]*metric-speed',ranking)),36)
         self.assertEqual(len(re.findall(r'class="[^"]*metric-cost',ranking)),36)
-        for p in (FOLDER/'figures').iterdir():self.assertEqual(p.read_bytes(),(ROOT/'docs/figures/corrected'/p.name).read_bytes())
+        for p in (FOLDER/'figures').iterdir():self.assertEqual(p.read_bytes(),(repo_file('docs/figures/corrected', root=ROOT)/p.name).read_bytes())
 
     def test_original_release_seal_retained_with_exact_archive_bytes(self):
         from freeze_october18_release import hashes
-        expected=json.loads((ROOT/'overall_llm_expanded_2026-10-18/release_checksums.json').read_text())
+        expected=json.loads((repo_file('overall_llm_expanded_2026-10-18/release_checksums.json', root=ROOT)).read_text())
         self.assertEqual(hashes(),expected)
-        manifest=json.loads((ROOT/'publication_archive_2026-10-18/manifest.json').read_text())
+        manifest=json.loads((repo_file('publication_archive_2026-10-18/manifest.json', root=ROOT)).read_text())
         for name,v in manifest['files'].items():
-            self.assertEqual(sha256((ROOT/'publication_archive_2026-10-18'/v['archive_path']).read_bytes()).hexdigest(),expected[name])
+            self.assertEqual(sha256((repo_file('publication_archive_2026-10-18', root=ROOT)/v['archive_path']).read_bytes()).hexdigest(),expected[name])
 
     def test_scope_and_prose_do_not_claim_full_external_verification_or_current_v4(self):
         self.assertIn('181 had two independent verifiers',self.readme)

@@ -4,6 +4,7 @@ Hyper Charm's catalog exposes only low/medium/high for M3, not an off mode.
 This separate route requires explicit zero reasoning-token telemetry. No tools,
 answer-dependent retries, hidden fallbacks or changes to the frozen bank.
 """
+from repo_layout import repo_file
 import argparse
 from decimal import Decimal
 import json
@@ -13,7 +14,7 @@ import bounded_reference_runner as controller
 import frontier_reference as base
 
 ROOT, BANK_HASH = base.ROOT, base.BANK_HASH
-OUT = ROOT / 'runs/minimax_m3_none_deepinfra_1342_2026-10-19'
+OUT = repo_file('runs/minimax_m3_none_deepinfra_1342_2026-10-19', root=ROOT)
 MODEL = 'minimax/minimax-m3'
 SNAPSHOT = 'minimax/minimax-m3-20260531'
 SPEC = base.SPEC
@@ -74,7 +75,7 @@ def probe_cost(out):
 
 
 def software():
-    return {**base.software(), **{n:file_hash(ROOT/n) for n in ('bounded_reference_runner.py', 'minimax_reference.py', 'test_minimax_reference.py')}}
+    return {**base.software(), **{n:file_hash(repo_file(n, root=ROOT)) for n in ('bounded_reference_runner.py', 'minimax_reference.py', 'test_minimax_reference.py')}}
 
 
 def freeze(out, plan):

@@ -4,6 +4,7 @@ The stopped DeepInfra prefix is not pooled into this run. Together and Novita
 compatibility probes produced thinking despite the requested off flag and are
 not eligible routes. A new route never silently replaces a scored attempt.
 """
+from repo_layout import repo_file
 import argparse
 from decimal import Decimal
 import json
@@ -13,7 +14,7 @@ import minimax_reference as prior
 
 base,controller=prior.base,prior.controller
 ROOT,BANK_HASH,MODEL,SNAPSHOT,SPEC=prior.ROOT,prior.BANK_HASH,prior.MODEL,prior.SNAPSHOT,prior.SPEC
-OUT=ROOT/'runs/minimax_m3_none_sambanova_1342_2026-10-19'
+OUT=repo_file('runs/minimax_m3_none_sambanova_1342_2026-10-19', root=ROOT)
 GUARD=Decimal('2.00')
 d,chat,file_hash,sanitize,parse=prior.d,prior.chat,prior.file_hash,prior.sanitize,prior.parse
 
@@ -63,7 +64,7 @@ def probe_cost(out):
 
 
 def software():
-    return {**prior.software(),**{n:file_hash(ROOT/n) for n in ('minimax_sambanova_reference.py','test_minimax_sambanova_reference.py')}}
+    return {**prior.software(),**{n:file_hash(repo_file(n, root=ROOT)) for n in ('minimax_sambanova_reference.py','test_minimax_sambanova_reference.py')}}
 
 
 def freeze(out,plan):

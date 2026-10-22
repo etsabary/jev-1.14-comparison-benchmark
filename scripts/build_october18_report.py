@@ -6,6 +6,7 @@ three-model pages and figures remain byte-preserved. New cohort figures are
 copied below docs/figures/october18, never into the old root figures directory.
 """
 from __future__ import annotations
+from repo_layout import logical_relative, repo_file
 from repo_layout import frozen_file
 
 from hashlib import sha256
@@ -21,8 +22,8 @@ import markdown
 import build_report as old
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'overall_llm_expanded_2026-10-18/summary.json'
-REPORT = ROOT / 'LLM_EXPANSION.md'
+SOURCE = repo_file('overall_llm_expanded_2026-10-18/summary.json', root=ROOT)
+REPORT = repo_file('LLM_EXPANSION.md', root=ROOT)
 REPO = old.REPO
 LEGEND_HEADING = '## Reading the speed and cost colors'
 COHORT_MARKER = '<meta name="benchmark-cohort" content="october18-combined">'
@@ -131,9 +132,9 @@ def figure_mapping():
     folders = [('overall_llm_expanded_2026-10-18/figures', 'figures/october18'),
                ('overall_expanded_2026-10-18/figures', 'figures/october18/native')]
     for source, dest in folders:
-        for path in sorted((ROOT / source).glob('*')):
+        for path in sorted((repo_file(source, root=ROOT)).glob('*')):
             if path.is_file():
-                mapping[str(path.relative_to(ROOT))] = dest + '/' + path.name
+                mapping[str(logical_relative(path, root=ROOT))] = dest + '/' + path.name
     return mapping
 
 
@@ -154,7 +155,7 @@ def target_url(target, image_map=None, image=False):
         return target
     if image:
         return 'https://raw.githubusercontent.com/etsabary/jev-1.14-comparison-benchmark/main/' + quote(path, safe='/')
-    kind = 'tree' if (ROOT / path).is_dir() else 'blob'
+    kind = 'tree' if (repo_file(path, root=ROOT)).is_dir() else 'blob'
     return REPO + '/' + kind + '/main/' + quote(path, safe='/') + ('?' + parts.query if parts.query else '') + ('#' + parts.fragment if parts.fragment else '')
 
 
@@ -181,7 +182,7 @@ def functions_markdown(summary):
             f'The [main report](README.md) compares {len(order)} eligible configurations on the unchanged 1,136-question bank, tested October 15, 16 and 18, 2026. '
             'Every cell uses strict first-attempt results. Unranked full runs, stopped samples and failed interfaces remain in the [output diagnostics](OUTPUT_COMPLIANCE.md), not these tables. '
             'The 640 core scenarios and 496 dependent variants are not 1,136 independent observations.\n\n'
-            + (ROOT / 'task_examples.md').read_text() + '\n## All 25 functions\n\n')
+            + (repo_file('task_examples.md', root=ROOT)).read_text() + '\n## All 25 functions\n\n')
     text += old.table(['Function', 'n'] + [models[m]['label'] for m in order], [
         [f['family'], f['n']] + [f"{f['models'][m]['correct']} ({old.pct(f['models'][m]['correct'], f['n'])})" for m in order]
         for f in summary['by_family']])
@@ -198,7 +199,7 @@ def functions_markdown(summary):
 def diagnostics_markdown(summary):
     models = summary['models']
     excluded = summary['publication']['excluded_model_ids']
-    old_diagnostics = old.expand((ROOT / 'output_compliance_layout.md').read_text(), {
+    old_diagnostics = old.expand((repo_file('output_compliance_layout.md', root=ROOT)).read_text(), {
         'EXCLUDED_RESULTS': old.table(['Unranked diagnostic', 'Usable / 1,136', 'Model-output failures', 'Provider failures',
                                       'Correct among usable', 'Strict full-bank result', 'Median', 'Known run cost'], [
             [models[m]['label'], models[m]['primary']['answered'], summary['output_compliance'][m]['model_output_failures'],
@@ -250,9 +251,9 @@ def diagnostics_markdown(summary):
 
 
 def reference_hashes():
-    expected = json.loads((ROOT / 'expansion_2026-10-15/source_audit.json').read_text())['preserved_reference_reports']
+    expected = json.loads((repo_file('expansion_2026-10-15/source_audit.json', root=ROOT)).read_text())['preserved_reference_reports']
     for name, digest in expected.items():
-        assert sha256(frozen_file(ROOT / name).read_bytes()).hexdigest() == digest, 'Original reference report changed'
+        assert sha256(frozen_file(repo_file(name, root=ROOT)).read_bytes()).hexdigest() == digest, 'Original reference report changed'
     return expected
 
 
@@ -272,10 +273,10 @@ def build():
     assert all(name in mapping for name in required), 'Build all three new figures before replacing active reports'
     functions, diagnostics = functions_markdown(summary), diagnostics_markdown(summary)
     for name, content in [('README.md', text), ('FUNCTIONS.md', functions), ('OUTPUT_COMPLIANCE.md', diagnostics)]:
-        (ROOT / name).write_text(content.rstrip() + '\n')
-    docs = ROOT / 'docs'
+        (repo_file(name, root=ROOT)).write_text(content.rstrip() + '\n')
+    docs = repo_file('docs', root=ROOT)
     (docs / 'figures').mkdir(parents=True, exist_ok=True)
-    for path in sorted((ROOT / 'figures').iterdir()):
+    for path in sorted((repo_file('figures', root=ROOT)).iterdir()):
         assert path.is_file(), 'New figure directories must not enter the legacy root figures folder'
         dest = docs / 'figures' / path.name
         if not dest.exists() or dest.read_bytes() != path.read_bytes():
@@ -283,7 +284,7 @@ def build():
     for source, destination in mapping.items():
         dest = docs / destination
         dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(ROOT / source, dest)
+        shutil.copyfile(repo_file(source, root=ROOT), dest)
     for name, content, title in [('index.html', text, '37 models on 1,136 text decisions'),
                                   ('functions.html', functions, 'Text decisions by function and load'),
                                   ('output_compliance.html', diagnostics, 'Decision output diagnostics')]:
