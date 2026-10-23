@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 import publish_fastino_2026_10_23 as b
 from validate_direct_release import Page
 from validate_consolidated_release import privacy
+from archive_fastino_presentation import previous as presentation_source
 
 
 def validate():
@@ -41,7 +42,7 @@ def validate():
             inspect=privacy(path.read_text())
             if path.suffix=='.json':inspect(json.loads(path.read_text()))
     for path in (dest/'report.html',root/'docs/report.html'):
-        page=Page();page.feed(path.read_text())
+        page=Page();page.feed(presentation_source(path).read_text())
         assert page.summary==s['ranked_model_ids']
         assert len(page.cells)==930 and len(page.ids)==len(set(page.ids))
         assert Counter(v['data-model'] for v in page.cells)=={m:31 for m in s['models']}
@@ -67,7 +68,7 @@ def validate():
     seal=dest/'release_checksums.json'
     if seal.exists():
         values=json.loads(seal.read_text())
-        for name,h in values.items():assert b.digest(root/name)==h,name
+        for name,h in values.items():assert b.digest(presentation_source(root/name))==h,name
     from validate_october21_release import validate as previous
     previous()
     print('PASS: Fastino added; 30 complete text routes, 930 exact colored category cells; all 29 earlier records and historical seals unchanged.')

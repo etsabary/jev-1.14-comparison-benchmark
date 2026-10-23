@@ -17,6 +17,7 @@ Install the report dependencies in your preferred virtual environment:
 ```sh
 python3 -m pip install -r scripts/requirements-reports.txt python-dotenv
 python3 scripts/validate_october21_release.py
+python3 scripts/validate_opus5_release.py
 python3 scripts/validate_repository_layout.py
 python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
@@ -29,11 +30,11 @@ Python 3.12. These checks do not make inference calls or need API credentials.
 
 | Task | Main files |
 | --- | --- |
-| Current report and category tables | `publish_october21_additions.py`, `build_readable_report.py` |
-| Current report checks | `validate_october21_release.py` |
+| Current report and category tables | `publish_opus5_reference.py`, `build_readable_report.py` |
+| Current report checks | `validate_opus5_release.py` |
 | Most recent OpenRouter and Baseten runs | `decision_additions_2026_10_21.py`, `baseten_decisions_2026_10_21.py` |
 | Direct-provider runs | `direct_decisions_2026_10_20.py` |
-| No-reasoning LLM references | `frontier_reference.py`, `sonnet55_schema_reference.py`, `hyper_reference.py` |
+| No-reasoning LLM references | `frontier_reference.py`, `sonnet55_schema_reference.py`, `hyper_reference.py`, `opus5_schema_reference.py` |
 | Earlier evidence checks | `validate.py`, the other `validate_*` files and `test_*` files |
 | Source-layout migration checks | `repo_layout.py`, `validate_repository_layout.py`, `layout_manifest.json` |
 

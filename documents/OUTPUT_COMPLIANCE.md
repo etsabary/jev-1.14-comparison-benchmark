@@ -1,6 +1,6 @@
 # Delivered decisions and failures
 
-All 30 routes retain the 1342-question first-attempt denominator. Fastino returned 1342 usable decisions with no retries. Wrong choices are not formatting failures.
+All 31 routes retain the 1342-question first-attempt denominator. Opus returned 1305 valid JSON choices and 37 refusals, no retries. The separate eight-question bare-ID trial is not pooled; missing telemetry is unverified and missing charges unknown.
 
 | Model | Usable first | Wrong valid | Provider failures | Output failures | Recoveries | Eventual correct |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -11,6 +11,7 @@ All 30 routes retain the 1342-question first-attempt denominator. Fastino return
 | Respan Span-02 | 1342 | 215 | 0 | 0 | 0 | 1127 |
 | Perplexity Decider v1.2 | 1341 | 221 | 1 | 0 | 1 | 1121 |
 | Nimble v4 Max | 1342 | 227 | 0 | 0 | 0 | 1115 |
+| Opus 5 — no thinking, JSON-choice | 1305 | 196 | 0 | 37 | 0 | 1109 |
 | d3-turbo | 1342 | 236 | 0 | 0 | 0 | 1106 |
 | Liquid d1-ultra | 1341 | 257 | 1 | 0 | 1 | 1085 |
 | Amos 1 Large | 1342 | 268 | 0 | 0 | 0 | 1074 |
@@ -34,6 +35,3 @@ All 30 routes retain the 1342-question first-attempt denominator. Fastino return
 | Tev1 4B experimental (OpenRouter native adapter) | 1342 | 591 | 0 | 0 | 0 | 751 |
 | ScaleDown Classify-1 | 1342 | 792 | 0 | 0 | 0 | 550 |
 | Solar Decide Flash | 1340 | 802 | 2 | 0 | 2 | 539 |
-
-
-The stopped Sonnet bare-ID trial is not pooled into its separately constrained complete reference.

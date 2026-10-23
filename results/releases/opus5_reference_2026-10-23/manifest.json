@@ -1,0 +1,32 @@
+{
+  "version": "opus5-reference-20261023-v1",
+  "models": 31,
+  "decision_models": 27,
+  "llm_references": 4,
+  "questions_each": 1342,
+  "first_attempts": 41602,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "prior_statistics_sha256": "b61ee0e022e60723e5a820a6afd147d2ec42f61d96dc97243426a960b412be3d",
+  "artifacts": {
+    "accuracy_speed_cost.png": "3824eb8876635a42ac5f4968feb042c22ad980e9da72932a8a816480b8294869",
+    "accuracy_speed_cost.svg": "df29cc26705f5a69844f091ea53bf379d78241e105f5fd41f544304b789beefa",
+    "audit_receipt.json": "5b86217b9131363f22ca1b335ebb8264cffe4cb8b1a581fda649c37137897f04",
+    "category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823",
+    "category_scores.csv": "60f8b884638dbac265246b0627fef297526fa40d5b3d8316bb105d8ab9e740d7",
+    "causes.png": "860af03be9bca83e12855c4646348470c2e4da5c82e699ee6982c2087578369d",
+    "causes.svg": "aa03c8d808ca6242f44a34eb6bea0413d13781ba814f4400e5aea6d222733348",
+    "model_metadata.json": "4b840c2c652fbab702f198c67205c85f546182aea2fdb7bc627d6c1cb8ae067c",
+    "model_statistics.csv": "cc869f4c7ce1ee506d1a9bf1f2f991cdc1aa08c0a8932a36607dbd4acd96f843",
+    "ordering.png": "dd3b134b559573e5a8ff784b33e764988f8ed9d8476e017253a5398ba9fed189",
+    "ordering.svg": "c88054560bbafe2a373d5003dddad89d3556893137a36a37594409d519733f3e",
+    "report.html": "b50a1803a3d97079ab52caba03eb8cb6f5e8c4e2aca07f89a8546bf9445786f3",
+    "report.txt": "5ae9e647fcaedddf81208e6c3d3f8bc7533cc8b9c994b4f98ff25494b5c3b0f8",
+    "rules.png": "c6c0842dd1acacd8f1be44ed2d53b3d3680dd4567e7f157ddc698c681353baf8",
+    "rules.svg": "aa1001be5538d08511b188b9507ec4c369fd61c765f3d04ba2218d115725a6f5",
+    "state.png": "ae4239b8ef8550be2800be6c5b919861bcec39c0544f995a5ece6ffe61f1365c",
+    "state.svg": "b95a17b7dc50cf41ea8bab4f47fd79468dc3d83ad0eff1b25d47a24354046928",
+    "statistics.json": "d1b526e688f7bd085568adeaebd7e29d5e92ad3f5db47cd998159818b2af1549",
+    "uncertainty.png": "8dcd955d8102749c11aafb119bc195b334d8f397444865aa325fc9eb1b49d78a",
+    "uncertainty.svg": "dd3042b7687b5c6e48c4da0b95cbe3d2f280d9dbed7c677988fb11c1de637dbf"
+  }
+}

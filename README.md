@@ -1,16 +1,16 @@
 # System 1 Decision Benchmark
 
-27 specialized decision models and 3 high-end LLM references on the same **1,342 text questions across 31 categories**. Updated October 23, 2026.
+27 specialized decision models and 4 no-reasoning LLM references on the same **1,342 text questions across 31 categories**. Updated October 23, 2026.
 
-**Fastino GLiDE has the highest observed text score: 1,154/1,342 (86.0%), with a 213 ms median. Sol without reasoning scored 1,143 (85.2%); Mammoth scored 1,139 (84.9%). On the separate image bank, Fastino is second at 158/200, one behind Amos.**
+**Fastino GLiDE remains highest at 1,154/1,342 (86.0%). Sol without reasoning scored1,143 (85.2%); the new Opus 5 no-thinking, JSON-choice reference scored1,109 (82.6%), above Sonnet’s 1,070 (79.7%).**
 
-[Interactive report](https://etsabary.github.io/system-1-decision-benchmark/report.html) · [Fastino findings](https://etsabary.github.io/system-1-decision-benchmark/report.html#new-additions) · [Named, color-coded categories](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
+[Interactive report](https://etsabary.github.io/system-1-decision-benchmark/report.html) · [Opus findings](https://etsabary.github.io/system-1-decision-benchmark/report.html#new-additions) · [Named, color-coded categories](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
 
-![30 routes: accuracy, speed and cost](results/releases/fastino_2026-10-23/accuracy_speed_cost.png)
+![31 routes: accuracy, speed and cost](results/releases/opus5_reference_2026-10-23/accuracy_speed_cost.png)
 
 ## Results, speed and cost
 
-Every row has 1,342 first attempts. Per-1,000 costs normalize actual bank totals. Pale-yellow bars are no-reasoning LLM references; blue bars are decision models. ~ means Fastino cost is calculated from reported token usage and the captured tariff, not returned monetary receipts.
+Every row has 1,342 first attempts. Per-1,000 costs normalize actual bank totals. Pale-yellow bars are no-reasoning LLM references; blue bars are decision models. Opus and Sonnet use constrained JSON choice. + ? means missing charges; Opus has 35. ~ marks Fastino’s usage-based estimate, not monetary receipts.
 
 | Model | Type | Correct / 1342 | Accuracy | Median | p95 | Cost / 1000 | Actual 1342 cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ Every row has 1,342 first attempts. Per-1,000 costs normalize actual bank totals
 | Respan Span-02 | Decision model | 1127/1342 | 84.0% | 206 ms 🟩 Fastest | 2157 ms | $0.003537 | $0.004746 |
 | Perplexity Decider v1.2 | Decision model | 1120/1342 | 83.5% | 249 ms 🟩 Fastest | 332 ms | $0.007000 + ? | $0.009394 + ? |
 | Nimble v4 Max | Decision model | 1115/1342 | 83.1% | 235 ms 🟩 Fastest | 329 ms | $0.027633 | ~$0.037084 |
+| Opus 5 — no thinking, JSON-choice | LLM reference | 1109/1342 | 82.6% | 1538 ms 🟥 Slow | 2109 ms | $3.458320 + ? | $4.641065 + ? |
 | d3-turbo | Decision model | 1106/1342 | 82.4% | 165 ms 🟩 Fastest | 298 ms | Free public access* | Free public access* |
 | Liquid d1-ultra | Decision model | 1084/1342 | 80.8% | 200 ms 🟩 Fastest | 393 ms | $0.012124 + ? | $0.016270 + ? |
 | Amos 1 Large | Decision model | 1074/1342 | 80.0% | 311 ms 🟨 Fast | 360 ms | Free public access* | Free public access* |
@@ -46,11 +47,11 @@ Every row has 1,342 first attempts. Per-1,000 costs normalize actual bank totals
 | Solar Decide Flash | Decision model | 538/1342 | 40.1% | 540 ms 🟧 Moderate | 747 ms | $0.030203 + ? | $0.040532 + ? |
 
 
-Free public or promotional access is not a metered production price. Missing charges remain unknown; Qwen is prepaid-quota valuation.
+Free access is not a production tariff. Missing charges are unknown; Qwen is prepaid-quota valuation.
 
 ## Reading the speed and cost colors
 
-The squares and labels use fixed descriptive bands, not relative ranks or statistical significance. Speed uses the full-bank first-attempt median. Cost uses known or accounted dollars per 1,000 questions, normalized from each actual 1,136-question run including permitted recoveries.
+The squares and labels use fixed descriptive bands, not relative ranks or statistical significance. Speed uses the full-bank first-attempt median. Cost uses known or accounted dollars per 1,000 questions, normalized from each actual 1,342-question run including permitted recoveries.
 
 | Band | Median response time | Known/accounted cost per 1,000 |
 |---|---|---|
@@ -63,9 +64,29 @@ The squares and labels use fixed descriptive bands, not relative ranks or statis
 Bands use unrounded measurements; displayed numbers can round to a boundary. `+ ?` means additional charges were not reported. In those cells, the cost band describes only the known lower bound, not a complete cost or a guaranteed price advantage. The website also underlines these incomplete costs in amber. Text labels remain visible without color.
 
 
+## Opus 5 without thinking scored 82.6%, below Sol and above Sonnet
+
+Opus 5 answered1109/1342 correctly (82.6%), versus GPT-6 Sol without reasoning at 1143 (85.2%) and Sonnet 5.5 in constrained JSON-choice mode at 1070 (79.7%). Fastino GLiDE remains highest at 1154 (86.0%); Mammoth scored1139 (84.9%) and Span and Drex Max 1127 each (84.0%). These are observed results on the same developing bank, not a general intelligence ranking.
+
+## Near-perfect unique assignments, with weaker exceptions and causal changes
+
+Opus scored 66/67 on one-to-one assignments: giving every person or object exactly one partner while satisfying all clues. Sol scored 61/67, Fastino 63/67 and Drex Max 65/67. Opus scored 47/74 on truth-tellers and liars, versus Sol 38/74 and Fastino 59/74. It answered all 52 rule-violation questions correctly. On exceptions and priority rules, Opus scored 43/58 and Sol 57/58; on changing a cause while holding other inputs fixed, Opus scored35/50 and Sol 44/50. Ordered procedures remained18/48, the same as Sol and Fastino, versus Span 33/48.
+
+## The larger LLM cost did not buy a higher overall System 1 score
+
+Opus’s mean/median/p95 response was 1581/1538/2109 ms. Its API-reported bank cost was $4.641065 plus unreported charges for 35 responses, or at least $3.458320 per 1000 questions. Sol’s total was $0.84829450 and Sonnet’s $1.923908. The known Opus amount alone is 5.5 times Sol’s and 2.4 times Sonnet’s. Fastino’s separately labelled usage-based estimate was $0.01739196, with a 213 ms median. Different dates, providers and loads limit timing and price comparisons; missing charges are not zero.
+
+## A constrained answer format, with 37 refusals retained as unsuccessful
+
+The full Opus run used thinking.type=disabled, output_config.effort=high, no tools and a 16-token cap through OpenRouter’s pinned Anthropic standard route. All 1305 usable JSON choices explicitly reported zero thinking tokens and no thinking blocks. There were 37 refusals: two reported zero thinking tokens, while 35 omitted thinking/cost telemetry. All 37 remain unsuccessful first attempts in the 1342-question score. There were no retries or malformed JSON choices. A separate eight-question bare-ID trial produced five usable IDs, two malformed/explanatory outputs and one refusal; it is not pooled into this score. Constraining the answer grammar does not make this identical to unconstrained bare-ID delivery.
+
+## The harder additions separate the references too
+
+Opus scored1001/1136 (88.1%) on the original portion and108/206 (52.4%) on the additions. Across the six newest eight-question categories it scored 29/48, versus Sol 36/48, Span 34/48 and Fastino 29/48. The primary score remains one unweighted1342-question total. Existing questions, category weights and all 30 earlier model records are unchanged.
+
 ## Fastino has the highest observed text score, not the highest image score
 
-Fastino GLiDE answered 1154/1342 correctly (86.0%), ahead of GPT-6 Sol without reasoning at 1143 (85.2%), Mammoth-1 at 1139 (84.9%), and Span-02 and Drex Max at 1127 each (84.0%). The gaps are 11 and 15 answers against Sol and Mammoth. These scores describe this developing bank and do not establish a reliable universal intelligence ordering. On the separate image bank, GLiDE scored 158/200 (79.0%): second, one answer behind Amos at 159/200. Text and image percentages are not combined.
+Fastino GLiDE answered1154/1342 correctly (86.0%), ahead of GPT-6 Sol without reasoning at 1143 (85.2%), Mammoth-1 at 1139 (84.9%), and Span-02 and Drex Max at 1127 each (84.0%). The gaps are 11 and15 answers against Sol and Mammoth. These scores describe this developing bank and do not establish a reliable universal intelligence ordering. On the separate image bank, GLiDE scored158/200 (79.0%): second, one answer behind Amos at 159/200. Text and image percentages are not combined.
 
 ## A short response time and a metered price below the Sol reference
 
@@ -77,15 +98,15 @@ GLiDE scored 59/74 on truth-tellers and liars: deciding which assignments of tru
 
 ## Strong rules and evidence, with a specific state-update weakness
 
-GLiDE answered all 52 rule-counterexample questions correctly, 51/52 required-condition questions, 45/46 if-then questions and 41/42 interval comparisons. Required-condition questions ask whether every prerequisite holds; counterexamples ask which case breaks a stated rule. Its one-to-one assignments score was 63/67, versus Mammoth’s 64/67 and Drex Max’s 65/67. Ordered procedures remained 18/48 (37.5%), the same as Mammoth and Sol and below Span’s 33/48. Those questions require applying each edit to the current state in order, not recognizing a plausible end state. Tracking swaps gave GLiDE 31/52.
+GLiDE answered all 52 rule-counterexample questions correctly, 51/52 required-condition questions, 45/46 if-then questions and 41/42 interval comparisons. Required-condition questions ask whether every prerequisite holds; counterexamples ask which case breaks a stated rule. Its one-to-one assignments score was 63/67, versus Mammoth’s 64/67 and Drex Max’s 65/67. Ordered procedures remained18/48 (37.5%), the same as Mammoth and Sol and below Span’s 33/48. Those questions require applying each edit to the current state in order, not recognizing a plausible end state. Tracking swaps gave GLiDE 31/52.
 
 ## The new categories do not follow the overall ranking
 
-Across the six eight-question categories covering risk, information value, worst-case choice, strategic response, concurrent operations and information leaks, GLiDE scored 29/48. Sol scored 36/48, Span 34/48 and Mammoth 30/48. GLiDE scored 3/8 on whether extra information is worth paying for, and 4/8 on worst-case choices without supplied probabilities; Span scored 8/8 on the latter. Each category has only eight questions, so one answer changes its score by 12.5 percentage points. The category profiles identify different useful routes rather than one uniformly best model.
+Across the six eight-question categories covering risk, information value, worst-case choice, strategic response, concurrent operations and information leaks, GLiDE scored 29/48. Sol scored36/48, Span 34/48 and Mammoth 30/48. GLiDE scored3/8 on whether extra information is worth paying for, and 4/8 on worst-case choices without supplied probabilities; Span scored 8/8 on the latter. Each category has only eight questions, so one answer changes its score by 12.5 percentage points. The category profiles identify different useful routes rather than one uniformly best model.
 
 ## The harder additions remain harder for GLiDE
 
-GLiDE scored 1028/1136 (90.5%) on the original portion and 126/206 (61.2%) on the additions. These are descriptive slices of the same unweighted 1342-question score, not separate leaderboards. All existing questions, options, audits and category weights are unchanged. No older model was rerun or re-scored for this addition.
+GLiDE scored1028/1136 (90.5%) on the original portion and126/206 (61.2%) on the additions. These are descriptive slices of the same unweighted1342-question score, not separate leaderboards. All existing questions, options, audits and category weights are unchanged. No older model was rerun or re-scored for this addition.
 
 ## The served version and image support were checked, not assumed
 
@@ -97,7 +118,7 @@ Mammoth remains the next-highest specialized text model at 1139/1342. Drex Max a
 
 ## Category scores and explanations
 
-The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 30 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
+The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 31 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
 
 [Open the color-coded, selectable tables](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions), with a pinned model-name column and individual category rankings.
 
@@ -114,9 +135,9 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 | All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
 | Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
 
-![Rules and evidence: all 30 routes, named categories, correct counts and percentages](results/releases/fastino_2026-10-23/rules.png)
+![Rules and evidence: all 31 routes, named categories, correct counts and percentages](results/releases/opus5_reference_2026-10-23/rules.png)
 
-[Full-size SVG](results/releases/fastino_2026-10-23/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
+[Full-size SVG](results/releases/opus5_reference_2026-10-23/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
 
 ### Ordering, schedules and assignments
 
@@ -130,9 +151,9 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 | Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
 | Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
 
-![Ordering, schedules and assignments: all 30 routes, named categories, correct counts and percentages](results/releases/fastino_2026-10-23/ordering.png)
+![Ordering, schedules and assignments: all 31 routes, named categories, correct counts and percentages](results/releases/opus5_reference_2026-10-23/ordering.png)
 
-[Full-size SVG](results/releases/fastino_2026-10-23/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
+[Full-size SVG](results/releases/opus5_reference_2026-10-23/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
 
 ### Claims, changing state and perspectives
 
@@ -148,9 +169,9 @@ Can the model count true statements, update a changing situation and separate wh
 | Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
 | Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
 
-![Claims, changing state and perspectives: all 30 routes, named categories, correct counts and percentages](results/releases/fastino_2026-10-23/state.png)
+![Claims, changing state and perspectives: all 31 routes, named categories, correct counts and percentages](results/releases/opus5_reference_2026-10-23/state.png)
 
-[Full-size SVG](results/releases/fastino_2026-10-23/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
+[Full-size SVG](results/releases/opus5_reference_2026-10-23/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
 
 ### Causes, plans and exceptions
 
@@ -166,9 +187,9 @@ Which actions work, which consequences change, and which rule or source controls
 | Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
 | Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
 
-![Causes, plans and exceptions: all 30 routes, named categories, correct counts and percentages](results/releases/fastino_2026-10-23/causes.png)
+![Causes, plans and exceptions: all 31 routes, named categories, correct counts and percentages](results/releases/opus5_reference_2026-10-23/causes.png)
 
-[Full-size SVG](results/releases/fastino_2026-10-23/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
+[Full-size SVG](results/releases/opus5_reference_2026-10-23/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
 
 ### Risk, strategy and system behavior
 
@@ -185,19 +206,25 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
 | Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
 
-![Risk, strategy and system behavior: all 30 routes, named categories, correct counts and percentages](results/releases/fastino_2026-10-23/uncertainty.png)
+![Risk, strategy and system behavior: all 31 routes, named categories, correct counts and percentages](results/releases/opus5_reference_2026-10-23/uncertainty.png)
 
-[Full-size SVG](results/releases/fastino_2026-10-23/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
+[Full-size SVG](results/releases/opus5_reference_2026-10-23/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
 
-Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](results/releases/fastino_2026-10-23/category_scores.csv).
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](results/releases/opus5_reference_2026-10-23/category_scores.csv).
 
 ## Questions, exports and verification
 
 Unchanged answer-free bank: [CSV](results/releases/consolidated_2026-10-19/questions_1342.csv), [native JSONL](results/releases/consolidated_2026-10-19/questions_1342.jsonl), [readable text](results/releases/consolidated_2026-10-19/questions_1342.txt).
 
-Current exports: [aggregate JSON](results/releases/fastino_2026-10-23/statistics.json), [model CSV](results/releases/fastino_2026-10-23/model_statistics.csv), [category CSV](results/releases/fastino_2026-10-23/category_scores.csv), [audit](results/releases/fastino_2026-10-23/audit_receipt.json).
+Current exports: [aggregate JSON](results/releases/opus5_reference_2026-10-23/statistics.json), [model CSV](results/releases/opus5_reference_2026-10-23/model_statistics.csv), [category CSV](results/releases/opus5_reference_2026-10-23/category_scores.csv), [audit](results/releases/opus5_reference_2026-10-23/audit_receipt.json).
 
-30 full-bank routes: 27 specialized decision models and three selected no-reasoning LLM references. Each has 1342 questions across 31 categories: 40,260 first attempts. Fastino was measured October 23, 2026 (America/Toronto); earlier rows retain their own test dates, routes and raw measurements.
+31 full-bank routes: 27 specialized decision models and four selected no-reasoning LLM references. Each covers 1342 questions across 31 categories: 41,602 first attempts. Opus was measured October 23, 2026 (America/Toronto); all 30 earlier model records retain their original measurements and dates.
+
+Opus used two requests per barrier wave, a 16-token output cap, explicit disabled thinking at high effort, no tools, the same frozen question/option order and numeric-only suffix, and an additional JSON-choice output grammar. The dated Anthropic standard endpoint was pinned with no provider fallback. All first attempts, including 37 refusals, stay in accuracy and latency denominators. No retries occurred. The mean, median and p95 pool all 1342 original response times, not category medians.
+
+Opus API-reported cost totals $4.641065 for 1307 receipts; 35 refusal charges are unreported. Its separate successful synthetic probes total $0.002610; the disabled-thinking+xhigh negative control was rejected with HTTP400 and omitted cost telemetry. The separate eight-case bare-ID trial cost $0.019325 reported plus one unreported charge. These probes and the stopped trial are not pooled into the ranked bank. The positive high-effort probe returned zero thinking tokens; the negative control confirmed that xhigh is incompatible with disabled thinking on the tested route.
+
+All 1305 usable Opus choices reported zero thinking tokens and no thinking blocks; 35 refusals omitted telemetry and are unverified, not verified zeros. Sonnet and Opus use separately labelled constrained JSON choice; Sol uses the bare-ID contract. These are selected references, not an exhaustive ranking of the strongest LLMs or a comparison with reasoning enabled.
 
 Same frozen answer-free question bank, original options, native input and seed 2026101906. Every first attempt remains in the accuracy and latency denominator. One recovery is permitted only for transport failures or HTTP 408/429/5xx; Fastino additionally prespecified the documented HTTP 425 warming condition. No recovery was needed. No answer-dependent retries, batching of independent cases or provider fallback.
 
@@ -211,4 +238,4 @@ This is a developing benchmark with uneven category sizes and dependent variants
 
 Answer keys, per-item correctness, raw account state and credentials stay outside public exports. Private frozen-key scoring, input reconstruction, full-ledger reconciliation, quantiles and exact-decimal cost sums were checked before publication. Public aggregate checks cannot independently reproduce answer correctness without the external reference key. Text and image banks remain separate.
 
-Implementation: [scripts/](scripts/README.md). Current checks: `python3 scripts/validate_fastino_2026_10_23.py`; prior release: `python3 scripts/validate_october21_release.py`. Older dated evidence and seals remain unchanged.
+Implementation: [scripts/](scripts/README.md). Current checks: `python3 scripts/validate_opus5_release.py`; prior checks: `python3 scripts/validate_fastino_2026_10_23.py` and `python3 scripts/validate_october21_release.py`. Older dated evidence and seals remain unchanged.

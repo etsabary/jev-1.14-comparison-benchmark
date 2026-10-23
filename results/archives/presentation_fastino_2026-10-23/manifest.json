@@ -1,0 +1,46 @@
+{
+  "source_commit": "3381e301b560cb7be6618eac6c872acc1234773b",
+  "files": {
+    "README.md": {
+      "path": "README.md.snapshot",
+      "sha256": "f62348d8db9a5e9dcc79ea7d65e06a5e1e13a2a39301a4d4e73119e318b5568d"
+    },
+    "documents/FUNCTIONS.md": {
+      "path": "documents/FUNCTIONS.md.snapshot",
+      "sha256": "1f12da34cbf18ce55dfedc5390e644109e39ec793921070889267de6adb31a8d"
+    },
+    "documents/OUTPUT_COMPLIANCE.md": {
+      "path": "documents/OUTPUT_COMPLIANCE.md.snapshot",
+      "sha256": "3967c9663dfef2d0e6bf7357b341a7f7521a138e1a1b516eec76cc753949be95"
+    },
+    "docs/report.html": {
+      "path": "docs/report.html.snapshot",
+      "sha256": "cb4a29110c1a2a8af4f644b53db4f2b6271a12ac53e3aac10aa040ca2ee30c7f"
+    },
+    "docs/index.html": {
+      "path": "docs/index.html.snapshot",
+      "sha256": "ca85c086c2590408637af05d8c1fe3e4f8db0585e4ec7a62ba83497d9e2c19c7"
+    },
+    "docs/functions.html": {
+      "path": "docs/functions.html.snapshot",
+      "sha256": "fa4243c12184869f0c8009a134c31f0cee23393faece30e9642dbfed472517e3"
+    },
+    "docs/output_compliance.html": {
+      "path": "docs/output_compliance.html.snapshot",
+      "sha256": "6d5efbb66f6522b4f07c7b49e211ee28cbbcc5799b20710fb920bd7e1d03d09a"
+    },
+    ".github/workflows/october18-validate.yml": {
+      "path": ".github/workflows/october18-validate.yml.snapshot",
+      "sha256": "96c96987cb4868bc9af18c696472b568484b775caa9ec733e7bff7417c837d47"
+    },
+    "scripts/layout_manifest.json": {
+      "path": "scripts/layout_manifest.json.snapshot",
+      "sha256": "d0e23344903207142dbe2132ee431688f3e7c9c1b3f8ce48a95220fc19cccafc"
+    },
+    "scripts/validate_fastino_2026_10_23.py": {
+      "path": "scripts/validate_fastino_2026_10_23.py.snapshot",
+      "sha256": "cdceb48c4d97443ba2d21016349d6deb7b63551e3dec98b1e13e8c405f18c506"
+    }
+  },
+  "purpose": "Exact superseded active presentation; dated releases and original seals unchanged"
+}
