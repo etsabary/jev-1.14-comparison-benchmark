@@ -1,0 +1,35 @@
+{
+  "status": "VERIFIED_COMPLETE_FASTINO_1342",
+  "question_count": 1342,
+  "correct": 1154,
+  "primary_attempts": 1342,
+  "recoveries": 0,
+  "unusable": 0,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "private_aggregate_sha256": "d66c822fd61960a866e21f140d347e73138f46e8a9b41129bbeb6cf5236f89bf",
+  "evidence_sha256": {
+    "manifest.json": "60fac4ed43cc549b2f2ae5d02aaf2f6cd815b7763832bd0b90852a8e26669521",
+    "software.json": "c23388733c1fbc31fa371aea0f3adabfcdc820baf878b2c5e2e94d359e0f8f92",
+    "model_metadata.json": "7726d6da074923c29419f2da24e4cdb92dc2ca45b109a36bd79ce3d78e9527b4",
+    "dispatches.jsonl": "9751d5c7ee9087d3ba4177bd3e0bfd8de1893a62a7c51fd6282bb5e498bba658",
+    "attempts.jsonl": "8c438660160e911953af5571c65ee36fee40adc437437b425fdcb1ec5a216ea9",
+    "results.jsonl": "9ac300c2b5ce0a7b91eb1eddccdb8278b1bed654fe790de1b6e68d28d1c76457",
+    "probe_1_dispatch_1.json": "4626c49105686ee68d354f9053512900c6389e36056a4168e83d36c0d9d7a699",
+    "probe_1_attempt_1.json": "f1c0b892c6d58e57c96c4ee4e07996e275ddb807acd1077ff8ec8047562bda74",
+    "probe_1_parser_review_1.json": "7d8f2e8548fd6800e32cc4cbe60efe86954cec6b0400784f17454ac0f25c4283"
+  },
+  "model_requested": "fastino/GLiDE",
+  "model_returned": "glide_v2",
+  "catalog_version_description": "One-pass GLiDE v2.2 decision model served in NVFP4 on a B200.",
+  "usage_cost_usd": "0.01739196",
+  "api_reported_monetary_receipts": 0,
+  "probe_cost_usd": "0.00000364",
+  "earlier_29_records_unchanged": true,
+  "public_scoring_limit": "Aggregate reconciliation, not independent private-key re-scoring",
+  "privacy": "No answer keys, per-item correctness, raw account state or credentials in this packet",
+  "sources": [
+    "https://docs.fastino.ai/inference/systemone",
+    "https://docs.fastino.ai/concepts/models",
+    "https://fastino.ai/blog/training-glide-sota-decision-model"
+  ]
+}

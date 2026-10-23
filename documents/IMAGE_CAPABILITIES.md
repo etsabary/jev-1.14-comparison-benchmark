@@ -1,3 +1,11 @@
+# Image input: October 23 update
+
+Fastino GLiDE completed 200 native-image decisions: 158 correct (79.0%), 359 ms median. The catalog image flag was false; documented image parts and successful single/multiple-image probes established actual acceptance, followed by the unchanged full bank. The [visual report](https://etsabary.github.io/visual-decision-benchmark/report.html) ranks it second, not first.
+
+The text cohort now has 27 specialized decision models. Capability declarations and measured vision results remain distinct.
+
+## Previous dated reviews
+
 # Image input: October 21 additions
 
 Mammoth-1 and Elephant-1 are text-only on the tested Baseten/OpenRouter catalog routes. Drex Max documents text and image input through its [direct Nace API](https://console.nace.ai/docs/drex/guides/drex-max); its tested OpenRouter route currently advertises text only. No new image inference was performed in this update.

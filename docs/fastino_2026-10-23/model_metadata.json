@@ -1,0 +1,52 @@
+{
+  "retrieved": {
+    "utc": "2026-10-23T21:14:40.822652+00:00",
+    "toronto": "2026-10-23T17:14:40.822652-04:00"
+  },
+  "url": "https://api.fastino.ai/v1/base-models?supports_inference=true",
+  "model": {
+    "id": "fastino/GLiDE",
+    "label": "GLiDE",
+    "description": "One-pass GLiDE v2.2 decision model served in NVFP4 on a B200.",
+    "task_type": "systemone",
+    "context_window": 65536,
+    "max_input_tokens": 65536,
+    "max_output_tokens": null,
+    "release_month": "Sep 2026",
+    "input_price_per_million": 0.04,
+    "output_price_per_million": 0.0,
+    "cache_read_price_per_million": 0.04,
+    "cache_write_price_per_million": 0.04,
+    "supports_inference": true,
+    "is_chat_model": false,
+    "supports_on_demand_inference": false,
+    "supports_image_input": false,
+    "supports_zdr": true,
+    "supports_training": false,
+    "training_types": [],
+    "encoder_features": null,
+    "default_training_batch_size": null,
+    "max_training_batch_size": null,
+    "license": "Apache-2.0",
+    "tier": "research",
+    "featured_rank": null,
+    "deprecated": false,
+    "replacement_model": null,
+    "deprecation_date": null,
+    "sunset_date": null,
+    "coding_benchmark_mean": null,
+    "agentic_benchmark_mean": null,
+    "coding_benchmarks": [],
+    "agentic_benchmarks": [],
+    "market_input_price_per_million": null,
+    "market_output_price_per_million": null,
+    "market_price_provider_count": null
+  },
+  "sources": [
+    "https://docs.fastino.ai/inference/systemone",
+    "https://docs.fastino.ai/concepts/models",
+    "https://fastino.ai/blog/training-glide-sota-decision-model"
+  ],
+  "identity_limit": "Hosted GLiDE alias; catalog version is recorded, not an immutable-weight attestation",
+  "image_admission": "Docs support images; catalog capability may lag. Explicit image probes required before the image bank."
+}

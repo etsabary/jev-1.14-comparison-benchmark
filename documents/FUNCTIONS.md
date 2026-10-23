@@ -1,10 +1,10 @@
-# All 31 categories: 26 decision models and 3 LLM references
+# All 31 categories: 30 full-bank routes
 
-Same 1342 questions. [Color-coded tables](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
+27 decision models and 3 no-reasoning LLM references. [Color-coded tables](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions).
 
 ## Category scores and explanations
 
-The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 29 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
+The 31 categories are grouped below so the labels and values remain readable. These are reading groups, not new scored categories. All 30 routes remain in overall-score order. Every cell shows **correct / questions and percentage**. Darker blue means higher accuracy on a fixed 0-100% scale; uniform random guessing averages 20%. Different category sizes mean that percentages alone do not show how much evidence is available.
 
 [Open the color-coded, selectable tables](https://etsabary.github.io/system-1-decision-benchmark/report.html#functions), with a pinned model-name column and individual category rankings.
 
@@ -21,12 +21,13 @@ Which facts meet a rule, which conclusions follow, and when is the evidence insu
 | All, some, none and sets (F05) | 49 | Track all, some, none and overlapping groups Example: All teal tokens are marked; no marked token is blank; which relation follows? |
 | Enough evidence or a conflict? (F11) | 41 | Determine whether facts force an answer or contradict one another Example: Is a proposed arrangement determined, impossible or still underdetermined? |
 
-![Rules and evidence: all 29 routes, named categories, correct counts and percentages](../results/releases/native_additions_2026-10-21/rules.png)
+![Rules and evidence: all 30 routes, named categories, correct counts and percentages](../results/releases/fastino_2026-10-23/rules.png)
 
-[Full-size SVG](../results/releases/native_additions_2026-10-21/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
+[Full-size SVG](../results/releases/fastino_2026-10-23/rules.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-rules)
 
 | Model | Lookup and filtering | Following if-then rules | Checking required conditions | Combining AND, OR and NOT | All, some, none and sets | Enough evidence or a conflict? |
 | --- | --- | --- | --- | --- | --- | --- |
+| Fastino GLiDE | 41/43 (95.3%) | 45/46 (97.8%) | 51/52 (98.1%) | 51/54 (94.4%) | 45/49 (91.8%) | 36/41 (87.8%) |
 | GPT-6 Sol — no reasoning | 42/43 (97.7%) | 45/46 (97.8%) | 52/52 (100.0%) | 53/54 (98.1%) | 46/49 (93.9%) | 37/41 (90.2%) |
 | Mammoth-1 | 40/43 (93.0%) | 45/46 (97.8%) | 50/52 (96.2%) | 51/54 (94.4%) | 43/49 (87.8%) | 38/41 (92.7%) |
 | Drex Max | 41/43 (95.3%) | 45/46 (97.8%) | 50/52 (96.2%) | 51/54 (94.4%) | 46/49 (93.9%) | 35/41 (85.4%) |
@@ -69,12 +70,13 @@ Can the model combine comparisons, fit a schedule, assign unique partners and ap
 | Comparing time intervals (F14) | 42 | Compare starts, ends and overlapping periods Example: Which interval overlaps a specified event without containing it? |
 | Ranking with tie-break rules (F22) | 51 | Rank candidates using explicit tie-break rules Example: Rank by priority first, then age when priorities tie. |
 
-![Ordering, schedules and assignments: all 29 routes, named categories, correct counts and percentages](../results/releases/native_additions_2026-10-21/ordering.png)
+![Ordering, schedules and assignments: all 30 routes, named categories, correct counts and percentages](../results/releases/fastino_2026-10-23/ordering.png)
 
-[Full-size SVG](../results/releases/native_additions_2026-10-21/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
+[Full-size SVG](../results/releases/fastino_2026-10-23/ordering.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-ordering)
 
 | Model | Ordering by comparisons | Scheduling under constraints | One-to-one assignments | Comparing time intervals | Ranking with tie-break rules |
 | --- | --- | --- | --- | --- | --- |
+| Fastino GLiDE | 39/40 (97.5%) | 63/76 (82.9%) | 63/67 (94.0%) | 41/42 (97.6%) | 47/51 (92.2%) |
 | GPT-6 Sol — no reasoning | 38/40 (95.0%) | 56/76 (73.7%) | 61/67 (91.0%) | 40/42 (95.2%) | 48/51 (94.1%) |
 | Mammoth-1 | 39/40 (97.5%) | 59/76 (77.6%) | 64/67 (95.5%) | 40/42 (95.2%) | 48/51 (94.1%) |
 | Drex Max | 39/40 (97.5%) | 50/76 (65.8%) | 65/67 (97.0%) | 40/42 (95.2%) | 48/51 (94.1%) |
@@ -119,12 +121,13 @@ Can the model count true statements, update a changing situation and separate wh
 | Resolving names and references (F16) | 50 | Resolve chains of names, roles and references Example: Identify the mentor of the colleague named in a nested description. |
 | Tracking what others know (F17) | 50 | Distinguish what different observers witnessed Example: An object moves while one observer is absent; where will that observer look? |
 
-![Claims, changing state and perspectives: all 29 routes, named categories, correct counts and percentages](../results/releases/native_additions_2026-10-21/state.png)
+![Claims, changing state and perspectives: all 30 routes, named categories, correct counts and percentages](../results/releases/fastino_2026-10-23/state.png)
 
-[Full-size SVG](../results/releases/native_additions_2026-10-21/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
+[Full-size SVG](../results/releases/fastino_2026-10-23/state.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-state)
 
 | Model | Counting exactly true claims | Truth-tellers and liars | Tracking swaps | Following step-by-step procedures | Tracking position and direction | Resolving names and references | Tracking what others know |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| Fastino GLiDE | 45/71 (63.4%) | 59/74 (79.7%) | 31/52 (59.6%) | 18/48 (37.5%) | 41/49 (83.7%) | 39/50 (78.0%) | 47/50 (94.0%) |
 | GPT-6 Sol — no reasoning | 51/71 (71.8%) | 38/74 (51.4%) | 32/52 (61.5%) | 18/48 (37.5%) | 43/49 (87.8%) | 38/50 (76.0%) | 45/50 (90.0%) |
 | Mammoth-1 | 44/71 (62.0%) | 48/74 (64.9%) | 38/52 (73.1%) | 18/48 (37.5%) | 38/49 (77.6%) | 37/50 (74.0%) | 47/50 (94.0%) |
 | Drex Max | 42/71 (59.2%) | 53/74 (71.6%) | 29/52 (55.8%) | 18/48 (37.5%) | 40/49 (81.6%) | 39/50 (78.0%) | 46/50 (92.0%) |
@@ -169,12 +172,13 @@ Which actions work, which consequences change, and which rule or source controls
 | Choosing authoritative current records (F24) | 43 | Select the valid source rather than an outdated conflicting one Example: Two records disagree; which controls under the stated authority and date policy? |
 | Diagnosing faults from evidence (F25) | 50 | Match observed symptoms to explicit fault rules Example: Which fault is consistent with the supplied test results? |
 
-![Causes, plans and exceptions: all 29 routes, named categories, correct counts and percentages](../results/releases/native_additions_2026-10-21/causes.png)
+![Causes, plans and exceptions: all 30 routes, named categories, correct counts and percentages](../results/releases/fastino_2026-10-23/causes.png)
 
-[Full-size SVG](../results/releases/native_additions_2026-10-21/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
+[Full-size SVG](../results/releases/fastino_2026-10-23/causes.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-causes)
 
 | Model | Changing a cause | Exceptions and priority rules | Planning valid action sequences | Following directed connections | Finding rule violations | Choosing authoritative current records | Diagnosing faults from evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| Fastino GLiDE | 47/50 (94.0%) | 54/58 (93.1%) | 39/43 (90.7%) | 41/43 (95.3%) | 52/52 (100.0%) | 42/43 (97.7%) | 48/50 (96.0%) |
 | GPT-6 Sol — no reasoning | 44/50 (88.0%) | 57/58 (98.3%) | 39/43 (90.7%) | 41/43 (95.3%) | 52/52 (100.0%) | 42/43 (97.7%) | 49/50 (98.0%) |
 | Mammoth-1 | 44/50 (88.0%) | 57/58 (98.3%) | 39/43 (90.7%) | 41/43 (95.3%) | 52/52 (100.0%) | 42/43 (97.7%) | 47/50 (94.0%) |
 | Drex Max | 46/50 (92.0%) | 54/58 (93.1%) | 39/43 (90.7%) | 42/43 (97.7%) | 52/52 (100.0%) | 42/43 (97.7%) | 46/50 (92.0%) |
@@ -220,12 +224,13 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | Checking overlapping operations (F30) | 8 | Decide whether overlapping operations and their reported results can fit a permitted one-at-a-time order that respects the specified timing and object rules. Example: Two processes read and change the same stored value. Could their reported results fit an allowed one-at-a-time order? |
 | Detecting secret-information leaks (F31) | 8 | Check whether changing a protected secret can change an observable result in a way the stated policy forbids. Example: If public inputs stay the same, could public output distinguish two secret values that the policy says must remain indistinguishable? |
 
-![Risk, strategy and system behavior: all 29 routes, named categories, correct counts and percentages](../results/releases/native_additions_2026-10-21/uncertainty.png)
+![Risk, strategy and system behavior: all 30 routes, named categories, correct counts and percentages](../results/releases/fastino_2026-10-23/uncertainty.png)
 
-[Full-size SVG](../results/releases/native_additions_2026-10-21/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
+[Full-size SVG](../results/releases/fastino_2026-10-23/uncertainty.svg) · [Color-coded table and category rankings](https://etsabary.github.io/system-1-decision-benchmark/report.html#group-uncertainty)
 
 | Model | Risk with supplied probabilities | Is extra information worth its cost? | Worst-case choices without probabilities | Anticipating another decision-maker | Checking overlapping operations | Detecting secret-information leaks |
 | --- | --- | --- | --- | --- | --- | --- |
+| Fastino GLiDE | 6/8 (75.0%) | 3/8 (37.5%) | 4/8 (50.0%) | 4/8 (50.0%) | 6/8 (75.0%) | 6/8 (75.0%) |
 | GPT-6 Sol — no reasoning | 5/8 (62.5%) | 6/8 (75.0%) | 6/8 (75.0%) | 4/8 (50.0%) | 7/8 (87.5%) | 8/8 (100.0%) |
 | Mammoth-1 | 5/8 (62.5%) | 4/8 (50.0%) | 4/8 (50.0%) | 6/8 (75.0%) | 5/8 (62.5%) | 6/8 (75.0%) |
 | Drex Max | 5/8 (62.5%) | 4/8 (50.0%) | 5/8 (62.5%) | 5/8 (62.5%) | 3/8 (37.5%) | 7/8 (87.5%) |
@@ -256,4 +261,4 @@ These decisions involve uncertain outcomes, another actor, overlapping operation
 | ScaleDown Classify-1 | 1/8 (12.5%) | 2/8 (25.0%) | 1/8 (12.5%) | 1/8 (12.5%) | 1/8 (12.5%) | 3/8 (37.5%) |
 | Solar Decide Flash | 1/8 (12.5%) | 2/8 (25.0%) | 0/8 (0.0%) | 2/8 (25.0%) | 4/8 (50.0%) | 4/8 (50.0%) |
 
-Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](../results/releases/native_additions_2026-10-21/category_scores.csv).
+Counts are exact; displayed percentages are rounded. A perfect result on a small sample is not a reliability guarantee. [Download the full category matrix](../results/releases/fastino_2026-10-23/category_scores.csv).

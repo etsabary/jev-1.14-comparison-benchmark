@@ -22,5 +22,6 @@ jobs:
       - run: python3 scripts/repo_identity.py
       - run: python3 scripts/validate_direct_release.py
       - run: python3 scripts/validate_october21_release.py
+      - run: python3 scripts/validate_fastino_2026_10_23.py
       - run: python3 scripts/validate_repository_layout.py
       - run: python3 -m unittest discover -s scripts -p 'test_*.py'

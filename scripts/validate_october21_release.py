@@ -1,5 +1,5 @@
 """Offline aggregate, privacy, link and seal checks for the 29-route release."""
-from repo_layout import repo_file
+from repo_layout import repo_file, frozen_file
 from collections import Counter
 import csv
 from decimal import Decimal
@@ -54,7 +54,7 @@ def validate():
             check=privacy(path.read_text())
             if path.suffix=='.json':check(json.loads(path.read_text()))
     for path in (b.DEST/'report.html',repo_file('docs/report.html', root=b.ROOT)):
-        page=Page();page.feed(path.read_text())
+        page=Page();page.feed(frozen_file(path).read_text())
         assert page.summary==s['ranked_model_ids'] and page.additions==list(b.NEW)
         assert len(page.cells)==899 and len(page.ids)==len(set(page.ids))
         assert Counter(c['data-model'] for c in page.cells)=={mid:31 for mid in s['models']}

@@ -1,0 +1,45 @@
+## Fastino has the highest observed text score, not the highest image score
+
+Fastino GLiDE answered 1154/1342 correctly (86.0%), ahead of GPT-6 Sol without reasoning at 1143 (85.2%), Mammoth-1 at 1139 (84.9%), and Span-02 and Drex Max at 1127 each (84.0%). The gaps are 11 and 15 answers against Sol and Mammoth. These scores describe this developing bank and do not establish a reliable universal intelligence ordering. On the separate image bank, GLiDE scored 158/200 (79.0%): second, one answer behind Amos at 159/200. Text and image percentages are not combined.
+
+## A short response time and a metered price below the Sol reference
+
+GLiDE’s mean / median / p95 text response was 343/213/802 ms. Sol’s median was 1023 ms: 4.8 times GLiDE’s measured median. GLiDE’s usage-based cost was $0.01739196 for the complete bank, or $0.01296 per 1000 questions; Sol’s API-reported total was $0.84829450, about 48.8 times as much. Span’s median was slightly shorter at 206 ms, and its recorded cost was lower at $0.00474628. GLiDE is not the cheapest or fastest entry. These are different dated routes, not controlled hardware measurements. Fastino cost is calculated from reported input tokens and the captured tariff, not a returned monetary receipt.
+
+## Truth-tellers separate GLiDE from the nearby leaders
+
+GLiDE scored 59/74 on truth-tellers and liars: deciding which assignments of truth and falsehood make all the supplied statements consistent. Span scored 55/74, Mammoth 48/74 and Sol 38/74. On exact truth counting—how many supplied claims are true—GLiDE scored 45/71, versus Span 46/71 and Sol 51/71. These are distinct operations: being better at assigning truth-tellers does not make GLiDE best at counting true claims.
+
+## Strong rules and evidence, with a specific state-update weakness
+
+GLiDE answered all 52 rule-counterexample questions correctly, 51/52 required-condition questions, 45/46 if-then questions and 41/42 interval comparisons. Required-condition questions ask whether every prerequisite holds; counterexamples ask which case breaks a stated rule. Its one-to-one assignments score was 63/67, versus Mammoth’s 64/67 and Drex Max’s 65/67. Ordered procedures remained 18/48 (37.5%), the same as Mammoth and Sol and below Span’s 33/48. Those questions require applying each edit to the current state in order, not recognizing a plausible end state. Tracking swaps gave GLiDE 31/52.
+
+## The new categories do not follow the overall ranking
+
+Across the six eight-question categories covering risk, information value, worst-case choice, strategic response, concurrent operations and information leaks, GLiDE scored 29/48. Sol scored 36/48, Span 34/48 and Mammoth 30/48. GLiDE scored 3/8 on whether extra information is worth paying for, and 4/8 on worst-case choices without supplied probabilities; Span scored 8/8 on the latter. Each category has only eight questions, so one answer changes its score by 12.5 percentage points. The category profiles identify different useful routes rather than one uniformly best model.
+
+## The harder additions remain harder for GLiDE
+
+GLiDE scored 1028/1136 (90.5%) on the original portion and 126/206 (61.2%) on the additions. These are descriptive slices of the same unweighted 1342-question score, not separate leaderboards. All existing questions, options, audits and category weights are unchanged. No older model was rerun or re-scored for this addition.
+
+## The served version and image support were checked, not assumed
+
+The request model is fastino/GLiDE. The authenticated live catalog described a one-pass GLiDE v2.2 deployment; every scored response identified glide_v2. This is a hosted alias, not an immutable-weight attestation, and it must not be labelled v1.2. The catalog image flag was false while the documentation described image parts; real single-image and three-image probes succeeded, followed by the full 200-image run. No OCR or captions replaced pixels. All 1542 scored calls returned usable typed decisions, with no retries, valid probability distributions, zero reported output tokens and not-stored retention headers. That telemetry does not independently reveal undisclosed internal computation.
+
+## Earlier model profiles and price qualifications remain available
+
+Mammoth remains the next-highest specialized text model at 1139/1342. Drex Max and Span tie at 1127, but Drex’s one-to-one assignments score is 65/67 and Span’s procedure score is 33/48. Elephant’s 1004/1342 remains below Jev 1.14’s 1030/1342. Baseten’s captured promotional free access and Amos/d3 public-free access are not API-reported metered prices of zero. The 29 earlier model records and their dated release seals are preserved exactly; their tests were not repeated to create this update.
+
+30 full-bank routes: 27 specialized decision models and three selected no-reasoning LLM references. Each has 1342 questions across 31 categories: 40,260 first attempts. Fastino was measured October 23, 2026 (America/Toronto); earlier rows retain their own test dates, routes and raw measurements.
+
+Same frozen answer-free question bank, original options, native input and seed 2026101906. Every first attempt remains in the accuracy and latency denominator. One recovery is permitted only for transport failures or HTTP 408/429/5xx; Fastino additionally prespecified the documented HTTP 425 warming condition. No recovery was needed. No answer-dependent retries, batching of independent cases or provider fallback.
+
+Fastino used two text requests per barrier wave and serial image requests. The text and image streams overlapped, with up to three Fastino calls globally. Timing starts before a fresh HTTPS connection and ends after the complete response body; encoding, queue, pacing and retry waits are excluded. The predeclared cumulative median cutoff is above 2000 ms after at least 20 questions. Provider hardware, load, dates and account limits remain confounds; these are observed route response times, not isolated inference throughput.
+
+Fastino returned no monetary receipts. Its $0.04 per million input-token and $0 output tariff was captured from the authenticated catalog and documentation. Core text cost is $0.01739196; its separate text admission probe cost $0.00000364. Image core cost is $0.00767264 and two image probes cost $0.00010484. The combined usage-based cost including all probes was $0.02517308. Per-1000 values normalize actual bank totals; no extra 1000-question runs were made. Earlier missing charges remain unknown, not zero.
+
+Native Fastino requests used store:false; all scored receipts reported not-stored retention. The response identity glide_v2 and catalog v2.2 description are recorded. Internal execution and immutable weights are not independently attested. LLM references retain their original protocol labels: Sol explicit reasoning off, Sonnet constrained JSON choice after a separate failed bare-ID trial, and Qwen none with missing reasoning-token telemetry not called zero.
+
+This is a developing benchmark with uneven category sizes and dependent variants, not 1342 independent observations or a pristine held-out evaluation. The 37 permanent author-development exclusions retain their separate 1305-case diagnostic. Two audited ambiguous originals were replaced before these runs. The additions retain their verification evidence; the original bank received a targeted difficult-item audit rather than independent external verification of every original answer.
+
+Answer keys, per-item correctness, raw account state and credentials stay outside public exports. Private frozen-key scoring, input reconstruction, full-ledger reconciliation, quantiles and exact-decimal cost sums were checked before publication. Public aggregate checks cannot independently reproduce answer correctness without the external reference key. Text and image banks remain separate.

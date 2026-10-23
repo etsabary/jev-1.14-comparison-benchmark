@@ -1,9 +1,10 @@
-# Delivered decisions and request failures
+# Delivered decisions and failures
 
-All 29 routes retain the full 1342-question first-attempt denominator. Wrong valid decisions are separate from unusable outputs or provider failures. All 4026 new first attempts were usable, with zero recoveries.
+All 30 routes retain the 1342-question first-attempt denominator. Fastino returned 1342 usable decisions with no retries. Wrong choices are not formatting failures.
 
 | Model | Usable first | Wrong valid | Provider failures | Output failures | Recoveries | Eventual correct |
 | --- | --- | --- | --- | --- | --- | --- |
+| Fastino GLiDE | 1342 | 188 | 0 | 0 | 0 | 1154 |
 | GPT-6 Sol — no reasoning | 1342 | 199 | 0 | 0 | 0 | 1143 |
 | Mammoth-1 | 1342 | 203 | 0 | 0 | 0 | 1139 |
 | Drex Max | 1342 | 215 | 0 | 0 | 0 | 1127 |
@@ -35,4 +36,4 @@ All 29 routes retain the full 1342-question first-attempt denominator. Wrong val
 | Solar Decide Flash | 1340 | 802 | 2 | 0 | 2 | 539 |
 
 
-The separate stopped Sonnet bare-ID trial is not pooled into its complete constrained JSON-choice reference. Qwen’s original quota and transport failures remain unsuccessful first deliveries.
+The stopped Sonnet bare-ID trial is not pooled into its separately constrained complete reference.

@@ -642,6 +642,22 @@
     "task_examples.md": {
       "archive_path": "scripts/legacy_layout/root_documents/task_examples.md.snapshot",
       "sha256": "71c4ce81f0dede0e24f54680394304b4f2966699ffc516e7db11858d6acd6d60"
+    },
+    "docs/report.html": {
+      "archive_path": "scripts/legacy_layout/docs/report.html.snapshot",
+      "sha256": "b4ffb759eef7781899acbc2a9cf5c10c178a95ff1cacea3b50c1f4a27bd20101"
+    },
+    "docs/index.html": {
+      "archive_path": "scripts/legacy_layout/docs/index.html.snapshot",
+      "sha256": "ffc8a5b1cbba9edcbbd4655797cb985079d90e27e61f1664516ab727a8fde69a"
+    },
+    "docs/functions.html": {
+      "archive_path": "scripts/legacy_layout/docs/functions.html.snapshot",
+      "sha256": "a736d94000063c99b8ce830f650979e5d5a2c6df4b01e7d5b33a2edd54f18461"
+    },
+    "docs/output_compliance.html": {
+      "archive_path": "scripts/legacy_layout/docs/output_compliance.html.snapshot",
+      "sha256": "cfc0a634065d69e33916e2027f960cf9768ef3ee153dc8c700a80f6cec0d14f2"
     }
   },
   "protected_files": {
@@ -1904,17 +1920,17 @@
     "task_examples.md": "71c4ce81f0dede0e24f54680394304b4f2966699ffc516e7db11858d6acd6d60"
   },
   "current_files": {
-    ".github/workflows/october18-validate.yml": "eee368214b28fcad87711db59cffc00036c6d1dc7d667f1ddf9a05e6aec3f984",
+    ".github/workflows/october18-validate.yml": "96c96987cb4868bc9af18c696472b568484b775caa9ec733e7bff7417c837d47",
     ".github/workflows/validate.yml": "ae90d0b1edc38655788118f221492ab30ad601cb7c4e1c3b89615ae70aaa89d1",
     ".gitignore": "ff765c542120d3df771ef9a40cc7e3a854e5258b875c1d2d59a1134b6895324e",
-    "README.md": "02a454c0b91251716068676b19b7856da91500a41725ad4d6383f25988cbe260",
+    "README.md": "f62348d8db9a5e9dcc79ea7d65e06a5e1e13a2a39301a4d4e73119e318b5568d",
     "data/README.md": "17d9480c2bf17950d6db5bcab42702d2dd6661d87ced1d73e3409db63e83f793",
-    "documents/FUNCTIONS.md": "802ef0d4f2ec1e0bed82232743b558fa5fe47f40ae99830947d19a0a584799a1",
-    "documents/IMAGE_CAPABILITIES.md": "7bfefaf15448043bcb9f9ca801cce93a21ae25de477c5837b9891b08c26b2ed4",
+    "documents/FUNCTIONS.md": "1f12da34cbf18ce55dfedc5390e644109e39ec793921070889267de6adb31a8d",
+    "documents/IMAGE_CAPABILITIES.md": "44b80aeb7bdc0222190f47e9547ff347712eeff01fc6a5a7dda969492f9ca113",
     "documents/LLM_EXPANSION.md": "52f959ed38958fbe2bd419341542e7032c77884e96fbbf84066b3a83dd40a2e8",
     "documents/LLM_REFERENCES.md": "e4a595827cdb8da30b604006a7197139d602dbcb8aae91b0ccb6cd7b8748621c",
     "documents/NATIVE_DECISION_EXPANSION.md": "fbf96a8477156cdd4f0e151a16ebe2ce53462eba26ded922c4760b3e5cadc624",
-    "documents/OUTPUT_COMPLIANCE.md": "1a2abed90e521f59399032b047ea8854424b1f1900ac79edda0f08bbf5522bac",
+    "documents/OUTPUT_COMPLIANCE.md": "3967c9663dfef2d0e6bf7357b341a7f7521a138e1a1b516eec76cc753949be95",
     "documents/README.md": "7986f4975bffd6daabded32630890aa8fabc764892682b363215a25dd7b62505",
     "documents/REFERENCE_1136.md": "892ac349aec8d6d9ca2db4d5779d06efd1091b75214955e88cf6b6a1f78a412c",
     "documents/REFERENCE_1136_FUNCTIONS.md": "dbf63ebcc2818c9b0e071b82448aeaada8d0db798c8434c6dd15e2512dd2e46a",
@@ -1935,6 +1951,7 @@
     "scripts/analyze.py": "9e1fefbe094017339edd8418c2a687f1375f68466aa3f49ce2aa4660f2bc7431",
     "scripts/analyze_decision_additions_2026_10_21.py": "71001060ead17959e5c8b25c5d84f8335dbfa96f71b2a86f377b510334dc4375",
     "scripts/analyze_direct_decisions_2026_10_20.py": "c14afa2eac911e7ac73f8c27ebfc8791bdfdbff003b1457e89f6ecf0ba0dc0bb",
+    "scripts/analyze_fastino_glide_2026_10_23.py": "d8ab70555dcb1559aa7588ed43a8030c4c30a829b14583d47627815d94dc0870",
     "scripts/analyze_frontier_reference.py": "d7e33206b3592c9ed42f22c3d50afc791f2c600b9ad51661fe7c7a4a489d1dc0",
     "scripts/archive_direct_presentation.py": "585da9b93c753a65a2d48c703654be20457e8f8eb6b9ff75042eca784cce6def",
     "scripts/archive_frontier_presentation.py": "289f77f4acbb87d74d199fb150d4c75d68980eea439bd73ba3c2d6cc3b35913e",
@@ -1956,6 +1973,7 @@
     "scripts/decision_additions_2026_10_21.py": "e70ae4e8e09e3e868532a922e2f37e80e417731e2c7fb7f89143d04e3265ca3b",
     "scripts/decision_refresh.py": "eb3af2cd0c96fc7eb009110e0bae717c27f53fa46e741ef313613b1a251e99d2",
     "scripts/direct_decisions_2026_10_20.py": "c9f46028b97e5e873bc87375a91018559be25c9b3fba6c1510c92022349915aa",
+    "scripts/fastino_glide_2026_10_23.py": "dd248d57b2a00cdb5cd6652d265275e98068d9e5303aa8f0accfac59bb043b3b",
     "scripts/freeze_checksums.py": "20006f34cfd6583a5c897f044e5951bd8204dbf6a88781f908ffa61873543cf5",
     "scripts/freeze_consolidated_release.py": "700559e185dd68daa6a655baf6923058b19caaca12e1463a5a3d88a5707a8f26",
     "scripts/freeze_corrected_release.py": "058f65d4983c7d4dd53531387cfa2766fa004360ea193ab7cbdd86da99e26e73",
@@ -1986,6 +2004,7 @@
     "scripts/publish_capabilities.py": "625045f92e3faa0402308f1d38c0bbb0e6935be486453ba2aabae6b2699d5e2f",
     "scripts/publish_consolidated_report.py": "6df764cf298f2a98def7d2316b3e2a35155d3ddfa70b5884069c1bfda75ef31d",
     "scripts/publish_direct_decisions.py": "6d2325c13de06a516d3904aec0781809d8b6ec0c1a02d2b940fe6b13d818f91f",
+    "scripts/publish_fastino_2026_10_23.py": "38c0bb58269f2471c52cfb6aa7b03a2595d54ba3ca410314bbc9d3b70139127f",
     "scripts/publish_frontier_references.py": "b6cae6272d3c7fe80543d090c033a716026eb7466c6a5b953032c208547d4b25",
     "scripts/publish_october21_additions.py": "edc0df9e987cd243ea277a1216e734991e9bfb3732ba1da862784dc24cd61995",
     "scripts/repo_identity.py": "ded22f0dfeeaa1f0c4b3615c9c9de21d27be0073134d7be7386ada04e1c3e62c",
@@ -2008,6 +2027,8 @@
     "scripts/test_decision_refresh.py": "36d6a755d98a0f9c5bae3e9a88a03b1e0971a62faeaa299421e957a186fca6a6",
     "scripts/test_direct_decisions_2026_10_20.py": "9e3e2687fed65dbfc3cb2a0c0a794b73b02d0d2191388f9779b973245ab69230",
     "scripts/test_direct_publication.py": "f683719efb3dbf0d6aff85a50a3f8788bd88598584b7ef73a97ef225ea8c64e2",
+    "scripts/test_fastino_glide_2026_10_23.py": "33cb96477691f54764900dfb93186233a5fa755e3cb73da23640677d95522cf4",
+    "scripts/test_fastino_publication.py": "7c74548e95f9bffc2b04f14819896a0c4e03d80b53b9837e483067ea0236406b",
     "scripts/test_frontier_publication.py": "4960f0debe3223fb3c770af6b151d20d54e278459bf755794ffa13d35fcd51b9",
     "scripts/test_frontier_reference.py": "099467df026d6333bee32587caf3c6646384e4cdc38ad2e9d57f0f25d8696fc3",
     "scripts/test_hyper_reference.py": "729688a815f99cfc22829f8eab700c5126c6f97b401becc3bbae565afc6f4c7d",
@@ -2040,8 +2061,9 @@
     "scripts/validate_consolidated_release.py": "a3c99c3b9bf2af941a7d142d746f40631fd2b790824801cf073289b4193355e2",
     "scripts/validate_corrected_release.py": "3787fefefb46b95328a085e1b729e95cd21c56612c87b959176214e81775a1ad",
     "scripts/validate_direct_release.py": "4d34f2389ee93248661dfe99666285814b6491619547d9738c26301f08752c68",
+    "scripts/validate_fastino_2026_10_23.py": "cdceb48c4d97443ba2d21016349d6deb7b63551e3dec98b1e13e8c405f18c506",
     "scripts/validate_frontier_release.py": "922e6d20ddf25fe21cc7f76a3be17109c6f634d27deb827312c1f69e7a7740c7",
-    "scripts/validate_october21_release.py": "8bd0435f8f208463d4281b4fb9917d51b1a429d059e0e01a961fef72fb74e7d5",
+    "scripts/validate_october21_release.py": "ad26a3bcbef75137b274ed66339185a63a13ced3d86497da7d46c577b93eb2a2",
     "scripts/validate_readable_report.py": "d8e55a9ab702b7cf72311eb42b6445a3fbb0a50612b59774a47cb2ebac64229f",
     "scripts/validate_repository_layout.py": "4286cd27517c82e4ab4259ba97a8a081e9135af9e064fa77eeb5c264802c76d3"
   },

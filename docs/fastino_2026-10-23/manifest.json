@@ -1,0 +1,32 @@
+{
+  "version": "fastino-text-20261023-v1",
+  "models": 30,
+  "decision_models": 27,
+  "llm_references": 3,
+  "questions_each": 1342,
+  "first_attempts": 40260,
+  "bank_sha256": "2db8cf8353f12b609d4df5330d94f53390c9c2919677dc793df4bb2d3cff7076",
+  "prior_statistics_sha256": "04728404d8048e3277a4c237695731cb1ccfbb780080b1067b9bb2364e118e6f",
+  "artifacts": {
+    "uncertainty.svg": "2287654f30a7d96f92f9ca8646011cf65c584b5a4dd1a44c6b0e741f90ef99c0",
+    "rules.png": "b62b7fe414f060c2ea17cd8b21602b93b73e56cd709de87cabd60ab4db1a434c",
+    "accuracy_speed_cost.png": "69d4b5804e9586e745cc3c04f8cb83ba22b1c31e3b78f710a16ab18178241df4",
+    "model_metadata.json": "7726d6da074923c29419f2da24e4cdb92dc2ca45b109a36bd79ce3d78e9527b4",
+    "audit_receipt.json": "56c9f994ab0e3ce17ec72875bfe63a71d3bf701df85bbbd12c53d622bc26adfc",
+    "accuracy_speed_cost.svg": "0b94660e56a86f8a3963cf75dfef3dd009be5b6f3cb87e8389234c28426d9301",
+    "rules.svg": "c18e776fa33e8c65b4e3337543527cad0a0d7b4152c96aecb7bd34efce3b5f30",
+    "statistics.json": "b61ee0e022e60723e5a820a6afd147d2ec42f61d96dc97243426a960b412be3d",
+    "uncertainty.png": "a4b1b1a2ca474b2a58fd4de4e7687f060b3a848a84e1485f505466bc10e9eb78",
+    "state.png": "17b3c39a5107bdf7df4c3d83d76d10c27da56240abbce4eb6a7f98d1f7f5810a",
+    "category_scores.csv": "cdb761ca754357cc13cda5dfec854dc67b1b4135fa06454f0d9ff94b2dfd302b",
+    "report.txt": "3e05bcf5ad6b88d66bc9901f555b243ec1f38c3d88efc38ba843579f8d3feb5a",
+    "ordering.png": "7ed32e929347afeb49c8feb3137f2b1019cd5d7ae94d0c54814cb62aa5eff4a3",
+    "causes.png": "8552cbb17e568221250df0ae5d2138986648d4f75ec06a9f4a39b01bdbea0233",
+    "model_statistics.csv": "8dec459d6011e4e1b052263bae61bb0395e7a9e87f100e20e5bf558cfcba89b8",
+    "causes.svg": "120bed9b151a651e4e7b4be9e5a0e9877aae91f325a0848e1207c1efd8005ae4",
+    "report.html": "33fb2a5c2d4bd9b227b31bd0cf8f83e7596e1b626e49be4d18fc721ce2f76eee",
+    "ordering.svg": "0709d0704f24d72d029c396020fc4d1ba265935e002e08fbaa3870649cc05ccd",
+    "category_guide.json": "183f7fa8ace26704616423f307e0d8f0acb923a6b29c78e837ebf1ddaa7be823",
+    "state.svg": "88e9220de15b406a2b63de78c9b01f3048f8f64aac3da3f8ff9bc3719937bd82"
+  }
+}
